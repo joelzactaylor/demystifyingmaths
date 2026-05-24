@@ -309,13 +309,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // onMove(e)  — called on mousemove/touchmove (only when dragging)
     // onUp()     — called on mouseup/touchend
     // setDrag()  — returns current drag state (so onMove can gate itself)
-    function attachDragListeners(canvas, { onDown, onMove, onUp }) {
+    function attachDragListeners(canvas, { onDown, onMove, onUp, isDragging }) {
         canvas.addEventListener('mousedown', onDown);
         window.addEventListener('mousemove', onMove);
         window.addEventListener('mouseup', onUp);
 
-        canvas.addEventListener('touchstart', e => { e.preventDefault(); onDown(e); }, { passive: false });
-        window.addEventListener('touchmove', e => { e.preventDefault(); onMove(e); }, { passive: false });
+        canvas.addEventListener('touchstart', e => {
+            e.preventDefault(); onDown(e);
+        }, { passive: false });
+
+        canvas.addEventListener('touchmove', e => {
+            if (isDragging()) e.preventDefault();
+            onMove(e);
+        }, { passive: false });
+
         window.addEventListener('touchend', onUp);
     }
 
