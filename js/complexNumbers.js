@@ -1162,7 +1162,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initPolar('polar-canvas');
     initAddition('addition-canvas', 'addition-readout', 'op-toggle', 'op-label');
     initMultiplication('multiplication-canvas', 'multiplication-readout', 'mul-bg-toggle');
-    heckISquaredReady();
+    checkISquaredReady();
     initExponentiation('exponentiation-canvas', 'exponentiation-readout', 'exp-toggle', 'exp-op-label');
 });
 
