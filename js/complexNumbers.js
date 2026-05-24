@@ -305,25 +305,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Attaches the standard drag listeners for a single-handle sim (1D or 2D).
-    // onDown(e)  — called on mousedown/touchstart
-    // onMove(e)  — called on mousemove/touchmove (only when dragging)
-    // onUp()     — called on mouseup/touchend
-    // setDrag()  — returns current drag state (so onMove can gate itself)
-    function attachDragListeners(canvas, { onDown, onMove, onUp, isDragging }) {
-        canvas.addEventListener('mousedown', onDown);
-        window.addEventListener('mousemove', onMove);
-        window.addEventListener('mouseup', onUp);
-
-        canvas.addEventListener('touchstart', e => {
-            e.preventDefault(); onDown(e);
+    function attachDragListeners(canvas, { onDown, onMove, onUp }) {
+        canvas.addEventListener('pointerdown', e => {
+            if (e.button !== undefined && e.button !== 0) return;
+            onDown(e);
+            canvas.setPointerCapture(e.pointerId);
         }, { passive: false });
-
-        canvas.addEventListener('touchmove', e => {
-            if (isDragging()) e.preventDefault();
-            onMove(e);
-        }, { passive: false });
-
-        window.addEventListener('touchend', onUp);
+        canvas.addEventListener('pointermove', onMove);
+        canvas.addEventListener('pointerup', onUp);
+        canvas.addEventListener('pointercancel', onUp);
     }
 
     // ─── COMPLEX MATH ─────────────────────────────────────────────
