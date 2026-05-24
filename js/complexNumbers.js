@@ -306,14 +306,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Attaches the standard drag listeners for a single-handle sim (1D or 2D).
     function attachDragListeners(canvas, { onDown, onMove, onUp }) {
+        let isDragging = false;
+
         canvas.addEventListener('pointerdown', e => {
-            if (e.button !== undefined && e.button !== 0) return;
+            // Only start drag on primary button, and only for single-pointer interactions
+            if (e.button !== 0 || e.buttons !== 1) return;
+
+            isDragging = true;
             onDown(e);
             canvas.setPointerCapture(e.pointerId);
         }, { passive: false });
-        canvas.addEventListener('pointermove', onMove);
-        canvas.addEventListener('pointerup', onUp);
-        canvas.addEventListener('pointercancel', onUp);
+
+        canvas.addEventListener('pointermove', e => {
+            // Do not interfere with pinch/zoom or hover; only move when dragging
+            if (!isDragging) return;
+            onMove(e);
+        });
+
+        function endDrag(e) {
+            if (!isDragging) return;
+            isDragging = false;
+            try {
+                canvas.releasePointerCapture(e.pointerId);
+            } catch (_) {
+                // ignore if capture not set
+            }
+            onUp(e);
+        }
+
+        canvas.addEventListener('pointerup', endDrag);
+        canvas.addEventListener('pointercancel', endDrag);
     }
 
     // ─── COMPLEX MATH ─────────────────────────────────────────────
