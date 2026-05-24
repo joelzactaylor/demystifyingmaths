@@ -369,6 +369,6 @@
 }
 
 canvas {
-    touch-action: none;
+    touch-action: pinch-zoom;
     user-select: none;
 }
