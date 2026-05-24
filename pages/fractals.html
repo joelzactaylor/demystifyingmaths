@@ -269,7 +269,7 @@
                 <div class="maths-center">
                     <math>
                         <msub>
-                            <mi>T</mi>
+                            <mi>x</mi>
                             <mrow>
                                 <mi>n</mi>
                                 <mo>+</mo>
@@ -279,7 +279,7 @@
                         <mo>=</mo>
                         <msup>
                             <msub>
-                                <mi>T</mi>
+                                <mi>x</mi>
                                 <mo>n</mo>
                             </msub>
                             <mn>2</mn>
@@ -287,6 +287,87 @@
                     </math>
                 </div>
             </div>
+
+            <p>I changed the letter T to a letter x. This is simply because I want to be indicate that the number now
+                represents a <strong>distance</strong> rather than just a generic term in the sequence - it means
+                exactly the same thing.</p>
+
+            <p>You might notice that the behaviour of the sequence changes drastically depending on the initial value.
+            </p>
+            <p>Experiment with the simulation, and try to answer the questions below:</p>
+
+            <div class="sequence-quiz">
+                <div class="sequence-quiz__item" data-answer="diverges">
+                    <p>When x &lt; -1, <br> the sequence <select id="quiz-1"
+                            aria-label="When x is less than negative one"></select></p>
+                </div>
+                <div class="sequence-quiz__item" data-answer="converges">
+                    <p>When -1 &lt; x &lt; 1, <br> the sequence <select id="quiz-2"
+                            aria-label="When x is between negative one and one"></select></p>
+                </div>
+                <div class="sequence-quiz__item" data-answer="diverges">
+                    <p>When x &gt; 1, <br> the sequence <select id="quiz-3"
+                            aria-label="When x is greater than one"></select></p>
+                </div>
+            </div>
+
+            <p>Now to make it 2-dimensionsl.</p>
+            <p>If you aren't familiar with complex numbers, then I suggest you read <a href="complexNumbers.html">this
+                    page</a> first.</p>
+            <p>The plan is to do exactly the same thing - each number in the sequence is the previous number squared.
+            </p>
+            <p>But now, since the numbers are allowed to be complex numbers, we need to represent them as dots in a
+                plane:
+            </p>
+
+
+            <div class="complex-plane-sim">
+                <p style="display: block; margin: 1.5rem auto; text-align: center;">Drag the point to change the initial
+                    complex value (real + imaginary):</p>
+                <canvas id="cp-canvas" width="700" height="700"></canvas>
+                <div class="maths-center">
+                    <math>
+                        <msub>
+                            <mi>z</mi>
+                            <mrow>
+                                <mi>n</mi>
+                                <mo>+</mo>
+                                <mn>1</mn>
+                            </mrow>
+                        </msub>
+                        <mo>=</mo>
+                        <msup>
+                            <msub>
+                                <mi>z</mi>
+                                <mo>n</mo>
+                            </msub>
+                            <mn>2</mn>
+                        </msup>
+                    </math>
+                </div>
+            </div>
+
+            <p>I changed the variable letter to z now, because this is the convention when describing a complex number.
+            </p>
+            <p>This version shows the same type of behaviour changes as the last, but they are subtly different.</p>
+            <p>See if you can identify them:</p>
+
+            <div class="sequence-quiz sequence-quiz--two">
+                <div class="sequence-quiz__item" data-answer="converges">
+                    <p>If z is inside the unit circle (|z| &lt; 1), <br> the sequence <select id="quiz-4"
+                            aria-label="When z is inside the unit circle"></select></p>
+                </div>
+                <div class="sequence-quiz__item" data-answer="diverges">
+                    <p>If z is outside the unit circle (|z| &gt; 1), <br> the sequence <select id="quiz-5"
+                            aria-label="When z is outside the unit circle"></select></p>
+                </div>
+            </div>
+
+            <p>There's another observation to be made which highlights a difference between the 1-dimensional and
+                2-dimensional cases.</p>
+            <p>When you shift to complex numbers, the behaviour becomes <strong>chaotic</strong> in certain regions of
+                the complex plane.</p>
+            <p>Controlled chaos is what we need to make fractals!</p>
         </section>
 
         <footer>

@@ -113,6 +113,54 @@ document.addEventListener('DOMContentLoaded', () => {
         return a + (b - a) * t;
     }
 
+    // Generic sequence generator: returns array of iterates starting from `initial`
+    function generateSequence(initial, iterateFn, escapeFn, maxIters) {
+        const seq = [initial];
+        let cur = initial;
+        for (let i = 0; i < maxIters; i++) {
+            const next = iterateFn(cur);
+            seq.push(next);
+            if (escapeFn && escapeFn(next)) break;
+            cur = next;
+        }
+        return seq;
+    }
+
+    // Generic draggable helper: getWorldFromEvent returns a world-space value (number or object)
+    // getWorldFromEvent will be called as getWorldFromEvent(event, dragging)
+    function makeDraggable(canvas, getWorldFromEvent, onUpdate) {
+        let dragging = false;
+
+        function onDown(e) {
+            const pos = getWorldFromEvent(e, false);
+            if (pos === null) return;
+            dragging = true;
+            e.preventDefault();
+        }
+
+        function onMove(e) {
+            if (!dragging) return;
+            e.preventDefault();
+            const pos = getWorldFromEvent(e, true);
+            if (pos === null) return;
+            onUpdate(pos);
+        }
+
+        function onUp() {
+            dragging = false;
+        }
+
+        window.addEventListener('mousedown', onDown);
+        window.addEventListener('mousemove', onMove);
+        window.addEventListener('mouseup', onUp);
+        window.addEventListener('mouseleave', onUp);
+        window.addEventListener('touchstart', onDown, { passive: false });
+        window.addEventListener('touchmove', onMove, { passive: false });
+        window.addEventListener('touchend', onUp);
+
+        return { destroy: () => { /* noop for now */ } };
+    }
+
     function btRender() {
         btView.cx = lerp(btView.cx, btView.targetCx, 0.08);
         btView.cy = lerp(btView.cy, btView.targetCy, 0.08);
@@ -212,9 +260,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function nlDraw() {
         nlCtx.clearRect(0, 0, NL_W, NL_H);
 
-        nlCtx.fillStyle = '#e1eaf6';
-        nlCtx.fillRect(0, 0, NL_W, NL_H);
-
         // axis line
         nlCtx.strokeStyle = '#4b5563';
         nlCtx.lineWidth = 2;
@@ -236,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
             nlCtx.moveTo(cx, AXIS_Y - 7);
             nlCtx.lineTo(cx, AXIS_Y + 7);
             nlCtx.stroke();
-            nlCtx.fillStyle = x === 0 ? '#e5e7eb' : '#6b7280';
+            nlCtx.fillStyle = '#6b7280';
             nlCtx.fillText(x, cx, AXIS_Y + 12);
         }
 
@@ -290,42 +335,328 @@ document.addEventListener('DOMContentLoaded', () => {
         nlCtx.stroke();
     }
 
-    function nlGetCanvasX(e) {
+    // Reuse draggable helper for numberline: interpret pointer events into a world X coordinate
+    makeDraggable(nlCanvas, (e, dragging) => {
         const rect = nlCanvas.getBoundingClientRect();
         const scaleX = NL_W / rect.width;
         const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-        return (clientX - rect.left) * scaleX;
-    }
-
-    function nlOnDown(e) {
-        const cx = nlGetCanvasX(e);
+        let cx = (clientX - rect.left) * scaleX;
+        // clamp to canvas drawable area (respect PAD)
+        cx = Math.max(PAD, Math.min(NL_W - PAD, cx));
         const px = nlToCanvas(nlX0);
-        if (Math.abs(cx - px) < 20) {
-            nlDragging = true;
-            e.preventDefault();
+        if (dragging) {
+            return Math.max(NL_MIN, Math.min(NL_MAX, nlToWorld(cx)));
         }
-    }
-
-    function nlOnMove(e) {
-        if (!nlDragging) return;
-        e.preventDefault();
-        const cx = nlGetCanvasX(e);
-        nlX0 = Math.max(NL_MIN, Math.min(NL_MAX, nlToWorld(cx)));
+        if (Math.abs(cx - px) < 20 || e.type === 'touchstart') {
+            return Math.max(NL_MIN, Math.min(NL_MAX, nlToWorld(cx)));
+        }
+        return null;
+    }, (val) => {
+        nlX0 = val;
         nlDraw();
+    });
+
+    function createCustomDropdown(select) {
+        const wrapper = select.closest('.sequence-quiz__item');
+        if (!wrapper) return;
+
+        let dropdown = null;
+
+        const closeDropdown = () => {
+            if (!dropdown) return;
+            dropdown.remove();
+            dropdown = null;
+            document.removeEventListener('mousedown', onOutsidePointerDown);
+            document.removeEventListener('keydown', onDropdownKeyDown);
+        };
+
+        const openDropdown = () => {
+            if (dropdown) return;
+            dropdown = document.createElement('div');
+            dropdown.className = 'custom-dropdown-list';
+
+            const rect = select.getBoundingClientRect();
+            dropdown.style.left = `${rect.left}px`;
+            dropdown.style.top = `${rect.bottom + 8}px`;
+            dropdown.style.width = `${rect.width}px`;
+
+            select.querySelectorAll('option').forEach((option) => {
+                if (!option.value) {
+                    return;
+                }
+
+                const optionNode = document.createElement('div');
+                optionNode.className = 'custom-dropdown-option';
+                optionNode.textContent = option.textContent;
+                optionNode.dataset.value = option.value;
+                optionNode.setAttribute('role', 'option');
+
+                if (select.value === option.value) {
+                    optionNode.setAttribute('aria-selected', 'true');
+                }
+
+                optionNode.addEventListener('click', () => {
+                    if (select.value !== option.value) {
+                        select.value = option.value;
+                        select.dispatchEvent(new Event('change', { bubbles: true }));
+                    }
+                    closeDropdown();
+                });
+
+                dropdown.appendChild(optionNode);
+            });
+
+            document.body.appendChild(dropdown);
+            document.addEventListener('mousedown', onOutsidePointerDown);
+            document.addEventListener('keydown', onDropdownKeyDown);
+        };
+
+        const onOutsidePointerDown = (event) => {
+            if (dropdown && dropdown.contains(event.target)) {
+                return;
+            }
+            if (!wrapper.contains(event.target)) {
+                closeDropdown();
+            }
+        };
+
+        const onDropdownKeyDown = (event) => {
+            if (event.key === 'Escape') {
+                closeDropdown();
+                select.focus();
+            }
+        };
+
+        select.addEventListener('mousedown', (event) => {
+            event.preventDefault();
+            openDropdown();
+        });
+
+        select.addEventListener('touchstart', (event) => {
+            event.preventDefault();
+            openDropdown();
+        }, { passive: false });
+
+        select.addEventListener('keydown', (event) => {
+            if (['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(event.key)) {
+                event.preventDefault();
+                openDropdown();
+            }
+        });
     }
 
-    function nlOnUp() {
-        nlDragging = false;
+    function setupSequenceQuiz() {
+        const answerMap = {
+            'quiz-1': 'diverges',
+            'quiz-2': 'converges',
+            'quiz-3': 'diverges',
+            'quiz-4': 'converges',
+            'quiz-5': 'diverges'
+        };
+        const choices = ['', 'converges', 'diverges'];
+
+        Object.keys(answerMap).forEach((id) => {
+            const select = document.getElementById(id);
+            if (!select) return;
+            select.innerHTML = choices.map(value => {
+                const label = value || '';
+                return `<option value="${value}">${label}</option>`;
+            }).join('');
+
+            select.addEventListener('change', () => {
+                const item = select.closest('.sequence-quiz__item');
+                if (!item) return;
+                item.classList.remove('correct', 'incorrect');
+                if (!select.value) return;
+                item.classList.add(select.value === answerMap[id] ? 'correct' : 'incorrect');
+            });
+
+            createCustomDropdown(select);
+        });
     }
 
-    nlCanvas.addEventListener('mousedown', nlOnDown);
-    nlCanvas.addEventListener('mousemove', nlOnMove);
-    nlCanvas.addEventListener('mouseup', nlOnUp);
-    nlCanvas.addEventListener('mouseleave', nlOnUp);
-    nlCanvas.addEventListener('touchstart', nlOnDown, { passive: false });
-    nlCanvas.addEventListener('touchmove', nlOnMove, { passive: false });
-    nlCanvas.addEventListener('touchend', nlOnUp);
+    setupSequenceQuiz();
 
     nlDraw();
+
+    // ============================================================
+    // COMPLEX PLANE — z(n+1) = z(n)^2
+    // ============================================================
+
+    const cpCanvas = document.getElementById('cp-canvas');
+    if (cpCanvas) {
+        const cpCtx = cpCanvas.getContext('2d');
+        const CP_W = cpCanvas.width;
+        const CP_H = cpCanvas.height;
+        const CP_MIN = -2.0, CP_MAX = 2.0;
+        const CP_PAD = 60;
+        const CP_WW = CP_W - CP_PAD * 2;
+        const CP_HH = CP_H - CP_PAD * 2;
+
+        let cpZ0 = { x: -1.01, y: 0.3 };
+
+        function cpToCanvas(pt) {
+            const cx = CP_PAD + ((pt.x - CP_MIN) / (CP_MAX - CP_MIN)) * CP_WW;
+            const cy = CP_PAD + ((CP_MAX - pt.y) / (CP_MAX - CP_MIN)) * CP_HH;
+            return { x: cx, y: cy };
+        }
+
+        function canvasToCp(clientX, clientY) {
+            const rect = cpCanvas.getBoundingClientRect();
+            const scaleX = CP_W / rect.width;
+            const scaleY = CP_H / rect.height;
+            const cx = (clientX - rect.left) * scaleX;
+            const cy = (clientY - rect.top) * scaleY;
+            const x = CP_MIN + ((cx - CP_PAD) / CP_WW) * (CP_MAX - CP_MIN);
+            const y = CP_MAX - ((cy - CP_PAD) / CP_HH) * (CP_MAX - CP_MIN);
+            return { x, y };
+        }
+
+        function cpIterate(z) {
+            return { x: z.x * z.x - z.y * z.y, y: 2 * z.x * z.y };
+        }
+
+        function cpEscape(z) {
+            return (z.x * z.x + z.y * z.y) > (ESCAPE * ESCAPE);
+        }
+
+        function cpDraw() {
+            cpCtx.clearRect(0, 0, CP_W, CP_H);
+
+            // draw unit circle and highlight region (inside/outside) with 10% peach
+            const origin = cpToCanvas({ x: 0, y: 0 });
+            const unitPt = cpToCanvas({ x: 1, y: 0 });
+            const unitRadius = Math.abs(unitPt.x - origin.x);
+            const inside = (cpZ0.x * cpZ0.x + cpZ0.y * cpZ0.y) <= 1;
+            const peach = 'rgba(255,203,164,0.10)';
+            if (inside) {
+                cpCtx.beginPath();
+                cpCtx.arc(origin.x, origin.y, unitRadius, 0, Math.PI * 2);
+                cpCtx.fillStyle = peach;
+                cpCtx.fill();
+            } else {
+                // Fill the canvas but punch out the unit circle using even-odd winding where supported.
+                cpCtx.beginPath();
+                cpCtx.rect(0, 0, CP_W, CP_H);
+                cpCtx.arc(origin.x, origin.y, unitRadius, 0, Math.PI * 2);
+                cpCtx.closePath();
+                cpCtx.fillStyle = peach;
+                try {
+                    cpCtx.fill('evenodd');
+                } catch (err) {
+                    // Fallback for browsers that don't support the fill winding argument
+                    cpCtx.save();
+                    cpCtx.fillStyle = peach;
+                    cpCtx.fillRect(0, 0, CP_W, CP_H);
+                    cpCtx.globalCompositeOperation = 'destination-out';
+                    cpCtx.beginPath();
+                    cpCtx.arc(origin.x, origin.y, unitRadius, 0, Math.PI * 2);
+                    cpCtx.fill();
+                    cpCtx.restore();
+                }
+            }
+
+            // faint unit circle outline
+            cpCtx.beginPath();
+            cpCtx.arc(origin.x, origin.y, unitRadius, 0, Math.PI * 2);
+            cpCtx.strokeStyle = 'rgba(107,114,128,0.45)';
+            cpCtx.lineWidth = 1.2;
+            cpCtx.stroke();
+
+            // axes
+            cpCtx.strokeStyle = '#6b7280';
+            cpCtx.lineWidth = 1;
+            cpCtx.beginPath();
+            cpCtx.moveTo(CP_PAD, origin.y);
+            cpCtx.lineTo(CP_W - CP_PAD, origin.y);
+            cpCtx.moveTo(origin.x, CP_PAD);
+            cpCtx.lineTo(origin.x, CP_H - CP_PAD);
+            cpCtx.stroke();
+
+            // ticks
+            cpCtx.font = '13px system-ui, sans-serif';
+            cpCtx.textAlign = 'center';
+            cpCtx.textBaseline = 'top';
+            for (let v = Math.ceil(CP_MIN); v <= Math.floor(CP_MAX); v++) {
+                const px = cpToCanvas({ x: v, y: 0 }).x;
+                const py = cpToCanvas({ x: 0, y: v }).y;
+                cpCtx.fillStyle = '#6b7280';
+                cpCtx.fillText(v, px, origin.y + 6);
+                cpCtx.fillText(v + 'i', origin.x + 6, py - 6);
+            }
+
+            // build sequence (reuse generator)
+            const seq = generateSequence(cpZ0, cpIterate, cpEscape, MAX_ITERS);
+
+            // draw connecting lines and dots
+            for (let i = 0; i < seq.length - 1; i++) {
+                const a = seq[i];
+                const b = seq[i + 1];
+                const ca = cpToCanvas(a);
+                const cb = cpToCanvas(b);
+
+                const t = i / Math.max(1, seq.length - 2);
+                const hue = 200 + 80 * t;
+                const alpha = 1 - 0.6 * t;
+
+                // line
+                cpCtx.strokeStyle = `hsla(${hue}, 85%, 50%, ${alpha})`;
+                cpCtx.lineWidth = Math.max(1, 3 - i * 0.25);
+                cpCtx.beginPath();
+                cpCtx.moveTo(ca.x, ca.y);
+                cpCtx.lineTo(cb.x, cb.y);
+                cpCtx.stroke();
+
+                // dot at b
+                cpCtx.fillStyle = `hsla(${hue}, 85%, 62%, ${alpha})`;
+                cpCtx.beginPath();
+                const r = Math.max(2.6, 6 - i * 0.5);
+                cpCtx.arc(cb.x, cb.y, r, 0, Math.PI * 2);
+                cpCtx.fill();
+            }
+
+            // draggable initial point
+            const p0 = cpToCanvas(cpZ0);
+            cpCtx.fillStyle = '#ffffff';
+            cpCtx.beginPath();
+            cpCtx.arc(p0.x, p0.y, 8, 0, Math.PI * 2);
+            cpCtx.fill();
+            cpCtx.strokeStyle = '#60a5fa';
+            cpCtx.lineWidth = 2.5;
+            cpCtx.stroke();
+        }
+
+        // draggable support for complex plane: start only when near initial point
+        makeDraggable(cpCanvas, (e, dragging) => {
+            const rect = cpCanvas.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            // clamp client coordinates to the canvas drawable area (respect CP_PAD)
+            const scaleX = CP_W / rect.width;
+            const scaleY = CP_H / rect.height;
+            let cx = (clientX - rect.left) * scaleX;
+            let cy = (clientY - rect.top) * scaleY;
+            cx = Math.max(CP_PAD, Math.min(CP_W - CP_PAD, cx));
+            cy = Math.max(CP_PAD, Math.min(CP_H - CP_PAD, cy));
+            // convert clamped canvas coords (cx,cy) to world complex coords
+            const wx = CP_MIN + ((cx - CP_PAD) / CP_WW) * (CP_MAX - CP_MIN);
+            const wy = CP_MAX - ((cy - CP_PAD) / CP_HH) * (CP_MAX - CP_MIN);
+            const world = { x: wx, y: wy };
+            const p = cpToCanvas(cpZ0);
+            const dx = cx - p.x, dy = cy - p.y;
+            if (dragging) {
+                return world;
+            }
+            if (Math.sqrt(dx * dx + dy * dy) < 18 || e.type === 'touchstart') {
+                return world;
+            }
+            return null;
+        }, (val) => {
+            cpZ0 = val;
+            cpDraw();
+        });
+
+        cpDraw();
+    }
 
 });
