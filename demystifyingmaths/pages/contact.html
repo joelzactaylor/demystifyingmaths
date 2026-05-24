@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Demystifying Maths | Contact</title>
+    <meta name="description"
+        content="Get in touch with Demystifying Maths — ask a question, share a thought, or just say hello.">
+    <meta property="og:title" content="Demystifying Maths">
+    <meta property="og:description" content="[same text as your description]">
+    <link rel="stylesheet" href="../css/shared.css">
+    <link rel="stylesheet" href="../css/contact.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="../favicon_io/site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="layout">
+        <div id="top-ribbon-placeholder"></div>
+        <script>
+            fetch("../embed/top-ribbon.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("top-ribbon-placeholder").innerHTML = data;
+                });
+        </script>
+        <header>
+            <h1>Demystifying Maths</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li><a href="home.html">Home</a><span aria-hidden="true">›</span></li>
+                    <li>
+                        <p>Contact</p>
+                    </li>
+                </ol>
+            </nav>
+        </header>
+
+        <main>
+            <section>
+                <h2>Get in touch</h2>
+                <div>
+                    <p>Please don't spam me or anything, but I'd love to hear from anyone about anything on this site,
+                        or
+                        any aspects of maths.</p>
+                    <p>I'm not aged enough yet to consider interesting things a waste of my time, and luckily I find
+                        everything about maths interesting, so don't hesitate to ask if you have even the most
+                        insignificant
+                        question or suggestion.</p>
+                    <p>If there's anything you think I can help with, please reach out. I've answered a lot of questions
+                        before and people's questions generally are more
+                        intelligent than they think. The percentage of them that are prefaced with "This is probably a
+                        stupid
+                        question, but..." is astounding. However, I have not come across a question yet that deserved
+                        that
+                        statement, so yours probably doesn't either. Send it over!</p>
+                    <br>
+                    <form id="contact-form" class="contact-form" action="https://formspree.io/f/mlgvbkoe" method="POST">
+                        <input type="text" name="_gotcha" style="display:none">
+                        <input type="hidden" name="_subject" value="New message from Demystifying Maths">
+
+                        <div class="contact-grid">
+                            <div class="form-field">
+                                <label for="name">Name</label>
+                                <input id="name" name="name" type="text" placeholder="John Smith" required>
+                            </div>
+
+                            <div class="form-field">
+                                <label for="email">Email</label>
+                                <input id="email" name="email" type="email" placeholder="j.smith@example.com" required>
+                            </div>
+                        </div>
+
+                        <div class="form-field">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="8" placeholder="Write your question here..."
+                                required></textarea>
+                        </div>
+
+                        <div class="form-actions">
+                            <p class="form-note">
+                                No need to overthink it. Good questions do not have to sound impressive to be worth
+                                asking.
+                            </p>
+                            <button type="submit">Send message</button>
+                        </div>
+                    </form>
+
+                    <div id="form-success" style="display:none;">
+                        <p>Thanks — I'll get back to you soon!</p>
+                    </div>
+
+                    <script>
+                        const form = document.getElementById('contact-form');
+                        const success = document.getElementById('form-success');
+
+                        form.addEventListener('submit', async (e) => {
+                            e.preventDefault();
+                            const data = new FormData(form);
+                            const res = await fetch(form.action, {
+                                method: 'POST',
+                                body: data,
+                                headers: { 'Accept': 'application/json' }
+                            });
+                            if (res.ok) {
+                                form.style.display = 'none';
+                                success.style.display = 'block';
+                            }
+                        });
+                    </script>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h2>Quick Links</h2>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="pages.html">Pages</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 demystifyingmaths · joelzactaylor</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

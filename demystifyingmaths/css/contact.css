@@ -1,0 +1,127 @@
+/* Contact form layout */
+
+.contact-form {
+    display: grid;
+    gap: 18px;
+    margin-top: 24px;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.form-field {
+    display: grid;
+    gap: 8px;
+}
+
+.form-field label {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #12435b;
+}
+
+/* Inputs and textarea */
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    border: 1px solid rgba(17, 110, 147, 0.22);
+    border-radius: 14px;
+    padding: 12px 14px;
+    font: inherit;
+    color: #202020;
+    background: rgba(255, 255, 255, 0.9);
+    box-sizing: border-box;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+    color: #6d7881;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: #116e93;
+    box-shadow: 0 0 0 4px rgba(17, 110, 147, 0.16);
+    transform: translateY(-1px);
+}
+
+.contact-form textarea {
+    min-height: 220px;
+    resize: vertical;
+}
+
+/* Actions row */
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 6px;
+}
+
+.form-note {
+    margin: 0;
+    max-width: 32ch;
+    font-size: 0.95rem;
+}
+
+/* Button */
+
+.contact-form button {
+    border: none;
+    border-radius: 999px;
+    padding: 12px 22px;
+    font: inherit;
+    font-weight: 700;
+    color: white;
+    background: linear-gradient(180deg, #116e93, #0c5875);
+    box-shadow: 0 10px 22px rgba(17, 110, 147, 0.3);
+    transition: transform 0.18s ease, box-shadow 0.18s ease, filter 0.18s ease;
+}
+
+.contact-form button:hover {
+    cursor: pointer;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 26px rgba(17, 110, 147, 0.36);
+    filter: brightness(1.03);
+}
+
+.contact-form button:focus-visible {
+    outline: 3px solid rgba(17, 110, 147, 0.4);
+    outline-offset: 3px;
+}
+
+/* Responsive tweaks */
+
+@media screen and (max-width: 700px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-form button {
+        width: 100%;
+    }
+
+    .form-actions {
+        align-items: stretch;
+    }
+}
+
+section h1,
+section h2,
+section h1 a,
+section h2 a {
+    font-size: 40px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(9, 83, 157);
+    text-shadow: #44444449 0 0 5px;
+    width: fit-content;
+}

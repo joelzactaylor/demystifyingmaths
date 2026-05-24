@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Demystifying Maths | Pages</title>
+    <meta name="description"
+        content="Browse all topics on Demystifying Maths — from fundamentals to advanced concepts, explained from the ground up.">
+    <meta property="og:title" content="Demystifying Maths">
+    <meta property="og:description" content="[same text as your description]">
+    <link rel="stylesheet" href="../css/shared.css">
+    <link rel="stylesheet" href="../css/pages.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="../favicon_io/site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="layout">
+        <div id="top-ribbon-placeholder"></div>
+        <script>
+            fetch("../embed/top-ribbon.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("top-ribbon-placeholder").innerHTML = data;
+                });
+        </script>
+        <header>
+            <h1>Demystifying Maths</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li><a href="home.html">Home</a><span aria-hidden="true">›</span></li>
+                    <li>
+                        <p>Pages</p>
+                    </li>
+                </ol>
+            </nav>
+        </header>
+
+        <main>
+            <section>
+                <h1>Pages</h1>
+                <div>
+                    <p>I am creating this site like a blog, so new pages will be added over time. These are the ones I
+                        have
+                        created so
+                        far:</p>
+                    <br>
+                    <ul id="pages-list"></ul>
+                </div>
+
+                <script>
+                    fetch("../embed/page-list.html")
+                        .then(response => response.text())
+                        .then(data => {
+                            document.getElementById("pages-list").innerHTML = data;
+                        });
+                </script>
+            </section>
+        </main>
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h2>Quick Links</h2>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 demystifyingmaths · joelzactaylor</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

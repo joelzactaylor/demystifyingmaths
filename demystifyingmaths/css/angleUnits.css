@@ -1,0 +1,496 @@
+/* INTRO BLOCK */
+
+.angle-sim {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 50px auto 100px;
+    max-width: 100%;
+}
+
+#angle-wrapper {
+    width: 100%;
+    max-width: 420px;
+}
+
+#line-wrapper {
+    width: 100%;
+    max-width: 960px;
+}
+
+#angle-svg {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    touch-action: none;
+    user-select: none;
+    overflow: visible;
+}
+
+.angle-sim,
+#angle-svg {
+    touch-action: none;
+}
+
+.angle-readout {
+    display: block;
+    width: 70%;
+    margin: 1rem auto 0;
+    padding: 20px 0;
+    border-radius: clamp(12px, 2vw + 4px, 20px);
+    color: rgb(0, 85, 128);
+    background-color: rgba(255, 255, 255, 0.9);
+    font-size: clamp(1.2rem, 4cqw, 2.0rem);
+    text-shadow: #00000036 0 0 3px;
+    text-align: center;
+    line-height: 1.2;
+    --glow-alpha: 0.2;
+    --glow-spread: 6px;
+    --glow-radius: 18px;
+}
+
+.angle-readout.glow {
+    animation: glow-dynamo 0.9s ease-out both;
+    box-shadow: 0 0 var(--glow-radius) var(--glow-spread) rgba(255, 180, 80, var(--glow-alpha));
+    background-color: rgba(255, 250, 225, 0.98);
+}
+
+@keyframes glow-dynamo {
+    from {
+        box-shadow: 0 0 var(--glow-radius) var(--glow-spread) rgba(255, 180, 80, var(--glow-alpha));
+        background-color: rgba(255, 250, 225, 0.98);
+    }
+
+    to {
+        box-shadow: 0 0 0 0 rgba(255, 180, 80, 0);
+        background-color: rgba(255, 255, 255, 0.92);
+    }
+}
+
+#angle-arc {
+    stroke: rgb(0, 115, 128);
+    stroke-width: 13.6;
+    fill: none;
+    transition: filter 0.25s ease, stroke-width 0.25s ease;
+}
+
+#angle-theta {
+    fill: rgb(0, 85, 128);
+    font-size: 47.6px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    transition: filter 0.25s ease, fill 0.25s ease;
+}
+
+#angle-ray {
+    stroke: #000;
+    stroke-width: 6.8;
+    transition: filter 0.25s ease, stroke 0.25s ease, stroke-width 0.25s ease;
+}
+
+.reference-line {
+    stroke: rgba(0, 0, 0, 0.2);
+    stroke-width: 6.8;
+    transition: filter 0.25s ease, stroke 0.25s ease, stroke-width 0.25s ease;
+}
+
+#angle-ray.highlighted {
+    stroke-width: 13;
+    filter: drop-shadow(0 0 10px rgba(0, 19, 21, 0.602));
+    transition: filter 0.25s ease, stroke-width 0.25s ease;
+}
+
+.reference-line.highlighted {
+    stroke-width: 13;
+    filter: drop-shadow(0 0 18px rgba(91, 92, 92, 0.95));
+    transition: filter 0.25s ease, stroke-width 0.25s ease;
+}
+
+#angle-circle {
+    stroke: rgba(0, 0, 0, 0.2);
+    stroke-width: 6.8;
+    fill: none;
+}
+
+#angle-center {
+    fill: #000;
+}
+
+#angle-dot {
+    fill: rgb(234, 237, 215);
+    stroke: rgba(0, 0, 0, 0.6);
+    stroke-width: 6.8;
+    cursor: grab;
+    touch-action: none;
+}
+
+#angle-dot.dragging {
+    cursor: grabbing;
+}
+
+.angle-highlight-trigger {
+    cursor: pointer;
+    transition: color 0.2s ease;
+    color: rgb(0, 165, 183);
+}
+
+.angle-highlight-trigger:hover {
+    color: #116e93;
+}
+
+.line-highlight-trigger {
+    cursor: pointer;
+    transition: color 0.2s ease;
+    color: rgb(0, 165, 183);
+}
+
+.line-highlight-trigger:hover {
+    color: #116e93;
+}
+
+#angle-arc.highlighted {
+    stroke: rgb(0, 115, 128);
+    stroke-width: 18.5;
+    filter: drop-shadow(0 0 18px rgba(0, 115, 128, 0.95));
+    transition: filter 0.25s ease, stroke-width 0.25s ease;
+}
+
+#angle-theta.highlighted {
+    fill: rgb(0, 115, 128);
+    filter: drop-shadow(0 0 18px rgba(0, 115, 128, 0.95));
+    transition: filter 0.25s ease, fill 0.25s ease;
+}
+
+#angle-prompt {
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+#angle-prompt.prompt-visible {
+    opacity: 0.7;
+}
+
+#prompt-bg {
+    filter: drop-shadow(2px 2px 30px rgba(43, 153, 243, 1));
+}
+
+/* DEGREES BLOCK */
+
+.degrees-block {
+    transform: translateX(-120%);
+    opacity: 0;
+    transition: transform 0.45s ease, opacity 0.45s ease;
+    will-change: transform, opacity;
+}
+
+.degrees-block.revealed {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.degrees-block.is-animating {
+    transition: none;
+}
+
+.degrees-flyin {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.scroll-help-arrow {
+    position: absolute;
+    left: 50%;
+    top: calc(10vh - 4.6px);
+    width: 46px;
+    height: 46px;
+    padding: 8px;
+    color: rgb(0, 85, 128);
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-50%);
+    transition: opacity 0.2s ease;
+    will-change: opacity;
+    opacity: 1;
+}
+
+.scroll-help-arrow svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.scroll-help-arrow--below {
+    top: calc(100% + 10vh - 4.6px);
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* RADIANS BLOCK */
+
+.radians-flyin {
+    transform: translateY(80px);
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+.radians-flyin.revealed {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* GRADIANS BLOCK */
+
+.gradians-quiz {
+    transform: translateY(80px);
+    opacity: 0;
+    transition: transform 0.45s ease, opacity 0.45s ease;
+    will-change: transform, opacity;
+}
+
+.gradians-quiz.revealed {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* ARC-UNIT BLOCK */
+
+.pinpoint-game {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 1rem 0;
+}
+
+.card-panel {
+    flex: 1 1 220px;
+    min-width: 220px;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.card-panel--stacked {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.form-field {
+    display: block;
+    margin-top: 0.75rem;
+}
+
+.form-field__input {
+    width: 100%;
+    margin-top: 0.35rem;
+    padding: 0.55rem 0.7rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.06);
+    color: inherit;
+}
+
+.quiz-feedback {
+    margin-top: 0.85rem;
+    min-height: 1.4em;
+    color: #c8d7cd;
+}
+
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-top: 0.85rem;
+}
+
+.btn {
+    flex: 1 1 140px;
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    background: rgba(70, 130, 180, 0.16);
+    color: inherit;
+    cursor: pointer;
+    font: inherit;
+}
+
+.btn--secondary {
+    background: rgba(69, 180, 174, 0.12);
+}
+
+.pinpoint-board {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    background: radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.16), transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.12), transparent 55%),
+        rgba(255, 255, 255, 0.03);
+    overflow: visible;
+    cursor: crosshair;
+}
+
+.pinpoint-hint {
+    position: absolute;
+    font-size: 0.75rem;
+    opacity: 0.7;
+}
+
+.pinpoint-hint--bottom-left {
+    left: 4px;
+    bottom: 4px;
+}
+
+.pinpoint-hint--bottom-right {
+    right: 4px;
+    bottom: 4px;
+}
+
+.pinpoint-hint--top-left {
+    left: 4px;
+    top: 4px;
+}
+
+.pinpoint-target-marker,
+.pinpoint-handle {
+    position: absolute;
+    width: 22px;
+    height: 40px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -100%);
+}
+
+.pinpoint-target-marker {
+    display: block;
+    pointer-events: none;
+}
+
+.pinpoint-handle {
+    touch-action: none;
+    cursor: grab;
+}
+
+.pinpoint-handle.dragging {
+    cursor: grabbing;
+}
+
+.pinpoint-icon {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.pin-display {
+    margin-top: 0.85rem;
+    font-size: 0.95rem;
+}
+
+.small-caption {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-top: 0.75rem;
+}
+
+.compact-paragraph {
+    margin: 0.2rem 0;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.featured-image {
+    box-shadow: 0 0 15px rgba(103, 109, 51, 0.451);
+    width: clamp(200px, 80%, 500px);
+    border-radius: 10%;
+}
+
+.arc-units-flyin {
+    transform: translateX(-70px);
+    opacity: 0;
+    transition: transform 0.45s ease, opacity 0.45s ease;
+    will-change: transform, opacity;
+}
+
+.arc-units-flyin.revealed {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.arc-unit-svgs {
+    width: 80%;
+    margin: 2rem auto;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.arc-row {
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    gap: 1rem;
+    align-items: center;
+}
+
+.arc-label {
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.arc-line-svg {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+    display: block;
+}
+
+.arc-main {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+}
+
+.ray-solid {
+    stroke: currentColor;
+    stroke-width: 2.2;
+    fill: none;
+    stroke-linecap: round;
+}
+
+.ray-dashed {
+    stroke: currentColor;
+    stroke-width: 2.2;
+    fill: none;
+    stroke-linecap: round;
+    stroke-dasharray: 8 8;
+    opacity: 0.65;
+}
+
+@media (max-width: 700px) {
+    .arc-unit-svgs {
+        width: 94%;
+    }
+
+    .arc-row {
+        grid-template-columns: 1fr;
+        gap: 0.4rem;
+    }
+
+    .arc-label {
+        text-align: left;
+    }
+}

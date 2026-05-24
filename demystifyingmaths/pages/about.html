@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Demystifying Maths | About</title>
+    <meta name="description" content="About the creator">
+    <meta property="og:title" content="Demystifying Maths">
+    <meta property="og:description" content="[same text as your description]">
+    <link rel="stylesheet" href="../css/shared.css">
+    <link rel="stylesheet" href="../css/about.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="../favicon_io/site.webmanifest">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="layout">
+        <div id="top-ribbon-placeholder"></div>
+        <script>
+            fetch("../embed/top-ribbon.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("top-ribbon-placeholder").innerHTML = data;
+                });
+        </script>
+        <header>
+            <h1>Demystifying Maths</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li><a href="home.html">Home</a><span aria-hidden="true">›</span></li>
+                    <li>
+                        <p>About</p>
+                    </li>
+                </ol>
+            </nav>
+        </header>
+
+        <main>
+            <section>
+                <h1>About Me</h1>
+                <div>
+                    <p>Hi, I'm Joel. I am a 17 year old from England, where I attended a Wardolf School up to and
+                        including
+                        GCSEs, and I'm currently a
+                        student in Pune, India, where we
+                        are
+                        living as a family for two to three years. I am self-studying for A levels in Maths,
+                        Physics and
+                        Chemistry, at the same time as attending a learner-lead micro-school.</p>
+                    <p>I love computer programming, and I've really enjoyed learning multiple languages over the past
+                        several years. I learned to code in html specifically to create this website - at the time of
+                        writing that was three
+                        days ago, and I now have my first article (Angle Units), and a few other main pages.</p>
+                    <p>Please send me any feedback on this site. As I said, I'm a total beginner at web design but I'd
+                        always
+                        appreciate any tips or suggestions to help me improve.</p>
+                    <p>My other interests include 3d modelling and printing (I'm learning to use Blender at the moment),
+                        reading
+                        (the last book I read was <em>Ender's Game</em> by Orson Scott Card, which I'd highly recommend)
+                        and
+                        of course maths.</p>
+                    <p>I have always had an affinity for maths, probably fueled in my younger years at least in part by
+                        the
+                        feeling of supremacy that comes with being good at something. Now, however, I see clearly enough
+                        that the reason mathematics resonates so well with me is because
+                        of its comprehensibility, because everything new can be traced back to things you already
+                        understand
+                        in a way that can make you feel like you might have discovered it yourself, given enough time.
+                    </p>
+                    <p>My aim is to share that feeling, as some other people are doing on the web - specifically YouTube
+                        channels like <a href="https://www.youtube.com/@3blue1brown">@3blue1brown</a> which uses amazing
+                        visuals generated with Python code. (The library is called manim, for any interested).</p>
+                    <p>This is my YouTube playlist: <a
+                            href="https://youtube.com/playlist?list=PLnlhpaBdeEo4eDM_Q4cCC7gjkDl64oWef&si=9pCVosQl_-W4PDsA">@joelzactaylor</a>.
+                        I have created a few videos, but not too many. I doubt I will make many more in the foreseeable
+                        future, but if anyone has requests then do contact me and I'll consider it.</p>
+                    <p>Anyway, get yourself off this About page and explore the rest of my website! Go!</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h2>Quick Links</h2>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="pages.html">Pages</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 demystifyingmaths · joelzactaylor</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
