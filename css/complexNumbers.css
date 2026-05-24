@@ -367,3 +367,8 @@
     border: 1px solid rgba(17, 110, 147, 0.14);
     box-shadow: 0 8px 22px rgba(0, 0, 0, 0.05);
 }
+
+canvas {
+    touch-action: none;
+    user-select: none;
+}
