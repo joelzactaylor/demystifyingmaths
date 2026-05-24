@@ -1,0 +1,109 @@
+/* IMAGES */
+
+.rounded-image {
+    border-radius: 10rem;
+}
+
+.image-container-side-by-side {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.image-container-side-by-side .side-by-side-image {
+    width: calc(50% - 0.3rem);
+    height: auto;
+    display: block;
+    border-radius: 10px;
+}
+
+/* BROWNIAN TREE */
+
+.brownian-tree {
+    max-width: 760px;
+    margin: 1rem auto;
+    padding: 1rem;
+    background: #0b0f14;
+    border: 1px solid #1f2a37;
+    border-radius: 16px;
+    color: #e5e7eb;
+    font-family: system-ui, sans-serif;
+}
+
+.brownian-tree__controls {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.brownian-tree__controls button {
+    background: #1f2937;
+    color: #fff;
+    border: 1px solid #374151;
+    border-radius: 10px;
+    padding: 0.55rem 0.9rem;
+    cursor: pointer;
+}
+
+.brownian-tree__controls button:hover {
+    background: #374151;
+}
+
+#brownian-status {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+#brownian-canvas {
+    width: 100%;
+    height: auto;
+    display: block;
+    background: radial-gradient(circle at center, #101826 0%, #06080c 70%);
+    border-radius: 12px;
+}
+
+/* NUMBER LINE SIMULATION */
+
+.numberline-sim {
+    max-width: 760px;
+    margin: 1rem auto;
+    padding: 1rem;
+    background: #e1eaf6;
+    border-radius: 16px;
+}
+
+#nl-canvas {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+    cursor: grab;
+}
+
+#nl-canvas:active {
+    cursor: grabbing;
+}
+
+/* PAGE LAYOUT */
+
+.definition {
+    margin-top: 18px;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.544);
+    border-radius: 14px;
+    border: 1px solid rgba(17, 110, 147, 0.14);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.05);
+}
+
+section h3 {
+    margin-top: 24px;
+    font-size: 28px;
+    color: rgb(9, 83, 157);
+}
+
+.maths-center {
+    display: block;
+    margin: 1.5rem auto;
+    text-align: center;
+}

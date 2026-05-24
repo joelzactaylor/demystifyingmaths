@@ -1,0 +1,321 @@
+<html>
+
+<head>
+    <title>Demystifying Maths | Fractals</title>
+    <meta name="description"
+        content="Demystifying Maths — Learn about Fractals. Discover the fascinating world of self-similar patterns.">
+    <meta property="og:title" content="Demystifying Maths">
+    <meta property="og:description" content="Discover the fascinating world of self-similar patterns.">
+    <link rel="stylesheet" href="../css/shared.css">
+    <link rel="stylesheet" href="../css/fractals.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="../favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="../favicon_io/site.webmanifest">
+    <script src="../js/fractals.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="layout">
+        <div id="top-ribbon-placeholder"></div>
+        <script>
+            fetch("../embed/top-ribbon.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("top-ribbon-placeholder").innerHTML = data;
+                });
+        </script>
+        <header>
+            <h1>Demystifying - Fractals</h1>
+            <nav aria-label="Breadcrumb">
+                <ol class="breadcrumb">
+                    <li><a href="home.html">Home</a><span aria-hidden="true">›</span></li>
+                    <li><a href="pages.html">Pages</a><span aria-hidden="true">›</span></li>
+                    <li>
+                        <p>Fractals</p>
+                    </li>
+                </ol>
+            </nav>
+        </header>
+
+        <section>
+            <h1>Introduction</h1>
+            <p>What are Fractals?</p>
+            <p>Fractals are complex geometric shapes that exhibit self-similarity at different scales. They are created
+                by repeating a simple process over and over again, resulting in intricate patterns that can be found in
+                nature, art, and mathematics.</p>
+            <p>A fractal is a shape where the same kind of irregular pattern repeats at every scale — the closer you
+                look, the more
+                detail you find.</p>
+            <div class="image-container">
+                <img src="../images/fractals/Mandel_zoom_11_satellite_double_spiral.jpg" alt="Mandelbrot Set"
+                    class="rounded-image">
+            </div>
+            <p>The most well known fractal is the Mandelbrot Set (depicted above). In this page I will explore the
+                different types
+                of fractals, the rules and programs that generate them, and their applications.</p>
+        </section>
+
+        <section>
+            <h1>Types of Fractals</h1>
+            <p>There are many different fractals, each with their own unique properties and methods of
+                generation, but they can be sorted cleanly into these two categories:</p>
+            <ul>
+                <li>Stochastic Fractals</li>
+                <li>Deterministic Fractals</li>
+            </ul>
+
+            <p>Let's start with stochastic fractals.</p>
+        </section>
+
+        <section>
+            <h1>Stochastic Fractals</h1>
+            <p>Stochastic fractals are generated using random processes. They are often used to model natural phenomena
+                such as clouds, mountains, and coastlines. The randomness in their generation leads to a more organic
+                and less predictable appearance.</p>
+            <p>One of the most famous examples of a stochastic fractal is the Brownian tree, which is created by
+                simulating the random motion of particles. As particles move randomly and stick together when they
+                collide, they form branching structures that resemble trees or lightning bolts.</p>
+            <div class="brownian-tree">
+                <div class="brownian-tree__controls">
+                    <button id="brownian-toggle" type="button">Start</button>
+                    <button id="brownian-reset" type="button">Reset</button>
+                    <span id="brownian-status">0 / (max) 1200 particles</span>
+                </div>
+
+                <canvas id="brownian-canvas" width="700" height="700"></canvas>
+            </div>
+            <p>This Brownian tree starts with one tiny dot in the middle. Then it keeps adding new dots one at a time.
+            </p>
+            <p>Each new dot begins outside the tree and moves in a random direction, a little like a speck of dust
+                drifting around in
+                the air.</p>
+            <p>It keeps taking small random steps until it touches the tree. When that happens, it stops and becomes
+                part of
+                the tree.</p>
+            <p>That is why the shape looks branchy. New dots do not spread out evenly. They tend to stick to the outer
+                edges first, so
+                the tree grows outward in uneven arms instead of filling the space smoothly.</p>
+        </section>
+
+        <section>
+            <p>Stochastic fractals are not only found in simulations. Some of the best examples are all around us in
+                nature.</p>
+            <p>Here's some pictures of a different stochastic fractal:</p>
+            <div class="image-container-side-by-side">
+                <img src="../images/fractals/uk1.jpg" alt="Fractal image" class="rounded-image side-by-side-image">
+                <img src="../images/fractals/uk2.jpg" alt="Fractal image" class="rounded-image side-by-side-image">
+            </div>
+            <br>
+            <div class="image-container-side-by-side">
+                <img src="../images/fractals/uk3.jpg" alt="Fractal image" class="rounded-image side-by-side-image">
+                <img src="../images/fractals/uk4.jpg" alt="Fractal image" class="rounded-image side-by-side-image">
+            </div>
+        </section>
+
+        <section>
+            <p>Yup, it's just the coastline of Britain!</p>
+            <p>A coastline looks different depending on how closely you look at it. </p>
+            <p>From space, you see large bays and
+                peninsulas. Zoom
+                in and those bays have smaller inlets. Zoom in further and those inlets have rocky notches. Keep zooming
+                and
+                the pattern
+                keeps going — jagged edges all the way down to individual rocks and pebbles.</p>
+            <p>No two coastlines are the same, and no two sections of the same coastline are the same either. That is
+                because
+                coastlines are shaped by a huge number of overlapping random processes happening over millions of years
+                —
+                waves, storms,
+                glaciers, earthquakes, and the slow wearing away of different types of rock. None of these processes
+                follow
+                a fixed
+                plan, so the result is irregular and unpredictable.</p>
+            <p>That unpredictability is exactly what makes a coastline stochastic. Stochastic just means that
+                randomness is
+                built into
+                the process that created the shape.</p>
+            <p>You cannot write down a simple rule that produces a coastline
+                exactly —
+                you can only
+                describe the kind of randomness involved.</p>
+            <p>This connects directly to the Brownian tree. The tree grows the same way — each new
+                particle
+                takes a random
+                path before it sticks. No two runs of the simulation produce the same shape, just like no two coastlines
+                are
+                the same.</p>
+            <p>But both always produce the same kind of shape: branchy, irregular, and self-similar at different
+                scales.
+            </p>
+            <p>The same kind of randomness shows up in mountain ranges, river deltas, clouds, and tree branches. None of
+                them follow a
+                fixed plan, but all of them end up with the same self-repeating irregular quality. That is the signature
+                of a stochastic
+                fractal.</p>
+        </section>
+
+
+        <section>
+            <h1>Deterministic Fractals</h1>
+            <p>Deterministic fractals are generated using a fixed set of rules. They are often created using
+                mathematical
+                formulas or algorithms, and they can be precisely defined and reproduced. The Mandelbrot Set is an
+                example of a deterministic fractal, as it is generated by iterating a simple mathematical function.</p>
+            <div class="definition">
+                <h2>Iteration</h2>
+                <p>Iteration is the process of repeating a set of instructions or a mathematical operation multiple
+                    times. In the context of fractals, iteration is used to generate the complex patterns by applying a
+                    simple rule repeatedly.</p>
+            </div>
+
+            <p>Let's start with an example of an iterative process.</p>
+            <p>The way we write iterative rules in maths is like this:</p>
+            <math>
+                <msub>
+                    <mi>T</mi>
+                    <mrow>
+                        <mi>n</mi>
+                        <mo>+</mo>
+                        <mn>1</mn>
+                    </mrow>
+                </msub>
+                <mo>=</mo>
+                <msup>
+                    <msub>
+                        <mi>T</mi>
+                        <mo>n</mo>
+                    </msub>
+                    <mn>2</mn>
+                </msup>
+            </math>
+            <p>Don't be thrown off by the notation - it's actually very simple.</p>
+            <p>You can decode it by choosing any number for n. Let's go with n = 1:</p>
+            <math>
+                <msub>
+                    <mi>T</mi>
+                    <mn>2</mn>
+                </msub>
+                <mo>=</mo>
+                <msup>
+                    <msub>
+                        <mi>T</mi>
+                        <mn>1</mn>
+                    </msub>
+                    <mn>2</mn>
+                </msup>
+            </math>
+            <p>Now we can see that T2 is equal to T1 squared. But we don't know what T1 is yet. We need to choose a
+                starting value for T1,
+                which is called the initial condition. Let's say T1 = 2:</p>
+            <math>
+                <msub>
+                    <mi>T</mi>
+                    <mn>2</mn>
+                </msub>
+                <mo>=</mo>
+                <msup>
+                    <mn>2</mn>
+                    <mn>2</mn>
+                </msup>
+            </math>
+            <p>Now we can calculate T2:</p>
+            <math>
+                <msub>
+                    <mi>T</mi>
+                    <mn>2</mn>
+                </msub>
+                <mo>=</mo>
+                <mn>4</mn>
+            </math>
+            <p>Now we can repeat the process to find T3:</p>
+            <math>
+                <msub>
+                    <mi>T</mi>
+                    <mn>3</mn>
+                </msub>
+                <mo>=</mo>
+                <msup>
+                    <msub>
+                        <mi>T</mi>
+                        <mn>2</mn>
+                    </msub>
+                    <mn>2</mn>
+                </msup>
+            </math>
+            <math>
+                <mo>=</mo>
+                <msup>
+                    <mn>4</mn>
+                    <mn>2</mn>
+                </msup>
+            </math>
+            <math>
+                <mo>=</mo>
+                <mn>16</mn>
+            </math>
+            <p>We can keep going like this, plugging in the previous value to find the next one. This is the essence of
+                iteration - using the output of one step as the input for the next step, giving us an infinite sequence
+                of values for each possible starting value.</p>
+
+            <p>We can create a visualisation of that iterative rule we just used:</p>
+            <div class="numberline-sim">
+                <p style="display: block; margin: 1.5rem auto; text-align: center;">Drag the point to change the initial
+                    value:</p>
+                <canvas id="nl-canvas" width="700" height="320"></canvas>
+                <div class="maths-center">
+                    <math>
+                        <msub>
+                            <mi>T</mi>
+                            <mrow>
+                                <mi>n</mi>
+                                <mo>+</mo>
+                                <mn>1</mn>
+                            </mrow>
+                        </msub>
+                        <mo>=</mo>
+                        <msup>
+                            <msub>
+                                <mi>T</mi>
+                                <mo>n</mo>
+                            </msub>
+                            <mn>2</mn>
+                        </msup>
+                    </math>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section footer-section--references">
+                    <h2>References</h2>
+                    <ul>
+                        <li><a href="https://mathigon.org/course/fractals/mandelbrot" target="_blank"
+                                rel="noopener noreferrer">Original Mandelbrot image</a></li>
+                        <li><a href="https://fr.wikipedia.org/wiki/Fichier:Mandel_zoom_11_satellite_double_spiral.jpg"
+                                target="_blank" rel="noopener noreferrer">Intro Mandelbrot image</a></li>
+                        <li><a href="https://fractalfoundation.org/OFC/OFC-9-4.html" target="_blank"
+                                rel="noopener noreferrer">Coastline images</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h2>Quick Links</h2>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 demystifyingmaths · joelzactaylor</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
