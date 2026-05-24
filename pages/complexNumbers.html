@@ -41,6 +41,19 @@
             </nav>
         </header>
 
+        <div id="debug" style="position:fixed;top:0;left:0;background:white;
+        font-size:12px;z-index:9999;padding:4px;max-height:40vh;overflow:auto"></div>
+        <script>
+            document.getElementById('debug').textContent =
+                JSON.stringify({
+                    bodyOverflow: getComputedStyle(document.body).overflow,
+                    htmlOverflow: getComputedStyle(document.documentElement).overflow,
+                    bodyW: document.body.scrollWidth,
+                    winW: window.innerWidth,
+                    scale: getComputedStyle(document.documentElement).getPropertyValue('--scale')
+                }, null, 2);
+        </script>
+
         <section>
             <h1>Introduction</h1>
             <p>Numbers are one of the first tools we learn. We use them to count, measure and compare. For most of us,
