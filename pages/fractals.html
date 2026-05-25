@@ -172,6 +172,28 @@
                     simple rule repeatedly.</p>
             </div>
 
+            <p>One way to generate a deterministic fractal is through looking at iterative sequences and seeing if they
+                converge or diverge.</p>
+
+            <p>You can take a big dense group of numbers, apply an iterative rule to generate a sequence for each
+                number, then colour
+                them depending on whether their sequence converges or diverges.</p>
+            <p>In more mathematical terms, you calculate a <strong>set</strong> (unordered list with no duplicates) of
+                all the numbers who's sequences converge.</p>
+            <p>It seems a bit arbitrary, and that's because it is. This process was selected because it produces
+                visually appealing and mathematically interesting results.</p>
+
+            <div class="definition">
+                <h2>Convergence and Divergence</h2>
+                <p>A sequence converges if its terms approach a specific value or a stable cycle as you go through the
+                    sequence. In
+                    other
+                    words, the terms get closer and closer to a certain point, or go round in a loop. A sequence
+                    diverges if it does not
+                    approach any specific value, meaning the terms grow larger and larger ad infinitum.
+                </p>
+            </div>
+
             <p>Let's start with an example of an iterative process.</p>
             <p>The way we write iterative rules in maths is like this:</p>
             <math>
@@ -294,7 +316,7 @@
                 </div>
             </div>
 
-            <p>I changed the letter T to a letter x. This is simply because I want to be indicate that the number now
+            <p>I changed the letter T to a letter x. This is simply because I want to indicate that the variable now
                 represents a <strong>distance</strong> rather than just a generic term in the sequence - it means
                 exactly the same thing.</p>
 
@@ -322,8 +344,10 @@
                     page</a> first.</p>
             <p>The plan is to do exactly the same thing - each number in the sequence is the previous number squared.
             </p>
-            <p>But now, since the numbers are allowed to be complex numbers, we need to represent them as dots in a
-                plane:
+            <p>But now, since the numbers are allowed to be complex numbers, we need to represent them as points in a
+                plane: (I will use number, value, and point interchangeably from now on, since they mean the same thing
+                in the
+                context of complex numbers.)</p>
             </p>
 
 
@@ -462,6 +486,9 @@
             <p>When you move the orange dot representing the point c away from the origin, the converging region is no
                 longer just the inside of
                 the unit circle.</p>
+            <p>The fractal is defined by the shape that should replace the circle in order to correctly divide the
+                convergent
+                points from the divergent points.</p>
             <div class="boxed-block">
                 <p>The method for generating fractals from this sequence is as follows:</p>
                 <ul>
@@ -490,16 +517,29 @@
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <p>Choose a different point, and repeat.</p>
-                    </li>
                 </ul>
             </div>
             <br><br>
-            <p>When you do this for every point in the complex plane, you get a visual representation of the set - it
-                makes a shape.</p>
-            <p>There are different ways to calculate the shape, because the last step is ambiguous: how do you choose a
-                new point?</p>
+            <p>It's impossible to do this process by hand - it might take years. This is definitely a task for
+                computers:</p>
+            <p>You have to do this for every point in the complex plane, and then you get a visual representation of the
+                set - it
+                makes a shape. (In reality, it would be impossible to calculate every point as there are an uncountable
+                infinity of them, but you can just take one point per pixel in the image and that's good enough.)</p>
+            <p>In other words, for each pixel in the image you want to generate:</p>
+            <ul>
+                <li>
+                    <p>Work out what complex number is closest to that pixel's location.</p>
+                </li>
+                <li>
+                    <p>Apply the fractal generation process to that complex number.</p>
+                </li>
+                <li>
+                    <p>Color the pixel based on the result.</p>
+                </li>
+            </ul>
+            <p>There are different ways to create the shape, because there are two different points: z<sub>0</sub> and
+                c.</p>
             <p>If you change c and z<sub>0</sub>, changing 2 complex (2D) numbers will give you 4 dimensions of change.
                 This is no good, because we live in a 3D universe and ideally would like to draw the result on a 2D
                 screen, and that would require a 4D visualization.</p>
@@ -520,12 +560,12 @@
                 Mandelbrot set up, except that
                 z<sub>0</sub> stays
                 still at <em>any</em> value, not just zero.</p>
+            <p>You can move the point z<sub>0</sub> in my simulation - it just changes the exact version of the fractal
+                you get. Each value of z<sub>0</sub> produces a unique fractal image.</p>
             <button id="mandelbrot-variant-overlay-button" class="overlay-button">
                 <p>Apply variant overlay to the simulation</p>
             </button>
-            <p>You can move the point z<sub>0</sub> even though I said it's fixed - what it means is that you get a
-                different image for every value of z<sub>0</sub>, while moving c does not change the picture.</p>
-            <p>In other words, z<sub>0</sub> is fixed while the picture stays the same.</p>
+
             <h3>The Julia Set</h3>
             <p>In the Julia Set, we choose to keep c still. But it doesn't have to be fixed at the origin. In fact, each
                 value of c gives
