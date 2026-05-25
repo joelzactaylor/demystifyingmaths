@@ -245,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const AXIS_Y = NL_H * 0.72;
     const PAD = 60;
     const LINE_W = NL_W - PAD * 2;
-    const MAX_ITERS = 12;
+    const MAX_ITERS = 64;
     const ESCAPE = 50;
 
     let nlX0 = -1.01;
@@ -659,6 +659,492 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         cpDraw();
+    }
+
+    // ============================================================
+    // COMPLEX PLANE 2 — z(n+1) = z(n)^2 + c
+    // ============================================================
+
+    const cp2Canvas = document.getElementById('cp-canvas2');
+    if (cp2Canvas) {
+        const cp2Ctx = cp2Canvas.getContext('2d');
+        const CP2_W = cp2Canvas.width;
+        const CP2_H = cp2Canvas.height;
+        const CP2_MIN = -2.0, CP2_MAX = 2.0;
+        const CP2_PAD = 60;
+        const CP2_WW = CP2_W - CP2_PAD * 2;
+        const CP2_HH = CP2_H - CP2_PAD * 2;
+
+        let cp2C = { x: 0, y: 0 };
+        let cp2Z0 = { x: 0.15, y: 0.95 };
+        let cp2Dragging = null;
+
+        function cp2ToCanvas(pt) {
+            return {
+                x: CP2_PAD + ((pt.x - CP2_MIN) / (CP2_MAX - CP2_MIN)) * CP2_WW,
+                y: CP2_PAD + ((CP2_MAX - pt.y) / (CP2_MAX - CP2_MIN)) * CP2_HH
+            };
+        }
+
+        function cp2CanvasToWorld(cx, cy) {
+            return {
+                x: CP2_MIN + ((cx - CP2_PAD) / CP2_WW) * (CP2_MAX - CP2_MIN),
+                y: CP2_MAX - ((cy - CP2_PAD) / CP2_HH) * (CP2_MAX - CP2_MIN)
+            };
+        }
+
+        function cp2GetCanvasXY(e) {
+            const rect = cp2Canvas.getBoundingClientRect();
+            const scaleX = CP2_W / rect.width;
+            const scaleY = CP2_H / rect.height;
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+            return {
+                x: (clientX - rect.left) * scaleX,
+                y: (clientY - rect.top) * scaleY
+            };
+        }
+
+        function cp2ClampCanvas(cx, cy) {
+            return {
+                x: Math.max(CP2_PAD, Math.min(CP2_W - CP2_PAD, cx)),
+                y: Math.max(CP2_PAD, Math.min(CP2_H - CP2_PAD, cy))
+            };
+        }
+
+        function cp2Iterate(z) {
+            return {
+                x: z.x * z.x - z.y * z.y + cp2C.x,
+                y: 2 * z.x * z.y + cp2C.y
+            };
+        }
+
+        function cp2Escape(z) {
+            return (z.x * z.x + z.y * z.y) > (ESCAPE * ESCAPE);
+        }
+
+        function cp2DotDist(canvasPt, worldPt) {
+            const p = cp2ToCanvas(worldPt);
+            const dx = canvasPt.x - p.x;
+            const dy = canvasPt.y - p.y;
+            return Math.sqrt(dx * dx + dy * dy);
+        }
+
+        function cp2DrawDot(pt, strokeColor, label, options = {}) {
+            const p = cp2ToCanvas(pt);
+            const radius = options.fixed ? 6 : 8;
+            cp2Ctx.fillStyle = options.fixed ? '#f8fafc' : '#ffffff';
+            cp2Ctx.beginPath();
+            cp2Ctx.arc(p.x, p.y, radius, 0, Math.PI * 2);
+            cp2Ctx.fill();
+            cp2Ctx.strokeStyle = options.fixed ? 'rgba(148,161,178,0.95)' : strokeColor;
+            cp2Ctx.lineWidth = options.fixed ? 1.8 : 2.5;
+            cp2Ctx.stroke();
+
+            if (label) {
+                cp2Ctx.fillStyle = strokeColor;
+                cp2Ctx.font = 'bold 13px system-ui, sans-serif';
+                cp2Ctx.textAlign = 'center';
+                cp2Ctx.textBaseline = 'top';
+                cp2Ctx.fillText(label, p.x, p.y + 11);
+            }
+        }
+
+        function cp2Draw() {
+            cp2Ctx.clearRect(0, 0, CP2_W, CP2_H);
+
+            const origin = cp2ToCanvas({ x: 0, y: 0 });
+            const unitPt = cp2ToCanvas({ x: 1, y: 0 });
+            const unitRadius = Math.abs(unitPt.x - origin.x);
+            const peach = 'rgba(255,203,164,0.10)';
+            const shouldDrawUnitCircle = !activeOverlay;
+
+            if (shouldDrawUnitCircle) {
+                const inside = (cp2Z0.x * cp2Z0.x + cp2Z0.y * cp2Z0.y) <= 1;
+                if (inside) {
+                    cp2Ctx.beginPath();
+                    cp2Ctx.arc(origin.x, origin.y, unitRadius, 0, Math.PI * 2);
+                    cp2Ctx.fillStyle = peach;
+                    cp2Ctx.fill();
+                } else {
+                    cp2Ctx.beginPath();
+                    cp2Ctx.rect(0, 0, CP2_W, CP2_H);
+                    cp2Ctx.arc(origin.x, origin.y, unitRadius, 0, Math.PI * 2);
+                    cp2Ctx.closePath();
+                    cp2Ctx.fillStyle = peach;
+                    try {
+                        cp2Ctx.fill('evenodd');
+                    } catch (_) {
+                        cp2Ctx.save();
+                        cp2Ctx.fillStyle = peach;
+                        cp2Ctx.fillRect(0, 0, CP2_W, CP2_H);
+                        cp2Ctx.globalCompositeOperation = 'destination-out';
+                        cp2Ctx.beginPath();
+                        cp2Ctx.arc(origin.x, origin.y, unitRadius, 0, Math.PI * 2);
+                        cp2Ctx.fill();
+                        cp2Ctx.restore();
+                    }
+                }
+
+                cp2Ctx.beginPath();
+                cp2Ctx.arc(origin.x, origin.y, unitRadius, 0, Math.PI * 2);
+                cp2Ctx.strokeStyle = 'rgba(107,114,128,0.45)';
+                cp2Ctx.lineWidth = 1.2;
+                cp2Ctx.stroke();
+            }
+
+            cp2Ctx.strokeStyle = '#6b7280';
+            cp2Ctx.lineWidth = 1;
+            cp2Ctx.beginPath();
+            cp2Ctx.moveTo(CP2_PAD, origin.y);
+            cp2Ctx.lineTo(CP2_W - CP2_PAD, origin.y);
+            cp2Ctx.moveTo(origin.x, CP2_PAD);
+            cp2Ctx.lineTo(origin.x, CP2_H - CP2_PAD);
+            cp2Ctx.stroke();
+
+            cp2Ctx.font = '13px system-ui, sans-serif';
+            cp2Ctx.textAlign = 'center';
+            cp2Ctx.textBaseline = 'top';
+            for (let v = Math.ceil(CP2_MIN); v <= Math.floor(CP2_MAX); v++) {
+                const px = cp2ToCanvas({ x: v, y: 0 }).x;
+                const py = cp2ToCanvas({ x: 0, y: v }).y;
+                cp2Ctx.fillStyle = '#6b7280';
+                cp2Ctx.fillText(v, px, origin.y + 6);
+                cp2Ctx.fillText(v + 'i', origin.x + 6, py - 6);
+            }
+
+            const seq = generateSequence(cp2Z0, cp2Iterate, cp2Escape, MAX_ITERS);
+
+            for (let i = 0; i < seq.length - 1; i++) {
+                const ca = cp2ToCanvas(seq[i]);
+                const cb = cp2ToCanvas(seq[i + 1]);
+                const t = i / Math.max(1, seq.length - 2);
+                const hue = 200 + 80 * t;
+                const alpha = 1 - 0.6 * t;
+
+                cp2Ctx.strokeStyle = `hsla(${hue}, 85%, 50%, ${alpha})`;
+                cp2Ctx.lineWidth = Math.max(1, 3 - i * 0.25);
+                cp2Ctx.beginPath();
+                cp2Ctx.moveTo(ca.x, ca.y);
+                cp2Ctx.lineTo(cb.x, cb.y);
+                cp2Ctx.stroke();
+
+                cp2Ctx.fillStyle = `hsla(${hue}, 85%, 62%, ${alpha})`;
+                cp2Ctx.beginPath();
+                cp2Ctx.arc(cb.x, cb.y, Math.max(2.6, 6 - i * 0.5), 0, Math.PI * 2);
+                cp2Ctx.fill();
+            }
+
+            const isMandZ0Locked = activeOverlay === 'mandelbrot';
+            cp2DrawDot(cp2Z0, '#60a5fa', isMandZ0Locked ? '' : 'z₀', { fixed: isMandZ0Locked });
+            cp2DrawDot(cp2C, '#fb923c', 'c', { fixed: false });
+        }
+
+        function cp2OnDown(e) {
+            const raw = cp2GetCanvasXY(e);
+            const dZ0 = cp2DotDist(raw, cp2Z0);
+            const dC = cp2DotDist(raw, cp2C);
+            const HIT = 20;
+            if (activeOverlay === 'mandelbrot') {
+                if (dC < HIT) {
+                    cp2Dragging = 'c';
+                    e.preventDefault();
+                }
+                return;
+            }
+            if (dZ0 < HIT || dC < HIT) {
+                cp2Dragging = dZ0 <= dC ? 'z0' : 'c';
+                e.preventDefault();
+            }
+        }
+
+        function cp2OnMove(e) {
+            if (!cp2Dragging) return;
+            e.preventDefault();
+            const raw = cp2GetCanvasXY(e);
+            const clamped = cp2ClampCanvas(raw.x, raw.y);
+            const world = cp2CanvasToWorld(clamped.x, clamped.y);
+            if (cp2Dragging === 'z0') {
+                cp2Z0 = world;
+            } else {
+                cp2C = world;
+            }
+            cp2Draw();
+            requestOverlayUpdateIfActive();
+        }
+
+        function cp2OnUp() {
+            cp2Dragging = null;
+        }
+
+        cp2Canvas.addEventListener('mousedown', cp2OnDown);
+        cp2Canvas.addEventListener('mousemove', cp2OnMove);
+        cp2Canvas.addEventListener('mouseup', cp2OnUp);
+        cp2Canvas.addEventListener('mouseleave', cp2OnUp);
+        cp2Canvas.addEventListener('touchstart', cp2OnDown, { passive: false });
+        cp2Canvas.addEventListener('touchmove', cp2OnMove, { passive: false });
+        cp2Canvas.addEventListener('touchend', cp2OnUp);
+
+        const overlayButtons = {
+            mandelbrot: document.getElementById('mandelbrot-overlay-button'),
+            julia: document.getElementById('julia-overlay-button'),
+            variant: document.getElementById('mandelbrot-variant-overlay-button')
+        };
+
+        const overlayCache = new Map();
+        const overlayRequests = new Map();
+        let overlayWorker = null;
+        let activeOverlay = null;
+        let activeBucket = null;
+        const dpr = Math.max(1, window.devicePixelRatio || 1);
+
+        const overlayCanvases = {
+            mandelbrot: createFractalOverlayCanvas('mandelbrot'),
+            julia: createFractalOverlayCanvas('julia'),
+            variant: createFractalOverlayCanvas('variant')
+        };
+
+        function createFractalOverlayCanvas(name) {
+            const canvas = document.createElement('canvas');
+            canvas.className = 'fractal-overlay-canvas hidden';
+            canvas.dataset.overlay = name;
+            resizeOverlayCanvas(canvas);
+            cp2Canvas.parentElement.appendChild(canvas);
+            return canvas;
+        }
+
+        function resizeOverlayCanvas(canvas) {
+            canvas.width = cp2Canvas.width;
+            canvas.height = cp2Canvas.height;
+            canvas.style.width = cp2Canvas.offsetWidth + 'px';
+            canvas.style.height = cp2Canvas.offsetHeight + 'px';
+            canvas.style.top = cp2Canvas.offsetTop + 'px';   // accounts for container padding
+            canvas.style.left = cp2Canvas.offsetLeft + 'px';
+        }
+
+        function computeOverlayBucket(overlayType, fixedPoint) {
+            const quantize = (value, step) => Math.round(value / step) * step;
+            const viewKey = [quantize(CP2_MIN, 0.04), quantize(CP2_MAX, 0.04),
+            quantize(CP2_MIN, 0.04), quantize(CP2_MAX, 0.04)].join(',');
+            const fixedStep = overlayType === 'mandelbrot' ? 1 : 0.02;
+            const fixedKey = [quantize(fixedPoint.x, fixedStep).toFixed(3),
+            quantize(fixedPoint.y, fixedStep).toFixed(3)].join(',');
+            return `${overlayType}|view=${viewKey}|fixed=${fixedKey}`;
+        }
+
+        function getOverlayFixedPoint(overlayType) {
+            if (overlayType === 'julia') return cp2C;
+            if (overlayType === 'variant') return cp2Z0;
+            return cp2C;
+        }
+
+        function getOverlayRelevantPoint(overlayType) {
+            if (overlayType === 'mandelbrot') return cp2C;
+            if (overlayType === 'julia') return cp2Z0;
+            return cp2C;
+        }
+
+        function cp2TestPointInside(overlayType, point, iterations, fixedOverride) {
+            const escapeRadius2 = 16;
+            const fc = fixedOverride || {};
+            let zx, zy, cx, cy;
+            if (overlayType === 'mandelbrot') {
+                zx = 0; zy = 0; cx = point.x; cy = point.y;
+            } else if (overlayType === 'julia') {
+                zx = point.x; zy = point.y;
+                cx = fc.x ?? cp2C.x; cy = fc.y ?? cp2C.y;
+            } else {
+                cx = point.x; cy = point.y;
+                zx = fc.x ?? cp2Z0.x; zy = fc.y ?? cp2Z0.y;
+            }
+            let r2 = zx * zx + zy * zy;
+            let iter = 0;
+            while (iter < iterations && r2 < escapeRadius2) {
+                const nx = zx * zx - zy * zy + cx;
+                zy = 2 * zx * zy + cy;
+                zx = nx;
+                r2 = zx * zx + zy * zy;
+                iter++;
+            }
+            return iter >= iterations;
+        }
+
+        function ensureOverlayWorker() {
+            if (overlayWorker) return;
+            overlayWorker = new Worker('../js/fractal-overlay-worker.js', { type: 'module' });
+            overlayWorker.addEventListener('message', (event) => {
+                const data = event.data;
+                if (data?.type !== 'tile') return;
+                if (data.generation !== overlayGeneration) {
+                    overlayRequests.delete(data.bucketKey);
+                    return;  // stale — discard
+                }
+
+                overlayCache.set(data.bucketKey, {
+                    maskBitmap: data.maskBitmap,
+                    boundaryBitmap: data.boundaryBitmap,
+                    overlayType: data.overlayType
+                });
+                overlayRequests.delete(data.bucketKey);
+                if (data.bucketKey === activeBucket) {
+                    const relevantPoint = getOverlayRelevantPoint(data.overlayType);
+                    const insidePoint = cp2TestPointInside(data.overlayType, relevantPoint, 64);
+                    drawOverlayBitmap(data.maskBitmap, data.boundaryBitmap, insidePoint, data.overlayType);
+                }
+            });
+        }
+
+        let overlayGeneration = 0;
+
+        function queueOverlayRender(overlayType, fixedPoint, bucketKey) {
+            if (overlayRequests.has(bucketKey)) return;
+            overlayRequests.set(bucketKey, { overlayType });
+            ensureOverlayWorker();
+
+            const renderW = Math.round(cp2Canvas.width);
+            const renderH = Math.round(cp2Canvas.height);
+            const pixelPad = CP2_PAD;
+            const pixelWW = renderW - pixelPad * 2;
+            const pixelHH = renderH - pixelPad * 2;
+            const range = CP2_MAX - CP2_MIN;
+
+            const extMinX = CP2_MIN - (pixelPad / pixelWW) * range;
+            const extMaxX = CP2_MAX + (pixelPad / pixelWW) * range;
+            const extMinY = CP2_MIN - (pixelPad / pixelHH) * range;
+            const extMaxY = CP2_MAX + (pixelPad / pixelHH) * range;
+
+            const generation = ++overlayGeneration;
+            overlayWorker.postMessage({
+                type: 'render',
+                requestId: bucketKey,
+                bucketKey,
+                overlayType,
+                width: renderW,
+                height: renderH,
+                viewport: { minX: extMinX, maxX: extMaxX, minY: extMinY, maxY: extMaxY },
+                fixed: fixedPoint,
+                generation,
+                iterations: 64
+            });
+        }
+
+        function maybeDrawCached(bucketKey, overlayType, insidePoint) {
+            const cacheEntry = overlayCache.get(bucketKey);
+            if (cacheEntry && overlayType === cacheEntry.overlayType) {
+                drawOverlayBitmap(cacheEntry.maskBitmap, cacheEntry.boundaryBitmap, insidePoint, overlayType);
+                return true;
+            }
+            return false;
+        }
+
+        function drawOverlayBitmap(maskBitmap, boundaryBitmap, insidePoint, overlayType) {
+            const canvas = overlayCanvases[overlayType];
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            if (!ctx) return;
+            ctx.setTransform(1, 0, 0, 1, 0, 0);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            ctx.save();
+            ctx.fillStyle = 'rgba(255,203,164,0.10)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            if (insidePoint) {
+                ctx.globalCompositeOperation = 'destination-in';
+                ctx.drawImage(maskBitmap, 0, 0);
+            } else {
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.drawImage(maskBitmap, 0, 0);
+            }
+            ctx.restore();
+
+            ctx.globalAlpha = 1;
+            ctx.drawImage(boundaryBitmap, 0, 0);
+        }
+
+        let overlayRafPending = false;
+        function requestOverlayUpdateIfActive() {
+            if (overlayRafPending) return;
+            overlayRafPending = true;
+            requestAnimationFrame(() => {
+                overlayRafPending = false;
+                _doOverlayUpdate();
+            });
+        }
+        function _doOverlayUpdate() {
+            if (!activeOverlay) return;
+            const fixedPoint = getOverlayFixedPoint(activeOverlay);
+
+            const quantize = (value, step) => Math.round(value / step) * step;
+            const fixedStep = activeOverlay === 'mandelbrot' ? 1 : 0.02;
+            const quantizedFixed = {
+                x: quantize(fixedPoint.x, fixedStep),
+                y: quantize(fixedPoint.y, fixedStep)
+            };
+
+            const relevantPoint = getOverlayRelevantPoint(activeOverlay);
+            const insidePoint = cp2TestPointInside(activeOverlay, relevantPoint, 64, quantizedFixed);
+            const bucketKey = computeOverlayBucket(activeOverlay, fixedPoint);
+            const cached = overlayCache.get(bucketKey);
+
+            activeBucket = bucketKey;
+            if (cached) {
+                drawOverlayBitmap(cached.maskBitmap, cached.boundaryBitmap, insidePoint, activeOverlay);
+                return;
+            }
+
+            queueOverlayRender(activeOverlay, fixedPoint, bucketKey);
+        }
+
+        function setOverlayPreset(overlayType) {
+            if (overlayType === 'mandelbrot') {
+                cp2Z0 = { x: 0, y: 0 };
+                cp2C = { x: -0.7, y: 0 };
+            } else if (overlayType === 'julia') {
+                cp2Z0 = { x: 0, y: 0 };
+                cp2C = { x: -0.4, y: 0.5 };
+            } else {
+                cp2Z0 = { x: 0.5, y: 0.5 };
+                cp2C = { x: 0, y: 0 };
+            }
+            cp2Draw();
+        }
+
+        function hideOverlay() {
+            activeOverlay = null;
+            Object.values(overlayCanvases).forEach(canvas => canvas.classList.add('hidden'));
+            cp2Draw();
+        }
+
+        function showOverlay(overlayType) {
+            if (activeOverlay === overlayType) {
+                hideOverlay();
+                return;
+            }
+            activeOverlay = overlayType;
+            setOverlayPreset(overlayType);
+            Object.entries(overlayCanvases).forEach(([key, canvas]) => {
+                canvas.classList.toggle('hidden', key !== overlayType);
+                if (key === overlayType) {
+                    resizeOverlayCanvas(canvas);
+                }
+            });
+            requestOverlayUpdateIfActive();
+        }
+
+        overlayButtons.mandelbrot?.addEventListener('click', () => showOverlay('mandelbrot'));
+        overlayButtons.julia?.addEventListener('click', () => showOverlay('julia'));
+        overlayButtons.variant?.addEventListener('click', () => showOverlay('variant'));
+        window.addEventListener('resize', () => {
+            Object.values(overlayCanvases).forEach(resizeOverlayCanvas);
+            requestOverlayUpdateIfActive();
+        });
+
+        function cp2RefreshOverlay() {
+            if (!activeOverlay) return;
+            requestOverlayUpdateIfActive();
+        }
+
+        cp2Draw();
     }
 
 });

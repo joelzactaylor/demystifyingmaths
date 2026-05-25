@@ -363,11 +363,181 @@
                 </div>
             </div>
 
+            <p>These observations follow directly from the geometric interpretation of complex multiplication as a
+                combination of scaling and rotation.</p>
+            <p>When you square a complex number, you double its angle and square
+                its
+                distance from the origin.</p>
+            <p>If the initial point is inside the unit circle, it gets closer to the origin
+                with
+                each iteration, leading to convergence. If it's outside the unit circle, it gets farther away, leading
+                to
+                divergence.</p>
+
             <p>There's another observation to be made which highlights a difference between the 1-dimensional and
                 2-dimensional cases.</p>
-            <p>When you shift to complex numbers, the behaviour becomes <strong>chaotic</strong> in certain regions of
+            <p>When you shift to complex numbers, the behaviour seems to become <strong>chaotic</strong> in certain
+                regions of
                 the complex plane.</p>
             <p>Controlled chaos is what we need to make fractals!</p>
+            <p>However, while it does <em>seem</em> chaotic, it actually doesn't fit the mathematical definition! Maths
+                says it's well behaved and predicatable, if you have the right tools.</p>
+            <p>Luckily, making it chaotic is a very small step from here.</p>
+            <p>We simply add on a small constant to the number in between squaring it each time; the recurrence relation
+                becomes:</p>
+            <math>
+                <msub>
+                    <mi>z</mi>
+                    <mrow>
+                        <mi>n</mi>
+                        <mo>+</mo>
+                        <mn>1</mn>
+                    </mrow>
+                </msub>
+                <mo>=</mo>
+                <msup>
+                    <msub>
+                        <mi>z</mi>
+                        <mo>n</mo>
+                    </msub>
+                    <mn>2</mn>
+                </msup>
+                <mo>+</mo>
+                <mi>c</mi>
+            </math>
+            <p>Let's see what that looks like:</p>
+
+            <div class="complex-plane-sim">
+                <p style="display: block; margin: 1.5rem auto; text-align: center;">Drag the points to change the
+                    initial
+                    conditions:</p>
+                <canvas id="cp-canvas2" width="700" height="700"></canvas>
+                <div class="maths-center">
+                    <math>
+                        <msub>
+                            <mi>z</mi>
+                            <mrow>
+                                <mi>n</mi>
+                                <mo>+</mo>
+                                <mn>1</mn>
+                            </mrow>
+                        </msub>
+                        <mo>=</mo>
+                        <msup>
+                            <msub>
+                                <mi>z</mi>
+                                <mo>n</mo>
+                            </msub>
+                            <mn>2</mn>
+                        </msup>
+                        <mo>+</mo>
+                        <mi>c</mi>
+                    </math>
+                </div>
+            </div>
+
+            <p>When you move the orange dot representing the point c away from the origin, the converging region is no
+                longer just the inside of
+                the unit circle.</p>
+            <div class="boxed-block">
+                <p>The method for generating fractals from this sequence is as follows:</p>
+                <ul>
+                    <li>
+                        <p>Choose a complex number for z<sub>0</sub></p>
+                    </li>
+                    <li>
+                        <p>Choose a complex number for c</p>
+                    </li>
+                    <li>
+                        <p>Work out the successive values of z<sub>n</sub> using the formula.</p>
+                    </li>
+                    <li>
+                        <p>Determine whether the sequence converges or diverges.</p>
+                    </li>
+                    <li>
+                        <p>Sort the point accordingly:</p>
+                        <ul>
+                            <li>
+                                <p>If the sequence converges, then the point <strong>is</strong> a
+                                    part of the set.</p>
+                            </li>
+                            <li>
+                                <p>If the sequence diverges, then the point <strong>is not</strong> a part of the set.
+                                </p>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <p>Choose a different point, and repeat.</p>
+                    </li>
+                </ul>
+            </div>
+            <br><br>
+            <p>When you do this for every point in the complex plane, you get a visual representation of the set - it
+                makes a shape.</p>
+            <p>There are different ways to calculate the shape, because the last step is ambiguous: how do you choose a
+                new point?</p>
+            <p>If you change c and z<sub>0</sub>, changing 2 complex (2D) numbers will give you 4 dimensions of change.
+                This is no good, because we live in a 3D universe and ideally would like to draw the result on a 2D
+                screen, and that would require a 4D visualization.</p>
+            <p>Instead, we can fix one of the values and vary the other. Which one we pick to keep still determines what
+                type of fractal picture we will get. This way, there are only 2 dimensions of change, so we can draw it
+                in a flat image.</p>
+            <h3>The Mandelbrot Set</h3>
+            <p>In the Mandelbrot Set, we choose to keep z<sub>0</sub> still. In fact, it always has to be zero. Then the
+                point c can move around:</p>
+            <button id="mandelbrot-overlay-button" class="overlay-button">
+                <p>Apply Mandelbrot overlay to the simulation</p>
+            </button>
+            <p>There is another option which is not talked about much; it's the same, except that z<sub>0</sub> stays
+                still at <em>any</em> value, not just zero.</p>
+            <button id="mandelbrot-variant-overlay-button" class="overlay-button">
+                <p>Apply variant overlay to the simulation</p>
+            </button>
+            <h3>The Julia Set</h3>
+            <p>In the Julia Set, we choose to keep c still. But it doesn't have to be fixed at the origin. In fact, each
+                value of c gives
+                you a different Julia Set:</p>
+            <button id="julia-overlay-button" class="overlay-button">
+                <p>Apply Julia overlay to the simulation</p>
+            </button>
+            <p>Both sets produce intricate and beautiful fractal patterns, with the Mandelbrot Set often described as a
+                "map" of the Julia Sets, as each point in the Mandelbrot Set corresponds to a different Julia Set.
+                (Remember, they are really just slices of the same 4-dimensional shape.)</p>
+
+            <p>The first image of the Mandelbrot Set was produced in 1980 at IBM’s Thomas J. Watson Research
+                Center
+                by Benoit
+                Mandelbrot, and early versions were commonly output as printer printouts, including dot-matrix or
+                line-printer images.</p>
+
+            <div class="image-container">
+                <img src="../images/fractals/printout.jpg" alt="Original mandelbrot set printout" class="rounded-image">
+            </div>
+
+            <p>The technicians reportedly trimmed or removed the jagged edges of the early Mandelbrot printouts because
+                they assumed
+                those irregular borders were just printer artifacts, not meaningful parts of the image. In hindsight,
+                those “errors”
+                were actually part of the fractal structure itself, which is why the set’s boundary became so famous.
+            </p>
+
+            <p>Modern computers allow us to create much more detailed and colorful images of the Mandelbrot Set.</p>
+            <p>You choose the colour by counting how many iterations you have to calculate before you know the point is
+                going to be outside the set. So, the inside stays solid black, and the outside becomes coloured (by
+                escape-time).</p>
+            <p>Here are some images of the Mandelbrot Set generated with that colouring strategy:</p>
+
+            <div class="image-container-side-by-side">
+                <img src="../images/fractals/mand1.jpeg" alt="Mandelbrot Set" class="rounded-image side-by-side-image">
+                <img src="../images/fractals/53kj4.png" alt="Mandelbrot Set" class="rounded-image side-by-side-image">
+            </div>
+            <div class="image-container">
+                <img src="../images/fractals/BannerPP.webp" alt="Mandelbrot Set" class="rounded-image-special">
+            </div>
+
+            <p>I think you'll agree its quite impressive that these stunning images can be generated with just a simple
+                mathematical formula.</p>
         </section>
 
         <footer>
@@ -381,6 +551,12 @@
                                 target="_blank" rel="noopener noreferrer">Intro Mandelbrot image</a></li>
                         <li><a href="https://fractalfoundation.org/OFC/OFC-9-4.html" target="_blank"
                                 rel="noopener noreferrer">Coastline images</a></li>
+                        <li><a href="https://cdn.prod.website-files.com/66c631b0c921652a9121abaa/66cdf2f6a97806b9ebb223ca_63334e73df91cfe8939e9bce_61d31f4efd64b03d07550b25_1267883_Elephant%252520Learning%252520Ep.%252520105%252520Header_1200pxX644px_03_122921.jpeg"
+                                target="_blank" rel="noopener noreferrer">Mandelbrot image 1</a></li>
+                        <li><a href="https://stackoverflow.com/questions/16500656/which-color-gradient-is-used-to-color-mandelbrot-in-wikipedia"
+                                target="_blank" rel="noopener noreferrer">Mandelbrot image 2</a></li>
+                        <li><a href="https://i0.wp.com/chalkdustmagazine.com/wp-content/uploads/2017/10/BannerPP.png?fit=1050%2C450&ssl=1"
+                                target="_blank" rel="noopener noreferrer">Mandelbrot image 3</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
