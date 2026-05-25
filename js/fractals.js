@@ -150,11 +150,13 @@ document.addEventListener('DOMContentLoaded', () => {
             dragging = false;
         }
 
-        window.addEventListener('mousedown', onDown);
+        canvas.addEventListener('mousedown', onDown);
         window.addEventListener('mousemove', onMove);
         window.addEventListener('mouseup', onUp);
         window.addEventListener('mouseleave', onUp);
-        window.addEventListener('touchstart', onDown, { passive: false });
+        // Bind touchstart to the canvas only so we don't intercept touches
+        // intended for page scrolling elsewhere on mobile.
+        canvas.addEventListener('touchstart', onDown, { passive: false });
         window.addEventListener('touchmove', onMove, { passive: false });
         window.addEventListener('touchend', onUp);
 
