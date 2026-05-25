@@ -1131,9 +1131,54 @@ document.addEventListener('DOMContentLoaded', () => {
             requestOverlayUpdateIfActive();
         }
 
-        overlayButtons.mandelbrot?.addEventListener('click', () => showOverlay('mandelbrot'));
-        overlayButtons.julia?.addEventListener('click', () => showOverlay('julia'));
-        overlayButtons.variant?.addEventListener('click', () => showOverlay('variant'));
+        function easeInOutQuad(t) {
+            return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        }
+
+        function scrollElementToCenter(element, duration = 1000) {
+            if (!element) return;
+            const rect = element.getBoundingClientRect();
+            const startY = window.pageYOffset;
+            const targetY = Math.min(
+                Math.max(0, startY + rect.top + rect.height / 2 - window.innerHeight / 2),
+                document.documentElement.scrollHeight - window.innerHeight
+            );
+            const distance = targetY - startY;
+            if (Math.abs(distance) < 1 || duration <= 0) {
+                window.scrollTo(0, targetY);
+                return;
+            }
+
+            let startTime = null;
+            function step(timestamp) {
+                if (startTime === null) startTime = timestamp;
+                const elapsed = timestamp - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const eased = easeInOutQuad(progress);
+                window.scrollTo(0, startY + distance * eased);
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                }
+            }
+            requestAnimationFrame(step);
+        }
+
+        function scrollCp2CanvasIntoView() {
+            scrollElementToCenter(cp2Canvas, 1000);
+        }
+
+        overlayButtons.mandelbrot?.addEventListener('click', () => {
+            showOverlay('mandelbrot');
+            scrollCp2CanvasIntoView();
+        });
+        overlayButtons.julia?.addEventListener('click', () => {
+            showOverlay('julia');
+            scrollCp2CanvasIntoView();
+        });
+        overlayButtons.variant?.addEventListener('click', () => {
+            showOverlay('variant');
+            scrollCp2CanvasIntoView();
+        });
         window.addEventListener('resize', () => {
             Object.values(overlayCanvases).forEach(resizeOverlayCanvas);
             requestOverlayUpdateIfActive();

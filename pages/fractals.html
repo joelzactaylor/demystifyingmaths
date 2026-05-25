@@ -193,7 +193,51 @@
                 </msup>
             </math>
             <p>Don't be thrown off by the notation - it's actually very simple.</p>
-            <p>You can decode it by choosing any number for n. Let's go with n = 1:</p>
+            <p>You can decode it by choosing any number for n. Let's go with n = 0:</p>
+            <math>
+                <msub>
+                    <mi>T</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>=</mo>
+                <msup>
+                    <msub>
+                        <mi>T</mi>
+                        <mn>0</mn>
+                    </msub>
+                    <mn>2</mn>
+                </msup>
+            </math>
+            <p>Now we can see that T<sub>1</sub> is equal to T<sub>0</sub> squared. If we choose a value for
+                T<sub>0</sub> then we can calculate T<sub>1</sub>. The value we choose determines all future values of T
+                in the sequence.
+                Let's say T<sub>0</sub> = 2:</p>
+            <math>
+                <msub>
+                    <mi>T</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>=</mo>
+                <msup>
+                    <msub>
+                        <mi>T</mi>
+                        <mn>0</mn>
+                    </msub>
+                    <mn>2</mn>
+                </msup>
+            </math>
+            <math>
+                <mo>=</mo>
+                <msup>
+                    <mn>2</mn>
+                    <mn>2</mn>
+                </msup>
+            </math>
+            <math>
+                <mo>=</mo>
+                <mn>4</mn>
+            </math>
+            <p>Now we can repeat the process to find T<sub>2</sub>:</p>
             <math>
                 <msub>
                     <mi>T</mi>
@@ -204,44 +248,6 @@
                     <msub>
                         <mi>T</mi>
                         <mn>1</mn>
-                    </msub>
-                    <mn>2</mn>
-                </msup>
-            </math>
-            <p>Now we can see that T2 is equal to T1 squared. But we don't know what T1 is yet. We need to choose a
-                starting value for T1,
-                which is called the initial condition. Let's say T1 = 2:</p>
-            <math>
-                <msub>
-                    <mi>T</mi>
-                    <mn>2</mn>
-                </msub>
-                <mo>=</mo>
-                <msup>
-                    <mn>2</mn>
-                    <mn>2</mn>
-                </msup>
-            </math>
-            <p>Now we can calculate T2:</p>
-            <math>
-                <msub>
-                    <mi>T</mi>
-                    <mn>2</mn>
-                </msub>
-                <mo>=</mo>
-                <mn>4</mn>
-            </math>
-            <p>Now we can repeat the process to find T3:</p>
-            <math>
-                <msub>
-                    <mi>T</mi>
-                    <mn>3</mn>
-                </msub>
-                <mo>=</mo>
-                <msup>
-                    <msub>
-                        <mi>T</mi>
-                        <mn>2</mn>
                     </msub>
                     <mn>2</mn>
                 </msup>
@@ -294,7 +300,7 @@
 
             <p>You might notice that the behaviour of the sequence changes drastically depending on the initial value.
             </p>
-            <p>Experiment with the simulation, and try to answer the questions below:</p>
+            <p>Experiment with the simulation, and answer the questions below:</p>
 
             <div class="sequence-quiz">
                 <div class="sequence-quiz__item" data-answer="diverges">
@@ -349,8 +355,31 @@
 
             <p>I changed the variable letter to z now, because this is the convention when describing a complex number.
             </p>
-            <p>This version shows the same type of behaviour changes as the last, but they are slightly different.</p>
-            <p>See if you can identify them:</p>
+            <div class="boxed-block">
+                <h3>Recap</h3>
+                <ul>
+                    <li>
+                        <p>z<sub>0</sub> is the number we start with.</p>
+                    </li>
+                    <li>
+                        <p>z<sub>1</sub>, z<sub>2</sub>, z<sub>3</sub>, ... is a sequence of complex numbers.</p>
+                    </li>
+                    <li>
+                        <p>Each number in the sequence is the previous number squared.</p>
+                    </li>
+                    <li>
+                        <p>If z<sub>n</sub> approaches a stable point or cycle as n increases, the sequence converges.
+                        </p>
+                    </li>
+                    <li>
+                        <p>If z<sub>n</sub> gets larger and larger as n increases, the sequence diverges.</p>
+                    </li>
+                </ul>
+            </div>
+            <br><br>
+            <p>The 2-dimensional version shows the same type of behaviour changes as the previous version, but the
+                specifics are different.</p>
+            <p>Answer these questions describing the behaviour of the sequence:</p>
 
             <div class="sequence-quiz sequence-quiz--two">
                 <div class="sequence-quiz__item" data-answer="converges">
@@ -374,14 +403,8 @@
                 to
                 divergence.</p>
 
-            <p>There's another observation to be made which highlights a difference between the 1-dimensional and
-                2-dimensional cases.</p>
-            <p>When you shift to complex numbers, the behaviour seems to become <strong>chaotic</strong> in certain
-                regions of
-                the complex plane.</p>
-            <p>Controlled chaos is what we need to make fractals!</p>
-            <p>However, while it does <em>seem</em> chaotic, it actually doesn't fit the mathematical definition! Maths
-                says it's well behaved and predicatable, if you have the right tools.</p>
+            <p>This 2-dimensional case seems more chaotic than the 1-dimensional case, but it still doesn't fit the
+                strict definitions of chaotic - it's predictable if you have a good enough equation.</p>
             <p>Luckily, making it chaotic is a very small step from here.</p>
             <p>We simply add on a small constant to the number in between squaring it each time; the recurrence relation
                 becomes:</p>
@@ -489,11 +512,20 @@
             <button id="mandelbrot-overlay-button" class="overlay-button">
                 <p>Apply Mandelbrot overlay to the simulation</p>
             </button>
-            <p>There is another option which is not talked about much; it's the same, except that z<sub>0</sub> stays
+            <p>As you move the point, it reaches cycles with different numbers of points in different parts of the
+                shape. For example, in the small bulb on the top left of the main <a
+                    href="https://en.wikipedia.org/wiki/Cardioid">cardioid</a>, the sequence reaches a stable cycle with
+                a pentagram shape.</p>
+            <p>There is another option for fractal generation which is not talked about much; it's the same as the
+                Mandelbrot set up, except that
+                z<sub>0</sub> stays
                 still at <em>any</em> value, not just zero.</p>
             <button id="mandelbrot-variant-overlay-button" class="overlay-button">
                 <p>Apply variant overlay to the simulation</p>
             </button>
+            <p>You can move the point z<sub>0</sub> even though I said it's fixed - what it means is that you get a
+                different image for every value of z<sub>0</sub>, while moving c does not change the picture.</p>
+            <p>In other words, z<sub>0</sub> is fixed while the picture stays the same.</p>
             <h3>The Julia Set</h3>
             <p>In the Julia Set, we choose to keep c still. But it doesn't have to be fixed at the origin. In fact, each
                 value of c gives
