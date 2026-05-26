@@ -1192,4 +1192,447 @@ document.addEventListener('DOMContentLoaded', () => {
         cp2Draw();
     }
 
+    // ============================================================
+    // MANDELBROT ZOOM SEQUENCE
+    // ============================================================
+
+    (function initMandelZoom() {
+        const viewer = document.getElementById('mandel-viewer');
+        const slider = document.getElementById('mandel-slider');
+        const scaleLabel = document.getElementById('mandel-scale-label');
+        const playBtn = document.getElementById('mandel-play');
+        const resetBtn = document.getElementById('mandel-reset');
+
+        if (!viewer || !slider || !scaleLabel || !playBtn || !resetBtn) {
+            return;
+        }
+
+        viewer.innerHTML = '<canvas id="mandel-canvas" width="1520" height="1000"></canvas>';
+        const canvas = document.getElementById('mandel-canvas');
+        const ctx = canvas.getContext('2d');
+
+        const frameUrls = Array.from({ length: 150 }, (_, i) =>
+            `../images/fractals/mandel/mandel-${i + 1}.jpg`
+        );
+
+        const frameCount = frameUrls.length;
+        const maxZoomSteps = Number(slider.max);
+        const zoomPerFrame = maxZoomSteps / (frameCount - 1);
+
+        const width = canvas.width;
+        const height = canvas.height;
+
+        let rafId = null;
+        let autoplay = false;
+        let autoplayStart = 0;
+        let autoplayFrom = 0;
+        let currentValue = Number(slider.value) || 0;
+        let images = [];
+        let ready = false;
+
+        function clamp(value, min, max) {
+            return Math.min(max, Math.max(min, value));
+        }
+
+        function formatZoom(value) {
+            const zoom = Math.pow(2, value);
+            if (zoom >= 1e12) return zoom.toExponential(2);
+            if (zoom >= 1000) return Math.round(zoom).toLocaleString('en-GB');
+            return zoom.toFixed(2).replace(/\.00$/, '');
+        }
+
+        function drawCoverZoom(img, zoom, alpha = 1) {
+            const srcW = img.naturalWidth / zoom;
+            const srcH = img.naturalHeight / zoom;
+            const sx = (img.naturalWidth - srcW) / 2;
+            const sy = (img.naturalHeight - srcH) / 2;
+
+            ctx.globalAlpha = alpha;
+            ctx.drawImage(
+                img,
+                sx, sy, srcW, srcH,
+                0, 0, width, height
+            );
+        }
+
+        function renderFrame(rawValue) {
+            if (!ready) return;
+
+            currentValue = clamp(rawValue, 0, maxZoomSteps);
+            slider.value = currentValue.toFixed(2);
+
+            const framePos = currentValue / zoomPerFrame;
+            const baseIndex = clamp(Math.floor(framePos), 0, frameCount - 1);
+            const nextIndex = clamp(baseIndex + 1, 0, frameCount - 1);
+            const blend = framePos - baseIndex;
+
+            const baseZoom = Math.pow(2, blend);
+            const nextZoom = baseZoom / 2;
+
+            ctx.clearRect(0, 0, width, height);
+            ctx.globalCompositeOperation = 'source-over';
+            ctx.imageSmoothingEnabled = true;
+
+            drawCoverZoom(images[baseIndex], baseZoom, 1);
+
+            if (nextIndex !== baseIndex) {
+                drawCoverZoom(images[nextIndex], nextZoom, blend);
+            }
+
+            ctx.globalAlpha = 1;
+            scaleLabel.textContent = formatZoom(currentValue);
+        }
+
+        function stopAutoplay() {
+            autoplay = false;
+            playBtn.textContent = '▶ Play';
+            if (rafId !== null) {
+                cancelAnimationFrame(rafId);
+                rafId = null;
+            }
+        }
+
+        function tick(timestamp) {
+            if (!autoplay || !ready) return;
+
+            if (!autoplayStart) {
+                autoplayStart = timestamp;
+            }
+
+            const elapsed = (timestamp - autoplayStart) / 1000;
+            const speed = 1;
+            const nextValue = autoplayFrom + elapsed * speed;
+
+            if (nextValue >= maxZoomSteps) {
+                renderFrame(maxZoomSteps);
+                stopAutoplay();
+                return;
+            }
+
+            renderFrame(nextValue);
+            rafId = requestAnimationFrame(tick);
+        }
+
+        function loadImage(src) {
+            return new Promise((resolve, reject) => {
+                const img = new Image();
+                img.onload = () => resolve(img);
+                img.onerror = reject;
+                img.src = src;
+            });
+        }
+
+        ctx.fillStyle = '#000';
+        ctx.fillRect(0, 0, width, height);
+
+        Promise.all(frameUrls.map(loadImage))
+            .then((loadedImages) => {
+                images = loadedImages;
+                ready = true;
+                renderFrame(currentValue);
+            })
+            .catch((err) => {
+                console.error('Failed to load Mandelbrot frames', err);
+            });
+
+        slider.addEventListener('input', () => {
+            stopAutoplay();
+            renderFrame(Number(slider.value));
+        });
+
+        playBtn.addEventListener('click', () => {
+            if (autoplay) {
+                stopAutoplay();
+                return;
+            }
+
+            autoplay = true;
+            autoplayStart = 0;
+            autoplayFrom = currentValue;
+            playBtn.textContent = '❚❚ Pause';
+            rafId = requestAnimationFrame(tick);
+        });
+
+        resetBtn.addEventListener('click', () => {
+            stopAutoplay();
+            renderFrame(0);
+        });
+    })();
+
+    // ============================================================
+    // DRAGON CURVE STEPS
+    // ============================================================
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".slide");
+
+    if (slides.length > 0) {
+        showSlide(currentSlide);
+    }
+
+    function showSlide(index) {
+        const total = slides.length;
+
+        if (index >= total) {
+            currentSlide = 0;
+        } else if (index < 0) {
+            currentSlide = total - 1;
+        } else {
+            currentSlide = index;
+        }
+
+        slides.forEach(slide => {
+            slide.style.display = "none";
+        });
+
+        slides[currentSlide].style.display = "block";
+    }
+
+    // expose globally so inline onclick can see it
+    window.changeSlide = function (step) {
+        showSlide(currentSlide + step);
+    };
+
+    // ============================================================
+    // DRAGON CURVE CONTINUOUS VIEWER
+    // ============================================================
+
+    const canvas = document.getElementById('dragonCanvas');
+    const resetBtn = document.querySelector('.dragon-reset-btn');
+    if (!canvas || !resetBtn) return;
+
+    const ctx = canvas.getContext('2d');
+
+    // Resize canvas to match CSS size
+    function resizeCanvas() {
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width * window.devicePixelRatio;
+        canvas.height = rect.height * window.devicePixelRatio;
+        ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
+        render();
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+
+    // --------- Dragon curve polyline generation ---------
+
+    function generateDragon(iterations) {
+        // start with a single segment
+        const points = [{ x: 0, y: 0 }, { x: 1, y: 0 }];
+        for (let i = 0; i < iterations; i++) {
+            const pivot = points[points.length - 1];
+            const newPoints = [];
+            // walk backwards except pivot
+            for (let j = points.length - 2; j >= 0; j--) {
+                const p = points[j];
+                const dx = p.x - pivot.x;
+                const dy = p.y - pivot.y;
+                // rotate 90° (dx, dy) -> ( -dy, dx )
+                const nx = pivot.x - dy;
+                const ny = pivot.y + dx;
+                newPoints.push({ x: nx, y: ny });
+            }
+            points.push(...newPoints);
+        }
+        return points;
+    }
+
+    const dragonIterations = 16; // large enough that segments are tiny once scaled
+    const dragonPoints = generateDragon(dragonIterations);
+
+    // compute bounding box
+    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+    for (const p of dragonPoints) {
+        if (p.x < minX) minX = p.x;
+        if (p.y < minY) minY = p.y;
+        if (p.x > maxX) maxX = p.x;
+        if (p.y > maxY) maxY = p.y;
+    }
+
+    // logical viewport transform
+    const viewport = {
+        scale: 1,
+        offsetX: 0,
+        offsetY: 0,
+        initialScale: 1,
+        initialOffsetX: 0,
+        initialOffsetY: 0
+    };
+
+    // compute initial fit
+    function fitToCanvas() {
+        const w = canvas.width / window.devicePixelRatio;
+        const h = canvas.height / window.devicePixelRatio;
+
+        const spanX = maxX - minX || 1;
+        const spanY = maxY - minY || 1;
+
+        const margin = 0.1; // 10% padding
+        const scaleX = (w * (1 - margin * 2)) / spanX;
+        const scaleY = (h * (1 - margin * 2)) / spanY;
+        const s = Math.min(scaleX, scaleY);
+
+        const centerX = (minX + maxX) / 2;
+        const centerY = (minY + maxY) / 2;
+
+        viewport.scale = s;
+        viewport.offsetX = w / 2 - centerX * s;
+        viewport.offsetY = h / 2 - centerY * s;
+
+        viewport.initialScale = viewport.scale;
+        viewport.initialOffsetX = viewport.offsetX;
+        viewport.initialOffsetY = viewport.offsetY;
+    }
+
+    // --------- Segment length constraints ---------
+
+    // --- segment stats ---
+
+    function getMinSegmentLengthLogical(points) {
+        let minLen = Infinity;
+        for (let i = 1; i < points.length; i++) {
+            const a = points[i - 1];
+            const b = points[i];
+            const dx = b.x - a.x;
+            const dy = b.y - a.y;
+            const len = Math.hypot(dx, dy);
+            if (len < minLen) minLen = len;
+        }
+        return minLen;
+    }
+
+    const minSegLengthLogical = getMinSegmentLengthLogical(dragonPoints);
+
+    // desired minimum segment size in screen pixels
+    const desiredMinSegPx = 1.5;
+    // max safe scale before squares show
+    const maxSafeScale = desiredMinSegPx / minSegLengthLogical;
+
+    // map from logical units to screen using a "compressed" visible scale
+    function getVisibleScale() {
+        if (viewport.scale <= maxSafeScale) {
+            return viewport.scale;
+        }
+        // compress everything above maxSafeScale into a narrow band
+        const excess = viewport.scale - maxSafeScale;
+        const compressed = maxSafeScale + excess * 0.1; // 0.1 → only 10% of extra zoom is visible
+        return compressed;
+    }
+
+    // --------- Rendering ---------
+
+    function render() {
+        const w = canvas.width / window.devicePixelRatio;
+        const h = canvas.height / window.devicePixelRatio;
+
+        ctx.save();
+        ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
+        ctx.clearRect(0, 0, w, h);
+
+        const s = getVisibleScale();
+
+        ctx.save();
+        ctx.translate(viewport.offsetX, viewport.offsetY);
+        ctx.scale(s, s);
+
+        // keep stroke visually ~1px
+        ctx.lineWidth = 1 / s;
+        ctx.strokeStyle = '#00e1ff';
+        ctx.beginPath();
+        const first = dragonPoints[0];
+        ctx.moveTo(first.x, first.y);
+        for (let i = 1; i < dragonPoints.length; i++) {
+            const p = dragonPoints[i];
+            ctx.lineTo(p.x, p.y);
+        }
+        ctx.stroke();
+        ctx.restore();
+
+        ctx.restore();
+    }
+
+    // --------- Input handling (pan / zoom) ---------
+
+    let isPanning = false;
+    let lastX = 0;
+    let lastY = 0;
+
+    canvas.addEventListener('pointerdown', (e) => {
+        canvas.setPointerCapture(e.pointerId);
+        isPanning = true;
+        const rect = canvas.getBoundingClientRect();
+        lastX = e.clientX - rect.left;
+        lastY = e.clientY - rect.top;
+    });
+
+    canvas.addEventListener('pointermove', (e) => {
+        if (!isPanning) return;
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const dx = x - lastX;
+        const dy = y - lastY;
+
+        // convert dx/dy in screen space to logical offsets
+        viewport.offsetX += dx;
+        viewport.offsetY += dy;
+
+        lastX = x;
+        lastY = y;
+        render();
+    });
+
+    canvas.addEventListener('pointerup', (e) => {
+        isPanning = false;
+        canvas.releasePointerCapture(e.pointerId);
+    });
+
+    canvas.addEventListener('pointercancel', () => {
+        isPanning = false;
+    });
+
+    // wheel zoom (desktop)
+    canvas.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const rect = canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        const prevVisibleScale = getVisibleScale();
+
+        const zoomFactor = Math.exp(-e.deltaY * 0.001);
+        viewport.scale *= zoomFactor;
+
+        // keep zoom centered on cursor in visible space
+        const newVisibleScale = getVisibleScale();
+
+        const logicalBeforeX = (x - viewport.offsetX) / prevVisibleScale;
+        const logicalBeforeY = (y - viewport.offsetY) / prevVisibleScale;
+
+        viewport.offsetX = x - logicalBeforeX * newVisibleScale;
+        viewport.offsetY = y - logicalBeforeY * newVisibleScale;
+
+        render();
+    }, { passive: false });
+
+    // simple double-tap / double-click to reset
+    canvas.addEventListener('dblclick', () => {
+        resetView();
+    });
+
+    // Reset button
+    function resetView() {
+        viewport.scale = viewport.initialScale;
+        viewport.offsetX = viewport.initialOffsetX;
+        viewport.offsetY = viewport.initialOffsetY;
+        render();
+    }
+
+    resetBtn.addEventListener('click', resetView);
+
+    // initialize
+    resizeCanvas();
+    fitToCanvas();
+    render();
+
 });
