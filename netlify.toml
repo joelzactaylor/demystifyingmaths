@@ -1,6 +1,12 @@
-# Redirect root to /demystifyingmaths/
+# Redirect domain root to /demystifyingmaths/
 [[redirects]]
   from = "/"
   to = "/demystifyingmaths/"
   status = 301
   force = true
+
+# Redirect /demystifyingmaths/ root to the home page
+[[redirects]]
+  from = "/demystifyingmaths/"
+  to = "/demystifyingmaths/pages/home.html"
+  status = 301
