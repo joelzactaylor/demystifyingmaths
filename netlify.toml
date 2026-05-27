@@ -1,5 +1,11 @@
+# Serve your current site under /demystifyingmaths/
 [[redirects]]
   from = "/demystifyingmaths/*"
   to = "/:splat"
   status = 200
-  force = false
+
+# For now, redirect root to /demystifyingmaths/
+[[redirects]]
+  from = "/"
+  to = "/demystifyingmaths/"
+  status = 301
