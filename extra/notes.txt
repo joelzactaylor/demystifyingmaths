@@ -1,7 +1,5 @@
 PAGE IDEAS --------------------------------------------------------------
 
-maths in nature
-
 wobbly table theorum
 
 vectors
@@ -14,15 +12,12 @@ trig
 
 eulers formula                                              !important
 
-fractals                                                    !important
+set theory                                                  !important
  
 
 PAGE EDITS ---------------------------------------------------------------
 
-angleUnits needs further reading section
-
-
-
+angleUnits need further reading section
 
 
 

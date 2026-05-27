@@ -24,10 +24,20 @@ li.page-entry {
     transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
+.coming-soon {
+    background: #f0f0f0;
+}
+
 .page-link:hover {
     transform: translateY(-4px) scale(1.03);
     box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
     background: #f7fbff;
+}
+
+.coming-soon:hover {
+    transform: unset;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    background: #f0f0f0;
 }
 
 h3 {
