@@ -1,3 +1,54 @@
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li.page-entry {
+    display: flex;
+    justify-content: center;
+    margin: 8px 0;
+}
+
+.page-link {
+    display: block;
+    width: 80%;
+    margin: 10px 0;
+    padding: 20px 40px;
+    text-decoration: none;
+    background: #ffffff;
+    color: #111;
+    border: 2px solid #d9e2ec;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.coming-soon {
+    background: #f0f0f0;
+}
+
+.page-link:hover {
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+    background: #f7fbff;
+}
+
+.coming-soon:hover {
+    transform: unset;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    background: #f0f0f0;
+}
+
+h3 {
+    margin: 10px 0;
+    padding: 0;
+}
+
+h3 .highlight {
+    color: royalblue;
+}
+
 .footer-content {
     justify-content: center;
     align-items: center;
