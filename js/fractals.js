@@ -1394,245 +1394,82 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // ============================================================
-    // DRAGON CURVE CONTINUOUS VIEWER
+    // DRAGON CURVE — rolling per-edge LOD, viewport-aware (always-on loop)
     // ============================================================
+    {
+        const dc = document.getElementById("dragonCanvas");
+        const dResetBtn = document.querySelector(".dragon-reset-btn");
+        const dDpr = window.devicePixelRatio || 1;
+        if (!dc || !dResetBtn || !window.Worker) return;
 
-    const canvas = document.getElementById('dragonCanvas');
-    const resetBtn = document.querySelector('.dragon-reset-btn');
-    if (!canvas || !resetBtn) return;
+        const dragonWorker = new Worker('../js/dragon-worker.js', { type: 'module' });
+        const offscreen = dc.transferControlToOffscreen();
+        dragonWorker.postMessage({ type: 'init', canvas: offscreen, dpr: dDpr }, [offscreen]);
 
-    const ctx = canvas.getContext('2d');
+        let dDragging = false;
+        let dLastX = 0;
+        let dLastY = 0;
 
-    // Resize canvas to match CSS size
-    function resizeCanvas() {
-        const rect = canvas.getBoundingClientRect();
-        canvas.width = rect.width * window.devicePixelRatio;
-        canvas.height = rect.height * window.devicePixelRatio;
-        ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
-        render();
-    }
-
-    window.addEventListener('resize', resizeCanvas);
-
-    // --------- Dragon curve polyline generation ---------
-
-    function generateDragon(iterations) {
-        // start with a single segment
-        const points = [{ x: 0, y: 0 }, { x: 1, y: 0 }];
-        for (let i = 0; i < iterations; i++) {
-            const pivot = points[points.length - 1];
-            const newPoints = [];
-            // walk backwards except pivot
-            for (let j = points.length - 2; j >= 0; j--) {
-                const p = points[j];
-                const dx = p.x - pivot.x;
-                const dy = p.y - pivot.y;
-                // rotate 90° (dx, dy) -> ( -dy, dx )
-                const nx = pivot.x - dy;
-                const ny = pivot.y + dx;
-                newPoints.push({ x: nx, y: ny });
-            }
-            points.push(...newPoints);
+        function dResize() {
+            const rect = dc.parentElement.getBoundingClientRect();
+            // Cannot set canvas.width/height after transferControlToOffscreen();
+            // keep CSS size on the element for layout and notify worker of pixel size.
+            const pixelW = Math.round(rect.width * dDpr);
+            const pixelH = Math.round(rect.height * dDpr);
+            dc.style.width = rect.width + "px";
+            dc.style.height = rect.height + "px";
+            dc.style.touchAction = "none";
+            dragonWorker.postMessage({ type: 'resize', width: pixelW, height: pixelH });
         }
-        return points;
-    }
 
-    const dragonIterations = 16; // large enough that segments are tiny once scaled
-    const dragonPoints = generateDragon(dragonIterations);
-
-    // compute bounding box
-    let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
-    for (const p of dragonPoints) {
-        if (p.x < minX) minX = p.x;
-        if (p.y < minY) minY = p.y;
-        if (p.x > maxX) maxX = p.x;
-        if (p.y > maxY) maxY = p.y;
-    }
-
-    // logical viewport transform
-    const viewport = {
-        scale: 1,
-        offsetX: 0,
-        offsetY: 0,
-        initialScale: 1,
-        initialOffsetX: 0,
-        initialOffsetY: 0
-    };
-
-    // compute initial fit
-    function fitToCanvas() {
-        const w = canvas.width / window.devicePixelRatio;
-        const h = canvas.height / window.devicePixelRatio;
-
-        const spanX = maxX - minX || 1;
-        const spanY = maxY - minY || 1;
-
-        const margin = 0.1; // 10% padding
-        const scaleX = (w * (1 - margin * 2)) / spanX;
-        const scaleY = (h * (1 - margin * 2)) / spanY;
-        const s = Math.min(scaleX, scaleY);
-
-        const centerX = (minX + maxX) / 2;
-        const centerY = (minY + maxY) / 2;
-
-        viewport.scale = s;
-        viewport.offsetX = w / 2 - centerX * s;
-        viewport.offsetY = h / 2 - centerY * s;
-
-        viewport.initialScale = viewport.scale;
-        viewport.initialOffsetX = viewport.offsetX;
-        viewport.initialOffsetY = viewport.offsetY;
-    }
-
-    // --------- Segment length constraints ---------
-
-    // --- segment stats ---
-
-    function getMinSegmentLengthLogical(points) {
-        let minLen = Infinity;
-        for (let i = 1; i < points.length; i++) {
-            const a = points[i - 1];
-            const b = points[i];
-            const dx = b.x - a.x;
-            const dy = b.y - a.y;
-            const len = Math.hypot(dx, dy);
-            if (len < minLen) minLen = len;
+        function dResetView() {
+            dragonWorker.postMessage({ type: 'reset' });
         }
-        return minLen;
-    }
 
-    const minSegLengthLogical = getMinSegmentLengthLogical(dragonPoints);
-
-    // desired minimum segment size in screen pixels
-    const desiredMinSegPx = 1.5;
-    // max safe scale before squares show
-    const maxSafeScale = desiredMinSegPx / minSegLengthLogical;
-
-    // map from logical units to screen using a "compressed" visible scale
-    function getVisibleScale() {
-        if (viewport.scale <= maxSafeScale) {
-            return viewport.scale;
+        function dZoomAt(cssX, cssY, delta) {
+            const rect = dc.getBoundingClientRect();
+            const x = cssX - rect.left;
+            const y = cssY - rect.top;
+            dragonWorker.postMessage({ type: 'zoomAt', x, y, delta });
         }
-        // compress everything above maxSafeScale into a narrow band
-        const excess = viewport.scale - maxSafeScale;
-        const compressed = maxSafeScale + excess * 0.1; // 0.1 → only 10% of extra zoom is visible
-        return compressed;
+
+        dc.addEventListener("wheel", e => {
+            e.preventDefault();
+            e.stopPropagation();
+            dZoomAt(e.clientX, e.clientY, e.deltaY);
+        }, { passive: false });
+
+        dc.addEventListener("pointerdown", e => {
+            dDragging = true;
+            dLastX = e.clientX;
+            dLastY = e.clientY;
+            dc.setPointerCapture(e.pointerId);
+        });
+
+        dc.addEventListener("pointermove", e => {
+            if (!dDragging) return;
+            const dxCss = e.clientX - dLastX;
+            const dyCss = e.clientY - dLastY;
+            dLastX = e.clientX;
+            dLastY = e.clientY;
+            dragonWorker.postMessage({ type: 'pan', dx: dxCss, dy: dyCss });
+        });
+
+        dc.addEventListener("pointerup", () => { dDragging = false; });
+        dc.addEventListener("pointercancel", () => { dDragging = false; });
+
+        dResetBtn.addEventListener("click", () => {
+            dResize();
+            dResetView();
+        });
+
+        window.addEventListener("resize", () => {
+            dResize();
+            dResetView();
+        });
+
+        dResize();
+        dResetView();
     }
-
-    // --------- Rendering ---------
-
-    function render() {
-        const w = canvas.width / window.devicePixelRatio;
-        const h = canvas.height / window.devicePixelRatio;
-
-        ctx.save();
-        ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
-        ctx.clearRect(0, 0, w, h);
-
-        const s = getVisibleScale();
-
-        ctx.save();
-        ctx.translate(viewport.offsetX, viewport.offsetY);
-        ctx.scale(s, s);
-
-        // keep stroke visually ~1px
-        ctx.lineWidth = 1 / s;
-        ctx.strokeStyle = '#00e1ff';
-        ctx.beginPath();
-        const first = dragonPoints[0];
-        ctx.moveTo(first.x, first.y);
-        for (let i = 1; i < dragonPoints.length; i++) {
-            const p = dragonPoints[i];
-            ctx.lineTo(p.x, p.y);
-        }
-        ctx.stroke();
-        ctx.restore();
-
-        ctx.restore();
-    }
-
-    // --------- Input handling (pan / zoom) ---------
-
-    let isPanning = false;
-    let lastX = 0;
-    let lastY = 0;
-
-    canvas.addEventListener('pointerdown', (e) => {
-        canvas.setPointerCapture(e.pointerId);
-        isPanning = true;
-        const rect = canvas.getBoundingClientRect();
-        lastX = e.clientX - rect.left;
-        lastY = e.clientY - rect.top;
-    });
-
-    canvas.addEventListener('pointermove', (e) => {
-        if (!isPanning) return;
-        const rect = canvas.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const dx = x - lastX;
-        const dy = y - lastY;
-
-        // convert dx/dy in screen space to logical offsets
-        viewport.offsetX += dx;
-        viewport.offsetY += dy;
-
-        lastX = x;
-        lastY = y;
-        render();
-    });
-
-    canvas.addEventListener('pointerup', (e) => {
-        isPanning = false;
-        canvas.releasePointerCapture(e.pointerId);
-    });
-
-    canvas.addEventListener('pointercancel', () => {
-        isPanning = false;
-    });
-
-    // wheel zoom (desktop)
-    canvas.addEventListener('wheel', (e) => {
-        e.preventDefault();
-        const rect = canvas.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-
-        const prevVisibleScale = getVisibleScale();
-
-        const zoomFactor = Math.exp(-e.deltaY * 0.001);
-        viewport.scale *= zoomFactor;
-
-        // keep zoom centered on cursor in visible space
-        const newVisibleScale = getVisibleScale();
-
-        const logicalBeforeX = (x - viewport.offsetX) / prevVisibleScale;
-        const logicalBeforeY = (y - viewport.offsetY) / prevVisibleScale;
-
-        viewport.offsetX = x - logicalBeforeX * newVisibleScale;
-        viewport.offsetY = y - logicalBeforeY * newVisibleScale;
-
-        render();
-    }, { passive: false });
-
-    // simple double-tap / double-click to reset
-    canvas.addEventListener('dblclick', () => {
-        resetView();
-    });
-
-    // Reset button
-    function resetView() {
-        viewport.scale = viewport.initialScale;
-        viewport.offsetX = viewport.initialOffsetX;
-        viewport.offsetY = viewport.initialOffsetY;
-        render();
-    }
-
-    resetBtn.addEventListener('click', resetView);
-
-    // initialize
-    resizeCanvas();
-    fitToCanvas();
-    render();
 
 });

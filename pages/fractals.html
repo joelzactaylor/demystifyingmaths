@@ -224,8 +224,27 @@
             </div>
 
             <p>The magic of this process is that no two segments of the paper occupy the same space. No matter how many
-                pieces you join together (such that it is as though they were one long strip) the Dragon Curve will
+                pieces you join together (such that it's as though they were one long strip) the Dragon Curve will
                 always fit on the plane with no overlaps or crossovers.</p>
+
+            <p>There is another way to create the dragon curve, which is to start with a single line segment, and then
+                continue to
+                subdivide it into smaller and smaller segments, following a simple rule for how to bend the line at each
+                stage. This
+                method is more suitable for computer generation, and it produces the same final shape as the paper
+                folding method:
+            </p>
+
+            <div class="image-container">
+                <img src="../images/fractals/Dragon_Curve_adding_corners_trails_rectangular_numbered_R.gif"
+                    alt="An alternative way to generate the dragon curve fractal" class="rounded-image-2">
+            </div>
+            <p>Here is a zooming drawing of the dragon curve. It updates live as you zoom in, subdividing the edges once
+                they get too big. See, the true fractal has an <em>infinite</em> number of subdivisions, so many that it
+                is a solid shape with infinite detail on every edge. That's why it's called a fractal, even though the
+                versions you can draw in real life don't exhibit infinite self-similarity. This is nowhere close to
+                seeming perfect, because there are just so many lines to calculate, but it does create some cool
+                artifacts, like how the order in which the segments are subdivided produces mini-dragon curves:</p>
 
             <section class="dragon-viewer">
                 <div class="dragon-header">
@@ -236,6 +255,9 @@
                     <canvas id="dragonCanvas"></canvas>
                 </div>
             </section>
+
+            <p>But that's it for fractals you can approximate by hand... it's about to get a lot more interesting and
+                unpredictable with the help of computers!</p>
         </section>
 
         <section>
@@ -786,6 +808,8 @@
                                 target="_blank" rel="noopener noreferrer">Mandelbrot image 2</a></li>
                         <li><a href="https://i0.wp.com/chalkdustmagazine.com/wp-content/uploads/2017/10/BannerPP.png?fit=1050%2C450&ssl=1"
                                 target="_blank" rel="noopener noreferrer">Mandelbrot image 3</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Dragon_curve" target="_blank"
+                                rel="noopener noreferrer">Dragon Curve animation gif</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
