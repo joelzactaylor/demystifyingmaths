@@ -11,3 +11,11 @@
   to = "/demystifyingmaths/"
   status = 301
   force = true
+
+# Redirect bare page names at root to the pages/ folder
+# e.g. /home -> /pages/home.html
+[[redirects]]
+  from = "/:page"
+  to = "/pages/:page.html"
+  status = 301
+  force = false
