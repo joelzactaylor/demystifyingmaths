@@ -1,14 +1,84 @@
-ul {
+/* PAGE LIST */
+
+.pages-section {
+    margin-top: -40px;
+    padding: 0 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.pages-section h1 {
+    margin-bottom: 1rem;
+}
+
+.pages-section ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    position: relative;
+    /* anchor for the vertical line */
+}
+
+/* Vertical git-like backbone: softer, dashed, subtle */
+.pages-section ul::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    transform: translateX(-35px);
+    /* keep this where it worked for you */
+    top: 8px;
+    /* start slightly below top card */
+    bottom: 8px;
+    /* end slightly above bottom card */
+    width: 2px;
+    background: linear-gradient(to bottom,
+            #d3dce6 0,
+            #d3dce6 6px,
+            transparent 6px,
+            transparent 12px);
+    background-size: 100% 12px;
+    /* repeating dashed effect */
 }
 
 li.page-entry {
     display: flex;
     justify-content: center;
     margin: 8px 0;
+    position: relative;
+    /* anchor for node + connector */
 }
+
+
+/* Connector */
+li.page-entry::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    margin-left: -34px;
+    width: 36px;
+    height: 1.5px;
+    background: #cbd5e0;
+    border-radius: 999px;
+}
+
+
+/* Node */
+li.page-entry::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #0e74b9;
+    border: 2px solid #cbd5e0;
+}
+
+/* Cards */
 
 .page-link {
     display: block;
@@ -21,7 +91,10 @@ li.page-entry {
     border: 2px solid #d9e2ec;
     border-radius: 20px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
 }
 
 .coming-soon {
@@ -35,9 +108,14 @@ li.page-entry {
 }
 
 .coming-soon:hover {
-    transform: unset;
+    transform: none;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
     background: #f0f0f0;
+}
+
+/* Optional: hollow grey nodes for coming soon entries */
+li.page-entry.page-entry--coming-soon::after {
+    background: transparent;
 }
 
 h3 {
@@ -48,6 +126,8 @@ h3 {
 h3 .highlight {
     color: royalblue;
 }
+
+/* FOOTER */
 
 .footer-content {
     justify-content: center;

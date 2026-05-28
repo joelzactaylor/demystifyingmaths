@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="-8.3 -14.7 18 15" opacity="0.05">
+<path id="a" d="M.3-5H-.3L-.4,0H.4"/>
+<g id="b" transform="matrix(.68,0 0,.68 0-5)"><use xlink:href="#a" transform="rotate(-30)"/><use xlink:href="#a" transform="rotate(60)"/></g>
+<g id="c" transform="matrix(.68,0 0,.68 0-5)"><use xlink:href="#b" transform="rotate(-30)"/><use xlink:href="#b" transform="rotate(60)"/></g>
+<g id="d" transform="matrix(.68,0 0,.68 0-5)"><use xlink:href="#c" transform="rotate(-30)"/><use xlink:href="#c" transform="rotate(60)"/></g>
+<g id="e" transform="matrix(.68,0 0,.68 0-5)"><use xlink:href="#d" transform="rotate(-30)"/><use xlink:href="#d" transform="rotate(60)"/></g>
+<g id="f" transform="matrix(.68,0 0,.68 0-5)"><use xlink:href="#e" transform="rotate(-30)"/><use xlink:href="#e" transform="rotate(60)"/></g>
+<g id="g" transform="matrix(.68,0 0,.68 0-5)"><use xlink:href="#f" transform="rotate(-30)"/><use xlink:href="#f" transform="rotate(60)"/></g>
+<g id="h" transform="matrix(.68,0 0,.68 0-5)"><use xlink:href="#g" transform="rotate(-30)"/><use xlink:href="#g" transform="rotate(60)"/></g>
+<g id="i" transform="matrix(.68,0 0,.68 0-5)"><use xlink:href="#h" transform="rotate(-30)"/><use xlink:href="#h" transform="rotate(60)"/></g>
+<g id="j" transform="matrix(.68,0 0,.68 0-5)"><use xlink:href="#i" transform="rotate(-30)"/><use xlink:href="#i" transform="rotate(60)"/></g>
+<g id="k" transform="matrix(.68,0 0,.68 0-5)"><use xlink:href="#j" transform="rotate(-30)"/><use xlink:href="#j" transform="rotate(60)"/></g>
+<g id="l" transform="matrix(.68,0 0,.68 0-5)"><use xlink:href="#k" transform="rotate(-30)"/><use xlink:href="#k" transform="rotate(60)"/></g>
+<g id="m" transform="matrix(.68,0 0,.68 0-5)"><use xlink:href="#l" transform="rotate(-30)"/><use xlink:href="#l" transform="rotate(60)"/></g>
+</svg>

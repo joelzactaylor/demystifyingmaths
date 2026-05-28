@@ -27,63 +27,98 @@
                     document.getElementById("top-ribbon-placeholder").innerHTML = data;
                 });
         </script>
+
         <header>
-            <h1>Demystifying Maths</h1>
-            <nav>
-                <ol class="breadcrumb">
-                    <li>
-                        <p>Home</p>
-                    </li>
-                </ol>
-            </nav>
         </header>
 
         <main>
-            <section>
-                <h1 style="font-size: 50px;">Why Maths?</h1>
-                <p>Because maths is amazing!</p>
-                <p>So many people despise mathematics - and with good reason. The way it's often taught can feel like a
-                    never-ending series of rules and procedures to
-                    memorize, with little connection to the real world or to our intuition.</p>
-                <p>This site is designed for curious minds who want to understand the ideas behind the symbols, not just
-                    the
-                    procedures.</p>
-                <p>Maths is unique among subjects in that it is infinitely comprehensible - meaning there is always a
-                    logical path from any concept back to absolute fundamental principles, things that you can see are
-                    true,
-                    and understand in your soul instead of keeping in your head as a rule to follow. This site is about
-                    finding those paths, and making them clear and intuitive.
-                </p>
+            <section id="title-section">
+                <h1 id="main-title">
+                    <span class="word">
+                        <span class="char">D</span><span class="char">e</span><span class="char">m</span><span
+                            class="char">y</span><span class="char">s</span><span class="char">t</span><span
+                            class="char">i</span><span class="char">f</span><span class="char">y</span><span
+                            class="char">i</span><span class="char">n</span><span class="char">g</span>
+                    </span>
+                    <span class="word">
+                        <span class="char">M</span><span class="char">a</span><span class="char">t</span><span
+                            class="char">h</span><span class="char">s</span>
+                    </span>
+                </h1>
+                <h2>Home</h2>
+                <button>Get Started</button>
+                <div class="scroll-cue">
+                    <span class="scroll-cue__text">Scroll to explore</span>
+                </div>
+
             </section>
 
-            <section class="boxed-block">
-                <h1>Who is this site for?</h1>
-                <p>This site is designed for anyone who wants to understand the underlying concepts of mathematics,
-                    rather
-                    than just memorizing formulas and procedures. Whether you're a student, or simply someone
-                    curious about the world around you, you'll find that this approach to learning maths can be both
-                    enlightening and enjoyable.</p>
-                <p>You don't need to be a math genius - my aim is to lay it out in a way that literally anyone can
-                    understand.</p>
-                <p>If you don't understand something I've written on one of my pages, then the fault is in my
-                    explanation,
-                    not in your comprehension, because my goal is to make it comprehensible to every mind - therefore
-                    please
-                    do
-                    ask, and I can improve the page. In fact if you have any
-                    questions about maths, or if there's a topic you'd like to see covered on this site, please do get
-                    in
-                    touch with me through <a href="contact.html">this link</a>.</p>
+            <section class="poly-block">
+                <div class="poly-canvas-wrapper">
+                    <canvas id="poly-canvas"></canvas>
+                </div>
+
+                <div class="poly-text">
+                    <h1 style="font-size: 50px;">Why Maths?</h1>
+                    <p>Because maths is amazing!</p>
+                    <p>So many people despise mathematics. And with good reason – <strong>the way it's often taught can
+                            feel
+                            like a
+                            never-ending series of rules and procedures</strong> to
+                        memorize, with little connection to the real world or to our intuition.</p>
+                    <p>This site is designed for curious minds who want to understand the ideas behind the symbols, not
+                        just
+                        the
+                        procedures.</p>
+                    <p>Maths is unique among subjects in that it is <strong>infinitely comprehensible</strong>, meaning
+                        there is always a
+                        logical path from any concept back to absolute fundamental principles, things that you can see
+                        are
+                        true,
+                        and understand in your soul instead of keeping in your head as a rule to follow. This site is
+                        about
+                        finding those paths, and making them <strong>clear and intuitive</strong>.
+                    </p>
+                </div>
             </section>
 
-            <section>
-                <h1><a href="pages.html">Pages</a></h1>
-                <div>
+            <section class="game-of-life">
+                <div id="reset-opacity-wrapper">
+                    <h1 style="font-size: 50px;">Who is this site for?</h1>
+                    <p>This site is designed for anyone who wants to <strong>understand the underlying concepts</strong>
+                        of
+                        mathematics,
+                        rather
+                        than just memorizing formulas and procedures. Whether you're a student, or simply someone
+                        curious about the world around you, you'll find that this approach to learning maths can be both
+                        enlightening and enjoyable.</p>
+                    <p>You don't need to be a math genius - my aim is to lay it out in a way that literally anyone can
+                        understand.</p>
+                    <p>If you don't understand something I've written on one of my pages, then the fault is in my
+                        explanation because my goal is to make it comprehensible to every mind. Therefore
+                        please
+                        do not hesitate to
+                        ask, and I can improve the page. In fact if you have any
+                        questions about maths, or if there's a topic you'd like to see covered on this site, please do
+                        get
+                        in
+                        touch with me through <a href="contact.html">this link</a>.</p>
+                    <p>Please use this site on a computer. I've tried to make sure every
+                        page works on mobile too, but you won't get the same experience, especially with the interactive
+                        elements.</p>
+                    <p>If you're on your phone or iPad and you have a computer accessible nearby, I recommend switching
+                        before you go on to read any of the pages.</p>
+                    <div id="pages-section"></div>
+                </div>
+            </section>
+
+            <section class="pages-section">
+                <h1 style="font-size: 50px;">Explore Pages</h1>
+                <div class="pages-section-inner">
                     <p>I am creating this site like a blog, so new pages will be added over time. These are the ones I
                         have
                         created so
                         far:</p>
-                    <br>
                     <ul id="pages-list"></ul>
                 </div>
 
@@ -106,6 +141,12 @@
                         <li><a href="about.html">About</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
+                    <h2>Sources</h2>
+                    <ul>
+                        <li><a
+                                href="By Juarez Bochi - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=127833908">Title
+                                image</a></li>
+                    </ul>
                 </div>
                 <div class="footer-section">
                     <p>&copy; 2026 demystifyingmaths · joelzactaylor</p>
@@ -113,6 +154,15 @@
             </div>
         </footer>
     </div>
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.164.0/build/three.module.js"
+      }
+    }
+    </script>
+
+    <script type="module" src="../js/home.js"></script>
 </body>
 
 </html>

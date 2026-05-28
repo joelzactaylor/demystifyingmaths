@@ -7,7 +7,7 @@
 
 # Redirect domain root to /demystifyingmaths/
 [[redirects]]
-  from = "/"
-  to = "/demystifyingmaths/"
+  from = "/*"
+  to = "/demystifyingmaths/:splat"
   status = 301
   force = true
