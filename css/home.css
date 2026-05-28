@@ -1,54 +1,231 @@
+/* ===== PAGE LIST: GRID CARD LAYOUT ===== */
+
 ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-li.page-entry {
-    display: flex;
-    justify-content: center;
-    margin: 8px 0;
+/* Grid container - turns the <ul> into a responsive grid */
+#pages-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+    margin-top: 1rem;
 }
 
-.page-link {
+/* Each card is a grid cell, not a flex row */
+li.page-entry {
     display: block;
-    width: 80%;
-    margin: 10px 0;
-    padding: 20px 40px;
+    margin: 0;
+}
+
+/* ===== CARD BASE ===== */
+.page-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 1.1rem 1.2rem 1rem;
     text-decoration: none;
     background: #ffffff;
     color: #111;
-    border: 2px solid #d9e2ec;
-    border-radius: 20px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+    border: 2px solid #c8d8e8;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.09);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease,
+        background 0.2s ease;
+    position: relative;
+    overflow: hidden;
 }
 
+/* Subtle blue glow on hover (radial, reveals from top-left) */
+.page-link::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at top left,
+        rgba(17, 110, 147, 0.09),
+        transparent 65%
+    );
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+
+/* ===== HOVER & FOCUS ===== */
+.page-link:hover,
+.page-link:focus-visible {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+    border-color: #116e93;
+    background: #f4faff;
+}
+
+.page-link:hover::before,
+.page-link:focus-visible::before {
+    opacity: 1;
+}
+
+/* Explicit keyboard focus ring */
+.page-link:focus-visible {
+    outline: 3px solid #116e93;
+    outline-offset: 2px;
+}
+
+/* ===== COMING SOON ===== */
 .coming-soon {
-    background: #f0f0f0;
+    background: #f2f2f0;
+    border-color: #d8d8d0;
+    color: #555;
+    cursor: default;
+    opacity: 0.8;
 }
 
-.page-link:hover {
-    transform: translateY(-4px) scale(1.03);
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
-    background: #f7fbff;
+.coming-soon:hover,
+.coming-soon:focus-visible {
+    transform: none;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.09);
+    border-color: #d8d8d0;
+    background: #f2f2f0;
 }
 
-.coming-soon:hover {
-    transform: unset;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-    background: #f0f0f0;
+.coming-soon::before {
+    display: none;
 }
 
+/* ===== CARD HEADER (tag row) ===== */
+.page-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.55rem;
+    flex-wrap: wrap;
+}
+
+/* ===== TAGS ===== */
+.page-tag {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 0.15rem 0.6rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-weight: 700;
+    white-space: nowrap;
+    /* default: recommended start (blue) */
+    background: rgba(17, 110, 147, 0.12);
+    color: #116e93;
+}
+
+.page-tag--start {
+    background: rgba(17, 110, 147, 0.13);
+    color: #116e93;
+}
+
+.page-tag--intermediate {
+    background: rgba(200, 130, 10, 0.12);
+    color: #8a5c00;
+}
+
+.page-tag--new {
+    background: rgba(30, 140, 70, 0.12);
+    color: #1a6e35;
+}
+
+.page-tag--coming-soon {
+    background: rgba(120, 120, 120, 0.12);
+    color: #666;
+}
+
+/* ===== TOPIC CHIP ===== */
+.page-topic-chip {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 0.15rem 0.6rem;
+    font-size: 0.68rem;
+    font-weight: 600;
+    white-space: nowrap;
+    background: rgba(9, 83, 157, 0.08);
+    color: rgb(9, 83, 157);
+    margin-left: auto;
+}
+
+/* ===== CARD BODY TEXT ===== */
 h3 {
-    margin: 10px 0;
+    margin: 0 0 0.35rem;
     padding: 0;
+    font-size: 1rem;
+    line-height: 1.35;
 }
 
 h3 .highlight {
     color: royalblue;
 }
 
+.page-link p {
+    margin: 0 0 0.6rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    flex: 1;
+}
+
+.page-link small {
+    font-size: 0.78rem;
+    opacity: 0.65;
+    margin-top: auto;
+}
+
+/* ===== FILTER BUTTONS ===== */
+.page-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+}
+
+.page-filter {
+    border-radius: 999px;
+    border: 1.5px solid rgba(17, 110, 147, 0.35);
+    background: transparent;
+    color: #116e93;
+    font-family: inherit;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 0.3rem 0.9rem;
+    cursor: pointer;
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
+}
+
+.page-filter--active,
+.page-filter:hover,
+.page-filter:focus-visible {
+    background: #116e93;
+    border-color: #116e93;
+    color: #fff;
+}
+
+.page-filter:focus-visible {
+    outline: 3px solid #116e93;
+    outline-offset: 2px;
+}
+
+/* Hidden by filter JS */
+.page-entry--hidden {
+    display: none;
+}
+
+/* ===== FOOTER ===== */
 .footer-content {
     justify-content: center;
     align-items: center;
@@ -68,4 +245,15 @@ h3 .highlight {
 
 .footer-section--references {
     display: none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 560px) {
+    #pages-list {
+        grid-template-columns: 1fr;
+    }
+
+    .page-link {
+        padding: 0.9rem 1rem 0.85rem;
+    }
 }
