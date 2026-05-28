@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Demystifying Maths | Home</title>
     <meta name="description" content="Demystifying Maths — Beyond memorization, into comprehension.">
@@ -15,6 +16,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="layout">
         <div id="top-ribbon-placeholder"></div>
@@ -35,35 +37,56 @@
                 </ol>
             </nav>
         </header>
+
         <main>
             <section>
                 <h1 style="font-size: 50px;">Why Maths?</h1>
                 <p>Because maths is amazing!</p>
-                <p>So many people despise mathematics - and with good reason. The way it's often taught can feel like a never-ending series of rules and procedures to memorize, with little connection to the real world or to our intuition.</p>
-                <p>This site is designed for curious minds who want to understand the ideas behind the symbols, not just the procedures.</p>
-                <p>Maths is unique among subjects in that it is infinitely comprehensible - meaning there is always a logical path from any concept back to absolute fundamental principles, things that you can see are true, and understand in your soul instead of keeping in your head as a rule to follow. This site is about finding those paths, and making them clear and intuitive.
+                <p>So many people despise mathematics - and with good reason. The way it's often taught can feel like a
+                    never-ending series of rules and procedures to
+                    memorize, with little connection to the real world or to our intuition.</p>
+                <p>This site is designed for curious minds who want to understand the ideas behind the symbols, not just
+                    the
+                    procedures.</p>
+                <p>Maths is unique among subjects in that it is infinitely comprehensible - meaning there is always a
+                    logical path from any concept back to absolute fundamental principles, things that you can see are
+                    true,
+                    and understand in your soul instead of keeping in your head as a rule to follow. This site is about
+                    finding those paths, and making them clear and intuitive.
                 </p>
             </section>
+
             <section class="boxed-block">
                 <h1>Who is this site for?</h1>
-                <p>This site is designed for anyone who wants to understand the underlying concepts of mathematics, rather than just memorizing formulas and procedures. Whether you're a student, or simply someone curious about the world around you, you'll find that this approach to learning maths can be both enlightening and enjoyable.</p>
-                <p>You don't need to be a math genius - my aim is to lay it out in a way that literally anyone can understand.</p>
-                <p>If you don't understand something I've written on one of my pages, then the fault is in my explanation, not in your comprehension, because my goal is to make it comprehensible to every mind - therefore please do ask, and I can improve the page. In fact if you have any questions about maths, or if there's a topic you'd like to see covered on this site, please do get in touch with me through <a href="contact.html">this link</a>.</p>
+                <p>This site is designed for anyone who wants to understand the underlying concepts of mathematics,
+                    rather
+                    than just memorizing formulas and procedures. Whether you're a student, or simply someone
+                    curious about the world around you, you'll find that this approach to learning maths can be both
+                    enlightening and enjoyable.</p>
+                <p>You don't need to be a math genius - my aim is to lay it out in a way that literally anyone can
+                    understand.</p>
+                <p>If you don't understand something I've written on one of my pages, then the fault is in my
+                    explanation,
+                    not in your comprehension, because my goal is to make it comprehensible to every mind - therefore
+                    please
+                    do
+                    ask, and I can improve the page. In fact if you have any
+                    questions about maths, or if there's a topic you'd like to see covered on this site, please do get
+                    in
+                    touch with me through <a href="contact.html">this link</a>.</p>
             </section>
+
             <section>
                 <h1><a href="pages.html">Pages</a></h1>
                 <div>
-                    <p>I am creating this site like a blog, so new pages will be added over time. These are the ones I have created so far:</p>
-
-                    <nav class="page-filters" aria-label="Filter pages by topic">
-                        <button type="button" class="page-filter page-filter--active" data-filter="all">All</button>
-                        <button type="button" class="page-filter" data-filter="foundations">Foundations</button>
-                        <button type="button" class="page-filter" data-filter="complex">Complex Numbers</button>
-                        <button type="button" class="page-filter" data-filter="patterns">Patterns</button>
-                    </nav>
-
+                    <p>I am creating this site like a blog, so new pages will be added over time. These are the ones I
+                        have
+                        created so
+                        far:</p>
+                    <br>
                     <ul id="pages-list"></ul>
                 </div>
+
                 <script>
                     fetch("../embed/page-list.html")
                         .then(response => response.text())
@@ -73,6 +96,7 @@
                 </script>
             </section>
         </main>
+
         <footer>
             <div class="footer-content">
                 <div class="footer-section">
@@ -84,49 +108,11 @@
                     </ul>
                 </div>
                 <div class="footer-section">
-                    <p>© 2026 demystifyingmaths · joelzactaylor</p>
+                    <p>&copy; 2026 demystifyingmaths · joelzactaylor</p>
                 </div>
             </div>
         </footer>
     </div>
-
-    <script>
-        // Filter buttons: show/hide cards by topic
-        // Runs after page-list embed has loaded
-        function initFilters() {
-            const filters = document.querySelectorAll('.page-filter');
-            const list = document.getElementById('pages-list');
-            if (!filters.length || !list) return;
-
-            filters.forEach(button => {
-                button.addEventListener('click', () => {
-                    const filter = button.getAttribute('data-filter');
-
-                    // Update active state
-                    filters.forEach(b => b.classList.remove('page-filter--active'));
-                    button.classList.add('page-filter--active');
-
-                    // Show / hide cards
-                    list.querySelectorAll('.page-entry').forEach(card => {
-                        const topic = card.getAttribute('data-topic');
-                        if (filter === 'all' || topic === filter) {
-                            card.classList.remove('page-entry--hidden');
-                        } else {
-                            card.classList.add('page-entry--hidden');
-                        }
-                    });
-                });
-            });
-        }
-
-        // The embed is fetched async, so we watch for it to be injected
-        const observer = new MutationObserver(() => {
-            if (document.querySelector('.page-entry')) {
-                observer.disconnect();
-                initFilters();
-            }
-        });
-        observer.observe(document.getElementById('pages-list'), { childList: true });
-    </script>
 </body>
+
 </html>
