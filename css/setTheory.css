@@ -1,0 +1,1308 @@
+/* SORTING NAMES 1 */
+
+.sorting-activity {
+    font-family: 'Aleo', Arial, sans-serif;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.sorting-activity h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.sorting-activity>p {
+    text-align: center;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.sorting-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.boxes-container {
+    display: flex;
+    gap: 20px;
+    min-height: 300px;
+}
+
+.sort-box {
+    flex: 1;
+    border: 3px dashed #3498db;
+    border-radius: 12px;
+    padding: 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.sort-box h3 {
+    color: #2c3e50;
+    margin: 0 0 8px 0;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.sort-box p {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0 0 15px 0;
+    text-align: center;
+}
+
+.drop-zone {
+    min-height: 200px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-content: flex-start;
+}
+
+.sort-box.highlight {
+    border-color: #2ecc71;
+    background: linear-gradient(135deg, #d5f4e6 0%, #cbf0d8 100%);
+}
+
+.stick-figures-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    min-height: 150px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border: 2px solid #dee2e6;
+}
+
+.stick-figure {
+    position: relative;
+    cursor: grab;
+    user-select: none;
+    transition: transform 0.1s ease, box-shadow 0.3s ease;
+    z-index: 10;
+}
+
+.stick-figure:active {
+    cursor: grabbing;
+    transform: scale(1.05);
+}
+
+.stick-figure.dragging {
+    opacity: 0.8;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.figure-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.figure-svg {
+    width: 50px;
+    height: 70px;
+}
+
+.figure-name {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #2c3e50;
+    padding: 5px 10px;
+    background: white;
+    border-radius: 6px;
+    border: 2px solid #3498db;
+    min-width: 60px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+/* Smaller size when inside drop zones */
+.drop-zone .stick-figure .figure-svg {
+    width: 25px;
+    height: 35px;
+}
+
+.drop-zone .stick-figure .figure-name {
+    font-size: 0.65rem;
+    padding: 3px 6px;
+    min-width: 35px;
+}
+
+.drop-zone .stick-figure {
+    transform: scale(0.5);
+}
+
+.drop-zone .stick-figure .figure-wrapper {
+    gap: 2px;
+}
+
+.stick-figure.correct .figure-name {
+    box-shadow: 0 0 15px #2ecc71, 0 0 30px #2ecc71;
+    border-color: #2ecc71;
+}
+
+.stick-figure.incorrect .figure-name {
+    box-shadow: 0 0 15px #e74c3c, 0 0 30px #e74c3c;
+    border-color: #e74c3c;
+}
+
+.stick-figure.dragging .figure-name {
+    box-shadow: none;
+    border-color: #3498db;
+}
+
+.activity-instructions {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    background: #e8f4f8;
+    border-radius: 8px;
+    color: #2c3e50;
+}
+
+.activity-instructions strong {
+    color: #1a5276;
+}
+
+@media (max-width: 768px) {
+    .boxes-container {
+        flex-direction: column;
+    }
+
+    .sort-box {
+        min-height: 250px;
+    }
+}
+
+/* PRIME SORTING */
+
+.sorting-activity.prime-activity {
+    font-family: 'Aleo', Arial, sans-serif;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.sorting-activity.prime-activity h2 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.sorting-activity.prime-activity>p {
+    text-align: center;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+.sorting-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.boxes-container {
+    display: flex;
+    gap: 20px;
+    min-height: 300px;
+}
+
+.sort-box {
+    flex: 1;
+    border: 3px dashed #3498db;
+    border-radius: 12px;
+    padding: 20px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.sort-box h3 {
+    color: #2c3e50;
+    margin: 0 0 8px 0;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.sort-box p {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 0 0 15px 0;
+    text-align: center;
+}
+
+.drop-zone {
+    min-height: 200px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-content: flex-start;
+}
+
+.sort-box.highlight {
+    border-color: #2ecc71;
+    background: linear-gradient(135deg, #d5f4e6 0%, #cbf0d8 100%);
+}
+
+.numbers-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    min-height: 150px;
+    background: #f8f9fa;
+    border-radius: 12px;
+    border: 2px solid #dee2e6;
+}
+
+.number-item {
+    position: relative;
+    cursor: grab;
+    user-select: none;
+    transition: transform 0.1s ease, box-shadow 0.3s ease;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.number-item:active {
+    cursor: grabbing;
+    transform: scale(1.05);
+}
+
+.number-item.dragging {
+    opacity: 0.8;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.number-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+    border: 3px solid #3498db;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #2c3e50;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.number-item.correct .number-circle {
+    box-shadow: 0 0 15px #2ecc71, 0 0 30px #2ecc71, 0 4px 8px rgba(0, 0, 0, 0.15);
+    border-color: #2ecc71;
+}
+
+.number-item.incorrect .number-circle {
+    box-shadow: 0 0 15px #e74c3c, 0 0 30px #e74c3c, 0 4px 8px rgba(0, 0, 0, 0.15);
+    border-color: #e74c3c;
+}
+
+.number-item.dragging .number-circle {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    border-color: #3498db;
+}
+
+/* Smaller size when inside drop zones */
+.drop-zone .number-item .number-circle {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+    border-width: 2px;
+}
+
+.drop-zone .number-item {
+    transform: scale(0.5);
+}
+
+.activity-instructions {
+    text-align: center;
+    margin-top: 20px;
+    padding: 15px;
+    background: #e8f4f8;
+    border-radius: 8px;
+    color: #2c3e50;
+}
+
+.activity-instructions strong {
+    color: #1a5276;
+}
+
+@media (max-width: 768px) {
+    .boxes-container {
+        flex-direction: column;
+    }
+
+    .sort-box {
+        min-height: 250px;
+    }
+}
+
+/* SINGLE VENN DIAGRAM */
+
+.single-venn-diagram {
+    margin: 48px 0;
+    text-align: center;
+}
+
+.single-venn-diagram h2 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.single-venn-diagram>p {
+    margin-bottom: 16px;
+    color: #555;
+}
+
+/* Universal set rectangle: all plants */
+.single-venn-universe {
+    position: relative;
+    margin: 0 auto;
+    max-width: 900px;
+    min-height: 260px;
+    border: 3px solid #2c3e50;
+    border-radius: 16px;
+    background: #fdfdfd;
+    box-sizing: border-box;
+    padding: 40px 40px 32px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Label for U */
+.single-venn-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin-bottom: 28px;
+}
+
+/* Trees circle */
+.single-venn-circle {
+    width: 180px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    border: 3px solid #2ecc71;
+    background: #e5f8ec;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.single-venn-label {
+    font-weight: 700;
+    font-size: 1rem;
+    color: #1f2933;
+}
+
+/* Label for the rest of the plants area */
+.single-venn-outside-label {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* Responsive tweaks */
+@media (max-width: 640px) {
+    .single-venn-universe {
+        max-width: 100%;
+        padding: 32px 20px 26px 20px;
+        min-height: 240px;
+    }
+
+    .single-venn-circle {
+        width: 150px;
+    }
+
+    .single-venn-title {
+        margin-bottom: 22px;
+        font-size: 1rem;
+    }
+
+    .single-venn-outside-label {
+        margin-top: 16px;
+        font-size: 0.9rem;
+    }
+}
+
+/* PARTITION VENN DIAGRAM */
+
+.partition-diagram {
+    margin: 48px 0;
+    text-align: center;
+}
+
+.partition-diagram h2 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+.partition-diagram>p {
+    margin-bottom: 16px;
+    color: #555;
+}
+
+/* Universal set rectangle */
+.partition-universe {
+    position: relative;
+    margin: 0 auto;
+    max-width: 900px;
+    min-height: 260px;
+    border: 3px solid #2c3e50;
+    border-radius: 16px;
+    background: #fdfdfd;
+    box-sizing: border-box;
+    padding: 36px 40px 28px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+}
+
+/* Label for U */
+.partition-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #2c3e50;
+}
+
+/* Row of four circles */
+.partition-universe-circles-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 720px;
+    gap: 32px;
+}
+
+/* Base style for circular sets */
+.partition-circle {
+    flex: 1;
+    max-width: 140px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.partition-circle .partition-label {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #1f2933;
+}
+
+/* Colours */
+.partition-circle--rock {
+    border: 3px solid #e74c3c;
+    background: #ffe2de;
+}
+
+.partition-circle--pop {
+    border: 3px solid #27ae60;
+    background: #e2f6e8;
+}
+
+.partition-circle--classical {
+    border: 3px solid #f1c40f;
+    background: #fff3cf;
+}
+
+.partition-circle--jazz {
+    border: 3px solid #8e44ad;
+    background: #f1e5fa;
+}
+
+/* “Other” label in leftover region */
+.partition-other-region {
+    margin-top: 4px;
+}
+
+.partition-other-region span {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000;
+}
+
+.partition-caption {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Responsive: stack circles in two rows on small screens */
+@media (max-width: 640px) {
+    .partition-universe {
+        padding: 28px 20px 24px 20px;
+        min-height: 280px;
+    }
+
+    .partition-universe-circles-row {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px 24px;
+    }
+
+    .partition-circle {
+        max-width: 110px;
+    }
+
+    .partition-circle .partition-label {
+        font-size: 0.9rem;
+    }
+
+    .partition-other-region {
+        margin-top: 8px;
+    }
+}
+
+/* TWO-VENN DIAGRAM */
+
+.two-venn-diagram {
+    margin: 48px 0;
+    text-align: center;
+}
+
+.two-venn-universe {
+    position: relative;
+    margin: 0 auto;
+    max-width: 900px;
+    min-height: 260px;
+    border: 3px solid #2c3e50;
+    border-radius: 16px;
+    background: #fdfdfd;
+    box-sizing: border-box;
+    padding: 40px 40px 32px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.two-venn-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin-bottom: 26px;
+}
+
+.two-venn-circles {
+    width: 420px;
+    max-width: 100%;
+}
+
+.two-venn-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+@media (max-width: 640px) {
+    .two-venn-universe {
+        max-width: 100%;
+        padding: 32px 20px 26px 20px;
+        min-height: 240px;
+    }
+
+    .two-venn-title {
+        margin-bottom: 20px;
+        font-size: 1rem;
+    }
+
+    .two-venn-circles {
+        width: 320px;
+    }
+}
+
+/* OPERATION CONTAINERS */
+
+.operation-container {
+    position: relative;
+    padding: 28px;
+    margin-top: 100px;
+}
+
+.operation-container::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 999px;
+    pointer-events: none;
+    top: -26px;
+    width: 80%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #111 20%, #111 80%, transparent);
+    animation: linePulse 10s ease-in-out infinite;
+}
+
+@keyframes linePulse {
+
+    0%,
+    100% {
+        transform: translateX(-20%) scaleX(0.75);
+        opacity: 0.45;
+    }
+
+    50% {
+        transform: translateX(-60%) scaleX(0.9);
+        opacity: 1;
+    }
+}
+
+/* REVEAL BUTTON */
+
+#reveal-container {
+    margin: 16px 0;
+}
+
+#reveal-button {
+    padding: 8px 16px;
+    border-radius: 6px;
+    background: #3498db;
+    color: white;
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+#reveal-button:hover {
+    background: #2c80ba;
+}
+
+/* TOGGLE VENN */
+/* Container */
+
+.venn-trainer {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.25rem;
+    max-width: 520px;
+    margin: 2rem auto;
+    background: #f7f5e9;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+}
+
+.venn-trainer h3 {
+    margin: 0 0 0.75rem;
+    font-size: 1.2rem;
+    color: #184c7d;
+}
+
+/* Card / expression row */
+
+.venn-card {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.85rem;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.venn-card-label {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.venn-card-expression {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    background: #e6eef8;
+    border: 1px solid #c5d3ea;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #1b3a5f;
+}
+
+/* Button */
+
+#venn-check {
+    margin-left: 0;
+    padding: 0.35rem 0.8rem;
+    border-radius: 4px;
+    border: 1px solid #1f6fb2;
+    background: #2578c5;
+    color: #fff;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.05s ease, opacity 0.15s ease;
+}
+
+#venn-check:hover {
+    background: #1f6fb2;
+}
+
+#venn-check:active {
+    transform: translateY(1px);
+}
+
+.venn-check--disabled,
+#venn-check:disabled {
+    background: #ccc;
+    border-color: #b3b3b3;
+    color: #666;
+    cursor: default;
+}
+
+/* Feedback "dot" – no icons, just glow */
+
+.venn-feedback {
+    width: 1.1rem;
+    height: 1.1rem;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    /* no visible text */
+}
+
+/* Glow states applied by JS */
+
+.venn-trainer--correct .venn-card {
+    box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.3);
+    border-color: transparent;
+}
+
+.venn-trainer--incorrect .venn-card {
+    box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.35);
+    border-color: transparent;
+}
+
+.venn-trainer--correct .venn-feedback {
+    border-color: rgba(46, 125, 50, 0.9);
+}
+
+.venn-trainer--incorrect .venn-feedback {
+    border-color: rgba(198, 40, 40, 0.9);
+}
+
+/* Diagram layout */
+
+.venn-diagram-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.venn-svg {
+    width: 400px;
+    height: auto;
+}
+
+.venn-label {
+    font-size: 1.5rem;
+    text-anchor: middle;
+    dominant-baseline: central;
+    fill: #222;
+}
+
+/* Circles outline */
+
+.venn-circle {
+    fill: none;
+    stroke: #555;
+    stroke-width: 2;
+}
+
+/* Regions */
+
+.venn-region {
+    fill: rgba(0, 0, 0, 0);
+    /* transparent until selected */
+    stroke: none;
+    cursor: pointer;
+    transition: fill 0.15s ease-in-out;
+}
+
+.venn-region--on {
+    fill: rgba(41, 128, 185, 0.35);
+}
+
+/* NUMBER SORTING */
+
+.sort-the-numbers {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1.5rem;
+    max-width: 900px;
+    margin: 2rem auto;
+    background: #f7f5e9;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+}
+
+.sort-the-numbers h3 {
+    margin: 0 0 1rem;
+    font-size: 1.4rem;
+    color: #184c7d;
+}
+
+/* Canvas bounds (cards are positioned inside this) */
+
+.canvas {
+    position: relative;
+    width: 100%;
+    min-height: 520px;
+    overflow: hidden;
+    background: #faf8f0;
+    border-radius: 6px;
+    padding-top: 60px;
+}
+
+/* Number cards */
+
+.number-card {
+    padding: 0.45rem 0.8rem;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background: #fdfdfd;
+    cursor: grab;
+    user-select: none;
+    font-size: 1rem;
+    line-height: 1.2;
+    position: absolute;
+    z-index: 3;
+}
+
+.number-card--dragging {
+    opacity: 0.9;
+    cursor: grabbing;
+}
+
+.number-card--correct {
+    border-color: #2e7d32;
+}
+
+.number-card--incorrect {
+    border-color: #c62828;
+}
+
+.number-card--none {
+    border-color: #ccc;
+}
+
+/* SVG diagram */
+
+.number-sets-venn {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 6px;
+}
+
+.bin-ellipse {
+    fill: none;
+    stroke: #444;
+    stroke-width: 2.5;
+}
+
+.bin-label {
+    font-size: 0.95rem;
+    text-anchor: middle;
+    dominant-baseline: central;
+    fill: #222;
+}
+
+.bin-label-large {
+    font-size: 1.2rem;
+}
+
+/* Feedback on bins (optional) */
+
+.bin--over .bin-ellipse {
+    stroke-width: 3.5;
+    stroke-dasharray: 5 3;
+}
+
+.bin--correct .bin-ellipse {
+    stroke: #2e7d32;
+}
+
+.bin--incorrect .bin-ellipse {
+    stroke: #c62828;
+}
+
+/* TABLE OF SETS */
+
+.number-sets-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 32px 0;
+    font-family: 'Aleo', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 0.95rem;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+}
+
+/* Header */
+.number-sets-table thead {
+    background: linear-gradient(135deg, #0b4f7f 0%, #1565c0 100%);
+    color: #fdfdfd;
+}
+
+.number-sets-table thead th {
+    padding: 12px 16px;
+    font-weight: 700;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Body cells */
+.number-sets-table tbody td {
+    padding: 10px 16px;
+    vertical-align: top;
+    border-bottom: 1px solid rgba(15, 23, 42, 0.06);
+    color: #1f2933;
+}
+
+/* First column (symbol) a bit narrower and centered-ish */
+.number-sets-table tbody td:first-child {
+    width: 80px;
+    white-space: nowrap;
+    text-align: center;
+    font-size: 1.15rem;
+}
+
+/* Second column (name) a bit bolder */
+.number-sets-table tbody td:nth-child(2) {
+    font-weight: 600;
+    color: #123047;
+}
+
+/* Striping for readability */
+.number-sets-table tbody tr:nth-child(even) {
+    background: rgba(248, 250, 252, 0.8);
+}
+
+/* Small hover highlight */
+.number-sets-table tbody tr:hover {
+    background: rgba(226, 239, 255, 0.9);
+}
+
+/* Make MathML sit nicely inline */
+.number-sets-table math {
+    font-size: 1em;
+    margin: 0;
+}
+
+/* Responsive: stack cells on very small screens */
+@media (max-width: 640px) {
+    .number-sets-table thead {
+        display: none;
+    }
+
+    .number-sets-table,
+    .number-sets-table tbody,
+    .number-sets-table tr,
+    .number-sets-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .number-sets-table tbody tr {
+        margin-bottom: 14px;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+        background: #ffffff;
+    }
+
+    .number-sets-table tbody td {
+        border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .number-sets-table tbody td:first-child {
+        background: linear-gradient(135deg, #0b4f7f 0%, #1565c0 100%);
+        color: #f9fafb;
+        font-size: 1.2rem;
+        padding: 10px 12px;
+        border-bottom: none;
+    }
+
+    .number-sets-table tbody td:nth-child(2),
+    .number-sets-table tbody td:nth-child(3) {
+        padding: 8px 12px;
+    }
+}
+
+/* SET LAWS */
+
+.set-laws-section {
+    padding: 4rem 1.5rem;
+}
+
+.set-laws-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.set-laws-header {
+    margin-bottom: 2.5rem;
+}
+
+.set-laws-eyebrow {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #2563eb;
+    margin-bottom: 0.75rem;
+}
+
+.set-laws-intro {
+    max-width: 700px;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #334155;
+}
+
+.set-laws-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+}
+
+.set-law-card {
+    background: #ffffff;
+    border: 1px solid #dbe4f0;
+    border-radius: 1rem;
+    padding: 1.4rem;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.set-law-card h3 {
+    font-size: 1.15rem;
+    color: #0f172a;
+    margin-bottom: 1rem;
+}
+
+.set-law-rule {
+    font-family: "Georgia", "Times New Roman", serif;
+    font-size: 1.05rem;
+    background: #eff6ff;
+    color: #1d4ed8;
+    border-radius: 0.65rem;
+    padding: 0.7rem 0.9rem;
+    margin-bottom: 0.65rem;
+}
+
+.set-law-card p {
+    margin-top: 0.85rem;
+    color: #475569;
+    line-height: 1.65;
+    font-size: 0.98rem;
+}
+
+/* SET LAW CHECKER */
+
+.set-laws-checker {
+    margin-top: 2.5rem;
+    padding: 1.5rem;
+    background: #f8fbfd;
+    border: 1px solid #d9e6ec;
+    border-radius: 16px;
+}
+
+.set-laws-checker h2 {
+    margin-bottom: 0.5rem;
+}
+
+.set-laws-checker>p {
+    margin-bottom: 1rem;
+    color: #355160;
+    line-height: 1.6;
+}
+
+.set-law-quiz-shell {
+    margin-top: 1.5rem;
+}
+
+.set-law-progress {
+    font-weight: 700;
+    color: #116e93;
+    margin-bottom: 0.8rem;
+}
+
+.set-law-quiz-card {
+    background: #ffffff;
+    border: 1px solid #d9e6ec;
+    border-radius: 12px;
+    padding: 1.2rem;
+}
+
+.set-law-quiz-expression {
+    font-size: 1.08rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    color: #183642;
+}
+
+.set-law-quiz-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.set-law-quiz-options button {
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.4;
+    border-radius: 999px;
+    padding: 0.65rem 1rem;
+    cursor: pointer;
+    background: #ffffff;
+    border: 2px solid #116e93;
+    color: #116e93;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        opacity 0.2s ease,
+        transform 0.15s ease;
+}
+
+.set-law-quiz-options button:hover:not(:disabled) {
+    background: #116e93;
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.set-law-quiz-options button:disabled {
+    cursor: default;
+}
+
+.set-law-quiz-options button.correct {
+    background: #dff3e6;
+    border-color: #2e8b57;
+    color: #1f6b43;
+}
+
+.set-law-quiz-options button.incorrect {
+    background: #fde8e8;
+    border-color: #c54b4b;
+    color: #922f2f;
+}
+
+.set-law-quiz-options button.fade-reset {
+    transition:
+        background 1s ease,
+        color 1s ease,
+        border-color 1s ease,
+        opacity 0.2s ease,
+        transform 0.15s ease;
+}
+
+.set-law-quiz-feedback {
+    margin-top: 0.9rem;
+    min-height: 1.4em;
+    font-weight: 700;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+}
+
+.set-law-quiz-feedback.visible {
+    opacity: 1;
+}
+
+.set-law-quiz-feedback.correct {
+    color: #1f6b43;
+}
+
+.set-law-quiz-options button.incorrect {
+    background: #fde8e8;
+    border-color: #c54b4b;
+    color: #922f2f;
+}
+
+.set-law-quiz-options button.fade-reset {
+    transition:
+        background 1s ease,
+        color 1s ease,
+        border-color 1s ease,
+        opacity 0.2s ease,
+        transform 0.15s ease;
+}
+
+.set-law-quiz-card.is-complete .set-law-quiz-options {
+    display: none;
+}
+
+@media (max-width: 640px) {
+    .set-laws-checker {
+        padding: 1.1rem;
+    }
+
+    .set-law-quiz-card {
+        padding: 1rem;
+    }
+
+    .set-law-quiz-options {
+        flex-direction: column;
+    }
+
+    .set-law-quiz-options button {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* SHARED */
+
+.definition {
+    margin-top: 18px;
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.544);
+    border-radius: 14px;
+    border: 1px solid rgba(17, 110, 147, 0.14);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.05);
+}
+
+section h3 {
+    margin-top: 40px;
+    font-size: 28px;
+    color: rgb(9, 83, 157);
+}
+
+.venn-image {
+    max-width: 50%;
+    height: auto;
+}
+
+.set-symbol {
+    font-family: "Cambria Math", "STIX Two Math", "Latin Modern Math", serif;
+}

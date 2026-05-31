@@ -12,12 +12,12 @@ trig
 
 eulers formula                                              !important
 
-set theory                                                  !important
+gaussian primes
  
 
 PAGE EDITS ---------------------------------------------------------------
 
-angleUnits need further reading section
+angleUnits need further reading section - needs constant updating on all pages
 
 
 
