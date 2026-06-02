@@ -569,12 +569,9 @@ h1 {
 
 @media (max-width: 1100px) {
     #page-nav-container {
-        position: static;
-        width: 100%;
-        margin: 1.5rem 0 2rem 0;
-    }
-
-    .page-nav {
-        box-shadow: none;
+        display: none;
+        height: 0px;
+        margin: 0px;
+        padding: 0px;
     }
 }

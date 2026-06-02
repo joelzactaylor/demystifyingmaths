@@ -1,0 +1,9 @@
+#ggb-element {
+    box-shadow: black 0 0 5px;
+    border: none;
+}
+
+.derivation-step {
+    width: 60%;
+    margin: auto;
+}

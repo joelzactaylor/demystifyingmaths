@@ -44,3 +44,102 @@ CODE SEGMENTS -----------------------------------------------------------
 
 
 wine ~/Downloads/kf-2.15.4/kf.x86-64.exe
+
+<p>Here is the general form of the Maclaurin Series:</p>
+            <math display="block" style="font-size: 1.25rem;">
+                <mrow>
+                    <mi>f</mi>
+                    <mo>(</mo>
+                    <mi>x</mi>
+                    <mo>)</mo>
+                </mrow>
+                <mo>=</mo>
+                <mrow>
+                    <mfrac>
+                        <mrow>
+                            <mi>f</mi>
+                            <mo>(</mo>
+                            <mn>0</mn>
+                            <mo>)</mo>
+                        </mrow>
+                        <mrow>
+                            <mn>0</mn>
+                            <mo>!</mo>
+                        </mrow>
+                    </mfrac>
+                    <msup>
+                        <mi>x</mi>
+                        <mn>0</mn>
+                    </msup>
+                </mrow>
+                <mo>+</mo>
+                <mrow>
+                    <mfrac>
+                        <mrow>
+                            <mi>f</mi>
+                            <mo>'</mo>
+                            <mo>(</mo>
+                            <mn>0</mn>
+                            <mo>)</mo>
+                        </mrow>
+                        <mrow>
+                            <mn>1</mn>
+                            <mo>!</mo>
+                        </mrow>
+                    </mfrac>
+
+                    <msup>
+                        <mi>x</mi>
+                        <mn>1</mn>
+                    </msup>
+                </mrow>
+                <mo>+</mo>
+                <mrow>
+                    <mfrac>
+                        <mrow>
+                            <mi>f</mi>
+                            <mo>"</mo>
+                            <mo>(</mo>
+                            <mn>0</mn>
+                            <mo>)</mo>
+                        </mrow>
+                        <mrow>
+                            <mn>2</mn>
+                            <mo>!</mo>
+                        </mrow>
+                    </mfrac>
+                    <msup>
+                        <mi>x</mi>
+                        <mn>2</mn>
+                    </msup>
+                </mrow>
+                <mo>+</mo>
+                <mrow>
+                    <mfrac>
+                        <mrow>
+                            <mi>f</mi>
+                            <mo>"</mo>
+                            <mo>'</mo>
+                            <mo>(</mo>
+                            <mn>0</mn>
+                            <mo>)</mo>
+                        </mrow>
+                        <mrow>
+                            <mn>3</mn>
+                            <mo>!</mo>
+                        </mrow>
+                    </mfrac>
+                    <msup>
+                        <mi>x</mi>
+                        <mn>3</mn>
+                    </msup>
+                </mrow>
+                <mo>+</mo>
+                <mo>⋯</mo>
+            </math>
+
+            <p>Basically, the point information you need to predict a curve accurately, infinitely far in both
+                directions
+                is infinite. Although this data can be expressed as an equation, which is markedly <strong>not</strong>
+                infinite, we are giving it here as individual values so that we can put the values into the Maclaurin
+                Series equation.</p>
