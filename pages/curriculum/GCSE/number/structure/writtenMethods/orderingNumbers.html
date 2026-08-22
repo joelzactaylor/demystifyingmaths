@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Demystifying Maths | GCSE Ordering integers, decimals and negatives</title>
+    <meta name="description" content="Ordering numbers, including negatives and decimals of different lengths.">
+    <meta property="og:title" content="Demystifying Maths">
+    <meta property="og:description" content="Ordering numbers, including negatives and decimals of different lengths.">
+    <link rel="stylesheet" href="/css/shared.css">
+    <link rel="stylesheet" href="/css/curriculum.css">
+    <link rel="stylesheet" href="/css/lesson.css">
+    <link rel="stylesheet" href="/css/orderingNumbers.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
+    <script src="/js/navPanel.js" defer></script>
+    <script src="/js/orderingNumbers.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&amp;display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="layout">
+        <div id="top-ribbon-placeholder"></div>
+        <script>fetch("/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
+
+        <header>
+            <h1>Demystifying - Ordering integers, decimals and negatives</h1>
+            <nav aria-label="Breadcrumb">
+                <ol class="breadcrumb breadcrumb--deep">
+                    <li><a href="/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/pages/curriculum/GCSE/number/">Number</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/pages/curriculum/GCSE/number/structure/">Structure and calculation</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/pages/curriculum/GCSE/number/structure/writtenMethods/">Written methods</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li>
+                        <p>Ordering integers, decimals and negatives</p>
+                    </li>
+                </ol>
+            </nav>
+        </header>
+
+        <aside id="page-nav-container"></aside>
+
+        <main class="lesson-main">
+            <section>
+                <h1>Introduction</h1>
+                <h3>What does it mean to order numbers?</h3>
+                <p>Ordering numbers means arranging them according to their value:</p>
+                <ul>
+                    <li><p><strong>ascending order</strong> &mdash; from smallest to largest</p></li>
+                    <li><p><strong>descending order</strong> &mdash; from largest to smallest</p></li>
+                </ul>
+                <p>A number line makes the order visible. Numbers further to the <span style="color: #183b70">left</span>
+                    are smaller, and numbers further to the <span style="color: #7a3c09">right</span> are larger.</p>
+
+                <svg viewBox="0 0 920 230" role="img" aria-labelledby="number-line-title number-line-description"
+                    style="display: block; width: 100%; max-width: 920px; height: auto; margin: 1.5rem auto; font-family: Aleo, serif;">
+                    <title id="number-line-title">A number line from negative four to four</title>
+                    <desc id="number-line-description">The values increase from negative four on the left to four on
+                        the right. An arrow above the line labels the direction from smaller to larger.</desc>
+                    <defs>
+                        <marker id="ordering-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7"
+                            markerHeight="7" orient="auto-start-reverse">
+                            <path d="M0 0l10 5-10 5z" fill="#3568b8" />
+                        </marker>
+                    </defs>
+                    <path d="M82 119H838" stroke="#41535c" stroke-width="4" stroke-linecap="round" />
+                    <path d="M113 54H807" stroke="#3568b8" stroke-width="3" marker-end="url(#ordering-arrow)" />
+                    <text x="460" y="38" fill="#183b70" font-size="20" font-weight="700" text-anchor="middle">values increase</text>
+                    <g stroke="#41535c" stroke-width="3">
+                        <path d="M100 103v32 M190 103v32 M280 103v32 M370 103v32 M460 98v42 M550 103v32 M640 103v32 M730 103v32 M820 103v32" />
+                    </g>
+                    <g fill="#273940" font-size="22" text-anchor="middle">
+                        <text x="100" y="170">&minus;4</text><text x="190" y="170">&minus;3</text>
+                        <text x="280" y="170">&minus;2</text><text x="370" y="170">&minus;1</text>
+                        <text x="460" y="170">0</text><text x="550" y="170">1</text>
+                        <text x="640" y="170">2</text><text x="730" y="170">3</text><text x="820" y="170">4</text>
+                    </g>
+                    <text x="100" y="211" fill="#183b70" font-size="18" font-weight="700" text-anchor="middle">smaller</text>
+                    <text x="820" y="211" fill="#7a3c09" font-size="18" font-weight="700" text-anchor="middle">larger</text>
+                </svg>
+                <p>For example, <strong>&minus;3, 0, 2, 4</strong> is in ascending order: it reads from left to right
+                    along the number line.</p>
+            </section>
+
+            <section>
+                <h1>Ordering whole numbers</h1>
+                <p>Place value tells us which of two positive whole numbers is larger.</p>
+                <p>First compare the digits in the largest place. If they are equal, move one place to the right and
+                    compare again. Stop at the first place where the digits are different.</p>
+
+                <div class="ordering-example">
+                    <h3>Example: put 4,582, 4,528 and 4,805 in ascending order</h3>
+                    <div class="ordering-scene" data-values="4582|4528|4805" data-labels="4,582|4,528|4,805"
+                        data-min="4500" data-max="4900" data-step="100" data-direction="ascending"
+                        data-answer="4,528, 4,582, 4,805">
+                        <div class="ordering-scene__sticky"></div>
+                        <ol class="ordering-scene__script">
+                            <li>4,582 sits between 4,500 and 4,600.</li>
+                            <li>4,528 is a little further left, so it is smaller than 4,582.</li>
+                            <li>4,805 is beyond 4,800, making it the largest.</li>
+                        </ol>
+                        <noscript><p><strong>Ascending order: 4,528, 4,582, 4,805</strong></p></noscript>
+                    </div>
+                    <ol class="ordering-example__steps">
+                        <li><p>All three numbers have 4 thousands, so compare their hundreds.</p></li>
+                        <li><p>4,805 has 8 hundreds. The other two have 5 hundreds, so 4,805 is the largest.</p></li>
+                        <li><p>4,528 and 4,582 first differ in the tens place. Since 2 tens is less than 8 tens,
+                                4,528 comes first.</p></li>
+                    </ol>
+                    <p><strong>Ascending order: 4,528, 4,582, 4,805</strong></p>
+                </div>
+
+                <aside class="important-box" aria-labelledby="whole-number-important-title">
+                    <h2 class="important-box__title" id="whole-number-important-title">Important</h2>
+                    <p>For positive whole numbers, a number with more digits is larger. For example,
+                        <strong>9,999 &lt; 10,000</strong>.</p>
+                    <p>This shortcut does not work for negative numbers or decimals.</p>
+                </aside>
+            </section>
+
+            <section>
+                <h1>Ordering decimal numbers</h1>
+                <p>Line up the decimal points so that digits with the same place value sit underneath each other.</p>
+                <p>You can add zeros to the end of a decimal without changing its value. This makes decimal numbers
+                    the same length and easier to compare:</p>
+                <p style="text-align: center; font-size: 1.25rem;"><strong>3.7 = 3.70 = 3.700</strong></p>
+
+                <div class="ordering-example">
+                    <h3>Example: put 3.7, 3.17, 3.705 and 3.07 in ascending order</h3>
+                    <div class="ordering-scene" data-values="3.7|3.17|3.705|3.07"
+                        data-labels="3.7|3.17|3.705|3.07" data-min="3" data-max="3.8" data-step="0.1"
+                        data-direction="ascending" data-answer="3.07, 3.17, 3.7, 3.705">
+                        <div class="ordering-scene__sticky"></div>
+                        <ol class="ordering-scene__script">
+                            <li>3.7 can be written as 3.700.</li>
+                            <li>3.17, or 3.170, is much closer to 3 than 3.7 is.</li>
+                            <li>3.705 is just to the right of 3.700.</li>
+                            <li>3.07, or 3.070, is the closest number to 3.</li>
+                        </ol>
+                        <noscript><p><strong>Ascending order: 3.07, 3.17, 3.7, 3.705</strong></p></noscript>
+                    </div>
+                    <ol class="ordering-example__steps">
+                        <li><p>Add placeholder zeros: <strong>3.700, 3.170, 3.705, 3.070</strong>.</p></li>
+                        <li><p>The tenths digits put 3.070 first, 3.170 second, and the two numbers beginning 3.70 last.</p></li>
+                        <li><p>3.700 and 3.705 first differ in the thousandths place, so 3.700 is smaller.</p></li>
+                    </ol>
+                    <p><strong>Ascending order: 3.07, 3.17, 3.7, 3.705</strong></p>
+                </div>
+
+                <aside class="important-box" aria-labelledby="decimal-important-title">
+                    <h2 class="important-box__title" id="decimal-important-title">Important</h2>
+                    <p>A decimal with more digits is not necessarily larger. For example,
+                        <strong>0.8 = 0.800</strong>, and <strong>0.8 &gt; 0.75</strong>.</p>
+                    <p>Compare the value of each place, not the number of digits.</p>
+                </aside>
+            </section>
+
+            <section>
+                <h1>Ordering negative numbers</h1>
+                <p>Every negative number is smaller than zero and every positive number.</p>
+                <p>Among negative numbers, the value closer to zero is larger. This means
+                    <strong>&minus;2 is larger than &minus;7</strong>, even though 7 is larger than 2.</p>
+
+                <div class="ordering-example">
+                    <h3>Example: put 5, &minus;1, &minus;6, 0 and 2 in descending order</h3>
+                    <div class="ordering-scene" data-values="5|-1|-6|0|2" data-labels="5|&minus;1|&minus;6|0|2"
+                        data-min="-6" data-max="6" data-step="2" data-direction="descending"
+                        data-answer="5, 2, 0, &minus;1, &minus;6">
+                        <div class="ordering-scene__sticky"></div>
+                        <ol class="ordering-scene__script">
+                            <li>5 is the furthest value to the right.</li>
+                            <li>&minus;1 belongs just to the left of zero.</li>
+                            <li>&minus;6 is the furthest value to the left.</li>
+                            <li>0 separates the negative and positive values.</li>
+                            <li>2 sits between 0 and 5.</li>
+                        </ol>
+                        <noscript><p><strong>Descending order: 5, 2, 0, &minus;1, &minus;6</strong></p></noscript>
+                    </div>
+                    <ol class="ordering-example__steps">
+                        <li><p>The positive numbers come first in descending order: 5, then 2.</p></li>
+                        <li><p>Zero comes after the positive numbers and before the negative numbers.</p></li>
+                        <li><p>Of the negatives, &minus;1 is closer to zero than &minus;6, so &minus;1 is larger.</p></li>
+                    </ol>
+                    <p><strong>Descending order: 5, 2, 0, &minus;1, &minus;6</strong></p>
+                </div>
+
+                <h3>Using temperature</h3>
+                <p>Temperature is a useful context for negative numbers. A temperature of &minus;8&deg;C is colder,
+                    and therefore lower, than &minus;3&deg;C. If the temperature rises from &minus;8&deg;C to
+                    &minus;3&deg;C, its value has increased because it has moved closer to zero.</p>
+            </section>
+
+            <section>
+                <h1>Ordering a mixture of numbers</h1>
+                <p>Separate negative values from positive values, then compare place values as before.</p>
+
+                <div class="ordering-example">
+                    <h3>Example: put &minus;2.4, 0.6, &minus;2.04, 1 and 0.06 in ascending order</h3>
+                    <div class="ordering-scene" data-values="-2.4|0.6|-2.04|1|0.06"
+                        data-labels="&minus;2.4|0.6|&minus;2.04|1|0.06" data-min="-2.5" data-max="1"
+                        data-step="0.5" data-direction="ascending"
+                        data-answer="&minus;2.4, &minus;2.04, 0.06, 0.6, 1">
+                        <div class="ordering-scene__sticky"></div>
+                        <ol class="ordering-scene__script">
+                            <li>&minus;2.4 lies close to the left end of the line.</li>
+                            <li>0.6 sits between 0.5 and 1.</li>
+                            <li>&minus;2.04 is to the right of &minus;2.4, so it is larger.</li>
+                            <li>1 is the largest value here.</li>
+                            <li>0.06 is positive, but only just to the right of zero.</li>
+                        </ol>
+                        <noscript><p><strong>Ascending order: &minus;2.4, &minus;2.04, 0.06, 0.6, 1</strong></p></noscript>
+                    </div>
+                    <ol class="ordering-example__steps">
+                        <li><p>Write the negative decimals as &minus;2.40 and &minus;2.04. Since &minus;2.40 lies
+                                further left, it is smaller.</p></li>
+                        <li><p>Write the positive values as 0.06, 0.60 and 1.00. Their place values put them in that order.</p></li>
+                        <li><p>Every negative value comes before every positive value in ascending order.</p></li>
+                    </ol>
+                    <p><strong>Ascending order: &minus;2.4, &minus;2.04, 0.06, 0.6, 1</strong></p>
+                </div>
+            </section>
+
+            <section>
+                <h1>Common mistakes</h1>
+                <ul class="slips">
+                    <li><b>Treating negatives like positives</b><span>&minus;9 is smaller than &minus;4 because it lies further left on the number line.</span></li>
+                    <li><b>Counting decimal digits</b><span>0.625 is not larger than 0.7. Write 0.7 as 0.700, then compare place values.</span></li>
+                    <li><b>Adding zeros in the wrong place</b><span>Zeros may be added to the end of a decimal: 2.5 = 2.50. Writing 2.05 changes the value.</span></li>
+                    <li><b>Ignoring the requested direction</b><span>Check whether the question asks for ascending (smallest first) or descending (largest first).</span></li>
+                </ul>
+            </section>
+
+            <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
+                <h2 id="practice-heading">Practice and continue</h2>
+                <div class="topic-grid">
+                    <a class="topic-card topic-card--practice" href="/pages/curriculum/GCSE/number/structure/writtenMethods/practiceOrderingNumbers.html" style="background-image: none">
+                        <span class="practice-card__kicker">Practice</span>
+                        <h3>Ordering integers, decimals and negatives</h3>
+                        <p>Ordering numbers, including negatives and decimals of different lengths.</p>
+                    </a>
+                    <a class="topic-card topic-card--next" href="/pages/curriculum/GCSE/number/structure/writtenMethods/inequalitySymbols.html" style="background-image: none">
+                        <span class="topic-card__kicker">Next lesson</span>
+                        <h3>The inequality symbols</h3>
+                        <p>The less-than, greater-than, at-most, at-least and not-equal signs.</p>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h2>Explore</h2>
+                    <ul>
+                        <li><a href="/pages/home.html">Home</a></li>
+                        <li><a href="/pages/curriculum/">Curriculum</a></li>
+                        <li><a href="/pages/extracurricular/">Extracurricular</a></li>
+                        <li><a href="/pages/about.html">About</a></li>
+                        <li><a href="/pages/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 demystifyingmaths &middot; joelzactaylor</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
