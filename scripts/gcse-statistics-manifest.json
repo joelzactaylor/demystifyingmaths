@@ -1,0 +1,2001 @@
+{
+    "schemaVersion": 2,
+    "strand": {
+        "key": "statistics",
+        "title": "Statistics",
+        "introHeading": "Statistics",
+        "url": "/pages/curriculum/GCSE/statistics/",
+        "metaDescription": "GCSE statistics: sampling and data collection, presenting data, averages and spread, interpretation."
+    },
+    "topics": [
+        {
+            "key": "sampling",
+            "prefix": "gcse-statistics-sampling",
+            "title": "Sampling and data collection",
+            "crumbLabel": "Sampling",
+            "cardDescription": "Populations and samples, sampling methods, bias, and kinds of data.",
+            "metaDescription": "GCSE sampling and data collection: populations and samples, random sampling, bias, data types and questionnaires, with the mistakes that lose marks.",
+            "subtopics": [
+                {
+                    "slug": "population-and-sample",
+                    "title": "Populations and samples",
+                    "description": "The population as everyone of interest and the sample as the part surveyed.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Define the population as everyone of interest and the sample as the subset actually surveyed, with questions naming both precisely in context. Include why sampling is used at all. Methods of selection belong to the random and non-random sampling pages; stratified sampling is not in 9-1 GCSE and lives at A level. Both tiers. (S1)"
+                },
+                {
+                    "slug": "census-or-sample",
+                    "title": "Census or sample",
+                    "description": "When a census is worth it, and when cost or destructive testing forces a sample.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Contrast a census of the whole population with taking a sample; questions justify the choice via cost, time, practicality and destructive testing, giving one advantage and one disadvantage of each. Discursive only, no calculations. How to choose the sample belongs to the random and non-random sampling pages. Both tiers. (S1)"
+                },
+                {
+                    "slug": "random-sampling",
+                    "title": "Random sampling",
+                    "description": "Giving every member an equal chance, and why haphazard is not random.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Teach simple random sampling: number the population list, use random numbers or a draw, equal chance for every member. Questions describe a valid method step by step and explain why haphazard selection is not random. Exclude stratified sampling entirely, removed from 9-1 GCSE and now A level. Both tiers. (S1)"
+                },
+                {
+                    "slug": "non-random-sampling",
+                    "title": "Non-random sampling",
+                    "description": "Systematic and opportunity sampling, and the groups each one quietly misses.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover systematic sampling (every nth from a list) and opportunity or convenience sampling; questions name the method used and identify who gets missed. Naming and critiquing only, no calculations. Stratified and quota sampling are out, beyond 9-1 GCSE; stratified reappears at A level. Bias itself is the sibling page. Both tiers. (S1)"
+                },
+                {
+                    "slug": "sources-of-bias",
+                    "title": "Bias in sampling",
+                    "description": "How time, place and selection method favour one group, and whom a survey misses.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Identify bias from the time, place and method of selection and from self-selection, in described surveys such as lunchtime polls outside a gym. Question type: name the excluded group and the direction results skew. No numerical corrections or weighting. Sample size is the sibling page; question wording is on Questionnaires. Both tiers. (S1)"
+                },
+                {
+                    "slug": "sample-size",
+                    "title": "Sample size",
+                    "description": "Why larger samples give steadier estimates, yet badly chosen ones stay biased.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Explain that larger samples give steadier, more reliable estimates, while a badly chosen large sample stays biased; questions compare two proposed samples and justify which is better. Qualitative reasoning only, no margin-of-error or confidence calculations, which are A level. Choosing the selection method sits on the sampling-method pages. Both tiers. (S1)"
+                },
+                {
+                    "slug": "estimating-population-figures",
+                    "title": "Estimating population figures from a sample",
+                    "description": "Scaling a sample proportion up to the population, and the assumption behind it.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Scale a sample proportion up to a whole-population estimate with clean divisions, and state the assumption that the sample is representative. Include reverse versions estimating a sample count from a population figure. Capture-recapture is out of scope, GCSE Statistics qualification rather than maths. Reliability caveats continue on The limits of a conclusion. Both tiers. (S1, S5)"
+                },
+                {
+                    "slug": "types-of-data",
+                    "title": "Qualitative and quantitative data",
+                    "description": "Telling qualities from quantities, and how the type fixes charts and averages.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Classify described variables as qualitative (categorical) or quantitative (numerical), and explain how the type fixes which charts and averages are valid, mode only for categories. Classification and short-justification questions. Discrete versus continuous is the sibling page; primary versus secondary is another. Both tiers. (S2, S4)"
+                },
+                {
+                    "slug": "discrete-and-continuous",
+                    "title": "Discrete and continuous data",
+                    "description": "Counts that move in steps against measurements that can take any value.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Classify quantitative data as discrete (counted, moving in steps) or continuous (measured, any value in a range), with shoe size the classic discrete trap despite fractional values. Classification and explain-why questions only; grouping continuous data into inequality classes lives on Grouped frequency tables. Both tiers. (S2, S4)"
+                },
+                {
+                    "slug": "primary-and-secondary-data",
+                    "title": "Primary and secondary data",
+                    "description": "Data collected yourself against someone else's records, and what each costs.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Distinguish data collected yourself from data taken from existing sources, with one advantage and one drawback of each: control and relevance versus speed and cost. Definition and justification questions only. Not named in the 2013 DfE content, so keep it brief and low-stakes; it supports the sampling pages. Both tiers. (S1)"
+                },
+                {
+                    "slug": "collection-sheets",
+                    "title": "Data collection sheets",
+                    "description": "Designing collection sheets whose classes cover every value without overlapping.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Design and criticise tally charts and grouped collection sheets: classes exhaustive and non-overlapping, a catch-all end class, correct inequality notation for continuous data, with distinct discrete and continuous versions. Include criticise-this-sheet questions. Questionnaire wording is the sibling page. Sheet design is not named in the 2013 DfE content, so keep it light. Both tiers. (S1, S2)"
+                },
+                {
+                    "slug": "questionnaires",
+                    "title": "Writing questionnaire questions",
+                    "description": "Non-overlapping response boxes, and the leading question that skews replies.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Criticise and improve survey questions: leading wording, missing time frame, overlapping or non-exhaustive response boxes, no option for zero or other. Include write-an-improved-question tasks. The 2013 DfE content no longer names questionnaire design, so treat it as a supporting skill, not exam-critical. Sampling bias lives on Bias in sampling. Both tiers. (S1)"
+                }
+            ],
+            "groups": [
+                {
+                    "slug": "populations-and-samples",
+                    "title": "Populations, samples and bias",
+                    "crumb": "Populations and samples",
+                    "lead": "Whom to survey, how to pick them fairly, and why a bad sample poisons results.",
+                    "slugs": [
+                        "population-and-sample",
+                        "census-or-sample",
+                        "random-sampling",
+                        "non-random-sampling",
+                        "sources-of-bias",
+                        "sample-size",
+                        "estimating-population-figures"
+                    ]
+                },
+                {
+                    "slug": "collecting-data",
+                    "title": "Kinds of data and collecting it",
+                    "crumb": "Collecting data",
+                    "lead": "What data a question produces, where it comes from, and how to record it.",
+                    "slugs": [
+                        "types-of-data",
+                        "discrete-and-continuous",
+                        "primary-and-secondary-data",
+                        "collection-sheets",
+                        "questionnaires"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "presenting",
+            "prefix": "gcse-statistics-presenting",
+            "title": "Presenting data",
+            "crumbLabel": "Presenting data",
+            "cardDescription": "Bar and pie charts, scatter graphs, and Higher-tier histograms and box plots.",
+            "metaDescription": "GCSE presenting data: bar charts, pie charts, stem-and-leaf, time series, histograms, cumulative frequency and box plots, with the mistakes that lose marks.",
+            "subtopics": [
+                {
+                    "slug": "frequency-tables",
+                    "title": "Frequency tables",
+                    "description": "Tallying raw data into a frequency table and reading totals back out.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Construct ungrouped frequency tables from raw discrete or categorical data using tallies, and read off totals, most frequent values and how-many-more comparisons. Both construction and interpretation questions. Grouped classes with inequalities belong to Grouped frequency tables; averages from tables sit in the Averages and spread topic. Both tiers. (S2)"
+                },
+                {
+                    "slug": "grouped-frequency-tables",
+                    "title": "Grouped frequency tables",
+                    "description": "Sorting continuous data into inequality classes, one class for every value.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Group continuous (and wide-ranging discrete) data into classes written with inequality notation, exhaustive and non-overlapping; place given values into classes and choose sensible equal widths. Include reading frequencies and totals back out. Charts from these tables are the polygon and histogram pages; the estimated mean is on Averages and spread. Both tiers. (S2, S4)"
+                },
+                {
+                    "slug": "bar-charts",
+                    "title": "Bar charts",
+                    "description": "Drawing and reading bar charts: equal-width bars, gaps and a labelled axis.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Draw and interpret bar charts for categorical and ungrouped discrete data: equal-width bars, gaps between bars, labelled axes, a sensible frequency scale. Reading questions cover totals, differences and part-scale divisions. Two-set charts move to Dual and composite bar charts; continuous data needs touching-bar diagrams, never bars with gaps. Both tiers. (S2)"
+                },
+                {
+                    "slug": "dual-and-composite-bar-charts",
+                    "title": "Dual and composite bar charts",
+                    "description": "Two data sets on one chart, side by side or stacked, and reading a component.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Draw and interpret dual (side-by-side) and composite (stacked) bar charts comparing two or more categorical data sets; read a single component out of a stacked bar by subtraction, and make simple comparisons between groups. Percentage composite bars may appear. Single-set charts live on Bar charts. Both tiers. (S2)"
+                },
+                {
+                    "slug": "pictograms",
+                    "title": "Pictograms",
+                    "description": "Drawing and reading pictograms, where the key fixes what one symbol is worth.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Draw and interpret pictograms where the key fixes the symbol value; include part-symbols for halves and quarters, choosing a sensible key, and finding totals and differences. Question types: complete the pictogram, find a frequency, spot the missing key. Categorical or ungrouped discrete data only. Both tiers. (S2)"
+                },
+                {
+                    "slug": "vertical-line-charts",
+                    "title": "Vertical line charts",
+                    "description": "The chart for ungrouped discrete numerical data, with bars shrunk to lines.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Draw and interpret vertical line charts for ungrouped discrete numerical data, with the numerical axis making the mode and range visible. Contrast with bar charts: lines not bars because the horizontal axis is numerical. Grouped or continuous data is out of scope here and needs polygons or histograms instead. Both tiers. (S2)"
+                },
+                {
+                    "slug": "drawing-pie-charts",
+                    "title": "Drawing a pie chart",
+                    "description": "Turning frequencies into sector angles that total 360°, checked before drawing.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Construct pie charts from frequency tables: degrees per item as 360 divided by the total, every sector angle calculated and checked to sum to 360 before drawing with a protractor. Foundation totals should divide 360 exactly; Higher can meet awkward rounding. Reading angles back is the sibling interpreting page. (S2)"
+                },
+                {
+                    "slug": "interpreting-pie-charts",
+                    "title": "Interpreting a pie chart",
+                    "description": "Frequencies and proportions read from sector angles, and the comparison trap.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Interpret pie charts: frequency from a sector angle given the total, the total from one known sector, and proportions as fractions of 360. Include the comparison trap that equal angles from different totals mean different frequencies. Drawing is the sibling page; chart choice sits on Choosing the right chart. Both tiers. (S2)"
+                },
+                {
+                    "slug": "stem-and-leaf-diagrams",
+                    "title": "Stem-and-leaf diagrams",
+                    "description": "Splitting each value into stem and leaf under a key, with the leaves ordered.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Construct ordered stem-and-leaf diagrams with a key, and read individual values, counts above a threshold, mode, median and range straight from the leaves. Discrete or continuous data with exact values kept. Two-sample versions are the sibling back-to-back page; the averages themselves are taught on Averages and spread. Both tiers. (S4)"
+                },
+                {
+                    "slug": "back-to-back-stem-and-leaf",
+                    "title": "Back-to-back stem-and-leaf diagrams",
+                    "description": "Two data sets sharing one set of stems, with left-hand leaves read outwards.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Construct and read back-to-back stem-and-leaf diagrams: shared stems, left side read outwards, a key for each side. Questions extract the median and range of each side and make one comparison in context. Full comparison technique pairing average with spread lives on the Interpretation topic. Both tiers. (S4)"
+                },
+                {
+                    "slug": "frequency-polygons",
+                    "title": "Frequency polygons",
+                    "description": "Plotting each class frequency at its midpoint, not at the class boundaries.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Draw frequency polygons for grouped continuous data by plotting each frequency at its class midpoint and joining with straight segments, with no closing back to the axis at GCSE. Interpret and compare two polygons on one grid. Plotting at boundaries is the classic error to confront. Histogram bars and area are separate pages. Both tiers. (S4)"
+                },
+                {
+                    "slug": "equal-width-histograms",
+                    "title": "Histograms with equal class widths",
+                    "description": "Frequency diagrams for continuous data, where the bars touch with no gaps.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Draw and interpret frequency diagrams for grouped continuous data with equal class widths: touching bars on a continuous axis, frequency on the vertical axis. Read frequencies and totals, and contrast with bar-chart gaps. Frequency density and unequal widths are strictly Higher and live on the histogram pages. (S3, S4)"
+                },
+                {
+                    "slug": "time-series-graphs",
+                    "title": "Time series graphs",
+                    "description": "Readings taken at regular intervals, plotted and read as a line graph.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Construct and read time series graphs: readings at regular intervals plotted and joined, values and differences read off, and awareness that in-between points are only indicative. Both drawing and interpreting questions. Describing trend and season is the sibling page; moving averages are out, GCSE Statistics qualification not maths. Both tiers. (S2)"
+                },
+                {
+                    "slug": "trends-and-seasonality",
+                    "title": "Trends and seasonal patterns",
+                    "description": "Describing the long-term trend beneath a repeating seasonal pattern.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Describe the long-term trend of a time series (rising, falling, steady) separately from the repeating seasonal pattern, in words and in context. Interpretation only. Moving averages and trend lines are out of scope, GCSE Statistics qualification territory. Reading exact values and differences sits on Time series graphs. Both tiers. (S2)"
+                },
+                {
+                    "slug": "plotting-scatter-graphs",
+                    "title": "Plotting a scatter graph",
+                    "description": "Plotting bivariate data as one point per pair, and why points are never joined.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Plot bivariate data as one point per pair on labelled axes, never joined; include adding a point to an existing graph and identifying a labelled point from its coordinates. Discrete or continuous pairs. Describing correlation, best-fit lines and predictions all live on the Interpretation topic; this page is construction only. Both tiers. (S6)"
+                },
+                {
+                    "slug": "choosing-the-right-chart",
+                    "title": "Choosing the right chart",
+                    "description": "Matching the diagram to the data, and the charts that never fit.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Match diagram to data type: bar chart or pie for categorical, vertical line chart for ungrouped discrete, polygon or frequency diagram for grouped continuous, line graph for time series, scatter for bivariate, and justify or reject a choice. Single-choice and explain-why questions. Higher students should see histograms among the options. (S2, S4)"
+                },
+                {
+                    "slug": "misleading-graphs",
+                    "title": "Misleading graphs",
+                    "description": "Truncated axes, uneven scales, and stating precisely why a graph exaggerates.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Criticise misleading presentations: truncated or missing frequency axes, uneven scales, 3-D and area distortion in picture charts, unlabelled axes. Question type: state precisely why the impression exaggerates and give the honest reading. Interpretation only, no drawing. This serves the know-their-appropriate-use clause; keep criticisms specific, never vague. Both tiers. (S2)"
+                },
+                {
+                    "slug": "frequency-density",
+                    "title": "Frequency density",
+                    "description": "Why unequal class widths force frequency onto area via frequency density.",
+                    "tier": "higher",
+                    "written": false,
+                    "coverNote": "Higher only. Motivate why unequal class widths make bar height dishonest and force frequency onto area; define frequency density as frequency divided by class width and calculate both ways, density from frequency and width, frequency from density and width. Table calculations only; drawing and reading histograms are the sibling pages. (S3)"
+                },
+                {
+                    "slug": "drawing-histograms",
+                    "title": "Drawing a histogram",
+                    "description": "Frequency densities for every class, with bar areas carrying the frequencies.",
+                    "tier": "higher",
+                    "written": false,
+                    "coverNote": "Higher only. Draw histograms for grouped continuous data including unequal class widths: calculate every frequency density, choose a sensible density axis, draw touching bars whose areas carry the frequencies. Include one table needing care with class boundaries. Equal-width frequency diagrams for both tiers sit on the earlier page; interpretation is the sibling page. (S3)"
+                },
+                {
+                    "slug": "interpreting-histograms",
+                    "title": "Interpreting a histogram",
+                    "description": "Frequencies from bar areas, and why the tallest bar need not hold the most data.",
+                    "tier": "higher",
+                    "written": false,
+                    "coverNote": "Higher only. Recover frequencies from a drawn histogram via area: whole classes, part-classes such as values above a point inside a bar, and grand totals. Include the trap that the tallest bar need not hold the most data, and estimating counts in a given range. Completing a partly drawn histogram is the sibling page. (S3)"
+                },
+                {
+                    "slug": "completing-a-histogram",
+                    "title": "Completing a histogram and its table",
+                    "description": "Using one known bar to fix the density scale, then finishing the table and bars.",
+                    "tier": "higher",
+                    "written": false,
+                    "coverNote": "Higher only. Combined table-and-histogram problems: use one bar whose frequency is known to fix an unlabelled density scale, then complete the missing table frequencies and missing bars together. Include fully unlabelled-axis versions. Assumes Frequency density and Interpreting a histogram as prerequisites; link back rather than reteach them. (S3)"
+                },
+                {
+                    "slug": "cumulative-frequency-graphs",
+                    "title": "Cumulative frequency graphs",
+                    "description": "Running totals plotted at upper class boundaries, joined by an S-shaped curve.",
+                    "tier": "higher",
+                    "written": false,
+                    "coverNote": "Higher only. Build a cumulative frequency table of running totals from a grouped frequency table and plot the curve: points at upper class boundaries, joined by a smooth curve or straight segments, starting from zero at the lowest boundary. Construction only; reading medians and quartiles off the curve is the sibling page. (S3)"
+                },
+                {
+                    "slug": "reading-cumulative-frequency-graphs",
+                    "title": "Reading a cumulative frequency graph",
+                    "description": "Estimating the median and quartiles from the curve, and counts above a point.",
+                    "tier": "higher",
+                    "written": false,
+                    "coverNote": "Higher only. Read a cumulative frequency curve: estimate the median at n over 2, quartiles at n over 4 and 3n over 4, the interquartile range, and how many values lie above or below a given value. Stress these are estimates. Quartile definitions live on Averages and spread; box plots drawn from the curve are the sibling page. (S3, S4)"
+                },
+                {
+                    "slug": "drawing-box-plots",
+                    "title": "Drawing a box plot",
+                    "description": "The five values a box plot shows, from a list or a cumulative frequency graph.",
+                    "tier": "higher",
+                    "written": false,
+                    "coverNote": "Higher only. Draw box plots on a scaled axis from five given values, from a small ordered list, or from readings taken off a cumulative frequency graph: minimum, lower quartile, median, upper quartile, maximum. Construction only; reading and comparing come later. No outlier-whisker conventions, which are A level. (S4)"
+                },
+                {
+                    "slug": "reading-box-plots",
+                    "title": "Reading a box plot",
+                    "description": "The median, quartiles and range from a plot whose box holds the middle half.",
+                    "tier": "higher",
+                    "written": false,
+                    "coverNote": "Higher only. Read a drawn box plot: the five values, range and interquartile range, plus statements like a quarter of the data lies above the upper quartile. Confront the trap of the box width read as the range. Comparing two box plots in context belongs to Interpretation; skewness language is optional at GCSE. (S4)"
+                }
+            ],
+            "groups": [
+                {
+                    "slug": "charts-and-tables",
+                    "title": "Charts for categorical and discrete data",
+                    "crumb": "Charts and tables",
+                    "lead": "Frequency tables, then the charts drawn from them: bars, pictograms and pies.",
+                    "slugs": [
+                        "frequency-tables",
+                        "grouped-frequency-tables",
+                        "bar-charts",
+                        "dual-and-composite-bar-charts",
+                        "pictograms",
+                        "vertical-line-charts",
+                        "drawing-pie-charts",
+                        "interpreting-pie-charts"
+                    ]
+                },
+                {
+                    "slug": "grouped-data-diagrams",
+                    "title": "Diagrams for grouped data",
+                    "crumb": "Grouped data",
+                    "lead": "Both tiers: stem-and-leaf, frequency polygons and equal-width histograms.",
+                    "slugs": [
+                        "stem-and-leaf-diagrams",
+                        "back-to-back-stem-and-leaf",
+                        "frequency-polygons",
+                        "equal-width-histograms"
+                    ]
+                },
+                {
+                    "slug": "time-series-and-scatter",
+                    "title": "Time series and scatter graphs",
+                    "crumb": "Time series and scatter",
+                    "lead": "Paired values plotted: readings over time, or one measurement against another.",
+                    "slugs": [
+                        "time-series-graphs",
+                        "trends-and-seasonality",
+                        "plotting-scatter-graphs"
+                    ]
+                },
+                {
+                    "slug": "using-charts-honestly",
+                    "title": "Using charts honestly",
+                    "crumb": "Honest charts",
+                    "lead": "Matching diagram to data, and the tricks that make an honest data set lie.",
+                    "slugs": [
+                        "choosing-the-right-chart",
+                        "misleading-graphs"
+                    ]
+                },
+                {
+                    "slug": "histograms-and-cumulative-frequency",
+                    "title": "Histograms, cumulative frequency and box plots",
+                    "crumb": "Histograms and box plots",
+                    "lead": "Higher tier: frequency density, cumulative frequency curves and box plots.",
+                    "slugs": [
+                        "frequency-density",
+                        "drawing-histograms",
+                        "interpreting-histograms",
+                        "completing-a-histogram",
+                        "cumulative-frequency-graphs",
+                        "reading-cumulative-frequency-graphs",
+                        "drawing-box-plots",
+                        "reading-box-plots"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "averages",
+            "prefix": "gcse-statistics-averages",
+            "title": "Averages and spread",
+            "crumbLabel": "Averages and spread",
+            "cardDescription": "Mode, median, mean and range from lists and tables, plus Higher-tier quartiles.",
+            "metaDescription": "GCSE averages and spread: mean, median, mode and range from lists, tables and grouped data, plus quartiles, with the mistakes that lose marks.",
+            "subtopics": [
+                {
+                    "slug": "the-mode",
+                    "title": "The mode",
+                    "description": "The most frequent value in a data set, including sets with two modes or none.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Find the mode of ungrouped lists: numerical and categorical data, bimodal sets, and sets with no mode when nothing repeats. Include the mode as the only average available for categorical data. Modes from frequency tables and the modal class of grouped data are separate pages. Both tiers. (S4)"
+                },
+                {
+                    "slug": "the-median",
+                    "title": "The median",
+                    "description": "The middle value of ordered data, and the halfway pair when the count is even.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Find the median of a list: order first, middle value for odd counts, midpoint of the middle pair for even counts, with the halfway position rule made explicit. Ungrouped lists only; frequency tables and grouped data have their own pages, and quartiles are Higher on the Quartiles pages. Both tiers. (S4)"
+                },
+                {
+                    "slug": "the-mean",
+                    "title": "The mean",
+                    "description": "The total shared equally across the count, and why one extreme drags the mean.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Calculate the mean of an ungrouped list as total divided by count, including decimal answers and means of measurements, and show one extreme value dragging the mean towards it. Interpret the result in context. Frequency-table and grouped versions are later pages; reverse problems live on Working backwards from the mean. Both tiers. (S4)"
+                },
+                {
+                    "slug": "the-range",
+                    "title": "The range",
+                    "description": "Largest minus smallest as a measure of spread, not an average.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Calculate the range as largest minus smallest, stated as a single number, and interpret it as consistency; stress it measures spread and is not an average. Show one outlier stretching it. Ranges from tables sit on the table pages; the outlier-resistant interquartile range is Higher, in the Quartiles group. Both tiers. (S4)"
+                },
+                {
+                    "slug": "choosing-the-average",
+                    "title": "Choosing which average to use",
+                    "description": "Mode for categories, median against extremes, mean when every value counts.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Justify which average suits a context: mode for categorical data, median when extremes or skew distort, mean when every value should count, with one advantage and drawback of each. Question types: choose and defend in context, or criticise a stated choice. Calculating each average lives on its own sibling page. Both tiers. (S4)"
+                },
+                {
+                    "slug": "working-backwards-from-the-mean",
+                    "title": "Working backwards from the mean",
+                    "description": "Recovering the total from a stated mean to find a missing value.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Reverse mean problems on ungrouped data: recover the total as mean times count, find a missing value given the mean, and find the new mean after adding or removing one value. Include multi-step worded versions. Combining two groups through their totals is the sibling Combined means page. Both tiers. (S4)"
+                },
+                {
+                    "slug": "combined-means",
+                    "title": "The mean of a combined group",
+                    "description": "Combining two groups through their totals, not by averaging the two means.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Find the mean of two combined groups from their separate means and sizes by working through totals, plus reverse versions recovering one group's mean. Emphasise why averaging the two means fails when group sizes differ. Keep to totals reasoning, no weighted-mean formula language. Single-group reverse problems are the sibling page. Both tiers. (S4)"
+                },
+                {
+                    "slug": "mean-from-a-frequency-table",
+                    "title": "The mean from a frequency table",
+                    "description": "Multiplying each value by its frequency, then dividing by the total frequency.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Calculate the mean from an ungrouped frequency table: build the value-times-frequency column, divide the fx total by the total frequency, and confront dividing by the number of rows as the classic error. Discrete data, exact answers. Grouped means are estimates on Estimating the mean; the median from a table is the sibling page. Both tiers. (S4)"
+                },
+                {
+                    "slug": "median-from-a-frequency-table",
+                    "title": "The median from a frequency table",
+                    "description": "Counting through the frequencies to the middle, without rewriting the list.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Locate the median from an ungrouped frequency table: find the middle position from the total frequency, then count cumulatively through the rows without rewriting the list. Cover odd and even totals. Grouped data yields only a median class, a separate page; cumulative frequency curves are Higher, on Presenting data. Both tiers. (S4)"
+                },
+                {
+                    "slug": "mode-and-range-from-a-table",
+                    "title": "Mode and range from a frequency table",
+                    "description": "Both read from the value column, not from the largest frequency.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Read the mode and range from an ungrouped frequency table: mode as the value with the largest frequency, range from the extremes of the value column. Confront both traps, the largest frequency quoted as the mode and the frequency column used for the range. Grouped data gives a modal class, the next page. Both tiers. (S4)"
+                },
+                {
+                    "slug": "modal-class",
+                    "title": "The modal class",
+                    "description": "The class with the highest frequency, stated as an interval, not a value.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "State the modal class of grouped data as the interval with the highest frequency, written in correct inequality notation, for equal-width classes. Stress the answer is a class, not a value. Unequal widths where density decides the true modal class are Higher territory, flagged here but taught on the histogram pages. Both tiers. (S4)"
+                },
+                {
+                    "slug": "median-class",
+                    "title": "The class containing the median",
+                    "description": "Finding the middle position, then counting through the classes to reach it.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Find the class containing the median of grouped data: locate the middle position from the total frequency, run a cumulative count through the classes, and state the class in inequality notation. No linear interpolation for an exact value, which is A level. Graphical median estimates are Higher, via cumulative frequency graphs. Both tiers. (S4)"
+                },
+                {
+                    "slug": "estimated-mean",
+                    "title": "Estimating the mean of grouped data",
+                    "description": "Class midpoints standing in for the values, making the result an estimate.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Estimate the mean of grouped continuous or discrete data using class midpoints: midpoint column, midpoint-times-frequency column, total divided by total frequency, and explain why the answer is an estimate because raw values are unknown. Include finding midpoints of inequality classes. Exact means from ungrouped tables are the earlier page. Both tiers. (S4)"
+                },
+                {
+                    "slug": "quartiles-from-a-list",
+                    "title": "Quartiles from a list",
+                    "description": "The lower and upper quartiles of an ordered list, at the quarter positions.",
+                    "tier": "higher",
+                    "written": false,
+                    "coverNote": "Higher only. Find the lower and upper quartiles of small ordered lists using the quarter and three-quarter positions, with lengths like 7, 11 and 15 so positions land on actual values. Insist on ordering first. Reading quartiles off cumulative frequency curves sits on Presenting data; the interquartile range is the sibling page. (S4)"
+                },
+                {
+                    "slug": "interquartile-range",
+                    "title": "The interquartile range",
+                    "description": "Upper quartile minus lower, measuring a spread outliers cannot inflate.",
+                    "tier": "higher",
+                    "written": false,
+                    "coverNote": "Higher only. Calculate the interquartile range as upper quartile minus lower quartile and interpret it as the spread of the middle half, immune to outliers; compare IQR with range on the same data. Lists and stated quartiles only; reading from curves or box plots sits on Presenting data. No standard deviation anywhere at GCSE, that is A level. (S4)"
+                }
+            ],
+            "groups": [
+                {
+                    "slug": "averages-from-a-list",
+                    "title": "Averages and range from a list",
+                    "crumb": "From a list",
+                    "lead": "The three averages and the range of a raw list, and which one to trust.",
+                    "slugs": [
+                        "the-mode",
+                        "the-median",
+                        "the-mean",
+                        "the-range",
+                        "choosing-the-average",
+                        "working-backwards-from-the-mean",
+                        "combined-means"
+                    ]
+                },
+                {
+                    "slug": "averages-from-tables",
+                    "title": "Averages from frequency tables",
+                    "crumb": "From tables",
+                    "lead": "The mean, median, mode and range read or calculated from a frequency table.",
+                    "slugs": [
+                        "mean-from-a-frequency-table",
+                        "median-from-a-frequency-table",
+                        "mode-and-range-from-a-table"
+                    ]
+                },
+                {
+                    "slug": "averages-from-grouped-data",
+                    "title": "Averages from grouped data",
+                    "crumb": "Grouped data",
+                    "lead": "The modal class, median class and estimated mean once the raw values are gone.",
+                    "slugs": [
+                        "modal-class",
+                        "median-class",
+                        "estimated-mean"
+                    ]
+                },
+                {
+                    "slug": "quartiles",
+                    "title": "Quartiles and the interquartile range",
+                    "crumb": "Quartiles",
+                    "lead": "The Higher-tier measures of spread: quartiles and the range of the middle half.",
+                    "slugs": [
+                        "quartiles-from-a-list",
+                        "interquartile-range"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "interpretation",
+            "prefix": "gcse-statistics-interpretation",
+            "title": "Interpretation",
+            "crumbLabel": "Interpretation",
+            "cardDescription": "Correlation and causation, best-fit lines, outliers and comparing data sets.",
+            "metaDescription": "GCSE interpretation: correlation, lines of best fit, comparing distributions and the limits of a conclusion, with the mistakes that lose marks.",
+            "subtopics": [
+                {
+                    "slug": "describing-correlation",
+                    "title": "Describing correlation",
+                    "description": "Positive, negative or no correlation, strong or weak, read from the points.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Describe correlation from a scatter graph: positive, negative or none, strong or weak, and translate the description into context, such as taller people tending to be heavier. Interpretation only, plotting sits on Presenting data. No correlation coefficients or ranked correlation; numerical measures are A level and GCSE Statistics. Both tiers. (S6)"
+                },
+                {
+                    "slug": "lines-of-best-fit",
+                    "title": "The line of best fit",
+                    "description": "A straight line by eye through the points, never forced through the origin.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Draw a line of best fit by eye: straight, following the trend, points balanced either side, not forced through the origin and never point-to-point. Include judging when no sensible line exists because correlation is too weak or non-linear. Using the line for estimates is the sibling page; least-squares regression is A level. Both tiers. (S6)"
+                },
+                {
+                    "slug": "interpolation",
+                    "title": "Estimating with a line of best fit",
+                    "description": "Reading an estimate off the line inside the data range, and its reliability.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Use a line of best fit to estimate one variable from the other for values inside the data range, reading in both directions, and comment on reliability via correlation strength and how close the value sits to the data. Estimates, never exact predictions. Going beyond the plotted range is the sibling extrapolation page. Both tiers. (S6)"
+                },
+                {
+                    "slug": "extrapolation",
+                    "title": "The danger of extrapolation",
+                    "description": "Why extending the line beyond the plotted data gives unsupported estimates.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Explain the danger of extrapolating: extending a line of best fit beyond the plotted data assumes the trend continues, which the evidence cannot support. Question type: say why a specific prediction is unreliable, including one physically absurd case such as height continuing to grow with age. Estimates inside the range are the sibling page. Both tiers. (S6)"
+                },
+                {
+                    "slug": "correlation-and-causation",
+                    "title": "Correlation is not causation",
+                    "description": "Why two quantities can rise together without one causing the other.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Explain that correlation never proves causation: scenarios with a lurking third variable, coincidence, or reversed cause and effect, such as ice cream sales and drowning linked by temperature. Question type: criticise a causal claim made from a scatter graph. Formal tests of association are far beyond GCSE. Describing correlation is the sibling page. Both tiers. (S6)"
+                },
+                {
+                    "slug": "outliers",
+                    "title": "Outliers",
+                    "description": "Spotting a value far from the rest, and whether it is an error or genuine.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Identify outliers informally as values far from the pattern, in lists and on scatter graphs; decide whether to exclude one as an error or keep it as genuine, and state its effect on the mean, median, mode and range. No quartile-based rule: the 1.5 times IQR test is A level. Both tiers. (S4)"
+                },
+                {
+                    "slug": "comparing-with-mean-and-range",
+                    "title": "Comparing data sets with an average and the range",
+                    "description": "A fair comparison pairs an average with a measure of spread, both in context.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Compare two data sets by pairing one average with one measure of spread, both interpreted in context, such as higher on average but less consistent. Stress that marks need context, not bare numbers. Foundation compares with mean or median and range; comparisons through quartiles and box plots are Higher, on the sibling page. (S4)"
+                },
+                {
+                    "slug": "describing-a-population",
+                    "title": "Describing a population with statistics",
+                    "description": "Using sample statistics to describe the population, and the caveats they carry.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Use sample statistics, proportions, means and ranges, to make claims about the whole population, always attaching the representativeness caveat; questions ask for the claim and its assumption together. Builds on the scaling estimates from the Sampling topic. Formal inference, confidence intervals and hypothesis tests are A level, not GCSE. Both tiers. (S1, S5)"
+                },
+                {
+                    "slug": "limits-of-conclusions",
+                    "title": "The limits of a conclusion",
+                    "description": "What a data set cannot show: small samples, bias and overreaching claims.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Criticise given conclusions: small samples, biased selection, unrepresentative time frames, claims reaching outside the data's scope, and confusing the sample with the population. Question type: give one reason the conclusion may not be valid. This page pulls together sampling bias and comparison caveats; link back rather than reteach them. Both tiers. (S1, S4)"
+                },
+                {
+                    "slug": "comparing-with-box-plots",
+                    "title": "Comparing distributions with box plots",
+                    "description": "Comparing medians and interquartile ranges read from two box plots, in context.",
+                    "tier": "higher",
+                    "written": false,
+                    "coverNote": "Higher only. Compare two distributions from box plots: medians for average, interquartile ranges and range for consistency, every statement tied to the context. Include one comparison where a box plot faces a cumulative frequency curve's summary values. Reading a single plot is on Presenting data; skewness vocabulary is optional, boards rarely demand it. (S4)"
+                }
+            ],
+            "groups": [
+                {
+                    "slug": "correlation-and-best-fit",
+                    "title": "Correlation and lines of best fit",
+                    "crumb": "Correlation",
+                    "lead": "The relationship read from a scatter graph, and when the line stops helping.",
+                    "slugs": [
+                        "describing-correlation",
+                        "lines-of-best-fit",
+                        "interpolation",
+                        "extrapolation",
+                        "correlation-and-causation"
+                    ]
+                },
+                {
+                    "slug": "comparing-distributions",
+                    "title": "Comparing distributions and drawing conclusions",
+                    "crumb": "Comparing distributions",
+                    "lead": "Setting two data sets side by side, with an average and a measure of spread.",
+                    "slugs": [
+                        "outliers",
+                        "comparing-with-mean-and-range",
+                        "describing-a-population",
+                        "limits-of-conclusions",
+                        "comparing-with-box-plots"
+                    ]
+                }
+            ]
+        }
+    ],
+    "drills": [
+        {
+            "file": "practiceSampling.html",
+            "title": "Populations and samples",
+            "description": "The population as everyone of interest and the sample as the part surveyed.",
+            "skill": "The population as everyone of interest and the sample as the part surveyed.",
+            "topic": "sampling",
+            "groups": [
+                "populations-and-samples"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "sampling/population-and-sample"
+            ],
+            "tier": "both",
+            "scope": "Define the population as everyone of interest and the sample as the subset actually surveyed, with questions naming both precisely in context. Include why sampling is used at all. Methods of selection belong to the random and non-random sampling pages; stratified sampling is not in 9-1 GCSE and lives at A level. Both tiers. (S1)",
+            "sections": [
+                "Fluency — direct questions on populations and samples, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceCensusOrSample.html",
+            "title": "Census or sample",
+            "description": "When a census is worth it, and when cost or destructive testing forces a sample.",
+            "skill": "When a census is worth it, and when cost or destructive testing forces a sample.",
+            "topic": "sampling",
+            "groups": [
+                "populations-and-samples"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "sampling/census-or-sample"
+            ],
+            "tier": "both",
+            "scope": "Contrast a census of the whole population with taking a sample; questions justify the choice via cost, time, practicality and destructive testing, giving one advantage and one disadvantage of each. Discursive only, no calculations. How to choose the sample belongs to the random and non-random sampling pages. Both tiers. (S1)",
+            "sections": [
+                "Fluency — direct questions on census or sample, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceRandomSampling.html",
+            "title": "Random sampling",
+            "description": "Giving every member an equal chance, and why haphazard is not random.",
+            "skill": "Giving every member an equal chance, and why haphazard is not random.",
+            "topic": "sampling",
+            "groups": [
+                "populations-and-samples"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "sampling/random-sampling"
+            ],
+            "tier": "both",
+            "scope": "Teach simple random sampling: number the population list, use random numbers or a draw, equal chance for every member. Questions describe a valid method step by step and explain why haphazard selection is not random. Exclude stratified sampling entirely, removed from 9-1 GCSE and now A level. Both tiers. (S1)",
+            "sections": [
+                "Fluency — direct questions on random sampling, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceNonRandomSampling.html",
+            "title": "Non-random sampling",
+            "description": "Systematic and opportunity sampling, and the groups each one quietly misses.",
+            "skill": "Systematic and opportunity sampling, and the groups each one quietly misses.",
+            "topic": "sampling",
+            "groups": [
+                "populations-and-samples"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "sampling/non-random-sampling"
+            ],
+            "tier": "both",
+            "scope": "Cover systematic sampling (every nth from a list) and opportunity or convenience sampling; questions name the method used and identify who gets missed. Naming and critiquing only, no calculations. Stratified and quota sampling are out, beyond 9-1 GCSE; stratified reappears at A level. Bias itself is the sibling page. Both tiers. (S1)",
+            "sections": [
+                "Fluency — direct questions on non-random sampling, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceSourcesOfBias.html",
+            "title": "Bias in sampling",
+            "description": "How time, place and selection method favour one group, and whom a survey misses.",
+            "skill": "How time, place and selection method favour one group, and whom a survey misses.",
+            "topic": "sampling",
+            "groups": [
+                "populations-and-samples"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "sampling/sources-of-bias"
+            ],
+            "tier": "both",
+            "scope": "Identify bias from the time, place and method of selection and from self-selection, in described surveys such as lunchtime polls outside a gym. Question type: name the excluded group and the direction results skew. No numerical corrections or weighting. Sample size is the sibling page; question wording is on Questionnaires. Both tiers. (S1)",
+            "sections": [
+                "Fluency — direct questions on bias in sampling, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceSampleSize.html",
+            "title": "Sample size",
+            "description": "Why larger samples give steadier estimates, yet badly chosen ones stay biased.",
+            "skill": "Why larger samples give steadier estimates, yet badly chosen ones stay biased.",
+            "topic": "sampling",
+            "groups": [
+                "populations-and-samples"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "sampling/sample-size"
+            ],
+            "tier": "both",
+            "scope": "Explain that larger samples give steadier, more reliable estimates, while a badly chosen large sample stays biased; questions compare two proposed samples and justify which is better. Qualitative reasoning only, no margin-of-error or confidence calculations, which are A level. Choosing the selection method sits on the sampling-method pages. Both tiers. (S1)",
+            "sections": [
+                "Fluency — direct questions on sample size, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceDataCollection.html",
+            "title": "Qualitative and quantitative data",
+            "description": "Telling qualities from quantities, and how the type fixes charts and averages.",
+            "skill": "Telling qualities from quantities, and how the type fixes charts and averages.",
+            "topic": "sampling",
+            "groups": [
+                "collecting-data"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "sampling/types-of-data"
+            ],
+            "tier": "both",
+            "scope": "Classify described variables as qualitative (categorical) or quantitative (numerical), and explain how the type fixes which charts and averages are valid, mode only for categories. Classification and short-justification questions. Discrete versus continuous is the sibling page; primary versus secondary is another. Both tiers. (S2, S4)",
+            "sections": [
+                "Fluency — direct questions on qualitative and quantitative data, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceDiscreteAndContinuous.html",
+            "title": "Discrete and continuous data",
+            "description": "Counts that move in steps against measurements that can take any value.",
+            "skill": "Counts that move in steps against measurements that can take any value.",
+            "topic": "sampling",
+            "groups": [
+                "collecting-data"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "sampling/discrete-and-continuous"
+            ],
+            "tier": "both",
+            "scope": "Classify quantitative data as discrete (counted, moving in steps) or continuous (measured, any value in a range), with shoe size the classic discrete trap despite fractional values. Classification and explain-why questions only; grouping continuous data into inequality classes lives on Grouped frequency tables. Both tiers. (S2, S4)",
+            "sections": [
+                "Fluency — direct questions on discrete and continuous data, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practicePrimaryAndSecondaryData.html",
+            "title": "Primary and secondary data",
+            "description": "Data collected yourself against someone else's records, and what each costs.",
+            "skill": "Data collected yourself against someone else's records, and what each costs.",
+            "topic": "sampling",
+            "groups": [
+                "collecting-data"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "sampling/primary-and-secondary-data"
+            ],
+            "tier": "both",
+            "scope": "Distinguish data collected yourself from data taken from existing sources, with one advantage and one drawback of each: control and relevance versus speed and cost. Definition and justification questions only. Not named in the 2013 DfE content, so keep it brief and low-stakes; it supports the sampling pages. Both tiers. (S1)",
+            "sections": [
+                "Fluency — direct questions on primary and secondary data, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceCollectionSheets.html",
+            "title": "Data collection sheets",
+            "description": "Designing collection sheets whose classes cover every value without overlapping.",
+            "skill": "Designing collection sheets whose classes cover every value without overlapping.",
+            "topic": "sampling",
+            "groups": [
+                "collecting-data"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "sampling/collection-sheets"
+            ],
+            "tier": "both",
+            "scope": "Design and criticise tally charts and grouped collection sheets: classes exhaustive and non-overlapping, a catch-all end class, correct inequality notation for continuous data, with distinct discrete and continuous versions. Include criticise-this-sheet questions. Questionnaire wording is the sibling page. Sheet design is not named in the 2013 DfE content, so keep it light. Both tiers. (S1, S2)",
+            "sections": [
+                "Fluency — direct questions on data collection sheets, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceGroupedFrequencyTables.html",
+            "title": "Grouped frequency tables",
+            "description": "Sorting continuous data into inequality classes, one class for every value.",
+            "skill": "Sorting continuous data into inequality classes, one class for every value.",
+            "topic": "presenting",
+            "groups": [
+                "charts-and-tables"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "presenting/grouped-frequency-tables"
+            ],
+            "tier": "both",
+            "scope": "Group continuous (and wide-ranging discrete) data into classes written with inequality notation, exhaustive and non-overlapping; place given values into classes and choose sensible equal widths. Include reading frequencies and totals back out. Charts from these tables are the polygon and histogram pages; the estimated mean is on Averages and spread. Both tiers. (S2, S4)",
+            "sections": [
+                "Fluency — direct questions on grouped frequency tables, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceBarCharts.html",
+            "title": "Bar charts",
+            "description": "Drawing and reading bar charts: equal-width bars, gaps and a labelled axis.",
+            "skill": "Drawing and reading bar charts: equal-width bars, gaps and a labelled axis.",
+            "topic": "presenting",
+            "groups": [
+                "charts-and-tables"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "presenting/bar-charts"
+            ],
+            "tier": "both",
+            "scope": "Draw and interpret bar charts for categorical and ungrouped discrete data: equal-width bars, gaps between bars, labelled axes, a sensible frequency scale. Reading questions cover totals, differences and part-scale divisions. Two-set charts move to Dual and composite bar charts; continuous data needs touching-bar diagrams, never bars with gaps. Both tiers. (S2)",
+            "sections": [
+                "Fluency — direct questions on bar charts, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceDualAndCompositeBarCharts.html",
+            "title": "Dual and composite bar charts",
+            "description": "Two data sets on one chart, side by side or stacked, and reading a component.",
+            "skill": "Two data sets on one chart, side by side or stacked, and reading a component.",
+            "topic": "presenting",
+            "groups": [
+                "charts-and-tables"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "presenting/dual-and-composite-bar-charts"
+            ],
+            "tier": "both",
+            "scope": "Draw and interpret dual (side-by-side) and composite (stacked) bar charts comparing two or more categorical data sets; read a single component out of a stacked bar by subtraction, and make simple comparisons between groups. Percentage composite bars may appear. Single-set charts live on Bar charts. Both tiers. (S2)",
+            "sections": [
+                "Fluency — direct questions on dual and composite bar charts, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practicePictograms.html",
+            "title": "Pictograms",
+            "description": "Drawing and reading pictograms, where the key fixes what one symbol is worth.",
+            "skill": "Drawing and reading pictograms, where the key fixes what one symbol is worth.",
+            "topic": "presenting",
+            "groups": [
+                "charts-and-tables"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "presenting/pictograms"
+            ],
+            "tier": "both",
+            "scope": "Draw and interpret pictograms where the key fixes the symbol value; include part-symbols for halves and quarters, choosing a sensible key, and finding totals and differences. Question types: complete the pictogram, find a frequency, spot the missing key. Categorical or ungrouped discrete data only. Both tiers. (S2)",
+            "sections": [
+                "Fluency — direct questions on pictograms, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceVerticalLineCharts.html",
+            "title": "Vertical line charts",
+            "description": "The chart for ungrouped discrete numerical data, with bars shrunk to lines.",
+            "skill": "The chart for ungrouped discrete numerical data, with bars shrunk to lines.",
+            "topic": "presenting",
+            "groups": [
+                "charts-and-tables"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "presenting/vertical-line-charts"
+            ],
+            "tier": "both",
+            "scope": "Draw and interpret vertical line charts for ungrouped discrete numerical data, with the numerical axis making the mode and range visible. Contrast with bar charts: lines not bars because the horizontal axis is numerical. Grouped or continuous data is out of scope here and needs polygons or histograms instead. Both tiers. (S2)",
+            "sections": [
+                "Fluency — direct questions on vertical line charts, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceCharts.html",
+            "title": "Drawing a pie chart",
+            "description": "Turning frequencies into sector angles that total 360°, checked before drawing.",
+            "skill": "Turning frequencies into sector angles that total 360°, checked before drawing.",
+            "topic": "presenting",
+            "groups": [
+                "charts-and-tables"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "presenting/drawing-pie-charts"
+            ],
+            "tier": "both",
+            "scope": "Construct pie charts from frequency tables: degrees per item as 360 divided by the total, every sector angle calculated and checked to sum to 360 before drawing with a protractor. Foundation totals should divide 360 exactly; Higher can meet awkward rounding. Reading angles back is the sibling interpreting page. (S2)",
+            "sections": [
+                "Fluency — direct questions on drawing a pie chart, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceFrequencyDiagrams.html",
+            "title": "Stem-and-leaf diagrams",
+            "description": "Splitting each value into stem and leaf under a key, with the leaves ordered.",
+            "skill": "Splitting each value into stem and leaf under a key, with the leaves ordered.",
+            "topic": "presenting",
+            "groups": [
+                "grouped-data-diagrams"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "presenting/stem-and-leaf-diagrams"
+            ],
+            "tier": "both",
+            "scope": "Construct ordered stem-and-leaf diagrams with a key, and read individual values, counts above a threshold, mode, median and range straight from the leaves. Discrete or continuous data with exact values kept. Two-sample versions are the sibling back-to-back page; the averages themselves are taught on Averages and spread. Both tiers. (S4)",
+            "sections": [
+                "Fluency — direct questions on stem-and-leaf diagrams, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceBackToBackStemAndLeaf.html",
+            "title": "Back-to-back stem-and-leaf diagrams",
+            "description": "Two data sets sharing one set of stems, with left-hand leaves read outwards.",
+            "skill": "Two data sets sharing one set of stems, with left-hand leaves read outwards.",
+            "topic": "presenting",
+            "groups": [
+                "grouped-data-diagrams"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "presenting/back-to-back-stem-and-leaf"
+            ],
+            "tier": "both",
+            "scope": "Construct and read back-to-back stem-and-leaf diagrams: shared stems, left side read outwards, a key for each side. Questions extract the median and range of each side and make one comparison in context. Full comparison technique pairing average with spread lives on the Interpretation topic. Both tiers. (S4)",
+            "sections": [
+                "Fluency — direct questions on back-to-back stem-and-leaf diagrams, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceFrequencyPolygons.html",
+            "title": "Frequency polygons",
+            "description": "Plotting each class frequency at its midpoint, not at the class boundaries.",
+            "skill": "Plotting each class frequency at its midpoint, not at the class boundaries.",
+            "topic": "presenting",
+            "groups": [
+                "grouped-data-diagrams"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "presenting/frequency-polygons"
+            ],
+            "tier": "both",
+            "scope": "Draw frequency polygons for grouped continuous data by plotting each frequency at its class midpoint and joining with straight segments, with no closing back to the axis at GCSE. Interpret and compare two polygons on one grid. Plotting at boundaries is the classic error to confront. Histogram bars and area are separate pages. Both tiers. (S4)",
+            "sections": [
+                "Fluency — direct questions on frequency polygons, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceTimeSeries.html",
+            "title": "Time series graphs",
+            "description": "Readings taken at regular intervals, plotted and read as a line graph.",
+            "skill": "Readings taken at regular intervals, plotted and read as a line graph.",
+            "topic": "presenting",
+            "groups": [
+                "time-series-and-scatter"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "presenting/time-series-graphs"
+            ],
+            "tier": "both",
+            "scope": "Construct and read time series graphs: readings at regular intervals plotted and joined, values and differences read off, and awareness that in-between points are only indicative. Both drawing and interpreting questions. Describing trend and season is the sibling page; moving averages are out, GCSE Statistics qualification not maths. Both tiers. (S2)",
+            "sections": [
+                "Fluency — direct questions on time series graphs, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceHistograms.html",
+            "title": "Frequency density",
+            "description": "Why unequal class widths force frequency onto area via frequency density.",
+            "skill": "Why unequal class widths force frequency onto area via frequency density.",
+            "topic": "presenting",
+            "groups": [
+                "histograms-and-cumulative-frequency"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "presenting/frequency-density"
+            ],
+            "tier": "higher",
+            "scope": "Higher only. Motivate why unequal class widths make bar height dishonest and force frequency onto area; define frequency density as frequency divided by class width and calculate both ways, density from frequency and width, frequency from density and width. Table calculations only; drawing and reading histograms are the sibling pages. (S3)",
+            "sections": [
+                "Fluency — direct questions on frequency density, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceDrawingHistograms.html",
+            "title": "Drawing a histogram",
+            "description": "Frequency densities for every class, with bar areas carrying the frequencies.",
+            "skill": "Frequency densities for every class, with bar areas carrying the frequencies.",
+            "topic": "presenting",
+            "groups": [
+                "histograms-and-cumulative-frequency"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "presenting/drawing-histograms"
+            ],
+            "tier": "higher",
+            "scope": "Higher only. Draw histograms for grouped continuous data including unequal class widths: calculate every frequency density, choose a sensible density axis, draw touching bars whose areas carry the frequencies. Include one table needing care with class boundaries. Equal-width frequency diagrams for both tiers sit on the earlier page; interpretation is the sibling page. (S3)",
+            "sections": [
+                "Fluency — direct questions on drawing a histogram, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceInterpretingHistograms.html",
+            "title": "Interpreting a histogram",
+            "description": "Frequencies from bar areas, and why the tallest bar need not hold the most data.",
+            "skill": "Frequencies from bar areas, and why the tallest bar need not hold the most data.",
+            "topic": "presenting",
+            "groups": [
+                "histograms-and-cumulative-frequency"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "presenting/interpreting-histograms"
+            ],
+            "tier": "higher",
+            "scope": "Higher only. Recover frequencies from a drawn histogram via area: whole classes, part-classes such as values above a point inside a bar, and grand totals. Include the trap that the tallest bar need not hold the most data, and estimating counts in a given range. Completing a partly drawn histogram is the sibling page. (S3)",
+            "sections": [
+                "Fluency — direct questions on interpreting a histogram, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceCumulative.html",
+            "title": "Cumulative frequency graphs",
+            "description": "Running totals plotted at upper class boundaries, joined by an S-shaped curve.",
+            "skill": "Running totals plotted at upper class boundaries, joined by an S-shaped curve.",
+            "topic": "presenting",
+            "groups": [
+                "histograms-and-cumulative-frequency"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "presenting/cumulative-frequency-graphs"
+            ],
+            "tier": "higher",
+            "scope": "Higher only. Build a cumulative frequency table of running totals from a grouped frequency table and plot the curve: points at upper class boundaries, joined by a smooth curve or straight segments, starting from zero at the lowest boundary. Construction only; reading medians and quartiles off the curve is the sibling page. (S3)",
+            "sections": [
+                "Fluency — direct questions on cumulative frequency graphs, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceReadingCumulativeFrequencyGraphs.html",
+            "title": "Reading a cumulative frequency graph",
+            "description": "Estimating the median and quartiles from the curve, and counts above a point.",
+            "skill": "Estimating the median and quartiles from the curve, and counts above a point.",
+            "topic": "presenting",
+            "groups": [
+                "histograms-and-cumulative-frequency"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "presenting/reading-cumulative-frequency-graphs"
+            ],
+            "tier": "higher",
+            "scope": "Higher only. Read a cumulative frequency curve: estimate the median at n over 2, quartiles at n over 4 and 3n over 4, the interquartile range, and how many values lie above or below a given value. Stress these are estimates. Quartile definitions live on Averages and spread; box plots drawn from the curve are the sibling page. (S3, S4)",
+            "sections": [
+                "Fluency — direct questions on reading a cumulative frequency graph, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceDrawingBoxPlots.html",
+            "title": "Drawing a box plot",
+            "description": "The five values a box plot shows, from a list or a cumulative frequency graph.",
+            "skill": "The five values a box plot shows, from a list or a cumulative frequency graph.",
+            "topic": "presenting",
+            "groups": [
+                "histograms-and-cumulative-frequency"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "presenting/drawing-box-plots"
+            ],
+            "tier": "higher",
+            "scope": "Higher only. Draw box plots on a scaled axis from five given values, from a small ordered list, or from readings taken off a cumulative frequency graph: minimum, lower quartile, median, upper quartile, maximum. Construction only; reading and comparing come later. No outlier-whisker conventions, which are A level. (S4)",
+            "sections": [
+                "Fluency — direct questions on drawing a box plot, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceTheMode.html",
+            "title": "The mode",
+            "description": "The most frequent value in a data set, including sets with two modes or none.",
+            "skill": "The most frequent value in a data set, including sets with two modes or none.",
+            "topic": "averages",
+            "groups": [
+                "averages-from-a-list"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "averages/the-mode"
+            ],
+            "tier": "both",
+            "scope": "Find the mode of ungrouped lists: numerical and categorical data, bimodal sets, and sets with no mode when nothing repeats. Include the mode as the only average available for categorical data. Modes from frequency tables and the modal class of grouped data are separate pages. Both tiers. (S4)",
+            "sections": [
+                "Fluency — direct questions on the mode, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceTheMedian.html",
+            "title": "The median",
+            "description": "The middle value of ordered data, and the halfway pair when the count is even.",
+            "skill": "The middle value of ordered data, and the halfway pair when the count is even.",
+            "topic": "averages",
+            "groups": [
+                "averages-from-a-list"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "averages/the-median"
+            ],
+            "tier": "both",
+            "scope": "Find the median of a list: order first, middle value for odd counts, midpoint of the middle pair for even counts, with the halfway position rule made explicit. Ungrouped lists only; frequency tables and grouped data have their own pages, and quartiles are Higher on the Quartiles pages. Both tiers. (S4)",
+            "sections": [
+                "Fluency — direct questions on the median, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceMeanMedianMode.html",
+            "title": "The mean",
+            "description": "The total shared equally across the count, and why one extreme drags the mean.",
+            "skill": "The total shared equally across the count, and why one extreme drags the mean.",
+            "topic": "averages",
+            "groups": [
+                "averages-from-a-list"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "averages/the-mean"
+            ],
+            "tier": "both",
+            "scope": "Calculate the mean of an ungrouped list as total divided by count, including decimal answers and means of measurements, and show one extreme value dragging the mean towards it. Interpret the result in context. Frequency-table and grouped versions are later pages; reverse problems live on Working backwards from the mean. Both tiers. (S4)",
+            "sections": [
+                "Fluency — direct questions on the mean, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceTheRange.html",
+            "title": "The range",
+            "description": "Largest minus smallest as a measure of spread, not an average.",
+            "skill": "Largest minus smallest as a measure of spread, not an average.",
+            "topic": "averages",
+            "groups": [
+                "averages-from-a-list"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "averages/the-range"
+            ],
+            "tier": "both",
+            "scope": "Calculate the range as largest minus smallest, stated as a single number, and interpret it as consistency; stress it measures spread and is not an average. Show one outlier stretching it. Ranges from tables sit on the table pages; the outlier-resistant interquartile range is Higher, in the Quartiles group. Both tiers. (S4)",
+            "sections": [
+                "Fluency — direct questions on the range, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceChoosingTheAverage.html",
+            "title": "Choosing which average to use",
+            "description": "Mode for categories, median against extremes, mean when every value counts.",
+            "skill": "Mode for categories, median against extremes, mean when every value counts.",
+            "topic": "averages",
+            "groups": [
+                "averages-from-a-list"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "averages/choosing-the-average"
+            ],
+            "tier": "both",
+            "scope": "Justify which average suits a context: mode for categorical data, median when extremes or skew distort, mean when every value should count, with one advantage and drawback of each. Question types: choose and defend in context, or criticise a stated choice. Calculating each average lives on its own sibling page. Both tiers. (S4)",
+            "sections": [
+                "Fluency — direct questions on choosing which average to use, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceWorkingBackwardsFromTheMean.html",
+            "title": "Working backwards from the mean",
+            "description": "Recovering the total from a stated mean to find a missing value.",
+            "skill": "Recovering the total from a stated mean to find a missing value.",
+            "topic": "averages",
+            "groups": [
+                "averages-from-a-list"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "averages/working-backwards-from-the-mean"
+            ],
+            "tier": "both",
+            "scope": "Reverse mean problems on ungrouped data: recover the total as mean times count, find a missing value given the mean, and find the new mean after adding or removing one value. Include multi-step worded versions. Combining two groups through their totals is the sibling Combined means page. Both tiers. (S4)",
+            "sections": [
+                "Fluency — direct questions on working backwards from the mean, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceAverages.html",
+            "title": "The mean from a frequency table",
+            "description": "Multiplying each value by its frequency, then dividing by the total frequency.",
+            "skill": "Multiplying each value by its frequency, then dividing by the total frequency.",
+            "topic": "averages",
+            "groups": [
+                "averages-from-tables"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "averages/mean-from-a-frequency-table"
+            ],
+            "tier": "both",
+            "scope": "Calculate the mean from an ungrouped frequency table: build the value-times-frequency column, divide the fx total by the total frequency, and confront dividing by the number of rows as the classic error. Discrete data, exact answers. Grouped means are estimates on Estimating the mean; the median from a table is the sibling page. Both tiers. (S4)",
+            "sections": [
+                "Fluency — direct questions on the mean from a frequency table, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceMedianFromAFrequencyTable.html",
+            "title": "The median from a frequency table",
+            "description": "Counting through the frequencies to the middle, without rewriting the list.",
+            "skill": "Counting through the frequencies to the middle, without rewriting the list.",
+            "topic": "averages",
+            "groups": [
+                "averages-from-tables"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "averages/median-from-a-frequency-table"
+            ],
+            "tier": "both",
+            "scope": "Locate the median from an ungrouped frequency table: find the middle position from the total frequency, then count cumulatively through the rows without rewriting the list. Cover odd and even totals. Grouped data yields only a median class, a separate page; cumulative frequency curves are Higher, on Presenting data. Both tiers. (S4)",
+            "sections": [
+                "Fluency — direct questions on the median from a frequency table, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceModeAndRangeFromATable.html",
+            "title": "Mode and range from a frequency table",
+            "description": "Both read from the value column, not from the largest frequency.",
+            "skill": "Both read from the value column, not from the largest frequency.",
+            "topic": "averages",
+            "groups": [
+                "averages-from-tables"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "averages/mode-and-range-from-a-table"
+            ],
+            "tier": "both",
+            "scope": "Read the mode and range from an ungrouped frequency table: mode as the value with the largest frequency, range from the extremes of the value column. Confront both traps, the largest frequency quoted as the mode and the frequency column used for the range. Grouped data gives a modal class, the next page. Both tiers. (S4)",
+            "sections": [
+                "Fluency — direct questions on mode and range from a frequency table, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceModalClass.html",
+            "title": "The modal class",
+            "description": "The class with the highest frequency, stated as an interval, not a value.",
+            "skill": "The class with the highest frequency, stated as an interval, not a value.",
+            "topic": "averages",
+            "groups": [
+                "averages-from-grouped-data"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "averages/modal-class"
+            ],
+            "tier": "both",
+            "scope": "State the modal class of grouped data as the interval with the highest frequency, written in correct inequality notation, for equal-width classes. Stress the answer is a class, not a value. Unequal widths where density decides the true modal class are Higher territory, flagged here but taught on the histogram pages. Both tiers. (S4)",
+            "sections": [
+                "Fluency — direct questions on the modal class, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceMedianClass.html",
+            "title": "The class containing the median",
+            "description": "Finding the middle position, then counting through the classes to reach it.",
+            "skill": "Finding the middle position, then counting through the classes to reach it.",
+            "topic": "averages",
+            "groups": [
+                "averages-from-grouped-data"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "averages/median-class"
+            ],
+            "tier": "both",
+            "scope": "Find the class containing the median of grouped data: locate the middle position from the total frequency, run a cumulative count through the classes, and state the class in inequality notation. No linear interpolation for an exact value, which is A level. Graphical median estimates are Higher, via cumulative frequency graphs. Both tiers. (S4)",
+            "sections": [
+                "Fluency — direct questions on the class containing the median, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceQuartiles.html",
+            "title": "Quartiles from a list",
+            "description": "The lower and upper quartiles of an ordered list, at the quarter positions.",
+            "skill": "The lower and upper quartiles of an ordered list, at the quarter positions.",
+            "topic": "averages",
+            "groups": [
+                "quartiles"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "averages/quartiles-from-a-list"
+            ],
+            "tier": "higher",
+            "scope": "Higher only. Find the lower and upper quartiles of small ordered lists using the quarter and three-quarter positions, with lengths like 7, 11 and 15 so positions land on actual values. Insist on ordering first. Reading quartiles off cumulative frequency curves sits on Presenting data; the interquartile range is the sibling page. (S4)",
+            "sections": [
+                "Fluency — direct questions on quartiles from a list, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceScatter.html",
+            "title": "Describing correlation",
+            "description": "Positive, negative or no correlation, strong or weak, read from the points.",
+            "skill": "Positive, negative or no correlation, strong or weak, read from the points.",
+            "topic": "interpretation",
+            "groups": [
+                "correlation-and-best-fit"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "interpretation/describing-correlation"
+            ],
+            "tier": "both",
+            "scope": "Describe correlation from a scatter graph: positive, negative or none, strong or weak, and translate the description into context, such as taller people tending to be heavier. Interpretation only, plotting sits on Presenting data. No correlation coefficients or ranked correlation; numerical measures are A level and GCSE Statistics. Both tiers. (S6)",
+            "sections": [
+                "Fluency — direct questions on describing correlation, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceLinesOfBestFit.html",
+            "title": "The line of best fit",
+            "description": "A straight line by eye through the points, never forced through the origin.",
+            "skill": "A straight line by eye through the points, never forced through the origin.",
+            "topic": "interpretation",
+            "groups": [
+                "correlation-and-best-fit"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "interpretation/lines-of-best-fit"
+            ],
+            "tier": "both",
+            "scope": "Draw a line of best fit by eye: straight, following the trend, points balanced either side, not forced through the origin and never point-to-point. Include judging when no sensible line exists because correlation is too weak or non-linear. Using the line for estimates is the sibling page; least-squares regression is A level. Both tiers. (S6)",
+            "sections": [
+                "Fluency — direct questions on the line of best fit, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceInterpolation.html",
+            "title": "Estimating with a line of best fit",
+            "description": "Reading an estimate off the line inside the data range, and its reliability.",
+            "skill": "Reading an estimate off the line inside the data range, and its reliability.",
+            "topic": "interpretation",
+            "groups": [
+                "correlation-and-best-fit"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "interpretation/interpolation"
+            ],
+            "tier": "both",
+            "scope": "Use a line of best fit to estimate one variable from the other for values inside the data range, reading in both directions, and comment on reliability via correlation strength and how close the value sits to the data. Estimates, never exact predictions. Going beyond the plotted range is the sibling extrapolation page. Both tiers. (S6)",
+            "sections": [
+                "Fluency — direct questions on estimating with a line of best fit, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceExtrapolation.html",
+            "title": "The danger of extrapolation",
+            "description": "Why extending the line beyond the plotted data gives unsupported estimates.",
+            "skill": "Why extending the line beyond the plotted data gives unsupported estimates.",
+            "topic": "interpretation",
+            "groups": [
+                "correlation-and-best-fit"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "interpretation/extrapolation"
+            ],
+            "tier": "both",
+            "scope": "Explain the danger of extrapolating: extending a line of best fit beyond the plotted data assumes the trend continues, which the evidence cannot support. Question type: say why a specific prediction is unreliable, including one physically absurd case such as height continuing to grow with age. Estimates inside the range are the sibling page. Both tiers. (S6)",
+            "sections": [
+                "Fluency — direct questions on the danger of extrapolation, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceOutliers.html",
+            "title": "Outliers",
+            "description": "Spotting a value far from the rest, and whether it is an error or genuine.",
+            "skill": "Spotting a value far from the rest, and whether it is an error or genuine.",
+            "topic": "interpretation",
+            "groups": [
+                "comparing-distributions"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "interpretation/outliers"
+            ],
+            "tier": "both",
+            "scope": "Identify outliers informally as values far from the pattern, in lists and on scatter graphs; decide whether to exclude one as an error or keep it as genuine, and state its effect on the mean, median, mode and range. No quartile-based rule: the 1.5 times IQR test is A level. Both tiers. (S4)",
+            "sections": [
+                "Fluency — direct questions on outliers, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceComparingData.html",
+            "title": "Comparing data sets with an average and the range",
+            "description": "A fair comparison pairs an average with a measure of spread, both in context.",
+            "skill": "A fair comparison pairs an average with a measure of spread, both in context.",
+            "topic": "interpretation",
+            "groups": [
+                "comparing-distributions"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "interpretation/comparing-with-mean-and-range"
+            ],
+            "tier": "both",
+            "scope": "Compare two data sets by pairing one average with one measure of spread, both interpreted in context, such as higher on average but less consistent. Stress that marks need context, not bare numbers. Foundation compares with mean or median and range; comparisons through quartiles and box plots are Higher, on the sibling page. (S4)",
+            "sections": [
+                "Fluency — direct questions on comparing data sets with an average and the range, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceSamplingReview.html",
+            "title": "Sampling review",
+            "description": "Populations, samples, bias and population estimates.",
+            "skill": "Identifying populations, samples and bias, and estimating a population figure from a sample.",
+            "topic": "sampling",
+            "groups": [
+                "populations-and-samples"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — naming the population and the sample in a described study, and choosing between a census and a sample (4 questions).",
+                "Sampling methods — single-choice questions naming the method used and picking the least biased way to sample a described population (4 questions).",
+                "Estimating and bias — scaling a sample proportion up to a population estimate with counts that divide exactly, ending with a large biased sample that stays biased (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "sampling/population-and-sample",
+                "sampling/census-or-sample",
+                "sampling/random-sampling",
+                "sampling/non-random-sampling",
+                "sampling/sources-of-bias",
+                "sampling/sample-size",
+                "sampling/estimating-population-figures"
+            ],
+            "availableAfter": "sampling/estimating-population-figures"
+        },
+        {
+            "file": "practiceDataCollectionReview.html",
+            "title": "Data collection review",
+            "description": "Data types, collection sheets and questionnaire flaws.",
+            "skill": "Classifying data types and criticising collection sheets and questionnaire questions.",
+            "topic": "sampling",
+            "groups": [
+                "collecting-data"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — single-choice classification of described data as qualitative or quantitative, and as primary or secondary (4 questions).",
+                "Discrete or continuous — single-choice classification of counts and measurements, including values like shoe sizes that look continuous but are not (4 questions).",
+                "Questionnaires — single-choice questions picking the flaw in a survey question, or the response boxes that overlap or leave a gap (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "sampling/types-of-data",
+                "sampling/discrete-and-continuous",
+                "sampling/primary-and-secondary-data",
+                "sampling/collection-sheets",
+                "sampling/questionnaires"
+            ],
+            "availableAfter": "sampling/questionnaires"
+        },
+        {
+            "file": "practiceChartsReview.html",
+            "title": "Bar charts and pie charts review",
+            "description": "Reading charts, pictogram keys and sector angles.",
+            "skill": "Reading and constructing bar charts, pictograms, vertical line charts and pie charts.",
+            "topic": "presenting",
+            "groups": [
+                "charts-and-tables"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — reading frequencies and totals from bar charts, dual bar charts, pictograms with part-symbols and vertical line charts (4 questions).",
+                "Pie chart angles — converting frequencies to sector angles and back, with totals that divide 360 exactly (4 questions).",
+                "Comparisons — single-choice questions on two pie charts with different totals, where the bigger slice does not mean the bigger frequency (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "presenting/bar-charts",
+                "presenting/dual-and-composite-bar-charts",
+                "presenting/pictograms",
+                "presenting/vertical-line-charts",
+                "presenting/drawing-pie-charts",
+                "presenting/interpreting-pie-charts"
+            ],
+            "availableAfter": "presenting/interpreting-pie-charts"
+        },
+        {
+            "file": "practiceFrequencyDiagramsReview.html",
+            "title": "Grouped data diagrams review",
+            "description": "Stem-and-leaf, frequency polygons and equal-width histograms.",
+            "skill": "Reading stem-and-leaf diagrams, frequency polygons and equal-width histograms.",
+            "topic": "presenting",
+            "groups": [
+                "grouped-data-diagrams"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — values, counts and the range from a keyed stem-and-leaf diagram, back-to-back included (4 questions).",
+                "Polygons and histograms — the midpoint each frequency is plotted at, frequencies read from equal-width bars, and totals across one diagram (4 questions).",
+                "Class boundaries — single-choice questions placing a value in its class, and spotting the table whose classes gap or overlap (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "presenting/grouped-frequency-tables",
+                "presenting/stem-and-leaf-diagrams",
+                "presenting/back-to-back-stem-and-leaf",
+                "presenting/frequency-polygons",
+                "presenting/equal-width-histograms"
+            ],
+            "availableAfter": "presenting/equal-width-histograms"
+        },
+        {
+            "file": "practiceTimeSeriesReview.html",
+            "title": "Time series review",
+            "description": "Reading the graphs and describing the trend.",
+            "skill": "Reading time series and describing their trends.",
+            "topic": "presenting",
+            "groups": [
+                "time-series-and-scatter"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — reading values and exact differences from a table of readings taken at regular intervals (4 questions).",
+                "Trends — single-choice questions naming the long-term trend and the repeating seasonal pattern in a described series (4 questions).",
+                "Between the readings — single-choice questions on what can and cannot be claimed for times between two recorded readings (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "presenting/time-series-graphs",
+                "presenting/trends-and-seasonality"
+            ],
+            "availableAfter": "presenting/trends-and-seasonality"
+        },
+        {
+            "file": "practiceHistogramsReview.html",
+            "title": "Histograms review",
+            "description": "Frequency density and unequal class widths.",
+            "skill": "Calculating frequency density and converting between bar areas and frequencies on a histogram.",
+            "topic": "presenting",
+            "groups": [
+                "histograms-and-cumulative-frequency"
+            ],
+            "tier": "higher",
+            "sections": [
+                "Fluency — frequency density from frequency and class width, with every division exact (4 questions).",
+                "Areas to frequencies — frequencies from stated densities and widths, and completing a table whose products come out whole (4 questions).",
+                "Unequal widths — single-choice questions where the tallest bar does not hold the most data, catching height read as frequency (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "presenting/frequency-density",
+                "presenting/drawing-histograms",
+                "presenting/interpreting-histograms",
+                "presenting/completing-a-histogram"
+            ],
+            "availableAfter": "presenting/completing-a-histogram"
+        },
+        {
+            "file": "practiceCumulativeReview.html",
+            "title": "Cumulative frequency review",
+            "description": "Curves, medians, quartiles and box plots.",
+            "skill": "Building cumulative frequency tables, and reading medians, quartiles and box plots from the graphs.",
+            "topic": "presenting",
+            "groups": [
+                "histograms-and-cumulative-frequency"
+            ],
+            "tier": "higher",
+            "sections": [
+                "Fluency — completing running totals for a cumulative frequency table, every total exact, and single-choice questions picking the plotting point at the upper class boundary (4 questions).",
+                "Reading the curve — medians, quartiles and how many values lie above a given point, from stated curve readings at whole-number gridline values (4 questions).",
+                "Box plots — the five values, range and interquartile range from stated box plot values, catching the box width read as the range (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "presenting/cumulative-frequency-graphs",
+                "presenting/reading-cumulative-frequency-graphs",
+                "presenting/drawing-box-plots",
+                "presenting/reading-box-plots"
+            ],
+            "availableAfter": "presenting/reading-box-plots"
+        },
+        {
+            "file": "practiceMeanMedianModeReview.html",
+            "title": "Mean, median and mode review",
+            "description": "Averages and range from raw lists, forwards and backwards.",
+            "skill": "Finding the mean, median, mode and range of a list, and reversing a stated mean.",
+            "topic": "averages",
+            "groups": [
+                "averages-from-a-list"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — mean, median, mode and range of lists of five to eight small integers, every mean exact (4 questions).",
+                "Working backwards — a missing value from a stated mean, and the mean of two combined groups through their totals (4 questions).",
+                "Order and outliers — single-choice questions catching the median of an unordered list, and naming which average an outlier drags (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "averages/the-mode",
+                "averages/the-median",
+                "averages/the-mean",
+                "averages/the-range",
+                "averages/choosing-the-average",
+                "averages/working-backwards-from-the-mean",
+                "averages/combined-means"
+            ],
+            "availableAfter": "averages/combined-means"
+        },
+        {
+            "file": "practiceAveragesReview.html",
+            "title": "Averages from tables review",
+            "description": "Frequency tables and grouped data.",
+            "skill": "Finding averages from frequency tables and estimating the mean of grouped data.",
+            "topic": "averages",
+            "groups": [
+                "averages-from-tables",
+                "averages-from-grouped-data"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — mean, median and mode from ungrouped frequency tables, with value-times-frequency totals that divide exactly (4 questions).",
+                "Grouped data — the modal class, the class containing the median, and estimated means from midpoints that come out exactly (4 questions).",
+                "The classic traps — single-choice questions catching division by the number of rows, and the largest frequency read as the mode (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "averages/mean-from-a-frequency-table",
+                "averages/median-from-a-frequency-table",
+                "averages/mode-and-range-from-a-table",
+                "averages/modal-class",
+                "averages/median-class",
+                "averages/estimated-mean"
+            ],
+            "availableAfter": "averages/estimated-mean"
+        },
+        {
+            "file": "practiceQuartilesReview.html",
+            "title": "Quartiles review",
+            "description": "Quartiles and the interquartile range from ordered lists.",
+            "skill": "Finding quartiles and the interquartile range of small data sets.",
+            "topic": "averages",
+            "groups": [
+                "quartiles"
+            ],
+            "tier": "higher",
+            "sections": [
+                "Fluency — lower and upper quartiles of ordered lists of 7, 11 or 15 small integers (4 questions).",
+                "Interquartile range — the IQR of small integer data sets, including two sets with equal ranges but different IQRs (4 questions).",
+                "Order first — single-choice questions on lists that need ordering before quartering, and telling the interquartile range from the range (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "averages/quartiles-from-a-list",
+                "averages/interquartile-range"
+            ],
+            "availableAfter": "averages/interquartile-range"
+        },
+        {
+            "file": "practiceScatterReview.html",
+            "title": "Scatter graphs review",
+            "description": "Correlation and lines of best fit.",
+            "skill": "Describing correlation, estimating with a line of best fit, and knowing when an estimate cannot be trusted.",
+            "topic": "interpretation",
+            "groups": [
+                "correlation-and-best-fit"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — single-choice questions naming the type and strength of correlation from described point patterns (4 questions).",
+                "Using the line — estimates read from a line of best fit at values inside the data range, all landing on whole numbers (4 questions).",
+                "Overreach — single-choice questions rejecting estimates beyond the data range and causal claims a correlation cannot carry (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "interpretation/describing-correlation",
+                "interpretation/lines-of-best-fit",
+                "interpretation/interpolation",
+                "interpretation/extrapolation",
+                "interpretation/correlation-and-causation"
+            ],
+            "availableAfter": "interpretation/correlation-and-causation"
+        },
+        {
+            "file": "practiceComparingDataReview.html",
+            "title": "Comparing data sets review",
+            "description": "Averages, spread and the conclusions they support.",
+            "skill": "Comparing two data sets with an average and a measure of spread, stated in context.",
+            "topic": "interpretation",
+            "groups": [
+                "comparing-distributions"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — means, medians and ranges of two small integer data sets, every mean exact (4 questions).",
+                "Valid comparisons — single-choice questions picking the statement that pairs an average with a measure of spread and stays in context (4 questions).",
+                "Outliers and overreach — single-choice questions on the effect of removing an outlier, and on claims the data cannot support (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "interpretation/outliers",
+                "interpretation/comparing-with-mean-and-range",
+                "interpretation/limits-of-conclusions"
+            ],
+            "availableAfter": "interpretation/limits-of-conclusions"
+        }
+    ]
+}

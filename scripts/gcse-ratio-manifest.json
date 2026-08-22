@@ -1,0 +1,2312 @@
+{
+    "schemaVersion": 2,
+    "strand": {
+        "key": "ratio",
+        "title": "Ratio, proportion & rates of change",
+        "introHeading": "Ratio, proportion and rates of change",
+        "url": "/pages/curriculum/GCSE/ratio/",
+        "metaDescription": "GCSE ratio, proportion and rates of change: ratio, proportion, percentage change, compound measures, growth and decay."
+    },
+    "topics": [
+        {
+            "key": "ratio",
+            "prefix": "gcse-ratio-ratio",
+            "title": "Ratio",
+            "crumbLabel": "Ratio",
+            "cardDescription": "Ratio notation, dividing in a ratio, combining ratios, maps and similar shapes.",
+            "metaDescription": "GCSE ratio: notation and simplifying, dividing quantities in a ratio, combining ratios, scale drawings, maps and similar shapes, with worked examples throughout.",
+            "subtopics": [
+                {
+                    "slug": "ratio-notation",
+                    "title": "Ratio notation",
+                    "description": "Recording comparisons with the colon, why order matters, and three-part ratios.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Introduce the colon notation a : b and a : b : c, order mattering, writing ratios from counts, words and bar models, and reading comparisons aloud. Whole-number parts only; simplifying belongs to simplifying-ratios, converting to fractions of the whole to fractions-of-the-whole, and part:whole distinctions to their sibling page. Both tiers. (R4)"
+                },
+                {
+                    "slug": "simplifying-ratios",
+                    "title": "Simplifying a ratio",
+                    "description": "Dividing every part by the same factor, so 12 : 18 becomes 2 : 3.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover simplifying two- and three-part whole-number ratios by common factors or the HCF in one step, recognising equivalent ratios, and simplest-form checks. Integer parts in and out; mixed units are ratios-with-units, decimal 1 : n forms are one-to-n-ratios, and HCF technique itself is taught in Number. Both tiers. (R4)"
+                },
+                {
+                    "slug": "ratios-with-units",
+                    "title": "Ratios with mixed units",
+                    "description": "Converting to the same unit before simplifying, and why the ratio is unitless.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover converting both quantities to a common unit (mm, cm, m; g, kg; minutes, hours; pence, pounds) before simplifying, choosing the smaller unit, and why the finished ratio is unitless. Everyday metric and time conversions only, assumed from Number's measures pages. Rates comparing unlike quantities live under Compound measures. Both tiers. (R4, R1)"
+                },
+                {
+                    "slug": "one-to-n-ratios",
+                    "title": "Writing a ratio in the form 1 : n",
+                    "description": "Dividing both parts by one of them so scales and mixtures compare directly.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover rewriting any ratio as 1 : n or n : 1 by dividing through, n decimal or fractional, calculator and non-calculator, and using the form to compare scales, mixtures and strengths directly. Interpreting 1 : n map scales in context belongs to map-scales; this page owns the rewriting technique. Both tiers. (R4, R6)"
+                },
+                {
+                    "slug": "part-to-part-and-part-to-whole",
+                    "title": "Part:part and part:whole ratios",
+                    "description": "Telling the two kinds of ratio apart, and converting each into the other.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover distinguishing part:part from part:whole statements, converting each to the other in two- and three-part cases, and decoding wordings like 'one in five' or '2 boys for every 3 girls'. Sharing a quantity given either form is dividing-in-a-ratio; writing parts as fractions is fractions-of-the-whole. Both tiers. (R5)"
+                },
+                {
+                    "slug": "fractions-of-the-whole",
+                    "title": "From a ratio to fractions of the whole",
+                    "description": "Reading the fraction of the whole each part represents, and working back.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover reading fractions of the whole from a : b and a : b : c (2 : 3 gives 2/5 and 3/5, never 2/3), rebuilding a ratio from given fractions, and one part as a fraction of another. This page owns N11's fraction-in-ratio work; fraction arithmetic itself stays in Number. Both tiers. (R8, N11)"
+                },
+                {
+                    "slug": "dividing-in-a-ratio",
+                    "title": "Dividing a quantity in a ratio",
+                    "description": "Sharing an amount in a given ratio by finding the value of one part first.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover sharing an amount in two- and three-part ratios by valuing one part, plus the part:whole route via fractions, money, mass and length contexts, calculator and non-calculator, with an adding-back check. Reverse cases from one share or a difference are the sibling pages; percentage shares stay with Percentage change. Both tiers. (R5)"
+                },
+                {
+                    "slug": "when-one-part-is-known",
+                    "title": "Finding the whole from one share",
+                    "description": "Recovering the total and the other shares when only one part's value is given.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover recovering one part's value, the total and every other share when a single share is given, two- and three-part ratios, including 'Amy gets 40 pounds; how much does Ben get?' phrasing. Warn against dividing the known share by the total parts. Difference-given problems are the sibling page. Both tiers. (R5)"
+                },
+                {
+                    "slug": "when-the-difference-is-known",
+                    "title": "Sharing when the difference is given",
+                    "description": "Finding one part from the difference between shares, then rebuilding the total.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover sharing problems that state the difference between two shares: divide the difference by the difference in parts, value one part, rebuild all shares and the total. Include three-part ratios and money or age contexts. Total-given sharing is dividing-in-a-ratio; ratios that change after an event are changing-the-ratio. Both tiers. (R5)"
+                },
+                {
+                    "slug": "expressing-a-division-as-a-ratio",
+                    "title": "Writing a division as a ratio",
+                    "description": "Turning stated amounts back into a ratio in simplest form, in the order named.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover writing stated amounts as a ratio in the order named and simplifying, including from a total and one share (subtract first) and from fractions or percentages of the whole. Match units before writing, per ratios-with-units. Two and three parts only; this delivers R5's express-a-division clause. Both tiers. (R5)"
+                },
+                {
+                    "slug": "mixing-and-concentrations",
+                    "title": "Mixing and concentration problems",
+                    "description": "Ratios in paint mixes and concentrations, and comparing mixture strengths.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover paint, mortar, squash and alloy mixtures: scaling a mix, finding one ingredient from another, comparing strengths via unit fractions or 1 : n, and limited-ingredient maxima. Deciding same-strength is the key question type. Density of a mixture sits under Compound measures; serving-based recipes are Proportion's scaling-a-recipe. Both tiers. (R5)"
+                },
+                {
+                    "slug": "changing-the-ratio",
+                    "title": "When the ratio changes",
+                    "description": "Ratio-change problems solved by pinning down the part that stays fixed.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover problems where adding, removing or transferring quantity changes the ratio: pin the unchanged quantity, or set shares as multiples of x and solve a linear equation. Two-part ratios mainly. Examined at both tiers, but the algebraic route is crossover-to-Higher demand; equation-solving technique itself belongs to Algebra. (R5)"
+                },
+                {
+                    "slug": "ratio-as-a-multiplier",
+                    "title": "A ratio as a multiplier",
+                    "description": "The multiplicative link between two quantities as a fraction or multiplier.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover expressing one quantity as a fraction or multiplier of another from their ratio, fractions below and above 1 both required, and using the multiplier both ways to find either quantity. Include 'B is 3/2 of A' language. Fractions of the whole are the sibling page; percentage comparison lives under Percentage change. Both tiers. (R3, R6)"
+                },
+                {
+                    "slug": "combining-two-ratios",
+                    "title": "Combining two ratios",
+                    "description": "Merging a : b and b : c into a three-part ratio by matching the shared part.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover merging a : b and b : c into a : b : c by scaling both to a common value of the shared part (LCM), then answering sharing or comparison questions from the result. Include three-person money problems and chained exchange rates. Two given ratios only; proportionality equations belong to Proportion. Both tiers. (R5, R4)"
+                },
+                {
+                    "slug": "ratios-and-linear-functions",
+                    "title": "Ratios and linear functions",
+                    "description": "Why quantities in a fixed ratio obey y = kx, and the ratio in the gradient.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover why a fixed ratio y : x means y = kx, plotting ratio pairs as a straight line through the origin, reading the ratio from the gradient, and translating between ratio, fraction and function statements. Gradient mechanics and equations of lines are Algebra's; general proportion graphs are Proportion's direct-proportion-graphs. Both tiers. (R8, R14)"
+                },
+                {
+                    "slug": "scale-factors",
+                    "title": "Scale factors",
+                    "description": "The multiplier from object lengths to image lengths, and back by dividing.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover the scale factor between an object and its image: finding it from one matched pair of lengths, applying it forwards, dividing to reverse, and fractional factors for reductions. Lengths only. Area and volume factors are the Higher similar-shapes pages; enlargement as a transformation with a centre is Geometry's. Both tiers. (R2, R12)"
+                },
+                {
+                    "slug": "scale-drawings",
+                    "title": "Scale drawings",
+                    "description": "Using a stated scale such as 1 cm to 2 m to link drawing and real object.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover word scales like '1 cm represents 2 m': converting drawing lengths to real lengths and back, measuring a drawing then converting, producing simple scale drawings, and choosing a sensible scale. Ratio-form scales such as 1 : 25 000 belong to map-scales; bearings and accurate constructions are Geometry's. Both tiers. (R2)"
+                },
+                {
+                    "slug": "map-scales",
+                    "title": "Map scales",
+                    "description": "Ratio scales such as 1 : 25 000, converting between map and ground distance.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover unitless ratio scales like 1 : 25 000: map to ground distance and back through the cm-to-km chain, writing a scale as 1 : n from a matched pair of distances, and comparing map scales. Straight-line distances only; routes with bearings sit in Geometry, and word scales are scale-drawings. Both tiers. (R2, R1)"
+                },
+                {
+                    "slug": "lengths-in-similar-shapes",
+                    "title": "Lengths in similar shapes",
+                    "description": "Finding missing lengths with the length factor from any corresponding pair.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover missing lengths in similar shapes and triangles using the length scale factor or equal ratios of corresponding sides, enlargements and reductions, including matched sides in overlapping-triangle diagrams. Establishing similarity and angle arguments belong to Geometry; area and volume factors are the Higher sibling pages, kept out for Foundation's sake. Both tiers. (R12, G19)"
+                },
+                {
+                    "slug": "areas-of-similar-shapes",
+                    "title": "Areas of similar shapes",
+                    "description": "Why the area scale factor is the square of the length factor, shown by tiling.",
+                    "tier": "higher",
+                    "written": false,
+                    "coverNote": "Higher only, per the braces on areas in G19. Cover the area factor as the square of the length factor, used both ways: scale an area, or square-root an area ratio to recover the length factor. Include surface areas of similar solids. Lengths stay on the both-tier sibling page; volumes are next door. (R12, G19)"
+                },
+                {
+                    "slug": "volumes-of-similar-shapes",
+                    "title": "Volumes of similar shapes",
+                    "description": "Why the volume scale factor is the cube of the length factor, used both ways.",
+                    "tier": "higher",
+                    "written": false,
+                    "coverNote": "Higher only, per the braces on volumes in G19. Cover the volume factor as the cube of the length factor, applied to volumes, capacities and masses of similar solids in both directions, including cube-rooting a volume ratio. Mass via density links to Compound measures; switching between area and volume factors is choosing-the-scale-factor. (R12, G19)"
+                },
+                {
+                    "slug": "choosing-the-scale-factor",
+                    "title": "Choosing the right scale factor",
+                    "description": "Moving between length, area and volume factors by roots and powers.",
+                    "tier": "higher",
+                    "written": false,
+                    "coverNote": "Higher only. Cover converting between length, area and volume factors by squaring, cubing and rooting: from any one given ratio find the others, including area-to-volume via the length factor, with fractional and surd answers. Confront the applying-the-length-factor-everywhere error head on. Similarity proofs and trigonometric links stay in Geometry. (R12, G19)"
+                }
+            ],
+            "groups": [
+                {
+                    "slug": "notation-and-simplifying",
+                    "title": "Ratio notation and simplifying",
+                    "crumb": "Notation",
+                    "lead": "What a ratio records, simplest form and 1 : n, and the fractions inside it.",
+                    "slugs": [
+                        "ratio-notation",
+                        "simplifying-ratios",
+                        "ratios-with-units",
+                        "one-to-n-ratios",
+                        "part-to-part-and-part-to-whole",
+                        "fractions-of-the-whole"
+                    ]
+                },
+                {
+                    "slug": "sharing",
+                    "title": "Dividing in a ratio",
+                    "crumb": "Sharing",
+                    "lead": "Dividing a quantity into shares, working back from one part, and mixtures.",
+                    "slugs": [
+                        "dividing-in-a-ratio",
+                        "when-one-part-is-known",
+                        "when-the-difference-is-known",
+                        "expressing-a-division-as-a-ratio",
+                        "mixing-and-concentrations",
+                        "changing-the-ratio"
+                    ]
+                },
+                {
+                    "slug": "combining-ratios",
+                    "title": "Combining and connecting ratios",
+                    "crumb": "Combining ratios",
+                    "lead": "Merging two ratios through a shared part, and the multiplier in every ratio.",
+                    "slugs": [
+                        "ratio-as-a-multiplier",
+                        "combining-two-ratios",
+                        "ratios-and-linear-functions"
+                    ]
+                },
+                {
+                    "slug": "maps-and-scale-drawings",
+                    "title": "Scale factors, maps and scale drawings",
+                    "crumb": "Scale drawings",
+                    "lead": "The multiplier linking a drawing or map to the real object, used both ways.",
+                    "slugs": [
+                        "scale-factors",
+                        "scale-drawings",
+                        "map-scales"
+                    ]
+                },
+                {
+                    "slug": "similar-shapes",
+                    "title": "Similar shapes and scale factors",
+                    "crumb": "Similar shapes",
+                    "lead": "Length, area and volume factors of similar shapes, and choosing between them.",
+                    "slugs": [
+                        "lengths-in-similar-shapes",
+                        "areas-of-similar-shapes",
+                        "volumes-of-similar-shapes",
+                        "choosing-the-scale-factor"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "proportion",
+            "prefix": "gcse-ratio-proportion",
+            "title": "Proportion",
+            "crumbLabel": "Proportion",
+            "cardDescription": "Direct and inverse proportion, best buys, and the graphs and equations of both.",
+            "metaDescription": "GCSE proportion: direct and inverse proportion, the unitary method, recipes and best buys, and the graphs and equations of proportionality.",
+            "subtopics": [
+                {
+                    "slug": "proportion-as-equal-ratios",
+                    "title": "Proportion as equality of ratios",
+                    "description": "Two pairs of quantities are in proportion when their ratios are equal.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover the definition that pairs of quantities are proportional when their ratios are equal: test tables by comparing ratios or unit values, and find a missing value by equating two ratios, cross-multiplication kept informal. Applications go to the unitary-method and sibling pages; the y = kx formalisation waits for later pages. Both tiers. (R7)"
+                },
+                {
+                    "slug": "direct-proportion",
+                    "title": "Direct proportion",
+                    "description": "Direct proportion: multiply one quantity and the other multiplies the same way.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover the meaning of direct proportion, multiplying one quantity multiplies the other by the same factor, with scaling-factor solutions for cost, mass and length problems and 'is directly proportional to' language. Stress constant ratio, not merely both increasing. The unitary method, graphs and y = kx each get their own page. Both tiers. (R10, R7)"
+                },
+                {
+                    "slug": "unitary-method",
+                    "title": "The unitary method",
+                    "description": "Finding the value of one unit first, then scaling up to any number of units.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover finding one unit's value then scaling: cost per item, exchange-rate style conversions, time for one machine, choosing between unitary and scaling-factor routes, calculator and non-calculator. Conversion here means proportional quantities; single measurement units are Number's. Recipes and best buys apply this on the sibling pages. Both tiers. (R10, R5)"
+                },
+                {
+                    "slug": "scaling-a-recipe",
+                    "title": "Scaling a recipe",
+                    "description": "Scaling every ingredient by the same factor, and serving-size questions.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover scaling ingredient lists by integer, fractional and decimal factors such as 1.5 or 2/3, converting between serving counts both ways, and how-many-can-be-made questions limited by one ingredient. Fraction arithmetic assumed from Number. Value comparison is best-buy-comparisons; mixtures stated as ratios are Ratio's mixing-and-concentrations. Both tiers. (R5, R10)"
+                },
+                {
+                    "slug": "best-buy-comparisons",
+                    "title": "Best-buy comparisons",
+                    "description": "Comparing value by the price of one unit or the amount one penny buys.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover comparing value across pack sizes by price per unit or amount per penny, three or more packs, and multibuy offers like three-for-two or 25% extra free, with working and units shown. Unit pricing as a bare rate also lives under Compound measures; percentage discounts draw on Percentage change. Both tiers. (R10, R11)"
+                },
+                {
+                    "slug": "inverse-proportion",
+                    "title": "Inverse proportion",
+                    "description": "Inverse proportion: multiply one, and the other divides by the same factor.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover the meaning of inverse proportion, one quantity multiplies and the other divides by the same factor so the product is constant, with 'is inversely proportional to' language and the equivalence to proportionality to 1/x stated informally. Worked contexts are the sibling problems page; constructing y = k/x is Higher's inverse-proportion-equations. Both tiers. (R10, R13)"
+                },
+                {
+                    "slug": "inverse-proportion-problems",
+                    "title": "Inverse proportion problems",
+                    "description": "Workers and time, speed and journey time, solved by finding the fixed product.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover workers and time, taps filling tanks, speed and journey time, and supplies lasting fewer days, all solved via the fixed product such as total worker-hours, including non-integer answers and whole-worker sense checks. Recognising which model applies is the sibling page; algebraic k/x equations are Higher only. Both tiers. (R10)"
+                },
+                {
+                    "slug": "recognising-proportionality",
+                    "title": "Recognising the type of proportion",
+                    "description": "Deciding from a table whether a relationship is direct, inverse or neither.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover deciding direct, inverse or neither from a table (test constant ratio or constant product), a graph or a description, with written justification; both columns increasing is not evidence, and y = kx + c is neither. Graph shapes have their own pages; equation construction is Higher. Both tiers. (R10, R14)"
+                },
+                {
+                    "slug": "direct-proportion-graphs",
+                    "title": "The graph of direct proportion",
+                    "description": "A line through the origin, and why one that misses it is not direct proportion.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover the straight line through the origin as direct proportion's signature: recognising it, rejecting lines with a non-zero intercept, reading values both ways, and interpreting the gradient as the unit rate or constant of proportionality. Plotting mechanics are Algebra's; conversion graphs and gradient-as-a-rate build on this page. Both tiers. (R10, R14)"
+                },
+                {
+                    "slug": "inverse-proportion-graphs",
+                    "title": "The graph of inverse proportion",
+                    "description": "The reciprocal curve, approaching each axis without ever reaching it.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover recognising the reciprocal curve of inverse proportion, reading values from it both ways, and its behaviour: constant product of coordinates, approaching but never touching either axis, asymptote language kept informal. Recognition and reading only; plotting y = 1/x is Algebra's reciprocal-graphs work, and constructing y = k/x is Higher's sibling page. Both tiers. (R10, R14)"
+                },
+                {
+                    "slug": "conversion-graphs",
+                    "title": "Conversion graphs",
+                    "description": "Reading a conversion graph in both directions, and extending it with the rate.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover reading straight-line conversion graphs, currency, units and temperature, in both directions, drawing one from a rate or two points, and converting amounts beyond the plotted range by using the rate. Include non-origin lines like fixed-charge tariffs. Unit conversion arithmetic is Number's; gradient-as-a-rate under Compound measures continues the idea. Both tiers. (R1, R14)"
+                },
+                {
+                    "slug": "direct-proportion-equations",
+                    "title": "Constructing y = kx",
+                    "description": "Finding k from one pair of values, then using the equation in both directions.",
+                    "tier": "higher",
+                    "written": false,
+                    "coverNote": "Higher only, from R13's braced 'construct and'. Cover forming y = kx from a proportionality statement plus one value pair, finding k, interpreting it in context, and evaluating either variable. Include statements from words. Foundation meets interpretation on ratios-and-linear-functions and the graph pages; powers and roots follow on proportion-to-powers. (R13, R10)"
+                },
+                {
+                    "slug": "inverse-proportion-equations",
+                    "title": "Constructing y = k/x",
+                    "description": "Writing inverse proportion as y = k/x, since it means proportional to 1/x.",
+                    "tier": "higher",
+                    "written": false,
+                    "coverNote": "Higher only, from R13's braced 'construct and'. Cover forming y = k/x from an inverse statement and one value pair, using the equivalence with proportionality to 1/x, evaluating both ways, and contrasting with the direct case. Curve recognition stays on the both-tier graphs page; squared-denominator forms belong to proportion-to-powers. (R13, R10)"
+                },
+                {
+                    "slug": "proportion-to-powers",
+                    "title": "Proportion to squares, cubes and roots",
+                    "description": "Relationships like y = kx² and y = k/x², and finding k when the power is stated.",
+                    "tier": "higher",
+                    "written": false,
+                    "coverNote": "Higher only. Cover y = kx squared, cubed, square-rooted and k over x squared: form the equation from a statement naming the power plus one value pair, find k, evaluate both directions, and match tables or descriptions to the right form. Powers are always stated, never deduced from data; exponential models live in Growth and decay. (R10, R13)"
+                }
+            ],
+            "groups": [
+                {
+                    "slug": "using-direct-proportion",
+                    "title": "Direct proportion",
+                    "crumb": "Direct proportion",
+                    "lead": "Quantities that scale together, the unitary method, and value for money.",
+                    "slugs": [
+                        "proportion-as-equal-ratios",
+                        "direct-proportion",
+                        "unitary-method",
+                        "scaling-a-recipe",
+                        "best-buy-comparisons"
+                    ]
+                },
+                {
+                    "slug": "using-inverse-proportion",
+                    "title": "Inverse proportion",
+                    "crumb": "Inverse proportion",
+                    "lead": "Quantities where one grows as the other shrinks, solved by the fixed product.",
+                    "slugs": [
+                        "inverse-proportion",
+                        "inverse-proportion-problems",
+                        "recognising-proportionality"
+                    ]
+                },
+                {
+                    "slug": "graphs-and-equations",
+                    "title": "Graphs and equations of proportion",
+                    "crumb": "Graphs and equations",
+                    "lead": "Lines through the origin, reciprocal curves, and the Higher-only equations.",
+                    "slugs": [
+                        "direct-proportion-graphs",
+                        "inverse-proportion-graphs",
+                        "conversion-graphs",
+                        "direct-proportion-equations",
+                        "inverse-proportion-equations",
+                        "proportion-to-powers"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "percentage",
+            "prefix": "gcse-ratio-percentage",
+            "title": "Percentage change",
+            "crumbLabel": "Percentage change",
+            "cardDescription": "Multipliers, comparing change, reverse percentages, and repeated interest.",
+            "metaDescription": "GCSE percentage change: multipliers for increase and decrease, profit and loss, reverse percentages, simple interest and repeated change.",
+            "subtopics": [
+                {
+                    "slug": "increase-and-decrease-by-parts",
+                    "title": "Increase and decrease without a calculator",
+                    "description": "Building the change from 50%, 10% and 1%, then adding it on or taking it off.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover non-calculator increase and decrease built from 50%, 10%, 5% and 1% blocks, added on or taken off, with money and measure contexts and estimation checks. Plain percentage-of-an-amount and percentages as parts per hundred are Number's FDP pages, deliberately duplicated territory; the multiplier method follows on the sibling pages. Both tiers. (R9)"
+                },
+                {
+                    "slug": "multipliers-for-increase",
+                    "title": "The multiplier for an increase",
+                    "description": "Adding the percentage to 100% as a decimal, so a 12% rise becomes ×1.12.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover forming an increase multiplier by adding to 100% and writing as a decimal: 12% gives x1.12, 4.5% gives x1.045, a 150% rise gives x2.5, applied in one calculator step. Percentages above 100% included. Decreases and decoding multipliers are the sibling pages; repeated application waits for repeated-change. Both tiers. (R9)"
+                },
+                {
+                    "slug": "multipliers-for-decrease",
+                    "title": "The multiplier for a decrease",
+                    "description": "Subtracting the percentage from 100%, so a 15% fall becomes ×0.85, not ×0.15.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover forming a decrease multiplier by subtracting from 100%, so 15% off gives x0.85, applying it in one step, and killing the x0.15 error explicitly. Include small decimal rates like 2.5%. Increases are the sibling page; dividing by the multiplier to reverse a change belongs to the reverse-problems group. Both tiers. (R9)"
+                },
+                {
+                    "slug": "reading-a-multiplier",
+                    "title": "Reading a multiplier",
+                    "description": "Recovering the change a multiplier applies, where ×0.88 hides a 12% fall.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover decoding multipliers back to percentage changes: x1.045 as a 4.5% rise, x0.88 as a 12% fall, x2.3 as a 130% increase, including factors above 2 and changes over 100%. Also read the combined multiplier of a repeated change. Forming multipliers is the sibling pages; model reading continues in Growth and decay. Both tiers. (R9)"
+                },
+                {
+                    "slug": "measuring-a-change",
+                    "title": "Measuring a change as a percentage",
+                    "description": "Dividing the change by the original amount, never the new one, as a percentage.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover percentage change as change divided by original times 100, rises and falls, calculator and simple non-calculator cases, changes beyond 100%, and the dividing-by-the-new-value error. Expressing one quantity as a percentage of another in general is Number's FDP work; profit wording and fair comparisons are the sibling pages. Both tiers. (R9)"
+                },
+                {
+                    "slug": "profit-and-loss",
+                    "title": "Percentage profit and loss",
+                    "description": "Profit or loss as a percentage of the cost price the seller originally paid.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover percentage profit and loss as a percentage of cost price: from cost and selling prices, finding a selling price to achieve a stated percentage profit, and losses handled as decreases. Stress the of-the-cost-price denominator. Recovering a cost price from a selling price is the reverse-problems group's work. Both tiers. (R9)"
+                },
+                {
+                    "slug": "comparing-changes",
+                    "title": "Comparing changes by percentage",
+                    "description": "Deciding which rise or fall is proportionally larger, whatever the amounts say.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover deciding which of two rises or falls is proportionally larger by computing each percentage change, including cases where the bigger absolute change is the smaller percentage, and comparing two quantities using percentages, like scores out of different totals. Index numbers are beyond GCSE. Multiplier skills come from the sibling group. Both tiers. (R9)"
+                },
+                {
+                    "slug": "original-after-an-increase",
+                    "title": "The original after an increase",
+                    "description": "Recovering the pre-increase amount by dividing by the multiplier, as with VAT.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover reverse percentage after an increase: divide the final amount by the increase multiplier to recover the original, with VAT, pay rise and population contexts, plus a re-applying check. Non-calculator cases with 20% and 25%. Decrease versions and classifying forward against reverse are the sibling pages; depreciation over years is Growth and decay. Both tiers. (R9)"
+                },
+                {
+                    "slug": "original-after-a-decrease",
+                    "title": "The original after a decrease",
+                    "description": "Recovering the full price from a sale price by dividing by the multiplier.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover reverse percentage after a decrease: divide the sale or reduced value by the decrease multiplier, refuting the add-the-percentage-back shortcut with a numeric counterexample. Sale price and depreciated value contexts, single step only. Increases are the sibling page; multi-year decay with powers of the multiplier belongs to Growth and decay. Both tiers. (R9)"
+                },
+                {
+                    "slug": "spotting-reverse-problems",
+                    "title": "Spotting a reverse problem",
+                    "description": "Deciding whether a question states the original amount or the changed one.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover classifying percentage problems before solving: does the question state the original (multiply) or the changed amount (divide)? Mixed forward and reverse sets, increase and decrease, and language cues like 'after the rise' or 'was'. No new arithmetic; techniques come from the multiplier and reverse sibling pages. Both tiers. (R9)"
+                },
+                {
+                    "slug": "simple-interest",
+                    "title": "Simple interest",
+                    "description": "Interest paid on the starting amount only, so the same sum is added every year.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover simple interest, named in R9's financial mathematics: the same interest on the principal every year, total interest and final balance after n years, and finding the rate, time or principal from a stated total. Contrast with compounding stays brief here; simple-versus-compound-interest and Growth and decay own it. Both tiers. (R9)"
+                },
+                {
+                    "slug": "repeated-change",
+                    "title": "Repeated percentage change",
+                    "description": "Applying the same change repeatedly by raising the multiplier to a power.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover applying one percentage change n times as the multiplier raised to the power n, why adding percentages fails (two 10% rises give 21%, not 20%), and small-n money and population questions. Different consecutive changes are successive-changes; the compound interest formula, depreciation and how-long questions live in Growth and decay. Both tiers. (R9, R16)"
+                },
+                {
+                    "slug": "successive-changes",
+                    "title": "Successive different changes",
+                    "description": "Combining two changes into one multiplier; a 20% rise then 20% fall loses money.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover combining two different consecutive changes into one multiplier, x1.2 then x0.8 making x0.96, a 4% loss, reading off the overall change, order irrelevance, and finding a missing second change from the overall effect. Same-change repetition is repeated-change; reversing a combined change uses the reverse-problems methods. Both tiers. (R9)"
+                },
+                {
+                    "slug": "simple-versus-compound-interest",
+                    "title": "Simple versus compound interest",
+                    "description": "Why the same rate pays differently under the two schemes, and the widening gap.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover the two interest schemes side by side: same principal and rate tabulated year by year, which pays more, why the gap widens, and exam questions asking for the difference after n years. Calculation methods are assumed from simple-interest and repeated-change; the compound formula and its decay twin live in Growth and decay. Both tiers. (R9, R16)"
+                }
+            ],
+            "groups": [
+                {
+                    "slug": "multipliers",
+                    "title": "The multiplier",
+                    "crumb": "Multipliers",
+                    "lead": "A percentage change packed into one multiplier, written, applied and read back.",
+                    "slugs": [
+                        "increase-and-decrease-by-parts",
+                        "multipliers-for-increase",
+                        "multipliers-for-decrease",
+                        "reading-a-multiplier"
+                    ]
+                },
+                {
+                    "slug": "comparing-change",
+                    "title": "Measuring and comparing change",
+                    "crumb": "Comparing change",
+                    "lead": "Turning two amounts into a percentage change to compare rises and falls fairly.",
+                    "slugs": [
+                        "measuring-a-change",
+                        "profit-and-loss",
+                        "comparing-changes"
+                    ]
+                },
+                {
+                    "slug": "reverse-problems",
+                    "title": "Reverse percentage problems",
+                    "crumb": "Reverse problems",
+                    "lead": "Recovering the amount a change started from by dividing by the multiplier.",
+                    "slugs": [
+                        "original-after-an-increase",
+                        "original-after-a-decrease",
+                        "spotting-reverse-problems"
+                    ]
+                },
+                {
+                    "slug": "interest-and-repeated-change",
+                    "title": "Interest and repeated change",
+                    "crumb": "Repeated change",
+                    "lead": "Simple interest, repeated change, and why successive changes multiply.",
+                    "slugs": [
+                        "simple-interest",
+                        "repeated-change",
+                        "successive-changes",
+                        "simple-versus-compound-interest"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "compound",
+            "prefix": "gcse-ratio-compound",
+            "title": "Compound measures",
+            "crumbLabel": "Compound measures",
+            "cardDescription": "Speed, density and pressure, rates of pay and flow, and gradients as rates.",
+            "metaDescription": "GCSE compound measures: speed, density, pressure, rates of pay and unit pricing, converting rates, and gradients read as rates of change.",
+            "subtopics": [
+                {
+                    "slug": "speed-distance-time",
+                    "title": "Speed, distance and time",
+                    "description": "Using speed as distance per unit time to find any quantity from the other two.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover speed as distance per unit time, rearranged to find any of the three, units mph, km/h and m/s, and decimal-hour care (2.4 hours is 2 h 24 min). Single-stage journeys only. Multi-stage averages are average-speed, unit switching is converting-rates, and graph readings sit in the rates-on-graphs group. Both tiers. (R11, R1)"
+                },
+                {
+                    "slug": "average-speed",
+                    "title": "Average speed",
+                    "description": "Total distance divided by total time, not an average of the two speeds.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover average speed as total distance over total time across multi-stage journeys including stops, why averaging two speeds fails even over equal distances, and finding a missing stage from a stated overall average. Distance-time graph versions are speed-from-a-distance-time-graph; velocity, acceleration and kinematics formulas are A level mechanics. Both tiers. (R11)"
+                },
+                {
+                    "slug": "density-mass-volume",
+                    "title": "Density, mass and volume",
+                    "description": "Using density as mass per unit volume, with the units naming the formula.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover density as mass per unit volume, rearranged for any quantity, units g/cm3 and kg/m3 with consistency checks, volumes either given or found from Geometry's mensuration formulas. Single materials only here; combining materials is density-of-a-mixture, and rewriting a density in other units belongs to converting-rates. Both tiers. (R11)"
+                },
+                {
+                    "slug": "density-of-a-mixture",
+                    "title": "The density of a mixture",
+                    "description": "Totalling mass and volume separately, never averaging the two densities.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover mixture density by totalling mass and totalling volume separately then dividing, never averaging the densities, including finding an unknown component's mass or volume from a stated mixture density. Alloy and liquid contexts, ratios of components included. Parts-based mixing without density is Ratio's mixing-and-concentrations. Both tiers, though exam demand is crossover-level. (R11)"
+                },
+                {
+                    "slug": "pressure-force-area",
+                    "title": "Pressure, force and area",
+                    "description": "Using pressure as force per unit area, and why a smaller area raises pressure.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover pressure as force per unit area, rearranged for any of the three, units N/m2, areas sometimes computed from Geometry's formulas, and reasoning about why a smaller contact area raises pressure. Numerical cases only; gas laws and liquid-column pressure are physics, and algebraic rate conversion is the Higher converting-units-with-algebra page. Both tiers. (R11)"
+                },
+                {
+                    "slug": "rates-of-pay",
+                    "title": "Rates of pay",
+                    "description": "Hourly pay as money per unit time, including part hours and overtime rates.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover pay as money per unit time: wages from hourly rates including part hours as decimals or fractions, overtime at time-and-a-half or double, and comparing jobs by converting to a common rate. Multiplicative structure only; percentage deductions such as tax draw on Percentage change pages. Both tiers. (R11, R1)"
+                },
+                {
+                    "slug": "unit-pricing",
+                    "title": "Unit pricing",
+                    "description": "The price of one unit as a rate, multiplied or divided to cost any amount.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover price per unit as a rate used both ways: multiply to cost a quantity, divide to find what a budget buys, and price-per-100g comparisons. Deliberate overlap with Proportion's best-buy-comparisons: that page owns choosing between packs and offers, this one the rate mechanics and rearrangement. Both tiers. (R11)"
+                },
+                {
+                    "slug": "rates-of-flow",
+                    "title": "Rates of flow",
+                    "description": "Filling and emptying at a stated volume per unit time, and how long it takes.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover flow as volume per unit time at a constant rate: filling or emptying time from container volume and rate, volume delivered in a stated time, litre and cm3 links, minute and second conversions. Constant rates only; depth-time graphs of odd-shaped containers are Algebra's graph work, gradients the rates-on-graphs group's. Both tiers. (R11, R1)"
+                },
+                {
+                    "slug": "converting-rates",
+                    "title": "Converting a rate between units",
+                    "description": "Changing a rate such as m/s into km/h, converting top and bottom separately.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover converting a compound rate between unit systems by converting numerator and denominator separately: m/s to km/h, g/cm3 to kg/m3, pence per gram to pounds per kilogram, numeric cases only with the two-step chain shown. Algebraic versions like x m/s are the next page; single-unit conversion mechanics are Number's. Both tiers. (R1, R11)"
+                },
+                {
+                    "slug": "converting-units-with-algebra",
+                    "title": "Unit conversion with algebra",
+                    "description": "Converting a quantity given as a letter, so x m/s becomes 3.6x km/h.",
+                    "tier": "higher",
+                    "written": false,
+                    "coverNote": "Cover converting quantities and rates carried by a letter: x m/s as 3.6x km/h, y g/cm3 as 1000y kg/m3, plus area and volume units, factors kept exact and justified by the numeric chain from converting-rates. Placed at Higher here, although R1's 'algebraic contexts' is underlined, not braced, in the DfE text. (R1)"
+                },
+                {
+                    "slug": "speed-from-a-distance-time-graph",
+                    "title": "Speed from a distance–time graph",
+                    "description": "Speed as the gradient of each straight section; horizontal means stopped.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover reading distance-time graphs: speed as the gradient of each straight section, horizontal meaning stationary, comparing steepness across sections, return journeys, and whole-journey average speed. Straight-line sections only; curved graphs need Higher's chord and tangent pages, and drawing or interpreting general real-life graphs is shared with Algebra. Both tiers. (R14, R11)"
+                },
+                {
+                    "slug": "gradient-as-a-rate",
+                    "title": "The gradient as a rate of change",
+                    "description": "Reading a straight-line gradient as a rate: vertical units per horizontal unit.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover interpreting any straight-line graph's gradient as a rate of change with units of the vertical per unit of the horizontal, pricing, exchange, fuel and filling graphs, computed from two points and always stated with units. Gradient technique itself is Algebra's; curves are the Higher chord and tangent pages. Both tiers. (R14)"
+                },
+                {
+                    "slug": "average-rate-from-a-chord",
+                    "title": "Average rate of change from a chord",
+                    "description": "The gradient of a chord joining two points on a curve as the average rate.",
+                    "tier": "higher",
+                    "written": false,
+                    "coverNote": "Higher only, R15 being wholly braced. Cover average rate of change between two points on a curve as the chord's gradient, in distance-time (average speed), filling and growth contexts, with units interpreted in context and points read from the drawn graph. Instantaneous rates are the tangent sibling page; exact methods are A level calculus. (R15)"
+                },
+                {
+                    "slug": "instantaneous-rate-from-a-tangent",
+                    "title": "Instantaneous rate of change from a tangent",
+                    "description": "A tangent's gradient as the rate at that instant, an estimate by eye.",
+                    "tier": "higher",
+                    "written": false,
+                    "coverNote": "Higher only, R15 being wholly braced. Cover estimating an instantaneous rate by drawing a tangent by eye and computing its gradient, accepting a tolerance in answers, on curved distance-time and container-filling graphs, with units interpreted. Chords give averages on the sibling page; differentiation for exact gradients is A level. (R15, A15)"
+                }
+            ],
+            "groups": [
+                {
+                    "slug": "speed-density-pressure",
+                    "title": "Speed, density and pressure",
+                    "crumb": "Speed and density",
+                    "lead": "The three compound measures, each a division rearranged to find any quantity.",
+                    "slugs": [
+                        "speed-distance-time",
+                        "average-speed",
+                        "density-mass-volume",
+                        "density-of-a-mixture",
+                        "pressure-force-area"
+                    ]
+                },
+                {
+                    "slug": "rates-per-unit",
+                    "title": "Rates per unit",
+                    "crumb": "Rates per unit",
+                    "lead": "Pay, prices and flows as an amount per unit, used both ways and converted.",
+                    "slugs": [
+                        "rates-of-pay",
+                        "unit-pricing",
+                        "rates-of-flow",
+                        "converting-rates",
+                        "converting-units-with-algebra"
+                    ]
+                },
+                {
+                    "slug": "rates-on-graphs",
+                    "title": "Rates of change on graphs",
+                    "crumb": "Rates on graphs",
+                    "lead": "Reading rates as gradients: lines at both tiers, chords and tangents at Higher.",
+                    "slugs": [
+                        "speed-from-a-distance-time-graph",
+                        "gradient-as-a-rate",
+                        "average-rate-from-a-chord",
+                        "instantaneous-rate-from-a-tangent"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "growth",
+            "prefix": "gcse-ratio-growth",
+            "title": "Growth and decay",
+            "crumbLabel": "Growth and decay",
+            "cardDescription": "Compound interest, depreciation, exponential change, and the models behind them.",
+            "metaDescription": "GCSE growth and decay: compound interest, depreciation, exponential growth and decay, and iterative models, with the mistakes that lose marks.",
+            "subtopics": [
+                {
+                    "slug": "compound-interest",
+                    "title": "Compound interest",
+                    "description": "Interest paid on the balance, so each year's interest earns interest itself.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover compound interest year by year: interest earned on the growing balance, tabulating balances over two or three years, and the contrast with simple interest's flat additions. Small n by repeated multiplication only; the one-step power formula is the sibling page. Simple interest itself lives under Percentage change. Both tiers, since R16 does not brace compound interest. (R16, R9)"
+                },
+                {
+                    "slug": "compound-interest-formula",
+                    "title": "The compound interest formula",
+                    "description": "Raising the multiplier to the number of years to reach the balance in one step.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover the closed form, final amount equals principal times the multiplier to the power n: identifying principal, rate and n from wordy questions, decimal-rate care (2.5% gives 1.025), and interest earned versus final balance. Finding n belongs to finding-how-long; extracting an unknown rate by nth roots leans Higher and should be flagged as such. Both tiers. (R16, R9)"
+                },
+                {
+                    "slug": "depreciation",
+                    "title": "Depreciation",
+                    "description": "A value falling by a fixed percentage each year, via a multiplier below 1.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover depreciation as repeated percentage loss: a multiplier below 1 raised to the power n for cars and equipment, final value and total loss, and mixed questions where the rate changes between years so different factors multiply. One-step reverse (original value) problems belong to Percentage change's reverse pages. Both tiers. (R16, R9)"
+                },
+                {
+                    "slug": "finding-how-long",
+                    "title": "Finding how long growth takes",
+                    "description": "Multiplying period by period until a target is passed, counting whole periods.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover finding how many periods growth or decay needs to pass a target: multiply period by period or trial powers, answer as a whole number of periods, and justify by showing the balances either side of the target. Include decay dropping below a threshold. Logarithms are A level and must not appear. Both tiers. (R16)"
+                },
+                {
+                    "slug": "exponential-growth",
+                    "title": "Exponential growth",
+                    "description": "Quantities multiplied by the same factor each period, slowly then very fast.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover exponential growth beyond money, populations, bacteria doubling and chain effects, modelled as start times multiplier to the power n, evaluating for given n, building the multiplier from a percentage rate or a doubling description, and comparing growth across equal periods. Curve recognition stays informal; plotting exponential graphs is Algebra's Higher content. Both tiers. (R16)"
+                },
+                {
+                    "slug": "exponential-decay",
+                    "title": "Exponential decay",
+                    "description": "Repeated multiplication by a factor below 1, never quite reaching zero.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover exponential decay: repeated multiplication by a factor below 1 for radioactivity-style, medicine-dose and cooling contexts, halving as x0.5 per period, and why values approach zero without reaching it. Keep half-life language informal. Threshold questions belong to finding-how-long; the decay curve is sketch-recognition only, with plotting in Algebra at Higher. Both tiers. (R16)"
+                },
+                {
+                    "slug": "linear-versus-exponential",
+                    "title": "Linear versus exponential growth",
+                    "description": "Adding the same amount against multiplying by the same factor, and which wins.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover the contrast between adding a fixed amount per period and multiplying by a fixed factor: side-by-side tables, which savings account or population overtakes and roughly when, and identifying the model from a description or table. Connects simple-versus-compound-interest with Algebra's arithmetic and geometric sequences; sequence notation stays out. Both tiers. (R16)"
+                },
+                {
+                    "slug": "setting-up-a-model",
+                    "title": "Setting up an exponential model",
+                    "description": "Writing repeated change as a starting value times a multiplier to the power n.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover translating a description of repeated change into start times multiplier to the power n: identify the starting value, turn the rate or factor into a multiplier, define what n counts, and state the model before evaluating. Growth and decay both. Interpreting a given model is the sibling page; subscripted recurrence rules are Higher's iterative-processes. Both tiers. (R16)"
+                },
+                {
+                    "slug": "interpreting-a-model",
+                    "title": "Interpreting an exponential model",
+                    "description": "Reading a model's starting value and rate, and where it stops being realistic.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover reading a supplied model such as V = 12000 x 0.85 to the power n: state the initial value, decode the multiplier into a percentage change per period, evaluate at a given n, and criticise long-term realism. Multiplier decoding is taught at reading-a-multiplier under Percentage change; building models is the sibling page. Both tiers. (R16, R9)"
+                },
+                {
+                    "slug": "iterative-processes",
+                    "title": "General iterative processes",
+                    "description": "Applying a stated rule repeatedly, each term built from the one before.",
+                    "tier": "higher",
+                    "written": false,
+                    "coverNote": "Higher only, from R16's braced clause. Cover applying a stated rule repeatedly with subscript notation: given a start and a term-to-term rule, generate terms, model stock-with-removal situations, and describe long-term behaviour informally. Iteration for solving equations, x = g(x) with rearrangement, is Algebra's A20 territory, not this page's. (R16)"
+                },
+                {
+                    "slug": "growth-with-regular-payments",
+                    "title": "Growth with regular payments",
+                    "description": "A fixed amount added each period before interest, so no single formula works.",
+                    "tier": "higher",
+                    "written": false,
+                    "coverNote": "Higher only. Cover accounts with a fixed deposit or withdrawal each period alongside percentage interest: build the balance step by step in the order the question states, over two to four periods, and show why no single power formula applies. Plain compound interest is the both-tier opening pages; annuity formulas are beyond GCSE. (R16, R9)"
+                }
+            ],
+            "groups": [
+                {
+                    "slug": "interest-and-depreciation",
+                    "title": "Compound interest and depreciation",
+                    "crumb": "Interest and depreciation",
+                    "lead": "Money changing by the same percentage each period, and how long that takes.",
+                    "slugs": [
+                        "compound-interest",
+                        "compound-interest-formula",
+                        "depreciation",
+                        "finding-how-long"
+                    ]
+                },
+                {
+                    "slug": "exponential-change",
+                    "title": "Exponential growth and decay",
+                    "crumb": "Exponential change",
+                    "lead": "Repeated multiplication beyond money: exponential growth and decay.",
+                    "slugs": [
+                        "exponential-growth",
+                        "exponential-decay",
+                        "linear-versus-exponential"
+                    ]
+                },
+                {
+                    "slug": "models-and-iteration",
+                    "title": "Models and iteration",
+                    "crumb": "Models",
+                    "lead": "Repeated change as a formula or rule. The iterative pages are Higher only.",
+                    "slugs": [
+                        "setting-up-a-model",
+                        "interpreting-a-model",
+                        "iterative-processes",
+                        "growth-with-regular-payments"
+                    ]
+                }
+            ]
+        }
+    ],
+    "drills": [
+        {
+            "file": "practiceRatioNotation.html",
+            "title": "Ratio notation",
+            "description": "Recording comparisons with the colon, why order matters, and three-part ratios.",
+            "skill": "Recording comparisons with the colon, why order matters, and three-part ratios.",
+            "topic": "ratio",
+            "groups": [
+                "notation-and-simplifying"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "ratio/ratio-notation"
+            ],
+            "tier": "both",
+            "scope": "Introduce the colon notation a : b and a : b : c, order mattering, writing ratios from counts, words and bar models, and reading comparisons aloud. Whole-number parts only; simplifying belongs to simplifying-ratios, converting to fractions of the whole to fractions-of-the-whole, and part:whole distinctions to their sibling page. Both tiers. (R4)",
+            "sections": [
+                "Fluency — direct questions on ratio notation, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceSimplifyingRatios.html",
+            "title": "Simplifying a ratio",
+            "description": "Dividing every part by the same factor, so 12 : 18 becomes 2 : 3.",
+            "skill": "Dividing every part by the same factor, so 12 : 18 becomes 2 : 3.",
+            "topic": "ratio",
+            "groups": [
+                "notation-and-simplifying"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "ratio/simplifying-ratios"
+            ],
+            "tier": "both",
+            "scope": "Cover simplifying two- and three-part whole-number ratios by common factors or the HCF in one step, recognising equivalent ratios, and simplest-form checks. Integer parts in and out; mixed units are ratios-with-units, decimal 1 : n forms are one-to-n-ratios, and HCF technique itself is taught in Number. Both tiers. (R4)",
+            "sections": [
+                "Fluency — direct questions on simplifying a ratio, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceRatiosWithUnits.html",
+            "title": "Ratios with mixed units",
+            "description": "Converting to the same unit before simplifying, and why the ratio is unitless.",
+            "skill": "Converting to the same unit before simplifying, and why the ratio is unitless.",
+            "topic": "ratio",
+            "groups": [
+                "notation-and-simplifying"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "ratio/ratios-with-units"
+            ],
+            "tier": "both",
+            "scope": "Cover converting both quantities to a common unit (mm, cm, m; g, kg; minutes, hours; pence, pounds) before simplifying, choosing the smaller unit, and why the finished ratio is unitless. Everyday metric and time conversions only, assumed from Number's measures pages. Rates comparing unlike quantities live under Compound measures. Both tiers. (R4, R1)",
+            "sections": [
+                "Fluency — direct questions on ratios with mixed units, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceOneToNRatios.html",
+            "title": "Writing a ratio in the form 1 : n",
+            "description": "Dividing both parts by one of them so scales and mixtures compare directly.",
+            "skill": "Dividing both parts by one of them so scales and mixtures compare directly.",
+            "topic": "ratio",
+            "groups": [
+                "notation-and-simplifying"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "ratio/one-to-n-ratios"
+            ],
+            "tier": "both",
+            "scope": "Cover rewriting any ratio as 1 : n or n : 1 by dividing through, n decimal or fractional, calculator and non-calculator, and using the form to compare scales, mixtures and strengths directly. Interpreting 1 : n map scales in context belongs to map-scales; this page owns the rewriting technique. Both tiers. (R4, R6)",
+            "sections": [
+                "Fluency — direct questions on writing a ratio in the form 1 : n, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practicePartToPartAndPartToWhole.html",
+            "title": "Part:part and part:whole ratios",
+            "description": "Telling the two kinds of ratio apart, and converting each into the other.",
+            "skill": "Telling the two kinds of ratio apart, and converting each into the other.",
+            "topic": "ratio",
+            "groups": [
+                "notation-and-simplifying"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "ratio/part-to-part-and-part-to-whole"
+            ],
+            "tier": "both",
+            "scope": "Cover distinguishing part:part from part:whole statements, converting each to the other in two- and three-part cases, and decoding wordings like 'one in five' or '2 boys for every 3 girls'. Sharing a quantity given either form is dividing-in-a-ratio; writing parts as fractions is fractions-of-the-whole. Both tiers. (R5)",
+            "sections": [
+                "Fluency — direct questions on part:part and part:whole ratios, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceFractionsOfTheWhole.html",
+            "title": "From a ratio to fractions of the whole",
+            "description": "Reading the fraction of the whole each part represents, and working back.",
+            "skill": "Reading the fraction of the whole each part represents, and working back.",
+            "topic": "ratio",
+            "groups": [
+                "notation-and-simplifying"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "ratio/fractions-of-the-whole"
+            ],
+            "tier": "both",
+            "scope": "Cover reading fractions of the whole from a : b and a : b : c (2 : 3 gives 2/5 and 3/5, never 2/3), rebuilding a ratio from given fractions, and one part as a fraction of another. This page owns N11's fraction-in-ratio work; fraction arithmetic itself stays in Number. Both tiers. (R8, N11)",
+            "sections": [
+                "Fluency — direct questions on from a ratio to fractions of the whole, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceSharing.html",
+            "title": "Dividing a quantity in a ratio",
+            "description": "Sharing an amount in a given ratio by finding the value of one part first.",
+            "skill": "Sharing an amount in a given ratio by finding the value of one part first.",
+            "topic": "ratio",
+            "groups": [
+                "sharing"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "ratio/dividing-in-a-ratio"
+            ],
+            "tier": "both",
+            "scope": "Cover sharing an amount in two- and three-part ratios by valuing one part, plus the part:whole route via fractions, money, mass and length contexts, calculator and non-calculator, with an adding-back check. Reverse cases from one share or a difference are the sibling pages; percentage shares stay with Percentage change. Both tiers. (R5)",
+            "sections": [
+                "Fluency — direct questions on dividing a quantity in a ratio, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceWhenOnePartIsKnown.html",
+            "title": "Finding the whole from one share",
+            "description": "Recovering the total and the other shares when only one part's value is given.",
+            "skill": "Recovering the total and the other shares when only one part's value is given.",
+            "topic": "ratio",
+            "groups": [
+                "sharing"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "ratio/when-one-part-is-known"
+            ],
+            "tier": "both",
+            "scope": "Cover recovering one part's value, the total and every other share when a single share is given, two- and three-part ratios, including 'Amy gets 40 pounds; how much does Ben get?' phrasing. Warn against dividing the known share by the total parts. Difference-given problems are the sibling page. Both tiers. (R5)",
+            "sections": [
+                "Fluency — direct questions on finding the whole from one share, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceWhenTheDifferenceIsKnown.html",
+            "title": "Sharing when the difference is given",
+            "description": "Finding one part from the difference between shares, then rebuilding the total.",
+            "skill": "Finding one part from the difference between shares, then rebuilding the total.",
+            "topic": "ratio",
+            "groups": [
+                "sharing"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "ratio/when-the-difference-is-known"
+            ],
+            "tier": "both",
+            "scope": "Cover sharing problems that state the difference between two shares: divide the difference by the difference in parts, value one part, rebuild all shares and the total. Include three-part ratios and money or age contexts. Total-given sharing is dividing-in-a-ratio; ratios that change after an event are changing-the-ratio. Both tiers. (R5)",
+            "sections": [
+                "Fluency — direct questions on sharing when the difference is given, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceExpressingADivisionAsARatio.html",
+            "title": "Writing a division as a ratio",
+            "description": "Turning stated amounts back into a ratio in simplest form, in the order named.",
+            "skill": "Turning stated amounts back into a ratio in simplest form, in the order named.",
+            "topic": "ratio",
+            "groups": [
+                "sharing"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "ratio/expressing-a-division-as-a-ratio"
+            ],
+            "tier": "both",
+            "scope": "Cover writing stated amounts as a ratio in the order named and simplifying, including from a total and one share (subtract first) and from fractions or percentages of the whole. Match units before writing, per ratios-with-units. Two and three parts only; this delivers R5's express-a-division clause. Both tiers. (R5)",
+            "sections": [
+                "Fluency — direct questions on writing a division as a ratio, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceMixingAndConcentrations.html",
+            "title": "Mixing and concentration problems",
+            "description": "Ratios in paint mixes and concentrations, and comparing mixture strengths.",
+            "skill": "Ratios in paint mixes and concentrations, and comparing mixture strengths.",
+            "topic": "ratio",
+            "groups": [
+                "sharing"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "ratio/mixing-and-concentrations"
+            ],
+            "tier": "both",
+            "scope": "Cover paint, mortar, squash and alloy mixtures: scaling a mix, finding one ingredient from another, comparing strengths via unit fractions or 1 : n, and limited-ingredient maxima. Deciding same-strength is the key question type. Density of a mixture sits under Compound measures; serving-based recipes are Proportion's scaling-a-recipe. Both tiers. (R5)",
+            "sections": [
+                "Fluency — direct questions on mixing and concentration problems, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceScaleDrawings.html",
+            "title": "Scale factors",
+            "description": "The multiplier from object lengths to image lengths, and back by dividing.",
+            "skill": "The multiplier from object lengths to image lengths, and back by dividing.",
+            "topic": "ratio",
+            "groups": [
+                "maps-and-scale-drawings"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "ratio/scale-factors"
+            ],
+            "tier": "both",
+            "scope": "Cover the scale factor between an object and its image: finding it from one matched pair of lengths, applying it forwards, dividing to reverse, and fractional factors for reductions. Lengths only. Area and volume factors are the Higher similar-shapes pages; enlargement as a transformation with a centre is Geometry's. Both tiers. (R2, R12)",
+            "sections": [
+                "Fluency — direct questions on scale factors, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceScaleDrawingsLesson.html",
+            "title": "Scale drawings",
+            "description": "Using a stated scale such as 1 cm to 2 m to link drawing and real object.",
+            "skill": "Using a stated scale such as 1 cm to 2 m to link drawing and real object.",
+            "topic": "ratio",
+            "groups": [
+                "maps-and-scale-drawings"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "ratio/scale-drawings"
+            ],
+            "tier": "both",
+            "scope": "Cover word scales like '1 cm represents 2 m': converting drawing lengths to real lengths and back, measuring a drawing then converting, producing simple scale drawings, and choosing a sensible scale. Ratio-form scales such as 1 : 25 000 belong to map-scales; bearings and accurate constructions are Geometry's. Both tiers. (R2)",
+            "sections": [
+                "Fluency — direct questions on scale drawings, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceSimilarShapes.html",
+            "title": "Lengths in similar shapes",
+            "description": "Finding missing lengths with the length factor from any corresponding pair.",
+            "skill": "Finding missing lengths with the length factor from any corresponding pair.",
+            "topic": "ratio",
+            "groups": [
+                "similar-shapes"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "ratio/lengths-in-similar-shapes"
+            ],
+            "tier": "both",
+            "scope": "Cover missing lengths in similar shapes and triangles using the length scale factor or equal ratios of corresponding sides, enlargements and reductions, including matched sides in overlapping-triangle diagrams. Establishing similarity and angle arguments belong to Geometry; area and volume factors are the Higher sibling pages, kept out for Foundation's sake. Both tiers. (R12, G19)",
+            "sections": [
+                "Fluency — direct questions on lengths in similar shapes, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceAreasOfSimilarShapes.html",
+            "title": "Areas of similar shapes",
+            "description": "Why the area scale factor is the square of the length factor, shown by tiling.",
+            "skill": "Why the area scale factor is the square of the length factor, shown by tiling.",
+            "topic": "ratio",
+            "groups": [
+                "similar-shapes"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "ratio/areas-of-similar-shapes"
+            ],
+            "tier": "higher",
+            "scope": "Higher only, per the braces on areas in G19. Cover the area factor as the square of the length factor, used both ways: scale an area, or square-root an area ratio to recover the length factor. Include surface areas of similar solids. Lengths stay on the both-tier sibling page; volumes are next door. (R12, G19)",
+            "sections": [
+                "Fluency — direct questions on areas of similar shapes, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceVolumesOfSimilarShapes.html",
+            "title": "Volumes of similar shapes",
+            "description": "Why the volume scale factor is the cube of the length factor, used both ways.",
+            "skill": "Why the volume scale factor is the cube of the length factor, used both ways.",
+            "topic": "ratio",
+            "groups": [
+                "similar-shapes"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "ratio/volumes-of-similar-shapes"
+            ],
+            "tier": "higher",
+            "scope": "Higher only, per the braces on volumes in G19. Cover the volume factor as the cube of the length factor, applied to volumes, capacities and masses of similar solids in both directions, including cube-rooting a volume ratio. Mass via density links to Compound measures; switching between area and volume factors is choosing-the-scale-factor. (R12, G19)",
+            "sections": [
+                "Fluency — direct questions on volumes of similar shapes, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceProportionAsEqualRatios.html",
+            "title": "Proportion as equality of ratios",
+            "description": "Two pairs of quantities are in proportion when their ratios are equal.",
+            "skill": "Two pairs of quantities are in proportion when their ratios are equal.",
+            "topic": "proportion",
+            "groups": [
+                "using-direct-proportion"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "proportion/proportion-as-equal-ratios"
+            ],
+            "tier": "both",
+            "scope": "Cover the definition that pairs of quantities are proportional when their ratios are equal: test tables by comparing ratios or unit values, and find a missing value by equating two ratios, cross-multiplication kept informal. Applications go to the unitary-method and sibling pages; the y = kx formalisation waits for later pages. Both tiers. (R7)",
+            "sections": [
+                "Fluency — direct questions on proportion as equality of ratios, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceProportion.html",
+            "title": "Direct proportion",
+            "description": "Direct proportion: multiply one quantity and the other multiplies the same way.",
+            "skill": "Direct proportion: multiply one quantity and the other multiplies the same way.",
+            "topic": "proportion",
+            "groups": [
+                "using-direct-proportion"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "proportion/direct-proportion"
+            ],
+            "tier": "both",
+            "scope": "Cover the meaning of direct proportion, multiplying one quantity multiplies the other by the same factor, with scaling-factor solutions for cost, mass and length problems and 'is directly proportional to' language. Stress constant ratio, not merely both increasing. The unitary method, graphs and y = kx each get their own page. Both tiers. (R10, R7)",
+            "sections": [
+                "Fluency — direct questions on direct proportion, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceUnitaryMethod.html",
+            "title": "The unitary method",
+            "description": "Finding the value of one unit first, then scaling up to any number of units.",
+            "skill": "Finding the value of one unit first, then scaling up to any number of units.",
+            "topic": "proportion",
+            "groups": [
+                "using-direct-proportion"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "proportion/unitary-method"
+            ],
+            "tier": "both",
+            "scope": "Cover finding one unit's value then scaling: cost per item, exchange-rate style conversions, time for one machine, choosing between unitary and scaling-factor routes, calculator and non-calculator. Conversion here means proportional quantities; single measurement units are Number's. Recipes and best buys apply this on the sibling pages. Both tiers. (R10, R5)",
+            "sections": [
+                "Fluency — direct questions on the unitary method, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceScalingARecipe.html",
+            "title": "Scaling a recipe",
+            "description": "Scaling every ingredient by the same factor, and serving-size questions.",
+            "skill": "Scaling every ingredient by the same factor, and serving-size questions.",
+            "topic": "proportion",
+            "groups": [
+                "using-direct-proportion"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "proportion/scaling-a-recipe"
+            ],
+            "tier": "both",
+            "scope": "Cover scaling ingredient lists by integer, fractional and decimal factors such as 1.5 or 2/3, converting between serving counts both ways, and how-many-can-be-made questions limited by one ingredient. Fraction arithmetic assumed from Number. Value comparison is best-buy-comparisons; mixtures stated as ratios are Ratio's mixing-and-concentrations. Both tiers. (R5, R10)",
+            "sections": [
+                "Fluency — direct questions on scaling a recipe, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceInverseProportion.html",
+            "title": "Inverse proportion",
+            "description": "Inverse proportion: multiply one, and the other divides by the same factor.",
+            "skill": "Inverse proportion: multiply one, and the other divides by the same factor.",
+            "topic": "proportion",
+            "groups": [
+                "using-inverse-proportion"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "proportion/inverse-proportion"
+            ],
+            "tier": "both",
+            "scope": "Cover the meaning of inverse proportion, one quantity multiplies and the other divides by the same factor so the product is constant, with 'is inversely proportional to' language and the equivalence to proportionality to 1/x stated informally. Worked contexts are the sibling problems page; constructing y = k/x is Higher's inverse-proportion-equations. Both tiers. (R10, R13)",
+            "sections": [
+                "Fluency — direct questions on inverse proportion, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceInverseProportionProblems.html",
+            "title": "Inverse proportion problems",
+            "description": "Workers and time, speed and journey time, solved by finding the fixed product.",
+            "skill": "Workers and time, speed and journey time, solved by finding the fixed product.",
+            "topic": "proportion",
+            "groups": [
+                "using-inverse-proportion"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "proportion/inverse-proportion-problems"
+            ],
+            "tier": "both",
+            "scope": "Cover workers and time, taps filling tanks, speed and journey time, and supplies lasting fewer days, all solved via the fixed product such as total worker-hours, including non-integer answers and whole-worker sense checks. Recognising which model applies is the sibling page; algebraic k/x equations are Higher only. Both tiers. (R10)",
+            "sections": [
+                "Fluency — direct questions on inverse proportion problems, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceProportionEquations.html",
+            "title": "Constructing y = kx",
+            "description": "Finding k from one pair of values, then using the equation in both directions.",
+            "skill": "Finding k from one pair of values, then using the equation in both directions.",
+            "topic": "proportion",
+            "groups": [
+                "graphs-and-equations"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "proportion/direct-proportion-equations"
+            ],
+            "tier": "higher",
+            "scope": "Higher only, from R13's braced 'construct and'. Cover forming y = kx from a proportionality statement plus one value pair, finding k, interpreting it in context, and evaluating either variable. Include statements from words. Foundation meets interpretation on ratios-and-linear-functions and the graph pages; powers and roots follow on proportion-to-powers. (R13, R10)",
+            "sections": [
+                "Fluency — direct questions on constructing y = kx, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceInverseProportionEquations.html",
+            "title": "Constructing y = k/x",
+            "description": "Writing inverse proportion as y = k/x, since it means proportional to 1/x.",
+            "skill": "Writing inverse proportion as y = k/x, since it means proportional to 1/x.",
+            "topic": "proportion",
+            "groups": [
+                "graphs-and-equations"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "proportion/inverse-proportion-equations"
+            ],
+            "tier": "higher",
+            "scope": "Higher only, from R13's braced 'construct and'. Cover forming y = k/x from an inverse statement and one value pair, using the equivalence with proportionality to 1/x, evaluating both ways, and contrasting with the direct case. Curve recognition stays on the both-tier graphs page; squared-denominator forms belong to proportion-to-powers. (R13, R10)",
+            "sections": [
+                "Fluency — direct questions on constructing y = k/x, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practicePercentageChange.html",
+            "title": "The multiplier for an increase",
+            "description": "Adding the percentage to 100% as a decimal, so a 12% rise becomes ×1.12.",
+            "skill": "Adding the percentage to 100% as a decimal, so a 12% rise becomes ×1.12.",
+            "topic": "percentage",
+            "groups": [
+                "multipliers"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "percentage/multipliers-for-increase"
+            ],
+            "tier": "both",
+            "scope": "Cover forming an increase multiplier by adding to 100% and writing as a decimal: 12% gives x1.12, 4.5% gives x1.045, a 150% rise gives x2.5, applied in one calculator step. Percentages above 100% included. Decreases and decoding multipliers are the sibling pages; repeated application waits for repeated-change. Both tiers. (R9)",
+            "sections": [
+                "Fluency — direct questions on the multiplier for an increase, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceMultipliersForDecrease.html",
+            "title": "The multiplier for a decrease",
+            "description": "Subtracting the percentage from 100%, so a 15% fall becomes ×0.85, not ×0.15.",
+            "skill": "Subtracting the percentage from 100%, so a 15% fall becomes ×0.85, not ×0.15.",
+            "topic": "percentage",
+            "groups": [
+                "multipliers"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "percentage/multipliers-for-decrease"
+            ],
+            "tier": "both",
+            "scope": "Cover forming a decrease multiplier by subtracting from 100%, so 15% off gives x0.85, applying it in one step, and killing the x0.15 error explicitly. Include small decimal rates like 2.5%. Increases are the sibling page; dividing by the multiplier to reverse a change belongs to the reverse-problems group. Both tiers. (R9)",
+            "sections": [
+                "Fluency — direct questions on the multiplier for a decrease, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceReadingAMultiplier.html",
+            "title": "Reading a multiplier",
+            "description": "Recovering the change a multiplier applies, where ×0.88 hides a 12% fall.",
+            "skill": "Recovering the change a multiplier applies, where ×0.88 hides a 12% fall.",
+            "topic": "percentage",
+            "groups": [
+                "multipliers"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "percentage/reading-a-multiplier"
+            ],
+            "tier": "both",
+            "scope": "Cover decoding multipliers back to percentage changes: x1.045 as a 4.5% rise, x0.88 as a 12% fall, x2.3 as a 130% increase, including factors above 2 and changes over 100%. Also read the combined multiplier of a repeated change. Forming multipliers is the sibling pages; model reading continues in Growth and decay. Both tiers. (R9)",
+            "sections": [
+                "Fluency — direct questions on reading a multiplier, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceProfitLoss.html",
+            "title": "Measuring a change as a percentage",
+            "description": "Dividing the change by the original amount, never the new one, as a percentage.",
+            "skill": "Dividing the change by the original amount, never the new one, as a percentage.",
+            "topic": "percentage",
+            "groups": [
+                "comparing-change"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "percentage/measuring-a-change"
+            ],
+            "tier": "both",
+            "scope": "Cover percentage change as change divided by original times 100, rises and falls, calculator and simple non-calculator cases, changes beyond 100%, and the dividing-by-the-new-value error. Expressing one quantity as a percentage of another in general is Number's FDP work; profit wording and fair comparisons are the sibling pages. Both tiers. (R9)",
+            "sections": [
+                "Fluency — direct questions on measuring a change as a percentage, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceProfitAndLoss.html",
+            "title": "Percentage profit and loss",
+            "description": "Profit or loss as a percentage of the cost price the seller originally paid.",
+            "skill": "Profit or loss as a percentage of the cost price the seller originally paid.",
+            "topic": "percentage",
+            "groups": [
+                "comparing-change"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "percentage/profit-and-loss"
+            ],
+            "tier": "both",
+            "scope": "Cover percentage profit and loss as a percentage of cost price: from cost and selling prices, finding a selling price to achieve a stated percentage profit, and losses handled as decreases. Stress the of-the-cost-price denominator. Recovering a cost price from a selling price is the reverse-problems group's work. Both tiers. (R9)",
+            "sections": [
+                "Fluency — direct questions on percentage profit and loss, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceOriginalAfterAnIncrease.html",
+            "title": "The original after an increase",
+            "description": "Recovering the pre-increase amount by dividing by the multiplier, as with VAT.",
+            "skill": "Recovering the pre-increase amount by dividing by the multiplier, as with VAT.",
+            "topic": "percentage",
+            "groups": [
+                "reverse-problems"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "percentage/original-after-an-increase"
+            ],
+            "tier": "both",
+            "scope": "Cover reverse percentage after an increase: divide the final amount by the increase multiplier to recover the original, with VAT, pay rise and population contexts, plus a re-applying check. Non-calculator cases with 20% and 25%. Decrease versions and classifying forward against reverse are the sibling pages; depreciation over years is Growth and decay. Both tiers. (R9)",
+            "sections": [
+                "Fluency — direct questions on the original after an increase, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceOriginalAfterADecrease.html",
+            "title": "The original after a decrease",
+            "description": "Recovering the full price from a sale price by dividing by the multiplier.",
+            "skill": "Recovering the full price from a sale price by dividing by the multiplier.",
+            "topic": "percentage",
+            "groups": [
+                "reverse-problems"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "percentage/original-after-a-decrease"
+            ],
+            "tier": "both",
+            "scope": "Cover reverse percentage after a decrease: divide the sale or reduced value by the decrease multiplier, refuting the add-the-percentage-back shortcut with a numeric counterexample. Sale price and depreciated value contexts, single step only. Increases are the sibling page; multi-year decay with powers of the multiplier belongs to Growth and decay. Both tiers. (R9)",
+            "sections": [
+                "Fluency — direct questions on the original after a decrease, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceSpottingReverseProblems.html",
+            "title": "Spotting a reverse problem",
+            "description": "Deciding whether a question states the original amount or the changed one.",
+            "skill": "Deciding whether a question states the original amount or the changed one.",
+            "topic": "percentage",
+            "groups": [
+                "reverse-problems"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "percentage/spotting-reverse-problems"
+            ],
+            "tier": "both",
+            "scope": "Cover classifying percentage problems before solving: does the question state the original (multiply) or the changed amount (divide)? Mixed forward and reverse sets, increase and decrease, and language cues like 'after the rise' or 'was'. No new arithmetic; techniques come from the multiplier and reverse sibling pages. Both tiers. (R9)",
+            "sections": [
+                "Fluency — direct questions on spotting a reverse problem, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceSimpleInterest.html",
+            "title": "Simple interest",
+            "description": "Interest paid on the starting amount only, so the same sum is added every year.",
+            "skill": "Interest paid on the starting amount only, so the same sum is added every year.",
+            "topic": "percentage",
+            "groups": [
+                "interest-and-repeated-change"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "percentage/simple-interest"
+            ],
+            "tier": "both",
+            "scope": "Cover simple interest, named in R9's financial mathematics: the same interest on the principal every year, total interest and final balance after n years, and finding the rate, time or principal from a stated total. Contrast with compounding stays brief here; simple-versus-compound-interest and Growth and decay own it. Both tiers. (R9)",
+            "sections": [
+                "Fluency — direct questions on simple interest, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceRepeatedChange.html",
+            "title": "Repeated percentage change",
+            "description": "Applying the same change repeatedly by raising the multiplier to a power.",
+            "skill": "Applying the same change repeatedly by raising the multiplier to a power.",
+            "topic": "percentage",
+            "groups": [
+                "interest-and-repeated-change"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "percentage/repeated-change"
+            ],
+            "tier": "both",
+            "scope": "Cover applying one percentage change n times as the multiplier raised to the power n, why adding percentages fails (two 10% rises give 21%, not 20%), and small-n money and population questions. Different consecutive changes are successive-changes; the compound interest formula, depreciation and how-long questions live in Growth and decay. Both tiers. (R9, R16)",
+            "sections": [
+                "Fluency — direct questions on repeated percentage change, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceSimpleVersusCompoundInterest.html",
+            "title": "Simple versus compound interest",
+            "description": "Why the same rate pays differently under the two schemes, and the widening gap.",
+            "skill": "Why the same rate pays differently under the two schemes, and the widening gap.",
+            "topic": "percentage",
+            "groups": [
+                "interest-and-repeated-change"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "percentage/simple-versus-compound-interest"
+            ],
+            "tier": "both",
+            "scope": "Cover the two interest schemes side by side: same principal and rate tabulated year by year, which pays more, why the gap widens, and exam questions asking for the difference after n years. Calculation methods are assumed from simple-interest and repeated-change; the compound formula and its decay twin live in Growth and decay. Both tiers. (R9, R16)",
+            "sections": [
+                "Fluency — direct questions on simple versus compound interest, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceCompoundMeasures.html",
+            "title": "Speed, distance and time",
+            "description": "Using speed as distance per unit time to find any quantity from the other two.",
+            "skill": "Using speed as distance per unit time to find any quantity from the other two.",
+            "topic": "compound",
+            "groups": [
+                "speed-density-pressure"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "compound/speed-distance-time"
+            ],
+            "tier": "both",
+            "scope": "Cover speed as distance per unit time, rearranged to find any of the three, units mph, km/h and m/s, and decimal-hour care (2.4 hours is 2 h 24 min). Single-stage journeys only. Multi-stage averages are average-speed, unit switching is converting-rates, and graph readings sit in the rates-on-graphs group. Both tiers. (R11, R1)",
+            "sections": [
+                "Fluency — direct questions on speed, distance and time, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceAverageSpeed.html",
+            "title": "Average speed",
+            "description": "Total distance divided by total time, not an average of the two speeds.",
+            "skill": "Total distance divided by total time, not an average of the two speeds.",
+            "topic": "compound",
+            "groups": [
+                "speed-density-pressure"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "compound/average-speed"
+            ],
+            "tier": "both",
+            "scope": "Cover average speed as total distance over total time across multi-stage journeys including stops, why averaging two speeds fails even over equal distances, and finding a missing stage from a stated overall average. Distance-time graph versions are speed-from-a-distance-time-graph; velocity, acceleration and kinematics formulas are A level mechanics. Both tiers. (R11)",
+            "sections": [
+                "Fluency — direct questions on average speed, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceDensityMassVolume.html",
+            "title": "Density, mass and volume",
+            "description": "Using density as mass per unit volume, with the units naming the formula.",
+            "skill": "Using density as mass per unit volume, with the units naming the formula.",
+            "topic": "compound",
+            "groups": [
+                "speed-density-pressure"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "compound/density-mass-volume"
+            ],
+            "tier": "both",
+            "scope": "Cover density as mass per unit volume, rearranged for any quantity, units g/cm3 and kg/m3 with consistency checks, volumes either given or found from Geometry's mensuration formulas. Single materials only here; combining materials is density-of-a-mixture, and rewriting a density in other units belongs to converting-rates. Both tiers. (R11)",
+            "sections": [
+                "Fluency — direct questions on density, mass and volume, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceDensityOfAMixture.html",
+            "title": "The density of a mixture",
+            "description": "Totalling mass and volume separately, never averaging the two densities.",
+            "skill": "Totalling mass and volume separately, never averaging the two densities.",
+            "topic": "compound",
+            "groups": [
+                "speed-density-pressure"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "compound/density-of-a-mixture"
+            ],
+            "tier": "both",
+            "scope": "Cover mixture density by totalling mass and totalling volume separately then dividing, never averaging the densities, including finding an unknown component's mass or volume from a stated mixture density. Alloy and liquid contexts, ratios of components included. Parts-based mixing without density is Ratio's mixing-and-concentrations. Both tiers, though exam demand is crossover-level. (R11)",
+            "sections": [
+                "Fluency — direct questions on the density of a mixture, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceRatesOfPay.html",
+            "title": "Rates of pay",
+            "description": "Hourly pay as money per unit time, including part hours and overtime rates.",
+            "skill": "Hourly pay as money per unit time, including part hours and overtime rates.",
+            "topic": "compound",
+            "groups": [
+                "rates-per-unit"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "compound/rates-of-pay"
+            ],
+            "tier": "both",
+            "scope": "Cover pay as money per unit time: wages from hourly rates including part hours as decimals or fractions, overtime at time-and-a-half or double, and comparing jobs by converting to a common rate. Multiplicative structure only; percentage deductions such as tax draw on Percentage change pages. Both tiers. (R11, R1)",
+            "sections": [
+                "Fluency — direct questions on rates of pay, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceRates.html",
+            "title": "Unit pricing",
+            "description": "The price of one unit as a rate, multiplied or divided to cost any amount.",
+            "skill": "The price of one unit as a rate, multiplied or divided to cost any amount.",
+            "topic": "compound",
+            "groups": [
+                "rates-per-unit"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "compound/unit-pricing"
+            ],
+            "tier": "both",
+            "scope": "Cover price per unit as a rate used both ways: multiply to cost a quantity, divide to find what a budget buys, and price-per-100g comparisons. Deliberate overlap with Proportion's best-buy-comparisons: that page owns choosing between packs and offers, this one the rate mechanics and rearrangement. Both tiers. (R11)",
+            "sections": [
+                "Fluency — direct questions on unit pricing, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceRatesOfFlow.html",
+            "title": "Rates of flow",
+            "description": "Filling and emptying at a stated volume per unit time, and how long it takes.",
+            "skill": "Filling and emptying at a stated volume per unit time, and how long it takes.",
+            "topic": "compound",
+            "groups": [
+                "rates-per-unit"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "compound/rates-of-flow"
+            ],
+            "tier": "both",
+            "scope": "Cover flow as volume per unit time at a constant rate: filling or emptying time from container volume and rate, volume delivered in a stated time, litre and cm3 links, minute and second conversions. Constant rates only; depth-time graphs of odd-shaped containers are Algebra's graph work, gradients the rates-on-graphs group's. Both tiers. (R11, R1)",
+            "sections": [
+                "Fluency — direct questions on rates of flow, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceSpeedFromADistanceTimeGraph.html",
+            "title": "Speed from a distance–time graph",
+            "description": "Speed as the gradient of each straight section; horizontal means stopped.",
+            "skill": "Speed as the gradient of each straight section; horizontal means stopped.",
+            "topic": "compound",
+            "groups": [
+                "rates-on-graphs"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "compound/speed-from-a-distance-time-graph"
+            ],
+            "tier": "both",
+            "scope": "Cover reading distance-time graphs: speed as the gradient of each straight section, horizontal meaning stationary, comparing steepness across sections, return journeys, and whole-journey average speed. Straight-line sections only; curved graphs need Higher's chord and tangent pages, and drawing or interpreting general real-life graphs is shared with Algebra. Both tiers. (R14, R11)",
+            "sections": [
+                "Fluency — direct questions on speed from a distance–time graph, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceGrowthDecay.html",
+            "title": "Compound interest",
+            "description": "Interest paid on the balance, so each year's interest earns interest itself.",
+            "skill": "Interest paid on the balance, so each year's interest earns interest itself.",
+            "topic": "growth",
+            "groups": [
+                "interest-and-depreciation"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "growth/compound-interest"
+            ],
+            "tier": "both",
+            "scope": "Cover compound interest year by year: interest earned on the growing balance, tabulating balances over two or three years, and the contrast with simple interest's flat additions. Small n by repeated multiplication only; the one-step power formula is the sibling page. Simple interest itself lives under Percentage change. Both tiers, since R16 does not brace compound interest. (R16, R9)",
+            "sections": [
+                "Fluency — direct questions on compound interest, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceCompoundInterestFormula.html",
+            "title": "The compound interest formula",
+            "description": "Raising the multiplier to the number of years to reach the balance in one step.",
+            "skill": "Raising the multiplier to the number of years to reach the balance in one step.",
+            "topic": "growth",
+            "groups": [
+                "interest-and-depreciation"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "growth/compound-interest-formula"
+            ],
+            "tier": "both",
+            "scope": "Cover the closed form, final amount equals principal times the multiplier to the power n: identifying principal, rate and n from wordy questions, decimal-rate care (2.5% gives 1.025), and interest earned versus final balance. Finding n belongs to finding-how-long; extracting an unknown rate by nth roots leans Higher and should be flagged as such. Both tiers. (R16, R9)",
+            "sections": [
+                "Fluency — direct questions on the compound interest formula, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceDepreciation.html",
+            "title": "Depreciation",
+            "description": "A value falling by a fixed percentage each year, via a multiplier below 1.",
+            "skill": "A value falling by a fixed percentage each year, via a multiplier below 1.",
+            "topic": "growth",
+            "groups": [
+                "interest-and-depreciation"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "growth/depreciation"
+            ],
+            "tier": "both",
+            "scope": "Cover depreciation as repeated percentage loss: a multiplier below 1 raised to the power n for cars and equipment, final value and total loss, and mixed questions where the rate changes between years so different factors multiply. One-step reverse (original value) problems belong to Percentage change's reverse pages. Both tiers. (R16, R9)",
+            "sections": [
+                "Fluency — direct questions on depreciation, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceFindingHowLong.html",
+            "title": "Finding how long growth takes",
+            "description": "Multiplying period by period until a target is passed, counting whole periods.",
+            "skill": "Multiplying period by period until a target is passed, counting whole periods.",
+            "topic": "growth",
+            "groups": [
+                "interest-and-depreciation"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "growth/finding-how-long"
+            ],
+            "tier": "both",
+            "scope": "Cover finding how many periods growth or decay needs to pass a target: multiply period by period or trial powers, answer as a whole number of periods, and justify by showing the balances either side of the target. Include decay dropping below a threshold. Logarithms are A level and must not appear. Both tiers. (R16)",
+            "sections": [
+                "Fluency — direct questions on finding how long growth takes, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceExponentialGrowth.html",
+            "title": "Exponential growth",
+            "description": "Quantities multiplied by the same factor each period, slowly then very fast.",
+            "skill": "Quantities multiplied by the same factor each period, slowly then very fast.",
+            "topic": "growth",
+            "groups": [
+                "exponential-change"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "growth/exponential-growth"
+            ],
+            "tier": "both",
+            "scope": "Cover exponential growth beyond money, populations, bacteria doubling and chain effects, modelled as start times multiplier to the power n, evaluating for given n, building the multiplier from a percentage rate or a doubling description, and comparing growth across equal periods. Curve recognition stays informal; plotting exponential graphs is Algebra's Higher content. Both tiers. (R16)",
+            "sections": [
+                "Fluency — direct questions on exponential growth, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceExponentialDecay.html",
+            "title": "Exponential decay",
+            "description": "Repeated multiplication by a factor below 1, never quite reaching zero.",
+            "skill": "Repeated multiplication by a factor below 1, never quite reaching zero.",
+            "topic": "growth",
+            "groups": [
+                "exponential-change"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "growth/exponential-decay"
+            ],
+            "tier": "both",
+            "scope": "Cover exponential decay: repeated multiplication by a factor below 1 for radioactivity-style, medicine-dose and cooling contexts, halving as x0.5 per period, and why values approach zero without reaching it. Keep half-life language informal. Threshold questions belong to finding-how-long; the decay curve is sketch-recognition only, with plotting in Algebra at Higher. Both tiers. (R16)",
+            "sections": [
+                "Fluency — direct questions on exponential decay, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceSimplifyingRatiosReview.html",
+            "title": "Simplifying ratios review",
+            "description": "Simplifying ratios with and without units, the form 1 : n, and their fractions.",
+            "skill": "Simplifying a ratio to its simplest form or 1 : n, and moving between a ratio and the fractions of the whole.",
+            "topic": "ratio",
+            "groups": [
+                "notation-and-simplifying"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — simplifying two- and three-part ratios, including pairs with mixed units like 40 cm : 1 m converted before simplifying (4 questions).",
+                "The form 1 : n — dividing through by one part, decimal answers exact by construction, and part:part rewritten as part:whole (4 questions).",
+                "Ratios and fractions — the fraction of the whole one part represents, and one part as a fraction or multiple of another, where 2 : 3 read as 2/3 of the total is the trap (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "ratio/ratio-notation",
+                "ratio/simplifying-ratios",
+                "ratio/ratios-with-units",
+                "ratio/one-to-n-ratios",
+                "ratio/part-to-part-and-part-to-whole",
+                "ratio/fractions-of-the-whole",
+                "ratio/ratio-as-a-multiplier"
+            ],
+            "availableAfter": "ratio/ratio-as-a-multiplier"
+        },
+        {
+            "file": "practiceSharingReview.html",
+            "title": "Sharing in a ratio review",
+            "description": "Dividing in a ratio, working back from one share, and combining ratios.",
+            "skill": "Dividing a quantity in a given ratio, recovering the whole from partial information, and combining two ratios.",
+            "topic": "ratio",
+            "groups": [
+                "sharing",
+                "combining-ratios"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — sharing amounts in two- and three-part ratios, every share a whole number of pounds or grams (4 questions).",
+                "Working backwards — finding the whole from one known share or from the difference between two shares, and writing a completed division back as a ratio (4 questions).",
+                "Combining and context — merging a : b with b : c, and mixture problems where treating a part as the whole is the planted error (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "ratio/dividing-in-a-ratio",
+                "ratio/when-one-part-is-known",
+                "ratio/when-the-difference-is-known",
+                "ratio/expressing-a-division-as-a-ratio",
+                "ratio/mixing-and-concentrations",
+                "ratio/combining-two-ratios"
+            ],
+            "availableAfter": "ratio/combining-two-ratios"
+        },
+        {
+            "file": "practiceScaleDrawingsReview.html",
+            "title": "Maps and scale drawings review",
+            "description": "Scale factors, drawing scales and map scales, converted in both directions.",
+            "skill": "Converting between drawing, map and real distances with stated scales and scale factors.",
+            "topic": "ratio",
+            "groups": [
+                "maps-and-scale-drawings"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — real lengths from drawing lengths and back, with scales stated as 1 cm to 2 m and as scale factors (4 questions).",
+                "Map scales — ratio scales like 1 : 25 000 across unit changes, chosen so every distance comes out as an exact number of centimetres or kilometres (4 questions).",
+                "Both directions — finding the scale from a matched pair of lengths, and reversed questions where multiplying instead of dividing gives the planted wrong answer (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "ratio/scale-factors",
+                "ratio/scale-drawings",
+                "ratio/map-scales"
+            ],
+            "availableAfter": "ratio/map-scales"
+        },
+        {
+            "file": "practiceSimilarShapesReview.html",
+            "title": "Similar shapes review",
+            "description": "Length, area and volume scale factors, switched with squares, cubes and roots.",
+            "skill": "Using the length, area and volume scale factors of similar shapes, and converting between them.",
+            "topic": "ratio",
+            "groups": [
+                "similar-shapes"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — missing lengths in similar shapes from a stated pair of corresponding sides, integer factors throughout (4 questions).",
+                "Areas and volumes — squaring and cubing an integer length factor to scale an area or a volume exactly (4 questions).",
+                "Choosing the factor — given an area or volume factor, recovering the length factor by roots of perfect squares and cubes, where applying the length factor unchanged is the trap (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "ratio/lengths-in-similar-shapes",
+                "ratio/areas-of-similar-shapes",
+                "ratio/volumes-of-similar-shapes",
+                "ratio/choosing-the-scale-factor"
+            ],
+            "availableAfter": "ratio/choosing-the-scale-factor"
+        },
+        {
+            "file": "practiceProportionReview.html",
+            "title": "Direct and inverse proportion review",
+            "description": "Direct and inverse proportion problems, and deciding which relationship holds.",
+            "skill": "Solving direct and inverse proportion problems, and recognising which kind of proportion a situation shows.",
+            "topic": "proportion",
+            "groups": [
+                "using-direct-proportion",
+                "using-inverse-proportion"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — direct proportion by the unitary method, costs and quantities chosen to divide exactly (4 questions).",
+                "Inverse proportion — workers, taps and journey times solved through the fixed product (4 questions).",
+                "Which proportion — single-choice decisions between direct, inverse and neither from short tables, where both columns increasing is the bait for direct (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "proportion/proportion-as-equal-ratios",
+                "proportion/direct-proportion",
+                "proportion/unitary-method",
+                "proportion/inverse-proportion",
+                "proportion/inverse-proportion-problems",
+                "proportion/recognising-proportionality"
+            ],
+            "availableAfter": "proportion/recognising-proportionality"
+        },
+        {
+            "file": "practiceBestBuys.html",
+            "title": "Recipes and best buys review",
+            "description": "Scaling recipes by awkward factors and comparing pack prices by a common unit.",
+            "skill": "Scaling a recipe and comparing value for money through unit prices.",
+            "topic": "proportion",
+            "groups": [
+                "using-direct-proportion"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — scaling recipe ingredients up and down, including factors like 1.5 with every amount exact (4 questions).",
+                "Best buys — price per unit or amount per penny across two pack sizes, numbers built to divide exactly (4 questions).",
+                "Offers — deals like three-for-two against a bigger pack, where the larger pack is not always the better buy (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "proportion/scaling-a-recipe",
+                "proportion/best-buy-comparisons"
+            ],
+            "availableAfter": "proportion/best-buy-comparisons"
+        },
+        {
+            "file": "practiceProportionEquationsReview.html",
+            "title": "Equations of proportion review",
+            "description": "Constructing y = kx, y = k/x and power variants from one pair — Higher only.",
+            "skill": "Constructing and using equations of direct and inverse proportion, including squares, cubes and roots.",
+            "topic": "proportion",
+            "groups": [
+                "graphs-and-equations"
+            ],
+            "tier": "higher",
+            "sections": [
+                "Fluency — finding k from a stated pair and evaluating y = kx or y = k/x at a new value, all values integer or exact decimals (4 questions).",
+                "Powers — relationships y = kx², y = kx³ and y = k√x with square and cube numbers throughout, solved in both directions (4 questions).",
+                "Choosing the form — single-choice matching of a description or table to its equation, where y = kx offered for an inverse relationship is the planted error (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "proportion/direct-proportion-equations",
+                "proportion/inverse-proportion-equations",
+                "proportion/proportion-to-powers"
+            ],
+            "availableAfter": "proportion/proportion-to-powers"
+        },
+        {
+            "file": "practicePercentageChangeReview.html",
+            "title": "Percentage change review",
+            "description": "Increase and decrease multipliers, repeated change, and reverse percentages.",
+            "skill": "Applying, combining and reversing percentage changes through their multipliers.",
+            "topic": "percentage",
+            "groups": [
+                "multipliers",
+                "reverse-problems",
+                "interest-and-repeated-change"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — writing the multiplier for a stated rise or fall, applying it, and naming the change a given multiplier applies, money exact to the penny (4 questions).",
+                "Repeated and successive — the same change over several periods and two different changes combined, with simple interest for contrast (4 questions).",
+                "Reverse — recovering the original from the changed amount by dividing by the multiplier, where subtracting the same percentage is the planted error (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "percentage/multipliers-for-increase",
+                "percentage/multipliers-for-decrease",
+                "percentage/reading-a-multiplier",
+                "percentage/original-after-an-increase",
+                "percentage/original-after-a-decrease",
+                "percentage/spotting-reverse-problems",
+                "percentage/simple-interest",
+                "percentage/repeated-change",
+                "percentage/successive-changes"
+            ],
+            "availableAfter": "percentage/successive-changes"
+        },
+        {
+            "file": "practiceProfitLossReview.html",
+            "title": "Profit and loss review",
+            "description": "Percentage change from two amounts, profit and loss, and fair comparisons.",
+            "skill": "Measuring a change as a percentage of the original amount, and comparing changes fairly.",
+            "topic": "percentage",
+            "groups": [
+                "comparing-change"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — percentage change from original and new amounts, built so the change divides the original exactly (4 questions).",
+                "Profit and loss — percentage profit or loss from cost and selling prices, losses included (4 questions).",
+                "Comparing — deciding which of two changes is proportionally bigger, ending with a case where dividing by the new amount gives the planted wrong percentage (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "percentage/measuring-a-change",
+                "percentage/profit-and-loss",
+                "percentage/comparing-changes"
+            ],
+            "availableAfter": "percentage/comparing-changes"
+        },
+        {
+            "file": "practiceCompoundMeasuresReview.html",
+            "title": "Compound measures review",
+            "description": "Speed, density and pressure, rearranged and pushed through multi-step problems.",
+            "skill": "Calculating with speed, density and pressure, rearranging each relationship to find any quantity.",
+            "topic": "compound",
+            "groups": [
+                "speed-density-pressure"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — one-step speed, density and pressure calculations with the units naming the division (4 questions).",
+                "Rearranged — finding the distance, time, mass, volume, force or area instead, values chosen to divide exactly (4 questions).",
+                "Averages and mixtures — total-over-total problems where averaging the two speeds or densities gives the planted wrong answer (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "compound/speed-distance-time",
+                "compound/average-speed",
+                "compound/density-mass-volume",
+                "compound/density-of-a-mixture",
+                "compound/pressure-force-area"
+            ],
+            "availableAfter": "compound/pressure-force-area"
+        },
+        {
+            "file": "practiceRatesReview.html",
+            "title": "Rates per unit review",
+            "description": "Pay, prices and flows as rates, used both ways and converted between units.",
+            "skill": "Forming a rate per unit, using it in both directions, and converting it between units.",
+            "topic": "compound",
+            "groups": [
+                "rates-per-unit"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — pay from hours and unit prices from pack prices, including part hours as exact fractions of an hour (4 questions).",
+                "Flow — filling and emptying times from a stated rate, litres and minutes chosen to divide exactly (4 questions).",
+                "Converting — rates rewritten in new units, like pence per gram into pounds per kilogram, where scaling only one of the two units is the trap (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "compound/rates-of-pay",
+                "compound/unit-pricing",
+                "compound/rates-of-flow",
+                "compound/converting-rates"
+            ],
+            "availableAfter": "compound/converting-rates"
+        },
+        {
+            "file": "practiceRateOfChange.html",
+            "title": "Gradients as rates review",
+            "description": "Reading gradients as rates of change from coordinate pairs and journeys.",
+            "skill": "Reading the gradient of a straight line as a rate of change with its units.",
+            "topic": "compound",
+            "groups": [
+                "rates-on-graphs"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — gradients from two stated points on a line, read as a rate with its units (4 questions).",
+                "Journeys — speeds from distance–time information given as time and distance pairs, including a stationary stretch with gradient zero (4 questions).",
+                "Units and steepness — single-choice questions naming the units of a rate or the faster of two sections, where swapping rise and run gives the planted answer (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "compound/speed-from-a-distance-time-graph",
+                "compound/gradient-as-a-rate"
+            ],
+            "availableAfter": "compound/gradient-as-a-rate"
+        },
+        {
+            "file": "practiceGrowthDecayReview.html",
+            "title": "Growth and decay review",
+            "description": "Interest, depreciation and exponential change, with linear growth for contrast.",
+            "skill": "Calculating repeated growth and decay with multipliers raised to powers.",
+            "topic": "growth",
+            "groups": [
+                "interest-and-depreciation",
+                "exponential-change",
+                "models-and-iteration"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — compound interest and depreciation over two or three periods, rates like 10% and 20% keeping every balance exact (4 questions).",
+                "Exponential change — doubling populations and halving doses, and counting the periods until a target is passed (4 questions).",
+                "Contrast — simple against compound interest and linear against exponential growth, where adding the same amount each year is the planted model (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "percentage/simple-versus-compound-interest",
+                "growth/compound-interest",
+                "growth/compound-interest-formula",
+                "growth/depreciation",
+                "growth/finding-how-long",
+                "growth/exponential-growth",
+                "growth/exponential-decay",
+                "growth/linear-versus-exponential"
+            ],
+            "availableAfter": "growth/linear-versus-exponential"
+        }
+    ]
+}

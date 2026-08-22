@@ -3,15 +3,15 @@
 
 <head>
     <title>Demystifying Maths | About</title>
-    <meta name="description" content="About the creator">
+    <meta name="description" content="About the author of Demystifying Maths.">
     <meta property="og:title" content="Demystifying Maths">
-    <meta property="og:description" content="About the creator">
-    <link rel="stylesheet" href="../css/shared.css">
-    <link rel="stylesheet" href="../css/about.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="../favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="../favicon_io/site.webmanifest">
+    <meta property="og:description" content="About the author of Demystifying Maths.">
+    <link rel="stylesheet" href="/css/shared.css">
+    <link rel="stylesheet" href="/css/about.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -21,17 +21,17 @@
     <div class="layout">
         <div id="top-ribbon-placeholder"></div>
         <script>
-            fetch("../embed/top-ribbon.html")
+            fetch("/embed/top-ribbon.html")
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById("top-ribbon-placeholder").innerHTML = data;
                 });
         </script>
         <header>
-            <h1>Demystifying Maths</h1>
-            <nav>
+            <h1>Demystifying - About</h1>
+            <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb">
-                    <li><a href="home.html">Home</a><span aria-hidden="true">›</span></li>
+                    <li><a href="/pages/home.html">Home</a><span aria-hidden="true">›</span></li>
                     <li>
                         <p>About</p>
                     </li>
@@ -41,71 +41,52 @@
 
         <main>
             <section>
-                <h1>About Me</h1>
+                <h1>About me</h1>
                 <div>
-                    <p>Hi, I'm Joel. I am a 17 year old from England, where I attended a Wardolf School up to and
-                        including
-                        GCSEs, and I'm currently a
-                        student in Pune, India, where we
-                        are
-                        living as a family for two to three years. I am self-studying for A levels in Maths,
-                        Physics and
-                        Chemistry, at the same time as attending a learner-lead micro-school.</p>
-                    <p>I love computer programming, and I've really enjoyed learning multiple languages over the past
-                        several years. I learned to code in html specifically to create this website - at the time of
-                        writing that was three
-                        days ago, and I now have my first article (Angle Units), and a few other main pages.</p>
-                    <p>Please send me any feedback on this site. As I said, I'm a total beginner at web design but I'd
-                        always
-                        appreciate any tips or suggestions to help me improve.</p>
-                    <p>My other interests include 3d modelling and printing (I'm learning to use Blender at the moment),
-                        reading
-                        (the last book I read was <em>Ender's Game</em> by Orson Scott Card, which I'd highly
-                        recommend), badminton, chess (my highest blitz rating is 1405, which is about 94th percentile),
-                        music (any era, as long as I can sing along)
-                        and
-                        of course maths.</p>
-                    <p>I have always had an affinity for maths, probably fueled in my younger years at least in part by
-                        the
-                        feeling of supremacy that comes with being good at something ;) Now, however, I see clearly
-                        enough
-                        that the reason mathematics resonates so well with me is because
-                        of its comprehensibility, because everything new can be traced back to things you already
-                        understand
-                        in a way that can make you feel like you might have discovered it yourself, given enough time.
-                    </p>
-                    <p>My aim is to share that feeling, as some other people are doing on the web - specifically YouTube
-                        channels like <a href="https://www.youtube.com/@3blue1brown" target="_blank"
-                            rel="noopener noreferrer">@3blue1brown</a> which uses amazing
-                        visuals generated with Python code. (The library is called manim, for any interested).</p>
-                    <p>This is my YouTube playlist: <a
+                    <p>My name is Joel. I am seventeen, and from England, where I attended a Waldorf school up to and
+                        including GCSEs. I now live in Pune, India, where my family is based for two to three years, and
+                        I am studying independently for A levels in Maths, Physics and Chemistry alongside attending a
+                        learner-led micro-school.</p>
+                    <p>Computer programming has been a long-standing interest, and I have enjoyed learning several
+                        languages over the past few years. I taught myself HTML specifically in order to build this
+                        site, having had no previous experience of web development.</p>
+                    <p>I would welcome any feedback on the site. As a beginner in web design, I am grateful for
+                        suggestions of any kind.</p>
+                    <p>My other interests include 3D modelling and printing, for which I am currently learning Blender;
+                        reading, most recently <em>Ender's Game</em> by Orson Scott Card, which I would recommend
+                        warmly; badminton; chess, at a highest blitz rating of 1405, or approximately the 94th
+                        percentile; music of any era, provided I can sing along; and, of course, mathematics.</p>
+                    <p>I have always had an affinity for mathematics, encouraged in my earlier years, I suspect, by the
+                        satisfaction of being good at something. I now recognise that what draws me to the subject is
+                        its comprehensibility: every new idea can be traced back to something already understood, in a
+                        way that can leave you feeling you might have discovered it yourself, given enough time.</p>
+                    <p>My aim is to share that experience, as others have done before me — most notably the YouTube
+                        channel <a href="https://www.youtube.com/@3blue1brown" target="_blank"
+                            rel="noopener noreferrer">@3blue1brown</a>, which uses remarkable visuals generated in
+                        Python with a library called Manim.</p>
+                    <p>My own YouTube playlist can be found here: <a
                             href="https://youtube.com/playlist?list=PLnlhpaBdeEo4eDM_Q4cCC7gjkDl64oWef&si=9pCVosQl_-W4PDsA"
-                            target="_blank" rel="noopener noreferrer">@joelzactaylor</a>.
-                        I have created a few videos, but not too many. I doubt I will make many more in the foreseeable
-                        future, but if anyone has requests then do contact me and I'll consider it.</p>
-                    <p>Here are my accounts on other platforms:</p>
+                            target="_blank" rel="noopener noreferrer">@joelzactaylor</a>. It contains a small number of
+                        videos, and I do not expect to add many more in the near future, though I am glad to consider
+                        requests.</p>
+                    <p>I can also be found on the following platforms:</p>
                     <ul>
                         <li>
                             <p><a href="http://scratch.mit.edu/users/joelzactaylor" target="_blank"
-                                    rel="noopener noreferrer">Scratch</a> – a block-based
-                                programming
-                                site, whose potential is very rarely realised (although I have tried; check it out)</p>
+                                    rel="noopener noreferrer">Scratch</a>, a block-based programming site whose
+                                potential is rarely fully realised.</p>
                         </li>
                         <li>
-                            <p>
-                                My <a href="https://www.linkedin.com/in/joel-taylor-4a3640384/" target="_blank"
-                                    rel="noopener noreferrer">LinkedIn</a> account, where I try document key parts of my
-                                main projects.
-                            </p>
+                            <p><a href="https://www.linkedin.com/in/joel-taylor-4a3640384/" target="_blank"
+                                    rel="noopener noreferrer">LinkedIn</a>, where I document the main stages of my
+                                larger projects.</p>
                         </li>
                         <li>
-                            <p>
-                                My account on <a href="http://chess.com/member/joelzactaylor" target="_blank"
-                                    rel="noopener noreferrer">Chess.com</a> if you want to challenge me to a game :)
-                            </p>
+                            <p><a href="http://chess.com/member/joelzactaylor" target="_blank"
+                                    rel="noopener noreferrer">Chess.com</a>, should you wish to play a game.</p>
                         </li>
                     </ul>
-                    <p>Anyway, get yourself off this About page and explore the rest of my website! Go!</p>
+                    <p>That is enough about me. I hope you find the rest of the site worth your time.</p>
                 </div>
             </section>
         </main>
@@ -115,9 +96,10 @@
                 <div class="footer-section">
                     <h2>Quick Links</h2>
                     <ul>
-                        <li><a href="home.html">Home</a></li>
-                        <li><a href="pages.html">Pages</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="/pages/home.html">Home</a></li>
+                        <li><a href="/pages/curriculum/">Curriculum</a></li>
+                        <li><a href="/pages/extracurricular/">Extracurricular</a></li>
+                        <li><a href="/pages/contact.html">Contact</a></li>
                     </ul>
                 </div>
             </div>

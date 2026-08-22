@@ -1,0 +1,139 @@
+# GCSE mathematics subject-content reference
+
+This maps the numbered statements in the Department for Education's GCSE
+mathematics subject content to this project's local labels. The DfE numbers each
+domain separately; prefixes such as `N`, `A` and `G` are local identifiers, not
+codes printed by the DfE.
+
+Official source (DFE-00233-2013):
+https://www.gov.uk/government/publications/gcse-mathematics-subject-content-and-assessment-objectives
+
+These are concise summaries preserving the official numbering. Consult the
+source for exact wording and its type-based Foundation/Higher distinctions.
+
+## Number (N1 to N16)
+
+| Code | DfE subject-content statement (concise summary) |
+|---|---|
+| N1 | Order positive and negative integers, decimals and fractions; use $=, \neq, <, >, \leq, \geq$. |
+| N2 | Apply the four operations, including formal written methods, to positive and negative integers, decimals, fractions and mixed numbers; understand place value. |
+| N3 | Recognise relationships between operations, including inverses and conventional priority-of-operations notation. |
+| N4 | Use prime-number, factor, multiple, HCF, LCM and prime-factorisation concepts, including product notation and unique factorisation. |
+| N5 | Apply systematic listing strategies, including the product rule for counting. |
+| N6 | Use positive integer powers and associated real roots; recognise powers of 2, 3, 4 and 5; estimate powers and roots. |
+| N7 | Calculate with roots and with integer and fractional indices. |
+| N8 | Calculate exactly with fractions, surds and multiples of $\pi$; simplify surds and rationalise denominators. |
+| N9 | Calculate with and interpret standard form $A \times 10^n$, where $1 \leq A < 10$ and $n$ is an integer. |
+| N10 | Convert between terminating decimals and fractions, and between recurring decimals and fractions. |
+| N11 | Identify and work with fractions in ratio problems. |
+| N12 | Interpret fractions and percentages as operators. |
+| N13 | Use standard units of mass, length, time, money and other measures, including compound measures and decimal quantities. |
+| N14 | Estimate answers and check calculations using approximation and estimation, including technology-produced answers. |
+| N15 | Round numbers and measures appropriately; use inequality notation for simple error intervals caused by rounding or truncation. |
+| N16 | Apply and interpret limits of accuracy, including upper and lower bounds. |
+
+## Algebra (A1 to A25)
+
+| Code | DfE subject-content statement (concise summary) |
+|---|---|
+| A1 | Use and interpret algebraic notation, including products, powers, quotients, fractional coefficients and brackets. |
+| A2 | Substitute numerical values into expressions and formulae, including scientific formulae. |
+| A3 | Understand and use the vocabulary of expressions, equations, formulae, identities, inequalities, terms and factors. |
+| A4 | Simplify and manipulate algebraic expressions, including surds and algebraic fractions, by collecting, expanding, factorising and applying index laws. |
+| A5 | Understand and use standard mathematical formulae; rearrange formulae to change the subject. |
+| A6 | Distinguish equations from identities; show expressions are equivalent and construct algebraic arguments and proofs. |
+| A7 | Interpret expressions as functions and interpret inverse and composite functions. |
+| A8 | Work with coordinates in all four quadrants. |
+| A9 | Plot straight lines; use $y=mx+c$; identify parallel and perpendicular lines; find line equations from points and gradients. |
+| A10 | Identify and interpret gradients and intercepts of linear functions graphically and algebraically. |
+| A11 | Interpret roots, intercepts and turning points of quadratics graphically; deduce roots algebraically and turning points by completing the square. |
+| A12 | Recognise, sketch and interpret linear, quadratic, simple cubic, reciprocal, exponential and trigonometric graphs. |
+| A13 | Sketch translations and reflections of a given function. |
+| A14 | Plot and interpret standard and non-standard graphs in real contexts to find approximate solutions. |
+| A15 | Calculate or estimate gradients and areas under graphs and interpret them in contexts including motion and finance. |
+| A16 | Use the equation of a circle centred at the origin; find a tangent equation at a given point. |
+| A17 | Solve linear equations in one unknown algebraically and find approximate solutions graphically. |
+| A18 | Solve quadratics by factorising, completing the square and the quadratic formula; find approximate graphical solutions. |
+| A19 | Solve linear/linear and linear/quadratic simultaneous equations algebraically and find approximate graphical solutions. |
+| A20 | Find approximate solutions to equations numerically using iteration. |
+| A21 | Translate situations into expressions or formulae; derive, solve and interpret equations or simultaneous equations. |
+| A22 | Solve linear and quadratic inequalities; represent solution sets on number lines, in set notation and on graphs. |
+| A23 | Generate sequence terms from term-to-term and position-to-term rules. |
+| A24 | Recognise and use triangular, square, cube, arithmetic, Fibonacci-type, quadratic, geometric and other sequences. |
+| A25 | Deduce expressions for the $n$th term of linear and quadratic sequences. |
+
+## Ratio, proportion and rates of change (R1 to R16)
+
+| Code | DfE subject-content statement (concise summary) |
+|---|---|
+| R1 | Convert between related standard and compound units in numerical and algebraic contexts. |
+| R2 | Use scale factors, scale diagrams and maps. |
+| R3 | Express one quantity as a fraction of another, including fractions below and above 1. |
+| R4 | Use ratio notation and reduce ratios to simplest form. |
+| R5 | Divide quantities in part:part and part:whole ratios; express divisions as ratios and apply ratio in real contexts. |
+| R6 | Express multiplicative relationships as ratios or fractions. |
+| R7 | Understand and use proportion as equality of ratios. |
+| R8 | Relate ratios to fractions and linear functions. |
+| R9 | Define, interpret, compare and calculate with percentages, including changes, original values, percentages above 100% and simple interest. |
+| R10 | Solve direct- and inverse-proportion problems using graphical and algebraic representations. |
+| R11 | Use compound units such as speed, rates of pay, unit pricing, density and pressure. |
+| R12 | Compare lengths, areas and volumes using ratios; link similarity, trigonometric ratios and scale factors. |
+| R13 | Interpret inverse proportionality and construct and interpret equations for direct and inverse proportion. |
+| R14 | Interpret a straight-line gradient as a rate of change; recognise direct- and inverse-proportion graphs. |
+| R15 | Interpret a curve's gradient as an instantaneous rate; apply average and instantaneous rates using chords and tangents. |
+| R16 | Set up, solve and interpret growth and decay problems, including compound interest and general iterative processes. |
+
+## Geometry and measures (G1 to G25)
+
+| Code | DfE subject-content statement (concise summary) |
+|---|---|
+| G1 | Use conventional geometric terms, notation, labelling and symmetry conventions; draw diagrams from descriptions. |
+| G2 | Use ruler-and-compass constructions to construct figures and solve loci problems; understand perpendicular distance. |
+| G3 | Apply angle facts at points, on lines and in parallel lines; derive triangle and polygon angle sums. |
+| G4 | Derive and apply properties and definitions of quadrilaterals, triangles and other plane figures. |
+| G5 | Use the SSS, SAS, ASA and RHS triangle-congruence criteria. |
+| G6 | Use angle facts, congruence, similarity and quadrilateral properties to conjecture, derive and prove results. |
+| G7 | Construct congruent and similar shapes using transformations, including fractional and negative enlargements. |
+| G8 | Describe changes and invariance under combinations of rotations, reflections and translations. |
+| G9 | Identify and apply circle definitions and properties: centre, radius, chord, diameter, circumference, tangent, arc, sector and segment. |
+| G10 | Apply and prove standard circle theorems and prove related results. |
+| G11 | Solve geometrical problems on coordinate axes. |
+| G12 | Identify properties of faces, surfaces, edges and vertices of standard 3D solids. |
+| G13 | Construct and interpret plans and elevations of 3D shapes. |
+| G14 | Use standard units and related concepts of measure. |
+| G15 | Measure line segments and angles; interpret maps and scale drawings and use bearings. |
+| G16 | Apply formulae for areas of triangles, parallelograms and trapezia and volumes of cuboids and other right prisms. |
+| G17 | Use circle formulae; calculate 2D perimeters and areas and surface areas and volumes of named and composite solids. |
+| G18 | Calculate arc lengths, sector angles and sector areas. |
+| G19 | Apply congruence and similarity, including length, area and volume relationships in similar figures. |
+| G20 | Know and apply Pythagoras and trigonometric ratios in 2D and 3D figures. |
+| G21 | Know exact sine and cosine values for $0^\circ,30^\circ,45^\circ,60^\circ,90^\circ$ and tangent values for $0^\circ,30^\circ,45^\circ,60^\circ$. |
+| G22 | Know and apply the sine and cosine rules to find unknown lengths and angles. |
+| G23 | Know and apply $\text{Area}=\tfrac12 ab\sin C$ to calculate triangle areas, sides or angles. |
+| G24 | Describe translations as 2D vectors. |
+| G25 | Add, subtract and scale vectors; use diagrammatic and column representations and vectors in geometric arguments and proofs. |
+
+## Probability (P1 to P9)
+
+| Code | DfE subject-content statement (concise summary) |
+|---|---|
+| P1 | Record, describe and analyse experiment frequencies using tables and frequency trees. |
+| P2 | Apply randomness, fairness and equally likely events to calculate expected outcomes of repeated experiments. |
+| P3 | Relate relative expected frequencies to theoretical probability using appropriate language and the 0-to-1 scale. |
+| P4 | Use the fact that exhaustive outcomes, and exhaustive mutually exclusive events, have probabilities summing to 1. |
+| P5 | Understand that empirical unbiased samples tend towards theoretical probability distributions as sample size increases. |
+| P6 | Enumerate sets and combinations systematically using tables, grids, Venn diagrams and tree diagrams. |
+| P7 | Construct theoretical possibility spaces for single and combined equally likely experiments and calculate probabilities. |
+| P8 | Calculate probabilities of independent and dependent combined events and know the underlying assumptions. |
+| P9 | Calculate and interpret conditional probabilities using expected frequencies, two-way tables, trees and Venn diagrams. |
+
+## Statistics (S1 to S6)
+
+| Code | DfE subject-content statement (concise summary) |
+|---|---|
+| S1 | Infer properties of populations or distributions from samples while recognising sampling limitations. |
+| S2 | Interpret and construct appropriate frequency tables, categorical charts, vertical line charts and time-series tables and graphs. |
+| S3 | Construct, interpret and appropriately use grouped-data diagrams, including histograms and cumulative-frequency graphs. |
+| S4 | Interpret, analyse and compare univariate distributions using graphs, averages and measures of spread, including box plots, outliers, quartiles and IQR. |
+| S5 | Apply statistics to describe a population. |
+| S6 | Use scatter graphs; distinguish correlation from causation; draw best-fit lines and make cautious interpolations and extrapolations. |

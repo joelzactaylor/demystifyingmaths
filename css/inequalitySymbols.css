@@ -1,0 +1,400 @@
+/* The opening cloud uses the same native-scroll pinning model as the ordering
+   lesson: the scene supplies distance while the panel is temporarily fixed in
+   the viewport. Wheel and touch input remain entirely browser-controlled. */
+
+.symbol-reassurance {
+    margin: 18px 0 22px;
+    padding: 17px 22px;
+    border: 2px solid #d99a20;
+    border-radius: 17px;
+    background: #fff;
+    box-shadow: 0 6px 15px rgba(122, 84, 10, .1);
+}
+
+.symbol-reassurance p { margin: 0; color: #384d56; font-size: 1.02rem; line-height: 1.55; }
+.symbol-reassurance strong { color: #6d4905; }
+
+.inequality-cloud {
+    position: relative;
+    margin: 24px 0 34px;
+    overflow-anchor: none;
+}
+
+.inequality-cloud.is-ready {
+    height: var(--cloud-scene-height);
+    min-height: var(--cloud-scene-min-height);
+}
+
+.inequality-cloud__sticky {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: grid;
+    height: min(590px, calc(100vh - 112px));
+    min-height: 440px;
+    box-sizing: border-box;
+    grid-template-rows: minmax(0, 1fr) auto;
+    overflow: hidden;
+    border: 2px solid #c8d9e7;
+    border-radius: 22px;
+    background: #fff;
+    box-shadow: 0 12px 30px rgba(20, 57, 78, .14);
+    contain: layout paint;
+    overflow-anchor: none;
+    will-change: transform;
+}
+
+.inequality-cloud__sticky.is-pinned {
+    position: fixed;
+    right: auto;
+    z-index: 900;
+    transform-origin: top left;
+}
+
+.inequality-cloud__graphic {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+}
+
+.inequality-cloud__caption {
+    display: flex;
+    height: 3.7em;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 8px 30px 12px;
+    align-items: center;
+    justify-content: center;
+    color: #243a45;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.45;
+    text-align: center;
+}
+
+.inequality-cloud__script {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.inequality-cloud__fallback {
+    padding: 50px 20px;
+    border: 2px solid #c8d9e7;
+    border-radius: 20px;
+    color: #183b70;
+    font-size: 2.6rem;
+    text-align: center;
+}
+
+.inequality-cloud__ring {
+    fill: none;
+    stroke: #c9dbe7;
+    stroke-width: 1.5;
+    stroke-dasharray: 3 10;
+}
+
+.inequality-cloud__discard {
+    fill: #607986;
+    font-family: Aleo, serif;
+    font-weight: 700;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    will-change: transform, opacity;
+}
+
+.inequality-cloud__keeper-symbol {
+    fill: #183b70;
+    font-family: Aleo, serif;
+    font-size: 49px;
+    font-weight: 700;
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
+
+.inequality-cloud__keeper-card {
+    fill: #fff;
+    stroke: #3568b8;
+    stroke-width: 2;
+}
+
+.inequality-cloud__keeper-label {
+    fill: #3d5662;
+    font-family: Aleo, serif;
+    font-size: 14px;
+    font-weight: 700;
+    text-anchor: middle;
+}
+
+/* Introductory number-line explanation. */
+
+.inequality-intro {
+    display: block;
+    width: 100%;
+    max-width: 920px;
+    height: auto;
+    margin: 1.5rem auto;
+    font-family: Aleo, serif;
+}
+
+.inequality-intro__backdrop {
+    fill: #fff;
+    stroke: #d3e0e8;
+    stroke-width: 2;
+}
+
+.inequality-intro__result { fill: #29444f; font-size: 34px; font-weight: 700; text-anchor: middle; }
+.inequality-intro__axis { fill: none; stroke: #41535c; stroke-width: 4; stroke-linecap: round; }
+.inequality-intro__ticks { fill: none; stroke: #718691; stroke-width: 2; }
+.inequality-intro__labels { fill: #405660; font-size: 18px; text-anchor: middle; }
+
+.inequality-intro__leader {
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+}
+.inequality-intro__leader--left { stroke: #3568b8; }
+.inequality-intro__leader--right { stroke: #b86821; }
+
+.inequality-intro__card {
+    filter: url(#inequality-intro-shadow);
+    cursor: ew-resize;
+    touch-action: none;
+    user-select: none;
+}
+
+.inequality-intro__card rect { stroke-width: 2.5; }
+.inequality-intro__card--left rect { fill: #edf5ff; stroke: #3568b8; }
+.inequality-intro__card--right rect { fill: #fff4e6; stroke: #b86821; }
+.inequality-intro__card text {
+    font-size: 31px;
+    font-weight: 700;
+    text-anchor: middle;
+}
+.inequality-intro__card--left text { fill: #183b70; }
+.inequality-intro__card--right text { fill: #7a3c09; }
+
+.inequality-intro__handle { cursor: ew-resize; touch-action: none; }
+.inequality-intro__handle-hit { fill: transparent; pointer-events: all; }
+.inequality-intro__handle-point { stroke: #fff; stroke-width: 3; }
+.inequality-intro__handle--left .inequality-intro__handle-point { fill: #3568b8; }
+.inequality-intro__handle--right .inequality-intro__handle-point { fill: #b86821; }
+.inequality-intro__handle:focus { outline: none; }
+.inequality-intro__handle:focus .inequality-intro__handle-point { stroke: #1f333c; stroke-width: 4; }
+
+/* Equality is introduced as a pair before the directional symbols. */
+
+.equality-pair {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: 1fr 1fr;
+    margin: 22px 0;
+}
+
+.equality-card {
+    padding: 21px 22px;
+    border: 2px solid #c9dbea;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 7px 17px rgba(20, 57, 78, .08);
+}
+
+.equality-card--not-equal { border-color: #e5c499; }
+.equality-card__statement { margin: 0 0 13px; color: #183b70; font-size: 2rem; font-weight: 700; text-align: center; }
+.equality-card--not-equal .equality-card__statement { color: #8b4a12; }
+.equality-card h3 { margin: 0 0 7px; color: #25434f; font-size: 1.08rem; text-align: center; }
+.equality-card p:last-child { margin: 0; color: #41535c; font-size: .94rem; line-height: 1.55; }
+
+.inline-inequality {
+    margin: 0 .08em;
+    color: inherit;
+    font-size: 1.12em;
+    font-weight: 700;
+    math-style: normal;
+    vertical-align: -.08em;
+}
+
+/* Live three-way comparator. */
+
+.comparator {
+    margin: 24px 0 30px;
+    padding: 18px;
+    border: 2px solid #c8d9e7;
+    border-radius: 20px;
+    background: #fff;
+    box-shadow: 0 9px 22px rgba(20, 57, 78, .1);
+}
+
+.comparator__stage {
+    display: grid;
+    gap: 24px;
+    grid-template-columns: minmax(0, 1fr) 96px minmax(0, 1fr);
+    align-items: center;
+    padding: 26px;
+    border-radius: 18px;
+    background: #f7fafc;
+}
+
+.comparator__input {
+    width: 100%;
+    height: 82px;
+    box-sizing: border-box;
+    padding: 10px 18px;
+    border: 2px solid #9db9d0;
+    border-bottom: 5px solid #3568b8;
+    border-radius: 14px;
+    background: #f4f8ff;
+    box-shadow: 0 5px 12px rgba(20, 57, 78, .08);
+    color: #183b70;
+    font: 700 1.9rem Aleo, serif;
+    text-align: center;
+}
+
+.comparator__input:last-child {
+    border-color: #dbb58c;
+    border-bottom-color: #b86821;
+    background: #fff8ef;
+    color: #7a3c09;
+}
+.comparator__input:focus { border-color: #116e93; outline: 3px solid rgba(17, 110, 147, .18); }
+.comparator__input:last-child:focus { border-color: #b86821; outline-color: rgba(184, 104, 33, .2); }
+
+.comparator__sign {
+    display: grid;
+    width: 96px;
+    height: 82px;
+    place-items: center;
+    color: #29444f;
+    font-size: 4.2rem;
+    font-weight: 700;
+    line-height: 1;
+    transform: scale(1);
+    transition: transform .28s cubic-bezier(.2, .9, .25, 1.25), opacity .18s ease;
+}
+
+.comparator__sign.is-changing { opacity: .35; transform: scale(.72); }
+
+.worked-comparisons {
+    display: grid;
+    gap: 14px;
+    grid-template-columns: 1fr 1fr;
+}
+
+.worked-comparisons article {
+    padding: 18px;
+    border: 2px solid #d9e2ec;
+    border-radius: 15px;
+    background: #fff;
+}
+
+.worked-comparisons h3 { margin: 0; color: #09539d; font-size: 1.05rem; }
+.worked-comparisons p { font-size: .93rem; line-height: 1.52; }
+.worked-comparisons .worked-comparisons__statement {
+    margin: 13px 0;
+    color: #183b70;
+    font-size: 1.55rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Inclusive boundaries. */
+
+.boundary-pair {
+    display: grid;
+    gap: 18px;
+    grid-template-columns: 1fr 1fr;
+    margin: 23px 0;
+}
+
+.boundary-card {
+    padding: 22px;
+    border: 2px solid #c9dbea;
+    border-radius: 18px;
+    background: #f7fbfe;
+}
+
+.boundary-card--greater { border-color: #e5c499; background: #fffaf2; }
+.boundary-card__statement { margin-bottom: 12px; color: #183b70; font-size: 2.25rem; font-weight: 700; text-align: center; }
+.boundary-card--greater .boundary-card__statement { color: #8b4a12; }
+.boundary-card h3 { margin: 0 0 8px; color: #25434f; font-size: 1.08rem; text-align: center; }
+.boundary-card p { margin: 0; font-size: .94rem; line-height: 1.55; }
+
+.boundary-card__values { display: flex; gap: 8px; justify-content: center; margin-top: 18px; }
+.boundary-card__values span {
+    display: grid;
+    width: 42px;
+    height: 42px;
+    place-items: center;
+    border: 2px solid #abc2d0;
+    border-radius: 50%;
+    background: #fff;
+    color: #29444f;
+    font-weight: 700;
+}
+
+.boundary-card__values .is-boundary { border-color: #3568b8; background: #3568b8; color: #fff; }
+.boundary-card--greater .boundary-card__values .is-boundary { border-color: #b86821; background: #b86821; }
+
+/* Compound inequality and its included integers. */
+
+.integer-example {
+    margin: 22px 0;
+    padding: 24px 26px;
+    border: 2px solid #d5e1e9;
+    border-radius: 18px;
+    background: #f9fcfe;
+}
+
+.integer-example > h3 { margin: 0; color: #09539d; font-size: 1.2rem; }
+.integer-line { display: block; width: 100%; height: auto; margin: 12px auto 6px; font-family: Aleo, serif; }
+.integer-line marker path { fill: #41535c; }
+.integer-line__backdrop { fill: #fff; stroke: #d3e0e8; stroke-width: 2; }
+.integer-line__range-bed { fill: #e8f2f9; }
+.integer-line__axis { fill: none; stroke: #41535c; stroke-width: 4; }
+.integer-line__range { fill: none; stroke: url(#integer-line-range); stroke-width: 9; stroke-linecap: round; }
+.integer-line__ticks { fill: none; stroke: #41535c; stroke-width: 2; }
+.integer-line__labels { fill: #405660; font-size: 18px; text-anchor: middle; }
+.integer-line__answers { fill: #3568b8; }
+.integer-line__boundary-guide {
+    fill: none;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+}
+.integer-line__boundary-guide--open { stroke: #3568b8; }
+.integer-line__boundary-guide--closed { stroke: #b86821; }
+.integer-line__boundary-chip {
+    cursor: ew-resize;
+    touch-action: none;
+    user-select: none;
+}
+.integer-line__boundary-chip rect { stroke-width: 2; }
+.integer-line__boundary-chip text { font-size: 14px; font-weight: 700; text-anchor: middle; }
+.integer-line__boundary-chip--open rect { fill: #edf5ff; stroke: #3568b8; }
+.integer-line__boundary-chip--open text { fill: #183b70; }
+.integer-line__boundary-chip--closed rect { fill: #fff4e6; stroke: #b86821; }
+.integer-line__boundary-chip--closed text { fill: #7a3c09; }
+.integer-line__boundary-handle { cursor: ew-resize; touch-action: none; }
+.integer-line__handle-hit { fill: transparent; pointer-events: all; }
+.integer-line__open { fill: #fff; stroke: #3568b8; stroke-width: 4; }
+.integer-line__closed { fill: #b86821; stroke: #fff; stroke-width: 3; }
+.integer-line__boundary-handle:focus { outline: none; }
+.integer-line__boundary-handle:focus .integer-line__open,
+.integer-line__boundary-handle:focus .integer-line__closed { stroke: #1f333c; stroke-width: 4; }
+.integer-line__direction { fill: #183b70; font-size: 17px; font-weight: 700; text-anchor: middle; }
+.integer-example__steps { margin: 10px 0 0; }
+.integer-example__answer { margin: 18px 0 0; color: #183b70; font-size: 1.15rem; text-align: center; }
+
+@media (max-width: 700px) {
+    .inequality-cloud__sticky { height: min(590px, calc(100vh - 150px)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .inequality-cloud.is-ready { height: auto; min-height: 0; }
+    .inequality-cloud__sticky { position: relative; height: 560px; transform: none !important; }
+    .comparator__sign { transition: none; }
+}

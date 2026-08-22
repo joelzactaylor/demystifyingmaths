@@ -3,6 +3,20 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!container) return;
 
     let headings = [...document.querySelectorAll("main h1")];
+
+    // Menu pages carry a single <h1> and group their cards under <h2>s. Without
+    // this they would hide the panel on exactly the pages long enough to need it.
+    // Pages with two or more <h1> in <main> are untouched, and so are the pages
+    // with one <h1> and no <h2>, which still hide the panel as before.
+    if (headings.length < 2 && document.querySelector("main")) {
+        const groupHeadings = [...document.querySelectorAll("main h2")];
+        if (groupHeadings.length >= 2) {
+            headings = groupHeadings;
+        }
+    }
+
+    // The extracurricular pages predate the <main> wrapper and have no element to
+    // scope to, so they fall back to every <h1> on the page.
     if (headings.length === 0) {
         headings = [...document.querySelectorAll("h1")];
     }

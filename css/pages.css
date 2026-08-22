@@ -127,25 +127,4 @@ h3 .highlight {
     color: royalblue;
 }
 
-/* FOOTER */
-
-.footer-content {
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.footer-section {
-    flex: 0 1 auto;
-    min-width: 0;
-}
-
-.footer-section ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.footer-section--references {
-    display: none;
-}
+/* FOOTER — centring now lives in shared.css so every page matches. */

@@ -2,16 +2,17 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
     <title>Demystifying Maths | Home</title>
-    <meta name="description" content="Demystifying Maths — Beyond memorization, into comprehension.">
+    <meta name="description" content="Demystifying Maths — beyond memorisation, into comprehension.">
     <meta property="og:title" content="Demystifying Maths">
-    <meta property="og:description" content="Beyond memorization, into comprehension.">
-    <link rel="stylesheet" href="../css/shared.css">
-    <link rel="stylesheet" href="../css/home.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="../favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="../favicon_io/site.webmanifest">
+    <meta property="og:description" content="Beyond memorisation, into comprehension.">
+    <link rel="stylesheet" href="/css/shared.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -20,37 +21,24 @@
 <body>
     <div class="layout">
         <div id="top-ribbon-placeholder"></div>
-        <script>
-            fetch("../embed/top-ribbon.html")
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById("top-ribbon-placeholder").innerHTML = data;
-                });
-        </script>
+        <script>fetch("/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
 
-        <header>
-        </header>
+        <header></header>
 
         <main>
             <section id="title-section">
                 <h1 id="main-title">
-                    <span class="word">
-                        <span class="char">D</span><span class="char">e</span><span class="char">m</span><span
-                            class="char">y</span><span class="char">s</span><span class="char">t</span><span
-                            class="char">i</span><span class="char">f</span><span class="char">y</span><span
-                            class="char">i</span><span class="char">n</span><span class="char">g</span>
-                    </span>
-                    <span class="word">
-                        <span class="char">M</span><span class="char">a</span><span class="char">t</span><span
-                            class="char">h</span><span class="char">s</span>
-                    </span>
+                    <span class="word"><span class="char">D</span><span class="char">e</span><span
+                            class="char">m</span><span class="char">y</span><span class="char">s</span><span
+                            class="char">t</span><span class="char">i</span><span class="char">f</span><span
+                            class="char">y</span><span class="char">i</span><span class="char">n</span><span
+                            class="char">g</span></span>
+                    <span class="word"><span class="char">M</span><span class="char">a</span><span
+                            class="char">t</span><span class="char">h</span><span class="char">s</span></span>
                 </h1>
-                <h2>Home</h2>
-                <button>Get Started</button>
-                <div class="scroll-cue">
-                    <span class="scroll-cue__text">Scroll to explore</span>
-                </div>
-
+                <h2>Beyond memorisation, into comprehension</h2>
+                <a class="home-start" href="/pages/curriculum/">Begin with the curriculum</a>
+                <div class="scroll-cue"><span>Scroll to explore</span></div>
             </section>
 
             <section class="poly-block">
@@ -59,101 +47,55 @@
                 </div>
 
                 <div class="poly-text">
-                    <h1 style="font-size: 50px;">Why Maths?</h1>
-                    <p>Because maths is amazing!</p>
-                    <p>So many people despise mathematics. And with good reason – <strong>the way it's often taught can
-                            feel
-                            like a
-                            never-ending series of rules and procedures</strong> to
-                        memorize, with little connection to the real world or to our intuition.</p>
-                    <p>This site is designed for curious minds who want to understand the ideas behind the symbols, not
-                        just
-                        the
-                        procedures.</p>
-                    <p>Maths is unique among subjects in that it is <strong>infinitely comprehensible</strong>, meaning
-                        there is always a
-                        logical path from any concept back to absolute fundamental principles, things that you can see
-                        are
-                        true,
-                        and understand in your soul instead of keeping in your head as a rule to follow. This site is
-                        about
-                        finding those paths, and making them <strong>clear and intuitive</strong>.
-                    </p>
+                    <h1>Why maths?</h1>
+                    <p>A great many people dislike mathematics, and often with good reason. <strong>Taught poorly, it
+                            becomes an endless list of rules to be memorised</strong>, with little connection to the
+                        real world or to a student's own intuition.</p>
+                    <p>Yet mathematics is unusual among subjects in being <strong>infinitely
+                            comprehensible</strong>. However abstract an idea may appear, there is always a path leading
+                        back to something that can be seen to be true — not a rule held in the memory, but a principle
+                        that is genuinely understood. This site exists to trace those paths.</p>
                 </div>
             </section>
 
-            <section class="game-of-life">
+            <section class="route-block">
                 <div id="reset-opacity-wrapper">
-                    <h1 style="font-size: 50px;">Who is this site for?</h1>
-                    <p>This site is designed for anyone who wants to <strong>understand the underlying concepts</strong>
-                        of
-                        mathematics,
-                        rather
-                        than just memorizing formulas and procedures. Whether you're a student, or simply someone
-                        curious about the world around you, you'll find that this approach to learning maths can be both
-                        enlightening and enjoyable.</p>
-                    <p>You don't need to be a math genius - my aim is to lay it out in a way that literally anyone can
-                        understand.</p>
-                    <p>If you don't understand something I've written on one of my pages, then the fault is in my
-                        explanation because my goal is to make it comprehensible to every mind. Therefore
-                        please
-                        do not hesitate to
-                        ask, and I can improve the page. In fact if you have any
-                        questions about maths, or if there's a topic you'd like to see covered on this site, please do
-                        get
-                        in
-                        touch with me through <a href="contact.html">this link</a>.</p>
-                    <p>Please use this site on a computer. I've tried to make sure every
-                        page works on mobile too, but you won't get the same experience, especially with the interactive
-                        elements.</p>
-                    <p>If you're on your phone or iPad and you have a computer accessible nearby, I recommend switching
-                        before you go on to read any of the pages.</p>
-                    <div id="pages-section"></div>
+                    <h1>Where to start</h1>
+                    <p>The material is organised in two parts. <strong>Curriculum maths</strong> follows the school
+                        stages, from Key Stage 1 through to A level. <strong>Extracurricular maths</strong> covers
+                        subjects treated at greater length, studied for their own interest rather than for an
+                        examination.</p>
+                    <div class="home-links">
+                        <a href="/pages/curriculum/">Curriculum maths →</a>
+                        <a href="/pages/extracurricular/">Extracurricular maths →</a>
+                    </div>
+                    <p>If any explanation here is unclear, the fault lies with the explanation rather than the reader,
+                        and I would be glad to know of it. The same applies to any topic you would like to see covered:
+                        please <a href="/pages/contact.html">get in touch</a>.</p>
+                    <p>These pages are best read on a computer. They are usable on a phone, but the interactive
+                        elements rely on a larger screen.</p>
                 </div>
-            </section>
-
-            <section class="pages-section">
-                <h1 style="font-size: 50px;">Explore Pages</h1>
-                <div class="pages-section-inner">
-                    <p>I am creating this site like a blog, so new pages will be added over time. These are the ones I
-                        have
-                        created so
-                        far:</p>
-                    <ul id="pages-list"></ul>
-                </div>
-
-                <script>
-                    fetch("../embed/page-list.html")
-                        .then(response => response.text())
-                        .then(data => {
-                            document.getElementById("pages-list").innerHTML = data;
-                        });
-                </script>
             </section>
         </main>
 
         <footer>
             <div class="footer-content">
                 <div class="footer-section">
-                    <h2>Quick Links</h2>
+                    <h2>Explore</h2>
                     <ul>
-                        <li><a href="pages.html">Pages</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                    <h2>Sources</h2>
-                    <ul>
-                        <li><a
-                                href="By Juarez Bochi - Own work, CC BY-SA 4.0, https://commons.wikimedia.org/w/index.php?curid=127833908">Title
-                                image</a></li>
+                        <li><a href="/pages/curriculum/">Curriculum</a></li>
+                        <li><a href="/pages/extracurricular/">Extracurricular</a></li>
+                        <li><a href="/pages/about.html">About</a></li>
+                        <li><a href="/pages/contact.html">Contact</a></li>
                     </ul>
                 </div>
-                <div class="footer-section">
-                    <p>&copy; 2026 demystifyingmaths · joelzactaylor</p>
-                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 demystifyingmaths · joelzactaylor</p>
             </div>
         </footer>
     </div>
+
     <script type="importmap">
     {
       "imports": {
@@ -161,8 +103,7 @@
       }
     }
     </script>
-
-    <script type="module" src="../js/home.js"></script>
+    <script type="module" src="/js/home.js"></script>
 </body>
 
 </html>

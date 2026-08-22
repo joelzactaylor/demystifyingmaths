@@ -1,0 +1,1630 @@
+{
+    "schemaVersion": 2,
+    "strand": {
+        "key": "probability",
+        "title": "Probability",
+        "introHeading": "Probability",
+        "url": "/pages/curriculum/GCSE/probability/",
+        "metaDescription": "GCSE probability: the probability scale, combined events, diagrams, experimental probability."
+    },
+    "topics": [
+        {
+            "key": "scale",
+            "prefix": "gcse-probability-scale",
+            "title": "The probability scale",
+            "crumbLabel": "Probability scale",
+            "cardDescription": "The 0 to 1 scale, single events, complements and expected frequency.",
+            "metaDescription": "GCSE probability scale: the 0 to 1 scale, equally likely outcomes, the not rule and expected frequency, with worked examples and the mistakes that lose marks.",
+            "subtopics": [
+                {
+                    "slug": "likelihood-language",
+                    "title": "The language of likelihood",
+                    "description": "The words from impossible to certain, and ordering events by likelihood.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Cover the words impossible, unlikely, even chance, likely and certain, ordering everyday events by likelihood, and matching words to positions on a marked 0 to 1 line. Both tiers. No numerical probability calculation here: fractions and the counting formula live on the sibling zero-to-one-scale and equally-likely-outcomes pages. (P3)"
+                },
+                {
+                    "slug": "zero-to-one-scale",
+                    "title": "The 0 to 1 scale",
+                    "description": "Probability as a number from 0 for impossible to 1 for certain.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Probability as a number from 0 for impossible to 1 for certain, placing events on a labelled scale, even chance as one half, and rejecting values like 1.2 or negative numbers as impossible probabilities. Both tiers. Exclude P(A) notation (event-notation page) and calculating from outcomes (equally-likely-outcomes page). (P3)"
+                },
+                {
+                    "slug": "event-notation",
+                    "title": "Events and the notation P(A)",
+                    "description": "Outcomes, events and trials, and writing statements such as P(red) = 0.3.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Define trial, outcome and event precisely; read and write statements such as P(red) = 0.3; distinguish an event from its probability. Question types: translate words into P notation and back. Both tiers. Exclude set notation for union, intersection and complement (Diagrams topic) and given-that notation (Higher conditional pages). (P3)"
+                },
+                {
+                    "slug": "probability-in-three-forms",
+                    "title": "Probability as a fraction, decimal or percentage",
+                    "description": "A probability as a fraction, decimal or percentage, and converting between them.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "One probability written as a fraction, a decimal and a percentage, converting all three ways, and recognising equal values such as 3/20, 0.15 and 15 percent. Warn that ratio answers like 1:6 score nothing. Both tiers. Exclude calculating probabilities (equally-likely-outcomes) and deciding which is larger (comparing-probabilities). (P3)"
+                },
+                {
+                    "slug": "comparing-probabilities",
+                    "title": "Comparing probabilities",
+                    "description": "Deciding which event is more likely by common denominators or decimals.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Decide which of two events is more likely by common denominators or decimal conversion, and order mixed lists of fractions, decimals and percentages; include events from different experiments. Both tiers. Exclude combining two events (Combined events topic) and comparing experiment against theory (comparing-with-theory, Experimental probability). (P3)"
+                },
+                {
+                    "slug": "equally-likely-outcomes",
+                    "title": "Probability from equally likely outcomes",
+                    "description": "Favourable outcomes over total outcomes, and the equally likely condition.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "The formula favourable outcomes over total outcomes for fair dice, coins, spinners, counters and cards, with answers as simplified fractions and optionally decimals or percentages. Stress the equally-likely precondition. Both tiers. Exclude two-event experiments (sample spaces, Diagrams topic) and estimates from data (Experimental probability). (P2, P7)"
+                },
+                {
+                    "slug": "events-with-several-outcomes",
+                    "title": "An event made of several outcomes",
+                    "description": "Counting every outcome an event contains before dividing by the total.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Events containing several outcomes, such as rolling a prime, drawing a vowel or picking a multiple of 3, counted carefully before dividing by the total; answers in fraction, decimal or percentage form. Both tiers. Exclude outcomes from two combined experiments (Diagrams topic) and the OR rule (Combined events). (P7)"
+                },
+                {
+                    "slug": "fairness-and-random-selection",
+                    "title": "Fairness and selecting at random",
+                    "description": "What fair, biased and at random mean, and when counting stops being valid.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Define fair, biased and at random; explain why equal likelihood justifies counting outcomes and give cases where it fails, such as a drawing pin or weighted spinner. Question type: is the counting method valid here. Both tiers. Estimating probabilities for biased objects is out of scope, living on Experimental probability. (P2)"
+                },
+                {
+                    "slug": "probabilities-sum-to-one",
+                    "title": "Probabilities that sum to one",
+                    "description": "Why an exhaustive set’s probabilities total one, and checking a stated table.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "The probabilities of an exhaustive set of mutually exclusive outcomes total exactly 1; check a stated table, spotting totals over or under 1; tables mixing fractions, decimals and percentages. Both tiers. Exclude solving for unknowns (missing-probabilities page) and exhaustive sets of combined events (Combined events topic). (P4)"
+                },
+                {
+                    "slug": "complementary-events",
+                    "title": "The probability of an event not happening",
+                    "description": "P(not A) as 1 − P(A), and spotting when the complement is the faster route.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "P(not A) as 1 minus P(A) in fraction, decimal and percentage forms, with wording such as does not rain, and spotting questions where the complement is faster. Both tiers. Exclude at-least-one questions across repeated trials (Combined events topic) and formal complement notation with Venn diagrams (set-notation, Diagrams topic). (P4)"
+                },
+                {
+                    "slug": "missing-probabilities",
+                    "title": "Finding a missing probability",
+                    "description": "Using the total of one to find an unknown probability, even an algebraic one.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Use the total of 1 to find an unknown probability in a table; include tables with algebraic entries such as x and 2x solved by a simple linear equation, a Higher-leaning twist Foundation can still meet. Both tiers. Exclude relative frequency tables (Experimental probability) and simultaneous equations (Algebra strand). (P4)"
+                },
+                {
+                    "slug": "expected-frequency",
+                    "title": "Expected frequency",
+                    "description": "Estimating how many times an event will occur as probability times trials.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Expected count as probability times number of trials, with fair and biased devices, whole-number answers, and probabilities given in any of the three forms. Both tiers. Exclude estimating the probability from past results (predicting-from-relative-frequency, Experimental probability) and formal expected value of a distribution (A level statistics). (P2)"
+                },
+                {
+                    "slug": "expectation-as-an-estimate",
+                    "title": "Expected frequency as an estimate",
+                    "description": "Why 60 rolls need not give ten sixes, and what the expected count does say.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Interpret expected frequency as a long-run estimate, not a promise: explain why 60 rolls need not give exactly ten sixes, and critique claims treating the expected count as guaranteed. Comment-style questions with a numerical anchor. Both tiers. Exclude quantifying the variation, and convergence with more trials, which lives on effect-of-sample-size. (P2, P5)"
+                }
+            ],
+            "groups": [
+                {
+                    "slug": "measuring-chance",
+                    "title": "Measuring chance",
+                    "crumb": "Measuring chance",
+                    "lead": "The words and numbers that record likelihood, all on the 0 to 1 scale.",
+                    "slugs": [
+                        "likelihood-language",
+                        "zero-to-one-scale",
+                        "event-notation",
+                        "probability-in-three-forms",
+                        "comparing-probabilities"
+                    ]
+                },
+                {
+                    "slug": "single-events",
+                    "title": "Single events",
+                    "crumb": "Single events",
+                    "lead": "The probability of one event by counting outcomes, and the fairness behind it.",
+                    "slugs": [
+                        "equally-likely-outcomes",
+                        "events-with-several-outcomes",
+                        "fairness-and-random-selection"
+                    ]
+                },
+                {
+                    "slug": "complements-and-expectation",
+                    "title": "Complements and expected frequency",
+                    "crumb": "Complements and expectation",
+                    "lead": "Probabilities totalling one, the not rule, and probability times trials.",
+                    "slugs": [
+                        "probabilities-sum-to-one",
+                        "complementary-events",
+                        "missing-probabilities",
+                        "expected-frequency",
+                        "expectation-as-an-estimate"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "combined",
+            "prefix": "gcse-probability-combined",
+            "title": "Combined events",
+            "crumbLabel": "Combined events",
+            "cardDescription": "The OR rule, the AND rule, and Higher-tier conditional probability.",
+            "metaDescription": "GCSE combined events: mutual exclusivity, independence, the addition and multiplication rules, replacement, and conditional probability, with the rule conditions that examiners test.",
+            "subtopics": [
+                {
+                    "slug": "mutually-exclusive-events",
+                    "title": "Mutually exclusive events",
+                    "description": "Events that cannot both happen on one trial, and testing pairs for exclusivity.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Define events that cannot both happen on one trial and test stated pairs for exclusivity with a justification, such as odd and prime sharing 3. Contrast with independence, the classic confusion. Both tiers. Exclude the addition rule itself (or-rule page) and intersection notation (set-notation, Diagrams topic). (P4)"
+                },
+                {
+                    "slug": "or-rule",
+                    "title": "The OR rule for exclusive events",
+                    "description": "Adding probabilities for either-or questions, and why exclusivity is required.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Add probabilities of mutually exclusive events for either-or questions, two or three alternatives, fraction and decimal answers, always checking exclusivity before adding. Both tiers. Exclude non-exclusive events (overlapping-events page) and the general addition law quoted with union and intersection notation, which is A level. (P4)"
+                },
+                {
+                    "slug": "exhaustive-events",
+                    "title": "Exhaustive sets of events",
+                    "description": "Sets of events covering every outcome, and when their probabilities total one.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Define a set of events that covers every possible outcome; decide whether stated sets are exhaustive; show an exclusive and exhaustive set has probabilities totalling 1, linking to probabilities-sum-to-one. Question type: find the missing event or probability. Both tiers. Exclude formal sample-space set notation (Diagrams topic). (P4)"
+                },
+                {
+                    "slug": "overlapping-events",
+                    "title": "Events that overlap",
+                    "description": "Why adding double-counts the overlap, and subtracting it to correct the total.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Show by counting outcomes why adding double-counts events in both, then subtract the overlap to correct the total, supported by small Venn sketches. Keep it numerical: quoting the general addition law as a formula in union and intersection notation belongs at A level. Both tiers. Full Venn technique lives on the Diagrams topic. (P4, P6)"
+                },
+                {
+                    "slug": "independent-events",
+                    "title": "Independent events",
+                    "description": "Events where one outcome gives no information about the other.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Define independence as one outcome giving no information about the other; classify pairs such as coin then dice against successive picks without replacement; separate independence from mutual exclusivity. Both tiers. Exclude the multiplication itself (and-rule page) and testing independence by comparing P(A and B) with the product, an A level idea. (P8)"
+                },
+                {
+                    "slug": "and-rule",
+                    "title": "The AND rule for independent events",
+                    "description": "Multiplying the probabilities of independent events for both-happen questions.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Multiply probabilities of independent events for both-happen questions, two or three events, fraction and decimal answers, noting the product is smaller than either factor. Always state the independence condition. Both tiers. Exclude dependent events (dependent-events page), tree-diagram layout (Diagrams topic) and at-least-one questions (sibling page). (P8)"
+                },
+                {
+                    "slug": "independence-assumption",
+                    "title": "The independence assumption",
+                    "description": "The unstated assumption behind multiplying, and everyday cases where it fails.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "State the assumption behind multiplying, that the events are independent, and critique it in context: consecutive rainy days, two train delays, answers from friends. Exam wording: state an assumption, or explain why the answer may be unreliable. Both tiers. Mechanics of the rule live on and-rule; dependent calculation on dependent-events. (P8)"
+                },
+                {
+                    "slug": "choosing-add-or-multiply",
+                    "title": "Choosing between adding and multiplying",
+                    "description": "Deciding whether a worded question wants either event or both events.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Translate worded questions into either-or (add, exclusive events) or both-and (multiply, independent events), with mixed practice where the rule is never named and the condition must be checked. Both tiers. Exclude multi-stage problems needing a tree (Diagrams topic) and given-that wording (Higher conditional group). (P4, P8)"
+                },
+                {
+                    "slug": "at-least-one",
+                    "title": "The probability of at least one",
+                    "description": "One minus the probability of none, and why the complement beats listing cases.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "P(at least one) as 1 minus P(none), with P(none) multiplied across independent repeated trials; compare against listing successful cases. Two trials at Foundation, three trials and without-replacement versions leaning Higher. Both tiers. Exclude binomial coefficient shortcuts and general n-trial formulas, which are A level. (P4, P8)"
+                },
+                {
+                    "slug": "dependent-events",
+                    "title": "Dependent events",
+                    "description": "Events where the first outcome changes the probabilities for the second.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Define dependent events, where the first outcome changes the second probability, and multiply using the adjusted value, written out explicitly. Contexts: counters from a bag, cards dealt without shuffling back. Two stages only. Both tiers. Replacement contrasts live on the two sibling pages, trees on the Diagrams topic, and P(B given A) notation at Higher. (P8)"
+                },
+                {
+                    "slug": "with-replacement",
+                    "title": "Sampling with replacement",
+                    "description": "Repeated picks where each object goes back, so every stage stays independent.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Successive picks where the object goes back: identical fractions each stage, so stages are independent and multiply directly; two or three picks; both-same and one-of-each question types with fraction answers. Teach spotting the replacement wording. Both tiers. Exclude non-replacement (sibling page) and the tree layout (Diagrams topic). (P8)"
+                },
+                {
+                    "slug": "without-replacement",
+                    "title": "Sampling without replacement",
+                    "description": "Successive picks where numerator and denominator shrink for the second pick.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Successive picks with no return: second-stage numerator and denominator both reduced, both orders added for one-of-each questions. Two picks routine at both tiers, three picks leaning Higher. Highlight the copied-fraction error. The same skill organised on a tree lives at trees-without-replacement (Diagrams topic). (P8)"
+                },
+                {
+                    "slug": "conditional-probability",
+                    "title": "Conditional probability",
+                    "description": "The probability of an event given that another has happened.",
+                    "tier": "higher",
+                    "written": false,
+                    "coverNote": "Define P(A given B) by restricting attention to the trials where B happened, worked through counts and expected frequencies, with wording given that and of those who. Higher tier only. Exclude the algebraic formula dividing P(A and B) by P(B), and reversing conditions formally, both A level. Representations follow on three sibling pages. (P9)"
+                },
+                {
+                    "slug": "conditional-from-two-way-tables",
+                    "title": "Conditional probability from a two-way table",
+                    "description": "P(A given B) as a cell over its row or column total, not the grand total.",
+                    "tier": "higher",
+                    "written": false,
+                    "coverNote": "Read P(A given B) from a completed two-way table as the named cell over the row or column total the condition fixes, never the grand total; contrast P(A given B) with P(B given A) from the same table. Higher tier only. Completing the table is both-tier work on two-way-tables (Diagrams topic). (P9)"
+                },
+                {
+                    "slug": "conditional-from-venn-diagrams",
+                    "title": "Conditional probability from a Venn diagram",
+                    "description": "Dividing the overlap by the region in the condition, not the whole diagram.",
+                    "tier": "higher",
+                    "written": false,
+                    "coverNote": "Conditional probability from a completed two-set Venn diagram: the overlap count divided by the total of the conditioning set's regions, not the whole diagram; include conditions on the complement using the outside region. Higher tier only. Drawing and notation are both-tier pages on the Diagrams topic; three-set formal laws are A level. (P9)"
+                },
+                {
+                    "slug": "conditional-from-tree-diagrams",
+                    "title": "Conditional probability on a tree diagram",
+                    "description": "Why second-stage branches already carry conditional probabilities.",
+                    "tier": "higher",
+                    "written": false,
+                    "coverNote": "Explain that second-stage branches already carry conditional probabilities, read P(B given A) straight from the correct branch, and answer given-that questions from a completed tree. Higher tier only. Exclude reversing a condition across the tree, Bayes-style, which is A level; constructing trees is both-tier work on the Diagrams topic. (P9)"
+                }
+            ],
+            "groups": [
+                {
+                    "slug": "exclusive-events",
+                    "title": "Exclusive events and the OR rule",
+                    "crumb": "Exclusive events",
+                    "lead": "Events that cannot both happen, the addition rule, and correcting for overlap.",
+                    "slugs": [
+                        "mutually-exclusive-events",
+                        "or-rule",
+                        "exhaustive-events",
+                        "overlapping-events"
+                    ]
+                },
+                {
+                    "slug": "independence",
+                    "title": "Independence and the AND rule",
+                    "crumb": "Independence",
+                    "lead": "Independent events, the multiplication rule, and deciding which rule fits.",
+                    "slugs": [
+                        "independent-events",
+                        "and-rule",
+                        "independence-assumption",
+                        "choosing-add-or-multiply",
+                        "at-least-one"
+                    ]
+                },
+                {
+                    "slug": "replacement",
+                    "title": "Dependent events and replacement",
+                    "crumb": "Replacement",
+                    "lead": "The second pick when the first is not put back, and the recalculated fractions.",
+                    "slugs": [
+                        "dependent-events",
+                        "with-replacement",
+                        "without-replacement"
+                    ]
+                },
+                {
+                    "slug": "conditional",
+                    "title": "Conditional probability",
+                    "crumb": "Conditional probability",
+                    "lead": "Higher only: given-that probability from two-way tables, Venn and tree diagrams.",
+                    "slugs": [
+                        "conditional-probability",
+                        "conditional-from-two-way-tables",
+                        "conditional-from-venn-diagrams",
+                        "conditional-from-tree-diagrams"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "diagrams",
+            "prefix": "gcse-probability-diagrams",
+            "title": "Diagrams",
+            "crumbLabel": "Diagrams",
+            "cardDescription": "Sample spaces, two-way tables, frequency trees, tree and Venn diagrams.",
+            "metaDescription": "GCSE probability diagrams: sample spaces, two-way tables, frequency trees, tree diagrams and Venn diagrams, with the branch and region errors that lose marks.",
+            "subtopics": [
+                {
+                    "slug": "listing-combined-outcomes",
+                    "title": "Listing the outcomes of two events",
+                    "description": "Writing every pairing of two events once, in an order showing none is missing.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "List every pairing from two experiments, coin with dice, two spinners, menu choices, in a fixed systematic order that proves completeness, then count the list; treat ordered pairs carefully. Both tiers. Exclude probabilities from the list (sibling pages) and the product rule for counting, a Higher topic in the Number strand. (P6)"
+                },
+                {
+                    "slug": "sample-space-diagrams",
+                    "title": "Sample space diagrams",
+                    "description": "The grid displaying every outcome of two events, one axis per event.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Construct the grid for two events with one axis per event: totals, differences and products of two dice, or two spinners; every cell one equally likely outcome. Question types: complete and count the grid. Both tiers. Probabilities follow on the sibling page; experiments with more than two stages need tree diagrams. (P6, P7)"
+                },
+                {
+                    "slug": "probabilities-from-a-sample-space",
+                    "title": "Probabilities from a sample space",
+                    "description": "Counting the cells an event occupies and dividing by the whole grid.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Count the cells an event fills and divide by the whole grid, giving simplified fractions; totals, doubles and at-least events from two dice. Stress that cells are equally likely but listed totals are not, so a total of 7 beats 12. Both tiers. Exclude the AND and OR rules themselves (Combined events topic). (P7)"
+                },
+                {
+                    "slug": "two-way-tables",
+                    "title": "Two-way tables",
+                    "description": "Completing a two-way table from its totals, one forced cell at a time.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Complete a two-way table from row, column and grand totals one forced cell at a time, and build one from worded information. Counts only. Both tiers. Probabilities move to the sibling page; given-that reading is Higher on conditional-from-two-way-tables; the same tables appear in the Statistics strand for interpretation. (P1, P6)"
+                },
+                {
+                    "slug": "probabilities-from-two-way-tables",
+                    "title": "Probabilities from a two-way table",
+                    "description": "A cell count over the grand total, and reading which total a question wants.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Turn a completed table into probabilities: the named cell over the grand total, or over a row or column total only when the wording restricts the group, with fraction, decimal and percentage answers. Both tiers. Formal P(A given B) notation and given-that questions are Higher, on conditional-from-two-way-tables (Combined events). (P1, P6)"
+                },
+                {
+                    "slug": "frequency-trees",
+                    "title": "Frequency trees",
+                    "description": "Filling in counts along two successive splits, and reading the finished tree.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Fill a frequency tree across two successive splits from worded counts, each node equalling the sum of its branches, then read counts and simple fraction probabilities from it. Distinguish it from a probability tree: branches carry counts, not probabilities. Both tiers. Conditional questions built on frequency trees are Higher (Combined events topic). (P1)"
+                },
+                {
+                    "slug": "drawing-tree-diagrams",
+                    "title": "Drawing a tree diagram",
+                    "description": "One fork per stage, a probability on every branch, and each fork totalling one.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Draw probability trees with one fork per stage and a probability on every branch, each fork summing to 1; complete missing branches by complements; fractions and decimals. One and two stages. Both tiers. Route calculations follow on the sibling pages; frequency trees carry counts and have their own page. (P6, P8)"
+                },
+                {
+                    "slug": "multiplying-along-branches",
+                    "title": "Multiplying along the branches",
+                    "description": "The probability of a complete route as the product of its branch probabilities.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Multiply the branch probabilities along one complete route for that outcome's probability, fraction and decimal answers; two-stage trees, with three stages leaning Higher. Single routes only: combining routes is adding-across-paths. Flag that unchanged second-stage branches assume independence, taught on the Combined events topic. Both tiers. (P8)"
+                },
+                {
+                    "slug": "adding-across-paths",
+                    "title": "Adding across the paths",
+                    "description": "Finding every path that satisfies the event, then adding their probabilities.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Find every route satisfying an event, exactly one head, different colours, at least one six, then add the route products; cross-reference the complement shortcut for at-least-one (Combined events). Two-stage trees at Foundation, three-stage leaning Higher. Both tiers. Exclude given-that readings of a tree, which are Higher (Combined events). (P8)"
+                },
+                {
+                    "slug": "trees-without-replacement",
+                    "title": "Tree diagrams without replacement",
+                    "description": "Second-stage branches recalculated after the first pick, never simply copied.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Trees whose second-stage fractions are recalculated after the first pick, numerator and denominator each reduced; complete the tree then combine multiply-along and add-across in one question. Show the copied-fraction error explicitly. Two picks standard, three a Higher-leaning stretch. Both tiers. The arithmetic-only treatment lives on without-replacement (Combined events). (P8)"
+                },
+                {
+                    "slug": "venn-diagram-regions",
+                    "title": "The regions of a Venn diagram",
+                    "description": "What the four regions of a two-set diagram hold, including outside both sets.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Name the four regions of a two-set Venn diagram, including outside both sets, and place listed items or counts into the correct region. Two sets standard; three-set diagrams appear as a Higher-leaning extension. Both tiers. Symbols for the regions follow on set-notation; probabilities on the sibling probabilities page. (P6)"
+                },
+                {
+                    "slug": "set-notation",
+                    "title": "Set notation",
+                    "description": "Union, intersection, complement and universal set, and the regions they shade.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Union, intersection, complement and the universal set, each matched to the region it shades on a two-set diagram, and read inside probability statements such as P(A union B). Exactly the GCSE four, both tiers. Exclude subset symbols, De Morgan laws and set-builder notation, which live on the extracurricular set theory page and at A level. (P6)"
+                },
+                {
+                    "slug": "filling-in-a-venn-diagram",
+                    "title": "Filling in a Venn diagram",
+                    "description": "Placing the intersection first and subtracting outwards from worded counts.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Build a two-set Venn diagram from worded survey counts by placing the intersection first, subtracting outwards, and deducing the outside region from the total; include versions giving the union instead. Three-set completion leans Higher. Both tiers. Probabilities from the finished diagram sit on the sibling page. (P6)"
+                },
+                {
+                    "slug": "probabilities-from-a-venn-diagram",
+                    "title": "Probabilities from a Venn diagram",
+                    "description": "A region’s count over the total across every region, including the outside.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "A region's count over the total across all regions, remembering the outside region; probabilities of unions, intersections and complements written with the notation from set-notation; simplified fractions. Both tiers. Conditional questions dividing by one set's total are Higher, on conditional-from-venn-diagrams (Combined events topic). (P6)"
+                }
+            ],
+            "groups": [
+                {
+                    "slug": "sample-spaces",
+                    "title": "Sample spaces",
+                    "crumb": "Sample spaces",
+                    "lead": "Two events’ outcomes listed or gridded once, and probabilities from the cells.",
+                    "slugs": [
+                        "listing-combined-outcomes",
+                        "sample-space-diagrams",
+                        "probabilities-from-a-sample-space"
+                    ]
+                },
+                {
+                    "slug": "tables-and-frequency-trees",
+                    "title": "Two-way tables and frequency trees",
+                    "crumb": "Tables and frequency trees",
+                    "lead": "Counts by two categories or successive splits, turned into probabilities.",
+                    "slugs": [
+                        "two-way-tables",
+                        "probabilities-from-two-way-tables",
+                        "frequency-trees"
+                    ]
+                },
+                {
+                    "slug": "tree-diagrams",
+                    "title": "Tree diagrams",
+                    "crumb": "Tree diagrams",
+                    "lead": "Multiplying along a path, adding across paths, and trees without replacement.",
+                    "slugs": [
+                        "drawing-tree-diagrams",
+                        "multiplying-along-branches",
+                        "adding-across-paths",
+                        "trees-without-replacement"
+                    ]
+                },
+                {
+                    "slug": "venn-diagrams",
+                    "title": "Venn diagrams and set notation",
+                    "crumb": "Venn diagrams",
+                    "lead": "Sets drawn as regions, the notation naming each, and probabilities from counts.",
+                    "slugs": [
+                        "venn-diagram-regions",
+                        "set-notation",
+                        "filling-in-a-venn-diagram",
+                        "probabilities-from-a-venn-diagram"
+                    ]
+                }
+            ]
+        },
+        {
+            "key": "experimental",
+            "prefix": "gcse-probability-experimental",
+            "title": "Experimental probability",
+            "crumbLabel": "Experimental probability",
+            "cardDescription": "Relative frequency, bias, sample size, and comparison with theory.",
+            "metaDescription": "GCSE experimental probability: relative frequency, estimating probabilities from data, bias and sample size, with the small-sample verdicts that lose marks.",
+            "subtopics": [
+                {
+                    "slug": "recording-experimental-results",
+                    "title": "Recording the results of an experiment",
+                    "description": "Tallying the outcomes of repeated trials into a frequency table.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Tally charts and frequency tables for repeated trials of dice, spinners and drawing pins, checking the frequency total matches the number of trials, and describing what was recorded. Both tiers. No probability yet: relative frequency is the next page, and two-split counts feeding frequency trees live on the Diagrams topic. (P1)"
+                },
+                {
+                    "slug": "relative-frequency",
+                    "title": "Relative frequency",
+                    "description": "The fraction of trials on which an event occurred, estimating its probability.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Relative frequency as frequency over total trials, simplified, and also as a decimal or percentage; computed from a results table and used as a probability estimate; include running recalculation as further batches arrive. Both tiers. Exclude fairness verdicts and sample-size judgements, which live in the bias-and-sample-size group. (P1, P3)"
+                },
+                {
+                    "slug": "estimating-probability-from-data",
+                    "title": "Estimating a probability from data",
+                    "description": "Relative frequency when outcomes are not equally likely, such as a drawing pin.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Use relative frequency when counting equally likely outcomes is impossible: drawing pins, biased dice, weather and survey data, with the wording estimate the probability. Include deciding whether a question needs data or the theoretical formula. Both tiers. State that more trials improve the estimate, detailed on effect-of-sample-size. (P1, P3)"
+                },
+                {
+                    "slug": "predicting-from-relative-frequency",
+                    "title": "Predicting future results from relative frequency",
+                    "description": "Scaling an estimated probability up to future trials, rounded to a whole count.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Scale an estimated probability up to a stated number of future trials and round to a whole count, wording such as how many of the next 200. Stress it is an estimate, not a guarantee. Both tiers. The theoretical twin, probability times trials from a known probability, lives on expected-frequency (Probability scale). (P2, P3)"
+                },
+                {
+                    "slug": "comparing-with-theory",
+                    "title": "Comparing experimental and theoretical probability",
+                    "description": "Setting relative frequency against theory, and describing the gap between them.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Set the relative frequency of an event beside its theoretical probability using common denominators or decimals, and describe the gap in context. Question types: whose results sit closer to theory, do these results support fairness. Both tiers. The fairness verdict itself is detecting-bias; the effect of more trials is effect-of-sample-size. (P3, P5)"
+                },
+                {
+                    "slug": "detecting-bias",
+                    "title": "Detecting bias",
+                    "description": "Judging whether a dice or spinner is fair, and how large a gap is suspicious.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Judge whether a dice, coin or spinner is fair by comparing each relative frequency with its theoretical share, giving a verdict backed by a calculation and hedged when trials are few. Both tiers. No formal hypothesis tests or chi-squared, which belong to A level statistics; sample-size reasoning continues on the sibling page. (P2, P5)"
+                },
+                {
+                    "slug": "effect-of-sample-size",
+                    "title": "The effect of sample size",
+                    "description": "Why relative frequency settles towards the true probability as trials increase.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Relative frequency settles towards the true probability as trials increase and wanders when trials are few; read graphs of running relative frequency; explain what rolling 1000 more times would change. Qualitative only, both tiers. Exclude the formal law of large numbers and any error bounds, which are A level ideas. (P5)"
+                },
+                {
+                    "slug": "best-estimate",
+                    "title": "Choosing the best estimate",
+                    "description": "Trusting the estimate backed by the most trials, and pooling results into one.",
+                    "tier": "both",
+                    "written": false,
+                    "coverNote": "Choose the best estimate as the one backed by the most trials, and pool several result sets by totalling successes over totalled trials, never averaging the separate fractions. Justify-the-choice question type. Both tiers. Exclude formal sampling theory and confidence intervals, which are A level statistics. (P5)"
+                }
+            ],
+            "groups": [
+                {
+                    "slug": "estimating-from-experiments",
+                    "title": "Relative frequency",
+                    "crumb": "Relative frequency",
+                    "lead": "A probability estimated from repeated trials and used to predict future counts.",
+                    "slugs": [
+                        "recording-experimental-results",
+                        "relative-frequency",
+                        "estimating-probability-from-data",
+                        "predicting-from-relative-frequency"
+                    ]
+                },
+                {
+                    "slug": "bias-and-sample-size",
+                    "title": "Bias and sample size",
+                    "crumb": "Bias and sample size",
+                    "lead": "Experiments set against theory, bias verdicts, and what more trials buy.",
+                    "slugs": [
+                        "comparing-with-theory",
+                        "detecting-bias",
+                        "effect-of-sample-size",
+                        "best-estimate"
+                    ]
+                }
+            ]
+        }
+    ],
+    "drills": [
+        {
+            "file": "practiceComparingProbabilities.html",
+            "title": "Comparing probabilities",
+            "description": "Deciding which event is more likely by common denominators or decimals.",
+            "skill": "Deciding which event is more likely by common denominators or decimals.",
+            "topic": "scale",
+            "groups": [
+                "measuring-chance"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "scale/comparing-probabilities"
+            ],
+            "tier": "both",
+            "scope": "Decide which of two events is more likely by common denominators or decimal conversion, and order mixed lists of fractions, decimals and percentages; include events from different experiments. Both tiers. Exclude combining two events (Combined events topic) and comparing experiment against theory (comparing-with-theory, Experimental probability). (P3)",
+            "sections": [
+                "Fluency — direct questions on comparing probabilities, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceSingle.html",
+            "title": "Probability from equally likely outcomes",
+            "description": "Favourable outcomes over total outcomes, and the equally likely condition.",
+            "skill": "Favourable outcomes over total outcomes, and the equally likely condition.",
+            "topic": "scale",
+            "groups": [
+                "single-events"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "scale/equally-likely-outcomes"
+            ],
+            "tier": "both",
+            "scope": "The formula favourable outcomes over total outcomes for fair dice, coins, spinners, counters and cards, with answers as simplified fractions and optionally decimals or percentages. Stress the equally-likely precondition. Both tiers. Exclude two-event experiments (sample spaces, Diagrams topic) and estimates from data (Experimental probability). (P2, P7)",
+            "sections": [
+                "Fluency — direct questions on probability from equally likely outcomes, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceEventsWithSeveralOutcomes.html",
+            "title": "An event made of several outcomes",
+            "description": "Counting every outcome an event contains before dividing by the total.",
+            "skill": "Counting every outcome an event contains before dividing by the total.",
+            "topic": "scale",
+            "groups": [
+                "single-events"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "scale/events-with-several-outcomes"
+            ],
+            "tier": "both",
+            "scope": "Events containing several outcomes, such as rolling a prime, drawing a vowel or picking a multiple of 3, counted carefully before dividing by the total; answers in fraction, decimal or percentage form. Both tiers. Exclude outcomes from two combined experiments (Diagrams topic) and the OR rule (Combined events). (P7)",
+            "sections": [
+                "Fluency — direct questions on an event made of several outcomes, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceProbabilitiesSumToOne.html",
+            "title": "Probabilities that sum to one",
+            "description": "Why an exhaustive set’s probabilities total one, and checking a stated table.",
+            "skill": "Why an exhaustive set’s probabilities total one, and checking a stated table.",
+            "topic": "scale",
+            "groups": [
+                "complements-and-expectation"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "scale/probabilities-sum-to-one"
+            ],
+            "tier": "both",
+            "scope": "The probabilities of an exhaustive set of mutually exclusive outcomes total exactly 1; check a stated table, spotting totals over or under 1; tables mixing fractions, decimals and percentages. Both tiers. Exclude solving for unknowns (missing-probabilities page) and exhaustive sets of combined events (Combined events topic). (P4)",
+            "sections": [
+                "Fluency — direct questions on probabilities that sum to one, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceComplementaryEvents.html",
+            "title": "The probability of an event not happening",
+            "description": "P(not A) as 1 − P(A), and spotting when the complement is the faster route.",
+            "skill": "P(not A) as 1 − P(A), and spotting when the complement is the faster route.",
+            "topic": "scale",
+            "groups": [
+                "complements-and-expectation"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "scale/complementary-events"
+            ],
+            "tier": "both",
+            "scope": "P(not A) as 1 minus P(A) in fraction, decimal and percentage forms, with wording such as does not rain, and spotting questions where the complement is faster. Both tiers. Exclude at-least-one questions across repeated trials (Combined events topic) and formal complement notation with Venn diagrams (set-notation, Diagrams topic). (P4)",
+            "sections": [
+                "Fluency — direct questions on the probability of an event not happening, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceMissingProbabilities.html",
+            "title": "Finding a missing probability",
+            "description": "Using the total of one to find an unknown probability, even an algebraic one.",
+            "skill": "Using the total of one to find an unknown probability, even an algebraic one.",
+            "topic": "scale",
+            "groups": [
+                "complements-and-expectation"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "scale/missing-probabilities"
+            ],
+            "tier": "both",
+            "scope": "Use the total of 1 to find an unknown probability in a table; include tables with algebraic entries such as x and 2x solved by a simple linear equation, a Higher-leaning twist Foundation can still meet. Both tiers. Exclude relative frequency tables (Experimental probability) and simultaneous equations (Algebra strand). (P4)",
+            "sections": [
+                "Fluency — direct questions on finding a missing probability, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceExpectedFrequency.html",
+            "title": "Expected frequency",
+            "description": "Estimating how many times an event will occur as probability times trials.",
+            "skill": "Estimating how many times an event will occur as probability times trials.",
+            "topic": "scale",
+            "groups": [
+                "complements-and-expectation"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "scale/expected-frequency"
+            ],
+            "tier": "both",
+            "scope": "Expected count as probability times number of trials, with fair and biased devices, whole-number answers, and probabilities given in any of the three forms. Both tiers. Exclude estimating the probability from past results (predicting-from-relative-frequency, Experimental probability) and formal expected value of a distribution (A level statistics). (P2)",
+            "sections": [
+                "Fluency — direct questions on expected frequency, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceMutuallyExclusiveEvents.html",
+            "title": "Mutually exclusive events",
+            "description": "Events that cannot both happen on one trial, and testing pairs for exclusivity.",
+            "skill": "Events that cannot both happen on one trial, and testing pairs for exclusivity.",
+            "topic": "combined",
+            "groups": [
+                "exclusive-events"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "combined/mutually-exclusive-events"
+            ],
+            "tier": "both",
+            "scope": "Define events that cannot both happen on one trial and test stated pairs for exclusivity with a justification, such as odd and prime sharing 3. Contrast with independence, the classic confusion. Both tiers. Exclude the addition rule itself (or-rule page) and intersection notation (set-notation, Diagrams topic). (P4)",
+            "sections": [
+                "Fluency — direct questions on mutually exclusive events, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceOrRule.html",
+            "title": "The OR rule for exclusive events",
+            "description": "Adding probabilities for either-or questions, and why exclusivity is required.",
+            "skill": "Adding probabilities for either-or questions, and why exclusivity is required.",
+            "topic": "combined",
+            "groups": [
+                "exclusive-events"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "combined/or-rule"
+            ],
+            "tier": "both",
+            "scope": "Add probabilities of mutually exclusive events for either-or questions, two or three alternatives, fraction and decimal answers, always checking exclusivity before adding. Both tiers. Exclude non-exclusive events (overlapping-events page) and the general addition law quoted with union and intersection notation, which is A level. (P4)",
+            "sections": [
+                "Fluency — direct questions on the or rule for exclusive events, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceOverlappingEvents.html",
+            "title": "Events that overlap",
+            "description": "Why adding double-counts the overlap, and subtracting it to correct the total.",
+            "skill": "Why adding double-counts the overlap, and subtracting it to correct the total.",
+            "topic": "combined",
+            "groups": [
+                "exclusive-events"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "combined/overlapping-events"
+            ],
+            "tier": "both",
+            "scope": "Show by counting outcomes why adding double-counts events in both, then subtract the overlap to correct the total, supported by small Venn sketches. Keep it numerical: quoting the general addition law as a formula in union and intersection notation belongs at A level. Both tiers. Full Venn technique lives on the Diagrams topic. (P4, P6)",
+            "sections": [
+                "Fluency — direct questions on events that overlap, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceIndependentEvents.html",
+            "title": "Independent events",
+            "description": "Events where one outcome gives no information about the other.",
+            "skill": "Events where one outcome gives no information about the other.",
+            "topic": "combined",
+            "groups": [
+                "independence"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "combined/independent-events"
+            ],
+            "tier": "both",
+            "scope": "Define independence as one outcome giving no information about the other; classify pairs such as coin then dice against successive picks without replacement; separate independence from mutual exclusivity. Both tiers. Exclude the multiplication itself (and-rule page) and testing independence by comparing P(A and B) with the product, an A level idea. (P8)",
+            "sections": [
+                "Fluency — direct questions on independent events, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceAndRule.html",
+            "title": "The AND rule for independent events",
+            "description": "Multiplying the probabilities of independent events for both-happen questions.",
+            "skill": "Multiplying the probabilities of independent events for both-happen questions.",
+            "topic": "combined",
+            "groups": [
+                "independence"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "combined/and-rule"
+            ],
+            "tier": "both",
+            "scope": "Multiply probabilities of independent events for both-happen questions, two or three events, fraction and decimal answers, noting the product is smaller than either factor. Always state the independence condition. Both tiers. Exclude dependent events (dependent-events page), tree-diagram layout (Diagrams topic) and at-least-one questions (sibling page). (P8)",
+            "sections": [
+                "Fluency — direct questions on the and rule for independent events, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceIndependenceAssumption.html",
+            "title": "The independence assumption",
+            "description": "The unstated assumption behind multiplying, and everyday cases where it fails.",
+            "skill": "The unstated assumption behind multiplying, and everyday cases where it fails.",
+            "topic": "combined",
+            "groups": [
+                "independence"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "combined/independence-assumption"
+            ],
+            "tier": "both",
+            "scope": "State the assumption behind multiplying, that the events are independent, and critique it in context: consecutive rainy days, two train delays, answers from friends. Exam wording: state an assumption, or explain why the answer may be unreliable. Both tiers. Mechanics of the rule live on and-rule; dependent calculation on dependent-events. (P8)",
+            "sections": [
+                "Fluency — direct questions on the independence assumption, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceCombined.html",
+            "title": "Choosing between adding and multiplying",
+            "description": "Deciding whether a worded question wants either event or both events.",
+            "skill": "Deciding whether a worded question wants either event or both events.",
+            "topic": "combined",
+            "groups": [
+                "independence"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "combined/choosing-add-or-multiply"
+            ],
+            "tier": "both",
+            "scope": "Translate worded questions into either-or (add, exclusive events) or both-and (multiply, independent events), with mixed practice where the rule is never named and the condition must be checked. Both tiers. Exclude multi-stage problems needing a tree (Diagrams topic) and given-that wording (Higher conditional group). (P4, P8)",
+            "sections": [
+                "Fluency — direct questions on choosing between adding and multiplying, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceDependentEvents.html",
+            "title": "Dependent events",
+            "description": "Events where the first outcome changes the probabilities for the second.",
+            "skill": "Events where the first outcome changes the probabilities for the second.",
+            "topic": "combined",
+            "groups": [
+                "replacement"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "combined/dependent-events"
+            ],
+            "tier": "both",
+            "scope": "Define dependent events, where the first outcome changes the second probability, and multiply using the adjusted value, written out explicitly. Contexts: counters from a bag, cards dealt without shuffling back. Two stages only. Both tiers. Replacement contrasts live on the two sibling pages, trees on the Diagrams topic, and P(B given A) notation at Higher. (P8)",
+            "sections": [
+                "Fluency — direct questions on dependent events, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceWithReplacement.html",
+            "title": "Sampling with replacement",
+            "description": "Repeated picks where each object goes back, so every stage stays independent.",
+            "skill": "Repeated picks where each object goes back, so every stage stays independent.",
+            "topic": "combined",
+            "groups": [
+                "replacement"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "combined/with-replacement"
+            ],
+            "tier": "both",
+            "scope": "Successive picks where the object goes back: identical fractions each stage, so stages are independent and multiply directly; two or three picks; both-same and one-of-each question types with fraction answers. Teach spotting the replacement wording. Both tiers. Exclude non-replacement (sibling page) and the tree layout (Diagrams topic). (P8)",
+            "sections": [
+                "Fluency — direct questions on sampling with replacement, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceConditional.html",
+            "title": "Conditional probability",
+            "description": "The probability of an event given that another has happened.",
+            "skill": "The probability of an event given that another has happened.",
+            "topic": "combined",
+            "groups": [
+                "conditional"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "combined/conditional-probability"
+            ],
+            "tier": "higher",
+            "scope": "Define P(A given B) by restricting attention to the trials where B happened, worked through counts and expected frequencies, with wording given that and of those who. Higher tier only. Exclude the algebraic formula dividing P(A and B) by P(B), and reversing conditions formally, both A level. Representations follow on three sibling pages. (P9)",
+            "sections": [
+                "Fluency — direct questions on conditional probability, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceConditionalFromTwoWayTables.html",
+            "title": "Conditional probability from a two-way table",
+            "description": "P(A given B) as a cell over its row or column total, not the grand total.",
+            "skill": "P(A given B) as a cell over its row or column total, not the grand total.",
+            "topic": "combined",
+            "groups": [
+                "conditional"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "combined/conditional-from-two-way-tables"
+            ],
+            "tier": "higher",
+            "scope": "Read P(A given B) from a completed two-way table as the named cell over the row or column total the condition fixes, never the grand total; contrast P(A given B) with P(B given A) from the same table. Higher tier only. Completing the table is both-tier work on two-way-tables (Diagrams topic). (P9)",
+            "sections": [
+                "Fluency — direct questions on conditional probability from a two-way table, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceConditionalFromVennDiagrams.html",
+            "title": "Conditional probability from a Venn diagram",
+            "description": "Dividing the overlap by the region in the condition, not the whole diagram.",
+            "skill": "Dividing the overlap by the region in the condition, not the whole diagram.",
+            "topic": "combined",
+            "groups": [
+                "conditional"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "combined/conditional-from-venn-diagrams"
+            ],
+            "tier": "higher",
+            "scope": "Conditional probability from a completed two-set Venn diagram: the overlap count divided by the total of the conditioning set's regions, not the whole diagram; include conditions on the complement using the outside region. Higher tier only. Drawing and notation are both-tier pages on the Diagrams topic; three-set formal laws are A level. (P9)",
+            "sections": [
+                "Fluency — direct questions on conditional probability from a venn diagram, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceListingCombinedOutcomes.html",
+            "title": "Listing the outcomes of two events",
+            "description": "Writing every pairing of two events once, in an order showing none is missing.",
+            "skill": "Writing every pairing of two events once, in an order showing none is missing.",
+            "topic": "diagrams",
+            "groups": [
+                "sample-spaces"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "diagrams/listing-combined-outcomes"
+            ],
+            "tier": "both",
+            "scope": "List every pairing from two experiments, coin with dice, two spinners, menu choices, in a fixed systematic order that proves completeness, then count the list; treat ordered pairs carefully. Both tiers. Exclude probabilities from the list (sibling pages) and the product rule for counting, a Higher topic in the Number strand. (P6)",
+            "sections": [
+                "Fluency — direct questions on listing the outcomes of two events, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceSampleSpaceDiagrams.html",
+            "title": "Sample space diagrams",
+            "description": "The grid displaying every outcome of two events, one axis per event.",
+            "skill": "The grid displaying every outcome of two events, one axis per event.",
+            "topic": "diagrams",
+            "groups": [
+                "sample-spaces"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "diagrams/sample-space-diagrams"
+            ],
+            "tier": "both",
+            "scope": "Construct the grid for two events with one axis per event: totals, differences and products of two dice, or two spinners; every cell one equally likely outcome. Question types: complete and count the grid. Both tiers. Probabilities follow on the sibling page; experiments with more than two stages need tree diagrams. (P6, P7)",
+            "sections": [
+                "Fluency — direct questions on sample space diagrams, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceTwoWayTables.html",
+            "title": "Two-way tables",
+            "description": "Completing a two-way table from its totals, one forced cell at a time.",
+            "skill": "Completing a two-way table from its totals, one forced cell at a time.",
+            "topic": "diagrams",
+            "groups": [
+                "tables-and-frequency-trees"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "diagrams/two-way-tables"
+            ],
+            "tier": "both",
+            "scope": "Complete a two-way table from row, column and grand totals one forced cell at a time, and build one from worded information. Counts only. Both tiers. Probabilities move to the sibling page; given-that reading is Higher on conditional-from-two-way-tables; the same tables appear in the Statistics strand for interpretation. (P1, P6)",
+            "sections": [
+                "Fluency — direct questions on two-way tables, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceProbabilitiesFromTwoWayTables.html",
+            "title": "Probabilities from a two-way table",
+            "description": "A cell count over the grand total, and reading which total a question wants.",
+            "skill": "A cell count over the grand total, and reading which total a question wants.",
+            "topic": "diagrams",
+            "groups": [
+                "tables-and-frequency-trees"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "diagrams/probabilities-from-two-way-tables"
+            ],
+            "tier": "both",
+            "scope": "Turn a completed table into probabilities: the named cell over the grand total, or over a row or column total only when the wording restricts the group, with fraction, decimal and percentage answers. Both tiers. Formal P(A given B) notation and given-that questions are Higher, on conditional-from-two-way-tables (Combined events). (P1, P6)",
+            "sections": [
+                "Fluency — direct questions on probabilities from a two-way table, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceDrawingTreeDiagrams.html",
+            "title": "Drawing a tree diagram",
+            "description": "One fork per stage, a probability on every branch, and each fork totalling one.",
+            "skill": "One fork per stage, a probability on every branch, and each fork totalling one.",
+            "topic": "diagrams",
+            "groups": [
+                "tree-diagrams"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "diagrams/drawing-tree-diagrams"
+            ],
+            "tier": "both",
+            "scope": "Draw probability trees with one fork per stage and a probability on every branch, each fork summing to 1; complete missing branches by complements; fractions and decimals. One and two stages. Both tiers. Route calculations follow on the sibling pages; frequency trees carry counts and have their own page. (P6, P8)",
+            "sections": [
+                "Fluency — direct questions on drawing a tree diagram, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceTrees.html",
+            "title": "Multiplying along the branches",
+            "description": "The probability of a complete route as the product of its branch probabilities.",
+            "skill": "The probability of a complete route as the product of its branch probabilities.",
+            "topic": "diagrams",
+            "groups": [
+                "tree-diagrams"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "diagrams/multiplying-along-branches"
+            ],
+            "tier": "both",
+            "scope": "Multiply the branch probabilities along one complete route for that outcome's probability, fraction and decimal answers; two-stage trees, with three stages leaning Higher. Single routes only: combining routes is adding-across-paths. Flag that unchanged second-stage branches assume independence, taught on the Combined events topic. Both tiers. (P8)",
+            "sections": [
+                "Fluency — direct questions on multiplying along the branches, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceAddingAcrossPaths.html",
+            "title": "Adding across the paths",
+            "description": "Finding every path that satisfies the event, then adding their probabilities.",
+            "skill": "Finding every path that satisfies the event, then adding their probabilities.",
+            "topic": "diagrams",
+            "groups": [
+                "tree-diagrams"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "diagrams/adding-across-paths"
+            ],
+            "tier": "both",
+            "scope": "Find every route satisfying an event, exactly one head, different colours, at least one six, then add the route products; cross-reference the complement shortcut for at-least-one (Combined events). Two-stage trees at Foundation, three-stage leaning Higher. Both tiers. Exclude given-that readings of a tree, which are Higher (Combined events). (P8)",
+            "sections": [
+                "Fluency — direct questions on adding across the paths, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceVennDiagramRegions.html",
+            "title": "The regions of a Venn diagram",
+            "description": "What the four regions of a two-set diagram hold, including outside both sets.",
+            "skill": "What the four regions of a two-set diagram hold, including outside both sets.",
+            "topic": "diagrams",
+            "groups": [
+                "venn-diagrams"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "diagrams/venn-diagram-regions"
+            ],
+            "tier": "both",
+            "scope": "Name the four regions of a two-set Venn diagram, including outside both sets, and place listed items or counts into the correct region. Two sets standard; three-set diagrams appear as a Higher-leaning extension. Both tiers. Symbols for the regions follow on set-notation; probabilities on the sibling probabilities page. (P6)",
+            "sections": [
+                "Fluency — direct questions on the regions of a venn diagram, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceVenn.html",
+            "title": "Set notation",
+            "description": "Union, intersection, complement and universal set, and the regions they shade.",
+            "skill": "Union, intersection, complement and universal set, and the regions they shade.",
+            "topic": "diagrams",
+            "groups": [
+                "venn-diagrams"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "diagrams/set-notation"
+            ],
+            "tier": "both",
+            "scope": "Union, intersection, complement and the universal set, each matched to the region it shades on a two-set diagram, and read inside probability statements such as P(A union B). Exactly the GCSE four, both tiers. Exclude subset symbols, De Morgan laws and set-builder notation, which live on the extracurricular set theory page and at A level. (P6)",
+            "sections": [
+                "Fluency — direct questions on set notation, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceFillingInAVennDiagram.html",
+            "title": "Filling in a Venn diagram",
+            "description": "Placing the intersection first and subtracting outwards from worded counts.",
+            "skill": "Placing the intersection first and subtracting outwards from worded counts.",
+            "topic": "diagrams",
+            "groups": [
+                "venn-diagrams"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "diagrams/filling-in-a-venn-diagram"
+            ],
+            "tier": "both",
+            "scope": "Build a two-set Venn diagram from worded survey counts by placing the intersection first, subtracting outwards, and deducing the outside region from the total; include versions giving the union instead. Three-set completion leans Higher. Both tiers. Probabilities from the finished diagram sit on the sibling page. (P6)",
+            "sections": [
+                "Fluency — direct questions on filling in a venn diagram, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceRelativeFrequency.html",
+            "title": "Relative frequency",
+            "description": "The fraction of trials on which an event occurred, estimating its probability.",
+            "skill": "The fraction of trials on which an event occurred, estimating its probability.",
+            "topic": "experimental",
+            "groups": [
+                "estimating-from-experiments"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "experimental/relative-frequency"
+            ],
+            "tier": "both",
+            "scope": "Relative frequency as frequency over total trials, simplified, and also as a decimal or percentage; computed from a results table and used as a probability estimate; include running recalculation as further batches arrive. Both tiers. Exclude fairness verdicts and sample-size judgements, which live in the bias-and-sample-size group. (P1, P3)",
+            "sections": [
+                "Fluency — direct questions on relative frequency, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceEstimatingProbabilityFromData.html",
+            "title": "Estimating a probability from data",
+            "description": "Relative frequency when outcomes are not equally likely, such as a drawing pin.",
+            "skill": "Relative frequency when outcomes are not equally likely, such as a drawing pin.",
+            "topic": "experimental",
+            "groups": [
+                "estimating-from-experiments"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "experimental/estimating-probability-from-data"
+            ],
+            "tier": "both",
+            "scope": "Use relative frequency when counting equally likely outcomes is impossible: drawing pins, biased dice, weather and survey data, with the wording estimate the probability. Include deciding whether a question needs data or the theoretical formula. Both tiers. State that more trials improve the estimate, detailed on effect-of-sample-size. (P1, P3)",
+            "sections": [
+                "Fluency — direct questions on estimating a probability from data, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceComparingWithTheory.html",
+            "title": "Comparing experimental and theoretical probability",
+            "description": "Setting relative frequency against theory, and describing the gap between them.",
+            "skill": "Setting relative frequency against theory, and describing the gap between them.",
+            "topic": "experimental",
+            "groups": [
+                "bias-and-sample-size"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "experimental/comparing-with-theory"
+            ],
+            "tier": "both",
+            "scope": "Set the relative frequency of an event beside its theoretical probability using common denominators or decimals, and describe the gap in context. Question types: whose results sit closer to theory, do these results support fairness. Both tiers. The fairness verdict itself is detecting-bias; the effect of more trials is effect-of-sample-size. (P3, P5)",
+            "sections": [
+                "Fluency — direct questions on comparing experimental and theoretical probability, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceBias.html",
+            "title": "Detecting bias",
+            "description": "Judging whether a dice or spinner is fair, and how large a gap is suspicious.",
+            "skill": "Judging whether a dice or spinner is fair, and how large a gap is suspicious.",
+            "topic": "experimental",
+            "groups": [
+                "bias-and-sample-size"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "experimental/detecting-bias"
+            ],
+            "tier": "both",
+            "scope": "Judge whether a dice, coin or spinner is fair by comparing each relative frequency with its theoretical share, giving a verdict backed by a calculation and hedged when trials are few. Both tiers. No formal hypothesis tests or chi-squared, which belong to A level statistics; sample-size reasoning continues on the sibling page. (P2, P5)",
+            "sections": [
+                "Fluency — direct questions on detecting bias, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceEffectOfSampleSize.html",
+            "title": "The effect of sample size",
+            "description": "Why relative frequency settles towards the true probability as trials increase.",
+            "skill": "Why relative frequency settles towards the true probability as trials increase.",
+            "topic": "experimental",
+            "groups": [
+                "bias-and-sample-size"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "experimental/effect-of-sample-size"
+            ],
+            "tier": "both",
+            "scope": "Relative frequency settles towards the true probability as trials increase and wanders when trials are few; read graphs of running relative frequency; explain what rolling 1000 more times would change. Qualitative only, both tiers. Exclude the formal law of large numbers and any error bounds, which are A level ideas. (P5)",
+            "sections": [
+                "Fluency — direct questions on the effect of sample size, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
+            ],
+            "generate": true
+        },
+        {
+            "file": "practiceSingleReview.html",
+            "title": "Single events review",
+            "description": "Probability scale, the not-rule and expected frequency.",
+            "skill": "Calculating single-event probabilities: equally likely outcomes, the not rule and expected frequency.",
+            "topic": "scale",
+            "groups": [
+                "single-events",
+                "measuring-chance",
+                "complements-and-expectation"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — single-event probabilities from dice, spinners and counters as exact fractions, ending with which of two events is more likely (4 questions).",
+                "The not rule — P(not A) from a stated P(A), and missing probabilities in tables that must total one, including one algebraic entry (4 questions).",
+                "Expected frequency — probability times trials for whole-number answers, ending with a claim that treats the expected count as guaranteed (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "scale/comparing-probabilities",
+                "scale/equally-likely-outcomes",
+                "scale/events-with-several-outcomes",
+                "scale/probabilities-sum-to-one",
+                "scale/complementary-events",
+                "scale/missing-probabilities",
+                "scale/expected-frequency",
+                "scale/expectation-as-an-estimate"
+            ],
+            "availableAfter": "scale/expectation-as-an-estimate"
+        },
+        {
+            "file": "practiceCombinedReview.html",
+            "title": "The AND and OR rules review",
+            "description": "Independent and dependent events, and when to multiply or add.",
+            "skill": "Choosing and applying the addition and multiplication rules for combined events.",
+            "topic": "combined",
+            "groups": [
+                "independence",
+                "exclusive-events"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — the OR rule on exclusive events and the AND rule on independent events, applied one rule at a time with fraction answers (4 questions).",
+                "Choosing the rule — worded questions deciding between adding and multiplying, including an at-least-one found through the complement (4 questions).",
+                "Rule conditions — pairs of events that are not exclusive or not independent, where applying the rule anyway gives a probability that is visibly wrong (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "combined/mutually-exclusive-events",
+                "combined/or-rule",
+                "combined/overlapping-events",
+                "combined/independent-events",
+                "combined/and-rule",
+                "combined/independence-assumption",
+                "combined/choosing-add-or-multiply",
+                "combined/at-least-one"
+            ],
+            "availableAfter": "combined/at-least-one"
+        },
+        {
+            "file": "practiceReplacement.html",
+            "title": "With and without replacement review",
+            "description": "Successive picks, with the second fraction recalculated when nothing goes back.",
+            "skill": "Multiplying probabilities across successive picks, recalculating after non-replacement.",
+            "topic": "combined",
+            "groups": [
+                "replacement"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — two picks with replacement from a bag of counters, the same fractions multiplied both times (4 questions).",
+                "Without replacement — two picks where the numerator and denominator both shrink for the second fraction (4 questions).",
+                "Matched pairs — the same outcome asked with and without replacement, catching the second fraction left unchanged (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "combined/dependent-events",
+                "combined/with-replacement",
+                "combined/without-replacement"
+            ],
+            "availableAfter": "combined/without-replacement"
+        },
+        {
+            "file": "practiceConditionalReview.html",
+            "title": "Conditional probability review",
+            "description": "Given-that questions from two-way tables, Venn diagrams and tree diagrams.",
+            "skill": "Finding conditional probabilities by restricting to the cases where the condition holds.",
+            "topic": "combined",
+            "groups": [
+                "conditional"
+            ],
+            "tier": "higher",
+            "sections": [
+                "Fluency — P(B given A) from small two-way tables, dividing a cell by the row or column the condition names (4 questions).",
+                "Diagrams — conditional probabilities read from completed Venn diagrams and tree diagrams, as exact fractions (4 questions).",
+                "Reversed conditions — P(A given B) and P(B given A) from the same data, catching the assumption that they are equal (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "combined/conditional-probability",
+                "combined/conditional-from-two-way-tables",
+                "combined/conditional-from-venn-diagrams",
+                "combined/conditional-from-tree-diagrams"
+            ],
+            "availableAfter": "combined/conditional-from-tree-diagrams"
+        },
+        {
+            "file": "practiceSampleSpaces.html",
+            "title": "Sample spaces review",
+            "description": "Grids for two events, and probabilities counted from the cells.",
+            "skill": "Constructing sample space grids and counting probabilities from them.",
+            "topic": "diagrams",
+            "groups": [
+                "sample-spaces"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — listing or gridding every outcome of two spinners or two dice, and counting how many there are (4 questions).",
+                "Events from the grid — probabilities of totals, doubles and differences counted as cells over the whole grid (4 questions).",
+                "Unequal totals — comparing events such as a total of 7 against a total of 12, catching the assumption that every total is equally likely (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "diagrams/listing-combined-outcomes",
+                "diagrams/sample-space-diagrams",
+                "diagrams/probabilities-from-a-sample-space"
+            ],
+            "availableAfter": "diagrams/probabilities-from-a-sample-space"
+        },
+        {
+            "file": "practiceTwoWayTablesReview.html",
+            "title": "Two-way tables and frequency trees review",
+            "description": "Completing tables and frequency trees from totals, then reading probabilities.",
+            "skill": "Completing two-way tables and frequency trees, and turning counts into probabilities.",
+            "topic": "diagrams",
+            "groups": [
+                "tables-and-frequency-trees"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — completing a two-way table from its row and column totals, one forced cell at a time (4 questions).",
+                "Frequency trees — filling the counts along both splits of a frequency tree from worded information (4 questions).",
+                "Probabilities from counts — a named cell over the grand total, catching the answer that divides by a row total instead (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "diagrams/two-way-tables",
+                "diagrams/probabilities-from-two-way-tables",
+                "diagrams/frequency-trees"
+            ],
+            "availableAfter": "diagrams/frequency-trees"
+        },
+        {
+            "file": "practiceTreesReview.html",
+            "title": "Tree diagrams review",
+            "description": "With and without replacement.",
+            "skill": "Building tree diagrams and combining branch probabilities, with and without replacement.",
+            "topic": "diagrams",
+            "groups": [
+                "tree-diagrams"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — completing branch probabilities so every fork sums to one, with replacement throughout (4 questions).",
+                "Paths — multiplying along branches and adding the paths an event allows, as exact fractions (4 questions).",
+                "Without replacement — second-stage branches that must change after the first pick, catching the copied first-stage fraction (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "diagrams/drawing-tree-diagrams",
+                "diagrams/multiplying-along-branches",
+                "diagrams/adding-across-paths",
+                "diagrams/trees-without-replacement"
+            ],
+            "availableAfter": "diagrams/trees-without-replacement"
+        },
+        {
+            "file": "practiceVennReview.html",
+            "title": "Venn diagrams review",
+            "description": "Set notation and conditional probability.",
+            "skill": "Reading and completing Venn diagrams, with set notation and conditional questions.",
+            "topic": "diagrams",
+            "groups": [
+                "venn-diagrams"
+            ],
+            "tier": "higher",
+            "sections": [
+                "Fluency — matching set notation to regions of a two-set diagram: union, intersection and complement (4 questions).",
+                "Filling and reading — completing a diagram from worded counts, intersection first, then reading probabilities over the full total (4 questions).",
+                "Conditional regions — P(A given B) from the diagram, catching division by the whole total instead of the set in the condition (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "diagrams/venn-diagram-regions",
+                "diagrams/set-notation",
+                "diagrams/filling-in-a-venn-diagram",
+                "diagrams/probabilities-from-a-venn-diagram"
+            ],
+            "availableAfter": "diagrams/probabilities-from-a-venn-diagram"
+        },
+        {
+            "file": "practiceRelativeFrequencyReview.html",
+            "title": "Relative frequency review",
+            "description": "Estimating probabilities from results tables and predicting future counts.",
+            "skill": "Estimating probabilities as relative frequencies and scaling them to future trials.",
+            "topic": "experimental",
+            "groups": [
+                "estimating-from-experiments"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — relative frequency as frequency over trials from a results table, simplified as an exact fraction (4 questions).",
+                "Predictions — scaling an estimated probability to a stated number of future trials for a whole-number count (4 questions).",
+                "Running totals — recomputing relative frequency as further batches of results arrive, catching the answer that uses only the newest batch (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "experimental/relative-frequency",
+                "experimental/estimating-probability-from-data",
+                "experimental/predicting-from-relative-frequency"
+            ],
+            "availableAfter": "experimental/predicting-from-relative-frequency"
+        },
+        {
+            "file": "practiceBiasReview.html",
+            "title": "Bias and sample size review",
+            "description": "Verdicts on fairness, best estimates, and what more trials change.",
+            "skill": "Judging fairness and choosing the best estimate from experimental results.",
+            "topic": "experimental",
+            "groups": [
+                "bias-and-sample-size"
+            ],
+            "tier": "both",
+            "sections": [
+                "Fluency — comparing a relative frequency with the theoretical value for a fair device, over a common denominator (4 questions).",
+                "Best estimate — choosing the estimate backed by the most trials, and pooling several result sets into one fraction (4 questions).",
+                "Small samples — verdicts on fairness from very short experiments, catching the reader who calls twenty rolls decisive (4 questions)."
+            ],
+            "generate": true,
+            "kind": "review",
+            "learningPages": [
+                "experimental/comparing-with-theory",
+                "experimental/detecting-bias",
+                "experimental/effect-of-sample-size",
+                "experimental/best-estimate"
+            ],
+            "availableAfter": "experimental/best-estimate"
+        }
+    ]
+}

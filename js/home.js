@@ -43,20 +43,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const button = document.querySelector("#title-section button");
     const target = document.getElementById("pages-section");
 
-    if (!button || !target) return;
-
-    button.addEventListener("click", () => {
-        target.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
+    // Optional: only wired up if the hero still uses a scroll button
+    if (button && target) {
+        button.addEventListener("click", () => {
+            target.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
         });
-    });
+    }
 
     // =======================================================================================
     // 3D Polyhedron using Three.js
     // =======================================================================================
 
     const canvas = document.getElementById("poly-canvas");
+    if (!canvas) return;
 
     // 1) Make background transparent: alpha: true
     const renderer = new THREE.WebGLRenderer({

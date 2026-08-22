@@ -1,0 +1,256 @@
+/* PRACTICE PAGES
+
+   The pages that drill. A practice page holds a test and nothing else — the
+   method it tests lives on the topic page above it (lesson.css). Practice is a
+   distinct page type on this site, so it reads in the same ochre its cards use
+   on the menu pages. Shared pieces — .sf notation, the onward links, the page
+   margins — live in curriculum.css.
+
+   No viewport media queries below: .layout is a fixed 900px panel that
+   shared.css scales with transform under 900px, so nothing here may reflow. */
+
+.practice-main section h1 { color: #8c5c14; }
+
+/* SKILL STRIP — the one thing this page drills, stated before anything else. */
+
+.skill-strip {
+    display: flex;
+    gap: 20px;
+    align-items: baseline;
+    margin-bottom: 34px;
+    padding: 16px 22px;
+    border: 2px solid #e3cb9b;
+    border-left: 6px solid #b9832c;
+    border-radius: 14px;
+    background: #fffdf6;
+}
+
+.skill-strip__label {
+    flex: none;
+    color: #8c5c14;
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.skill-strip p { margin: 0; font-size: 1rem; line-height: 1.55; }
+
+/* THE TEST */
+
+.ptest {
+    padding: 24px 26px;
+    border: 2px solid #e3cb9b;
+    border-radius: 20px;
+    background: #fffdf6;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .1);
+}
+
+.ptest__bar {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(5, 1fr);
+    padding-bottom: 18px;
+    border-bottom: 2px solid #e3cb9b;
+}
+
+.ptest__stat { display: flex; flex-direction: column; gap: 3px; }
+
+.ptest__stat dt {
+    color: #8c5c14;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+}
+
+.ptest__stat dd {
+    margin: 0;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 1.05rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.ptest__paper { margin: 0; padding: 0; list-style: none; }
+
+/* SECTION HEADS INSIDE THE PAPER */
+
+.psection { margin-top: 30px; }
+.psection:first-child { margin-top: 22px; }
+
+.psection__head { display: flex; gap: 14px; align-items: baseline; padding-bottom: 8px; border-bottom: 1px solid #e3cb9b; }
+.psection__letter { color: #b9832c; font-size: .8rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.psection__name { margin: 0; color: #8c5c14; font-size: 1.15rem; }
+.psection__note { margin: 8px 0 0; color: #4d5c62; font-size: .92rem; line-height: 1.5; }
+
+/* QUESTIONS */
+
+.q { margin-top: 16px; padding: 18px 20px; border: 2px solid #ece3d0; border-radius: 16px; background: #fff; }
+.q__head { display: grid; gap: 16px; grid-template-columns: 34px 1fr auto; align-items: start; }
+
+.q__no {
+    display: flex;
+    width: 34px;
+    height: 34px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #b9832c;
+    color: #fffdf6;
+    font-size: .95rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.q__prompt { font-size: 1.02rem; line-height: 1.6; }
+.q__prompt p { margin: 0; font-size: inherit; }
+
+.q__marks {
+    padding: 3px 10px;
+    border: 1px solid #e3cb9b;
+    border-radius: 999px;
+    background: #fdf4e2;
+    color: #8c5c14;
+    font-size: .8rem;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.q__answer { margin: 14px 0 0 50px; }
+
+/* ANSWER FIELDS */
+
+.ansfield { display: flex; gap: 10px; align-items: center; }
+.ansfield__label { color: #4d5c62; font-size: .9rem; }
+
+.ansfield__box {
+    width: 130px;
+    padding: 8px 10px;
+    border: 2px solid #d9e2ec;
+    border-radius: 10px;
+    background: #fff;
+    color: #111;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 1rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.ansfield__box:focus-visible { border-color: #b9832c; outline: 3px solid #e3cb9b; outline-offset: 1px; }
+.ansfield__box:disabled { background: #f7f5ee; color: #41535c; }
+
+/* The exponent box sits raised, so an answer typed into it looks like the
+   power of ten it is rather than a second unrelated field. */
+.ansfield__box--power { position: relative; top: -.5em; width: 74px; font-size: .9rem; }
+.ansfield__times { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace; font-size: 1.05rem; }
+
+.ansfield--choice { display: grid; gap: 8px; grid-template-columns: 1fr 1fr; }
+
+.ansfield__option {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 10px 14px;
+    border: 2px solid #d9e2ec;
+    border-radius: 12px;
+    background: #fff;
+    cursor: pointer;
+    transition: border-color .15s ease, background-color .15s ease;
+}
+
+.ansfield__option:hover { border-color: #e3cb9b; background: #fffdf6; }
+.ansfield__option input { accent-color: #b9832c; }
+.ansfield__option span { font-size: 1rem; }
+
+/* MARKED STATES */
+
+.q--right { border-color: #bcd8c1; }
+.q--partial { border-color: #e3cb9b; }
+.q--wrong,
+.q--blank { border-color: #e6c3bd; }
+
+.q--right .q__marks { border-color: #bcd8c1; background: #eef6ef; color: #2f6d3f; }
+.q--partial .q__marks { border-color: #e3cb9b; background: #fdf4e2; color: #8c5c14; }
+.q--wrong .q__marks,
+.q--blank .q__marks { border-color: #e6c3bd; background: #fbeeec; color: #a3352b; }
+
+.q__result { margin: 16px 0 0 50px; padding-top: 14px; border-top: 1px dashed #e3cb9b; }
+.q__verdict { margin: 0 0 8px; font-size: .98rem; font-weight: 700; }
+.q--right .q__verdict { color: #2f6d3f; }
+.q--partial .q__verdict { color: #8c5c14; }
+.q--wrong .q__verdict,
+.q--blank .q__verdict { color: #a3352b; }
+.q__method { margin: 0; color: #41535c; font-size: .95rem; line-height: 1.6; }
+.q__method b { color: #111; }
+
+/* SCORE PANEL */
+
+.pscore {
+    margin-top: 22px;
+    padding: 22px 24px;
+    border: 2px solid #e3cb9b;
+    border-left: 6px solid #b9832c;
+    border-radius: 16px;
+    background: #fff;
+}
+
+.pscore--strong { border-color: #bcd8c1; border-left-color: #2f6d3f; }
+.pscore--weak { border-color: #e6c3bd; border-left-color: #a3352b; }
+
+.pscore__main { display: flex; gap: 12px; align-items: baseline; }
+
+.pscore__marks {
+    color: #8c5c14;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 3rem;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+}
+
+.pscore--strong .pscore__marks { color: #2f6d3f; }
+.pscore--weak .pscore__marks { color: #a3352b; }
+.pscore__of { color: #4d5c62; font-size: 1.3rem; }
+.pscore__pct { margin-left: auto; color: #4d5c62; font-size: 1.3rem; font-variant-numeric: tabular-nums; }
+.pscore__band { margin: 12px 0 0; font-size: 1rem; line-height: 1.6; }
+
+.pscore__breakdown { display: grid; gap: 10px; margin: 18px 0 0; padding: 0; list-style: none; }
+.pscore__row { display: grid; gap: 14px; grid-template-columns: 130px 62px 1fr; align-items: center; }
+.pscore__row-name { color: #41535c; font-size: .92rem; }
+.pscore__row-marks { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace; font-size: .92rem; font-variant-numeric: tabular-nums; }
+.pscore__bar { height: 9px; border-radius: 999px; background: #ece3d0; }
+.pscore__bar i { display: block; height: 100%; border-radius: 999px; background: #b9832c; }
+.pscore__meta { margin: 16px 0 0; color: #4d5c62; font-size: .88rem; }
+
+/* CONTROLS */
+
+.ptest__actions { display: flex; gap: 12px; margin-top: 24px; padding-top: 20px; border-top: 2px solid #e3cb9b; }
+
+.pbtn {
+    padding: 11px 22px;
+    border: 2px solid #d9e2ec;
+    border-radius: 999px;
+    background: #fff;
+    color: #41535c;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+    transition: transform .15s ease, box-shadow .15s ease, background-color .15s ease, border-color .15s ease;
+}
+
+.pbtn:hover { border-color: #e3cb9b; background: #fffdf6; transform: translateY(-2px); }
+.pbtn:focus-visible { outline: 3px solid #b9832c; outline-offset: 2px; }
+.pbtn:disabled { opacity: .45; cursor: default; transform: none; }
+.pbtn--primary { border-color: #b9832c; background: #b9832c; color: #fffdf6; }
+.pbtn--primary:hover { border-color: #8c5c14; background: #8c5c14; }
+.pbtn--quiet { margin-left: auto; }
+.ptest__warning { margin: 14px 0 0; color: #a3352b; font-size: .92rem; }
+
+@media (prefers-reduced-motion: reduce) {
+
+    .pbtn,
+    .ansfield__option {
+        transition: none;
+    }
+
+    .pbtn:hover {
+        transform: none;
+    }
+}

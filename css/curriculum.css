@@ -1,0 +1,205 @@
+/* CURRICULUM & TOPIC INDEX PAGES */
+
+.curriculum-main { margin: 0 50px; }
+.curriculum-main section { margin: 45px 0; }
+
+/* INTRO */
+
+.curriculum-intro { padding-bottom: 20px; border-bottom: 3px solid #116e93; }
+.curriculum-intro h1 { margin: 0 0 10px; font-size: 3rem; }
+.curriculum-intro p { max-width: 70ch; margin: 0; line-height: 1.6; }
+/* Menu-page intros run to two or three paragraphs, and margin:0 above ran them
+   together into one block. Space only between siblings, so a single-paragraph
+   intro is unchanged. */
+.curriculum-intro p + p { margin-top: 14px; }
+
+.topic-section h2 { margin-bottom: 18px; color: #09539d; font-size: 2rem; }
+
+/* CARD GRID */
+
+/* grid-auto-rows keeps every row the same height, and the shared min-height
+   keeps the topic grid and the practice grid matching each other. */
+.topic-grid { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); grid-auto-rows: 1fr; }
+
+/* width/margin/text-shadow reset `section a` in shared.css, which styles links as
+   centred shrink-to-fit inline text. These are grid items and must fill the column.
+   Sized border-box so the card stands the same ~160px tall as the extracurricular
+   page-list cards. Every menu card carries an inline image slot —
+   style="background-image: none" until an image is chosen for that topic — and the
+   longhands here make a filled slot sit like the page-list ones: covering, centred.
+   That is why every card rule below sets background-color, never the `background`
+   shorthand: the shorthand would reset the image (or its geometry) on hover. */
+.topic-card { display: flex; width: auto; box-sizing: border-box; min-height: 160px; margin: 0; padding: 20px 26px; flex-direction: column; border: 2px solid #d9e2ec; border-radius: 20px; background-color: #fff; background-position: center; background-size: cover; background-repeat: no-repeat; box-shadow: 0 8px 20px rgba(0, 0, 0, .12); color: #111; text-decoration: none; text-shadow: none; }
+.topic-card h3 { margin: 0 0 9px; color: #09539d; font-size: 1.35rem; line-height: 1.25; }
+/* 1rem, not the `large` the card inherits from `section a`: these cards are half
+   the width of the extracurricular page-list ones, and at `large` a description
+   wraps to enough lines to tower over the ~160px height they share. */
+.topic-card p { margin: 0; color: #41535c; font-size: 1rem; line-height: 1.5; }
+
+/* LINKED CARDS — the ones that go somewhere */
+
+a.topic-card { transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease, border-color .2s ease; }
+a.topic-card h3::after { display: inline-block; margin-left: .4em; content: "\2192"; transition: transform .2s ease; }
+a.topic-card:hover { border-color: #a7c3cc; background-color: #f7fbff; box-shadow: 0 14px 30px rgba(0, 0, 0, .18); transform: translateY(-4px); }
+a.topic-card:hover h3::after { transform: translateX(4px); }
+a.topic-card:focus-visible { outline: 3px solid #09539d; outline-offset: 3px; }
+
+/* Marks a card whose page has no content behind it yet. Pinned to the foot of
+   the card so the label lines up across the grid whatever the description length. */
+.topic-card__soon { display: block; margin-top: auto; padding-top: 14px; color: #7c8b91; font-size: .88rem; letter-spacing: .02em; }
+
+/* PRACTICE CARDS — a second page type, set apart in ochre against the site's blues. */
+
+.topic-section__lead { margin: -4px 0 18px; color: #4d5c62; }
+a.topic-card--practice { border-color: #e3cb9b; border-left-color: #b9832c; background-color: #fffdf6; }
+a.topic-card--practice h3 { color: #8c5c14; }
+a.topic-card--practice:hover { border-color: #d9b877; border-left-color: #8c5c14; background-color: #fdf4e2; }
+a.topic-card--practice:focus-visible { outline-color: #8c5c14; }
+.practice-card__kicker,
+.topic-card__kicker { display: block; margin-bottom: 8px; font-size: .78rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.practice-card__kicker { color: #8c5c14; }
+
+/* NEXT LESSON — sits in the same grid as practice so a reader can either
+   consolidate this page or keep moving through the curriculum. */
+.topic-card__kicker { color: #116e93; }
+a.topic-card--next { border-left: 2px solid #116e93; background-color: #f7fbff; }
+a.topic-card--next:hover { border-left-color: #09539d; background-color: #eef7fc; }
+
+/* PLANNED — kept for stages not yet written */
+
+.topic-card--planned { border-color: #dfe3d8; background-color: #f4f5ec; box-shadow: none; color: #59676c; }
+.topic-card--planned h3 { color: #46616b; }
+.topic-card--planned p { color: #59676c; }
+
+/* No viewport media queries here: .layout is a fixed 900px panel that shared.css
+   scales down with transform below 900px, so the grid must not reflow. */
+
+/* CONTENT PAGES
+
+   Everything above styles the menu pages. Everything below is shared by the two
+   kinds of page they lead to: the topic pages that teach (lesson.css) and the
+   practice pages that drill (practice.css). */
+
+.lesson-main,
+.practice-main { margin: 0 50px; }
+
+.lesson-main section,
+.practice-main section { margin: 45px 0; }
+
+.lesson-main p,
+.practice-main p { text-shadow: none; }
+
+/* Notation set inline in running text. Tabular figures so digits in a column
+   line up with each other. */
+.sf {
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.sf sup { font-size: .75em; }
+
+/* ONWARD LINKS — block links, so they reset the centred shrink-to-fit `section a`
+   rule in shared.css the same way the topic cards above do. */
+
+.nextlinks { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
+
+.nextlinks a {
+    display: block;
+    width: auto;
+    margin: 0;
+    padding: 16px 18px;
+    border: 2px solid #d9e2ec;
+    border-radius: 14px;
+    background: #fff;
+    color: #111;
+    text-decoration: none;
+    text-shadow: none;
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background-color .2s ease;
+}
+
+.nextlinks a:hover { border-color: #a7c3cc; background: #f7fbff; box-shadow: 0 10px 24px rgba(0, 0, 0, .14); transform: translateY(-3px); }
+.nextlinks a:focus-visible { outline: 3px solid #09539d; outline-offset: 3px; }
+.nextlinks a > b { display: block; margin-bottom: 5px; color: #09539d; font-size: 1.1rem; }
+.nextlinks a > span { display: block; color: #41535c; font-size: .92rem; line-height: 1.5; }
+
+/* A link to a practice page carries the same ochre its card does. */
+.nextlinks a.nextlinks--practice { border-left: 5px solid #b9832c; }
+.nextlinks a.nextlinks--practice > b { color: #8c5c14; }
+
+@media (prefers-reduced-motion: reduce) {
+
+    .nextlinks a,
+    a.topic-card {
+        transition: none;
+    }
+
+    .nextlinks a:hover,
+    a.topic-card:hover {
+        transform: none;
+    }
+}
+
+/* CARD FOOTER — the status row pinned to the bottom of a topic card. A card may
+   carry a tier marker, a "coming soon" label, or both, and they must line up
+   across the grid whatever the description length. `.topic-card__soon` keeps
+   working on its own outside this row, which is how the stage menus use it. */
+
+.topic-card__meta { display: flex; align-items: center; gap: 10px; margin-top: auto; padding-top: 14px; }
+.topic-card__meta .topic-card__soon { margin-top: 0; padding-top: 0; }
+
+/* Higher tier only. GCSE pages must mark this visibly so a Foundation reader can
+   skip the card without having to open it. Ochre would read as a practice card,
+   so this takes the site's deep blue. */
+.topic-card__tier {
+    padding: 3px 9px;
+    border: 1px solid #b6cde0;
+    border-radius: 999px;
+    background: #eef5fb;
+    color: #09539d;
+    font-size: .76rem;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
+/* A hash link arriving from another page lands without the offset the in-page nav
+   applies on click, so a linked heading would sit under the fixed ribbon. Reserve
+   the space. No visual effect on anything that is not a scroll target. */
+.curriculum-main h2,
+.lesson-main h1,
+.lesson-main h2,
+.practice-main h1 { scroll-margin-top: 120px; }
+
+/* How many pages sit behind a menu card. Sits in the same foot row as the status
+   label, so the two line up across the grid. */
+.topic-card__count { color: #41535c; font-size: .88rem; font-weight: 700; }
+.topic-card__count + .topic-card__soon { padding-left: 10px; border-left: 1px solid #d9e2ec; }
+
+/* AUTHOR NOTE — the owner's to-cover brief on stub pages (teaching and practice).
+   Dashed on purpose: it is scaffolding, deleted as each page's content is written. */
+
+.author-note {
+    padding: 16px 22px;
+    border: 2px dashed #a7c3cc;
+    border-radius: 14px;
+    background: #f7fbff;
+}
+
+.author-note__label {
+    display: block;
+    margin-bottom: 8px;
+    color: #09539d;
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.author-note p,
+.author-note ul { margin: 0; color: #41535c; line-height: 1.55; }
+.author-note ul { padding-left: 20px; }
+.author-note li + li { margin-top: 6px; }
+
+/* Inside a practice page it sits between the skill strip and the test. */
+.practice-main .author-note { margin: 0 0 34px; }

@@ -1,6 +1,6 @@
 PAGE IDEAS --------------------------------------------------------------
 
-wobbly table theorum
+wobbly table theorem
 
 vectors
 
@@ -42,8 +42,6 @@ CODE SEGMENTS -----------------------------------------------------------
                 }, null, 2);
         </script>
 
-
-wine ~/Downloads/kf-2.15.4/kf.x86-64.exe
 
 <p>Here is the general form of the Maclaurin Series:</p>
             <math display="block" style="font-size: 1.25rem;">

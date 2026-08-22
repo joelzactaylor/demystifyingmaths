@@ -1,0 +1,766 @@
+<html>
+
+<head>
+    <title>Demystifying Maths | Complex Numbers</title>
+    <meta name="description"
+        content="Demystifying Maths — Learn about Complex Numbers. Find out about numbers which do not exist on the numberline.">
+    <meta property="og:title" content="Demystifying Maths">
+    <meta property="og:description" content="Find out about numbers which do not exist on the numberline.">
+    <link rel="stylesheet" href="/css/shared.css">
+    <link rel="stylesheet" href="/css/complexNumbers.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
+    <script src="/js/complexNumbers.js"></script>
+    <script src="/js/navPanel.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="layout">
+        <div id="top-ribbon-placeholder"></div>
+        <script>
+            fetch("/embed/top-ribbon.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("top-ribbon-placeholder").innerHTML = data;
+                });
+        </script>
+        <header>
+            <h1>Demystifying - Complex Numbers</h1>
+            <nav aria-label="Breadcrumb">
+                <ol class="breadcrumb">
+                    <li><a href="/pages/home.html">Home</a><span aria-hidden="true">›</span></li>
+                    <li><a href="/pages/extracurricular/">Extracurricular</a><span aria-hidden="true">›</span></li>
+                    <li>
+                        <p>Complex Numbers</p>
+                    </li>
+                </ol>
+            </nav>
+        </header>
+
+        <aside id="page-nav-container"></aside>
+
+        <section>
+            <h1>Introduction</h1>
+            <p>Numbers are one of the first tools we learn. We use them to count, measure and compare. For most of us,
+                that
+                means using numbers on a straight line: positive to the right, negative to the left. Those are called
+                <strong>real numbers</strong>.
+            </p>
+            <p>This page takes that familiar idea and makes it a little more generous. Instead of only moving left and
+                right,
+                we also allow numbers to move up and down. That extra direction is what makes the world of
+                <strong>complex
+                    numbers</strong> interesting, useful and surprisingly easy to understand.
+            </p>
+        </section>
+
+        <section>
+            <h1>The Real Number Line</h1>
+            <p>Imagine a long straight road with zero in the middle. Every number has one place on this road.</p>
+            <section class="numberline-section">
+                <p class="hint">Drag the point, or click anywhere on the line to place it.</p>
+                <div class="numberline-wrapper">
+                    <canvas id="numberline-canvas"></canvas>
+                </div>
+            </section>
+            <p>This number line is a very simple idea, but it is powerful. The further right you go, the larger the
+                number.
+                The further left you go, the smaller it gets. Every point on the line corresponds to exactly one real
+                number.</p>
+            <p>Real numbers appear in everyday situations like measuring length, money, temperature and speed. They are
+                the
+                kind of numbers that feel natural because they can be represented on this straight line.</p>
+            <p>But what if there was more space than just left and right?</p>
+        </section>
+
+        <section>
+            <h1>From the Line to the Plane</h1>
+            <p>Now imagine the number line as the horizontal direction of a flat surface. The extra direction is
+                vertical.
+                That gives us a whole new playground called the <strong>complex plane</strong>.</p>
+            <section class="numberline-section">
+                <div class="numberline-wrapper">
+                    <canvas id="numberline2-canvas"></canvas>
+                </div>
+            </section>
+            <p>When the dot moves off the line, the number can no longer be described by a single value. Instead, it
+                becomes
+                a
+                pair of values:</p>
+            <math display="block">
+                <mi>z</mi>
+                <mo>=</mo>
+                <mi>a</mi>
+                <mo>+</mo>
+                <mi>b</mi>
+                <mi>i</mi>
+            </math>
+            <p>Here, <em>a</em> is the real part and controls the left-right position. The number <em>b</em> is the
+                imaginary
+                part and controls the up-down position.</p>
+            <p>For example, z = 3 + 4i sits 3 units to the right and 4 units up from the origin.</p>
+            <p>The letter <em>i</em> is the <strong>imaginary unit</strong>. It is a new direction, similar to how 1 is
+                the
+                one-step in the real direction. One step up is <em>i</em>, one step down is <em>-i</em>, and one step
+                left
+                is
+                -1.</p>
+            <p>Although the name sounds strange, imaginary numbers are not make-believe. They are a useful way to
+                describe
+                real phenomena, such as:</p>
+            <ul>
+                <li>alternating electrical current, where voltage and current swing back and forth;</li>
+                <li>sound and radio waves, where the timing or phase of a wave matters as much as its size;</li>
+                <li>rotations and turning motions in animation and engineering;</li>
+                <li>systems that respond over time, like the speed control in an electric motor.</li>
+            </ul>
+            <p>Because complex numbers use two parts, they behave like coordinates on a plane. That is why
+                mathematicians
+                say complex numbers are like points in a 2D space.</p>
+        </section>
+
+        <div class="polar-flyin">
+            <div class="scroll-help-arrow" id="polar-scroll-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 17.5l-6-6h4.5V3.5h3v8H18l-6 6z" fill="currentColor" />
+                </svg>
+            </div>
+            <section id="polar-section">
+                <h1>Polar Form</h1>
+                <p>An alternate way to describe a point in the plane is by how far it is from the origin and the
+                    direction
+                    it
+                    points in. This is called <strong>polar form</strong>.</p>
+                <p>In Cartesian form we use the horizontal and vertical distances. In polar form we use:</p>
+                <ul>
+                    <li><strong>r</strong>: the distance from the origin, also called the magnitude or modulus;</li>
+                    <li><strong>θ</strong>: the angle from the positive real axis, also called the argument or phase.
+                    </li>
+                </ul>
+                <p>For complex numbers, polar form is written as:</p>
+                <math display="block">
+                    <mi>z</mi>
+                    <mo>=</mo>
+                    <mi>r</mi>
+                    <mo>cis</mo>
+                    <mi>θ</mi>
+                </math>
+                <p>That means "r times cosine plus i sine" in a compact way. More formally, the connection between all
+                    three
+                    forms is:</p>
+                <math display="block">
+                    <mi>z</mi>
+                    <mo>=</mo>
+                    <mi>a</mi>
+                    <mo>+</mo>
+                    <mi>b</mi>
+                    <mi>i</mi>
+                    <mo>=</mo>
+                    <mi>r</mi>
+                    <mo>(</mo>
+                    <mi>cos</mi>
+                    <mi>θ</mi>
+                    <mo>+</mo>
+                    <mi>i</mi>
+                    <mi>sin</mi>
+                    <mi>θ</mi>
+                    <mo>)</mo>
+                    <mo>=</mo>
+                    <mi>r</mi>
+                    <msup>
+                        <mi>e</mi>
+                        <mrow>
+                            <mi>i</mi>
+                            <mi>θ</mi>
+                        </mrow>
+                    </msup>
+                </math>
+                <p>If you are not comfortable with radians yet, there is a helpful explanation on my page about
+                    <a href="https://joelzactaylor.fyi/demystifyingmaths/pages/angleUnits.html">angle units</a>.
+                </p>
+
+                <section class="interactive-polar">
+                    <canvas id="polar-canvas"></canvas>
+                </section>
+
+                <div class="division-content">
+                    <p>To convert from rectangular form to polar form:</p>
+                    <math display="block">
+                        <mi>r</mi>
+                        <mo>=</mo>
+                        <msqrt>
+                            <msup>
+                                <mi>a</mi>
+                                <mn>2</mn>
+                            </msup>
+                            <mo>+</mo>
+                            <msup>
+                                <mi>b</mi>
+                                <mn>2</mn>
+                            </msup>
+                        </msqrt>
+                    </math>
+                    <p style="margin-top: 1em; margin-bottom: 1em;"></p>
+                    <math display="block">
+                        <mi>θ</mi>
+                        <mo>=</mo>
+                        <mi>atan2</mi>
+                        <mo>(</mo>
+                        <mi>b</mi>
+                        <mo>,</mo>
+                        <mi>a</mi>
+                        <mo>)</mo>
+                    </math>
+                    <p>Then to convert from polar back to rectangular form:</p>
+                    <math display="block">
+                        <mi>a</mi>
+                        <mo>=</mo>
+                        <mi>r</mi>
+                        <mo>cos</mo>
+                        <mi>θ</mi>
+                    </math>
+                    <math display="block">
+                        <mi>b</mi>
+                        <mo>=</mo>
+                        <mi>r</mi>
+                        <mo>sin</mo>
+                        <mi>θ</mi>
+                    </math>
+                </div>
+            </section>
+        </div>
+
+        <section id="addition-section">
+            <h1>Addition and Subtraction of Complex Numbers</h1>
+            <p>The easiest way to understand adding and subtracting complex numbers is by moving the points on the
+                plane.
+            </p>
+
+            <section id="addition-simulator">
+                <section class="numberline-section">
+                    <div class="numberline-wrapper">
+                        <div class="op-toggle-row">
+                            <span id="op-label" class="op-label"><span class="var-z">z</span> = <span
+                                    class="var-z1">z₁</span> + <span class="var-z2">z₂</span></span>
+                            <button id="op-toggle" class="op-toggle-btn">Switch to −</button>
+                        </div>
+                        <canvas id="addition-canvas"></canvas>
+                    </div>
+                </section>
+            </section>
+
+            <p>When you add complex numbers, you add the horizontal parts together and the vertical parts together. The
+                result is the opposite corner of a parallelogram formed by the two input points and the origin.</p>
+            <p>For subtraction, the same idea works, but one corner is reversed, so the resulting vector points from the
+                second number toward the first.</p>
+            <p>In symbols, if</p>
+            <math display="block">
+                <msub>
+                    <mi>z</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>=</mo>
+                <msub>
+                    <mi>a</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>+</mo>
+                <msub>
+                    <mi>b</mi>
+                    <mn>1</mn>
+                </msub>
+                <mi>i</mi>
+            </math>
+            <p>and</p>
+            <math display="block">
+                <msub>
+                    <mi>z</mi>
+                    <mn>2</mn>
+                </msub>
+                <mo>=</mo>
+                <msub>
+                    <mi>a</mi>
+                    <mn>2</mn>
+                </msub>
+                <mo>+</mo>
+                <msub>
+                    <mi>b</mi>
+                    <mn>2</mn>
+                </msub>
+                <mi>i</mi>
+            </math>
+            <p>then</p>
+            <math display="block">
+                <mi>z</mi>
+                <mo>=</mo>
+                <msub>
+                    <mi>z</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>+</mo>
+                <msub>
+                    <mi>z</mi>
+                    <mn>2</mn>
+                </msub>
+            </math>
+            <math display="block">
+                <mo>=</mo>
+                <mo>(</mo>
+                <msub>
+                    <mi>a</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>+</mo>
+                <msub>
+                    <mi>a</mi>
+                    <mn>2</mn>
+                </msub>
+                <mo>)</mo>
+                <mo>+</mo>
+                <mo>(</mo>
+                <msub>
+                    <mi>b</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>+</mo>
+                <msub>
+                    <mi>b</mi>
+                    <mn>2</mn>
+                </msub>
+                <mo>)</mo>
+                <mi>i</mi>
+            </math>
+            <p>And the difference is:</p>
+            <math display="block">
+                <mi>z</mi>
+                <mo>=</mo>
+                <msub>
+                    <mi>z</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>-</mo>
+                <msub>
+                    <mi>z</mi>
+                    <mn>2</mn>
+                </msub>
+            </math>
+            <math display="block">
+                <mo>=</mo>
+                <mo>(</mo>
+                <msub>
+                    <mi>a</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>-</mo>
+                <msub>
+                    <mi>a</mi>
+                    <mn>2</mn>
+                </msub>
+                <mo>)</mo>
+                <mo>+</mo>
+                <mo>(</mo>
+                <msub>
+                    <mi>b</mi>
+                    <mn>1</mn>
+                </msub>
+                <mo>-</mo>
+                <msub>
+                    <mi>b</mi>
+                    <mn>2</mn>
+                </msub>
+                <mo>)</mo>
+                <mi>i</mi>
+            </math>
+            <br>
+            <div class="scroll-help-arrow scroll-help-arrow--below" id="mul-scroll-arrow" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 17.5l-6-6h4.5V3.5h3v8H18l-6 6z" fill="currentColor" />
+                </svg>
+            </div>
+        </section>
+
+        <section id="multiplication-section" class="multiplication-flyin">
+            <h1>Multiplication and Division of Complex Numbers</h1>
+            <p>Multiplying complex numbers is not just about size; it is also about turning.
+                One number affects the other by stretching or shrinking it and by rotating it.</p>
+
+            <section id="multiplication-simulator">
+                <div class="numberline-wrapper">
+                    <div class="op-toggle-row">
+                        <span id="mul-op-label" class="op-label"><span class="var-z">z</span> = <span
+                                class="var-z1">z₁</span> × <span class="var-z2">z₂</span></span>
+                        <button id="mul-bg-toggle" class="op-toggle-btn">Switch to polar view</button>
+                    </div>
+                    <canvas id="multiplication-canvas"></canvas>
+                </div>
+            </section>
+
+            <p>Try moving the points and notice how the result changes. In polar form, the rule becomes quite simple.
+            </p>
+            <p>Try to figure out the rule!</p>
+            <button id="multiplication-continue" aria-expanded="false" aria-controls="multiplication-details"
+                class="reveal-btn">
+                <span>Reveal Solution</span>
+            </button>
+            <div id="multiplication-details" class="reveal-content collapsed" aria-hidden="true">
+                <p>When you multiply two complex numbers, their magnitudes (how far from the origin they are) are
+                    multiplied,
+                    and their arguments (the directions they point) are added.</p>
+            </div>
+            <br><br><br>
+            <div class="i-squared-block">
+                <p>This geometric idea explains a famous fact about complex numbers.</p>
+                <p>Try putting both input dots on the point <em>i</em>.</p>
+                <p>Then ask yourself: what does <em>i × i</em> equal?</p>
+                <form id="i-squared-form" class="i-squared-form" onsubmit="return false;" autocomplete="off">
+                    <label for="i-squared-answer" class="i-squared-label">What is i × i?</label>
+                    <div class="i-squared-controls">
+                        <input id="i-squared-answer" type="text" disabled autocomplete="off"
+                            placeholder="Answer to reveal next page section" aria-disabled="true">
+                        <button id="i-squared-submit" type="submit" disabled>Check</button>
+                    </div>
+                    <div id="i-squared-feedback" class="i-squared-feedback" aria-live="polite"></div>
+                </form>
+            </div>
+
+            <div class="foil-block">
+                <p>If you prefer to see the same idea in algebra, you can use FOIL to multiply two complex numbers.</p>
+
+                <p>Using FOIL, the multiplication expands to:</p>
+                <math display="block">
+                    <mo>(</mo>
+                    <msub>
+                        <mi>a</mi>
+                        <mn>1</mn>
+                    </msub>
+                    <mo>+</mo>
+                    <msub>
+                        <mi>b</mi>
+                        <mn>1</mn>
+                    </msub>
+                    <mi>i</mi>
+                    <mo>)</mo>
+                    <mo>×</mo>
+                    <mo>(</mo>
+                    <msub>
+                        <mi>a</mi>
+                        <mn>2</mn>
+                    </msub>
+                    <mo>+</mo>
+                    <msub>
+                        <mi>b</mi>
+                        <mn>2</mn>
+                    </msub>
+                    <mi>i</mi>
+                    <mo>)</mo>
+                </math>
+                <math display="block">
+                    <mo>=</mo>
+                    <msub>
+                        <mi>a</mi>
+                        <mn>1</mn>
+                    </msub>
+                    <msub>
+                        <mi>a</mi>
+                        <mn>2</mn>
+                    </msub>
+                    <mo>+</mo>
+                    <msub>
+                        <mi>a</mi>
+                        <mn>1</mn>
+                    </msub>
+                    <msub>
+                        <mi>b</mi>
+                        <mn>2</mn>
+                    </msub>
+                    <mi>i</mi>
+                    <mo>+</mo>
+                    <msub>
+                        <mi>b</mi>
+                        <mn>1</mn>
+                    </msub>
+                    <mi>i</mi>
+                    <msub>
+                        <mi>a</mi>
+                        <mn>2</mn>
+                    </msub>
+                    <mo>+</mo>
+                    <msub>
+                        <mi>b</mi>
+                        <mn>1</mn>
+                    </msub>
+                    <mi>i</mi>
+                    <msub>
+                        <mi>b</mi>
+                        <mn>2</mn>
+                    </msub>
+                    <mi>i</mi>
+                </math>
+                <p>Since <em>i² = −1</em>, the last term becomes negative, and the result becomes:</p>
+                <math display="block">
+                    <mo>(</mo>
+                    <msub>
+                        <mi>a</mi>
+                        <mn>1</mn>
+                    </msub>
+                    <msub>
+                        <mi>a</mi>
+                        <mn>2</mn>
+                    </msub>
+                    <mo>−</mo>
+                    <msub>
+                        <mi>b</mi>
+                        <mn>1</mn>
+                    </msub>
+                    <msub>
+                        <mi>b</mi>
+                        <mn>2</mn>
+                    </msub>
+                    <mo>)</mo>
+                    <mo>+</mo>
+                    <mo>(</mo>
+                    <msub>
+                        <mi>a</mi>
+                        <mn>1</mn>
+                    </msub>
+                    <msub>
+                        <mi>b</mi>
+                        <mn>2</mn>
+                    </msub>
+                    <mo>+</mo>
+                    <msub>
+                        <mi>a</mi>
+                        <mn>2</mn>
+                    </msub>
+                    <msub>
+                        <mi>b</mi>
+                        <mn>1</mn>
+                    </msub>
+                    <mo>)</mo>
+                    <mi>i</mi>
+                </math>
+                <p>Let's see this with a concrete example. If we multiply (1 + i) × (1 + i):</p>
+                <math display="block">
+                    <mo>=</mo>
+                    <mn>1</mn>
+                    <mo>+</mo>
+                    <mi>i</mi>
+                    <mo>+</mo>
+                    <mi>i</mi>
+                    <mo>+</mo>
+                    <msup>
+                        <mi>i</mi>
+                        <mn>2</mn>
+                    </msup>
+                </math>
+                <math display="block">
+                    <mo>=</mo>
+                    <mn>1</mn>
+                    <mo>+</mo>
+                    <mn>2</mn>
+                    <mi>i</mi>
+                    <mo>−</mo>
+                    <mn>1</mn>
+                </math>
+                <math display="block">
+                    <mo>=</mo>
+                    <mn>2</mn>
+                    <mi>i</mi>
+                </math>
+                <p>Geometrically, we started with a point at 1 + i. <br>(45° away from the origin, at distance √2).
+                    <br>Multiplying
+                    by itself means rotating by 45° again
+                    (to reach 90°) and stretching by a factor of √2 (so the distance becomes 2). <br>The result is 2i,
+                    which
+                    sits 2 units straight up—exactly what we expect!
+                </p>
+            </div>
+        </section>
+
+        <section id="division-section">
+            <div class="division-content">
+                <p>Division of complex numbers is the reverse of multiplication. In the world of directions, dividing
+                    one
+                    number by another means dividing how far it is from the origin and subtracting the angles.</p>
+                <p>That's why the polar form is so useful: it makes division feel like undoing a rotation and a stretch.
+                </p>
+            </div>
+        </section>
+
+        <section id="exponentiation-section">
+            <h1>Exponentiation of Complex Numbers</h1>
+            <p>'Exponentiation' means raising one number to the power of another. For complex numbers, that can create
+                surprising patterns.</p>
+            <p>The shaded regions show the positions where the point can move while keeping the output inside the outer
+                circle. They are a visual guide to the "safe" inputs for this simulation. I added them because the
+                pattern
+                can otherwise be very
+                hard to spot. (If you find a simple one that describes all the
+                behaviour well, please let me know!)</p>
+
+            <section id="exponentiation-simulator">
+                <div class="numberline-wrapper">
+                    <div class="op-toggle-row">
+                        <span id="exp-op-label" class="op-label"><span class="var-z">z</span> = <span
+                                class="var-z1">z₁</span>^<span class="var-z2">z₂</span></span>
+                        <button id="exp-toggle" class="op-toggle-btn" type="button">Switch to polar view</button>
+                    </div>
+                    <canvas id="exponentiation-canvas"></canvas>
+                </div>
+            </section>
+
+            <p>The shape of the result depends on where the points are placed. In many regions, you will see the famous
+                <strong>logarithmic spiral</strong> appear.
+            </p>
+
+            <div class="sim-images">
+                <img src="/images/complexNumbers/Nautilus_Cutaway_with_Logarithmic_Spiral.webp"
+                    alt="Nautilus logarithmic spiral">
+                <img src="/images/complexNumbers/Mandel_zoom_04_seehorse_tail.jpg" alt="Mandelbrot seahorse tail">
+                <img src="/images/complexNumbers/trajectoires%20sous%20v.gif" alt="Trajectory visualization">
+            </div>
+
+            <p>This is fascinating because the same spiral appears in nature and art. Complex exponentiation turns a
+                simple
+                algebraic idea into something beautifully curved.</p>
+            <p>Try moving the blue dot to the origin, then moving the orange dot to the point 1.6 + 0.4<em>i</em>, then
+                drag
+                the
+                blue dot again. Look at the shape of the blue area!</p>
+            <p>You may also notice the green dot jumping when the blue dot crosses the negative real axis. That is not a
+                bug.
+                It happens because some complex expressions have more than one valid answer. The computer chooses one
+                value,
+                and when it switches, the point appears to jump. That sudden change is called a
+                <strong>discontinuity</strong>.
+            </p>
+            <p>The reason there can be more than one answer is that angles wrap around. A rotation by 360 degrees brings
+                you
+                back to the same place. So if you are trying to undo a rotation, the original angle could differ by a
+                full
+                turn. In the complex world, that means expressions like exponentials and logarithms can have multiple
+                values.</p>
+            <p>When you plot all the possible answers, they often line up along a logarithmic spiral.</p>
+            <p>That is why some operations stop being one-to-one functions when you move into complex numbers. Normally,
+                a
+                function gives one unique output for each input. In complex exponentiation and complex logarithms, a
+                single
+                input can lead to many outputs.</p>
+        </section>
+
+        <section id="terminology-section">
+            <h1>Terminology</h1>
+            <p>Here are the key words used on this page, as well as others you might encounter while reading about
+                complex
+                numbers, explained in plain language.</p>
+            <div class="definition">
+                <h2>Real Number</h2>
+                <p>A number on the straight number line, such as 3, -2, 0.5, or -7.</p>
+            </div>
+            <div class="definition">
+                <h2>Imaginary Number</h2>
+                <p>A number that is a multiple of <em>i</em>. For example, 2<em>i</em> and -5<em>i</em> are imaginary
+                    numbers.</p>
+            </div>
+            <div class="definition">
+                <h2>Complex Number</h2>
+                <p>A number with both a real part and an imaginary part, written as z = a + bi.</p>
+            </div>
+            <div class="definition">
+                <h2>Complex Plane</h2>
+                <p>A flat space where the horizontal axis is the real part and the vertical axis is the imaginary part.
+                </p>
+            </div>
+            <div class="definition">
+                <h2>Magnitude (or Modulus or Absolute Value)</h2>
+                <p>The distance of a complex number from the origin, found using r = √(a² + b²).</p>
+            </div>
+            <div class="definition">
+                <h2>Argument (or Angle or Phase)</h2>
+                <p>The direction the complex number points, measured from the positive real axis with θ = atan2(b, a).
+                </p>
+            </div>
+            <div class="definition">
+                <h2>Complex Conjugate</h2>
+                <p>The number with the same real part but the opposite imaginary part: if z = a + bi, then z* = a - bi.
+                </p>
+                <p>Conjugates are useful for dividing complex numbers and for simplifying expressions.</p>
+            </div>
+            <div class="definition">
+                <h2>Conjugate Pair</h2>
+                <p>A pair of complex numbers that are mirror images across the real axis, such as 3 + 4i and 3 - 4i.</p>
+            </div>
+            <div class="definition">
+                <h2>Argand Diagram</h2>
+                <p>Another name for the complex plane, where numbers are shown as points or arrows.</p>
+            </div>
+            <div class="definition">
+                <h2>Cartesian (or Rectangular) Form</h2>
+                <p>The standard way to write a complex number as z = a + bi.</p>
+            </div>
+            <div class="definition">
+                <h2>Polar Form</h2>
+                <p>The form z = r cis θ, where r is the magnitude and θ is the argument.</p>
+            </div>
+            <div class="definition">
+                <h2>Exponential Form</h2>
+                <p>The form z = re<sup>iθ</sup>, another compact way to write the same complex number.</p>
+            </div>
+        </section>
+
+        <section>
+            <h1>Next Steps</h1>
+            <p>Now that you have a solid understanding of complex numbers, you might want to explore some of their
+                fascinating
+                applications and related concepts:</p>
+            <ul>
+                <li>
+                    <p><a href="./fractals.html">Fractals</a>: Dive into
+                        the
+                        world of fractals, where complex numbers create stunning patterns like the Mandelbrot set.</p>
+                </li>
+                <li>
+                    <p><a href="./eulersFormula.html">Euler's
+                            Formula</a>:
+                        Discover the elegant relationship between complex exponentials and trigonometric functions.</p>
+                </li>
+            </ul>
+        </section>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section footer-section--references">
+                    <h2>References</h2>
+                    <ul>
+                        <li><a href="https://www.zmescience.com/science/how-scientists-discovered-a-new-law-of-nature-that-explains-why-animals-grow-pointy-parts/"
+                                target="_blank" rel="noopener noreferrer">Nautilus shell image</a></li>
+                        <li><a href="https://en.wikipedia.org/wiki/Logarithmic_spiral#/media/File:Mandel_zoom_04_seehorse_tail.jpg"
+                                target="_blank" rel="noopener noreferrer">Mandelbrot spiral image</a></li>
+                        <li><a href="https://mathcurve.com/courbes2d.gb/logarithmic/logarithmic.shtml" target="_blank"
+                                rel="noopener noreferrer">Logarithmic spiral image</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h2>Quick Links</h2>
+                    <ul>
+                        <li><a href="/pages/home.html">Home</a></li>
+                        <li><a href="/pages/curriculum/">Curriculum</a></li>
+                        <li><a href="/pages/extracurricular/">Extracurricular</a></li>
+                        <li><a href="/pages/about.html">About</a></li>
+                        <li><a href="/pages/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 demystifyingmaths · joelzactaylor</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -425,25 +425,35 @@ footer {
     font-size: 0.95rem;
     margin-top: 150px;
     flex-shrink: 0;
+
+    /* Keep the footer on the bottom of the screen when the page is shorter than
+       the viewport (e.g. a short page shrunk to fit a narrow phone). Sticky stays
+       in normal flow, so margin collapsing and every other gap are untouched —
+       this is the only thing on the site that responds to screen size. */
+    position: sticky;
+    top: 100vh;
 }
 
 footer p {
     margin: 0;
 }
 
+/* Footer content is centred on every page, whether it has one column
+   (most pages) or two (article pages with a references list). */
 .footer-content {
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-start;
     max-width: 1080px;
     margin: 0 auto;
+    text-align: center;
 }
 
 .footer-section {
-    min-width: 180px;
-    flex: 1;
+    min-width: 0;
+    flex: 0 1 auto;
 }
 
 .footer-section h2 {
@@ -475,7 +485,7 @@ footer p {
 }
 
 .footer-section--references {
-    text-align: right;
+    text-align: center;
 }
 
 .footer-section--references li {
@@ -492,11 +502,7 @@ footer p {
 @media screen and (max-width: 900px) {
     .footer-content {
         flex-direction: column;
-        align-items: stretch;
-    }
-
-    .footer-section--references {
-        text-align: left;
+        align-items: center;
     }
 }
 
@@ -574,4 +580,28 @@ h1 {
         margin: 0px;
         padding: 0px;
     }
+}
+/* DEEP BREADCRUMB — the subtopic level makes the longest trail six items, which
+   overruns the 860px of content width inside the fixed panel and wraps to two
+   lines. Tightening the gaps and dropping a little type size keeps most of them
+   on one line. The percentage radius above resolves per-axis and distorts badly
+   on a two-line box, so the ones that still wrap get a fixed radius instead.
+   Only pages that opt in with the modifier are affected. */
+nav ol.breadcrumb--deep {
+    gap: 0.34rem;
+    padding: 7px 14px;
+    border-radius: 16px;
+    font-size: 0.95rem;
+}
+
+nav ol.breadcrumb--deep li { gap: 0.34rem; }
+
+/* The page nav is fixed to the viewport beside a 900px layout that is itself
+   centred, so the space available to its left shrinks twice as fast as the
+   viewport does. Below roughly 1428px there is no longer room for it and it was
+   drawing on top of the content (74px of overlap on a 1280px laptop). Hide it
+   rather than let it cover the text; every heading it lists is still reachable
+   by scrolling, and the breadcrumb still gives the way back up. */
+@media (max-width: 1427px) {
+    #page-nav-container { display: none; }
 }

@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Demystifying Maths | GCSE The inequality symbols</title>
+    <meta name="description" content="The less-than, greater-than, at-most, at-least and not-equal signs.">
+    <meta property="og:title" content="Demystifying Maths">
+    <meta property="og:description" content="The less-than, greater-than, at-most, at-least and not-equal signs.">
+    <link rel="stylesheet" href="/css/shared.css">
+    <link rel="stylesheet" href="/css/curriculum.css">
+    <link rel="stylesheet" href="/css/lesson.css">
+    <link rel="stylesheet" href="/css/inequalitySymbols.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
+    <script src="/js/navPanel.js" defer></script>
+    <script src="/js/inequalitySymbols.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&amp;display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="layout">
+        <div id="top-ribbon-placeholder"></div>
+        <script>fetch("/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
+
+        <header>
+            <h1>Demystifying - The inequality symbols</h1>
+            <nav aria-label="Breadcrumb">
+                <ol class="breadcrumb breadcrumb--deep">
+                    <li><a href="/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/pages/curriculum/GCSE/number/">Number</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/pages/curriculum/GCSE/number/structure/">Structure and calculation</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/pages/curriculum/GCSE/number/structure/writtenMethods/">Written methods</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li>
+                        <p>The inequality symbols</p>
+                    </li>
+                </ol>
+            </nav>
+        </header>
+
+        <aside id="page-nav-container"></aside>
+
+        <main class="lesson-main">
+            <section>
+                <h1>Introduction</h1>
+
+                <p>Mathematicians use many symbols to describe relationships between numbers.
+                    At GCSE level, you will mainly rely on only six of these.</p>
+                <div class="inequality-cloud" data-inequality-cloud>
+                    <div class="inequality-cloud__sticky"></div>
+                    <ol class="inequality-cloud__script">
+                        <li></li>
+                        <li></li>
+                    </ol>
+                    <noscript>
+                        <p class="inequality-cloud__fallback"><strong>= &nbsp; &ne; &nbsp; &lt; &nbsp; &gt;
+                                &nbsp; &le; &nbsp; &ge;</strong></p>
+                    </noscript>
+                </div>
+
+                <p>Each remaining symbol describes the relationship between the value on its left and the value on
+                    its right.</p>
+            </section>
+
+            <section>
+                <h1>Equal and not equal</h1>
+                <div class="equality-pair">
+                    <article class="equality-card">
+                        <p class="equality-card__statement">0.6 = 0.60</p>
+                        <h3>Equal to</h3>
+                        <p>The two decimals are written differently, but both have the same value.</p>
+                    </article>
+                    <article class="equality-card equality-card--not-equal">
+                        <p class="equality-card__statement">6 &ne; &minus;6</p>
+                        <h3>Not equal to</h3>
+                        <p>Six and negative six are different values, so the equals sign is crossed out.</p>
+                    </article>
+                </div>
+                <p>It's really that simple for these two — whether the values are the same or different.</p>
+            </section>
+
+            <section>
+                <h1>Less than and greater than</h1>
+                <p>When two values are different, <strong>&lt;</strong> and <strong>&gt;</strong> tell us which is
+                    smaller. The point faces the smaller value, while the wide opening faces the larger value.</p>
+
+                <svg class="inequality-intro" viewBox="0 0 920 330" role="group" data-inequality-line data-min="0"
+                    data-max="10" data-step="0.1" data-left-value="4" data-right-value="9"
+                    aria-labelledby="inequality-intro-title inequality-intro-description">
+                    <title id="inequality-intro-title">Interactive comparison number line</title>
+                    <desc id="inequality-intro-description">A number line from zero to ten, with draggable points
+                        beginning at four and nine. Each point moves in increments of one tenth, and the value cards
+                        and comparison update as either point moves.</desc>
+                    <defs>
+                        <filter id="inequality-intro-shadow" x="-20%" y="-20%" width="140%" height="150%">
+                            <feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#173849" flood-opacity=".14" />
+                        </filter>
+                    </defs>
+                    <rect class="inequality-intro__backdrop" x="24" y="14" width="872" height="302" rx="26" />
+                    <text class="inequality-intro__result" x="460" y="60" data-line-result aria-live="polite">4 &lt;
+                        9</text>
+
+                    <path class="inequality-intro__leader inequality-intro__leader--left" data-line-leader="left"
+                        d="M388 150C388 182 388 190 388 210" />
+                    <path class="inequality-intro__leader inequality-intro__leader--right" data-line-leader="right"
+                        d="M748 150C748 182 748 190 748 210" />
+
+                    <g class="inequality-intro__card inequality-intro__card--left" data-line-card="left"
+                        transform="translate(388 116)">
+                        <rect x="-58" y="-34" width="116" height="68" rx="16" />
+                        <text x="0" y="9" data-line-card-value="left">4</text>
+                    </g>
+                    <g class="inequality-intro__card inequality-intro__card--right" data-line-card="right"
+                        transform="translate(748 116)">
+                        <rect x="-58" y="-34" width="116" height="68" rx="16" />
+                        <text x="0" y="9" data-line-card-value="right">9</text>
+                    </g>
+
+                    <path class="inequality-intro__axis" d="M82 224H838" />
+                    <g class="inequality-intro__ticks">
+                        <path d="M100 208v32 M172 214v20 M244 214v20 M316 214v20 M388 214v20 M460 214v20
+                            M532 214v20 M604 214v20 M676 214v20 M748 214v20 M820 208v32" />
+                    </g>
+                    <g class="inequality-intro__labels">
+                        <text x="100" y="270">0</text><text x="172" y="270">1</text>
+                        <text x="244" y="270">2</text><text x="316" y="270">3</text>
+                        <text x="388" y="270">4</text><text x="460" y="270">5</text>
+                        <text x="532" y="270">6</text><text x="604" y="270">7</text>
+                        <text x="676" y="270">8</text><text x="748" y="270">9</text>
+                        <text x="820" y="270">10</text>
+                    </g>
+
+                    <g class="inequality-intro__handle inequality-intro__handle--left" data-line-handle="left"
+                        role="slider" tabindex="0" aria-label="First point" aria-orientation="horizontal"
+                        aria-valuemin="0" aria-valuemax="10" aria-valuenow="4" transform="translate(388 224)">
+                        <circle class="inequality-intro__handle-hit" r="23" />
+                        <circle class="inequality-intro__handle-point" r="11" />
+                    </g>
+                    <g class="inequality-intro__handle inequality-intro__handle--right" data-line-handle="right"
+                        role="slider" tabindex="0" aria-label="Second point" aria-orientation="horizontal"
+                        aria-valuemin="0" aria-valuemax="10" aria-valuenow="9" transform="translate(748 224)">
+                        <circle class="inequality-intro__handle-hit" r="23" />
+                        <circle class="inequality-intro__handle-point" r="11" />
+                    </g>
+                </svg>
+
+                <p>Drag either point along the line. The comparison can be read in either
+                    direction: for example, <strong>4 &lt; 9</strong> means “4 is less than 9”, and also “9 is greater
+                    than 4”.</p>
+
+
+                <div class="comparator" data-comparator>
+                    <div class="comparator__stage">
+                        <input class="comparator__input" type="text" inputmode="decimal" value="0.72" maxlength="17"
+                            data-comparator-left aria-label="Left value" autocomplete="off">
+                        <output class="comparator__sign" data-comparator-sign aria-live="polite">&lt;</output>
+                        <input class="comparator__input" type="text" inputmode="decimal" value="0.8" maxlength="17"
+                            data-comparator-right aria-label="Right value" autocomplete="off">
+                    </div>
+                    <br>
+                    Change the values
+                </div>
+
+                <div class="worked-comparisons">
+                    <article>
+                        <h3>Decimals</h3>
+                        <p class="worked-comparisons__statement">0.72 &lt; 0.8</p>
+                        <p>Write 0.8 as 0.80. Both whole-number parts are zero, then 7 tenths is less than 8 tenths.</p>
+                    </article>
+                    <article>
+                        <h3>Negative numbers</h3>
+                        <p class="worked-comparisons__statement">&minus;3 &gt; &minus;8</p>
+                        <p>&minus;3 is closer to zero, so it lies further right on the number line and is the larger
+                            value.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section>
+                <h1>Adding “or equal to”</h1>
+                <p>A short line underneath <strong>&lt;</strong> or <strong>&gt;</strong> adds “or equal to”. This means
+                    that the value at the limit is now allowed.</p>
+
+                <aside class="important-box" aria-labelledby="inclusive-symbols-title">
+                    <h2 class="important-box__title" id="inclusive-symbols-title">The boundary changes</h2>
+                    <p><math class="inline-inequality" aria-label="n is less than 12">
+                            <mi>n</mi>
+                            <mo>&lt;</mo>
+                            <mn>12</mn>
+                        </math>
+                        leaves out 12, whereas
+                        <math class="inline-inequality" aria-label="n is less than or equal to 12">
+                            <mi>n</mi>
+                            <mo>&le;</mo>
+                            <mn>12</mn>
+                        </math>
+                        includes it.
+                    </p>
+                    <p>Likewise,
+                        <math class="inline-inequality" aria-label="t is greater than negative 4">
+                            <mi>t</mi>
+                            <mo>&gt;</mo>
+                            <mrow>
+                                <mo>&minus;</mo>
+                                <mn>4</mn>
+                            </mrow>
+                        </math>
+                        leaves out &minus;4, whereas
+                        <math class="inline-inequality" aria-label="t is greater than or equal to negative 4">
+                            <mi>t</mi>
+                            <mo>&ge;</mo>
+                            <mrow>
+                                <mo>&minus;</mo>
+                                <mn>4</mn>
+                            </mrow>
+                        </math>
+                        includes it.
+                    </p>
+                </aside>
+
+                <div class="boundary-pair">
+                    <article class="boundary-card">
+                        <div class="boundary-card__statement"><i>n</i> &le; 12</div>
+                        <h3><i>n</i> is at most 12</h3>
+                        <p>This includes 12 and every value below it.</p>
+                        <div class="boundary-card__values" aria-label="Examples: ten, eleven and twelve are included">
+                            <span>10</span><span>11</span><span class="is-boundary">12</span>
+                        </div>
+                    </article>
+                    <article class="boundary-card boundary-card--greater">
+                        <div class="boundary-card__statement"><i>t</i> &ge; &minus;4</div>
+                        <h3><i>t</i> is at least &minus;4</h3>
+                        <p>This includes &minus;4 and every value above it.</p>
+                        <div class="boundary-card__values"
+                            aria-label="Examples: negative four, negative three and negative two are included">
+                            <span class="is-boundary">&minus;4</span><span>&minus;3</span><span>&minus;2</span>
+                        </div>
+                    </article>
+                </div>
+
+                <p>Other phrases with the same meanings are:</p>
+                <ul>
+                    <li>
+                        <p><strong>no more than 12</strong> or <strong>a maximum of 12</strong> means
+                            <strong><i>n</i> &le; 12</strong>
+                        </p>
+                    </li>
+                    <li>
+                        <p><strong>no less than 4</strong> or <strong>a minimum of 4</strong> means
+                            <strong><i>n</i> &ge; 4</strong>
+                        </p>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h1>Values between two boundaries</h1>
+                <p>Two inequalities can be joined to show that a value lies between two boundaries.</p>
+
+                <div class="integer-example">
+                    <h3>List the integers that satisfy <span data-boundary-question>&minus;2 &lt; <i>n</i> &le; 3</span>
+                    </h3>
+                    <svg class="integer-line" viewBox="0 0 820 270" role="group" data-boundary-line data-min="-4"
+                        data-max="5" data-step="0.1" data-left-value="-2" data-right-value="3"
+                        aria-labelledby="integer-line-title integer-line-description">
+                        <title id="integer-line-title">Interactive integer boundary line</title>
+                        <desc id="integer-line-description">A number line from negative four to five with a draggable
+                            open left boundary and closed right boundary. Each boundary moves in tenths, while only
+                            included integers are marked.</desc>
+                        <defs>
+                            <linearGradient id="integer-line-range" x1="0" y1="0" x2="1" y2="0">
+                                <stop offset="0" stop-color="#78a7c5" />
+                                <stop offset="1" stop-color="#3568b8" />
+                            </linearGradient>
+                            <marker id="integer-line-arrow-start" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7"
+                                markerHeight="7" orient="auto">
+                                <path d="M10 0L0 5l10 5z" />
+                            </marker>
+                            <marker id="integer-line-arrow-end" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7"
+                                markerHeight="7" orient="auto">
+                                <path d="M0 0l10 5-10 5z" />
+                            </marker>
+                        </defs>
+                        <rect class="integer-line__backdrop" x="10" y="10" width="800" height="250" rx="24" />
+                        <rect class="integer-line__range-bed" data-boundary-range-bed x="214" y="112" width="390"
+                            height="48" rx="24" />
+                        <path class="integer-line__axis" d="M58 136H762" marker-start="url(#integer-line-arrow-start)"
+                            marker-end="url(#integer-line-arrow-end)" />
+                        <path class="integer-line__range" data-boundary-range d="M214 136H604" />
+                        <g class="integer-line__ticks">
+                            <path d="M58 124v24 M136 124v24 M214 118v36 M292 124v24 M370 118v36
+                                M448 124v24 M526 124v24 M604 118v36 M682 124v24 M760 124v24" />
+                        </g>
+                        <g class="integer-line__labels">
+                            <text x="58" y="190">&minus;4</text><text x="136" y="190">&minus;3</text>
+                            <text x="214" y="190">&minus;2</text><text x="292" y="190">&minus;1</text>
+                            <text x="370" y="190">0</text><text x="448" y="190">1</text>
+                            <text x="526" y="190">2</text><text x="604" y="190">3</text>
+                            <text x="682" y="190">4</text><text x="760" y="190">5</text>
+                        </g>
+                        <g class="integer-line__answers" data-boundary-integers>
+                            <circle cx="292" cy="136" r="7" />
+                            <circle cx="370" cy="136" r="7" />
+                            <circle cx="448" cy="136" r="7" />
+                            <circle cx="526" cy="136" r="7" />
+                        </g>
+
+                        <path class="integer-line__boundary-guide integer-line__boundary-guide--open"
+                            data-boundary-leader="left" d="M214 78C214 94 214 101 214 116" />
+                        <path class="integer-line__boundary-guide integer-line__boundary-guide--closed"
+                            data-boundary-leader="right" d="M604 78C604 94 604 101 604 116" />
+
+                        <g class="integer-line__boundary-chip integer-line__boundary-chip--open"
+                            data-boundary-card="left" transform="translate(214 57)">
+                            <rect x="-75" y="-20" width="150" height="40" rx="20" />
+                            <text x="0" y="5" data-boundary-card-value="left">&minus;2 excluded</text>
+                        </g>
+                        <g class="integer-line__boundary-chip integer-line__boundary-chip--closed"
+                            data-boundary-card="right" transform="translate(604 57)">
+                            <rect x="-75" y="-20" width="150" height="40" rx="20" />
+                            <text x="0" y="5" data-boundary-card-value="right">3 included</text>
+                        </g>
+
+                        <g class="integer-line__boundary-handle integer-line__boundary-handle--open"
+                            data-boundary-handle="left" role="slider" tabindex="0" aria-label="Open left boundary"
+                            aria-orientation="horizontal" aria-valuemin="-4" aria-valuemax="2.9" aria-valuenow="-2"
+                            transform="translate(214 136)">
+                            <circle class="integer-line__handle-hit" r="23" />
+                            <circle class="integer-line__open" r="13" />
+                        </g>
+                        <g class="integer-line__boundary-handle integer-line__boundary-handle--closed"
+                            data-boundary-handle="right" role="slider" tabindex="0" aria-label="Closed right boundary"
+                            aria-orientation="horizontal" aria-valuemin="-1.9" aria-valuemax="5" aria-valuenow="3"
+                            transform="translate(604 136)">
+                            <circle class="integer-line__handle-hit" r="23" />
+                            <circle class="integer-line__closed" r="13" />
+                        </g>
+
+                        <text class="integer-line__direction" x="409" y="235" data-boundary-count>5 integer values in
+                            the range</text>
+                    </svg>
+
+                    <ol class="integer-example__steps">
+                        <li>
+                            <p>The open left boundary is not included.</p>
+                        </li>
+                        <li>
+                            <p>The closed right boundary is included.</p>
+                        </li>
+                        <li>
+                            <p>Read the integer points between the boundaries.</p>
+                        </li>
+                    </ol>
+                    <p class="integer-example__answer"><strong data-boundary-answer><i>n</i> = &minus;1, 0, 1, 2 or
+                            3</strong></p>
+                </div>
+
+                <aside class="important-box" aria-labelledby="variable-position-title">
+                    <h2 class="important-box__title" id="variable-position-title">Read from the variable</h2>
+                    <p>In <strong>&minus;2 &lt; <i>n</i></strong>, the point of the symbol faces &minus;2. Reading from
+                        <i>n</i> gives “<i>n</i> is greater than &minus;2”.
+                    </p>
+                </aside>
+            </section>
+
+            <section>
+                <h1>Common mistakes</h1>
+                <ul class="slips">
+                    <li><b>Reversing &lt; and &gt;</b><span>When the values differ, the point faces the smaller value
+                            and the wide opening faces the larger value.</span></li>
+                    <li><b>Forgetting negative order</b><span>&minus;2 &gt; &minus;7 because &minus;2 lies closer to
+                            zero.</span></li>
+                    <li><b>Missing the equality line</b><span><i>x</i> &le; 5 includes 5, but <i>x</i> &lt; 5 does
+                            not.</span></li>
+                    <li><b>Reading only left to right</b><span>3 &lt; <i>n</i> means that <i>n</i> is greater than
+                            3.</span></li>
+                </ul>
+            </section>
+
+            <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
+                <h2 id="practice-heading">Practice and continue</h2>
+                <div class="topic-grid">
+                    <a class="topic-card topic-card--practice"
+                        href="/pages/curriculum/GCSE/number/structure/writtenMethods/practiceInequalitySymbols.html"
+                        style="background-image: none">
+                        <span class="practice-card__kicker">Practice</span>
+                        <h3>The inequality symbols</h3>
+                        <p>The less-than, greater-than, at-most, at-least and not-equal signs.</p>
+                    </a>
+                    <a class="topic-card topic-card--next"
+                        href="/pages/curriculum/GCSE/number/structure/writtenMethods/powersOfTen.html"
+                        style="background-image: none">
+                        <span class="topic-card__kicker">Next lesson</span>
+                        <h3>Multiplying and dividing by powers of ten</h3>
+                        <p>The effect on every digit of multiplying or dividing by 10, 100, 0.1 and 0.01.</p>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h2>Explore</h2>
+                    <ul>
+                        <li><a href="/pages/home.html">Home</a></li>
+                        <li><a href="/pages/curriculum/">Curriculum</a></li>
+                        <li><a href="/pages/extracurricular/">Extracurricular</a></li>
+                        <li><a href="/pages/about.html">About</a></li>
+                        <li><a href="/pages/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 demystifyingmaths &middot; joelzactaylor</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

@@ -4,16 +4,16 @@
 <head>
     <title>Demystifying Maths | Contact</title>
     <meta name="description"
-        content="Get in touch with Demystifying Maths — ask a question, share a thought, or just say hello.">
+        content="Contact Demystifying Maths with a question, comment or suggestion.">
     <meta property="og:title" content="Demystifying Maths">
     <meta property="og:description"
-        content="Get in touch with Demystifying Maths — ask a question, share a thought, or just say hello.">
-    <link rel="stylesheet" href="../css/shared.css">
-    <link rel="stylesheet" href="../css/contact.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="../favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="../favicon_io/site.webmanifest">
+        content="Contact Demystifying Maths with a question, comment or suggestion.">
+    <link rel="stylesheet" href="/css/shared.css">
+    <link rel="stylesheet" href="/css/contact.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -23,17 +23,17 @@
     <div class="layout">
         <div id="top-ribbon-placeholder"></div>
         <script>
-            fetch("../embed/top-ribbon.html")
+            fetch("/embed/top-ribbon.html")
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById("top-ribbon-placeholder").innerHTML = data;
                 });
         </script>
         <header>
-            <h1>Demystifying Maths</h1>
-            <nav>
+            <h1>Demystifying - Contact</h1>
+            <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb">
-                    <li><a href="home.html">Home</a><span aria-hidden="true">›</span></li>
+                    <li><a href="/pages/home.html">Home</a><span aria-hidden="true">›</span></li>
                     <li>
                         <p>Contact</p>
                     </li>
@@ -45,20 +45,14 @@
             <section>
                 <h2>Get in touch</h2>
                 <div>
-                    <p>Please don't spam me or anything, but I'd love to hear from anyone about anything on this site,
-                        or
-                        any aspects of maths.</p>
-                    <p>I'm not aged enough yet to consider interesting things a waste of my time, and luckily I find
-                        everything about maths interesting, so don't hesitate to ask if you have even the most
-                        insignificant
-                        question or suggestion.</p>
-                    <p>If there's anything you think I can help with, please reach out. I've answered a lot of questions
-                        before and people's questions generally are more
-                        intelligent than they think. The percentage of them that are prefaced with "This is probably a
-                        stupid
-                        question, but..." is astounding. However, I have not come across a question yet that deserved
-                        that
-                        statement, so yours probably doesn't either. Send it over!</p>
+                    <p>I am glad to hear from anyone about the contents of this site, or about mathematics more
+                        generally.</p>
+                    <p>No question or suggestion is too slight to be worth sending. I find every part of the subject
+                        interesting, so please do not hesitate to write.</p>
+                    <p>If there is anything I can help with, please do get in touch. In my experience, questions are
+                        almost always better than the person asking them believes: a great many arrive prefaced with
+                        "This is probably a stupid question, but…", and I have yet to receive one that deserved the
+                        description. Yours is unlikely to be the first.</p>
                     <br>
                     <form id="contact-form" class="contact-form" action="https://formspree.io/f/mlgvbkoe" method="POST">
                         <input type="text" name="_gotcha" style="display:none">
@@ -84,15 +78,14 @@
 
                         <div class="form-actions">
                             <p class="form-note">
-                                No need to overthink it. Good questions do not have to sound impressive to be worth
-                                asking.
+                                A question need not sound impressive to be worth asking.
                             </p>
                             <button type="submit">Send message</button>
                         </div>
                     </form>
 
                     <div id="form-success" style="display:none;">
-                        <p>Thanks — I'll get back to you soon!</p>
+                        <p>Thank you. I will reply as soon as I am able.</p>
                     </div>
 
                     <script>
@@ -122,9 +115,10 @@
                 <div class="footer-section">
                     <h2>Quick Links</h2>
                     <ul>
-                        <li><a href="home.html">Home</a></li>
-                        <li><a href="pages.html">Pages</a></li>
-                        <li><a href="about.html">About</a></li>
+                        <li><a href="/pages/home.html">Home</a></li>
+                        <li><a href="/pages/curriculum/">Curriculum</a></li>
+                        <li><a href="/pages/extracurricular/">Extracurricular</a></li>
+                        <li><a href="/pages/about.html">About</a></li>
                     </ul>
                 </div>
             </div>
