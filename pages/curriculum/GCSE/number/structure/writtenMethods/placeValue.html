@@ -8,14 +8,16 @@
     <meta property="og:title" content="Demystifying Maths">
     <meta property="og:description"
         content="What each digit is worth in integers and decimals, and zeros as place-holders.">
-    <link rel="stylesheet" href="/css/shared.css">
-    <link rel="stylesheet" href="/css/curriculum.css">
-    <link rel="stylesheet" href="/css/lesson.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="/favicon_io/site.webmanifest">
-    <script src="/js/navPanel.js" defer></script>
+    <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/placeValue.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
+    <script src="/demystifyingmaths/js/navPanel.js" defer></script>
+    <script src="/demystifyingmaths/js/placeValue.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -24,19 +26,19 @@
 <body>
     <div class="layout">
         <div id="top-ribbon-placeholder"></div>
-        <script>fetch("/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
+        <script>fetch("/demystifyingmaths/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
 
         <header>
             <h1>Demystifying - Place value in integers and decimals</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
-                    <li><a href="/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/pages/curriculum/GCSE/number/">Number</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/pages/curriculum/GCSE/number/structure/">Structure and calculation</a><span
+                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and calculation</a><span
                             aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/pages/curriculum/GCSE/number/structure/writtenMethods/">Written methods</a><span
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/">Written methods</a><span
                             aria-hidden="true">&rsaquo;</span></li>
                     <li>
                         <p>Place value in integers and decimals</p>
@@ -51,9 +53,17 @@
 
             <section>
                 <h1>Introduction</h1>
+                <p>Ten symbols, 0 to 9, are enough to write every number there is. That is only possible because a
+                    digit's position carries meaning of its own: the symbol says how many, and the place it sits in
+                    says how many of what. Without that convention, a fresh symbol would be needed for every new
+                    quantity, and arithmetic would be an act of memory rather than a method.</p>
+                <p>Place value is the name of that convention, and almost everything that follows is built on it.
+                    Comparing and ordering, adding in columns, multiplying by ten, rounding and standard form are all
+                    the same idea applied: work out what each place is worth, and the rest follows.</p>
+
                 <h3>What is place value?</h3>
-                <p>Place value is the value of a digit based on its position in a number.</p>
-                <p>If a digit is used in a number, its value changes depending on where it is placed.</p>
+                <p>Place value is the value a digit takes from its position in a number. The same digit written in a
+                    different place means a different quantity.</p>
                 <p>For example, the digit <span style="color: blue;">5</span> has a different value in each of the
                     following numbers:</p>
                 <ul>
@@ -87,10 +97,8 @@
                             is worth five thousandths</p>
                     </li>
                 </ul>
-                <p>In each case, the digit <span style="color: blue;">5</span> is in a different place, and therefore
-                    has a different value.</p>
-                <p>Understanding place value is important for performing calculations and for understanding the
-                    relationships between numbers.</p>
+                <p>The symbol is the same in every one of them. Everything that separates five thousandths from
+                    five hundred is the place it was written in.</p>
             </section>
 
             <section>
@@ -232,7 +240,7 @@
                         number easier to read.</p>
                     <p>On the right side, you should instead use thin spaces to separate the decimal digits.</p>
                 </aside>
-                <p>If you write a number with more digits than I listed on either side of the decimal point, the value
+                <p>If you write a number with more digits than the places listed above on either side of the decimal point, the value
                     of their place
                     will continue growing or shrinking following a predictable pattern:</p>
 
@@ -261,7 +269,7 @@
 
             <section>
                 <h1>Constructing words for numbers</h1>
-                <p>Let's take a look at this number, and extract the meaning of each digit:</p>
+                <p>Take this number apart, digit by digit, and read the meaning of each one:</p>
                 <svg viewBox="0 0 920 330" role="img"
                     aria-labelledby="example-place-value-title example-place-value-description"
                     style="display: block; width: 100%; max-width: 920px; height: auto; margin: 1.5rem auto; font-family: Aleo, serif;">
@@ -361,9 +369,60 @@
                 <p>The decimal part can be restated:</p>
                 <p><strong>four thousand five hundred and eighty–two, and three hundred and seven thousandths</strong>
                 </p>
-                <p>You can work out this second form by taking the place of the last digit — thousandths — and using all
-                    the decimal
-                    digits as their own number, to give <span style="color: #7a3c09">307 thousandths</span>.</p>
+                                <p>Both forms describe the same quantity. The second one collects the decimal parts into a single
+                    count, and to do that they must first be counted in the same place. Thousandths are the smallest
+                    place used here, so every part is rewritten in thousandths: one tenth is one hundred thousandths,
+                    and one hundredth is ten thousandths.</p>
+
+                <figure class="fraction-bridge">
+                    <div class="fraction-bridge__line" role="img"
+                        aria-label="Three tenths plus zero hundredths plus seven thousandths.">
+                        <span class="fraction"><b>3</b><i>10</i></span>
+                        <span class="fraction-bridge__sign">+</span>
+                        <span class="fraction"><b>0</b><i>100</i></span>
+                        <span class="fraction-bridge__sign">+</span>
+                        <span class="fraction"><b>7</b><i>1000</i></span>
+                    </div>
+                    <p class="fraction-bridge__note"><span aria-hidden="true">&darr;</span> each part rewritten in
+                        thousandths</p>
+                    <div class="fraction-bridge__line" role="img"
+                        aria-label="Three hundred thousandths plus zero thousandths plus seven thousandths equals three hundred and seven thousandths.">
+                        <span class="fraction"><b>300</b><i>1000</i></span>
+                        <span class="fraction-bridge__sign">+</span>
+                        <span class="fraction"><b>0</b><i>1000</i></span>
+                        <span class="fraction-bridge__sign">+</span>
+                        <span class="fraction"><b>7</b><i>1000</i></span>
+                        <span class="fraction-bridge__sign">=</span>
+                        <span class="fraction fraction--total"><b>307</b><i>1000</i></span>
+                    </div>
+                    <figcaption>Once every part counts thousandths, the counts simply add: 300 + 0 + 7 = 307.</figcaption>
+                </figure>
+
+                <p>The digits were already saying this. Reading <span style="color: #7a3c09">307</span> as one number
+                    and naming it by the place of its last digit gives
+                    <span style="color: #7a3c09">307 thousandths</span> directly, which is why the shortcut works: take
+                    the place of the final decimal digit, then read all the decimal digits together as a single count
+                    of that place.</p>
+
+                <h3>Read any number</h3>
+                <p>The same reading works on any number. Enter one below: each digit is placed in the column it
+                    occupies, read as a count of that place, and the parts are gathered into words. Hovering over a
+                    column picks out the part it contributes.</p>
+
+                <div class="place-lab" data-place-lab>
+                    <label class="place-lab__field">
+                        <span>Enter a number</span>
+                        <input type="text" inputmode="decimal" value="4582.307" autocomplete="off" spellcheck="false"
+                            data-place-input>
+                    </label>
+                    <div class="place-lab__strip" data-place-strip></div>
+                    <ul class="place-lab__parts" data-place-parts></ul>
+                    <p class="place-lab__words" aria-live="polite">In words: <strong data-place-words></strong></p>
+                    <noscript>
+                        <p>4,582.307 is four thousand five hundred and eighty-two, and three hundred and seven
+                            thousandths.</p>
+                    </noscript>
+                </div>
 
                 <aside class="important-box" aria-labelledby="important-fact-title">
                     <h2 class="important-box__title" id="important-fact-title">Important</h2>
@@ -378,8 +437,8 @@
                                     style="color: #7a3c09">Hundredths (0.01)</span></p>
                         </li>
                     </ul>
-                    <p>But it is important to remember that this symmetry is not centered on the decimal point; it is
-                        centered on the ones place.</p>
+                    <p>But it is important to remember that this symmetry is not centred on the decimal point; it is
+                        centred on the ones place.</p>
                     <p>There is no inverse of <span style="color: #183b70">Ones (1)</span>, or rather the unit is its
                         own inverse.</p>
                 </aside>
@@ -387,7 +446,7 @@
             </section>
             <section>
                 <h1>Constructing numbers from words</h1>
-                <p>Now let's construct numbers from words. This is the inverse of the process above.</p>
+                <p>The reverse process builds a number from its words. Each group of words names a place, and the places fix where its digits belong.</p>
                 <p>Suppose we are given:</p>
                 <p><strong>six million, three hundred and twelve thousand, forty-seven and eighty-six
                         hundredths</strong></p>
@@ -528,14 +587,14 @@
                 <h2 id="practice-heading">Practice and continue</h2>
                 <div class="topic-grid">
                     <a class="topic-card topic-card--practice"
-                        href="/pages/curriculum/GCSE/number/structure/writtenMethods/practicePlaceValue.html"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/practicePlaceValue.html"
                         style="background-image: none">
                         <span class="practice-card__kicker">Practice</span>
                         <h3>Place value in integers and decimals</h3>
                         <p>What each digit is worth in integers and decimals, and zeros as place-holders.</p>
                     </a>
                     <a class="topic-card topic-card--next"
-                        href="/pages/curriculum/GCSE/number/structure/writtenMethods/orderingNumbers.html"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/orderingNumbers.html"
                         style="background-image: none">
                         <span class="topic-card__kicker">Next lesson</span>
                         <h3>Ordering integers, decimals and negatives</h3>
@@ -550,11 +609,11 @@
                 <div class="footer-section">
                     <h2>Explore</h2>
                     <ul>
-                        <li><a href="/pages/home.html">Home</a></li>
-                        <li><a href="/pages/curriculum/">Curriculum</a></li>
-                        <li><a href="/pages/extracurricular/">Extracurricular</a></li>
-                        <li><a href="/pages/about.html">About</a></li>
-                        <li><a href="/pages/contact.html">Contact</a></li>
+                        <li><a href="/demystifyingmaths/pages/home.html">Home</a></li>
+                        <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a></li>
+                        <li><a href="/demystifyingmaths/pages/extracurricular/">Extracurricular</a></li>
+                        <li><a href="/demystifyingmaths/pages/about.html">About</a></li>
+                        <li><a href="/demystifyingmaths/pages/contact.html">Contact</a></li>
                     </ul>
                 </div>
             </div>

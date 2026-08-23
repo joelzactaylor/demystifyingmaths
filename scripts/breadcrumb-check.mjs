@@ -1,5 +1,6 @@
 import { readdirSync, readFileSync, existsSync } from "node:fs";
 import { join, dirname, relative } from "node:path";
+import { stripBase } from "./site-base.mjs";
 
 const ROOT = "/Users/joeltaylor/Documents/Code/demystifyingmaths";
 const PAGES = join(ROOT, "pages");
@@ -26,10 +27,11 @@ function walk(dir) {
 
 function load(abs) {
     const rel = relative(ROOT, abs);
-    let html = readFileSync(abs, "utf8");
+    // Published pages carry the site base prefix; this check works in base-less URLs.
+    let html = stripBase(readFileSync(abs, "utf8"));
     // inline runtime-fetched embeds so reverse-link checks see their links
     for (const m of html.matchAll(/fetch\("(\/embed\/[^"]+)"\)/g))
-        html += readFileSync(join(ROOT, m[1]), "utf8");
+        html += stripBase(readFileSync(join(ROOT, m[1]), "utf8"));
     const ols = [...html.matchAll(/<ol class="(breadcrumb[^"]*)">([\s\S]*?)<\/ol>/g)];
     if (rel === "pages/home.html") {
         if (ols.length) problems.push(`${rel}: home page unexpectedly has a breadcrumb`);

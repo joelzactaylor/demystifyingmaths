@@ -1,5 +1,6 @@
 import { readdirSync, readFileSync, existsSync } from "node:fs";
 import { join, dirname, resolve } from "node:path";
+import { BASE } from "./site-base.mjs";
 
 const ROOT = "/Users/joeltaylor/Documents/Code/demystifyingmaths";
 let broken = 0, checked = 0;
@@ -21,8 +22,15 @@ function check(file) {
         const target = decodeURIComponent(raw.split("#")[0].split("?")[0]);
         if (!target) continue;
         checked++;
-        const abs = target.startsWith("/")
-            ? resolve(ROOT, "." + target)
+        // The site is served from BASE, so a root-absolute URL must carry that
+        // prefix; without it the asset 404s on GitHub Pages.
+        if (target.startsWith("/") && !target.startsWith(BASE + "/")) {
+            broken++;
+            console.log(`NO-BASE ${file.replace(ROOT + "/", "")}  ->  ${raw}`);
+            continue;
+        }
+        const abs = target.startsWith(BASE + "/")
+            ? resolve(ROOT, "." + target.slice(BASE.length))
             : resolve(dirname(file), target);
         if (!existsSync(abs)) {
             broken++;

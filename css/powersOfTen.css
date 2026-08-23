@@ -10,16 +10,15 @@
 }
 
 .power-machine__controls {
-    display: grid;
-    grid-template-columns: auto 180px 1fr;
-    gap: 12px 16px;
+    display: flex;
+    gap: 16px;
     align-items: center;
 }
 
 .power-machine__controls label { color: #183b70; font-weight: 700; }
 
 .power-machine__controls input {
-    width: 100%;
+    width: 180px;
     box-sizing: border-box;
     padding: 10px 13px;
     border: 2px solid #8db0c2;
@@ -31,8 +30,6 @@
 }
 
 .power-machine__controls input:focus { border-color: #09539d; outline: 3px solid rgba(9, 83, 157, .16); }
-.power-machine__controls input[aria-invalid="true"] { border-color: #a3352b; outline-color: rgba(163, 53, 43, .14); }
-.power-machine__controls p { margin: 0; color: #52666f; font-size: .9rem; }
 
 .power-machine__operations {
     display: grid;
@@ -89,8 +86,6 @@
 .power-machine__shift path { fill: none; stroke: #b86821; stroke-width: 4; stroke-linecap: round; marker-end: url(#power-shift-arrow); }
 #power-shift-arrow path { fill: #b86821; }
 .power-machine__shift text { fill: #7a3c09; font-size: 17px; font-weight: 700; text-anchor: middle; }
-.power-machine__status { min-height: 1.4em; margin: 8px 0 0; color: #a3352b; font-weight: 700; text-align: center; }
-
 @keyframes placeholder-arrives {
     from { opacity: 0; }
     to { opacity: 1; }

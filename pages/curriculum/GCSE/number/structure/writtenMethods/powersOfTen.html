@@ -9,16 +9,16 @@
     <meta property="og:title" content="Demystifying Maths">
     <meta property="og:description"
         content="Multiply and divide integers and decimals by powers of ten using place value.">
-    <link rel="stylesheet" href="/css/shared.css">
-    <link rel="stylesheet" href="/css/curriculum.css">
-    <link rel="stylesheet" href="/css/lesson.css">
-    <link rel="stylesheet" href="/css/powersOfTen.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="/favicon_io/site.webmanifest">
-    <script src="/js/navPanel.js" defer></script>
-    <script src="/js/powersOfTen.js" defer></script>
+    <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/powersOfTen.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
+    <script src="/demystifyingmaths/js/navPanel.js" defer></script>
+    <script src="/demystifyingmaths/js/powersOfTen.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&amp;display=swap" rel="stylesheet">
@@ -27,19 +27,19 @@
 <body>
     <div class="layout">
         <div id="top-ribbon-placeholder"></div>
-        <script>fetch("/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
+        <script>fetch("/demystifyingmaths/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
 
         <header>
             <h1>Demystifying - Multiplying and dividing by powers of ten</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
-                    <li><a href="/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/pages/curriculum/GCSE/number/">Number</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/pages/curriculum/GCSE/number/structure/">Structure and calculation</a><span
+                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and calculation</a><span
                             aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/pages/curriculum/GCSE/number/structure/writtenMethods/">Written methods</a><span
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/">Written methods</a><span
                             aria-hidden="true">&rsaquo;</span></li>
                     <li>
                         <p>Multiplying and dividing by powers of ten</p>
@@ -53,10 +53,14 @@
         <main class="lesson-main">
             <section>
                 <h1>Introduction</h1>
-                <p>Multiplying or dividing a number by 10 changes the place value of every digit. Multiplying or
-                    dividing by 100 applies this change twice, while multiplying or dividing by 1,000 applies it three
-                    times.</p>
-                <p>The decimal point remains fixed while the digits move from one place-value column to another.</p>
+                <p>&ldquo;Add a zero&rdquo; is the first rule most people learn for multiplying by ten, and it is
+                    the first one to break. It works on 52 and it fails on 5.2, and because it fails silently it is
+                    usually trusted long after it has stopped being true.</p>
+                <p>What is actually happening is simpler, and it never changes. The digits of a number keep their
+                    identity and their order; only their places change. Multiplying by 10 moves every digit one place
+                    to the left, so each becomes worth ten times as much. Multiplying by 100 does it twice, and by
+                    1,000 three times. Dividing moves them the same way to the right. The decimal point does not
+                    move at all &mdash; the digits move past it.</p>
                 <p>For example, when 52.8 is multiplied by 100, the 5 moves from tens to thousands, the 2 moves from
                     ones to hundreds, and the 8 moves from tenths to tens. The digits keep their order, but each one
                     becomes worth one hundred times as much.</p>
@@ -65,9 +69,7 @@
                     <div class="power-machine__controls">
                         <label for="power-machine-number">Choose a number</label>
                         <input id="power-machine-number" data-machine-input type="text" inputmode="decimal" value="52.8"
-                            maxlength="8" autocomplete="off" spellcheck="false"
-                            aria-describedby="power-machine-help power-machine-status">
-                        <p id="power-machine-help">Enter up to three digits on either side of the decimal point.</p>
+                            maxlength="8" autocomplete="off" spellcheck="false">
                     </div>
 
                     <div class="power-machine__operations" role="group" aria-label="Choose an operation">
@@ -131,7 +133,6 @@
                                 completed number gives 5,280.</li>
                         </ol>
                     </div>
-                    <p class="power-machine__status" id="power-machine-status" data-machine-status role="status"></p>
                 </div>
                 <p>Every digit changes place at the same time. Following the place-value columns makes this movement
                     visible and avoids unreliable shortcuts about adding zeros.</p>
@@ -382,7 +383,7 @@
                 <h2 id="practice-heading">Practice and continue</h2>
                 <div class="topic-grid">
                     <a class="topic-card topic-card--practice"
-                        href="/pages/curriculum/GCSE/number/structure/writtenMethods/practicePlaceValueReview.html"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/practicePlaceValueReview.html"
                         style="background-image: none">
                         <span class="practice-card__kicker">Practice</span>
                         <h3>Place value review</h3>
@@ -390,7 +391,7 @@
                         <span class="topic-card__meta"><span class="topic-card__count">Mixed review</span></span>
                     </a>
                     <a class="topic-card topic-card--next"
-                        href="/pages/curriculum/GCSE/number/structure/writtenMethods/columnAddition.html"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/columnAddition.html"
                         style="background-image: none">
                         <span class="topic-card__kicker">Next lesson</span>
                         <h3>Column addition</h3>
@@ -405,11 +406,11 @@
                 <div class="footer-section">
                     <h2>Explore</h2>
                     <ul>
-                        <li><a href="/pages/home.html">Home</a></li>
-                        <li><a href="/pages/curriculum/">Curriculum</a></li>
-                        <li><a href="/pages/extracurricular/">Extracurricular</a></li>
-                        <li><a href="/pages/about.html">About</a></li>
-                        <li><a href="/pages/contact.html">Contact</a></li>
+                        <li><a href="/demystifyingmaths/pages/home.html">Home</a></li>
+                        <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a></li>
+                        <li><a href="/demystifyingmaths/pages/extracurricular/">Extracurricular</a></li>
+                        <li><a href="/demystifyingmaths/pages/about.html">About</a></li>
+                        <li><a href="/demystifyingmaths/pages/contact.html">Contact</a></li>
                     </ul>
                 </div>
             </div>

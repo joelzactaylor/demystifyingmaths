@@ -1,5 +1,6 @@
 import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
+import { stripBase } from "./site-base.mjs";
 
 const ROOT = dirname(dirname(new URL(import.meta.url).pathname));
 const SCRIPTS = join(ROOT, "scripts");
@@ -105,7 +106,7 @@ for (const manifestPath of manifests) {
         const practicePath = urlToPath(url);
         if (!existsSync(practicePath)) problems.push(`${label}: missing drill page ${url}`);
         else if (drill.generate) {
-            const html = readFileSync(practicePath, "utf8");
+            const html = stripBase(readFileSync(practicePath, "utf8"));
             for (const key of drill.learningPages) {
                 const page = pages.get(key);
                 if (page && !html.includes(`href="${teachingUrl(page)}"`))
@@ -120,7 +121,7 @@ for (const manifestPath of manifests) {
             const menuPath = urlToPath(groupUrl(topic, group));
             if (!existsSync(menuPath)) problems.push(`${label}: missing group menu ${groupUrl(topic, group)}`);
             else {
-                const menu = readFileSync(menuPath, "utf8");
+                const menu = stripBase(readFileSync(menuPath, "utf8"));
                 const occurrences = menu.split(`href="${url}"`).length - 1;
                 if (occurrences !== 1) problems.push(`${label}: ${groupUrl(topic, group)} contains ${occurrences} links to ${url}, expected 1`);
             }
@@ -135,7 +136,7 @@ for (const manifestPath of manifests) {
             problems.push(`${label}: missing teaching page ${url}`);
             continue;
         }
-        const html = readFileSync(path, "utf8");
+        const html = stripBase(readFileSync(path, "utf8"));
         if (!page.st.written && !html.includes("<p>&mdash;coming soon&mdash;</p>"))
             problems.push(`${label}: ${page.key} is generated but no longer has the stub signature`);
         if (html.includes("Drills for this topic")) problems.push(`${label}: ${page.key} still uses the old drill paragraph`);

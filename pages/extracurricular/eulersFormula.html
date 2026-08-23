@@ -7,14 +7,14 @@
     <meta property="og:title" content="Demystifying Maths">
     <meta property="og:description"
         content="Learn about Euler's Formula. Discover the fundamentals of this important mathematical identity.">
-    <link rel="stylesheet" href="/css/shared.css">
-    <link rel="stylesheet" href="/css/eulersFormula.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
-    <link rel="manifest" href="/favicon_io/site.webmanifest">
-    <script src="/js/eulersFormula.js"></script>
-    <script src="/js/navPanel.js" defer></script>
+    <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/eulersFormula.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
+    <script src="/demystifyingmaths/js/eulersFormula.js"></script>
+    <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -25,7 +25,7 @@
     <div class="layout">
         <div id="top-ribbon-placeholder"></div>
         <script>
-            fetch("/embed/top-ribbon.html")
+            fetch("/demystifyingmaths/embed/top-ribbon.html")
                 .then(response => response.text())
                 .then(data => {
                     document.getElementById("top-ribbon-placeholder").innerHTML = data;
@@ -35,8 +35,8 @@
             <h1>Demystifying - Euler's Formula</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb">
-                    <li><a href="/pages/home.html">Home</a><span aria-hidden="true">›</span></li>
-                    <li><a href="/pages/extracurricular/">Extracurricular</a><span aria-hidden="true">›</span></li>
+                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">›</span></li>
+                    <li><a href="/demystifyingmaths/pages/extracurricular/">Extracurricular</a><span aria-hidden="true">›</span></li>
                     <li>
                         <p>Euler's Formula</p>
                     </li>
@@ -52,10 +52,10 @@
                 start with a simpler question: "Who is Euler?"</p>
 
             <div class="image-container">
-                <img src="/images/eulersFormula/Leonhard_Euler_-_Jakob_Emanuel_Handmann_(Kunstmuseum_Basel).jpg"
+                <img src="/demystifyingmaths/images/eulersFormula/Leonhard_Euler_-_Jakob_Emanuel_Handmann_(Kunstmuseum_Basel).jpg"
                     alt="Portait of Leonhard Euler" style="width: 70%;" class="rounded-image">
             </div>
-            <img src="/images/eulersFormula/hand-drawn-spiral-arrow_78370-4667.avif"
+            <img src="/demystifyingmaths/images/eulersFormula/hand-drawn-spiral-arrow_78370-4667.avif"
                 style="position: relative; width: 30%; transform: translate(-250px, -130px) rotate(-40deg); margin-bottom: -170px;">
 
             <p>Why, this man of course! He lived in the 1700s, and he did so many amazing things for maths, if
@@ -207,7 +207,7 @@
                     <mi>i</mi>
                 </math>.</p>
             <p>If you are unfamiliar with complex numbers, I suggest you go no further until you have read at least some
-                of <a href="/pages/extracurricular/complexNumbers.html">this page</a>, otherwise this will be very confusing for you.</p>
+                of <a href="/demystifyingmaths/pages/extracurricular/complexNumbers.html">this page</a>, otherwise this will be very confusing for you.</p>
             <p>Setting <math style="font: unset; margin: unset;">
                     <mi>a</mi>
                     <mo>=</mo>
@@ -280,7 +280,7 @@
             </math>
             <p>And we can draw this on the complex plane:</p>
             <div class="derivation-step">
-                <img src="/images/eulersFormula/step1.png"
+                <img src="/demystifyingmaths/images/eulersFormula/step1.png"
                     alt="The number 1 on a complex plane, equated to eff of zero.">
             </div>
             <p>Now let's work out the derivative (gradient) of the function at <math
@@ -354,7 +354,7 @@
             <p>The gradient is imaginary! But don't panic, this just means we have to "take a small step in the
                 imaginary direction".</p>
             <div class="derivation-step">
-                <img src="/images/eulersFormula/step2.png"
+                <img src="/demystifyingmaths/images/eulersFormula/step2.png"
                     alt="The number i on a complex plane, equated to eff prime of zero.">
             </div>
             <p>The notation <math style="font: unset; margin: unset;">
@@ -369,7 +369,7 @@
                 </math> (time) by a small amount. This means nudging our point in the direction the gradient arrow is
                 pointing:</p>
             <div class="derivation-step">
-                <img src="/images/eulersFormula/step3.png"
+                <img src="/demystifyingmaths/images/eulersFormula/step3.png"
                     alt="The point and gradient arrow rotate slightly counterclockwise around the origin.">
             </div>
             <p>The gradient changes now!</p>
@@ -408,7 +408,7 @@
                     <mi>x</mi>
                 </math> again:</p>
             <div class="derivation-step">
-                <img src="/images/eulersFormula/step4.png"
+                <img src="/demystifyingmaths/images/eulersFormula/step4.png"
                     alt="The point and gradient arrow rotate slightly counterclockwise around the origin.">
             </div>
             <p>Now we can form a conclusion about the path the point will trace out. It is always moving in the
@@ -416,7 +416,7 @@
             </p>
             <p>If it always stays at the same radius, but keeps moving, then it must, logically, trace out a circle:</p>
             <div class="derivation-step">
-                <img src="/images/eulersFormula/step5.png" alt="The point moves along the unit circle">
+                <img src="/demystifyingmaths/images/eulersFormula/step5.png" alt="The point moves along the unit circle">
             </div>
             <p>The radius of the circle must be 1, because we know is passes through the point 1 at <math
                     style="font: unset; margin: unset;">
@@ -759,7 +759,7 @@
                     <mi>)</mi>
                 </math> by <math style="font: unset; margin: unset;">
                     <mi>x</mi>
-                </math> <a href="/pages/extracurricular/angleUnits.html">radians</a> anticlockwise around the origin. We can deduce radians
+                </math> <a href="/demystifyingmaths/pages/extracurricular/angleUnits.html">radians</a> anticlockwise around the origin. We can deduce radians
                 because 1 radian is defined to subtend 1 unit of arc length on the unit circle.</p>
 
             <p>Now here's another way to make a unit circle:</p>
@@ -871,7 +871,7 @@
                 into an
                 infinite sum of simple polynomial building blocks. These sums are called <strong>Maclaurin
                     series</strong> (plural).</p>
-            <p>If you're not familiar with Maclaurin Series, my page on them is <a href="/pages/extracurricular/maclaurinSeries.html">here</a>.
+            <p>If you're not familiar with Maclaurin Series, my page on them is <a href="/demystifyingmaths/pages/extracurricular/maclaurinSeries.html">here</a>.
             </p>
             <p>The idea is simple: if you know everything about how a function behaves at just a single point, you can
                 use its
@@ -1892,11 +1892,11 @@
                 <div class="footer-section">
                     <h2>Quick Links</h2>
                     <ul>
-                        <li><a href="/pages/home.html">Home</a></li>
-                        <li><a href="/pages/curriculum/">Curriculum</a></li>
-                        <li><a href="/pages/extracurricular/">Extracurricular</a></li>
-                        <li><a href="/pages/about.html">About</a></li>
-                        <li><a href="/pages/contact.html">Contact</a></li>
+                        <li><a href="/demystifyingmaths/pages/home.html">Home</a></li>
+                        <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a></li>
+                        <li><a href="/demystifyingmaths/pages/extracurricular/">Extracurricular</a></li>
+                        <li><a href="/demystifyingmaths/pages/about.html">About</a></li>
+                        <li><a href="/demystifyingmaths/pages/contact.html">Contact</a></li>
                     </ul>
                 </div>
             </div>

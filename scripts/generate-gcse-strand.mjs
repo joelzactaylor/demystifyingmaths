@@ -1,5 +1,6 @@
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
+import { withBase } from "./site-base.mjs";
 
 const ROOT = "/Users/joeltaylor/Documents/Code/demystifyingmaths";
 // Usage: node scripts/generate-gcse-strand.mjs [manifest ...]
@@ -8,7 +9,9 @@ const ROOT = "/Users/joeltaylor/Documents/Code/demystifyingmaths";
 // nested camelCase layout under pages/curriculum/GCSE/<strand>/. With no
 // arguments, every gcse-*-manifest.json in scripts/ is processed. Menus are
 // index.html files (the strand menu included); teaching pages and drills live
-// in their group's folder. All asset and page URLs are root-absolute.
+// in their group's folder. All asset and page URLs are root-absolute and are
+// written with the site's base prefix (see scripts/site-base.mjs); the URLs
+// used inside this script and in the manifests stay base-less.
 // Hand-written pages (standard-form, place-value, and the five original
 // practice tests) are never touched: teaching pages marked "written" and
 // drills without "generate" are skipped. Manifest validation runs before the
@@ -28,7 +31,7 @@ const urlToPath = (u) => join(ROOT, u.endsWith("/") ? u + "index.html" : u);
 const write = (url, content) => {
     const p = urlToPath(url);
     mkdirSync(dirname(p), { recursive: true });
-    writeFileSync(p, content);
+    writeFileSync(p, withBase(content));
 };
 
 /* Text from the manifest is interpolated into element content and attribute values,

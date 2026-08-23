@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const operationOutput = machine.querySelector("[data-machine-operation-label]");
     const resultOutput = machine.querySelector("[data-machine-result]");
     const description = machine.querySelector("[data-machine-description]");
-    const status = machine.querySelector("[data-machine-status]");
     const columnsLayer = machine.querySelector("[data-machine-columns]");
     const digitsLayer = machine.querySelector("[data-machine-digits]");
     const placeholdersLayer = machine.querySelector("[data-machine-placeholders]");
@@ -40,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let shift = 2;
     let current = null;
     let digitNodes = [];
+    const placeholderNodes = new Map();
 
     const makeSVG = (name, attributes = {}) => {
         const element = document.createElementNS(svgNS, name);
@@ -75,20 +75,32 @@ document.addEventListener("DOMContentLoaded", () => {
         columnsLayer.append(point);
     };
 
-    const parseNumber = (raw) => {
-        const cleaned = raw.trim().replaceAll(",", "").replaceAll("−", "-");
-        if (!/^-?(?:\d+(?:\.\d*)?|\.\d+)$/.test(cleaned)) {
-            return { error: "Enter a number, using digits and one decimal point." };
+    /* The field itself is the limit: anything beyond three digits either side of
+       the point, and anything that is not a digit, never reaches the value. */
+    const limitInput = () => {
+        const raw = input.value;
+        const negative = /^\s*[-−]/.test(raw);
+        const digits = raw.replace(/[^\d.]/g, "");
+        const hasPoint = digits.includes(".");
+        const [wholeRaw, ...rest] = digits.split(".");
+        const cleaned = `${negative ? "-" : ""}${wholeRaw.slice(0, 3)}${hasPoint ? `.${rest.join("").slice(0, 3)}` : ""}`;
+
+        if (cleaned !== raw) {
+            const caret = input.selectionStart ?? cleaned.length;
+            const position = Math.max(0, Math.min(cleaned.length, caret - (raw.length - cleaned.length)));
+            input.value = cleaned;
+            input.setSelectionRange(position, position);
         }
+        return cleaned;
+    };
+
+    const parseNumber = (cleaned) => {
+        if (!/^-?(?:\d+(?:\.\d*)?|\.\d+)$/.test(cleaned)) return null;
 
         const negative = cleaned.startsWith("-");
         const unsigned = negative ? cleaned.slice(1) : cleaned;
         let [whole, fractional = ""] = unsigned.split(".");
         whole = whole || "0";
-        if (whole.length > 3 || fractional.length > 3) {
-            return { error: "Use no more than three digits on either side of the decimal point." };
-        }
-
         whole = whole.replace(/^0+(?=\d)/, "");
         fractional = fractional.replace(/0+$/, "");
         const isZero = !/[1-9]/.test(whole + fractional);
@@ -169,11 +181,14 @@ document.addEventListener("DOMContentLoaded", () => {
         return `${phrases.slice(0, -1).join(separator)}${separator}and ${phrases.at(-1)}`;
     };
 
+    /* New digits are built where the chosen operation leaves them. A changed
+       number replaces the digits outright, so it has nothing to slide from:
+       only pressing an operation moves digits that are already on screen. */
     const resetDigitNodes = () => {
         digitsLayer.replaceChildren();
         digitNodes = sourceDigits(current).map((item) => {
             const node = makeDigit(item.digit, "power-machine__digit");
-            setDigitTransform(node, item.exponent);
+            setDigitTransform(node, item.exponent + shift);
             digitsLayer.append(node);
             return { ...item, node };
         });
@@ -184,17 +199,32 @@ document.addEventListener("DOMContentLoaded", () => {
         return displayedDigits(result).filter((item) => item.digit === "0" && !occupied.has(item.exponent));
     };
 
+    /* Placeholders are matched to the places they hold rather than rebuilt, so a
+       zero that is still needed stays put instead of fading in again. Only a
+       place that has just fallen empty gets a new node, and only that node
+       animates. */
     const renderPlaceholders = (result) => {
         const placeholders = getPlaceholders(result);
-        placeholdersLayer.replaceChildren(...placeholders.map((item) => {
+        const wanted = new Set(placeholders.map((item) => item.exponent));
+
+        placeholderNodes.forEach((node, exponent) => {
+            if (wanted.has(exponent)) return;
+            node.remove();
+            placeholderNodes.delete(exponent);
+        });
+
+        placeholders.forEach((item) => {
+            if (placeholderNodes.has(item.exponent)) return;
             const node = makeSVG("text", {
                 x: xForExponent(item.exponent),
                 y: digitY + 11,
                 class: `power-machine__placeholder power-machine__placeholder--${item.exponent >= 0 ? "whole" : "decimal"}`
             });
             node.textContent = "0";
-            return node;
-        }));
+            placeholdersLayer.append(node);
+            placeholderNodes.set(item.exponent, node);
+        });
+
         return placeholders;
     };
 
@@ -254,18 +284,12 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     const acceptInput = () => {
-        const parsed = parseNumber(input.value);
-        if (parsed.error) {
-            input.setAttribute("aria-invalid", "true");
-            status.textContent = parsed.error;
-            return;
-        }
+        const parsed = parseNumber(limitInput());
+        if (!parsed) return;
 
-        input.removeAttribute("aria-invalid");
-        status.textContent = "";
         current = parsed;
         resetDigitNodes();
-        requestAnimationFrame(renderShift);
+        renderShift();
     };
 
     buttons.forEach((button) => {
