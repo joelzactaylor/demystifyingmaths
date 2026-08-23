@@ -66,7 +66,7 @@
                     "title": "Exchanging across zeros",
                     "description": "Subtracting when a column holds a zero, and where the exchange comes from.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Subtractions like 4.03 - 1.276 and 3000 - 847 where the exchange must travel through one or more zeros, showing where each borrowed unit comes from and the reindexed digits. Assumes column-subtraction; do not reteach basic single-column exchange here. Both tiers. (N2)"
                 },
                 {

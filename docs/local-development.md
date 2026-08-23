@@ -10,6 +10,18 @@ node scripts/serve.mjs 8080     # or pick a port
 Leave it running in its own terminal; stop it with Ctrl-C. It needs no
 dependencies — just Node.
 
+Run it from a terminal you own. Started from inside another tool's session it
+gets reaped when that session ends, and the site then dies with
+`ERR_CONNECTION_REFUSED` — which looks like a broken site rather than a stopped
+server.
+
+If the port is taken, the server says so and suggests the next one:
+
+```sh
+node scripts/serve.mjs 8001
+lsof -nP -iTCP:8000 -sTCP:LISTEN   # what is holding the port
+```
+
 ## Why not `python3 -m http.server` or Live Server?
 
 The site is deployed to GitHub Pages as a **project site**, so it is served from

@@ -49,6 +49,12 @@
         <main class="lesson-main">
             <section>
                 <h1>Introduction</h1>
+                <p class="prereq"><b>Before this page:</b> <span>know what each digit is worth in
+                        <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/placeValue.html">integers and decimals</a>,
+                        and be comfortable adding two single digits without writing anything down &mdash; the KS2 page on
+                        <a href="/demystifyingmaths/pages/curriculum/KS2/additionSubtraction.html">addition and subtraction</a> covers the
+                        second.</span></p>
+
                 <p>Nobody adds 4,687 and 2,759 in a single movement. Held in the head, two numbers of that size are
                     a blur of digits with no obvious place to begin, and any answer that emerges has to be taken on
                     trust. The difficulty is not the arithmetic; it is trying to do all of it at once.</p>
@@ -58,8 +64,7 @@
                     addition is therefore several easy ones in disguise.</p>
                 <p>Column addition is the arrangement that separates them and keeps them apart. Equal place values are
                     written in a single column, each column is added by itself, and the answer is assembled from the
-                    results. The only thing left to manage is a column whose total is too large to fit in one digit,
-                    and that is what most of this page is about. The same arrangement then serves whole numbers,
+                    results. The only thing left to manage is a column whose total is too large to fit in one digit. The same arrangement then serves whole numbers,
                     decimals, money and measures alike, because all of them are written in the same place-value
                     system.</p>
 
@@ -199,96 +204,32 @@
                     each regrouped amount above the column that will use it, so that it is waiting there when that
                     column is reached rather than being remembered.</p>
 
-                <article class="wex">
-                    <h3 class="wex__title">Example: calculate 4,687 + 2,759</h3>
-                    <p class="wex__task">Work from the ones column towards the thousands column.</p>
+                <div class="worked">
+                    <h3 class="worked__title">Example: calculate 4,687 + 2,759</h3>
 
-                    <div class="sum-board sum-board--whole" role="img"
-                        aria-label="4,687 above 2,759 in columns, with a regrouped 1 above the tens, hundreds and thousands columns, and the answer line reading 7,446.">
-                        <span class="sum-board__op"></span>
-                        <span class="sum-board__cell sum-board__cell--label">1,000s</span>
-                        <span class="sum-board__cell sum-board__cell--label">100s</span>
-                        <span class="sum-board__cell sum-board__cell--label">10s</span>
-                        <span class="sum-board__cell sum-board__cell--label">1s</span>
+                    <div class="addition-scene" data-addition-scene data-a="4687" data-b="2759">
+                        <div class="addition-scene__sticky">
+                            <p class="addition-scene__heading">4,687 + 2,759</p>
 
-                        <span class="sum-board__op"></span>
-                        <span class="sum-board__cell sum-board__cell--carry"><span class="sum-board__carry">1</span></span>
-                        <span class="sum-board__cell sum-board__cell--carry"><span class="sum-board__carry">1</span></span>
-                        <span class="sum-board__cell sum-board__cell--carry"><span class="sum-board__carry">1</span></span>
-                        <span class="sum-board__cell sum-board__cell--carry"></span>
+                            <div class="addition-board">
+                                <div class="addition-board__paper" data-paper></div>
+                            </div>
 
-                        <span class="sum-board__op"></span>
-                        <span class="sum-board__cell sum-board__cell--addend">4</span>
-                        <span class="sum-board__cell sum-board__cell--addend">6</span>
-                        <span class="sum-board__cell sum-board__cell--addend">8</span>
-                        <span class="sum-board__cell sum-board__cell--addend">7</span>
+                            <div class="addition-scene__caption" aria-live="polite">
+                                <h3 data-step-title>Align equal place values</h3>
+                                <p data-step-copy>Begin with equal place values directly beneath one another. The ones
+                                    sit under the ones, the tens under the tens, and so on.</p>
+                            </div>
 
-                        <span class="sum-board__op sum-board__rule">+</span>
-                        <span class="sum-board__cell sum-board__cell--addend sum-board__rule">2</span>
-                        <span class="sum-board__cell sum-board__cell--addend sum-board__rule">7</span>
-                        <span class="sum-board__cell sum-board__cell--addend sum-board__rule">5</span>
-                        <span class="sum-board__cell sum-board__cell--addend sum-board__rule">9</span>
-
-                        <span class="sum-board__op"></span>
-                        <span class="sum-board__cell sum-board__cell--answer">7</span>
-                        <span class="sum-board__cell sum-board__cell--answer">4</span>
-                        <span class="sum-board__cell sum-board__cell--answer">4</span>
-                        <span class="sum-board__cell sum-board__cell--answer">6</span>
+                            <div class="addition-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript>
+                            <p><strong>4,687 + 2,759 = 7,446</strong></p>
+                        </noscript>
                     </div>
 
-                    <ol class="column-walk">
-                        <li class="column-walk__step">
-                            <span class="column-walk__place">Ones</span>
-                            <div class="mini-column" role="img" aria-label="7 plus 9 totals 16">
-                                <em></em><b>7</b><b>9</b><strong>16</strong>
-                            </div>
-                            <span class="column-walk__arrow" aria-hidden="true">&rarr;</span>
-                            <div class="column-walk__result">
-                                <span class="column-walk__write">6</span>
-                                <span class="column-walk__regroup">1</span>
-                            </div>
-                            <p class="column-walk__note">Write 6 ones and regroup 1 ten.</p>
-                        </li>
-                        <li class="column-walk__step">
-                            <span class="column-walk__place">Tens</span>
-                            <div class="mini-column" role="img" aria-label="A regrouped 1 plus 8 plus 5 totals 14">
-                                <em>1</em><b>8</b><b>5</b><strong>14</strong>
-                            </div>
-                            <span class="column-walk__arrow" aria-hidden="true">&rarr;</span>
-                            <div class="column-walk__result">
-                                <span class="column-walk__write">4</span>
-                                <span class="column-walk__regroup">1</span>
-                            </div>
-                            <p class="column-walk__note">Include the regrouped ten. Write 4 tens and regroup 1
-                                hundred.</p>
-                        </li>
-                        <li class="column-walk__step">
-                            <span class="column-walk__place">Hundreds</span>
-                            <div class="mini-column" role="img" aria-label="A regrouped 1 plus 6 plus 7 totals 14">
-                                <em>1</em><b>6</b><b>7</b><strong>14</strong>
-                            </div>
-                            <span class="column-walk__arrow" aria-hidden="true">&rarr;</span>
-                            <div class="column-walk__result">
-                                <span class="column-walk__write">4</span>
-                                <span class="column-walk__regroup">1</span>
-                            </div>
-                            <p class="column-walk__note">Write 4 hundreds and regroup 1 thousand.</p>
-                        </li>
-                        <li class="column-walk__step">
-                            <span class="column-walk__place">Thousands</span>
-                            <div class="mini-column" role="img" aria-label="A regrouped 1 plus 4 plus 2 totals 7">
-                                <em>1</em><b>4</b><b>2</b><strong>7</strong>
-                            </div>
-                            <span class="column-walk__arrow" aria-hidden="true">&rarr;</span>
-                            <div class="column-walk__result">
-                                <span class="column-walk__write">7</span>
-                            </div>
-                            <p class="column-walk__note">The total is below ten, so nothing is regrouped.</p>
-                        </li>
-                    </ol>
-
-                    <p class="wex__answer"><strong>4,687 + 2,759 = 7,446</strong></p>
-                </article>
+                    <p class="worked__answer"><strong>4,687 + 2,759 = 7,446</strong></p>
+                </div>
             </section>
 
             <section>
@@ -297,100 +238,32 @@
                     point itself holds a column of its own: place one in the answer directly beneath the points above
                     it, then add from the smallest occupied place towards the left, exactly as before.</p>
 
-                <article class="wex">
-                    <h3 class="wex__title">Example: calculate 18.75 + 6.9</h3>
-                    <p class="wex__task">Write 6.9 as 6.90 so that both hundredths places are visible.</p>
+                <div class="worked">
+                    <h3 class="worked__title">Example: calculate 18.75 + 6.9</h3>
 
-                    <div class="sum-board sum-board--decimal" role="img"
-                        aria-label="18.75 above 06.90 in columns, with a regrouped 1 above the ones column and another above the tens column, and the answer line reading 25.65.">
-                        <span class="sum-board__op"></span>
-                        <span class="sum-board__cell sum-board__cell--label">10s</span>
-                        <span class="sum-board__cell sum-board__cell--label">1s</span>
-                        <span class="sum-board__cell sum-board__cell--label sum-board__cell--point"></span>
-                        <span class="sum-board__cell sum-board__cell--label">0.1s</span>
-                        <span class="sum-board__cell sum-board__cell--label">0.01s</span>
+                    <div class="addition-scene" data-addition-scene data-a="18.75" data-b="6.9">
+                        <div class="addition-scene__sticky">
+                            <p class="addition-scene__heading">18.75 + 6.9</p>
 
-                        <span class="sum-board__op"></span>
-                        <span class="sum-board__cell sum-board__cell--carry"><span class="sum-board__carry">1</span></span>
-                        <span class="sum-board__cell sum-board__cell--carry"><span class="sum-board__carry">1</span></span>
-                        <span class="sum-board__cell sum-board__cell--carry sum-board__cell--point"></span>
-                        <span class="sum-board__cell sum-board__cell--carry"></span>
-                        <span class="sum-board__cell sum-board__cell--carry"></span>
+                            <div class="addition-board">
+                                <div class="addition-board__paper" data-paper></div>
+                            </div>
 
-                        <span class="sum-board__op"></span>
-                        <span class="sum-board__cell sum-board__cell--addend">1</span>
-                        <span class="sum-board__cell sum-board__cell--addend">8</span>
-                        <span class="sum-board__cell sum-board__cell--point">.</span>
-                        <span class="sum-board__cell sum-board__cell--addend">7</span>
-                        <span class="sum-board__cell sum-board__cell--addend">5</span>
+                            <div class="addition-scene__caption" aria-live="polite">
+                                <h3 data-step-title>Align equal place values</h3>
+                                <p data-step-copy>Begin with the decimal points directly beneath one another. Write 6.9
+                                    as 6.90 so every occupied place is visible.</p>
+                            </div>
 
-                        <span class="sum-board__op sum-board__rule">+</span>
-                        <span class="sum-board__cell sum-board__cell--addend sum-board__cell--placeholder sum-board__rule">0</span>
-                        <span class="sum-board__cell sum-board__cell--addend sum-board__rule">6</span>
-                        <span class="sum-board__cell sum-board__cell--point sum-board__rule">.</span>
-                        <span class="sum-board__cell sum-board__cell--addend sum-board__rule">9</span>
-                        <span class="sum-board__cell sum-board__cell--addend sum-board__cell--placeholder sum-board__rule">0</span>
-
-                        <span class="sum-board__op"></span>
-                        <span class="sum-board__cell sum-board__cell--answer">2</span>
-                        <span class="sum-board__cell sum-board__cell--answer">5</span>
-                        <span class="sum-board__cell sum-board__cell--point sum-board__cell--answer">.</span>
-                        <span class="sum-board__cell sum-board__cell--answer">6</span>
-                        <span class="sum-board__cell sum-board__cell--answer">5</span>
+                            <div class="addition-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript>
+                            <p><strong>18.75 + 6.90 = 25.65</strong></p>
+                        </noscript>
                     </div>
 
-                    <ol class="column-walk">
-                        <li class="column-walk__step">
-                            <span class="column-walk__place">Hundredths</span>
-                            <div class="mini-column" role="img" aria-label="5 plus 0 totals 5">
-                                <em></em><b>5</b><b class="is-faint">0</b><strong>5</strong>
-                            </div>
-                            <span class="column-walk__arrow" aria-hidden="true">&rarr;</span>
-                            <div class="column-walk__result">
-                                <span class="column-walk__write">5</span>
-                            </div>
-                            <p class="column-walk__note">The zero written after 6.9 holds the hundredths place.</p>
-                        </li>
-                        <li class="column-walk__step">
-                            <span class="column-walk__place">Tenths</span>
-                            <div class="mini-column" role="img" aria-label="7 plus 9 totals 16">
-                                <em></em><b>7</b><b>9</b><strong>16</strong>
-                            </div>
-                            <span class="column-walk__arrow" aria-hidden="true">&rarr;</span>
-                            <div class="column-walk__result">
-                                <span class="column-walk__write">6</span>
-                                <span class="column-walk__regroup">1</span>
-                            </div>
-                            <p class="column-walk__note">Write 6 tenths and regroup 1 one.</p>
-                        </li>
-                        <li class="column-walk__step">
-                            <span class="column-walk__place">Ones</span>
-                            <div class="mini-column" role="img" aria-label="A regrouped 1 plus 8 plus 6 totals 15">
-                                <em>1</em><b>8</b><b>6</b><strong>15</strong>
-                            </div>
-                            <span class="column-walk__arrow" aria-hidden="true">&rarr;</span>
-                            <div class="column-walk__result">
-                                <span class="column-walk__write">5</span>
-                                <span class="column-walk__regroup">1</span>
-                            </div>
-                            <p class="column-walk__note">Write 5 ones and regroup 1 ten. The decimal point is copied
-                                straight down.</p>
-                        </li>
-                        <li class="column-walk__step">
-                            <span class="column-walk__place">Tens</span>
-                            <div class="mini-column" role="img" aria-label="A regrouped 1 plus 1 plus 0 totals 2">
-                                <em>1</em><b>1</b><b class="is-faint">0</b><strong>2</strong>
-                            </div>
-                            <span class="column-walk__arrow" aria-hidden="true">&rarr;</span>
-                            <div class="column-walk__result">
-                                <span class="column-walk__write">2</span>
-                            </div>
-                            <p class="column-walk__note">Write 2 tens to complete the answer.</p>
-                        </li>
-                    </ol>
-
-                    <p class="wex__answer"><strong>18.75 + 6.90 = 25.65</strong></p>
-                </article>
+                    <p class="worked__answer"><strong>18.75 + 6.90 = 25.65</strong></p>
+                </div>
 
                 <aside class="important-box" aria-labelledby="units-title">
                     <h2 class="important-box__title" id="units-title">Keep the unit attached to the answer</h2>
@@ -401,11 +274,6 @@
 
             <section>
                 <h1>Build a calculation</h1>
-                <p>Here the method runs at reading pace. Choose two numbers, then scroll: the calculation is set out
-                    one column at a time, from the smallest place value towards the largest, and each regrouped amount
-                    travels to the column it joins. The numbers can be changed at any point, so the method can be
-                    watched on an awkward pair as readily as a tidy one.</p>
-
                 <div class="addition-scene" data-addition-scene>
                     <div class="addition-scene__sticky">
                         <div class="addition-scene__inputs">

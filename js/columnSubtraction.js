@@ -1,15 +1,17 @@
-/* Scroll-led column addition. The page stays a normal document: each scene
+/* Scroll-led column subtraction. The page stays a normal document: each scene
    supplies its own scroll distance, JavaScript pins the card inside it, and the
    scroll position drives the drawing continuously. Nothing is toggled on: the
-   digits land, the highlight travels from column to column and the regrouped
-   amounts fly to their places in step with the scroll, exactly as far as the
-   reader has scrolled. No wheel or touch input is intercepted.
+   digits land, the highlight travels from column to column and each exchange
+   crosses out the column it came from and carries a ten to the column that
+   needed it, in step with the scroll. No wheel or touch input is intercepted.
 
    A scene is one of two kinds. A worked example carries its two numbers in
    data-a and data-b and is read, not altered. A sandbox carries two fields
-   instead, capped at five whole-number digits and three decimal places. */
+   instead, capped at five whole-number digits and three decimal places, with a
+   second number larger than the first left undrawn, because a difference below
+   zero is a matter for the directed-number pages rather than for this method. */
 document.addEventListener("DOMContentLoaded", () => {
-    const scenes = document.querySelectorAll("[data-addition-scene]");
+    const scenes = document.querySelectorAll("[data-subtraction-scene]");
     if (!scenes.length) return;
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -24,6 +26,11 @@ document.addEventListener("DOMContentLoaded", () => {
         [5, "hundred-thousands"], [4, "ten-thousands"], [3, "thousands"],
         [2, "hundreds"], [1, "tens"], [0, "ones"], [-1, "tenths"],
         [-2, "hundredths"], [-3, "thousandths"]
+    ]);
+    const singularNames = new Map([
+        [5, "hundred thousand"], [4, "ten thousand"], [3, "thousand"],
+        [2, "hundred"], [1, "ten"], [0, "unit"], [-1, "tenth"],
+        [-2, "hundredth"], [-3, "thousandth"]
     ]);
     const placeLabels = new Map([
         [5, "100,000s"], [4, "10,000s"], [3, "1,000s"], [2, "100s"],
@@ -56,78 +63,110 @@ document.addEventListener("DOMContentLoaded", () => {
         return `${Number(whole).toLocaleString("en-GB")}${decimalPlaces ? `.${decimal}` : ""}`;
     };
 
-    const buildCalculation = (a, b) => {
+    /* The subtrahend is compared against the minuend digit by digit, once both
+       have been padded to the same shape, so 12 and 3.475 are compared as
+       12.000 and 03.475 rather than as strings of different lengths. */
+    const padPair = (a, b) => {
         const decimalPlaces = Math.max(a.decimal.length, b.decimal.length);
         const wholePlaces = Math.max(a.whole.length, b.whole.length);
-        const padNumber = (number) => `${number.whole.padStart(wholePlaces, "0")}${number.decimal.padEnd(decimalPlaces, "0")}`.split("").map(Number);
-        const aDigits = padNumber(a);
-        const bDigits = padNumber(b);
+        const pad = (number) => `${number.whole.padStart(wholePlaces, "0")}${number.decimal.padEnd(decimalPlaces, "0")}`.split("").map(Number);
+        return { decimalPlaces, wholePlaces, aDigits: pad(a), bDigits: pad(b) };
+    };
+
+    const isSmaller = (aDigits, bDigits) => {
+        for (let index = 0; index < aDigits.length; index += 1) {
+            if (aDigits[index] !== bDigits[index]) return aDigits[index] < bDigits[index];
+        }
+        return false;
+    };
+
+    /* Each column is taken from the right. Where the digit standing there is too
+       small, the nearest column to the left with something to give is reduced by
+       one, every zero passed on the way becomes nine, and ten arrives in the
+       column that needed it. The digits are renamed; the number is unchanged.
+       What the column holds when its turn comes is recorded separately from the
+       digit originally written there, because a column that has already given
+       something away is no longer worth what the page says. */
+    const buildCalculation = (a, b, shape) => {
+        const { decimalPlaces, aDigits, bDigits } = shape;
+        const working = aDigits.slice();
         const operations = [];
         const result = Array(aDigits.length).fill(0);
-        let carry = 0;
 
         for (let index = aDigits.length - 1; index >= 0; index -= 1) {
-            const carryIn = carry;
-            const total = aDigits[index] + bDigits[index] + carryIn;
-            const resultDigit = total % 10;
-            carry = Math.floor(total / 10);
-            result[index] = resultDigit;
-            operations.push({ index, carryIn, total, resultDigit, carryOut: carry });
+            const passed = [];
+            const standing = working[index];
+            const alreadyReduced = standing !== aDigits[index];
+            let donor = null;
+
+            if (standing < bDigits[index]) {
+                let source = index - 1;
+                while (source >= 0 && working[source] === 0) {
+                    passed.unshift(source);
+                    source -= 1;
+                }
+                donor = source;
+                working[source] -= 1;
+                passed.forEach((column) => { working[column] = 9; });
+                working[index] += 10;
+            }
+
+            result[index] = working[index] - bDigits[index];
+            operations.push({
+                index, donor, passed, standing, alreadyReduced,
+                top: working[index],
+                bottom: bDigits[index],
+                donorValue: donor === null ? null : working[donor],
+                resultDigit: result[index]
+            });
         }
 
-        if (carry) {
-            aDigits.unshift(null);
-            bDigits.unshift(null);
-            result.unshift(carry);
-            operations.forEach((operation) => { operation.index += 1; });
-        }
-
-        return { a, b, aDigits, bDigits, result, operations, decimalPlaces, wholePlaces: aDigits.length - decimalPlaces, finalCarry: carry };
+        return { a, b, aDigits, bDigits, working, result, operations, decimalPlaces, wholePlaces: aDigits.length - decimalPlaces };
     };
 
     const decimalGrid = (calc) => calc.decimalPlaces
-        ? `repeat(${calc.wholePlaces}, var(--addition-cell)) 18px repeat(${calc.decimalPlaces}, var(--addition-cell))`
-        : `repeat(${calc.wholePlaces}, var(--addition-cell))`;
+        ? `repeat(${calc.wholePlaces}, var(--subtraction-cell)) 18px repeat(${calc.decimalPlaces}, var(--subtraction-cell))`
+        : `repeat(${calc.wholePlaces}, var(--subtraction-cell))`;
 
     const exponentFor = (calc, digitIndex) => calc.wholePlaces - digitIndex - 1;
 
     const makeCell = (content, classes = "") => {
         const cell = document.createElement("span");
-        cell.className = `addition-board__cell ${classes}`.trim();
+        cell.className = `subtraction-board__cell ${classes}`.trim();
         cell.textContent = content ?? "";
         return cell;
     };
 
     const buildRow = (calc, type, operator = "") => {
         const row = document.createElement("div");
-        row.className = `addition-board__row addition-board__row--${type}`;
+        row.className = `subtraction-board__row subtraction-board__row--${type}`;
         const operatorCell = document.createElement("span");
-        operatorCell.className = `addition-board__operator${operator ? "" : " addition-board__operator--blank"}`;
+        operatorCell.className = `subtraction-board__operator${operator ? "" : " subtraction-board__operator--blank"}`;
         operatorCell.textContent = operator || "·";
         row.append(operatorCell);
         const digits = document.createElement("div");
-        digits.className = "addition-board__digits";
-        digits.style.setProperty("--addition-columns", decimalGrid(calc));
+        digits.className = "subtraction-board__digits";
+        digits.style.setProperty("--subtraction-columns", decimalGrid(calc));
         row.append(digits);
         return { row, digits };
     };
 
-    const paddedPlaceholder = (calc, number, index, value) => {
-        if (value === null) return false;
+    const paddedPlaceholder = (calc, number, index) => {
         const extraWhole = calc.wholePlaces - number.whole.length;
         const decimalIndex = index - calc.wholePlaces;
-        return index < extraWhole || (decimalIndex >= number.decimal.length && decimalIndex >= 0);
+        return index < extraWhole || (decimalIndex >= 0 && decimalIndex >= number.decimal.length);
     };
 
     /* One scene: its own numbers, its own board, its own scroll distance. */
     const createScene = (scene) => {
-        const sticky = scene.querySelector(".addition-scene__sticky");
+        const sticky = scene.querySelector(".subtraction-scene__sticky");
         const inputs = {
-            a: scene.querySelector('[data-addend="a"]'),
-            b: scene.querySelector('[data-addend="b"]')
+            a: scene.querySelector('[data-term="a"]'),
+            b: scene.querySelector('[data-term="b"]')
         };
         const fixed = !inputs.a || !inputs.b;
         const paper = scene.querySelector("[data-paper]");
+        const notice = scene.querySelector("[data-notice]");
         const stepTitle = scene.querySelector("[data-step-title]");
         const stepCopy = scene.querySelector("[data-step-copy]");
         const progressBar = scene.querySelector("[data-progress]");
@@ -165,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
             paper.replaceChildren();
 
             const pointCell = (container, character, classes = "") => {
-                const cell = makeCell(character, `addition-board__cell--point ${classes}`.trim());
+                const cell = makeCell(character, `subtraction-board__cell--point ${classes}`.trim());
                 points.push(cell);
                 container.append(cell);
             };
@@ -173,29 +212,29 @@ document.addEventListener("DOMContentLoaded", () => {
             const labels = buildRow(calc, "labels");
             const labelCells = [];
             for (let index = 0; index < count; index += 1) {
-                if (calc.decimalPlaces && index === calc.wholePlaces) pointCell(labels.digits, "", "addition-board__cell--label");
-                const cell = makeCell(placeLabels.get(exponentFor(calc, index)) || "", "addition-board__cell--label");
+                if (calc.decimalPlaces && index === calc.wholePlaces) pointCell(labels.digits, "", "subtraction-board__cell--label");
+                const cell = makeCell(placeLabels.get(exponentFor(calc, index)) || "", "subtraction-board__cell--label");
                 labelCells.push(cell);
                 labels.digits.append(cell);
             }
             paper.append(labels.row);
 
-            const carry = buildRow(calc, "carry");
-            const carryCells = [];
+            const exchange = buildRow(calc, "exchange");
+            const exchangeCells = [];
             for (let index = 0; index < count; index += 1) {
-                if (calc.decimalPlaces && index === calc.wholePlaces) pointCell(carry.digits, "");
+                if (calc.decimalPlaces && index === calc.wholePlaces) pointCell(exchange.digits, "");
                 const cell = makeCell("");
-                carryCells.push(cell);
-                carry.digits.append(cell);
+                exchangeCells.push(cell);
+                exchange.digits.append(cell);
             }
-            paper.append(carry.row);
+            paper.append(exchange.row);
 
-            const addendRow = (digits, number, operator, extra) => {
-                const built = buildRow(calc, `addend${extra}`, operator);
+            const termRow = (digits, number, operator, extra) => {
+                const built = buildRow(calc, `term${extra}`, operator);
                 const cells = [];
                 digits.forEach((value, index) => {
                     if (calc.decimalPlaces && index === calc.wholePlaces) pointCell(built.digits, ".");
-                    const cell = makeCell(value, paddedPlaceholder(calc, number, index, value) ? "addition-board__cell--placeholder" : "");
+                    const cell = makeCell(value, paddedPlaceholder(calc, number, index) ? "subtraction-board__cell--placeholder" : "");
                     cells.push(cell);
                     built.digits.append(cell);
                 });
@@ -203,49 +242,84 @@ document.addEventListener("DOMContentLoaded", () => {
                 return cells;
             };
 
-            const firstCells = addendRow(calc.aDigits, calc.a, "", "");
-            const secondCells = addendRow(calc.bDigits, calc.b, "+", " addition-board__row--second");
+            const firstCells = termRow(calc.aDigits, calc.a, "", "");
+            const secondCells = termRow(calc.bDigits, calc.b, "−", " subtraction-board__row--second");
+
+            /* Leading zeros in the answer are written but greyed: the columns
+               were worked, and the number does not start there. */
+            let leading = 0;
+            while (leading < calc.wholePlaces - 1 && calc.result[leading] === 0) leading += 1;
 
             const result = buildRow(calc, "result");
             const answerCells = [];
             calc.result.forEach((value, index) => {
                 if (calc.decimalPlaces && index === calc.wholePlaces) pointCell(result.digits, ".");
-                const cell = makeCell(value, "addition-board__answer");
+                const cell = makeCell(value, `subtraction-board__answer${index < leading ? " subtraction-board__cell--placeholder" : ""}`);
                 answerCells.push(cell);
                 result.digits.append(cell);
             });
             paper.append(result.row);
 
-            const badges = calc.operations.reduce((collected, operation, order) => {
-                if (!operation.carryOut || operation.index < 1) return collected;
+            /* A column that has given part of its value away shows its new digit
+               above the crossed-out one. The ten an exchange brings in is
+               written in front of the digit it joins, never above it: in front
+               of the reduced digit where the column has one, and against the
+               digit in the number itself where it has not, so the column reads
+               as the two-digit number it now holds. Both marks are recorded
+               against the step that made them, so a frame can decide how much
+               of each has happened. */
+            const reducedColumns = new Set();
+            calc.operations.forEach((operation) => {
+                if (operation.donor === null) return;
+                reducedColumns.add(operation.donor);
+                operation.passed.forEach((column) => reducedColumns.add(column));
+            });
+
+            const reductions = [];
+            const badges = [];
+
+            calc.operations.forEach((operation, order) => {
+                if (operation.donor === null) return;
+
                 const badge = document.createElement("span");
-                badge.className = "addition-board__carry";
-                badge.textContent = operation.carryOut;
-                carryCells[operation.index - 1].append(badge);
-                collected.push({ badge, operation, order });
-                return collected;
-            }, []);
+                badge.className = "subtraction-board__ten";
+                badge.textContent = "1";
+                const host = reducedColumns.has(operation.index) ? exchangeCells : firstCells;
+                host[operation.index].prepend(badge);
+                badges.push({ badge, operation, order });
+
+                const written = (column, value) => {
+                    const mark = document.createElement("span");
+                    mark.className = "subtraction-board__reduced";
+                    mark.textContent = value;
+                    exchangeCells[column].append(mark);
+                    reductions.push({ mark, column, order });
+                };
+
+                written(operation.donor, operation.donorValue);
+                operation.passed.forEach((column) => written(column, 9));
+            });
 
             const cursor = document.createElement("span");
-            cursor.className = "addition-board__cursor";
+            cursor.className = "subtraction-board__cursor";
             paper.append(cursor);
 
             board = {
-                count, points, labelCells, firstCells, secondCells, answerCells, badges, cursor,
-                carryRow: carry.row, resultRow: result.row, columns: []
+                count, points, labelCells, firstCells, secondCells, answerCells,
+                exchangeCells, reductions, badges, cursor,
+                exchangeRow: exchange.row, resultRow: result.row, columns: []
             };
             measureBoard();
         };
 
         /* Column positions are read from the finished layout rather than
-           assumed, so the highlight and the regrouped amounts follow the
+           assumed, so the highlight and the travelling ten follow the
            stylesheet. */
         const measureBoard = () => {
             if (!board) return;
             board.columns = board.answerCells.map((cell) => ({ left: cell.offsetLeft, width: cell.offsetWidth }));
-            board.carryDrop = board.resultRow.offsetTop - board.carryRow.offsetTop;
-            const height = board.resultRow.offsetTop + board.resultRow.offsetHeight - board.carryRow.offsetTop;
-            board.cursor.style.top = `${board.carryRow.offsetTop}px`;
+            const height = board.resultRow.offsetTop + board.resultRow.offsetHeight - board.exchangeRow.offsetTop;
+            board.cursor.style.top = `${board.exchangeRow.offsetTop}px`;
             board.cursor.style.height = `${height}px`;
             if (board.columns.length) board.cursor.style.width = `${board.columns[0].width}px`;
         };
@@ -277,34 +351,34 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             board.points.forEach((cell) => { cell.style.opacity = ease((t - .1) / .7); });
 
-            /* Each column writes its answer digit, then sends its regrouped
-               amount up and to the left into the column that will take it. */
+            /* The exchange happens first in a column's step, and the answer
+               digit is written once it has arrived. */
+            board.badges.forEach(({ badge, operation, order }) => {
+                const reveal = ease((u - order - .04) / .42);
+                const from = board.columns[operation.donor];
+                const to = board.columns[operation.index];
+                const travel = 1 - reveal;
+                badge.style.opacity = reveal;
+                badge.style.transform = `translateX(${(from.left - to.left) * travel}px) scale(${lerp(.7, 1, reveal)})`;
+            });
+
+            board.reductions.forEach(({ mark, column, order }) => {
+                const reveal = ease((u - order - .18) / .38);
+                mark.style.opacity = reveal;
+                mark.style.transform = `translateY(${(1 - reveal) * 12}px)`;
+                board.firstCells[column].classList.toggle("is-spent", reveal > .5);
+            });
+
             calc.operations.forEach((operation, order) => {
-                const reveal = ease((u - order - .3) / .4);
+                const reveal = ease((u - order - .52) / .4);
                 const cell = board.answerCells[operation.index];
                 cell.style.opacity = reveal;
                 cell.style.transform = `translateY(${(1 - reveal) * -15}px) scale(${lerp(.74, 1, reveal)})`;
             });
 
-            if (calc.finalCarry) {
-                const reveal = ease((u - steps + .4) / .4);
-                const cell = board.answerCells[0];
-                cell.style.opacity = reveal;
-                cell.style.transform = `translateY(${(1 - reveal) * -15}px) scale(${lerp(.74, 1, reveal)})`;
-            }
-
-            board.badges.forEach(({ badge, operation, order }) => {
-                const reveal = ease((u - order - .46) / .46);
-                const from = board.columns[operation.index];
-                const to = board.columns[operation.index - 1];
-                const travel = 1 - reveal;
-                badge.style.opacity = reveal;
-                badge.style.transform = `translate(${(from.left - to.left) * travel}px, ${board.carryDrop * travel}px) scale(${lerp(.7, 1, reveal)})`;
-            });
-
             const held = clamp(Math.floor(u), 0, steps - 1);
             const nextColumn = Math.min(steps - 1, held + 1);
-            const slide = ease((clamp(u - held, 0, 1) - .58) / .42);
+            const slide = ease((clamp(u - held, 0, 1) - .62) / .38);
             const centre = (order) => board.columns[calc.operations[order].index].left;
             board.cursor.style.transform = `translateX(${lerp(centre(held), centre(nextColumn), slide)}px)`;
             board.cursor.style.opacity = ease((t - .78) / .32) * (1 - ease((u - steps + .15) / .5));
@@ -326,32 +400,44 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (calc.a.decimal.length < calc.decimalPlaces) padded.push(`${readable(calc.a.whole, calc.a.decimal)} as ${readable(calc.a.whole, calc.a.decimal.padEnd(calc.decimalPlaces, "0"))}`);
                 if (calc.b.decimal.length < calc.decimalPlaces) padded.push(`${readable(calc.b.whole, calc.b.decimal)} as ${readable(calc.b.whole, calc.b.decimal.padEnd(calc.decimalPlaces, "0"))}`);
                 stepCopy.textContent = padded.length
-                    ? `Begin with the decimal points directly beneath one another. Write ${padded.join(" and ")} so every occupied place is visible.`
+                    ? `Begin with the decimal points directly beneath one another. Write ${padded.join(" and ")} so every occupied place has a digit to work with.`
                     : "Begin with equal place values directly beneath one another. The ones sit under the ones, the tens under the tens, and so on.";
                 return;
             }
 
             if (stage <= calc.operations.length) {
                 const operation = calc.operations[stage - 1];
-                const exponent = exponentFor(calc, operation.index);
-                const name = placeNames.get(exponent) || "next";
-                const leftName = placeNames.get(exponent + 1) || "next column";
-                const aDigit = calc.aDigits[operation.index] ?? 0;
-                const bDigit = calc.bDigits[operation.index] ?? 0;
-                const parts = [aDigit, bDigit];
-                if (operation.carryIn) parts.unshift(operation.carryIn);
-                stepTitle.textContent = `Add the ${name} column`;
-                stepCopy.textContent = operation.carryOut
-                    ? `${parts.join(" + ")} = ${operation.total}. Write ${operation.resultDigit} in the ${name} column and regroup ${operation.carryOut} into the ${leftName} column.`
-                    : `${parts.join(" + ")} = ${operation.total}. Write ${operation.resultDigit} in the ${name} column. There is no need to regroup.`;
+                const name = placeNames.get(exponentFor(calc, operation.index)) || "next";
+                stepTitle.textContent = `Subtract the ${name} column`;
+
+                /* A column that has already paid for an earlier exchange no
+                   longer holds the digit written on the page, so the sentence
+                   says what is actually there. */
+                const holding = operation.alreadyReduced
+                    ? `The ${name} were lowered to ${operation.standing}, which cannot pay ${operation.bottom}`
+                    : `${operation.standing} is smaller than ${operation.bottom}`;
+
+                if (operation.donor === null) {
+                    stepCopy.textContent = operation.alreadyReduced
+                        ? `The ${name} were lowered to ${operation.standing}, and ${operation.standing} − ${operation.bottom} = ${operation.resultDigit}. Nothing needs to be exchanged.`
+                        : `${operation.top} − ${operation.bottom} = ${operation.resultDigit}. Write ${operation.resultDigit} in the ${name} column. Nothing needs to be exchanged.`;
+                    return;
+                }
+
+                const donorName = placeNames.get(exponentFor(calc, operation.donor)) || "column to the left";
+                const donorUnit = singularNames.get(exponentFor(calc, operation.donor)) || "unit";
+                const passed = operation.passed.length
+                    ? " The columns in between hold nothing to give, so each becomes 9 as the exchange passes through."
+                    : "";
+                stepCopy.textContent = `${holding}, so one ${donorUnit} is exchanged from the ${donorName} column.${passed} The ${name} become ${operation.top}, and ${operation.top} − ${operation.bottom} = ${operation.resultDigit}.`;
                 return;
             }
 
             const answer = formatDigits(calc.result, calc.decimalPlaces);
-            stepTitle.textContent = `The sum is ${answer}`;
+            stepTitle.textContent = `The difference is ${answer}`;
             stepCopy.textContent = calc.decimalPlaces
                 ? "Read the result from left to right. The decimal point has stayed in its own column, directly beneath the decimal points above it."
-                : "Read the result from left to right. Every column has been added, including the final regrouped amount.";
+                : `Read the result from left to right. Adding ${answer} to ${readable(calc.b.whole, calc.b.decimal)} returns ${readable(calc.a.whole, calc.a.decimal)}, which is the check worth making.`;
         };
 
         const paintDots = () => {
@@ -364,7 +450,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const buildDots = () => {
             dots = Array.from({ length: totalStages }, () => {
                 const dot = document.createElement("span");
-                dot.className = "addition-scene__dot";
+                dot.className = "subtraction-scene__dot";
                 return dot;
             });
             progressBar.replaceChildren(...dots);
@@ -443,7 +529,14 @@ document.addEventListener("DOMContentLoaded", () => {
             const b = parseNumber(fixed ? limit(scene.dataset.b || "") : limitValue(inputs.b));
             if (!a || !b) return;
 
-            calculation = buildCalculation(a, b);
+            const shape = padPair(a, b);
+            if (isSmaller(shape.aDigits, shape.bDigits)) {
+                if (notice) notice.hidden = false;
+                return;
+            }
+            if (notice) notice.hidden = true;
+
+            calculation = buildCalculation(a, b, shape);
             const stages = calculation.operations.length + 2;
             if (stages !== totalStages) {
                 totalStages = stages;

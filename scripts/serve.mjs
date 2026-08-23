@@ -27,7 +27,7 @@ const TYPES = {
 const send = (res, code, body, type = "text/html; charset=utf-8") =>
     res.writeHead(code, { "Content-Type": type }).end(body);
 
-createServer((req, res) => {
+const server = createServer((req, res) => {
     const url = decodeURIComponent(new URL(req.url, "http://localhost").pathname);
 
     // Match production: the bare root redirects into the prefixed site.
@@ -51,6 +51,20 @@ createServer((req, res) => {
 
     res.writeHead(200, { "Content-Type": TYPES[extname(file).toLowerCase()] ?? "application/octet-stream" });
     createReadStream(file).pipe(res);
-}).listen(PORT, () => {
+});
+
+server.on("error", (err) => {
+    if (err.code !== "EADDRINUSE") throw err;
+    // Usually a server left running in another terminal — say so, rather than
+    // dying in a stack trace that looks like the site is broken.
+    console.error(
+        `Port ${PORT} is already in use.\n` +
+        `  If that is this server, the site is already at http://localhost:${PORT}${BASE}/pages/home.html\n` +
+        `  To use a different port:   node scripts/serve.mjs ${PORT + 1}\n` +
+        `  To find what holds it:     lsof -nP -iTCP:${PORT} -sTCP:LISTEN`);
+    process.exit(1);
+});
+
+server.listen(PORT, () => {
     console.log(`Serving ${ROOT}\n  at http://localhost:${PORT}${BASE}/pages/home.html`);
 });

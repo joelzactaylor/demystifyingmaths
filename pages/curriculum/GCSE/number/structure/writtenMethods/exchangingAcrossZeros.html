@@ -10,11 +10,14 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/columnSubtraction.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/exchangingAcrossZeros.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
+    <script src="/demystifyingmaths/js/columnSubtraction.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -45,14 +48,254 @@
         <aside id="page-nav-container"></aside>
 
         <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>Subtractions like 4.03 - 1.276 and 3000 - 847 where the exchange must travel through one or more zeros, showing where each borrowed unit comes from and the reindexed digits. Assumes column-subtraction; do not reteach basic single-column exchange here. Both tiers. (N2)</p>
+            <section>
+                <h1>Introduction</h1>
+                <p class="prereq"><b>Before this page:</b> <span>setting a subtraction out in columns and exchanging one
+                        unit from the column on the left, both from
+                        <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/columnSubtraction.html">column subtraction</a>.</span></p>
+
+                <p>3,000 &minus; 847 looks harmless until you start it. The ones need 7 and hold none, so they ask the
+                    tens for a ten. The tens hold none either. Neither do the hundreds.</p>
+
+                <div class="sum-board sum-board--whole" role="img"
+                    aria-label="3,000 subtract 847 set out in columns. The ones column, holding 0 above 7, is highlighted and its answer is unknown.">
+                    <span class="sum-board__op"></span>
+                    <span class="sum-board__cell sum-board__cell--label">1,000s</span>
+                    <span class="sum-board__cell sum-board__cell--label">100s</span>
+                    <span class="sum-board__cell sum-board__cell--label">10s</span>
+                    <span class="sum-board__cell sum-board__cell--label">1s</span>
+
+                    <span class="sum-board__op"></span>
+                    <span class="sum-board__cell sum-board__cell--term">3</span>
+                    <span class="sum-board__cell sum-board__cell--term">0</span>
+                    <span class="sum-board__cell sum-board__cell--term">0</span>
+                    <span class="sum-board__cell sum-board__cell--term sum-board__cell--asked">0</span>
+
+                    <span class="sum-board__op sum-board__rule">&minus;</span>
+                    <span
+                        class="sum-board__cell sum-board__cell--term sum-board__cell--placeholder sum-board__rule">0</span>
+                    <span class="sum-board__cell sum-board__cell--term sum-board__rule">8</span>
+                    <span class="sum-board__cell sum-board__cell--term sum-board__rule">4</span>
+                    <span class="sum-board__cell sum-board__cell--term sum-board__cell--asked sum-board__rule">7</span>
+
+                    <span class="sum-board__op"></span>
+                    <span class="sum-board__cell sum-board__cell--answer"></span>
+                    <span class="sum-board__cell sum-board__cell--answer"></span>
+                    <span class="sum-board__cell sum-board__cell--answer"></span>
+                    <span class="sum-board__cell sum-board__cell--answer sum-board__cell--asked">?</span>
+                </div>
+
+                <p>Three columns in a row have nothing to give, and yet the number is three thousand. The value has not
+                    gone anywhere. It is all held in one place, in a unit far too large to spend in the ones column,
+                    and the job is to get it down there.</p>
             </section>
 
             <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+                <h1>One thousand, broken up</h1>
+                <p>A thousand comes apart without anything being lost:</p>
+
+                <div class="rename-strip"
+                    aria-label="1000 written as 900 plus 90 plus 10, and 3000 written as 2000 plus 900 plus 90 plus 10.">
+                    <p class="rename-strip__line"><b>1000</b> =
+                        <span class="rename-strip__chip">900</span> +
+                        <span class="rename-strip__chip">90</span> +
+                        <span class="rename-strip__chip">10</span>
+                    </p>
+                    <p class="rename-strip__line"><b>3000</b> =
+                        <span class="rename-strip__chip">2000</span> +
+                        <span class="rename-strip__chip rename-strip__chip--moved">900</span> +
+                        <span class="rename-strip__chip rename-strip__chip--moved">90</span> +
+                        <span class="rename-strip__chip rename-strip__chip--moved">10</span>
+                    </p>
+                </div>
+
+                <p>That second line is 3,000 written so that every column has something in it. The exchange does not leap over the empty columns; it stops in each one on the way.
+                    One thousand becomes ten hundreds, nine stay in the hundreds and one moves on. That hundred becomes
+                    ten tens, nine stay and one moves on. That ten becomes ten ones, and the ones finally have
+                    something to subtract from.</p>
+
+                <aside class="important-box" aria-labelledby="cost-title">
+                    <h2 class="important-box__title" id="cost-title">The whole run costs one unit</h2>
+                    <p>The thousands drop by one, not by three. Everything the exchange left behind in the empty
+                        columns came out of that single thousand, so the top line is worth what it always was:</p>
+                </aside>
+
+                <div class="worth" role="img" aria-label="900 plus 90 plus 10 equals 1000.">
+                    <b>900</b> + <b>90</b> + <b>10</b> = <span>1000</span>
+                </div>
+            </section>
+
+            <section>
+                <h1>In the columns</h1>
+                <p>Written down, the 3, 0, 0, 0 becomes 2, 9, 9 and 10. A run of 9s in somebody's working always means
+                    an exchange that had to travel. Here there is only one, taken from the thousands and spent in the
+                    ones.</p>
+
+                <div class="worked">
+                    <h3 class="worked__title">Example: calculate 3,000 &minus; 847</h3>
+
+                    <div class="subtraction-scene" data-subtraction-scene data-a="3000" data-b="847">
+                        <div class="subtraction-scene__sticky">
+                            <p class="subtraction-scene__heading">3,000 &minus; 847</p>
+
+                            <div class="subtraction-board">
+                                <div class="subtraction-board__paper" data-paper></div>
+                            </div>
+
+                            <div class="subtraction-scene__caption" aria-live="polite">
+                                <h3 data-step-title>Align equal place values</h3>
+                                <p data-step-copy>Begin with equal place values directly beneath one another. The ones
+                                    sit under the ones, the tens under the tens, and so on.</p>
+                            </div>
+
+                            <div class="subtraction-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript>
+                            <p><strong>3,000 &minus; 847 = 2,153</strong></p>
+                        </noscript>
+                    </div>
+
+                    <p class="worked__answer"><strong>3,000 &minus; 847 = 2,153</strong></p>
+                </div>
+
+                <p>The check still works, and it is worth making here more than anywhere: 2,153 + 847 = 3,000.</p>
+            </section>
+
+            <section>
+                <h1>Watch it travel</h1>
+                <div class="subtraction-scene" data-subtraction-scene>
+                    <div class="subtraction-scene__sticky">
+                        <div class="subtraction-scene__inputs">
+                            <label>
+                                <span>Start with</span>
+                                <input type="text" inputmode="decimal" maxlength="9" value="30000" autocomplete="off"
+                                    spellcheck="false" data-term="a">
+                            </label>
+                            <span class="subtraction-scene__minus" aria-hidden="true">&minus;</span>
+                            <label>
+                                <span>Take away</span>
+                                <input type="text" inputmode="decimal" maxlength="9" value="6748" autocomplete="off"
+                                    spellcheck="false" data-term="b">
+                            </label>
+                        </div>
+
+                        <p class="subtraction-scene__notice" data-notice hidden>The second number is the larger one, so
+                            the answer falls below zero. Lower it, or read
+                            <a
+                                href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/addingSubtractingNegatives.html">adding
+                                and subtracting negatives</a>.
+                        </p>
+
+                        <div class="subtraction-board">
+                            <div class="subtraction-board__paper" data-paper></div>
+                        </div>
+
+                        <div class="subtraction-scene__caption" aria-live="polite">
+                            <h3 data-step-title>Align equal place values</h3>
+                            <p data-step-copy>Begin with equal place values directly beneath one another. The ones sit
+                                under the ones, the tens under the tens, and so on.</p>
+                        </div>
+
+                        <div class="subtraction-scene__progress" data-progress aria-hidden="true"></div>
+                    </div>
+                    <noscript>
+                        <p><strong>30,000 &minus; 6,748 = 23,252</strong></p>
+                    </noscript>
+                </div>
+            </section>
+
+            <section>
+                <h1>Zeros in a decimal</h1>
+                <p>Padding a short decimal creates zeros of its own, and they behave exactly like the ones in 3,000. In
+                    4.03 the first exchange is ordinary and the second has to travel.</p>
+
+                <div class="worked">
+                    <h3 class="worked__title">Example: calculate 4.03 &minus; 1.276</h3>
+
+                    <div class="subtraction-scene" data-subtraction-scene data-a="4.03" data-b="1.276">
+                        <div class="subtraction-scene__sticky">
+                            <p class="subtraction-scene__heading">4.03 &minus; 1.276</p>
+
+                            <div class="subtraction-board">
+                                <div class="subtraction-board__paper" data-paper></div>
+                            </div>
+
+                            <div class="subtraction-scene__caption" aria-live="polite">
+                                <h3 data-step-title>Align equal place values</h3>
+                                <p data-step-copy>Begin with the decimal points directly beneath one another. Write
+                                    4.03 as 4.030 so every occupied place has a digit to work with.</p>
+                            </div>
+
+                            <div class="subtraction-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript>
+                            <p><strong>4.030 &minus; 1.276 = 2.754</strong></p>
+                        </noscript>
+                    </div>
+
+                    <p class="worked__answer"><strong>4.030 &minus; 1.276 = 2.754</strong></p>
+                </div>
+
+                <p>A whole number against a three-place decimal starts every decimal column empty, so the exchange
+                    travels the full width of the decimal.</p>
+
+                <div class="worked">
+                    <h3 class="worked__title">Example: calculate 12 &minus; 3.475</h3>
+
+                    <div class="subtraction-scene" data-subtraction-scene data-a="12" data-b="3.475">
+                        <div class="subtraction-scene__sticky">
+                            <p class="subtraction-scene__heading">12 &minus; 3.475</p>
+
+                            <div class="subtraction-board">
+                                <div class="subtraction-board__paper" data-paper></div>
+                            </div>
+
+                            <div class="subtraction-scene__caption" aria-live="polite">
+                                <h3 data-step-title>Align equal place values</h3>
+                                <p data-step-copy>Begin with the decimal points directly beneath one another. Write 12
+                                    as 12.000 so every occupied place has a digit to work with.</p>
+                            </div>
+
+                            <div class="subtraction-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript>
+                            <p><strong>12.000 &minus; 3.475 = 8.525</strong></p>
+                        </noscript>
+                    </div>
+
+                    <p class="worked__answer"><strong>12.000 &minus; 3.475 = 8.525</strong></p>
+                </div>
+            </section>
+
+            <section>
+                <h1>Common mistakes</h1>
+                <p>The method is the one you already know. What goes wrong here is the bookkeeping of the run.</p>
+                <ul class="slips">
+                    <li><b>Making the donor a 9 as well</b><span>Only the columns the exchange passes through become 9.
+                            The column it finally reaches drops by one, so the 3 thousands become 2 &mdash; not
+                            9.</span></li>
+                    <li><b>Stopping the run too early</b><span>Every empty column between the request and the donor
+                            becomes 9. Leaving one of them as 0 throws away ninety, or nine hundred, depending on where
+                            it sat.</span></li>
+                    <li><b>Reading the zero that is still written</b><span>Once a column has been rewritten, the digit
+                            above it is the one to use: 9 &minus; 4, not 0 &minus; 4.</span></li>
+                    <li><b>Reversing the digits to avoid the trouble</b><span>0 &minus; 7 is not 7. A column that
+                            cannot pay is the signal to exchange, and a row of zeros above the line is no
+                            exception.</span></li>
+                </ul>
+            </section>
+
+            <section>
+                <h1>Summary</h1>
+                <ol class="recap">
+                    <li>A column with nothing to give cannot stop an exchange. The request travels left until it
+                        reaches a column that has something.</li>
+                    <li>Every column passed on the way keeps 9 and sends the rest on; the column finally reached drops
+                        by one.</li>
+                    <li>900 + 90 + 10 = 1000, which is why a whole run of 9s costs the donor exactly one unit.</li>
+                    <li>Padding a short decimal makes zeros of its own, and they travel in the same way.</li>
+                    <li>Subtract from the rewritten digits, never from the ones they replaced.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">

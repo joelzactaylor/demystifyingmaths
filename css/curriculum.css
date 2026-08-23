@@ -15,6 +15,52 @@
 
 .topic-section h2 { margin-bottom: 18px; color: #09539d; font-size: 2rem; }
 
+/* SITE NOTICE — a standing, page-level advisory. It currently explains that the
+   curriculum is published as a complete map while most lesson pages are still
+   placeholders, so a reader who lands on an empty page knows that is expected
+   rather than broken.
+
+   Ochre like the practice cards, so it reads as deliberately not part of the blue
+   page furniture, but heavier: full width, a solid left bar and no hover. This is
+   not .author-note — that is dashed per-page scaffolding deleted as each page is
+   written, whereas this speaks for the site as a whole. */
+
+.site-notice {
+    margin: 24px 0 0;
+    padding: 20px 24px;
+    border: 2px solid #e3cb9b;
+    border-left: 8px solid #b9832c;
+    border-radius: 14px;
+    background: #fffdf6;
+}
+
+/* An eyebrow label, not a section title, so it opts out of `.topic-section h2`. */
+.site-notice__label {
+    margin: 0 0 10px;
+    color: #8c5c14;
+    font-size: .82rem;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.site-notice p { max-width: 70ch; margin: 0; color: #41535c; line-height: 1.6; }
+.site-notice p + p { margin-top: 12px; }
+
+/* `section a` in shared.css centres links as shrink-to-fit blocks; these run
+   inline inside a sentence. Same reset the card rules above use. */
+.site-notice a {
+    width: auto;
+    margin: 0;
+    font-size: inherit;
+    text-shadow: none;
+    color: #8c5c14;
+    text-decoration: underline;
+}
+
+.site-notice a:hover { color: #6d470f; }
+.site-notice a:focus-visible { outline: 3px solid #8c5c14; outline-offset: 2px; }
+
 /* CARD GRID */
 
 /* grid-auto-rows keeps every row the same height, and the shared min-height

@@ -1,0 +1,21 @@
+/* Exchanging across zeros shares its drawing vocabulary and its scroll-led
+   calculation with column subtraction, so it loads that stylesheet first and
+   adds only what is particular to this page. */
+
+/* The run of nines, gathered against the single unit that paid for it. */
+.worth {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    margin: 22px 0;
+    padding: 16px 22px;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #e6c893;
+    border-radius: 16px;
+    background: #fffdf7;
+    color: #173849;
+    font: 700 1.15rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+.worth b { padding: 8px 14px 9px; border: 2px solid #d99a20; border-radius: 11px; background: #fff8df; color: #9b5f12; }

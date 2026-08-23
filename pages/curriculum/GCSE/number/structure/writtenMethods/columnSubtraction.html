@@ -6,18 +6,21 @@
     <title>Demystifying Maths | GCSE Column subtraction</title>
     <meta name="description" content="Subtracting in columns with exchange, lining up decimals of different lengths.">
     <meta property="og:title" content="Demystifying Maths">
-    <meta property="og:description" content="Subtracting in columns with exchange, lining up decimals of different lengths.">
+    <meta property="og:description"
+        content="Subtracting in columns with exchange, lining up decimals of different lengths.">
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/columnSubtraction.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
+    <script src="/demystifyingmaths/js/columnSubtraction.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&amp;display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -33,11 +36,11 @@
                     <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
                     <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
                     <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and calculation</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/">Written methods</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li>
-                        <p>Column subtraction</p>
-                    </li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and calculation</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/">Written methods</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><p>Column subtraction</p></li>
                 </ol>
             </nav>
         </header>
@@ -45,25 +48,354 @@
         <aside id="page-nav-container"></aside>
 
         <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>Column subtraction of integers and decimals with exchange, aligning points and padding shorter decimals, e.g. 12 - 3.475; change and difference contexts. Exchanges that must pass through zero digits get the sibling page; answers below zero live on adding-subtracting-negatives. Both tiers. (N2)</p>
+            <section>
+                <h1>Introduction</h1>
+                <p class="prereq"><b>Before this page:</b> <span>the column layout from
+                        <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/columnAddition.html">column addition</a>,
+                        and what each digit is worth in
+                        <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/placeValue.html">integers and decimals</a>.</span></p>
+
+                <p>Column subtraction takes one place value at a time. In 876 &minus; 342 the ones ask
+                    6 &minus; 2 = 4, the tens ask 7 &minus; 4 = 3 and the hundreds ask 8 &minus; 3 = 5. Each answer is
+                    written under the column it came from, and reading them together gives 534. The number as a whole
+                    is never handled: the layout turns one large subtraction into three small ones.</p>
+
+                <p>That works because every column here holds enough to pay what is asked of it. 872 &minus; 346 is
+                    set out in exactly the same way, but the ones column asks 2 &minus; 6, and there are not six ones
+                    there to take.</p>
+
+                <div class="sum-board sum-board--intro" role="img"
+                    aria-label="872 subtract 346 set out in columns. The ones column, holding 2 above 6, is highlighted and its answer is unknown.">
+                    <span class="sum-board__op"></span>
+                    <span class="sum-board__cell sum-board__cell--label">100s</span>
+                    <span class="sum-board__cell sum-board__cell--label">10s</span>
+                    <span class="sum-board__cell sum-board__cell--label">1s</span>
+
+                    <span class="sum-board__op"></span>
+                    <span class="sum-board__cell sum-board__cell--term">8</span>
+                    <span class="sum-board__cell sum-board__cell--term">7</span>
+                    <span class="sum-board__cell sum-board__cell--term sum-board__cell--asked">2</span>
+
+                    <span class="sum-board__op sum-board__rule">&minus;</span>
+                    <span class="sum-board__cell sum-board__cell--term sum-board__rule">3</span>
+                    <span class="sum-board__cell sum-board__cell--term sum-board__rule">4</span>
+                    <span class="sum-board__cell sum-board__cell--term sum-board__cell--asked sum-board__rule">6</span>
+
+                    <span class="sum-board__op"></span>
+                    <span class="sum-board__cell sum-board__cell--answer"></span>
+                    <span class="sum-board__cell sum-board__cell--answer"></span>
+                    <span class="sum-board__cell sum-board__cell--answer sum-board__cell--asked">?</span>
+                </div>
+
+                <p>Nothing has gone wrong. 872 is the larger number, so there is an answer &mdash; the ones column
+                    simply cannot pay for it on its own. What it needs is sitting one place to the left, in the
+                    7 tens. Fetching it is called <strong>exchanging</strong>, and it is the only thing subtraction
+                    adds to the column method.</p>
             </section>
 
             <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+                <h1>Exchanging</h1>
+                <p>872 means 800 + 70 + 2. It also means 800 + 60 + 12: the same number, with one ten swapped for ten
+                    ones.</p>
+
+                <div class="rename-strip"
+                    aria-label="872 written as 800 plus 70 plus 2, and again as 800 plus 60 plus 12.">
+                    <p class="rename-strip__line"><b>872</b> =
+                        <span class="rename-strip__chip">800</span> +
+                        <span class="rename-strip__chip">70</span> +
+                        <span class="rename-strip__chip">2</span>
+                    </p>
+                    <p class="rename-strip__line"><b>872</b> =
+                        <span class="rename-strip__chip">800</span> +
+                        <span class="rename-strip__chip rename-strip__chip--moved">60</span> +
+                        <span class="rename-strip__chip rename-strip__chip--moved">12</span>
+                    </p>
+                </div>
+
+                <p>Swapping a &pound;10 note for ten &pound;1 coins does not change how much money you have. It changes
+                    what you can pay with. An exchange does exactly that, and it is available in every column: one
+                    hundred for ten tens, one tenth for ten hundredths.</p>
+
+                <p>The ones column now holds 12, and 12 &minus; 6 = 6. The other two columns are straightforward:
+                    6 &minus; 4 = 2 and 8 &minus; 3 = 5.</p>
+
+                <p>Two marks record the swap. Cross out the 7 and write 6 above it, because the tens gave one away.
+                    Write a small 1 in front of the 2, because the ones received it &mdash; that column now reads 12.</p>
+
+                <div class="sum-board sum-board--intro" role="img"
+                    aria-label="872 subtract 346 with the exchange written in. The 7 is crossed out and 6 written above it, a small 1 sits in front of the 2 so the ones read 12, and the answer line reads 526.">
+                    <span class="sum-board__op"></span>
+                    <span class="sum-board__cell sum-board__cell--label">100s</span>
+                    <span class="sum-board__cell sum-board__cell--label">10s</span>
+                    <span class="sum-board__cell sum-board__cell--label">1s</span>
+
+                    <span class="sum-board__op"></span>
+                    <span class="sum-board__cell sum-board__cell--exchange"></span>
+                    <span class="sum-board__cell sum-board__cell--exchange"><span class="sum-board__reduced">6</span></span>
+                    <span class="sum-board__cell sum-board__cell--exchange"></span>
+
+                    <span class="sum-board__op"></span>
+                    <span class="sum-board__cell sum-board__cell--term">8</span>
+                    <span class="sum-board__cell sum-board__cell--term sum-board__cell--spent">7</span>
+                    <span class="sum-board__cell sum-board__cell--term"><span class="sum-board__ten">1</span>2</span>
+
+                    <span class="sum-board__op sum-board__rule">&minus;</span>
+                    <span class="sum-board__cell sum-board__cell--term sum-board__rule">3</span>
+                    <span class="sum-board__cell sum-board__cell--term sum-board__rule">4</span>
+                    <span class="sum-board__cell sum-board__cell--term sum-board__rule">6</span>
+
+                    <span class="sum-board__op"></span>
+                    <span class="sum-board__cell sum-board__cell--answer">5</span>
+                    <span class="sum-board__cell sum-board__cell--answer">2</span>
+                    <span class="sum-board__cell sum-board__cell--answer">6</span>
+                </div>
+
+                <p>Both marks matter. Take the ten without paying for it and the top number has grown by ten; pay for
+                    it without writing the 1 and you have thrown ten away.</p>
+
+                <div class="rule-card">
+                    <h2 class="rule-card__statement">Every column asks the same question</h2>
+                    <div class="decision">
+                        <p class="decision__question">Is the top digit big enough to take the digit below it?</p>
+                        <div class="decision__branches">
+                            <article class="decision__branch">
+                                <span class="decision__verdict">Yes &mdash; subtract</span>
+                                <p>Write the answer under the line and move one column left.</p>
+                            </article>
+                            <article class="decision__branch decision__branch--exchange">
+                                <span class="decision__verdict">No &mdash; exchange first</span>
+                                <p>Take one unit from the column on the left, lower that column by one, add ten here,
+                                    then subtract.</p>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h1>Setting it out</h1>
+                <p>Two things to settle before any subtracting starts.</p>
+
+                <p><strong>The larger number goes on top.</strong> Addition can be written either way round;
+                    subtraction cannot, because 8 &minus; 3 and 3 &minus; 8 are different questions. If the number
+                    underneath is the larger one, the answer is below zero, which is
+                    <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/addingSubtractingNegatives.html">adding
+                        and subtracting negatives</a>.
+                </p>
+
+                <p><strong>Every column needs a digit.</strong> Decimals of different lengths do not finish in the
+                    same column, so line the points up and fill the gaps with zeros. An empty column has nothing to
+                    subtract from and nothing to exchange, so 14.6 &minus; 8.35 cannot begin until the 14.6 is written
+                    as 14.60.</p>
+
+                <div class="pad-strip" role="img"
+                    aria-label="14.6 written as 14.60, with the empty hundredths place filled by a zero.">
+                    <span>1</span><span>4</span><i>.</i><span>6</span><b>0</b>
+                </div>
+
+                <aside class="important-box" aria-labelledby="units-title">
+                    <h2 class="important-box__title" id="units-title">Work in one unit</h2>
+                    <p>Settle mixed units before drawing the columns. <strong>1.2 m &minus; 35 cm</strong> is set out as
+                        <strong>1.20 &minus; 0.35</strong>, and the answer <strong>0.85</strong> is in metres, because
+                        metres is what the columns were counting.
+                    </p>
+                </aside>
+            </section>
+
+            <section>
+                <h1>Worked examples</h1>
+                <p>Watch the hundreds column in the first of these: it gives its last hundred away, and then has to
+                    borrow one itself.</p>
+
+                <div class="worked">
+                    <h3 class="worked__title">Example: calculate 6,145 &minus; 2,978</h3>
+
+                    <div class="subtraction-scene" data-subtraction-scene data-a="6145" data-b="2978">
+                        <div class="subtraction-scene__sticky">
+                            <p class="subtraction-scene__heading">6,145 &minus; 2,978</p>
+
+                            <div class="subtraction-board">
+                                <div class="subtraction-board__paper" data-paper></div>
+                            </div>
+
+                            <div class="subtraction-scene__caption" aria-live="polite">
+                                <h3 data-step-title>Align equal place values</h3>
+                                <p data-step-copy>Begin with equal place values directly beneath one another. The ones
+                                    sit under the ones, the tens under the tens, and so on.</p>
+                            </div>
+
+                            <div class="subtraction-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript>
+                            <p><strong>6,145 &minus; 2,978 = 3,167</strong></p>
+                        </noscript>
+                    </div>
+
+                    <p class="worked__answer"><strong>6,145 &minus; 2,978 = 3,167</strong></p>
+                </div>
+
+                <aside class="important-box" aria-labelledby="check-title">
+                    <h2 class="important-box__title" id="check-title">Check it by adding</h2>
+                    <p>If <strong>6,145 &minus; 2,978 = 3,167</strong>, then <strong>3,167 + 2,978</strong> must come
+                        back to <strong>6,145</strong>. It is worth the minute in an exam: an exchange that was taken
+                        but never paid for shows up as a check that is ten out in exactly one column.</p>
+                </aside>
+
+                <p>The method never notices the decimal point. The columns carry on past it, and the answer takes
+                    its point from the points above.</p>
+
+                <div class="worked">
+                    <h3 class="worked__title">Example: calculate 14.6 &minus; 8.35</h3>
+
+                    <div class="subtraction-scene" data-subtraction-scene data-a="14.6" data-b="8.35">
+                        <div class="subtraction-scene__sticky">
+                            <p class="subtraction-scene__heading">14.6 &minus; 8.35</p>
+
+                            <div class="subtraction-board">
+                                <div class="subtraction-board__paper" data-paper></div>
+                            </div>
+
+                            <div class="subtraction-scene__caption" aria-live="polite">
+                                <h3 data-step-title>Align equal place values</h3>
+                                <p data-step-copy>Begin with the decimal points directly beneath one another. Write 14.6
+                                    as 14.60 so every occupied place has a digit to work with.</p>
+                            </div>
+
+                            <div class="subtraction-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript>
+                            <p><strong>14.60 &minus; 8.35 = 6.25</strong></p>
+                        </noscript>
+                    </div>
+
+                    <p class="worked__answer"><strong>14.60 &minus; 8.35 = 6.25</strong></p>
+                </div>
+
+            </section>
+
+            <section>
+                <h1>Where it turns up</h1>
+                <p>Exam questions rarely use the word subtract. They describe one of two situations, and both are
+                    answered by the same columns.</p>
+
+                <div class="reading-pair">
+                    <article class="reading-card">
+                        <h3>What is left</h3>
+                        <p>A roll holds 14.6 m of cable and 8.35 m is cut off it. What remains is
+                            14.60 &minus; 8.35 = <strong>6.25 m</strong>.</p>
+                        <p>Change from a payment is the same shape of question: the money handed over is the starting
+                            amount, and the price comes out of it.</p>
+                    </article>
+                    <article class="reading-card">
+                        <h3>How far apart</h3>
+                        <p>One shelf is 2.4 m long and another is 1.75 m. Nothing is cut; the question is the gap
+                            between them, which is 2.40 &minus; 1.75 = <strong>0.65 m</strong>.</p>
+                        <div class="number-line" role="img"
+                            aria-label="A number line with marks at 1.75 and 2.4, and the distance between them labelled 0.65.">
+                            <span class="number-line__span" style="left: 25%; width: 65%"><b>0.65 m</b></span>
+                            <span class="number-line__mark" style="left: 25%"><span>1.75 m</span></span>
+                            <span class="number-line__mark" style="left: 90%"><span>2.4 m</span></span>
+                        </div>
+                    </article>
+                </div>
+
+                <p>Difference, change, fewer, further, colder, how much more: each of these is one of the two, and in
+                    both of them the larger quantity goes on top.</p>
+            </section>
+
+            <section>
+                <h1>A calculation in full</h1>
+                <div class="subtraction-scene" data-subtraction-scene>
+                    <div class="subtraction-scene__sticky">
+                        <div class="subtraction-scene__inputs">
+                            <label>
+                                <span>Start with</span>
+                                <input type="text" inputmode="decimal" maxlength="9" value="4351.2" autocomplete="off"
+                                    spellcheck="false" data-term="a">
+                            </label>
+                            <span class="subtraction-scene__minus" aria-hidden="true">&minus;</span>
+                            <label>
+                                <span>Take away</span>
+                                <input type="text" inputmode="decimal" maxlength="9" value="1876.45" autocomplete="off"
+                                    spellcheck="false" data-term="b">
+                            </label>
+                        </div>
+
+                        <p class="subtraction-scene__notice" data-notice hidden>The second number is the larger one, so
+                            the answer falls below zero. Lower it, or read
+                            <a
+                                href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/addingSubtractingNegatives.html">adding
+                                and subtracting negatives</a>.
+                        </p>
+
+                        <div class="subtraction-board">
+                            <div class="subtraction-board__paper" data-paper></div>
+                        </div>
+
+                        <div class="subtraction-scene__caption" aria-live="polite">
+                            <h3 data-step-title>Align equal place values</h3>
+                            <p data-step-copy>Begin with the decimal points directly beneath one another. Write 4351.2
+                                as
+                                4351.20 so every occupied place has a digit to work with.</p>
+                        </div>
+
+                        <div class="subtraction-scene__progress" data-progress aria-hidden="true"></div>
+                    </div>
+                    <noscript>
+                        <p><strong>4,351.20 &minus; 1,876.45 = 2,474.75</strong></p>
+                    </noscript>
+                </div>
+            </section>
+
+            <section>
+                <h1>Common mistakes</h1>
+                <p>Almost every lost mark comes from one of four places, and none of them is the arithmetic.</p>
+                <ul class="slips">
+                    <li><b>Taking the small digit from the large one</b><span>Faced with 2 above 6, it is tempting to
+                            write 4. That answers 6 &minus; 2 instead, and the total comes out ten too big. The order
+                            within a column is fixed.</span></li>
+                    <li><b>Half an exchange</b><span>The ten arrives, but the column it came from is left as it was, so
+                            the top number has quietly grown by ten. Cross out and lower the giving column
+                            first.</span></li>
+                    <li><b>Using the old digit</b><span>Once a column has been lowered, the new digit is the one to
+                            read. Using the crossed-out 4 instead of the 3 above it undoes the exchange you have just
+                            made.</span></li>
+                    <li><b>Starting before the setting out is finished</b><span>An unpadded decimal, or the two numbers
+                            written the wrong way round, is a wrong answer already, however neatly the columns are then
+                            worked.</span></li>
+                </ul>
+            </section>
+
+            <section>
+                <h1>Summary</h1>
+                <ol class="recap">
+                    <li>The larger number goes on top, points beneath points, with empty decimal places filled by zeros
+                        before anything else.</li>
+                    <li>Work from the right, one column at a time, writing each result under the column it came
+                        from.</li>
+                    <li>If the top digit is too small, exchange: one unit from the left becomes ten here. The number is
+                        rewritten, not changed.</li>
+                    <li>Record both halves &mdash; cross out and lower the column that gave, and write the 1 in front
+                        of the digit that received.</li>
+                    <li>Check by adding: the answer plus the number taken away must return the number you started
+                        with.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
                 <h2 id="practice-heading">Practice and continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/practiceColumnSubtraction.html" style="background-image: none">
+                    <a class="topic-card topic-card--practice"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/practiceColumnSubtraction.html"
+                        style="background-image: none">
                         <span class="practice-card__kicker">Practice</span>
                         <h3>Column subtraction</h3>
                         <p>Subtracting in columns with exchange, lining up decimals of different lengths.</p>
                     </a>
-                    <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/exchangingAcrossZeros.html" style="background-image: none">
+                    <a class="topic-card topic-card--next"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/exchangingAcrossZeros.html"
+                        style="background-image: none">
                         <span class="topic-card__kicker">Next lesson</span>
                         <h3>Exchanging across zeros</h3>
                         <p>Subtracting when a column holds a zero, and where the exchange comes from.</p>
