@@ -1,0 +1,325 @@
+/* Standalone styling for the unlisted vocab tool. It borrows the site palette
+   (blue surround, beige panel, teal accent, Aleo) but not css/shared.css, which
+   pins a 900px layout and scales it down with a transform — wrong shape for a
+   tool that wants to be usable on a phone. */
+
+:root {
+    --surround: rgb(217, 252, 255);
+    --panel: rgb(235, 237, 218);
+    --panel-2: #e7e4ce;
+    --ink: #1b1b1b;
+    --ink-quiet: #5a5a52;
+    --accent: #116e93;
+    --accent-dark: #0c536f;
+    --good: #2f7d32;
+    --bad: #9c2f2f;
+    --line: rgba(0, 0, 0, 0.14);
+}
+
+* { box-sizing: border-box; }
+
+html {
+    background: var(--surround);
+    font-family: 'Aleo', Georgia, serif;
+    color: var(--ink);
+}
+
+body {
+    margin: 0;
+    padding: 24px 16px 48px;
+    background: var(--surround);
+    line-height: 1.5;
+}
+
+.wrap {
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+/* HEAD */
+
+.head { text-align: center; margin-bottom: 22px; }
+.head h1 { margin: 0 0 4px; font-size: 2rem; letter-spacing: 0.01em; }
+.sub { margin: 0; color: var(--ink-quiet); font-size: 0.92rem; }
+code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.9em; }
+
+/* BUCKETS */
+
+.buckets {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    margin-bottom: 18px;
+}
+
+.bucket {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 10px 6px;
+    text-align: center;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.bucket.flash {
+    box-shadow: 0 0 0 3px var(--accent), 0 3px 10px rgba(0, 0, 0, 0.12);
+    transform: translateY(-2px);
+}
+
+.bucket-count { display: block; font-size: 1.2rem; font-weight: 700; }
+.bucket-label { display: block; font-size: 0.72rem; color: var(--ink-quiet); }
+
+@media (max-width: 760px) {
+    .buckets { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* CARD */
+
+.card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    padding: 26px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+    min-height: 240px;
+}
+
+.idle-msg { text-align: center; color: var(--ink-quiet); margin: 18px 0 22px; }
+#idle-state, #done-state { text-align: center; }
+
+.word-meta { margin: 0 0 6px; display: flex; gap: 8px; flex-wrap: wrap; }
+
+.pill {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 999px;
+    padding: 2px 10px;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+}
+
+.pill-quiet { background: transparent; color: var(--ink-quiet); padding-left: 0; }
+
+.word {
+    margin: 0 0 18px;
+    font-size: 2.1rem;
+    line-height: 1.2;
+    word-break: break-word;
+}
+
+.field-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--ink-quiet);
+    margin-bottom: 6px;
+}
+
+textarea {
+    width: 100%;
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #f6f5ea;
+    color: var(--ink);
+    resize: vertical;
+}
+
+textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+/* BUTTONS */
+
+.row { display: flex; align-items: center; gap: 10px; margin-top: 12px; }
+.row-wrap { flex-wrap: wrap; }
+.row-grade { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); }
+
+.btn {
+    font-family: inherit;
+    font-size: 0.95rem;
+    padding: 9px 18px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--panel-2);
+    color: var(--ink);
+    cursor: pointer;
+    transition: filter 0.15s, transform 0.05s;
+}
+
+.btn:hover { filter: brightness(0.95); }
+.btn:active { transform: translateY(1px); }
+.btn:disabled { opacity: 0.45; cursor: default; }
+.btn-primary { background: var(--accent); border-color: var(--accent-dark); color: #fff; }
+.btn-correct { background: var(--good); border-color: var(--good); color: #fff; }
+.btn-wrong { background: var(--bad); border-color: var(--bad); color: #fff; }
+.btn-danger { color: var(--bad); border-color: var(--bad); }
+.btn-big { font-size: 1.1rem; padding: 12px 28px; }
+
+.hint { font-size: 0.75rem; color: var(--ink-quiet); }
+
+/* ANSWER */
+
+.attempt-echo {
+    background: #f6f5ea;
+    border-left: 3px solid var(--line);
+    border-radius: 0 10px 10px 0;
+    padding: 10px 14px;
+    margin-bottom: 16px;
+}
+
+.attempt-echo h3, .definition h3 {
+    margin: 0 0 6px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-quiet);
+}
+
+.attempt-echo p { margin: 0; white-space: pre-wrap; }
+
+.definition ol { margin: 0; padding-left: 22px; }
+.definition li { margin-bottom: 8px; }
+.definition .pos { font-style: italic; color: var(--ink-quiet); margin: 10px 0 4px; }
+.definition .example { display: block; font-size: 0.88rem; color: var(--ink-quiet); }
+.src { text-transform: none; letter-spacing: 0; font-style: italic; }
+.loading { color: var(--ink-quiet); }
+
+.fallback {
+    margin-top: 16px;
+    padding: 14px;
+    background: #f6f5ea;
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+}
+
+.fallback p { margin-top: 0; font-size: 0.9rem; }
+.fallback a.btn { text-decoration: none; display: inline-block; }
+
+/* PANEL */
+
+.panel {
+    margin-top: 18px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 0 18px;
+}
+
+.panel summary {
+    cursor: pointer;
+    padding: 12px 0;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.panel-body { padding-bottom: 18px; }
+.panel-note { font-size: 0.85rem; color: var(--ink-quiet); }
+.panel hr { border: 0; border-top: 1px solid var(--line); margin: 18px 0; }
+
+.weights { display: flex; flex-wrap: wrap; gap: 14px; }
+.weights label, .gap-label { font-size: 0.85rem; }
+
+.weights input, .gap-label input {
+    width: 68px;
+    font-family: inherit;
+    font-size: 0.95rem;
+    padding: 5px 8px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #f6f5ea;
+}
+
+.warn { color: var(--bad); font-size: 0.85rem; }
+
+/* FOOT */
+
+.foot { margin-top: 22px; text-align: center; color: var(--ink-quiet); }
+.foot p { margin: 4px 0; font-size: 0.85rem; }
+.tiny { font-size: 0.75rem; }
+
+.toast {
+    position: fixed;
+    left: 50%;
+    bottom: 22px;
+    transform: translateX(-50%);
+    background: var(--ink);
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-size: 0.88rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    z-index: 50;
+}
+
+select {
+    font-family: inherit;
+    font-size: 0.95rem;
+    padding: 5px 8px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: #f6f5ea;
+    color: var(--ink);
+    max-width: 100%;
+}
+
+.gap-label { display: block; margin-bottom: 6px; }
+
+.queue {
+    margin: 0 0 12px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--ink-quiet);
+    letter-spacing: 0.02em;
+}
+
+/* SEARCH PANEL — only reachable when a Programmable Search Engine id is set;
+   without one, Google opens in its own window instead, because google.com sends
+   x-frame-options: SAMEORIGIN and will not render inside a frame. */
+
+/* The `hidden` attribute only sets display:none through the UA stylesheet, which
+   any display rule here outranks — without this the panel is always on screen. */
+.modal[hidden] { display: none; }
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 100;
+}
+
+.modal-box {
+    background: var(--panel);
+    border-radius: 14px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    width: min(860px, 100%);
+    max-height: 88vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.modal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--line);
+}
+
+.modal-head h2 { margin: 0; font-size: 1rem; }
+
+.modal-body {
+    padding: 12px 16px 18px;
+    overflow-y: auto;
+    background: #fff;
+    flex: 1;
+}
+
+#pse-id { width: 260px; max-width: 100%; }

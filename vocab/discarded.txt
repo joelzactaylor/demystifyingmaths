@@ -1,0 +1,9 @@
+# Words dropped from the vocab builder for everyone.
+#
+# One entry per line, matching the dictionary file exactly (case-sensitive).
+# Blank lines and lines starting with # are ignored.
+#
+# The page fetches this file on load and removes everything in it from the
+# rotation, so anything listed here is gone for every visitor. Use the
+# "Copy my discards" button in the page's Settings panel to get a block of
+# lines to paste in, then commit and deploy.

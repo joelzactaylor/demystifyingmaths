@@ -1,0 +1,12 @@
+# Hand-written definitions shown to everyone, in place of the dictionary's.
+#
+# One per line:   word<TAB>definition
+#
+# The separator is a single tab. Inside the definition, \n means a line break
+# and \\ means a literal backslash — nothing else is escaped. Blank lines and
+# lines starting with # are ignored. A word appearing twice keeps the last one.
+#
+# The page fetches this on load, so anything here is what every visitor sees for
+# that word. A visitor's own saved definition still wins over this file, on their
+# machine, until they publish it. Use "Copy my definitions" in the page's
+# Settings panel to get lines to paste in, then commit and deploy.

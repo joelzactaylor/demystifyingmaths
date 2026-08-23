@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Unlisted tool: nothing on the site links here, and this keeps it out of
+         search results for anyone who is not given the URL directly. -->
+    <meta name="robots" content="noindex, nofollow, noarchive">
+    <title>Vocab Builder</title>
+    <link rel="stylesheet" href="/demystifyingmaths/vocab/vocab.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="wrap">
+
+        <header class="head">
+            <h1>Vocab Builder</h1>
+            <p class="sub"><span id="list-name">…</span> — <span id="list-count">loading…</span> entries.
+                Progress is kept separately for each list.
+            </p>
+        </header>
+
+        <!-- BUCKETS -->
+        <section class="buckets" aria-label="Progress by bucket">
+            <div class="bucket" data-bucket="0">
+                <span class="bucket-count" id="count-0">–</span>
+                <span class="bucket-label">Unstarted</span>
+            </div>
+            <div class="bucket" data-bucket="a">
+                <span class="bucket-count" id="count-a">–</span>
+                <span class="bucket-label">Attempted</span>
+            </div>
+            <div class="bucket" data-bucket="1">
+                <span class="bucket-count" id="count-1">–</span>
+                <span class="bucket-label">Correct once</span>
+            </div>
+            <div class="bucket" data-bucket="2">
+                <span class="bucket-count" id="count-2">–</span>
+                <span class="bucket-label">Correct twice</span>
+            </div>
+            <div class="bucket" data-bucket="3">
+                <span class="bucket-count" id="count-3">–</span>
+                <span class="bucket-label">Correct thrice</span>
+            </div>
+            <div class="bucket" data-bucket="4">
+                <span class="bucket-count" id="count-4">–</span>
+                <span class="bucket-label">Complete</span>
+            </div>
+        </section>
+
+        <p class="queue" id="queue-line"></p>
+
+        <!-- CARD -->
+        <main class="card" id="card">
+
+            <div id="idle-state">
+                <p class="idle-msg" id="idle-msg">Press <strong>New word</strong> to begin.</p>
+                <button class="btn btn-primary btn-big" id="btn-new">New word</button>
+            </div>
+
+            <div id="quiz-state" hidden>
+                <p class="word-meta">
+                    <span class="pill" id="word-bucket">unstarted</span>
+                    <span class="pill pill-quiet" id="word-seen"></span>
+                </p>
+                <h2 class="word" id="word">—</h2>
+
+                <div id="ask-stage">
+                    <label class="field-label" for="attempt">Define it. Write as much or as little as you
+                        like — this is only for you to compare against.</label>
+                    <textarea id="attempt" rows="4" spellcheck="false"
+                        placeholder="Your definition…"></textarea>
+                    <div class="row">
+                        <button class="btn btn-primary" id="btn-reveal">Reveal definition</button>
+                        <button class="btn btn-quiet" id="btn-skip">Skip</button>
+                        <button class="btn btn-quiet" id="btn-discard">Discard</button>
+                        <span class="hint">Ctrl + Enter</span>
+                    </div>
+                </div>
+
+                <div id="answer-stage" hidden>
+                    <div class="attempt-echo" id="attempt-echo" hidden>
+                        <h3>You said</h3>
+                        <p id="attempt-text"></p>
+                    </div>
+
+                    <div class="definition" id="definition">
+                        <h3>Definition <span class="src" id="def-source"></span></h3>
+                        <div id="def-body"><p class="loading">Looking it up…</p></div>
+                    </div>
+
+                    <!-- Always available, not just on a miss: a Wiktionary hit is often
+                         "alternative form of …", which tells you nothing. Google cannot be
+                         framed, so this opens a separate search window unless a Programmable
+                         Search Engine id is set in Settings, in which case it opens here. -->
+                    <div class="fallback" id="lookup-box">
+                        <p id="no-entry-msg" hidden><strong>No dictionary entry found.</strong>
+                            No free dictionary API carries this entry.</p>
+                        <div class="row row-wrap">
+                            <button class="btn btn-primary" id="btn-lookup">Search Google</button>
+                            <span class="hint" id="lookup-hint"></span>
+                        </div>
+                        <label class="field-label" for="own-def">Your own definition — saved for
+                            next time, and shown in place of the dictionary's:</label>
+                        <textarea id="own-def" rows="3" spellcheck="false"
+                            placeholder="Your definition of this entry…"></textarea>
+                        <div class="row">
+                            <button class="btn btn-quiet" id="btn-save-def">Save definition</button>
+                            <span class="hint" id="save-note"></span>
+                        </div>
+                    </div>
+
+                    <div class="row row-grade">
+                        <button class="btn btn-correct" id="btn-correct">I was correct</button>
+                        <button class="btn btn-wrong" id="btn-wrong">I was wrong</button>
+                        <button class="btn btn-quiet" id="btn-discard-2">Discard</button>
+                        <span class="hint">1 / 2 · g search · d discard</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="done-state" hidden>
+                <p class="idle-msg">Every word is complete. Nothing left to draw.</p>
+            </div>
+        </main>
+
+        <!-- SETTINGS -->
+        <details class="panel">
+            <summary>Settings</summary>
+            <div class="panel-body">
+                <label class="gap-label" for="list-select">Word list
+                    <select id="list-select">
+                        <option value="web2">web2 — the main word list (235,976)</option>
+                        <option value="web2a">web2a — hyphenated terms and phrases (76,205)</option>
+                        <option value="both">Both combined (312,181)</option>
+                    </select>
+                </label>
+                <p class="panel-note" id="list-note"></p>
+
+                <hr>
+                <label class="gap-label" for="mode">Scheduling
+                    <select id="mode">
+                        <option value="spaced">Spaced repetition (recommended)</option>
+                        <option value="fixed">Fixed odds (as first specified)</option>
+                    </select>
+                </label>
+
+                <div id="spaced-opts">
+                    <p class="panel-note">A word comes back for review once it has waited its
+                        interval, and the interval grows each time you get it right — so
+                        "complete" means three correct recalls spread further and further
+                        apart, not three in a row. New words are only introduced when nothing
+                        is due and you are under the work-in-progress limit, which is what
+                        keeps the buckets draining instead of filling up forever.</p>
+                    <div class="weights">
+                        <label>Attempted <input type="number" id="il" min="1" max="9999" step="1"></label>
+                        <label>Correct once <input type="number" id="i1" min="1" max="9999" step="1"></label>
+                        <label>Correct twice <input type="number" id="i2" min="1" max="9999" step="1"></label>
+                        <label>Correct thrice <input type="number" id="i3" min="1" max="9999" step="1"></label>
+                    </div>
+                    <p class="panel-note">…reviews of waiting before a word in that bucket comes
+                        back round. A word you get wrong lands in Attempted and is queued to
+                        return soon, rather than dissolving back into a quarter of a million
+                        words you will never meet again.</p>
+                    <label class="gap-label">Words in progress at once
+                        <input type="number" id="cap" min="1" max="2000" step="1"></label>
+                    <p class="panel-note" id="spaced-note"></p>
+                </div>
+
+                <div id="fixed-opts" hidden>
+                    <p class="panel-note">Chance of drawing the next word from each bucket. Buckets with
+                        nothing in them are skipped and their share is spread over the rest.
+                        Complete is never drawn from.</p>
+                    <div class="weights">
+                        <label>Unstarted <input type="number" id="w0" min="0" max="100" step="1"> %</label>
+                        <label>Attempted <input type="number" id="w1" min="0" max="100" step="1"> %</label>
+                        <label>Once <input type="number" id="w2" min="0" max="100" step="1"> %</label>
+                        <label>Twice <input type="number" id="w3" min="0" max="100" step="1"> %</label>
+                        <label>Thrice <input type="number" id="w4" min="0" max="100" step="1"> %</label>
+                    </div>
+                    <div class="row row-wrap">
+                        <button class="btn btn-quiet" data-preset="80,15,3,1,1">Original, with Attempted (80/15/3/1/1)</button>
+                        <button class="btn btn-quiet" data-preset="45,20,20,10,5">Balanced (45/20/20/10/5)</button>
+                        <button class="btn btn-quiet" data-preset="20,25,25,20,10">Review-heavy (20/25/25/20/10)</button>
+                    </div>
+                    <p class="warn" id="weight-warn" hidden></p>
+                </div>
+
+                <hr>
+                <p class="panel-note">Minimum repeat gap — a word will not come round again until this
+                    many other words have been reviewed, whichever mode is running. If a bucket is
+                    smaller than the gap, its least-recently-seen word is used instead, so the gap
+                    can never deadlock a draw.</p>
+                <label class="gap-label">Gap <input type="number" id="gap" min="0" max="500" step="1">
+                    reviews</label>
+
+                <hr>
+                <p class="panel-note"><strong>Google lookup.</strong> Google refuses to be put in
+                    an iframe (<code>x-frame-options: SAMEORIGIN</code>), so a plain embed renders
+                    blank — as do DuckDuckGo, Bing and Brave. The one sanctioned way to show Google
+                    results inside a page is a Programmable Search Engine. Make one (free) at
+                    <a href="https://programmablesearchengine.google.com/" target="_blank"
+                        rel="noopener noreferrer">programmablesearchengine.google.com</a>, set it to
+                    search the whole web, and paste its ID here — the lookup then opens as a panel
+                    on this page. Leave it blank and lookups open in a separate search window
+                    instead.</p>
+                <label class="gap-label">Search engine ID
+                    <input type="text" id="pse-id" placeholder="e.g. a1b2c3d4e5f6g7h8i" spellcheck="false"></label>
+                <p class="panel-note" id="pse-note"></p>
+
+                <hr>
+                <p class="panel-note"><strong>Saved definitions.</strong> The same two layers as
+                    discards. <code>vocab/definitions.txt</code> is shown to every visitor in place
+                    of the dictionary's entry; anything you write here is yours alone until it is
+                    published, and overrides the shared file on this machine while it waits.</p>
+                <div class="row row-wrap">
+                    <button class="btn btn-quiet" id="btn-copy-defs">Copy my definitions</button>
+                    <button class="btn btn-quiet" id="btn-clear-defs">Discard mine</button>
+                </div>
+                <p class="panel-note" id="defs-note"></p>
+                <textarea id="defs-out" rows="4" spellcheck="false" hidden></textarea>
+
+                <hr>
+                <p class="panel-note"><strong>Discarded words.</strong> Discard drops a word from the
+                    rotation for good — for entries not worth anybody's time. Two layers: the
+                    shared list in <code>vocab/discarded.txt</code>, which is removed for every
+                    visitor, and your own discards, which are removed only in this browser
+                    until they are published. A static site cannot write to itself, so
+                    promoting yours to everyone's means pasting them into that file and
+                    deploying.</p>
+                <div class="row row-wrap">
+                    <button class="btn btn-quiet" id="btn-copy-discards">Copy my discards</button>
+                    <button class="btn btn-quiet" id="btn-restore-discards">Restore mine</button>
+                </div>
+                <p class="panel-note" id="discard-note"></p>
+                <textarea id="discard-out" rows="4" spellcheck="false" hidden></textarea>
+
+                <hr>
+                <div class="row row-wrap">
+                    <button class="btn btn-quiet" id="btn-export">Export progress</button>
+                    <button class="btn btn-quiet" id="btn-import">Import progress</button>
+                    <button class="btn btn-danger" id="btn-reset">Reset everything</button>
+                </div>
+                <input type="file" id="import-file" accept="application/json,.json" hidden>
+                <p class="panel-note" id="storage-note"></p>
+            </div>
+        </details>
+
+        <div class="modal" id="lookup-modal" hidden>
+            <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+                <div class="modal-head">
+                    <h2 id="modal-title">Google — <span id="modal-word"></span></h2>
+                    <button class="btn btn-quiet" id="btn-close-modal" aria-label="Close">Close</button>
+                </div>
+                <div class="modal-body" id="pse-mount"></div>
+            </div>
+        </div>
+
+        <footer class="foot">
+            <p id="stats-line"></p>
+            <p class="tiny">Progress is stored in this browser only (localStorage), on this device and
+                this profile. Clearing site data, or using a different browser or private window, starts
+                you from nothing — export a backup if you care about it.</p>
+        </footer>
+    </div>
+
+    <script src="/demystifyingmaths/vocab/vocab.js" defer></script>
+</body>
+
+</html>
