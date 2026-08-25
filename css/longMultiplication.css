@@ -1,0 +1,359 @@
+/* Long multiplication. The scroll-led panel keeps the page a normal document:
+   the scene height supplies the scroll distance and JavaScript pins the inner
+   card within that space. No wheel or touch input is intercepted. */
+
+/* A calculation set out in place-value columns, used for the static figures. */
+.mult-static {
+    display: grid;
+    grid-template-columns: 32px var(--mult-columns);
+    width: max-content;
+    margin: 0 auto;
+    padding: 18px 22px 20px;
+    border-radius: 16px;
+    background-color: #fff;
+    background-image: linear-gradient(rgba(53, 104, 184, .075) 1px, transparent 1px), linear-gradient(90deg, rgba(53, 104, 184, .075) 1px, transparent 1px);
+    background-size: 22px 22px;
+    box-shadow: 0 8px 24px rgba(23, 56, 73, .12);
+}
+
+.mult-static--five { --mult-columns: repeat(5, 46px); }
+.mult-static--four { --mult-columns: repeat(4, 46px); }
+.mult-static--three { --mult-columns: repeat(3, 42px); }
+
+.mult-static__op,
+.mult-static__cell {
+    display: grid;
+    min-height: 42px;
+    place-items: center;
+    color: #173849;
+    font: 700 1.45rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.mult-static__op { color: #b86821; }
+.mult-static__cell--label { min-height: 26px; color: #52666f; font: 700 .64rem/1.1 Aleo, serif; }
+.mult-static__cell--term { background: rgba(238, 245, 251, .82); }
+.mult-static__cell--holder { color: #9b5f12; background: #fff8df; }
+.mult-static__cell--answer { padding-top: 6px; color: #09539d; font-size: 1.58rem; }
+.mult-static__rule { padding-bottom: 5px; border-bottom: 4px solid #173849; }
+.mult-static__cell--partial { color: #41535c; }
+
+/* Introduction figure: the same board with its parts named. */
+.anatomy {
+    display: grid;
+    grid-template-columns: auto minmax(250px, 1fr);
+    gap: 28px;
+    margin: 26px 0;
+    padding: 24px;
+    align-items: center;
+    border: 2px solid #c9dce8;
+    border-radius: 22px;
+    background: linear-gradient(145deg, #f7fbff 0%, #fff 55%, #fffaf0 100%);
+}
+
+.anatomy figcaption { grid-column: 2; }
+.anatomy__key { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; }
+
+.anatomy__key li {
+    padding: 12px 16px;
+    border-left: 5px solid #c9dce8;
+    border-radius: 0 12px 12px 0;
+    background: #fff;
+}
+
+.anatomy__key b { display: block; margin-bottom: 4px; color: #173849; }
+.anatomy__key span { color: #41535c; font-size: .9rem; line-height: 1.5; }
+.anatomy__key li:nth-child(1) { border-left-color: #5d91b0; }
+.anatomy__key li:nth-child(2) { border-left-color: #d99a20; }
+.anatomy__key li:nth-child(3) { border-left-color: #09539d; }
+
+/* Multiplying by 2 and by 20, side by side. */
+.shift-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 24px 0; }
+
+.shift-card {
+    padding: 18px 20px 20px;
+    border: 2px solid #d9e2ec;
+    border-top: 5px solid #5d91b0;
+    border-radius: 17px;
+    background: #fff;
+}
+
+.shift-card:last-child { border-top-color: #d99a20; }
+.shift-card h3 { margin: 0 0 14px; color: #09539d; font-size: 1.02rem; text-align: center; }
+.shift-card p { margin: 14px 0 0; color: #41535c; font-size: .9rem; line-height: 1.5; }
+
+/* Where the method turns up. */
+.reading-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 24px 0; }
+.reading-card { padding: 18px 20px 20px; border: 2px solid #d9e2ec; border-top: 5px solid #5d91b0; border-radius: 17px; background: #fff; }
+.reading-card:last-child { border-top-color: #d99a20; }
+.reading-card h3 { margin: 0 0 6px; color: #09539d; font-size: 1.02rem; }
+.reading-card p { margin: 0 0 12px; color: #41535c; font-size: .92rem; line-height: 1.55; }
+.reading-card p:last-child { margin-bottom: 0; }
+
+.mult-rule ol { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 0; padding: 0; list-style: none; }
+.mult-rule li { padding: 13px; border-radius: 12px; background: #eef5fb; }
+.mult-rule li > span { display: grid; width: 28px; height: 28px; margin-bottom: 9px; place-items: center; border-radius: 50%; background: #116e93; color: #fff; font-size: .82rem; font-weight: 700; }
+.mult-rule p { margin: 0; color: #41535c; font-size: .88rem; line-height: 1.45; }
+
+/* THE GRID — every part of one number against every part of the other, each
+   pair in a box of its own. The same rectangle is used twice: once on its own
+   while it is being filled, and once beside the column layout, where the boxes
+   are lit one at a time against the lines they became. */
+
+.grid-figure { display: grid; gap: 18px; justify-items: center; }
+.grid-figure__splits { display: grid; gap: 8px; justify-items: center; }
+
+.grid-figure__split {
+    display: flex;
+    gap: 9px;
+    margin: 0;
+    align-items: center;
+    color: #173849;
+    font: 700 1.12rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+.grid-figure__split > span { color: #52666f; }
+.grid-figure__split b { display: inline-block; padding: 5px 10px 6px; border-radius: 9px; background: #eaf2fb; color: #09539d; }
+.grid-figure__split i { color: #b86821; font-style: normal; }
+
+.grid-table {
+    --grid-cell: 78px;
+    display: grid;
+    grid-template-columns: 62px var(--grid-columns);
+    gap: 5px;
+    width: max-content;
+    margin: 0 auto;
+    font-variant-numeric: tabular-nums;
+}
+
+.grid-table--totals { grid-template-columns: 62px var(--grid-columns) 92px; }
+
+.grid-table__cell {
+    display: grid;
+    min-height: 46px;
+    box-sizing: border-box;
+    padding: 6px 7px;
+    place-items: center;
+    border-radius: 9px;
+    color: #173849;
+    font: 700 1rem/1.15 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    text-align: center;
+}
+
+.grid-table__head { background: #eaf2fb; color: #09539d; }
+.grid-table__head--side { background: #fff8df; color: #9b5f12; }
+.grid-table__head--total { background: none; color: #52666f; font: 700 .68rem/1.2 Aleo, serif; }
+.grid-table__corner { color: #b86821; font-size: 1.28rem; }
+.grid-table__box { background: #fff; box-shadow: inset 0 0 0 2px #dbe7f0; }
+.grid-table__total { background: #f2f8fc; color: #09539d; box-shadow: inset 0 0 0 2px #dbe7f0; }
+.grid-table__grand { background: #eaf2fb; color: #09539d; font-size: 1.14rem; box-shadow: inset 0 0 0 2px #9dbdd8; }
+
+/* The box the caption is talking about. */
+.grid-table__box.is-lit { background: #fff2c9; box-shadow: inset 0 0 0 3px #d99a20; }
+
+.pair-figure { display: grid; grid-template-columns: auto auto; gap: 24px; align-items: center; justify-content: center; }
+.pair-figure .grid-table { --grid-cell: 66px; grid-template-columns: 52px var(--grid-columns); }
+.pair-figure .grid-table__cell { min-height: 42px; font-size: .92rem; }
+
+/* THE EXPANDED LAYOUT — one line for each pair of parts, with the product that
+   made it written alongside, so no line has to be taken on trust. */
+
+.expanded-board { --multiplication-cell: 44px; display: grid; width: max-content; margin: 0 auto; }
+
+.multiplication-board__note {
+    display: grid;
+    min-width: 106px;
+    padding-left: 13px;
+    place-items: center start;
+    color: #52666f;
+    font: 700 .8rem/1.15 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    opacity: 0;
+}
+
+.multiplication-board__row--line { min-height: 38px; }
+.multiplication-board__row--line .multiplication-board__cell { min-height: 38px; color: #41535c; font-size: 1.28rem; }
+.multiplication-board__row--group0 .multiplication-board__note { color: #2f6f8f; }
+.multiplication-board__row--group1 .multiplication-board__note { color: #9b5f12; }
+.multiplication-board__row--group2 .multiplication-board__note { color: #6b4a86; }
+.multiplication-board__row--gathered .multiplication-board__cell { color: #09539d; font-size: 1.42rem; }
+.multiplication-board__row--gathered .multiplication-board__note { color: #09539d; }
+
+/* The line, or the group of lines, the caption is talking about. */
+.multiplication-board__row.is-lit { border-radius: 10px; background: #fff2c9; }
+
+/* The scroll-led calculation. */
+.multiplication-scene {
+    position: relative;
+    min-height: 470px;
+    margin: 26px 0 8px;
+    overflow-anchor: none;
+}
+
+.multiplication-scene.is-ready { height: var(--scene-height); min-height: var(--scene-min-height); }
+
+/* The card is as tall as its own calculation: a three-digit multiplier draws
+   three partial rows and a two-digit one draws two, so a fixed height would
+   either clip the first or leave the second half empty. */
+.multiplication-scene__sticky {
+    --multiplication-cell: 54px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: grid;
+    box-sizing: border-box;
+    grid-template-rows: auto auto auto auto;
+    overflow: hidden;
+    border: 2px solid #c9dce8;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #fbfdff 0%, #f2f8fc 100%);
+    box-shadow: 0 12px 30px rgba(20, 57, 78, .14);
+    contain: layout paint;
+    overflow-anchor: none;
+    will-change: transform;
+}
+
+.multiplication-scene__sticky.is-pinned {
+    position: fixed;
+    right: auto;
+    z-index: 900;
+    transform-origin: top left;
+}
+
+.multiplication-scene__inputs { display: flex; gap: 16px; padding: 20px 24px 14px; align-items: center; justify-content: center; }
+.multiplication-scene__inputs label { display: grid; gap: 6px; }
+.multiplication-scene__inputs label span { color: #41535c; font-size: .78rem; font-weight: 700; letter-spacing: .04em; }
+
+.multiplication-scene__inputs input {
+    width: 175px;
+    box-sizing: border-box;
+    padding: 10px 14px;
+    border: 2px solid #b8cbd7;
+    border-radius: 12px;
+    outline: none;
+    background: #fff;
+    color: #173849;
+    font: 700 1.18rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+    transition: border-color .18s ease, box-shadow .18s ease;
+}
+
+.multiplication-scene__inputs input:focus { border-color: #116e93; box-shadow: 0 0 0 4px rgba(17, 110, 147, .12); }
+.multiplication-scene__times { margin-top: 20px; color: #b86821; font-size: 1.7rem; font-weight: 700; }
+
+/* A worked example names itself inside the card, because the card leaves the
+   page while it is being read. */
+.multiplication-scene__heading { margin: 0; padding: 20px 24px 2px; color: #173849; font: 700 1.42rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; text-align: center; }
+
+.multiplication-board { display: grid; min-height: 0; padding: 14px 24px; overflow: hidden; align-items: center; background: #eaf3f8; }
+.multiplication-board__paper { position: relative; width: max-content; margin: 0 auto; padding: 16px 24px 20px; border-radius: 18px; background-color: #fff; background-image: linear-gradient(rgba(53, 104, 184, .075) 1px, transparent 1px), linear-gradient(90deg, rgba(53, 104, 184, .075) 1px, transparent 1px); background-size: 22px 22px; box-shadow: 0 8px 24px rgba(23, 56, 73, .12); }
+
+.multiplication-board__paper--plain,
+.multiplication-board__paper--pair { background-image: none; padding: 20px 24px 24px; }
+
+.multiplication-board__row { display: flex; align-items: stretch; width: max-content; margin-left: auto; }
+.multiplication-board__row--labels { margin-bottom: 5px; }
+.multiplication-board__operator { display: grid; width: 34px; place-items: center; color: #b86821; font-size: 1.5rem; font-weight: 700; }
+.multiplication-board__operator--blank { color: transparent; }
+.multiplication-board__digits { display: grid; grid-template-columns: var(--multiplication-columns); }
+
+.multiplication-board__cell {
+    position: relative;
+    display: grid;
+    width: var(--multiplication-cell);
+    min-height: 46px;
+    box-sizing: border-box;
+    place-items: center;
+    border-radius: 10px;
+    color: #173849;
+    z-index: 1;
+    font: 700 1.5rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.multiplication-board__cell--label { min-height: 26px; color: #52666f; font: 700 .6rem/1.1 Aleo, serif; text-align: center; }
+.multiplication-board__row--term .multiplication-board__cell:not(:empty) { background: rgba(238, 245, 251, .82); }
+.multiplication-board__row--ruled { padding-bottom: 7px; border-bottom: 4px solid #173849; }
+.multiplication-board__row--carry,
+.multiplication-board__row--sumcarry { position: relative; z-index: 3; }
+.multiplication-board__row--carry .multiplication-board__cell,
+.multiplication-board__row--sumcarry .multiplication-board__cell { min-height: 34px; color: #9b5f12; font-size: 1rem; }
+.multiplication-board__row--sumcarry { margin-top: 2px; }
+.multiplication-board__row--partial { padding-top: 4px; }
+.multiplication-board__row--partial .multiplication-board__cell { color: #41535c; }
+.multiplication-board__row--answer { padding-top: 6px; }
+.multiplication-board__row--answer .multiplication-board__cell { color: #09539d; font-size: 1.62rem; }
+
+/* The place-holder zeros are the point of the method, so they are marked as
+   what they are rather than left to look like ordinary digits. */
+.multiplication-board__cell--holder { color: #9b5f12; background: #fff8df; }
+
+/* The multiplier digit whose row is being written. */
+.multiplication-board__row--term .multiplication-board__cell.is-active { background: #fff2c9; box-shadow: inset 0 0 0 2px #d99a20; }
+
+/* The travelling highlight. Its position, size and opacity are set by the
+   scroll, so it carries no transition of its own. */
+.multiplication-board__cursor {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    box-sizing: border-box;
+    border: 2px solid #d99a20;
+    border-radius: 13px;
+    background: #fff2c9;
+    pointer-events: none;
+}
+
+/* The carried amounts travel across the rows beneath them, so the carry rows
+   and their badges stay on top. */
+/* Two rows can carry into the same column, one after the other. The badges are
+   taken out of the flow so the later one lands exactly where the earlier one
+   was, which is what rubbing out and rewriting looks like on paper. */
+.multiplication-board__carry {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    display: grid;
+    width: 25px;
+    height: 25px;
+    margin: -13px 0 0 -13px;
+    place-items: center;
+    border: 2px solid #d99a20;
+    border-radius: 50%;
+    background: #fff8df;
+    font-size: .95rem;
+    opacity: 0;
+    will-change: transform, opacity;
+}
+
+.multiplication-board__carry--sum { border-color: #5d91b0; background: #eaf2fb; color: #09539d; }
+.multiplication-board__cell--written { opacity: 0; will-change: transform, opacity; }
+.multiplication-board__paper.is-complete .multiplication-board__row--answer .multiplication-board__cell { text-shadow: 0 0 18px rgba(9, 83, 157, .28); }
+
+.multiplication-scene__caption { display: grid; align-content: center; height: 7.4em; box-sizing: border-box; padding: 14px 28px 6px; text-align: center; }
+.multiplication-scene__caption h3 { margin: 0 0 5px; color: #09539d; font-size: 1.1rem; }
+.multiplication-scene__caption p { margin: 0; color: #243a45; font-size: .97rem; line-height: 1.5; }
+
+.multiplication-scene__progress { display: flex; flex-wrap: wrap; gap: 8px; padding: 0 22px 18px; justify-content: center; }
+
+.multiplication-scene__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #c6d4dc;
+    transition: width .25s ease, border-radius .25s ease, background-color .25s ease;
+}
+
+.multiplication-scene__dot.is-current { width: 28px; border-radius: 999px; background: #116e93; }
+.multiplication-scene__dot.is-past { background: #6c9bb0; }
+
+@media (prefers-reduced-motion: reduce) {
+    .multiplication-scene.is-ready { height: auto; min-height: 0; }
+    .multiplication-scene__sticky { position: relative; height: auto; transform: none !important; }
+    .multiplication-board__cursor { display: none; }
+    .multiplication-scene__dot { transition: none; }
+    .multiplication-scene__inputs input { transition: none; }
+}

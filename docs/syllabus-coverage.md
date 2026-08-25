@@ -6,7 +6,8 @@ saleable as a teaching resource. One entry per page in `pages/`.
 **Page kinds.** Three, not two. A *menu* page lists what sits beneath it and teaches
 nothing (`/pages/curriculum/GCSE/`, the strand menus, the topic menus and the group menus). A
 *teaching* page carries one idea and must meet the nine-point bar below. A *practice*
-page holds a test and nothing else. Only teaching pages are measured against the bar.
+page gives the reader a friendly, supported place to rehearse what the linked lesson
+has already taught. Only teaching pages are measured against the bar.
 
 **The subtopic level.** Every GCSE strand is split so that one page teaches one
 idea: each strand menu lists topic menus, each topic menu lists group menus
@@ -20,7 +21,7 @@ intended one.
 block: on a teaching page, the owner's brief for what that page must cover —
 scope, exclusions, the Foundation/Higher boundary and the DfE reference (held as
 the subtopic's `coverNote` in the strand manifest); on a practice stub, the
-drill's three graded question sections. The blocks are authoring scaffolding,
+practice's three progressive question stages. The blocks are authoring scaffolding,
 deleted along with the stub copy as each page's real content lands.
 
 Scope note: topic breakdowns follow the DfE national curriculum programmes of
@@ -56,35 +57,72 @@ set of notes from something a school will pay for.
 
 Practice pages (`practice-*.html`, ochre cards, listed beneath the topics on
 each menu page) are not shortened teaching pages, and they are not teaching
-pages with questions bolted on. **A practice page holds a test and nothing
-else.** A lesson drill covers one narrowly stated skill. A mixed review may
-combine several skills, but it is linked from a lesson only after every one of
-those skills has been taught. Nothing is duplicated between teaching and test
-pages. A practice page is done when it has:
+pages with questions bolted on. **A practice page is supported rehearsal, not a
+test.** A lesson practice page covers one narrowly stated skill. A mixed review
+may combine several skills, but it is linked from a lesson only after every one
+of those skills has been taught. The explanation remains on the learning page;
+the practice page supplies prompts, hints, feedback and worked solutions at the
+moment the reader needs them. A practice page is done when it has:
 
-1. **A stated skill** — one thing, narrow enough to be drilled, named at the top
-   before anything else.
-2. **Named learning pages**, linked in the opening paragraph and again at the
-   end: exactly one for a lesson drill, or the complete prerequisite set for a
-   mixed review. See "Pairing" below. No worked examples on the practice page.
-3. **Graded questions** — fluency, then application, then a question that will
-   catch someone who has only memorised a procedure. Set out in named sections,
-   so a wrong answer localises to a skill.
-4. **Generated questions, not a fixed set** — a fresh paper on demand is what
-   makes a drill worth returning to, and it is what a school is paying for. Every
-   answer must come out exactly; no question should need a calculator unless the
-   topic is about using one.
-5. **Marks, not ticks** — marked the way an exam marks. Part marks where a method
-   is sound but one step slipped, so the score carries information. State the
-   mark scheme on the page.
-6. **Answers with method**, revealed on marking rather than listed at the bottom,
-   and shown against the question they belong to.
-7. **A self-check** — a score broken down far enough to say *what* to fix, not
-   just how many were wrong. A total alone does not tell a reader where to go.
+1. **A clear, welcoming goal** — one narrow skill for lesson practice, or an
+   honest list of the skills mixed by a review. State it before the first
+   question in plain language; do not call the activity a test, paper or quiz.
+2. **Named learning pages** — exactly one for lesson practice, or the complete
+   prerequisite set for a mixed review. Link them near the start, beside any
+   relevant reminder, and again at the end. See "Pairing" below. Do not reteach
+   the lesson or put a detached bank of worked examples before the practice.
+3. **A gentle progression** — begin with a short, recognisable fluency prompt;
+   then vary the representation or context; finish with reasoning that checks
+   understanding rather than trying to catch the reader out. Use descriptive
+   section names, not exam-paper labels such as Section A.
+4. **One manageable question at a time** — keep the current task visually
+   primary, show whole-round progress such as “Question 5 of 12”, and allow the
+   reader to move at their own pace. A local stage count must be labelled as
+   local rather than making a longer round look four questions long. Do not put
+   a timer, mark total, percentage, best score or full intimidating paper above
+   the first question.
+5. **Generated, bounded questions** — offer another equivalent question without
+   forcing a complete restart. Generators must stay inside the manifest scope,
+   avoid accidental later content, produce exact supported answers, and avoid a
+   calculator unless calculator use is the skill being practised.
+6. **Help before judgement** — offer an optional, question-specific hint that
+   identifies the next useful decision without giving the answer away. Checking
+   an answer gives precise feedback, preserves the response and permits another
+   attempt. Controls must reflect the new state: use “Check again” after a wrong
+   answer and “Continue” after a correct one. In a single-answer field, Enter
+   checks and the next distinct Enter continues; key-repeat must not skip a
+   question. Never lock a question after one mistake or use shaming labels such
+   as weak, unreliable or failed.
+7. **Answers with complete method** — keep the solution beside its question and
+   make its visibly button-like control available from the moment the question
+   appears; do not require a hint or wrong answer first. Show the reasoning,
+   intermediate values, notation and units needed to understand the answer, not
+   just the final value. If part of a response is sound, say exactly which part.
+8. **A useful reflection, not a grade** — at the end, distinguish questions
+   completed independently, completed with support and still worth revisiting.
+   Make those totals clickable filters over a complete question summary, with
+   entered answers and in-page links back to each question. Name the section or
+   idea to revisit and deep-link to a stable heading ID at the top of the exact
+   lesson section. Put a missing ID on the existing section heading so the link
+   lands at the beginning, not on an example or paragraph partway through. Adding
+   that ID alone is part of building the paired practice page. A total may
+   describe progress, but it must not dominate the page or pretend to measure the
+   learner.
+9. **A clear route onward** — generating new numbers must never erase work
+   without warning. Finish with the shared two-card curriculum pattern: the blue
+   next-lesson card first, then the ochre practice card for that next lesson.
+   Resolve both from manifest order rather than guessing from filenames.
+10. **Restrained feedback design** — every message must state the task, supply
+    mathematical feedback, explain an invalid entry, identify a meaningful state
+    change or prevent lost work. Remove reassurance and obvious interface
+    narration. Brief verdict overlays may use topic-neutral decoration and short
+    text such as “YES” or “TRY AGAIN”, but no custom praise, consolation or
+    lesson-specific decorative notation; accessible feedback remains immediate.
 
-`/pages/curriculum/GCSE/number/structure/workingInStandardForm/practiceStandardForm.html` is the reference implementation; copy
-its structure rather than reinventing one. Its engine (`js/practice-test.js`) is
-generic, so a new test needs only its own question bank.
+The existing standard-form practice page and `js/practice-test.js` predate this
+brief. They may be mined for parsing, exact-answer generation and accessible
+field patterns, but their test-paper structure, timer, marks, best score and
+one-shot marking are not the reference design for new practice pages.
 
 ### Pairing
 
@@ -98,7 +136,7 @@ A learning page can still carry more than one drill, but every lesson-facing
 drill must be safe at that point in the sequence. What must never happen is an
 orphan or a card that sends a reader to material taught later.
 
-One exception is allowed, and only on this test: **a drill whose learning page
+One exception is allowed to this pairing rule: **a drill whose learning page
 would have nothing to teach.** `/pages/curriculum/KS1/practiceSubitising.html` is the only page
 that currently qualifies — recognising four dots without counting is a skill
 built by repetition, not a method that can be read first, so the drill *is* the
@@ -1370,13 +1408,14 @@ before the applied components.
 
 ## Practice pages
 
-One hundred and thirty-eight pages, listed on the deepest menu level — the
-group menus for GCSE, the topic menus elsewhere. Each drills one
-skill. The aim is that no topic on the site can be read without a matching place
-to prove you can actually do it.
+Practice pages are listed on the deepest menu level — the group menus for GCSE,
+the topic menus elsewhere. Each lesson practice page rehearses one skill; mixed
+reviews combine only material already taught. The aim is that no topic on the
+site can be read without a matching place to try the idea, get useful feedback
+and build confidence with it.
 
 The "Taught on" column is the pairing described above: the topic page that holds
-the method this page tests. All but one are paired; the exception is
+the method this page practises. All but one are paired; the exception is
 flagged in the table. Nothing in a "Drills" cell should ever be explained
 on the practice page itself.
 
@@ -1386,7 +1425,7 @@ on the practice page itself.
 | --- | --- | --- |
 | `/pages/curriculum/KS1/practiceSubitising.html` | Recognising 1–6 without counting; dice, dominoes, ten-frames; grouped patterns up to 10 | — *standalone, see Pairing* |
 | `/pages/curriculum/KS1/practiceCountingSteps.html` | Counting on and back in 2s, 5s and 10s from any start | `/pages/curriculum/KS1/numberPlaceValue.html` |
-| `/pages/curriculum/KS1/practiceNumberBonds.html` | All pairs to 10 and 20, both directions, timed | `/pages/curriculum/KS1/additionSubtraction.html` |
+| `/pages/curriculum/KS1/practiceNumberBonds.html` | All pairs to 10 and 20, both directions, with optional repeated fluency rounds | `/pages/curriculum/KS1/additionSubtraction.html` |
 | `/pages/curriculum/KS1/practiceAddSubtract20.html` | Addition and subtraction within 20, including missing numbers | `/pages/curriculum/KS1/additionSubtraction.html` |
 | `/pages/curriculum/KS1/practiceTimesTables.html` | 2, 5 and 10 tables with the matching division facts | `/pages/curriculum/KS1/multiplicationDivision.html` |
 | `/pages/curriculum/KS1/practiceDoublingHalving.html` | Doubles and halves to 20, and the link between them | `/pages/curriculum/KS1/multiplicationDivision.html` |
@@ -1489,7 +1528,7 @@ on the practice page itself.
 | `/pages/curriculum/GCSE/number/fractions/calculatingWithFractions/practiceMultiplyingDividingMixedNumbers.html` | Multiplying and dividing mixed numbers by converting to improper fractions | `/pages/curriculum/GCSE/number/fractions/calculatingWithFractions/multiplyingDividingMixedNumbers.html` |
 | `/pages/curriculum/GCSE/number/measures/errorIntervals/practiceErrorIntervalsRounding.html` | The interval a rounded value came from, half a unit either side | `/pages/curriculum/GCSE/number/measures/errorIntervals/errorIntervalsRounding.html` |
 | `/pages/curriculum/GCSE/number/structure/indexLaws/practiceIndexLaws.html` | Mixed review — Negative and fractional indices | `/pages/curriculum/GCSE/number/structure/indexLaws/negativeFractionalIndices.html` |
-| `/pages/curriculum/GCSE/number/structure/workingInStandardForm/practiceStandardForm.html` | Mixed review — Converting and calculating. A marked test, with fresh numbers every attempt | `/pages/curriculum/GCSE/number/structure/workingInStandardForm/standardFormAddSubtract.html` |
+| `/pages/curriculum/GCSE/number/structure/workingInStandardForm/practiceStandardForm.html` | Mixed review — Converting and calculating, with fresh numbers available for further practice | `/pages/curriculum/GCSE/number/structure/workingInStandardForm/standardFormAddSubtract.html` |
 | `/pages/curriculum/GCSE/number/structure/surds/practiceSurds.html` | Mixed review — Simplifying and rationalising denominators | `/pages/curriculum/GCSE/number/structure/surds/rationalisingConjugates.html` |
 | `/pages/curriculum/GCSE/number/fractions/calculatingWithFractions/practiceFractionArithmetic.html` | Mixed review — The four operations with fractions and mixed numbers | `/pages/curriculum/GCSE/number/fractions/calculatingWithFractions/multiplyingDividingNegativeFractions.html` |
 | `/pages/curriculum/GCSE/number/measures/roundingAndTruncation/practiceBounds.html` | Mixed review — Significant figures, error intervals and bounds | `/pages/curriculum/GCSE/number/measures/calculatingWithBounds/suitableAccuracyBounds.html` |
@@ -1901,7 +1940,7 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/number/structure/writtenMethods/practiceInterpretingRemainders.html`** — Whether a worded answer wants a remainder, a decimal, a fraction or rounding.
 - Answer forms — express one-digit divisions as a remainder, exact decimal or fraction as requested (4 questions).
 - Directed rounding — decide whether a one-digit division context requires rounding up or down (4 questions).
-- Mixed contexts — choose the appropriate answer for coaches, boxes, tickets and leftovers; the decision is the catch (4 questions).
+- Mixed contexts — choose the appropriate answer for coaches, boxes, tickets and leftovers; interpreting the context is the focus (4 questions).
 
 **`/pages/curriculum/GCSE/number/structure/writtenMethods/practiceLongDivision.html`** — Dividing by a two-digit number, continuing past the point for an exact answer.
 - Integer quotients — divide by two-digit integer divisors using listed multiples and long division (4 questions).
@@ -2001,7 +2040,7 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practiceProductRule.html`** **(H)** — Counting combined choices with the product rule for counting.
 - Fluency — multiplying choices across independent slots: menus, codes and outfits (4 questions).
 - Application — arrangements and selections without repetition, the factor shrinking slot by slot (4 questions).
-- Catch — repeats-forbidden against repeats-allowed on near-identical prompts, where the memorised formula picks the wrong count (4 questions).
+- Distinguishing cases — compare repeats-forbidden with repeats-allowed prompts, explaining why the number of choices changes (4 questions).
 
 **`/pages/curriculum/GCSE/number/structure/indexLaws/practiceSimplifyingPowers.html`** — Adding the indices, derived by counting the repeated factors on each side.
 - Fluency — direct questions on multiplying powers of the same base, limited to this lesson's stated scope (4 questions).
@@ -2081,7 +2120,7 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/number/structure/usingACalculator/practiceExactAnswers.html`** — Giving and recognising exact answers, as fractions or in terms of π, rather than rounded decimals.
 - Fluency — single-choice questions picking the exact value of a calculation from rounded lookalikes; fraction answers appear only as choices, since the engine cannot parse a typed fraction (4 questions).
 - Application — multi-step calculations whose exact answer is a fraction or a multiple of π, with the coefficient of π typed as a bare number and the form chosen (4 questions).
-- Catch — recurring decimals like 0.333… offered beside 1/3, where the rounded option is the trap (3 questions).
+- Equivalent forms — distinguish exact fractions such as 1/3 from rounded decimals such as 0.333 (3 questions).
 
 **`/pages/curriculum/GCSE/number/structure/surds/practiceSimplifyingSurds.html`** **(H)** — Extracting the largest square factor to write a√b, and comparing surds.
 - Fluency — direct questions on simplifying surds, limited to this lesson's stated scope (4 questions).
@@ -2141,17 +2180,17 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/number/structure/writtenMethods/practiceDivisionReview.html`** *(mixed review)* — Dividing by short and long division into exact decimal answers, turning decimal divisors into integer ones, and interpreting remainders in context.
 - Fluency — short and long division continued past the point into exact decimal answers, two-digit divisors included; the decimal continuation keeps it past the KS2 integer-remainder drill (4 questions).
 - Decimal divisors — rewriting divisions like 55.2 ÷ 0.46 as integer equivalents before dividing (4 questions).
-- Remainders in context — worded problems needing long division by a two-digit divisor first, then the round-up, round-down or state-the-leftover decision; the choice is the catch (4 questions).
+- Remainders in context — worded problems needing long division by a two-digit divisor first, then a reasoned round-up, round-down or state-the-leftover decision (4 questions).
 
 **`/pages/curriculum/GCSE/number/structure/powersAndRoots/practicePowersRootsReview.html`** *(mixed review)* — Evaluating powers and roots without a calculator, and deciding whether the result is rational.
 - Fluency — index notation, evaluating squares, cubes and small powers, recognising numbers like 64 as powers (4 questions).
 - Roots — square, cube and higher roots, cube roots of negatives, and x² = k answered either as a single choice naming all solutions or by typing the negative root; no question ever asks for two typed values (5 questions).
-- Rational or irrational — single-choice classification where √(9/16) and √0.25 catch the 'roots are irrational' reflex; fraction-valued answers appear only as choice options (3 questions).
+- Rational or irrational — single-choice classification including √(9/16) and √0.25, addressing the misconception that roots are always irrational; fraction-valued answers appear only as choice options (3 questions).
 
 **`/pages/curriculum/GCSE/number/structure/directedNumber/practiceNegativesReview.html`** *(mixed review)* — Adding, subtracting, multiplying and dividing negative numbers, including decimals and powers of negatives.
 - Fluency — adding and subtracting with double signs, including decimal values (4 questions).
 - Multiplying and dividing — sign chains of three or more factors and decimal quotients (4 questions).
-- Powers and context — powers of negatives, where (−2)⁴ against −2⁴ catches the memorised rule, then worded temperature and balance problems (4 questions).
+- Powers and context — powers of negatives, contrasting (−2)⁴ with −2⁴, then worded temperature and balance problems (4 questions).
 
 **`/pages/curriculum/GCSE/number/structure/directedNumber/practiceOrderOfOperationsReview.html`** *(mixed review)* — Evaluating multi-step calculations in the right order, and recognising valid reorderings and inverse checks.
 - Fluency — multi-step BIDMAS with indices, brackets and fraction bars (5 questions).
@@ -2166,7 +2205,7 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practiceHCFLCMReview.html`** *(mixed review)* — Finding the HCF and LCM of two or three numbers from prime factors, and choosing which a problem needs — past the two-number KS3 drill.
 - Fluency — HCF and LCM from given index-form factorisations of numbers past 100, with shared and separate prime factors presented as text lists (the structure the Venn diagram shows, without generated graphics); larger numbers than the KS3 drill (4 questions).
 - Harder cases — three numbers, and the smallest possible number with both its HCF and LCM with another stated, pinned so the generated answer is unique (4 questions).
-- Worded — bus, tile and gear problems where deciding between HCF and LCM is the mark (4 questions).
+- Worded — bus, tile and gear problems where the central decision is choosing HCF or LCM (4 questions).
 
 **`/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practiceCountingReview.html`** *(mixed review)* — Counting possibilities exactly by systematic listing.
 - Fluency — listing factor pairs systematically, marked by the number of pairs or the missing partner of a given factor; counting all factors is left to the prime-factorisation drill (4 questions).
@@ -2176,7 +2215,7 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/number/structure/indexLaws/practiceSimplifyingPowersReview.html`** *(mixed review)* — Simplifying powers with the multiply, divide and power-of-a-power laws, and solving equations in the index — combined laws and larger indices, past the KS3 one-law drill; negative and fractional indices stay in the existing Index laws drill.
 - Warm-up — one law at a time with indices larger than the KS3 drill uses, plus the zero index (3 questions).
 - Combined — several laws in one simplification, powers of products and quotients included, answered as single choices between index-form expressions since the engine cannot read a typed expression (5 questions).
-- Index equations — typed numeric answers solving for the index, ending with mixed bases like 2ˣ × 4 = 2⁷ that catch 'just add the indices' (4 questions).
+- Index equations — typed numeric answers solving for the index, ending with mixed bases like 2ˣ × 4 = 2⁷ to address an inappropriate 'just add the indices' approach (4 questions).
 
 **`/pages/curriculum/GCSE/number/structure/usingACalculator/practiceCalculatorReview.html`** *(mixed review)* — Evaluating multi-step calculations on a calculator at full accuracy, rounding only at the final answer.
 - Fluency — keying fraction bars, roots and powers in one go, rounding to 3 significant figures (4 questions).
@@ -2465,12 +2504,12 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/algebra/notation/expandingBrackets/practiceExpandFactoriseReview.html`** *(mixed review)* — Expanding double brackets and factorising quadratics, including the difference of two squares.
 - Fluency — expanding double brackets including coefficients and squared brackets like (x + 4)², answered as single choices between expansions since the engine cannot read a typed expression (4 questions).
 - Factorising — quadratics x² + bx + c with negative constants included, chosen from near-miss bracket pairs that swap or mis-sign the numbers (4 questions).
-- Difference of two squares — factorising x² − 49 and 4x² − 9, with (x − 7)² offered as the trap for anyone squaring instead (4 questions).
+- Difference of two squares — factorising x² − 49 and 4x² − 9, with feedback addressing the near-miss (x − 7)² (4 questions).
 
 **`/pages/curriculum/GCSE/algebra/notation/simplifying/practiceSimplifyingTermsReview.html`** *(mixed review)* — Simplifying expressions by collecting like terms and multiplying and dividing single terms.
 - Fluency — collecting like terms in expressions with two letters and both signs, answered as single choices between simplified forms since the engine cannot read a typed expression (4 questions).
 - Products and quotients — simplifying terms like 3a × 4b and 12ab ÷ 4a, coefficients and letters handled separately (4 questions).
-- Powers — collecting expressions that mix x and x², where combining 3x and 2x² into 5x³ is the offered trap (4 questions).
+- Powers — collecting expressions that mix x and x², with feedback addressing the unlike-term error 3x + 2x² = 5x³ (4 questions).
 
 **`/pages/curriculum/GCSE/algebra/notation/substitution/practiceSubstitutionReview.html`** *(mixed review)* — Substituting positive and negative values into expressions and formulae, powers handled in the right order.
 - Fluency — substituting positive integers into two-term expressions, answers typed as numbers (4 questions).
@@ -2485,7 +2524,7 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/algebra/notation/algebraicFractions/practiceAlgebraicFractionsReview.html`** **(H)** *(mixed review)* — Manipulating algebraic fractions by factorising and cancelling common factors, never single terms.
 - Fluency — simplifying fractions whose top and bottom factorise, answered as single choices between simplified forms (4 questions).
 - Multiplying and dividing — products and quotients that cancel to a simple form after factorising (4 questions).
-- Adding and catching — sums and differences over a common denominator, with the term-cancelled fraction offered as the trap (4 questions).
+- Adding and subtracting — sums and differences over a common denominator, with feedback addressing invalid cancellation across terms (4 questions).
 
 **`/pages/curriculum/GCSE/algebra/notation/functions/practiceFunctionsReview.html`** **(H)** *(mixed review)* — Evaluating functions, inverse functions and composite functions at given values from formal notation.
 - Fluency — evaluating f(3), f(−2) and 2f(1) from a given linear or quadratic rule, answers typed as numbers (4 questions).
@@ -2520,17 +2559,17 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/algebra/graphs/quadraticGraphs/practiceQuadraticGraphsReview.html`** *(mixed review)* — Reading roots, intercepts and turning points of a quadratic from its factorised form.
 - Fluency — roots and y-intercepts from factorised form, typed as numbers with their signs (4 questions).
 - Turning points — the x-coordinate midway between the roots by symmetry, then the y-coordinate by substitution (4 questions).
-- Matching — pairing equations with described sketches by roots, intercept and opening direction, where the sign of the x² term is the catch (4 questions).
+- Matching — pair equations with described sketches by roots, intercept and opening direction, paying particular attention to the sign of the x² term (4 questions).
 
 **`/pages/curriculum/GCSE/algebra/graphs/realLifeGraphs/practiceDistanceTimeReview.html`** *(mixed review)* — Reading speeds, distances and accelerations from distance–time and velocity–time journeys, gradient by gradient.
 - Fluency — the speed of a single journey segment from its distance and time, arranged to divide exactly (4 questions).
-- Whole journeys — total distance and average speed across a journey with a rest, where averaging the two speeds is the trap (4 questions).
+- Whole journeys — total distance and average speed across a journey with a rest, addressing the misconception of averaging the two speeds directly (4 questions).
 - Velocity–time — acceleration as the gradient and distance as the area under constant and straight-line sections, all values exact (4 questions).
 
 **`/pages/curriculum/GCSE/algebra/graphs/graphTransformations/practiceGraphTransformationsReview.html`** **(H)** *(mixed review)* — Tracking translations and reflections of a graph through its equation and the image of a marked point.
 - Fluency — naming the equation after a described translation of y = f(x), chosen from f(x) + a, f(x + a) and their sign variants (4 questions).
 - Image points — the new coordinates of a marked point after a stated translation or reflection, typed exactly (4 questions).
-- Direction catch — f(x + a) against f(x) + a on near-identical prompts, where the horizontal shift runs against the sign (4 questions).
+- Horizontal or vertical — contrast f(x + a) with f(x) + a, with particular attention to the reversed direction of the horizontal shift (4 questions).
 
 **`/pages/curriculum/GCSE/algebra/graphs/circle/practiceCircleEquationReview.html`** **(H)** *(mixed review)* — Using x² + y² = r² to find radii, test points and build tangent equations at a point.
 - Fluency — the radius from a circle’s equation and the equation from a radius, squares kept exact (4 questions).
@@ -2799,7 +2838,7 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/ratio/ratio/notationAndSimplifying/practiceSimplifyingRatiosReview.html`** *(mixed review)* — Simplifying a ratio to its simplest form or 1 : n, and moving between a ratio and the fractions of the whole.
 - Fluency — simplifying two- and three-part ratios, including pairs with mixed units like 40 cm : 1 m converted before simplifying (4 questions).
 - The form 1 : n — dividing through by one part, decimal answers exact by construction, and part:part rewritten as part:whole (4 questions).
-- Ratios and fractions — the fraction of the whole one part represents, and one part as a fraction or multiple of another, where 2 : 3 read as 2/3 of the total is the trap (4 questions).
+- Ratios and fractions — the fraction of the whole one part represents, and one part as a fraction or multiple of another, addressing the error of reading 2 : 3 as 2/3 of the total (4 questions).
 
 **`/pages/curriculum/GCSE/ratio/ratio/sharing/practiceSharingReview.html`** *(mixed review)* — Dividing a quantity in a given ratio, recovering the whole from partial information, and combining two ratios.
 - Fluency — sharing amounts in two- and three-part ratios, every share a whole number of pounds or grams (4 questions).
@@ -2814,7 +2853,7 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/ratio/ratio/similarShapes/practiceSimilarShapesReview.html`** *(mixed review)* — Using the length, area and volume scale factors of similar shapes, and converting between them.
 - Fluency — missing lengths in similar shapes from a stated pair of corresponding sides, integer factors throughout (4 questions).
 - Areas and volumes — squaring and cubing an integer length factor to scale an area or a volume exactly (4 questions).
-- Choosing the factor — given an area or volume factor, recovering the length factor by roots of perfect squares and cubes, where applying the length factor unchanged is the trap (4 questions).
+- Choosing the factor — given an area or volume factor, recover the length factor by roots of perfect squares and cubes rather than applying the stated factor unchanged (4 questions).
 
 **`/pages/curriculum/GCSE/ratio/proportion/usingDirectProportion/practiceProportionReview.html`** *(mixed review)* — Solving direct and inverse proportion problems, and recognising which kind of proportion a situation shows.
 - Fluency — direct proportion by the unitary method, costs and quantities chosen to divide exactly (4 questions).
@@ -2849,7 +2888,7 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/ratio/compound/ratesPerUnit/practiceRatesReview.html`** *(mixed review)* — Forming a rate per unit, using it in both directions, and converting it between units.
 - Fluency — pay from hours and unit prices from pack prices, including part hours as exact fractions of an hour (4 questions).
 - Flow — filling and emptying times from a stated rate, litres and minutes chosen to divide exactly (4 questions).
-- Converting — rates rewritten in new units, like pence per gram into pounds per kilogram, where scaling only one of the two units is the trap (4 questions).
+- Converting — rates rewritten in new units, like pence per gram into pounds per kilogram, with feedback addressing cases where only one unit is scaled (4 questions).
 
 **`/pages/curriculum/GCSE/ratio/compound/ratesOnGraphs/practiceRateOfChange.html`** *(mixed review)* — Reading the gradient of a straight line as a rate of change with its units.
 - Fluency — gradients from two stated points on a line, read as a rate with its units (4 questions).
@@ -3253,47 +3292,47 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/geometry/properties/parallelLines/practiceAngleRulesReview.html`** *(mixed review)* — Finding angles with the point, line, parallel-line and polygon rules, and naming the reason for every step.
 - Fluency — angles at a point, on a straight line, vertically opposite and in a triangle, all whole degrees with a typed answer (4 questions).
 - Parallel lines and polygons — alternate, corresponding and co-interior angles, then interior and exterior angles of regular polygons, each paired with a single-choice reason (4 questions).
-- Catch — co-interior angles offered as equal, an isosceles triangle with two possible base angles, and an exterior angle taken from 180° instead of summing the opposite interiors (4 questions).
+- Look closely — distinguish co-interior from equal angles, resolve the possible base angles in an isosceles triangle, and use the exterior-angle theorem correctly (4 questions).
 
 **`/pages/curriculum/GCSE/geometry/properties/quadrilateralsAndSymmetry/practiceQuadrilateralsReview.html`** *(mixed review)* — Identifying the special quadrilaterals from side, angle, diagonal and symmetry facts.
 - Fluency — single-choice naming of the quadrilateral fixed by stated side and angle facts, all six special quadrilaterals appearing (4 questions).
 - Diagonals and symmetry — typed counts of mirror lines and orders of rotational symmetry, and single-choice questions naming the shape from its diagonal properties (4 questions).
-- Hierarchy — true-or-false single choices such as whether every square is a rhombus, where the inclusive definitions catch shape-as-picture thinking (4 questions).
+- Hierarchy — true-or-false single choices such as whether every square is a rhombus, using inclusive definitions rather than judging from one familiar picture (4 questions).
 
 **`/pages/curriculum/GCSE/geometry/properties/congruence/practiceCongruence.html`** *(mixed review)* — Deciding congruence from marked facts and naming the criterion that proves it.
 - Fluency — single-choice questions naming the criterion, SSS, SAS, ASA or RHS, that the marked facts of a triangle pair satisfy (4 questions).
 - Application — congruent-or-not-provable decisions with the facts given in words, including pairs that need the shared side spotted (4 questions).
-- Catch — two sides with a non-included angle, and three matched angles, offered beside genuine criteria; both must be rejected (4 questions).
+- Sufficient information — compare genuine congruence criteria with two sides and a non-included angle or with three matched angles, explaining why the latter two are insufficient (4 questions).
 
 **`/pages/curriculum/GCSE/geometry/properties/similarity/practiceSimilarity.html`** *(mixed review)* — Finding scale factors and missing lengths in similar shapes, corresponding sides paired correctly.
 - Fluency — integer and half-integer scale factors from a matched pair of sides, then a missing length by multiplying, every answer exact (4 questions).
 - Application — nested and bow-tie triangle configurations where the corresponding sides must be identified before scaling, whole-number answers throughout (4 questions).
-- Catch — problems where adding the difference between sides gives a plausible wrong answer, and a shared-angle pair that is not similar at all (4 questions).
+- Look closely — address additive rather than multiplicative comparison, and distinguish a shared angle from enough information to prove similarity (4 questions).
 
 **`/pages/curriculum/GCSE/geometry/properties/transformations/practiceTransformations.html`** *(mixed review)* — Applying the four transformations on coordinate axes and describing them fully.
 - Fluency — image coordinates of a marked vertex after a stated reflection, rotation about the origin or column-vector translation, typed as integers (4 questions).
 - Describing — single-choice complete descriptions of the transformation mapping object to image, distractors omitting the centre, direction or mirror line (4 questions).
-- Catch — reflections in y = x set against the axes, rotations with the direction reversed, and an enlargement whose scale factor is read from the wrong side pair (4 questions).
+- Look closely — distinguish reflection in y = x from the axes, keep the direction of rotation, and match corresponding sides before reading an enlargement factor (4 questions).
 
 **`/pages/curriculum/GCSE/geometry/properties/circleTheorems/practiceCircleTheoremsReview.html`** **(H)** *(mixed review)* — Finding angles with the circle theorems and naming the theorem that justifies each step.
 - Fluency — one theorem per figure: centre and circumference, semicircle, same segment and cyclic quadrilateral, every angle a whole number of degrees (4 questions).
 - Application — figures chaining two or three theorems, tangents and the alternate segment included, with the intermediate angle asked first (4 questions).
-- Justification — single-choice questions picking the theorem that earns the reason mark, the tempting wrong theorem sharing the same diagram (4 questions).
+- Justification — single-choice questions selecting the theorem that supports the step, with feedback distinguishing related theorems that share the same diagram (4 questions).
 
 **`/pages/curriculum/GCSE/geometry/properties/solidsAndCoordinates/practiceSolidsReview.html`** *(mixed review)* — Recognising solids from their counts, nets, plans and elevations.
 - Fluency — typed counts of the faces, edges and vertices of named solids, prisms and pyramids on stated bases included (4 questions).
 - Nets and views — single-choice matching of a net to its solid and of a plan or elevation to the drawn solid (4 questions).
-- Catch — arrangements of six squares that do not fold into a cube, and lookalike elevations taken from the wrong direction (4 questions).
+- Nets and viewpoints — include arrangements of six squares that do not fold into a cube and similar-looking elevations viewed from different directions (4 questions).
 
 **`/pages/curriculum/GCSE/geometry/mensuration/measuresAndBearings/practiceBearingsReview.html`** *(mixed review)* — Reading, writing and calculating three-figure bearings, and converting scaled lengths.
 - Fluency — writing directions as three-figure bearings with leading zeros required, and reading the bearing of B from A off a marked diagram (4 questions).
 - Back bearings and journeys — the return bearing by adding or subtracting 180°, and two-leg journeys using angle facts at the turn, whole degrees throughout (4 questions).
-- Scale — converting between map and ground with ratio scales like 1:25 000 and drawing scales like 1 cm to 5 km, the unit change being the catch (4 questions).
+- Scale — convert between map and ground with ratio scales like 1:25 000 and drawing scales like 1 cm to 5 km, with particular attention to the unit change (4 questions).
 
 **`/pages/curriculum/GCSE/geometry/mensuration/perimeterAndArea/practiceAreaReview.html`** *(mixed review)* — Finding perimeters and areas of straight-sided shapes, and running the formulas backwards.
 - Fluency — areas of rectangles, triangles, parallelograms and trapezia from labelled integer sides and heights (4 questions).
 - Composite — L-shapes and joined shapes needing missing sides deduced first, with area and perimeter asked in separate questions (4 questions).
-- Catch — figures labelled with both slant and perpendicular heights, and a missing base recovered from a stated area (4 questions).
+- Choosing a length — distinguish slant and perpendicular heights, then recover a missing base from a stated area (4 questions).
 
 **`/pages/curriculum/GCSE/geometry/mensuration/circlesAndSectors/practiceMensurationReview.html`** *(mixed review)* — Calculating circle measures and solid volumes exactly, answers left in terms of π.
 - Fluency — circumference and area from an integer radius or diameter, answered as the coefficient of π (4 questions).
@@ -3303,12 +3342,12 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/geometry/mensuration/pythagoras/practicePythagorasReview.html`** *(mixed review)* — Applying Pythagoras’ theorem forwards, backwards and in three dimensions, with triple-based exact answers.
 - Fluency — hypotenuses and shorter sides from Pythagorean triples like 3-4-5, 5-12-13 and 8-15-17, scaled copies included (4 questions).
 - Application — distances between coordinate points and diagonals of rectangles, each engineered to land on a triple (4 questions).
-- Catch — a converse decision from three given sides, adding when the hypotenuse is known, and a cuboid diagonal such as 3 by 4 by 12 giving exactly 13 (4 questions).
+- Choosing the route — include a converse decision from three given sides, subtraction when the hypotenuse is known, and a cuboid diagonal such as 3 by 4 by 12 giving exactly 13 (4 questions).
 
 **`/pages/curriculum/GCSE/geometry/mensuration/rightAngledTrigonometry/practiceTrigonometryReview.html`** *(mixed review)* — Choosing and using the right trigonometric ratio in right-angled triangles, with exact values throughout.
 - Fluency — labelling opposite, adjacent and hypotenuse, then sides found with tan 45° = 1, sin 30° = ½ and cos 60° = ½ (4 questions).
 - Exact values — recalling sin, cos and tan at 0°, 30°, 45°, 60° and 90°, and angles recovered from exact ratios like tan θ = √3 (4 questions).
-- Catch — a division where multiplication is expected, opposite and adjacent swapped by a rotated triangle, and an elevation angle placed at the wrong vertex (4 questions).
+- Choosing the ratio — include a division where multiplication is needed, a rotated triangle whose opposite and adjacent sides must be relabelled, and an elevation angle placed at the correct vertex (4 questions).
 
 **`/pages/curriculum/GCSE/geometry/mensuration/nonRightAngledTriangles/practiceSineCosineRulesReview.html`** **(H)** *(mixed review)* — Solving non-right-angled triangles with the sine rule, cosine rule and ½ab sin C.
 - Fluency — sine rule sides and angles with pairings like 30° opposite 5 and 90° opposite 10, every ratio exact (4 questions).
@@ -3318,7 +3357,7 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/geometry/vectors/vectorArithmetic/practiceVectorsReview.html`** *(mixed review)* — Calculating with column vectors: sums, differences, scalar multiples and magnitudes.
 - Fluency — adding and subtracting column vectors and multiplying by scalars, negative components throughout (4 questions).
 - Application — the vector translating one given point to another, resultants of two-leg journeys, and a missing component from a stated resultant (4 questions).
-- Catch — magnitudes built on 3-4-5 and 5-12-13 components, and a distractor treating a vector as the coordinates of a point (4 questions).
+- Magnitude and position — use 3-4-5 and 5-12-13 components and distinguish a vector from the coordinates of a point (4 questions).
 
 **`/pages/curriculum/GCSE/geometry/vectors/vectorGeometry/practiceVectorProofsReview.html`** **(H)** *(mixed review)* — Building vector expressions around a figure and arguing parallelism and collinearity from them.
 - Fluency — single-choice expressions in a and b for marked routes around triangles and parallelograms, reversed vectors negated (4 questions).
@@ -3844,8 +3883,8 @@ been written yet: the six GCSE Number groups under Fractions, decimals and
 percentages apart from Calculating with fractions, and the four Measures groups
 from Units and conversion to Estimation and checking.
 
-**Undrillable by this engine** — assessed by drawing, recognition or written
-justification rather than a typed number or a single choice:
+**Needing a different interaction** — practised through drawing, recognition or
+written justification rather than a typed number or a single choice:
 - Geometry: Constructions and loci — compass work cannot be auto-marked.
 - Statistics: Using charts honestly — "say why this graph misleads" needs prose.
 - Algebra: Notation and vocabulary, Identities and proof, Coordinates, Cubic,
@@ -3856,13 +3895,13 @@ justification rather than a typed number or a single choice:
   `/pages/curriculum/ALevel/statistics/presentation.html`, `/pages/curriculum/ALevel/mechanics/quantities.html`,
   `/pages/curriculum/ALevel/pure/proof.html`.
 
-That second group marks the real limit of the test engine, and it is worth
-knowing before promising blanket coverage: it marks numbers and single choices,
-and nothing else. Drilling proof and criticism needs a different page type — a
-compare-your-answer page that shows a model answer and its mark scheme and asks
-the reader to mark themselves against it. Worth building eventually. It is a
-separate piece of work from the practice pages listed above, and it should not
-be bolted onto the practice-page template.
+That second group marks the limit of the old numeric-and-choice engine, not the
+limit of a practice page. Proof, criticism, drawing and construction need their
+own supportive interactions: for example, compare a response with a model,
+reveal a checklist one reason at a time, or overlay a construction against the
+required features. These should follow the same practice principles—help before
+judgement, revision after feedback and a complete model method—without pretending
+that a free response can be reliably reduced to automatic right-or-wrong marking.
 
 Where a group carries no drill, its pages simply have no Practice section. Do
 not add one saying there is nothing yet.
@@ -3881,8 +3920,10 @@ documents — do not infer codes.
 **Tier separation.** GCSE pages must mark Higher-only material visibly and let a
 Foundation reader skip it without losing the thread.
 
-**Assessment.** Each page needs a question set with full worked solutions, not
-answers alone. A resource without solutions is worth a fraction of one with them.
+**Practice and solutions.** Each practice page needs generated questions with
+full worked solutions, not answers alone. A learning page may include a small
+embedded check where it supports the explanation, but its paired practice page
+owns sustained rehearsal.
 
 **Printable output.** Schools print. A print stylesheet that drops the ribbon,
 nav panel and interactive figures, and renders questions as a clean worksheet,

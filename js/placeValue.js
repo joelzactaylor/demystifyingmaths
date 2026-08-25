@@ -61,12 +61,14 @@ document.addEventListener("DOMContentLoaded", () => {
         return `${named.slice(0, -1).join(", ")}${join}${named.at(-1)}`;
     };
 
-    /* The decimal part is read as one number of the smallest place present:
-       0.307 is three hundred and seven thousandths. */
+    /* The decimal part is read as one number of its smallest non-zero place:
+       0.307 is three hundred and seven thousandths, while 0.30 is three tenths.
+       A trailing zero can record precision, but it does not change the value. */
     const decimalWords = (digits) => {
-        const value = Number(digits);
-        if (!digits.length || !value) return "";
-        const place = -digits.length;
+        const significantDigits = digits.replace(/0+$/, "");
+        const value = Number(significantDigits);
+        if (!significantDigits.length || !value) return "";
+        const place = -significantDigits.length;
         const name = value === 1 ? singularNames.get(place) : placeNames.get(place);
         return `${wholeWords(String(value))} ${name}`;
     };
@@ -150,6 +152,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 entry.innerHTML = `The <b>${item.digit}</b> in the ${placeNames.get(item.exponent)} place is
                     ${item.digit} lot${item.digit === 1 ? "" : "s"} of ${unitLabels.get(item.exponent)},
                     which is <strong>${valueLabel(item.digit, item.exponent)}</strong> &mdash; ${digitWorth(item.digit, item.exponent)}.`;
+            } else if (item.exponent < 0 && !decimal.slice(-item.exponent).replace(/0/g, "")) {
+                entry.className = "place-lab__holder";
+                entry.innerHTML = `The <b>0</b> in the ${placeNames.get(item.exponent)} place adds no value. As a
+                    trailing decimal zero it can record precision, but removing it would not change the number.`;
             } else {
                 entry.className = "place-lab__holder";
                 entry.innerHTML = `The <b>0</b> in the ${placeNames.get(item.exponent)} place counts nothing. It holds

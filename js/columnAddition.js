@@ -407,6 +407,11 @@ document.addEventListener("DOMContentLoaded", () => {
             ticking = false;
             if (!calculation) return;
 
+            if (!fixed && sticky.contains(document.activeElement)) {
+                repaintInPlace();
+                return;
+            }
+
             if (reduceMotion.matches) {
                 dock(0);
                 render(1);
@@ -438,9 +443,29 @@ document.addEventListener("DOMContentLoaded", () => {
             requestAnimationFrame(update);
         };
 
+        const repaintInPlace = () => {
+            if (reduceMotion.matches) {
+                render(1);
+                return;
+            }
+            const sceneRect = scene.getBoundingClientRect();
+            const visualScale = scene.offsetWidth && sceneRect.width ? sceneRect.width / scene.offsetWidth : 1;
+            const pinTop = Math.max(16, (window.innerHeight - cardHeight * visualScale) / 2);
+            const travel = Math.max(1, scene.offsetHeight - cardHeight);
+            render(clamp((pinTop - sceneRect.top) / (travel * visualScale)));
+        };
+
         const accept = () => {
+            const active = !fixed && sticky.contains(document.activeElement)
+                ? document.activeElement
+                : null;
+            const scrollLeft = window.scrollX;
+            const scrollTop = window.scrollY;
             const a = parseNumber(fixed ? limit(scene.dataset.a || "") : limitValue(inputs.a));
             const b = parseNumber(fixed ? limit(scene.dataset.b || "") : limitValue(inputs.b));
+            const selection = active && typeof active.selectionStart === "number"
+                ? [active.selectionStart, active.selectionEnd]
+                : null;
             if (!a || !b) return;
 
             calculation = buildCalculation(a, b);
@@ -458,16 +483,35 @@ document.addEventListener("DOMContentLoaded", () => {
                the caret. */
             buildBoard();
             stage = -1;
-            requestUpdate();
+            if (active) {
+                repaintInPlace();
+                if (document.activeElement !== active) active.focus({ preventScroll: true });
+                if (selection) active.setSelectionRange(selection[0], selection[1]);
+                if (window.scrollX !== scrollLeft || window.scrollY !== scrollTop) {
+                    window.scrollTo({ left: scrollLeft, top: scrollTop, behavior: "auto" });
+                }
+            } else {
+                requestUpdate();
+            }
         };
 
-        if (!fixed) Object.values(inputs).forEach((input) => input.addEventListener("input", accept));
-
         const reset = () => {
+            if (!fixed && sticky.contains(document.activeElement)) {
+                stage = -1;
+                repaintInPlace();
+                return;
+            }
             measure();
             stage = -1;
             requestUpdate();
         };
+
+        if (!fixed) Object.values(inputs).forEach((input) => {
+            input.addEventListener("input", accept);
+            input.addEventListener("blur", () => requestAnimationFrame(() => {
+                if (!sticky.contains(document.activeElement)) reset();
+            }));
+        });
 
         /* The card is measured only once the board has digits in it: a worked
            example sizes itself to its own calculation, so an empty paper would

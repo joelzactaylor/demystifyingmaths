@@ -3,70 +3,331 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demystifying Maths | GCSE Using a given calculation</title>
-    <meta name="description" content="Related products and quotients from a stated result, without recalculating.">
-    <meta property="og:title" content="Demystifying Maths">
-    <meta property="og:description" content="Related products and quotients from a stated result, without recalculating.">
+    <meta name="description"
+        content="Deduce related products, quotients and missing factors from one stated calculation by tracking powers of ten.">
+    <meta property="og:title" content="Demystifying Maths | Using a given calculation">
+    <meta property="og:description"
+        content="Deduce related products, quotients and missing factors without recalculating.">
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/usingAGivenCalculation.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
+    <script src="/demystifyingmaths/js/usingAGivenCalculation.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&amp;display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="layout">
         <div id="top-ribbon-placeholder"></div>
         <script>fetch("/demystifyingmaths/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
-
         <header>
             <h1>Demystifying - Using a given calculation</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
-                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and calculation</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/">Written methods</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span>
+                    </li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and
+                            calculation</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/">Written
+                            methods</a><span aria-hidden="true">&rsaquo;</span></li>
                     <li>
                         <p>Using a given calculation</p>
                     </li>
                 </ol>
             </nav>
         </header>
-
         <aside id="page-nav-container"></aside>
 
         <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>From a stated fact like 43 x 26 = 1118, deducing related products, quotients and missing factors such as 4.3 x 2.6 and 1118 / 4.3 by tracking powers of ten; no recalculating. Estimating unrelated calculations lives on Measures estimating-calculations. Both tiers. (N2, N3)</p>
+            <section>
+                <h1>Use a known result instead of starting again</h1>
+                <p class="prereq"><b>Before this page:</b> <span>be confident with <a
+                            href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/powersOfTen.html">multiplying
+                            and dividing by powers of ten</a> and with basic multiplication and division facts.</span>
+                </p>
+                <p>You are told that <strong>43 &times; 26 = 1,118</strong>, then asked to find <strong>4.3 &times;
+                        26</strong>. The given result is there to save you from doing another written multiplication.
+                </p>
+                <p>Compare the new calculation with the one you know:</p>
+                <div class="deduction-route"
+                    aria-label="Three steps for finding 4.3 times 26 from 43 times 26 equals 1,118">
+                    <ol>
+                        <li><span>What changed?</span><strong>43 &rarr; 4.3</strong><small>The first factor was divided
+                                by 10.</small></li>
+                        <li><span>What stayed the same?</span><strong>26 &rarr; 26</strong><small>The second factor did
+                                not change.</small></li>
+                        <li><span>Make the product follow</span><strong>1,118 &rarr; 111.8</strong><small>Divide the
+                                product by 10 as well.</small></li>
+                    </ol>
+                </div>
+                <p>Therefore <strong>4.3 &times; 26 = 111.8</strong>. This page develops that comparison into a reliable
+                    method for related products, divisions and missing values—all without recalculating the given fact.
+                </p>
             </section>
 
             <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+                <h1 id="related-products">Scale one factor at a time</h1>
+                <p>Write each change beside the number it affects. This makes the product's change visible before any
+                    decimal point is placed.</p>
+                <div class="related-fact-scene" data-related-fact-scene>
+                    <div class="related-fact-scene__sticky">
+                        <p class="related-fact-scene__heading">Given: 43 &times; 26 = 1,118</p>
+                        <div class="related-fact-stage" data-related-fact-paper></div>
+                        <div class="related-fact-scene__caption" aria-live="polite" aria-atomic="true">
+                            <h2 data-related-title></h2>
+                            <p data-related-copy></p>
+                        </div>
+                        <div class="related-fact-scene__progress" data-related-progress aria-hidden="true"></div>
+                    </div>
+                </div>
+                <p class="worked__answer"><strong>43 &times; 26 = 1,118</strong>, so <strong>4.3 &times; 26 =
+                        111.8</strong> and <strong>4.3 &times; 2.6 = 11.18</strong>.</p>
+            </section>
+
+            <section>
+                <h1>Combine the scale changes</h1>
+                <p>Each factor of 10 changes the product once. In <strong>4.3 &times; 2.6</strong>, the first factor is
+                    one tenth of 43 and the second is one tenth of 26.</p>
+                <div class="rule-card relation-rule">
+                    <p class="rule-card__statement"><span>product change</span><strong>=</strong><span>first-factor
+                            change &times; second-factor change</span></p>
+                    <p>An unchanged factor contributes &times;1. It does not add another change to the product.</p>
+                </div>
+                <div class="scale-ledger" aria-label="How the changes from 43 times 26 combine">
+                    <article><span>43 &rarr; 4.3</span><strong>&divide; 10</strong><small>first factor</small></article>
+                    <i aria-hidden="true">&times;</i>
+                    <article><span>26 &rarr; 2.6</span><strong>&divide; 10</strong><small>second factor</small>
+                    </article>
+                    <i aria-hidden="true">=</i>
+                    <article class="scale-ledger__result"><span>1,118 &rarr; 11.18</span><strong>&divide;
+                            100</strong><small>product</small></article>
+                </div>
+                <aside class="important-box" aria-labelledby="combined-change-title">
+                    <h2 class="important-box__title" id="combined-change-title">Two divisions by 10 combine to make a
+                        division by 100</h2>
+                    <p>The product does not merely follow the number of decimal places that happen to be visible. It
+                        follows the size change in <em>each</em> factor: one tenth &times; one tenth = one hundredth.
+                    </p>
+                </aside>
+            </section>
+
+            <section>
+                <h1 id="read-facts-backwards">Read a product fact backwards</h1>
+                <p>Every multiplication fact gives two division facts. From <strong>43 &times; 26 = 1,118</strong>, it
+                    follows immediately that:</p>
+                <div class="fact-family" aria-label="The multiplication and division facts connecting 43, 26 and 1,118">
+                    <article><span>product</span><strong>43 &times; 26 = 1,118</strong></article>
+                    <article><span>divide by 43</span><strong>1,118 &divide; 43 = 26</strong></article>
+                    <article><span>divide by 26</span><strong>1,118 &divide; 26 = 43</strong></article>
+                </div>
+                <p>Division undoes multiplication. Once the related product <strong>4.3 &times; 2.6 = 11.18</strong> is
+                    known, make 11.18 the dividend and divide by either factor. The quotient is the other factor.</p>
+                <div class="inverse-reading"
+                    aria-label="The multiplication fact 4.3 times 2.6 equals 11.18 and its two inverse division facts">
+                    <p><span>related product</span><strong>4.3 &times; 2.6 = 11.18</strong></p>
+                    <div class="inverse-reading__facts">
+                        <div><span>divide the product by 4.3</span><strong>11.18 &divide; 4.3 = 2.6</strong></div>
+                        <div><span>divide the product by 2.6</span><strong>11.18 &divide; 2.6 = 4.3</strong></div>
+                    </div>
+                </div>
+                <p>Form the related multiplication fact first, then read it in the direction the question requires.</p>
+                <div class="deduction-pair">
+                    <article>
+                        <h2>Same product, smaller known factor</h2>
+                        <p><strong>4.3 &times; 260 = 1,118</strong></p>
+                        <p>4.3 is one tenth of 43. To keep the product at 1,118, the other factor must be ten times 26.
+                        </p>
+                        <p class="deduction-pair__answer"><strong>1,118 &divide; 4.3 = 260</strong></p>
+                    </article>
+                    <article>
+                        <h2>Product and divisor both smaller</h2>
+                        <p><strong>43 &times; 2.6 = 111.8</strong></p>
+                        <p>The second factor and product are both one tenth of their original values, so the other
+                            factor remains 43.</p>
+                        <p class="deduction-pair__answer"><strong>111.8 &divide; 2.6 = 43</strong></p>
+                    </article>
+                </div>
+            </section>
+
+            <section>
+                <h1 id="missing-values">Rewrite a missing value with an inverse</h1>
+                <p>First use an inverse operation to make the missing value the subject. Then replace each changed
+                    number with its relationship to the given calculation.</p>
+                <article class="deduction-example">
+                    <h2>Find the missing factor in ? &times; 2.6 = 111.8</h2>
+                    <p>Use the given fact <strong>43 &times; 26 = 1,118</strong>.</p>
+                    <div class="deduction-scene" data-deduction-scene data-deduction-kind="factor">
+                        <div class="deduction-scene__sticky">
+                            <p class="deduction-scene__heading">Missing factor</p>
+                            <div class="deduction-stage" data-deduction-paper></div>
+                            <div class="deduction-scene__caption" aria-live="polite" aria-atomic="true">
+                                <h3 data-deduction-title></h3>
+                                <p data-deduction-copy></p>
+                            </div>
+                            <div class="deduction-scene__progress" data-deduction-progress aria-hidden="true"></div>
+                        </div>
+                    </div>
+                    <p class="worked__answer"><strong>? = 43</strong></p>
+                </article>
+                <article class="deduction-example">
+                    <h2>Find the missing dividend in ? &divide; 4.3 = 260</h2>
+                    <p>Use the same given fact <strong>43 &times; 26 = 1,118</strong>.</p>
+                    <div class="deduction-scene" data-deduction-scene data-deduction-kind="dividend">
+                        <div class="deduction-scene__sticky">
+                            <p class="deduction-scene__heading">Missing dividend</p>
+                            <div class="deduction-stage" data-deduction-paper></div>
+                            <div class="deduction-scene__caption" aria-live="polite" aria-atomic="true">
+                                <h3 data-deduction-title></h3>
+                                <p data-deduction-copy></p>
+                            </div>
+                            <div class="deduction-scene__progress" data-deduction-progress aria-hidden="true"></div>
+                        </div>
+                    </div>
+                    <p class="worked__answer"><strong>? = 1,118</strong></p>
+                </article>
+                <article class="deduction-example">
+                    <h2>Find the missing factor in ? &times; 2.6 = 11.18</h2>
+                    <p>Use the same given fact <strong>43 &times; 26 = 1,118</strong>.</p>
+                    <div class="deduction-scene" data-deduction-scene data-deduction-kind="scaled-factor">
+                        <div class="deduction-scene__sticky">
+                            <p class="deduction-scene__heading">Missing factor</p>
+                            <div class="deduction-stage" data-deduction-paper></div>
+                            <div class="deduction-scene__caption" aria-live="polite" aria-atomic="true"><h3 data-deduction-title></h3><p data-deduction-copy></p></div>
+                            <div class="deduction-scene__progress" data-deduction-progress aria-hidden="true"></div>
+                        </div>
+                    </div>
+                    <p class="worked__answer"><strong>? = 4.3</strong></p>
+                </article>
+            </section>
+
+            <section>
+                <h1>Explore the related fact family</h1>
+                <p>Select the value to calculate, then scale the other two. The selected scale and related equation
+                    update from the given fact.</p>
+                <div class="fact-explorer" data-fact-explorer>
+                    <p class="fact-explorer__given"><span>Given</span><strong>43 &times; 26 = 1,118</strong></p>
+                    <fieldset class="fact-explorer__values">
+                        <legend>Select one result; scale the other two values</legend>
+                        <div data-value-card="first">
+                            <label class="fact-explorer__result-choice"><input type="radio" name="fact-result"
+                                    value="first" data-result-choice><span><small>factor
+                                        1</small><strong>43</strong></span></label>
+                            <label class="fact-explorer__scale" for="first-factor-scale"><span>Scale</span><select
+                                    id="first-factor-scale" data-first-scale aria-describedby="fact-explorer-status">
+                                    <option value="-2">&divide; 100</option>
+                                    <option value="-1" selected>&divide; 10</option>
+                                    <option value="0">unchanged</option>
+                                    <option value="1">&times; 10</option>
+                                    <option value="2">&times; 100</option>
+                                </select></label>
+                        </div>
+                        <div data-value-card="second">
+                            <label class="fact-explorer__result-choice"><input type="radio" name="fact-result"
+                                    value="second" data-result-choice><span><small>factor
+                                        2</small><strong>26</strong></span></label>
+                            <label class="fact-explorer__scale" for="second-factor-scale"><span>Scale</span><select
+                                    id="second-factor-scale" data-second-scale aria-describedby="fact-explorer-status">
+                                    <option value="-2">&divide; 100</option>
+                                    <option value="-1">&divide; 10</option>
+                                    <option value="0" selected>unchanged</option>
+                                    <option value="1">&times; 10</option>
+                                    <option value="2">&times; 100</option>
+                                </select></label>
+                        </div>
+                        <div data-value-card="product" class="is-result">
+                            <label class="fact-explorer__result-choice"><input type="radio" name="fact-result"
+                                    value="product" checked
+                                    data-result-choice><span><small>product</small><strong>1,118</strong></span></label>
+                            <label class="fact-explorer__scale" for="product-scale"><span>Calculated scale</span><select
+                                    id="product-scale" data-product-scale aria-describedby="fact-explorer-status"
+                                    disabled>
+                                    <option value="-2">&divide; 100</option>
+                                    <option value="-1" selected>&divide; 10</option>
+                                    <option value="0">unchanged</option>
+                                    <option value="1">&times; 10</option>
+                                    <option value="2">&times; 100</option>
+                                </select></label>
+                        </div>
+                    </fieldset>
+                    <div class="fact-explorer__working" aria-hidden="true">
+                        <div class="fact-explorer__scales"><span data-scale-left>&divide; 10</span><i
+                                data-scale-operation>&times;</i><span data-scale-middle>unchanged</span><i>=</i><strong
+                                data-scale-result>&divide; 10</strong></div>
+                        <p class="fact-explorer__equation" data-related-equation>4.3 &times; 26 = 111.8</p>
+                    </div>
+                    <p class="fact-explorer__status" id="fact-explorer-status" data-fact-status aria-live="polite">The
+                        first factor is divided by 10 and the second factor is unchanged, so the product is divided by
+                        10. The related fact is 4.3 times 26 equals 111.8.</p>
+                </div>
+            </section>
+
+            <section>
+                <h1>Check the relationship, not the original arithmetic</h1>
+                <div class="checking-pair">
+                    <article>
+                        <h2>Use an inverse</h2>
+                        <p>From <strong>4.3 &times; 2.6 = 11.18</strong>, check that <strong>11.18 &divide; 2.6 =
+                                4.3</strong>.</p>
+                    </article>
+                    <article>
+                        <h2>Check the scale</h2>
+                        <p>Both factors are one tenth of the originals, so 11.18 must be one hundredth of 1,118.</p>
+                    </article>
+                </div>
+                <p>These checks confirm that the new statement is consistent with the given fact. They do not repeat the
+                    multiplication.</p>
+            </section>
+
+            <section>
+                <h1>Common mistakes</h1>
+                <ul class="slips">
+                    <li><b>Changing the product only once</b><span>If both factors are divided by 10, the product is
+                            divided by 10 twice: overall, it is divided by 100.</span></li>
+                    <li><b>Moving every decimal point the same way</b><span>Compare the role of each number first. In
+                            1,118 &divide; 4.3, a smaller divisor produces the larger quotient 260.</span></li>
+                    <li><b>Recalculating the given product</b><span>Treat 43 &times; 26 = 1,118 as known. Only apply the
+                            stated powers-of-ten changes.</span></li>
+                    <li><b>Forgetting the inverse fact</b><span>Rewrite a missing factor as division or a missing
+                            dividend as multiplication before tracking the changes.</span></li>
+                </ul>
+            </section>
+
+            <section>
+                <h1>Summary</h1>
+                <ol class="recap">
+                    <li>Start from the stated calculation and do not recalculate it.</li>
+                    <li>Write how each factor has changed: &times;10, &divide;10, &times;100, &divide;100 or unchanged.
+                    </li>
+                    <li>Combine the two factor changes to find the product's scale change.</li>
+                    <li>Use inverse operations to turn the related fact into the form needed for a quotient or missing
+                        value.</li>
+                    <li>Check with the inverse operation and confirm that the new values have the expected scale.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <h2 id="practice-heading">Practice</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/practiceGivenCalculation.html" style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
+                    <a class="topic-card topic-card--practice"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/practiceGivenCalculation.html"
+                        style="background-image: none"><span class="practice-card__kicker">Practice</span>
                         <h3>Using a given calculation</h3>
-                        <p>Deducing new decimal products and quotients from one stated calculation.</p>
-                    </a>
-                    <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/indexNotation.html" style="background-image: none">
-                        <span class="topic-card__kicker">Next lesson</span>
-                        <h3>Index notation and powers</h3>
-                        <p>What the base and index mean, and writing repeated multiplication as a power.</p>
+                        <p>Deduce new decimal products, quotients and missing factors from one stated fact.</p>
                     </a>
                 </div>
             </section>

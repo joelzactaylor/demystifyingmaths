@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demystifying Maths | GCSE Long division</title>
-    <meta name="description" content="Dividing by a two-digit number, continuing past the point for an exact answer.">
-    <meta property="og:title" content="Demystifying Maths">
-    <meta property="og:description" content="Dividing by a two-digit number, continuing past the point for an exact answer.">
+    <meta name="description" content="Divide integers and decimals by two-digit integers using listed multiples and long division.">
+    <meta property="og:title" content="Demystifying Maths | Long division">
+    <meta property="og:description" content="Divide integers and decimals by two-digit integers using listed multiples and long division.">
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/longDivision.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
+    <script src="/demystifyingmaths/js/longDivision.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&amp;display=swap" rel="stylesheet">
 </head>
-
 <body>
     <div class="layout">
         <div id="top-ribbon-placeholder"></div>
         <script>fetch("/demystifyingmaths/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
-
         <header>
             <h1>Demystifying - Long division</h1>
             <nav aria-label="Breadcrumb">
@@ -35,61 +35,193 @@
                     <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span aria-hidden="true">&rsaquo;</span></li>
                     <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and calculation</a><span aria-hidden="true">&rsaquo;</span></li>
                     <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/">Written methods</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li>
-                        <p>Long division</p>
-                    </li>
+                    <li><p>Long division</p></li>
                 </ol>
             </nav>
         </header>
-
         <aside id="page-nav-container"></aside>
 
         <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>Long division by two-digit divisors, integer and decimal dividends, continuing past the point for exact decimal answers; layout, subtracting multiples, and a listed multiples crib. Decimal divisors live on dividing-by-decimals; remainder interpretation lives on interpreting-remainders. Both tiers. (N2)</p>
+            <section>
+                <h1>Divide, subtract, then continue</h1>
+                <p class="prereq"><b>Before this page:</b> <span>be confident with multiplication facts, <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/columnSubtraction.html">column subtraction</a> and division by a one-digit number using <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/shortDivision.html">short division</a>.</span></p>
+                <p>Long division is used here when the divisor has two digits. It makes each subtraction visible, so the remainder from one stage becomes the starting amount for the next.</p>
+                <aside class="important-box" aria-labelledby="layout-title">
+                    <h2 class="important-box__title" id="layout-title">Read the layout as 1,794 divided by 23</h2>
+                    <p>Write <strong>23</strong> outside the bracket, <strong>1,794</strong> inside and the quotient above. A decimal divisor is not used on this page; first make it an integer using <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/dividingByDecimals.html">dividing by a decimal</a>.</p>
+                </aside>
             </section>
 
             <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+                <h1>List the multiples first</h1>
+                <p>At each stage, choose the greatest multiple of the divisor that does not exceed the current amount. Listing the first nine multiples makes that choice visible and reduces guessing.</p>
+                <div class="multiples-example" aria-label="The first nine multiples of 23">
+                    <div><span>1 &times; 23</span><strong>23</strong></div><div><span>2 &times; 23</span><strong>46</strong></div><div><span>3 &times; 23</span><strong>69</strong></div>
+                    <div><span>4 &times; 23</span><strong>92</strong></div><div><span>5 &times; 23</span><strong>115</strong></div><div><span>6 &times; 23</span><strong>138</strong></div>
+                    <div><span>7 &times; 23</span><strong>161</strong></div><div><span>8 &times; 23</span><strong>184</strong></div><div><span>9 &times; 23</span><strong>207</strong></div>
+                </div>
+                <p>For a current amount of 179, choose <strong>161 = 7 &times; 23</strong>. The next multiple, 184, is too large. This proves that the next quotient digit is 7.</p>
+            </section>
+
+            <section>
+                <h1>A whole-number quotient</h1>
+                <aside class="important-box" aria-labelledby="leading-block-title">
+                    <h2 class="important-box__title" id="leading-block-title">Begin with the shortest leading block that is large enough</h2>
+                    <div class="leading-choice" role="img" aria-label="1 is less than 23; 17 is less than 23; 179 is at least 23, so begin with 179">
+                        <span>1 &lt; 23</span><i aria-hidden="true">&rarr;</i><span>17 &lt; 23</span><i aria-hidden="true">&rarr;</i><strong>179 &ge; 23</strong>
+                    </div>
+                    <p>Do not start with 1 or 17 because neither contains a whole group of 23. Begin with 179, the first leading block that does. This block ends in the tens column, so write the 7 above the 9: it represents 7 tens, or 70, in the quotient. In full place value, <strong>70 &times; 23 = 1,610</strong>.</p>
+                </aside>
+                <div class="worked">
+                    <h2 class="worked__title">Example: calculate 1,794 &divide; 23</h2>
+                    <div class="long-scene" data-long-scene data-dividend="1794" data-divisor="23">
+                        <div class="long-scene__sticky">
+                            <p class="long-scene__heading" data-expression>1,794 &divide; 23</p>
+                            <div class="long-stage" data-paper aria-label="Long division working for 1794 divided by 23"></div>
+                            <div class="long-scene__caption" aria-live="polite" aria-atomic="true"><h2 data-step-title>Set out the calculation</h2><p data-step-copy>Write 23 outside the bracket and 1,794 inside.</p></div>
+                            <div class="long-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript><p><strong>1,794 &divide; 23 = 78</strong></p></noscript>
+                    </div>
+                    <p class="worked__answer"><strong>1,794 &divide; 23 = 78</strong></p>
+                </div>
+            </section>
+
+            <section>
+                <h1>The long-division cycle</h1>
+                <div class="rule-card long-rule">
+                    <h2 class="rule-card__statement">Choose, multiply, subtract, bring down</h2>
+                    <ol>
+                        <li><span>1</span><p><strong>Choose</strong> the greatest listed multiple not exceeding the current amount.</p></li>
+                        <li><span>2</span><p><strong>Write</strong> its multiplier in the quotient and its value underneath.</p></li>
+                        <li><span>3</span><p><strong>Subtract</strong> to find the remainder. It must be smaller than the divisor.</p></li>
+                        <li><span>4</span><p><strong>Bring down</strong> the next written digit and repeat until every digit currently in the dividend has been used.</p></li>
+                    </ol>
+                </div>
+                <aside class="important-box" aria-labelledby="estimate-title">
+                    <h2 class="important-box__title" id="estimate-title">The multiples list sets both boundaries</h2>
+                    <p>For 179, <strong>7 &times; 23 = 161</strong> is small enough and <strong>8 &times; 23 = 184</strong> is too large. Checking both prevents a quotient digit that is one too high or one too low.</p>
+                </aside>
+            </section>
+
+            <section>
+                <h1>Keep a zero in the quotient</h1>
+                <p>A quotient zero is needed when the next current amount is smaller than the divisor but another dividend digit still remains. The zero holds that place so every later digit keeps its correct value.</p>
+                <div class="zero-quotient-example">
+                    <div class="zero-quotient-layout" role="img" aria-label="Long division layout showing 3045 divided by 15 equals 203, with the zero in the quotient aligned above the 4 in the dividend">
+                        <div class="zero-quotient-layout__answer"><span>2</span><strong>0</strong><span>3</span></div>
+                        <span class="zero-quotient-layout__divisor">15</span>
+                        <div class="zero-quotient-layout__dividend"><span>3</span><span>0</span><span>4</span><span>5</span></div>
+                    </div>
+                    <ol>
+                        <li><strong>Start with 30:</strong> 2 &times; 15 = 30, so write 2 above the 0.</li>
+                        <li><strong>Bring down 4:</strong> 4 is smaller than 15, so write 0 above the 4. There are no groups of 15 in this place.</li>
+                        <li><strong>Bring down 5:</strong> 45 &divide; 15 = 3, so write 3 above the 5.</li>
+                    </ol>
+                </div>
+                <p class="worked__answer"><strong>3,045 &divide; 15 = 203</strong></p>
+            </section>
+
+            <section>
+                <h1>Choose the form of the answer</h1>
+                <p>Once every original digit has been used, a non-zero remainder creates a choice. Stop if the answer is required as a whole-number quotient with a remainder; append a decimal point and zeroes only if the answer should continue as a decimal.</p>
+                <div class="reading-pair">
+                    <article><h2>Stop with a remainder</h2><p><strong>1,456 &divide; 32 = 45 remainder 16.</strong> After the 6 has been used, 16 remains. It is smaller than 32, so this is a complete remainder answer.</p></article>
+                    <article><h2>Continue as a decimal</h2><p><strong>1,456 &divide; 32 = 45.5.</strong> Write 1,456 as 1,456.0, then bring down the appended zero: 160 &divide; 32 = 5.</p></article>
+                </div>
+            </section>
+
+            <section>
+                <h1>Continue through the decimal point</h1>
+                <p>Use every digit already written in the dividend first. Place the quotient's decimal point directly above the dividend's point. If a non-zero remainder remains after the final written digit and an exact decimal is required, append a zero and continue.</p>
+                <div class="worked">
+                    <h2 class="worked__title">Example: calculate 68.4 &divide; 24 exactly</h2>
+                    <div class="long-scene" data-long-scene data-dividend="68.4" data-divisor="24">
+                        <div class="long-scene__sticky">
+                            <p class="long-scene__heading" data-expression>68.4 &divide; 24</p>
+                            <div class="long-stage" data-paper aria-label="Long division working for 68.4 divided by 24"></div>
+                            <div class="long-scene__caption" aria-live="polite" aria-atomic="true"><h2 data-step-title>Set out the calculation</h2><p data-step-copy>Keep the decimal point on the same place-value boundary in the dividend and quotient.</p></div>
+                            <div class="long-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript><p><strong>68.4 &divide; 24 = 2.85</strong></p></noscript>
+                    </div>
+                    <p class="worked__answer"><strong>68.4 &divide; 24 = 2.85</strong></p>
+                </div>
+                <p>Whether a remainder is sufficient can depend on the question's context, as explained on <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/interpretingRemainders.html">interpreting a remainder</a>.</p>
+            </section>
+
+            <section>
+                <h1>Divide two chosen numbers</h1>
+                <p>Choose whether to stop with a remainder or continue as a decimal. Remainder answers use a whole-number dividend. The divisor remains a two-digit integer, and an ellipsis shows when a displayed decimal continues.</p>
+                <div class="long-scene long-scene--sandbox" data-long-scene data-dividend="1456" data-divisor="32">
+                    <div class="long-scene__sticky">
+                        <div class="long-scene__inputs">
+                            <label class="long-scene__number-field"><span>Number to divide</span><input type="text" inputmode="decimal" value="1456" maxlength="8" autocomplete="off" spellcheck="false" data-dividend-input></label>
+                            <span aria-hidden="true">&divide;</span>
+                            <label class="long-scene__number-field"><span>Divide by</span><input type="text" inputmode="numeric" value="32" maxlength="2" autocomplete="off" spellcheck="false" data-divisor-input></label>
+                            <fieldset class="long-scene__answer-mode">
+                                <legend>Answer as</legend>
+                                <div>
+                                    <label><input type="radio" name="long-division-answer" value="decimal" checked data-result-mode><span>Decimal</span></label>
+                                    <label><input type="radio" name="long-division-answer" value="remainder" data-result-mode><span>Remainder</span></label>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="long-stage" data-paper aria-label="Long division working for a chosen calculation"></div>
+                        <div class="long-scene__caption" aria-live="polite" aria-atomic="true"><h2 data-step-title>Set out 1,456 &divide; 32</h2><p data-step-copy>Use the listed multiples to choose each quotient digit.</p></div>
+                        <div class="long-scene__progress" data-progress aria-hidden="true"></div>
+                    </div>
+                    <noscript><p><strong>1,456 &divide; 32 = 45.5</strong></p></noscript>
+                </div>
+            </section>
+
+            <section>
+                <h1>Check by multiplication</h1>
+                <div class="reading-pair">
+                    <article><h2>Whole-number result</h2><p><strong>78 &times; 23 = 1,794</strong>, so 1,794 &divide; 23 = 78.</p></article>
+                    <article><h2>Decimal result</h2><p><strong>2.85 &times; 24 = 68.4</strong>, so 68.4 &divide; 24 = 2.85.</p></article>
+                </div>
+                <p>With a final remainder, multiply the whole-number quotient by the divisor and add the remainder. A failed check often reveals an incorrect multiple, subtraction error or omitted quotient zero.</p>
+            </section>
+
+            <section>
+                <h1>Long division in context</h1>
+                <div class="reading-pair">
+                    <article><h2>Equal packing</h2><p>A supplier places 1,794 bolts equally into 23 crates. Each crate contains <strong>78 bolts</strong>.</p></article>
+                    <article><h2>Equal lengths</h2><p>A 68.4 m cable is cut into 24 equal lengths. Each length is <strong>2.85 m</strong>.</p></article>
+                </div>
+            </section>
+
+            <section>
+                <h1>Common mistakes</h1>
+                <ul class="slips">
+                    <li><b>Choosing a multiple that is too large</b><span>Check the chosen multiple and the next one. The chosen value must not exceed the current amount.</span></li>
+                    <li><b>Subtracting inaccurately</b><span>Keep digits in their columns and check that each remainder is smaller than the divisor.</span></li>
+                    <li><b>Omitting a zero in the quotient</b><span>If the current amount is smaller than the divisor, write 0 in that quotient place before bringing down the next digit.</span></li>
+                    <li><b>Misplacing the decimal point</b><span>Write the quotient's point directly above the dividend's point. The divisor is an integer throughout this page.</span></li>
+                </ul>
+            </section>
+
+            <section>
+                <h1>Summary</h1>
+                <ol class="recap">
+                    <li>List the first nine multiples of the two-digit divisor.</li>
+                    <li>Begin with enough leading dividend digits to make an amount at least as large as the divisor.</li>
+                    <li>Choose a multiple, write the quotient digit—including 0 when no positive multiple fits—subtract and bring down the next digit.</li>
+                    <li>Keep decimal points on the same boundary and append zeroes only when a decimal continuation is required.</li>
+                    <li>Check by multiplying the quotient by the divisor, then adding any final remainder.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
                 <h2 id="practice-heading">Practice and continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/practiceLongDivision.html" style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
-                        <h3>Long division</h3>
-                        <p>Dividing by a two-digit number, continuing past the point for an exact answer.</p>
-                    </a>
-                    <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/dividingByDecimals.html" style="background-image: none">
-                        <span class="topic-card__kicker">Next lesson</span>
-                        <h3>Dividing by a decimal</h3>
-                        <p>Scaling both numbers by the same power of ten, and why the answer can grow.</p>
-                    </a>
+                    <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/practiceLongDivision.html" style="background-image: none"><span class="practice-card__kicker">Practice</span><h3>Long division</h3><p>Divide by two-digit integers using listed multiples and a clear subtraction layout.</p></a>
+                    <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/dividingByDecimals.html" style="background-image: none"><span class="topic-card__kicker">Next lesson</span><h3>Dividing by a decimal</h3><p>Scale both numbers by the same power of ten until the divisor is an integer.</p></a>
                 </div>
             </section>
         </main>
-
-        <footer>
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h2>Explore</h2>
-                    <ul>
-                        <li><a href="/demystifyingmaths/pages/home.html">Home</a></li>
-                        <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a></li>
-                        <li><a href="/demystifyingmaths/pages/extracurricular/">Extracurricular</a></li>
-                        <li><a href="/demystifyingmaths/pages/about.html">About</a></li>
-                        <li><a href="/demystifyingmaths/pages/contact.html">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 demystifyingmaths &middot; joelzactaylor</p>
-            </div>
-        </footer>
+        <footer><div class="footer-content"><div class="footer-section"><h2>Explore</h2><ul><li><a href="/demystifyingmaths/pages/home.html">Home</a></li><li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a></li><li><a href="/demystifyingmaths/pages/extracurricular/">Extracurricular</a></li><li><a href="/demystifyingmaths/pages/about.html">About</a></li><li><a href="/demystifyingmaths/pages/contact.html">Contact</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 demystifyingmaths &middot; joelzactaylor</p></div></footer>
     </div>
 </body>
-
 </html>

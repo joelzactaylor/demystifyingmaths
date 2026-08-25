@@ -3,21 +3,26 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Demystifying Maths | GCSE Short division</title>
-    <meta name="description" content="Dividing by a one-digit number, carrying each remainder into the next digit.">
-    <meta property="og:title" content="Demystifying Maths">
-    <meta property="og:description" content="Dividing by a one-digit number, carrying each remainder into the next digit.">
+    <meta name="description"
+        content="Divide integers and decimals by one-digit numbers using short division, carrying remainders between digits.">
+    <meta property="og:title" content="Demystifying Maths | Short division">
+    <meta property="og:description"
+        content="Divide integers and decimals by one-digit numbers using short division, carrying remainders between digits.">
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/shortDivision.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
+    <script src="/demystifyingmaths/js/shortDivision.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&amp;display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -29,12 +34,18 @@
             <h1>Demystifying - Short division</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
-                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and calculation</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/">Written methods</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span>
+                    </li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and
+                            calculation</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/">Written
+                            methods</a><span aria-hidden="true">&rsaquo;</span></li>
                     <li>
                         <p>Short division</p>
                     </li>
@@ -45,25 +56,365 @@
         <aside id="page-nav-container"></aside>
 
         <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>Short division of integers and decimals by one-digit divisors, carrying remainders into the next digit and continuing past the point for exact decimal answers. Deciding what a leftover means lives on interpreting-remainders; two-digit divisors live on long-division. Both tiers. (N2)</p>
+            <section>
+                <h1>One place at a time</h1>
+                <p class="prereq"><b>Before this page:</b> <span>know the multiplication tables to 12 &times; 12 and
+                        understand the value of each digit from
+                        <a
+                            href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/placeValue.html">place
+                            value</a>.</span></p>
+
+                <p>Short division records a large division as a sequence of smaller divisions by the same one-digit
+                    divisor. It starts at the greatest occupied place and moves right, so every digit written in the
+                    answer keeps the same place value as the digit beneath it.</p>
+
+                <aside class="important-box" aria-labelledby="division-reading-title">
+                    <h2 class="important-box__title" id="division-reading-title">Read the layout as 984 divided by 4
+                    </h2>
+                    <p>In <span class="inline-division" role="img"
+                            aria-label="4 outside the short-division bracket and 984 inside"><span>4</span><span>984</span></span>,
+                        <strong>4</strong> is the divisor, <strong>984</strong> is the dividend and the quotient is
+                        written above the line.
+                    </p>
+                </aside>
+
+                <p>This page uses whole-number divisors from 2 to 9. A divisor with two or more digits needs
+                    <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/longDivision.html">long
+                        division</a>;
+                    a decimal divisor is first changed using the method on
+                    <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/dividingByDecimals.html">dividing
+                        by decimals</a>.
+                </p>
             </section>
 
             <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+                <h1>Why the remainder moves</h1>
+                <p>In 984 &divide; 4, the 9 represents 9 hundreds. Dividing them equally gives 2 hundreds in each
+                    group, with 1 hundred left. That remaining hundred is exchanged for 10 tens; together with the
+                    next 8 tens, it makes 18 tens to divide.</p>
+
+                <ul class="exchange-strip">
+                    <li>
+                        <span class="exchange-strip__amount">1 hundred</span>
+                        <span class="exchange-strip__arrow" aria-hidden="true">&rarr;</span>
+                        <span class="exchange-strip__amount exchange-strip__amount--new">10 tens</span>
+                        <p>10 tens and the next 8 tens make 18 tens.</p>
+                    </li>
+                    <li>
+                        <span class="exchange-strip__amount">2 tens</span>
+                        <span class="exchange-strip__arrow" aria-hidden="true">&rarr;</span>
+                        <span class="exchange-strip__amount exchange-strip__amount--new">20 ones</span>
+                        <p>20 ones and the next 4 ones make 24 ones.</p>
+                    </li>
+                </ul>
+
+                <p>The small carried numerals are a compact record of those exchanges. They do not alter the
+                    dividend: they show how the remainder from one place is renamed in the next smaller place.</p>
+
+                <div class="worked">
+                    <h2 class="worked__title">Example: calculate 984 &divide; 4</h2>
+                    <div class="division-scene" data-division-scene data-dividend="984" data-divisor="4">
+                        <div class="division-scene__sticky">
+                            <p class="division-scene__heading" data-expression>984 &divide; 4</p>
+                            <div class="division-stage" data-paper
+                                aria-label="Short division working for 984 divided by 4"></div>
+                            <div class="division-scene__caption" aria-live="polite" aria-atomic="true">
+                                <h3 data-step-title>Set out 984 &divide; 4</h3>
+                                <p data-step-copy>Write 4 outside the bracket and 984 inside. The quotient will be
+                                    written above the line.</p>
+                            </div>
+                            <div class="division-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript>
+                            <p><strong>984 &divide; 4 = 246</strong></p>
+                        </noscript>
+                    </div>
+                    <p class="worked__answer"><strong>984 &divide; 4 = 246</strong></p>
+                </div>
+            </section>
+
+            <section>
+                <h1>The short-division routine</h1>
+                <div class="rule-card division-rule">
+                    <h2 class="rule-card__statement">Work from the greatest place to the smallest</h2>
+                    <ol>
+                        <li><span>1</span>
+                            <p><strong>Divide</strong> the current amount by the divisor.</p>
+                        </li>
+                        <li><span>2</span>
+                            <p><strong>Write</strong> the whole-number result directly above that place.</p>
+                        </li>
+                        <li><span>3</span>
+                            <p><strong>Carry</strong> the remainder into the next digit, if there is one.</p>
+                        </li>
+                        <li><span>4</span>
+                            <p><strong>Move right</strong> and repeat until every written digit has been used.</p>
+                        </li>
+                    </ol>
+                </div>
+
+                <aside class="important-box" aria-labelledby="short-start-title">
+                    <h2 class="important-box__title" id="short-start-title">Begin with the shortest leading block that is large enough</h2>
+                    <p>In <strong>984 &divide; 4</strong>, 9 &ge; 4, so begin with 9. In <strong>132 &divide; 8</strong>, 1 &lt; 8 but 13 &ge; 8, so begin with 13 and do not write an unnecessary leading zero. Once the quotient has begun, every later place needs an answer digit, including zero.</p>
+                </aside>
+
+                <aside class="important-box" aria-labelledby="remainder-size-title">
+                    <h2 class="important-box__title" id="remainder-size-title">A remainder is always smaller than the
+                        divisor</h2>
+                    <p>If it is not, another whole group can still be made. For example, 18 &divide; 4 is 4 remainder
+                        2, not 3 remainder 6.</p>
+                </aside>
+            </section>
+
+            <section>
+                <h1>Zeroes can belong in the quotient</h1>
+                <p>After the first answer digit has been written, each remaining dividend digit must produce a digit
+                    in the quotient. In 6,048 &divide; 6, the thousands give 1. The hundreds give 0, the tens also give
+                    0 remainder 4, and the remaining 4 tens become 40 ones. With the final 8 ones, that makes 48 ones.
+                    The quotient is 1,008.</p>
+
+                <div class="worked">
+                    <h2 class="worked__title">Example: calculate 6,048 &divide; 6</h2>
+                    <div class="division-scene" data-division-scene data-dividend="6048" data-divisor="6">
+                        <div class="division-scene__sticky">
+                            <p class="division-scene__heading" data-expression>6,048 &divide; 6</p>
+                            <div class="division-stage" data-paper
+                                aria-label="Short division working for 6048 divided by 6"></div>
+                            <div class="division-scene__caption" aria-live="polite" aria-atomic="true">
+                                <h3 data-step-title>Set out 6,048 &divide; 6</h3>
+                                <p data-step-copy>Keep every quotient digit in its place. Write zero when a place makes
+                                    no whole groups.</p>
+                            </div>
+                            <div class="division-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript>
+                            <p><strong>6,048 &divide; 6 = 1,008</strong></p>
+                        </noscript>
+                    </div>
+                    <p class="worked__answer"><strong>6,048 &divide; 6 = 1,008</strong></p>
+                </div>
+
+                <aside class="important-box" aria-labelledby="zero-title">
+                    <h2 class="important-box__title" id="zero-title">Zero holds the empty places</h2>
+                    <p>Writing 18 instead would move the 1 and 8 into the wrong columns. The inverse check exposes the
+                        error: 18 &times; 6 = 108, whereas 1,008 &times; 6 = 6,048.</p>
+                </aside>
+            </section>
+
+            <section>
+                <h1>The decimal point stays on its boundary</h1>
+                <p>The decimal point is not divided or carried. Put the point in the quotient directly above the point
+                    in the dividend, then continue through the decimal places with the same routine. If the quotient
+                    is below 1, write a zero before its decimal point.</p>
+
+                <figure class="decimal-lift" role="img"
+                    aria-label="18.9 divided by 7. The quotient is 2.7, with its decimal point directly above the decimal point in 18.9.">
+                    <div class="decimal-lift__board" aria-hidden="true">
+                        <span class="decimal-lift__cell decimal-lift__cell--q2">2</span>
+                        <span class="decimal-lift__cell decimal-lift__cell--qpoint">.</span>
+                        <span class="decimal-lift__cell decimal-lift__cell--q7">7</span>
+                        <span class="decimal-lift__divisor">7</span>
+                        <span class="decimal-lift__bracket"></span>
+                        <span class="decimal-lift__cell decimal-lift__cell--d1">1</span>
+                        <span class="decimal-lift__cell decimal-lift__cell--d8">8</span>
+                        <span class="decimal-lift__cell decimal-lift__cell--dpoint">.</span>
+                        <span class="decimal-lift__cell decimal-lift__cell--d9">9</span>
+                        <span class="decimal-lift__guide"></span>
+                        <span class="decimal-lift__label">same boundary</span>
+                    </div>
+                </figure>
+
+                <p>For 18.9 &divide; 7, the first two digits make 18 ones. This gives 2 ones remainder 4. Exchange the
+                    remaining 4 ones for 40 tenths; with the next 9 tenths, there are 49 tenths. Then
+                    49 &divide; 7 = 7, so the quotient is 2.7.</p>
+
+                <div class="worked">
+                    <h2 class="worked__title">Example: calculate 18.9 &divide; 7</h2>
+                    <div class="division-scene" data-division-scene data-dividend="18.9" data-divisor="7"
+                        data-point-guide>
+                        <div class="division-scene__sticky">
+                            <p class="division-scene__heading" data-expression>18.9 &divide; 7</p>
+                            <div class="division-stage" data-paper
+                                aria-label="Short division working for 18.9 divided by 7"></div>
+                            <div class="division-scene__caption" aria-live="polite" aria-atomic="true">
+                                <h3 data-step-title>Set out 18.9 &divide; 7</h3>
+                                <p data-step-copy>Place the quotient's decimal point directly above the one in 18.9.</p>
+                            </div>
+                            <div class="division-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript>
+                            <p><strong>18.9 &divide; 7 = 2.7</strong></p>
+                        </noscript>
+                    </div>
+                    <p class="worked__answer"><strong>18.9 &divide; 7 = 2.7</strong></p>
+                </div>
+            </section>
+
+            <section>
+                <h1>Two ways to finish</h1>
+                <p>First use every digit already written in the dividend. If the final remainder is zero, the division
+                    is complete. If it is not zero, the instruction in the question determines which route to take.</p>
+
+                <div class="finish-choice">
+                    <article class="finish-choice__card finish-choice__card--remainder">
+                        <span class="finish-choice__route">Route 1</span>
+                        <h2>Stop with a remainder</h2>
+                        <p>Record the whole-number quotient and the amount left after the final original digit.</p>
+                        <p class="finish-choice__answer">985 &divide; 4 = 246 remainder 1</p>
+                        <p class="finish-choice__check">Check: 4 &times; 246 + 1 = 985</p>
+                    </article>
+                    <article class="finish-choice__card finish-choice__card--decimal">
+                        <span class="finish-choice__route">Route 2</span>
+                        <h2>Continue as a decimal</h2>
+                        <p>Keep the remainder instead of reporting it as the final result. Exchange it into the next
+                            decimal place so the quotient can continue.</p>
+                    </article>
+                </div>
+
+                <aside class="important-box" aria-labelledby="finish-instruction-title">
+                    <h2 class="important-box__title" id="finish-instruction-title">Follow the requested form</h2>
+                    <p><strong>Give the answer with a remainder</strong> means use Route 1.
+                        <strong>Give an exact decimal</strong> means use Route 2. Choosing the right form in a worded
+                        problem is covered on
+                        <a
+                            href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/interpretingRemainders.html">interpreting
+                            remainders</a>.
+                    </p>
+                </aside>
+            </section>
+
+            <section>
+                <h1>Following the decimal route</h1>
+                <p>If the original digits run out and the question requires an exact decimal, extend the dividend
+                    with a zero after its decimal point. Add the point first if the dividend is a whole number. This
+                    does not change its value: 13 = 13.0 = 13.00 = 13.000.</p>
+
+                <p>Here the first digit, 1, is smaller than 8, so begin with 13. Then 13 &divide; 8 = 1 remainder 5;
+                    the remaining 5 ones become 50 tenths, and the division continues through the decimal places.</p>
+
+                <div class="worked">
+                    <h2 class="worked__title">Example: calculate 13 &divide; 8 exactly</h2>
+                    <div class="division-scene" data-division-scene data-dividend="13" data-divisor="8">
+                        <div class="division-scene__sticky">
+                            <p class="division-scene__heading" data-expression>13 &divide; 8</p>
+                            <div class="division-stage" data-paper
+                                aria-label="Short division working for 13 divided by 8"></div>
+                            <div class="division-scene__caption" aria-live="polite" aria-atomic="true">
+                                <h3 data-step-title>Set out 13 &divide; 8</h3>
+                                <p data-step-copy>Begin with 13 because the leading 1 is smaller than the divisor.</p>
+                            </div>
+                            <div class="division-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript>
+                            <p><strong>13 &divide; 8 = 1.625</strong></p>
+                        </noscript>
+                    </div>
+                    <p class="worked__answer"><strong>13 &divide; 8 = 1.625</strong></p>
+                </div>
+
+                <p>A terminating decimal finishes when its remainder reaches zero. Some divisions continue with a
+                    repeating pattern instead; those are written using
+                    <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/fractions/fractionsAndDecimals/recurringDecimalNotation.html">recurring-decimal
+                        notation</a>.
+                </p>
+            </section>
+
+            <section>
+                <h1>Divide two chosen numbers</h1>
+
+                <div class="division-scene division-scene--sandbox" data-division-scene data-dividend="327.6"
+                    data-divisor="6">
+                    <div class="division-scene__sticky">
+                        <div class="division-scene__inputs">
+                            <label>
+                                <span>Number to divide</span>
+                                <input type="text" inputmode="decimal" maxlength="9" value="327.6" autocomplete="off"
+                                    spellcheck="false" data-dividend-input>
+                            </label>
+                            <span class="division-scene__operator" aria-hidden="true">&divide;</span>
+                            <label>
+                                <span>Divide by</span>
+                                <input type="text" inputmode="numeric" maxlength="1" value="6" autocomplete="off"
+                                    spellcheck="false" data-divisor-input>
+                            </label>
+                        </div>
+                        <div class="division-stage" data-paper
+                            aria-label="Short division working for a chosen calculation"></div>
+                        <div class="division-scene__caption" aria-live="polite" aria-atomic="true">
+                            <h2 data-step-title>Set out 327.6 &divide; 6</h2>
+                            <p data-step-copy>Write the divisor outside and the dividend inside.</p>
+                        </div>
+                        <div class="division-scene__progress" data-progress aria-hidden="true"></div>
+                    </div>
+                    <noscript>
+                        <p><strong>327.6 &divide; 6 = 54.6</strong></p>
+                    </noscript>
+                </div>
+            </section>
+
+            <section>
+                <h1>Check by reversing the division</h1>
+                <div class="rule-card">
+                    <h2 class="rule-card__statement">Multiply the quotient by the divisor</h2>
+                    <ul class="rule-card__conditions">
+                        <li>For an exact answer: <strong>246 &times; 4 = 984</strong> and
+                            <strong>1.625 &times; 8 = 13</strong>. Following Route 2 also gives
+                            <strong>246.25 &times; 4 = 985</strong>.
+                        </li>
+                        <li>For an integer remainder: <strong>985 &divide; 4 = 246 remainder 1</strong>, and
+                            <strong>246 &times; 4 + 1 = 985</strong>.
+                        </li>
+                    </ul>
+                </div>
+                <p>A failed inverse check usually points to an omitted quotient zero, an ignored carried remainder or
+                    a digit written in the wrong column.</p>
+            </section>
+
+            <section>
+                <h1>Common mistakes</h1>
+                <ul class="slips">
+                    <li><b>Dividing the next digit on its own</b><span>After 9 &divide; 4 leaves remainder 1, the next
+                            amount is 18 tens, not 8 tens. Include the carried remainder before dividing.</span></li>
+                    <li><b>Dropping an internal zero</b><span>Once the quotient has begun, write zero when a place makes
+                            no whole groups. Both zeroes in 1,008 hold necessary places.</span></li>
+                    <li><b>Moving the decimal point</b><span>The point is not part of a division step. Keep it on the
+                            same place-value boundary by writing the quotient's point directly above it.</span></li>
+                    <li><b>Using the wrong finishing rule</b><span>A final remainder may be the required answer. Append
+                            zeroes only when a decimal is needed, and recognise that some decimal answers recur.</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h1>Summary</h1>
+                <ol class="recap">
+                    <li>Place the one-digit divisor outside, the dividend inside and the quotient above the line.</li>
+                    <li>Work from left to right: divide, write the quotient digit and carry any remainder into the
+                        following place.</li>
+                    <li>Avoid unnecessary leading zeroes, but write the zero before a decimal below 1 and keep every
+                        internal zero.</li>
+                    <li>After the original digits, either stop with a remainder or append zeroes and follow the decimal
+                        route.</li>
+                    <li>Check by multiplying the quotient by the divisor, then adding any final integer remainder.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
                 <h2 id="practice-heading">Practice and continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/practiceDivision.html" style="background-image: none">
+                    <a class="topic-card topic-card--practice"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/practiceDivision.html"
+                        style="background-image: none">
                         <span class="practice-card__kicker">Practice</span>
                         <h3>Short division</h3>
                         <p>Dividing by a one-digit number, carrying each remainder into the next digit.</p>
                     </a>
-                    <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/interpretingRemainders.html" style="background-image: none">
+                    <a class="topic-card topic-card--next"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/interpretingRemainders.html"
+                        style="background-image: none">
                         <span class="topic-card__kicker">Next lesson</span>
                         <h3>Interpreting a remainder</h3>
                         <p>Whether a worded answer wants a remainder, a decimal, a fraction or rounding.</p>

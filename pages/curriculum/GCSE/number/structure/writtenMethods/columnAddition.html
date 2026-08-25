@@ -48,16 +48,16 @@
 
         <main class="lesson-main">
             <section>
-                <h1>Introduction</h1>
+                <h1>One large addition, split by place value</h1>
                 <p class="prereq"><b>Before this page:</b> <span>know what each digit is worth in
                         <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/placeValue.html">integers and decimals</a>,
                         and be comfortable adding two single digits without writing anything down &mdash; the KS2 page on
                         <a href="/demystifyingmaths/pages/curriculum/KS2/additionSubtraction.html">addition and subtraction</a> covers the
                         second.</span></p>
 
-                <p>Nobody adds 4,687 and 2,759 in a single movement. Held in the head, two numbers of that size are
-                    a blur of digits with no obvious place to begin, and any answer that emerges has to be taken on
-                    trust. The difficulty is not the arithmetic; it is trying to do all of it at once.</p>
+                <p>Held in the head, 4,687 + 2,759 is a blur of digits with no obvious place to begin, and any
+                    answer that emerges has to be taken on trust. The difficulty is not the arithmetic; it is
+                    trying to do all of it at once.</p>
                 <p>Place value offers the way out. The digits in a number are not interchangeable symbols: each one
                     counts a different size of thing, and quantities of the same size can be added entirely on their
                     own. Seven ones and nine ones make sixteen ones whatever stands to the left of them. One hard
@@ -108,7 +108,7 @@
                 </figure>
             </section>
 
-            <section>
+            <section id="why-the-columns-must-align">
                 <h1>Why the columns must align</h1>
                 <p>The alignment is not a matter of neatness. Each column contains quantities of one size only: a
                     digit in the tens column counts groups of ten, a digit in the hundredths column counts groups of
@@ -141,7 +141,7 @@
                 </aside>
             </section>
 
-            <section>
+            <section id="regrouping-a-column">
                 <h1>Regrouping a column</h1>
                 <p>A column has room for one digit, so a total of ten or more will not fit. Nothing is lost: the
                     excess is simply worth more than the column can express, and it moves to the column where it can
@@ -165,23 +165,23 @@
                     </div>
                 </div>
 
-                <p>The same split happens inside a calculation. If the ones column holds 8 and 6 with a regrouped 1
+                <p>The same split happens inside a calculation. If the tens column holds 8 and 6 with a regrouped 1
                     above it, the column totals 15:</p>
 
                 <div class="split-figure">
                     <div class="split-figure__source">
-                        <span class="split-figure__caption">Ones column</span>
-                        <div class="mini-column" role="img" aria-label="A regrouped 1 above 8 and 6, totalling 15">
+                        <span class="split-figure__caption">Tens column</span>
+                        <div class="mini-column" role="img" aria-label="A regrouped 1 above 8 tens and 6 tens, totalling 15 tens">
                             <em>1</em><b>8</b><b>6</b><strong>15</strong>
                         </div>
                     </div>
                     <span class="split-figure__arrow" aria-hidden="true">&rarr;</span>
                     <div class="split-figure__parts">
                         <p class="split-figure__part split-figure__part--write">
-                            <strong>5</strong><span>is written in the ones column</span>
+                            <strong>5</strong><span>is written in the tens column</span>
                         </p>
                         <p class="split-figure__part split-figure__part--regroup">
-                            <strong>1</strong><span>is regrouped into the tens column, where it joins the next
+                            <strong>1</strong><span>is regrouped into the hundreds column, where it joins the next
                                 addition</span>
                         </p>
                     </div>
@@ -205,7 +205,7 @@
                     column is reached rather than being remembered.</p>
 
                 <div class="worked">
-                    <h3 class="worked__title">Example: calculate 4,687 + 2,759</h3>
+                    <h2 class="worked__title">Example: calculate 4,687 + 2,759</h2>
 
                     <div class="addition-scene" data-addition-scene data-a="4687" data-b="2759">
                         <div class="addition-scene__sticky">
@@ -234,12 +234,13 @@
 
             <section>
                 <h1>Adding decimals</h1>
-                <p>Decimals need no new method either. The columns simply continue past the decimal point, and the
-                    point itself holds a column of its own: place one in the answer directly beneath the points above
-                    it, then add from the smallest occupied place towards the left, exactly as before.</p>
+                <p>Decimals need no new method either. The place-value columns continue across the decimal point,
+                    which marks the boundary between ones and tenths. Align that boundary in both numbers, write the
+                    answer's point directly beneath it, then add from the smallest occupied place towards the left,
+                    exactly as before.</p>
 
                 <div class="worked">
-                    <h3 class="worked__title">Example: calculate 18.75 + 6.9</h3>
+                    <h2 class="worked__title">Example: calculate 18.75 + 6.9</h2>
 
                     <div class="addition-scene" data-addition-scene data-a="18.75" data-b="6.9">
                         <div class="addition-scene__sticky">
@@ -272,8 +273,33 @@
                 </aside>
             </section>
 
+            <section id="adding-in-context">
+                <h1>Adding in context</h1>
+                <p>The context decides what each column counts. Put every quantity into the same unit before setting
+                    out the addition, then include that unit with the answer.</p>
+
+                <div class="reading-pair">
+                    <article class="reading-card">
+                        <h2>Money</h2>
+                        <p>A book costs &pound;18.75 and a notebook costs &pound;6.90. Their total cost is
+                            <strong>&pound;18.75 + &pound;6.90 = &pound;25.65</strong>.</p>
+                    </article>
+                    <article class="reading-card">
+                        <h2>Measure</h2>
+                        <p>A 2.35 m length is joined to a 0.85 m length. Since both measurements are already in
+                            metres, the total is <strong>2.35 m + 0.85 m = 3.20 m</strong>, or <strong>3.2 m</strong>.</p>
+                    </article>
+                </div>
+
+                <aside class="important-box" aria-labelledby="addition-check-title">
+                    <h2 class="important-box__title" id="addition-check-title">Check by subtracting</h2>
+                    <p>Subtract either addend from the total to recover the other. For example,
+                        <strong>25.65 &minus; 6.90 = 18.75</strong>, so the addition above passes its inverse check.</p>
+                </aside>
+            </section>
+
             <section>
-                <h1>Build a calculation</h1>
+                <h1>Add two chosen numbers</h1>
                 <div class="addition-scene" data-addition-scene>
                     <div class="addition-scene__sticky">
                         <div class="addition-scene__inputs">
@@ -320,6 +346,17 @@
                     <li><b>Moving the decimal point</b><span>The decimal point does not move during addition. Copy it
                             straight down into the answer line.</span></li>
                 </ul>
+            </section>
+
+            <section>
+                <h1>Summary</h1>
+                <ol class="recap">
+                    <li>Align equal place values; for decimals, place each point on the same boundary.</li>
+                    <li>Begin with the furthest occupied column to the right and work left.</li>
+                    <li>Write one result digit in each column and regroup any tens into the column to the left.</li>
+                    <li>Convert quantities to the same unit before adding, and attach that unit to the total.</li>
+                    <li>Check by subtracting either addend from the total to recover the other addend.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">

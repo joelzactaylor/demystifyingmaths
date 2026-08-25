@@ -10,11 +10,13 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/longMultiplication.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
+    <script src="/demystifyingmaths/js/longMultiplication.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -45,14 +47,419 @@
         <aside id="page-nav-container"></aside>
 
         <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>Long multiplication of two- and three-digit integers with the place-holder zero in each later row; grid method as backup; worded cost and area contexts. Decimal operands live on multiplying-decimals; estimation as a check lives on Measures estimating-calculations. Both tiers. (N2)</p>
+            <section>
+                <h1>One large product, many small products</h1>
+                <p class="prereq"><b>Before this page:</b> <span>know the multiplication tables to 12 &times; 12 from the
+                        KS2 page on <a href="/demystifyingmaths/pages/curriculum/KS2/multiplicationDivision.html">multiplication
+                            and division</a>, be able to add in
+                        <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/columnAddition.html">columns</a>,
+                        and know what each digit is worth in
+                        <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/placeValue.html">integers and decimals</a>.</span></p>
+
+                <p>347 &times; 26 is not a table fact. There is no row of the times tables that reaches it and no
+                    single step that produces it. What is already known is 6 &times; 7, 6 &times; 4, 2 &times; 3 and
+                    the rest of the small products it is built from.</p>
+
+                <p>Both numbers can be broken into what their digits are worth. 347 is 300 + 40 + 7, and 26 is
+                    20 + 6. Multiplying by 26 means multiplying by 20 and by 6 and adding the two results, and the
+                    same is true of the three parts of 347. Every part of one number has to meet every part of the
+                    other, which comes to six small multiplications.</p>
+
+                <p>Everything on this page is those six products. What changes, from one section to the next, is how
+                    much of the working is written down &mdash; and the short form at the end is the one that writes
+                    the least, which is exactly why it is the hardest to read.</p>
             </section>
 
             <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+                <h1>Every pair of parts</h1>
+                <p>A rectangle gives each of the six products a box of its own. The parts of one number run along the
+                    top, the parts of the other down the side, and each box holds what its row and its column make
+                    together.</p>
+
+                <div class="worked">
+                    <h2 class="worked__title">The grid: 347 &times; 26</h2>
+
+                <div class="multiplication-scene" data-multiplication-scene data-mode="grid" data-a="347" data-b="26">
+                    <div class="multiplication-scene__sticky">
+                        <p class="multiplication-scene__heading">347 &times; 26</p>
+
+                        <div class="multiplication-board">
+                            <div class="multiplication-board__paper" data-paper></div>
+                        </div>
+
+                        <div class="multiplication-scene__caption" aria-live="polite">
+                            <h3 data-step-title>Split 347 into its parts</h3>
+                            <p data-step-copy>347 is 300 + 40 + 7. Each digit is written as the amount it stands for, so nothing about the number has changed.</p>
+                        </div>
+
+                        <div class="multiplication-scene__progress" data-progress aria-hidden="true"></div>
+                    </div>
+                    <noscript>
+                        <p><strong>347 &times; 26 = 9,022</strong></p>
+                    </noscript>
+                </div>
+
+                    <p class="worked__answer"><strong>347 &times; 26 = 9,022</strong></p>
+                </div>
+
+                <p>Not one of the six needs anything beyond a table fact and a count of zeros. 20 &times; 300 is
+                    2 &times; 3 with three zeros after it. The grid never has to be drawn in any particular order,
+                    because the boxes do not depend on each other.</p>
+            </section>
+
+            <section>
+                <h1>The same products, written downwards</h1>
+                <p>The boxes can be written as a column of lines instead. Nothing is recalculated. Each box becomes one
+                    line, placed so that its digits stand in the columns they are worth, with the product that made it
+                    written alongside so that no line has to be taken on trust.</p>
+
+                <div class="multiplication-scene" data-multiplication-scene data-mode="pair" data-a="347" data-b="26">
+                    <div class="multiplication-scene__sticky">
+                        <p class="multiplication-scene__heading">347 &times; 26</p>
+
+                        <div class="multiplication-board">
+                            <div class="multiplication-board__paper" data-paper></div>
+                        </div>
+
+                        <div class="multiplication-scene__caption" aria-live="polite">
+                            <h3 data-step-title>The same products, written downwards</h3>
+                            <p data-step-copy>The boxes hold six products. Written in columns instead, each one becomes a line of its own, placed so that its digits sit under the places they are worth.</p>
+                        </div>
+
+                        <div class="multiplication-scene__progress" data-progress aria-hidden="true"></div>
+                    </div>
+                    <noscript>
+                        <p><strong>347 &times; 26 = 9,022</strong></p>
+                    </noscript>
+                </div>
+
+                <p>This is long multiplication with all of its working showing. The order is fixed now &mdash; the ones
+                    of the multiplier first, and within that the ones of the number above &mdash; so that each line
+                    reaches a little further left than the one before it. Every line can be checked against its box,
+                    and the last step is one ordinary column addition.</p>
+            </section>
+
+            <section>
+                <h1>Gathering the lines</h1>
+                <p>Six lines is a lot of writing for one calculation. They fall into two families: three came from the
+                    6 in 26 and three from the 20. Each family can be added on its own before anything else
+                    happens.</p>
+
+                <div class="multiplication-scene" data-multiplication-scene data-mode="gather" data-a="347" data-b="26">
+                    <div class="multiplication-scene__sticky">
+                        <p class="multiplication-scene__heading">347 &times; 26</p>
+
+                        <div class="multiplication-board">
+                            <div class="multiplication-board__paper" data-paper></div>
+                        </div>
+
+                        <div class="multiplication-scene__caption" aria-live="polite">
+                            <h3 data-step-title>Six lines, three of them for each digit</h3>
+                            <p data-step-copy>Each digit of 26 produced three lines. The lines belonging to one digit can be added on their own before anything else happens.</p>
+                        </div>
+
+                        <div class="multiplication-scene__progress" data-progress aria-hidden="true"></div>
+                    </div>
+                    <noscript>
+                        <p><strong>347 &times; 26 = 9,022</strong></p>
+                    </noscript>
+                </div>
+
+                <p>That leaves one row for each digit of the multiplier. The six products are all still there; they
+                    have simply been added in two stages instead of one.</p>
+            </section>
+
+            <section>
+                <h1>Why a row ends in zeros</h1>
+                <p>Look at the three lines that came from the 20: 140, 800 and 6,000. Every one of them ends in a zero,
+                    because every one of them is 20 times something. Their total, 6,940, ends in a zero too, and it
+                    could not do anything else.</p>
+
+                <div class="shift-pair">
+                    <article class="shift-card">
+                        <h3>347 &times; 2</h3>
+                        <div class="mult-static mult-static--three" role="img"
+                            aria-label="347 multiplied by 2, giving 694.">
+                            <span class="mult-static__op"></span>
+                            <span class="mult-static__cell mult-static__cell--term">3</span>
+                            <span class="mult-static__cell mult-static__cell--term">4</span>
+                            <span class="mult-static__cell mult-static__cell--term">7</span>
+
+                            <span class="mult-static__op mult-static__rule">&times;</span>
+                            <span class="mult-static__cell mult-static__rule"></span>
+                            <span class="mult-static__cell mult-static__rule"></span>
+                            <span class="mult-static__cell mult-static__cell--term mult-static__rule">2</span>
+
+                            <span class="mult-static__op"></span>
+                            <span class="mult-static__cell mult-static__cell--answer">6</span>
+                            <span class="mult-static__cell mult-static__cell--answer">9</span>
+                            <span class="mult-static__cell mult-static__cell--answer">4</span>
+                        </div>
+                        <p>347 doubled: six hundred and ninety-four.</p>
+                    </article>
+                    <article class="shift-card">
+                        <h3>347 &times; 20</h3>
+                        <div class="mult-static mult-static--four" role="img"
+                            aria-label="347 multiplied by 20, giving 6940, with a place-holder zero in the ones column.">
+                            <span class="mult-static__op"></span>
+                            <span class="mult-static__cell"></span>
+                            <span class="mult-static__cell mult-static__cell--term">3</span>
+                            <span class="mult-static__cell mult-static__cell--term">4</span>
+                            <span class="mult-static__cell mult-static__cell--term">7</span>
+
+                            <span class="mult-static__op mult-static__rule">&times;</span>
+                            <span class="mult-static__cell mult-static__rule"></span>
+                            <span class="mult-static__cell mult-static__rule"></span>
+                            <span class="mult-static__cell mult-static__cell--term mult-static__rule">2</span>
+                            <span class="mult-static__cell mult-static__cell--term mult-static__rule">0</span>
+
+                            <span class="mult-static__op"></span>
+                            <span class="mult-static__cell mult-static__cell--answer">6</span>
+                            <span class="mult-static__cell mult-static__cell--answer">9</span>
+                            <span class="mult-static__cell mult-static__cell--answer">4</span>
+                            <span class="mult-static__cell mult-static__cell--holder">0</span>
+                        </div>
+                        <p>Ten times as much, so the same three digits sit one place further left and a zero
+                            holds the ones.</p>
+                    </article>
+                </div>
+
+                <p>A third digit in the multiplier is worth a hundred, so all of its lines end in two zeros and its row
+                    does too. The pattern continues for as many digits as the lower number has: one more zero for each
+                    place.</p>
+
+                <aside class="important-box" aria-labelledby="zero-title">
+                    <h2 class="important-box__title" id="zero-title">Write the zeros before the row, not after it</h2>
+                    <p>Put the place-holder zeros down as soon as the row is started. Left until the end, they are the
+                        easiest thing on the page to forget, and a missing zero makes the whole row ten or a hundred times
+                        too small while every digit in it still looks correct.</p>
+                </aside>
+            </section>
+
+            <section>
+                <h1>The short form</h1>
+                <p>The short form produces those two rows without ever writing the lines that make them. Instead of
+                    1,800 and 240 and 42 going down the page, each column's product is written straight into the row
+                    and anything too large for one digit is carried into the next column. The adding happens as the row
+                    is made.</p>
+
+                <figure class="anatomy">
+                    <div class="anatomy__figure">
+                        <div class="mult-static mult-static--four" role="img"
+                            aria-label="347 multiplied by 26 set out in columns. The first row reads 2082, the second row reads 6940 with a place-holder zero in the ones column, and the answer line reads 9022.">
+                            <span class="mult-static__op"></span>
+                            <span class="mult-static__cell mult-static__cell--label">1,000s</span>
+                            <span class="mult-static__cell mult-static__cell--label">100s</span>
+                            <span class="mult-static__cell mult-static__cell--label">10s</span>
+                            <span class="mult-static__cell mult-static__cell--label">1s</span>
+
+                            <span class="mult-static__op"></span>
+                            <span class="mult-static__cell"></span>
+                            <span class="mult-static__cell mult-static__cell--term">3</span>
+                            <span class="mult-static__cell mult-static__cell--term">4</span>
+                            <span class="mult-static__cell mult-static__cell--term">7</span>
+
+                            <span class="mult-static__op mult-static__rule">&times;</span>
+                            <span class="mult-static__cell mult-static__rule"></span>
+                            <span class="mult-static__cell mult-static__rule"></span>
+                            <span class="mult-static__cell mult-static__cell--term mult-static__rule">2</span>
+                            <span class="mult-static__cell mult-static__cell--term mult-static__rule">6</span>
+
+                            <span class="mult-static__op"></span>
+                            <span class="mult-static__cell mult-static__cell--partial">2</span>
+                            <span class="mult-static__cell mult-static__cell--partial">0</span>
+                            <span class="mult-static__cell mult-static__cell--partial">8</span>
+                            <span class="mult-static__cell mult-static__cell--partial">2</span>
+
+                            <span class="mult-static__op mult-static__rule">+</span>
+                            <span class="mult-static__cell mult-static__cell--partial mult-static__rule">6</span>
+                            <span class="mult-static__cell mult-static__cell--partial mult-static__rule">9</span>
+                            <span class="mult-static__cell mult-static__cell--partial mult-static__rule">4</span>
+                            <span class="mult-static__cell mult-static__cell--holder mult-static__rule">0</span>
+
+                            <span class="mult-static__op"></span>
+                            <span class="mult-static__cell mult-static__cell--answer">9</span>
+                            <span class="mult-static__cell mult-static__cell--answer">0</span>
+                            <span class="mult-static__cell mult-static__cell--answer">2</span>
+                            <span class="mult-static__cell mult-static__cell--answer">2</span>
+                        </div>
+                    </div>
+                    <figcaption>
+                        <ul class="anatomy__key">
+                            <li><b>One row for each lower digit</b><span>2,082 is the three lines from the 6, already
+                                    added. 6,940 is the three lines from the 20.</span></li>
+                            <li><b>The place-holder zero</b><span>The second row is 347 &times; 20, not 347 &times; 2,
+                                    and the zero in the ones column is what says so.</span></li>
+                            <li><b>Answer line</b><span>The two rows are added in columns, which is all that is left of
+                                    the six-line addition.</span></li>
+                        </ul>
+                    </figcaption>
+                </figure>
+
+                <div class="rule-card mult-rule">
+                    <h2 class="rule-card__statement">One row for each digit of the multiplier</h2>
+                    <ol>
+                        <li><span>1</span><p><strong>Align</strong> equal place values, longer number on top.</p></li>
+                        <li><span>2</span><p><strong>Hold</strong> the row's place with zeros before writing in it.</p></li>
+                        <li><span>3</span><p><strong>Multiply</strong> every upper digit by that one lower digit.</p></li>
+                        <li><span>4</span><p><strong>Add</strong> the finished rows in columns.</p></li>
+                    </ol>
+                </div>
+
+                <div class="worked">
+                    <h2 class="worked__title">Example: calculate 347 &times; 26</h2>
+
+                <div class="multiplication-scene" data-multiplication-scene data-mode="compact" data-a="347" data-b="26">
+                    <div class="multiplication-scene__sticky">
+                        <p class="multiplication-scene__heading">347 &times; 26</p>
+
+                        <div class="multiplication-board">
+                            <div class="multiplication-board__paper" data-paper></div>
+                        </div>
+
+                        <div class="multiplication-scene__caption" aria-live="polite">
+                            <h3 data-step-title>Set the two numbers out</h3>
+                            <p data-step-copy>Equal place values go in the same column, as in any written method. Every digit of 347 will be multiplied by every digit of 26, one digit of 26 at a time, starting with its ones.</p>
+                        </div>
+
+                        <div class="multiplication-scene__progress" data-progress aria-hidden="true"></div>
+                    </div>
+                    <noscript>
+                        <p><strong>347 &times; 26 = 9,022</strong></p>
+                    </noscript>
+                </div>
+
+                    <p class="worked__answer"><strong>347 &times; 26 = 9,022</strong></p>
+                </div>
+
+                <p>The same six products, the same two rows and the same answer. What has gone is the writing, and
+                    with it the chance to check each line against a box. Anyone who loses their way in the short form
+                    can go back to the lines, which show their working at every step.</p>
+            </section>
+
+            <section>
+                <h1>A three-digit multiplier</h1>
+                <p>Three digits below give three rows, and the third starts two places further left again because its
+                    digit is worth a hundred. Nine products in all this time, gathered into three rows.</p>
+
+                <div class="worked">
+                    <h2 class="worked__title">Example: calculate 248 &times; 135</h2>
+
+                <div class="multiplication-scene" data-multiplication-scene data-mode="compact" data-a="248" data-b="135">
+                    <div class="multiplication-scene__sticky">
+                        <p class="multiplication-scene__heading">248 &times; 135</p>
+
+                        <div class="multiplication-board">
+                            <div class="multiplication-board__paper" data-paper></div>
+                        </div>
+
+                        <div class="multiplication-scene__caption" aria-live="polite">
+                            <h3 data-step-title>Set the two numbers out</h3>
+                            <p data-step-copy>Equal place values go in the same column, as in any written method. Every digit of 248 will be multiplied by every digit of 135, one digit of 135 at a time, starting with its ones.</p>
+                        </div>
+
+                        <div class="multiplication-scene__progress" data-progress aria-hidden="true"></div>
+                    </div>
+                    <noscript>
+                        <p><strong>248 &times; 135 = 33,480</strong></p>
+                    </noscript>
+                </div>
+
+                    <p class="worked__answer"><strong>248 &times; 135 = 33,480</strong></p>
+                </div>
+            </section>
+
+            <section>
+                <h1>Where it turns up</h1>
+                <p>Exam questions rarely say multiply. Two situations account for most of them, and both are answered
+                    by the same rows.</p>
+
+                <div class="reading-pair">
+                    <article class="reading-card">
+                        <h3>Many of the same thing</h3>
+                        <p>A coach company charges &pound;24 a seat and 37 seats are booked. The cost is
+                            24 &times; 37 = <strong>&pound;888</strong>.</p>
+                        <p>Anything counted in equal amounts has this shape: boxes of the same size, wages for the same
+                            hourly rate, identical parts on an order.</p>
+                    </article>
+                    <article class="reading-card">
+                        <h3>A rectangle</h3>
+                        <p>A worktop is 246 cm long and 84 cm deep. Its area is
+                            246 &times; 84 = <strong>20,664 cm&sup2;</strong>.</p>
+                        <p>The two measurements must be in the same unit before the columns are drawn, and the answer
+                            is in square units of whatever that unit was.</p>
+                    </article>
+                </div>
+
+                <p>Total, altogether, each, per, product and area all lead to the same arrangement. What changes is the
+                    unit attached to the answer, which the question supplies and the columns do not.</p>
+            </section>
+
+            <section>
+                <h1>Multiply two chosen integers</h1>
+                <div class="multiplication-scene" data-multiplication-scene>
+                    <div class="multiplication-scene__sticky">
+                        <div class="multiplication-scene__inputs">
+                            <label>
+                                <span>Number to multiply</span>
+                                <input type="text" inputmode="numeric" maxlength="4" value="1264"
+                                    autocomplete="off" spellcheck="false" data-term="a">
+                            </label>
+                            <span class="multiplication-scene__times" aria-hidden="true">&times;</span>
+                            <label>
+                                <span>Multiply by</span>
+                                <input type="text" inputmode="numeric" maxlength="3" value="38"
+                                    autocomplete="off" spellcheck="false" data-term="b">
+                            </label>
+                        </div>
+
+                        <div class="multiplication-board">
+                            <div class="multiplication-board__paper" data-paper></div>
+                        </div>
+
+                        <div class="multiplication-scene__caption" aria-live="polite">
+                            <h3 data-step-title>Set the two numbers out</h3>
+                            <p data-step-copy>Equal place values go in the same column, as in any written method. Every
+                                digit of 1,264 will be multiplied by every digit of 38, one digit of 38 at a time,
+                                starting with its ones.</p>
+                        </div>
+
+                        <div class="multiplication-scene__progress" data-progress aria-hidden="true"></div>
+                    </div>
+                    <noscript><p><strong>1,264 &times; 38 = 48,032</strong></p></noscript>
+                </div>
+            </section>
+
+            <section>
+                <h1>Common mistakes</h1>
+                <p>The arithmetic in each step is small enough to be reliable. What goes wrong is nearly always the
+                    arrangement of the rows or the handling of a carried digit.</p>
+                <ul class="slips">
+                    <li><b>The missing place-holder zero</b><span>A second row without its zero is ten times too small,
+                            and a third row without its two zeros is a hundred times too small. Write the zeros first,
+                            before the row is started.</span></li>
+                    <li><b>Adding the carry before multiplying</b><span>In 347 &times; 6 the ones give 42, so 4 is
+                            carried. The tens are then 6 &times; 4 = 24, and the carried 4 joins afterwards to make 28.
+                            It is not (4 + 4) &times; 6 = 48.</span></li>
+                    <li><b>Carrying between rows</b><span>Each row starts again with nothing carried into it. A digit
+                            carried in the ones row belongs to the ones row alone.</span></li>
+                    <li><b>Losing one of the products</b><span>Three digits over two is six products, and three over
+                            three is nine. Counting them is a quick check that none has been missed.</span></li>
+                </ul>
+            </section>
+
+            <section>
+                <h1>Summary</h1>
+                <ol class="recap">
+                    <li>347 &times; 26 is six small products: every part of 347 against every part of 26.</li>
+                    <li>A grid gives each product a box. A column layout gives each one a line, placed in the columns
+                        it is worth.</li>
+                    <li>The lines belonging to one digit of the multiplier add together to make one row.</li>
+                    <li>A row made by the tens digit ends in one zero, and one made by the hundreds digit ends in two,
+                        because every line in it did.</li>
+                    <li>The short form writes each row directly, carrying instead of setting the lines out, and then
+                        adds the rows in columns.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">

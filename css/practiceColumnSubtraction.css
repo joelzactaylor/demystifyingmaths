@@ -1,0 +1,6 @@
+@import url("/demystifyingmaths/css/practiceWrittenMethods.css");
+
+/* Column subtraction uses the established numeric practice shell. */
+.practice-column__row span:first-child {
+    color: #a5521b;
+}

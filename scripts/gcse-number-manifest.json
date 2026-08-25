@@ -26,7 +26,7 @@
                     "title": "Ordering integers, decimals and negatives",
                     "description": "Ordering numbers, including negatives and decimals of different lengths.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Ordering integers, decimals of different lengths and negatives, ascending and descending, with number-line placement; padding decimals to equal length; temperature contexts. The symbols themselves live on inequality-symbols; ordering fractions and percentages lives in the FDP topic; standard-form ordering has its own page. Both tiers. (N1)"
                 },
                 {
@@ -34,7 +34,7 @@
                     "title": "The inequality symbols",
                     "description": "The less-than, greater-than, at-most, at-least and not-equal signs.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Reading and writing the six DfE symbols =, not-equal, <, >, at-most and at-least between numbers, including negatives and decimals; which two allow equality; listing integers satisfying a statement like -2 < n at-most 3. Solving inequalities is Algebra; error-interval notation lives on Measures. Both tiers. (N1)"
                 },
                 {
@@ -42,7 +42,7 @@
                     "title": "Multiplying and dividing by powers of ten",
                     "description": "The effect on every digit of multiplying or dividing by 10, 100, 0.1 and 0.01.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Multiplying and dividing integers and decimals by 10, 100, 1000, 0.1 and 0.01 as shifts of every digit, including why dividing by 0.1 enlarges. Exclude index notation for powers of ten (standard-form page) and metric conversion (Measures). Both tiers. (N2)"
                 },
                 {
@@ -50,7 +50,7 @@
                     "title": "Column addition",
                     "description": "Adding integers and decimals in columns, lining up the point and carrying.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Column addition of integers and decimals of different lengths, carrying between columns, aligning the point, padding with zeros; money and measure contexts. Subtraction lives on column-subtraction; estimation checks live on Measures; negative operands live on adding-subtracting-negatives. Both tiers. (N2)"
                 },
                 {
@@ -58,7 +58,7 @@
                     "title": "Column subtraction",
                     "description": "Subtracting in columns with exchange, lining up decimals of different lengths.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Column subtraction of integers and decimals with exchange, aligning points and padding shorter decimals, e.g. 12 - 3.475; change and difference contexts. Exchanges that must pass through zero digits get the sibling page; answers below zero live on adding-subtracting-negatives. Both tiers. (N2)"
                 },
                 {
@@ -74,7 +74,7 @@
                     "title": "Long multiplication",
                     "description": "Multiplying multi-digit integers, and the place-holder zero in the second row.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Long multiplication of two- and three-digit integers with the place-holder zero in each later row; grid method as backup; worded cost and area contexts. Decimal operands live on multiplying-decimals; estimation as a check lives on Measures estimating-calculations. Both tiers. (N2)"
                 },
                 {
@@ -82,15 +82,15 @@
                     "title": "Multiplying decimals",
                     "description": "Multiplying as whole numbers, then counting decimal places to fix the point.",
                     "tier": "both",
-                    "written": false,
-                    "coverNote": "Multiplying decimals via the integer product then counting decimal places, e.g. 0.3 x 0.4 = 0.12; checking size against an estimate. Assumes long-multiplication; division by decimals lives on dividing-by-decimals; why products can shrink lives on numbers-below-one in the FDP topic. Both tiers. (N2)"
+                    "written": true,
+                    "coverNote": "Multiplying decimals via the integer product then counting decimal places, e.g. 0.3 x 0.4 = 0.12, with a unit-square area model for that case; setting the columns out as whole numbers rather than aligning the points; tidying a trailing zero only after the count is made. Assumes long-multiplication; estimation as a check lives on Measures estimating-calculations; division by decimals lives on dividing-by-decimals; the general rule for when a product shrinks lives on numbers-below-one in the FDP topic. Both tiers. (N2)"
                 },
                 {
                     "slug": "short-division",
                     "title": "Short division",
                     "description": "Dividing by a one-digit number, carrying each remainder into the next digit.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Short division of integers and decimals by one-digit divisors, carrying remainders into the next digit and continuing past the point for exact decimal answers. Deciding what a leftover means lives on interpreting-remainders; two-digit divisors live on long-division. Both tiers. (N2)"
                 },
                 {
@@ -98,7 +98,7 @@
                     "title": "Interpreting a remainder",
                     "description": "Whether a worded answer wants a remainder, a decimal, a fraction or rounding.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Worded division answers: choosing between remainder form, exact decimal, fraction, and rounding up or down in context (coaches, boxes, tickets). One-digit divisors here; the context-forced rounding direction recurs on Measures rounding-in-context, so cross-reference rather than duplicate. Both tiers. (N2)"
                 },
                 {
@@ -106,7 +106,7 @@
                     "title": "Long division",
                     "description": "Dividing by a two-digit number, continuing past the point for an exact answer.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Long division by two-digit divisors, integer and decimal dividends, continuing past the point for exact decimal answers; layout, subtracting multiples, and a listed multiples crib. Decimal divisors live on dividing-by-decimals; remainder interpretation lives on interpreting-remainders. Both tiers. (N2)"
                 },
                 {
@@ -114,7 +114,7 @@
                     "title": "Dividing by a decimal",
                     "description": "Scaling both numbers by the same power of ten, and why the answer can grow.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Rewriting divisions like 55.2 / 0.46 by scaling both numbers by the same power of ten until the divisor is an integer, and why the quotient can exceed the dividend. Assumes short and long division; the size intuition cross-references numbers-below-one in FDP. Both tiers. (N2)"
                 },
                 {
@@ -122,7 +122,7 @@
                     "title": "Using a given calculation",
                     "description": "Related products and quotients from a stated result, without recalculating.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "From a stated fact like 43 x 26 = 1118, deducing related products, quotients and missing factors such as 4.3 x 2.6 and 1118 / 4.3 by tracking powers of ten; no recalculating. Estimating unrelated calculations lives on Measures estimating-calculations. Both tiers. (N2, N3)"
                 },
                 {
@@ -698,7 +698,8 @@
                 "Checked the audit's tier claims against the current labels: the existing tiers were already correct, so no page changed tier; new pages are both except the fractional-indices trio.",
                 "Kept all three practice pairings: standard form on standard-form, surds on simplifying-surds, and the index-laws drill on negative-indices, the split half teaching the drilled method.",
                 "Regrouped into eight groups in teaching order, with powers and roots now before the order of operations, and every slug in exactly one group.",
-                "Left the written-method, place-value, listing and estimating-roots boundary questions untouched, as out of scope for this pass."
+                "Left the written-method, place-value, listing and estimating-roots boundary questions untouched, as out of scope for this pass.",
+                "Moved estimation off multiplying-decimals: checking an answer's size by rounding is a Measures skill with a page of its own, and the lesson reads better without the detour. The written-methods review drill still asks for it."
             ],
             "verify": "- `dividing-powers` — its description (\"what a subtraction giving zero or a negative result means\") teaches exactly what `zero-index` and `negative-indices` teach on the next two pages.\n- `square-roots` / `positive-and-negative-roots` — both descriptions carry the same point that the root sign denotes only the positive root; the second page has nothing left that the first has not already said.\n- `calculator-exact-values` — bundles two unrelated calculator skills (exact↔decimal toggling; ANS and memory), and its first half duplicates `exact-answers` (\"rather than turning it into a decimal\") four pages later in the same group.\n- `squares-cubes-from-prime-factors` — bundles two different methods: finding the smallest multiplier giving a perfect square or cube, and counting how many factors a number has.\n- `power-of-a-product` — title says \"Powers of a product and a quotient\" but the description only covers the product (\"every factor inside the bracket\"); the quotient case is unmentioned, and the slug omits it too.\n- The index laws group ordering — `negative-index-of-a-fraction` sits at position 5, but \"applying the positive index\" to a fraction relies on the power-of-a-quotient rule that does not arrive until `power-of-a-product` at position 7.\n- `rationalising-conjugates` — \"A Higher extension:\" is a tier label pasted into the description; no other description labels its tier, and every page in the surds group is already Higher.",
             "crumbLabel": "Structure and calculation",

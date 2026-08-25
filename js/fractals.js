@@ -971,7 +971,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function ensureOverlayWorker() {
             if (overlayWorker) return;
-            overlayWorker = new Worker('../js/fractal-overlay-worker.js', { type: 'module' });
+            overlayWorker = new Worker('/demystifyingmaths/js/fractal-overlay-worker.js', { type: 'module' });
             overlayWorker.addEventListener('message', (event) => {
                 const data = event.data;
                 if (data?.type !== 'tile') return;
@@ -1212,7 +1212,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const ctx = canvas.getContext('2d');
 
         const frameUrls = Array.from({ length: 150 }, (_, i) =>
-            `../images/fractals/mandel/mandel-${i + 1}.jpg`
+            `/demystifyingmaths/images/fractals/mandel/mandel-${i + 1}.jpg`
         );
 
         const frameCount = frameUrls.length;
@@ -1402,7 +1402,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const dDpr = window.devicePixelRatio || 1;
         if (!dc || !dResetBtn || !window.Worker) return;
 
-        const dragonWorker = new Worker('../js/dragon-worker.js', { type: 'module' });
+        const dragonWorker = new Worker('/demystifyingmaths/js/dragon-worker.js', { type: 'module' });
         const offscreen = dc.transferControlToOffscreen();
         dragonWorker.postMessage({ type: 'init', canvas: offscreen, dpr: dDpr }, [offscreen]);
 

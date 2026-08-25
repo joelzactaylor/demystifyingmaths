@@ -1,0 +1,112 @@
+/* One division stays fixed while its context changes. */
+.division-fact { display: grid; max-width: 520px; margin: 24px auto; padding: 20px 26px; border: 2px solid #c9dce8; border-radius: 18px; background: #fff; box-shadow: 0 8px 22px rgba(23, 56, 73, .11); text-align: center; }
+.division-fact p { margin: 0; }
+.division-fact p:first-child { display: flex; gap: 18px; align-items: baseline; justify-content: center; color: #173849; font: 700 1.45rem/1.3 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+.division-fact strong { color: #09539d; }
+.division-fact .division-fact__check { margin-top: 11px; padding-top: 11px; border-top: 1px solid #d9e4eb; color: #5b6f78; font: 700 .9rem/1.35 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+
+/* Scroll-led interpretation. The page scroll drives the card and no input is intercepted. */
+.remainder-scene { position: relative; min-height: 520px; margin: 24px 0 8px; overflow-anchor: none; }
+.remainder-scene.is-ready { height: var(--scene-height); min-height: var(--scene-min-height); }
+.remainder-scene__sticky { position: absolute; top: 0; right: 0; left: 0; display: grid; height: min(630px, calc(100vh - 90px)); min-height: 520px; box-sizing: border-box; grid-template-rows: auto minmax(150px, 1fr) auto auto auto; overflow: hidden; border: 2px solid #c9dce8; border-radius: 22px; background: linear-gradient(180deg, #fbfdff 0%, #f2f8fc 100%); box-shadow: 0 12px 30px rgba(20, 57, 78, .14); contain: layout paint; overflow-anchor: none; will-change: transform; }
+.remainder-scene__sticky.is-pinned { position: fixed; right: auto; z-index: 900; transform-origin: top left; }
+.remainder-scene__calculation { margin: 0; padding: 17px 24px 11px; color: #173849; font: 700 1.38rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; text-align: center; }
+
+.scenario-board { position: relative; display: grid; min-height: 0; overflow: hidden; place-items: center; background: radial-gradient(circle at 50% 48%, rgba(255, 255, 255, .88) 0 30%, rgba(234, 243, 248, .4) 68%), #eaf3f8; }
+.scenario-drawing { position: absolute; inset: 0; display: flex; width: 100%; height: 100%; padding: 17px 28px; align-items: center; justify-content: center; box-sizing: border-box; opacity: 0; pointer-events: none; }
+.scenario-drawing.is-active { opacity: 1; }
+.scenario-drawing [data-draw-part] { opacity: 0; transform: translateY(10px) scale(.96); will-change: opacity, transform; }
+.scenario-dot { display: block; width: 10px; height: 10px; border-radius: 50%; background: linear-gradient(145deg, #2c8bb2, #09577b); box-shadow: inset 0 -2px 0 rgba(0, 0, 0, .13), 0 1px 2px rgba(23, 56, 73, .22); }
+
+/* 29 counters shared between four pupils: four trays of seven and one loose. */
+.counter-share { display: flex; gap: 13px; align-items: center; justify-content: center; }
+.counter-share__tray { display: grid; width: 116px; height: 84px; box-sizing: border-box; grid-template-columns: repeat(4, 1fr); grid-template-rows: auto 1fr 1fr; gap: 5px 8px; padding: 9px 14px 11px; place-items: center; border: 2px solid #9dbdd0; border-bottom-width: 5px; border-radius: 15px; background: linear-gradient(180deg, #fff, #f6fbfe); box-shadow: 0 5px 12px rgba(23, 56, 73, .1); }
+.counter-share__tray b { grid-column: 1 / -1; color: #52666f; font-size: .68rem; letter-spacing: .025em; }
+.counter-share__loose { display: grid; width: 86px; height: 84px; box-sizing: border-box; gap: 7px; padding: 12px 8px; place-items: center; border: 2px dashed #d99a20; border-radius: 15px; background: linear-gradient(180deg, #fffaf0, #fff2c9); color: #80540f; font-size: .72rem; font-weight: 700; box-shadow: 0 5px 12px rgba(128, 84, 15, .1); }
+
+/* Four equal tank readings. The short gold segment is the extra quarter litre. */
+.exact-share { display: grid; width: 488px; gap: 10px 12px; grid-template-columns: repeat(2, 238px); }
+.exact-share__row { display: grid; min-height: 69px; box-sizing: border-box; grid-template-columns: 1fr auto; gap: 7px 10px; padding: 11px 13px; align-items: center; border: 2px solid #b8ceda; border-radius: 14px; background: linear-gradient(180deg, #fff, #f7fbfd); box-shadow: 0 5px 12px rgba(23, 56, 73, .09); color: #52666f; font-size: .72rem; font-weight: 700; }
+.exact-share__tank { display: grid; height: 22px; grid-column: 1 / -1; grid-row: 2; grid-template-columns: repeat(7, 1fr) .25fr; gap: 2px; padding: 3px; border: 2px solid #8fb4c7; border-radius: 7px 7px 11px 11px; background: #fff; overflow: hidden; }
+.exact-share__tank span { border-radius: 3px; background: linear-gradient(180deg, #79b4ce, #347e9f); }
+.exact-share__tank span:last-child { background: linear-gradient(180deg, #f2bf51, #c88613); }
+.exact-share__amount { color: #80540f; font: 700 .8rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+
+/* Seven complete bouquets and the flower that cannot make an eighth. */
+.complete-groups { display: grid; width: max-content; gap: 10px 17px; grid-template-columns: repeat(4, 68px); }
+.complete-groups__heading { grid-column: 1 / -1; padding: 5px 13px; border-radius: 999px; background: #edf7eb; color: #4e7549; font-size: .72rem; font-weight: 700; text-align: center; box-shadow: inset 0 0 0 2px #bad0b6; }
+.complete-groups__bouquet { position: relative; display: grid; width: 68px; height: 68px; box-sizing: border-box; grid-template-columns: 1fr 1fr; gap: 4px; padding: 12px; place-items: center; border: 2px solid #73966f; border-bottom-width: 5px; border-radius: 50% 50% 44% 44%; background: radial-gradient(circle at 50% 38%, #fff 0 32%, #edf7eb 72%); box-shadow: 0 5px 11px rgba(55, 98, 49, .12); }
+.complete-groups__bouquet::after { position: absolute; right: 21px; bottom: -7px; left: 21px; height: 13px; border-radius: 2px 2px 7px 7px; background: #73966f; content: ""; }
+.scenario-flower { width: 16px; height: 16px; background: radial-gradient(circle, #e1a126 0 24%, #a96694 27% 66%, #7c4670 69% 76%, transparent 79%); box-shadow: none; }
+.complete-groups__loose { display: grid; width: 68px; height: 68px; box-sizing: border-box; gap: 4px; padding: 7px 3px; place-items: center; border: 2px dashed #d99a20; border-radius: 16px; background: #fff8df; color: #80540f; font-size: .61rem; font-weight: 700; line-height: 1.15; text-align: center; }
+
+/* Eight cars: the last still counts even though only one of its four seats is used. */
+.groups-needed { display: grid; width: max-content; gap: 24px 15px; grid-template-columns: repeat(4, 100px); }
+.groups-needed__heading { grid-column: 1 / -1; margin-bottom: -5px; padding: 5px 13px; border-radius: 999px; background: #fff8df; color: #80540f; font-size: .72rem; font-weight: 700; text-align: center; box-shadow: inset 0 0 0 2px #edcf8d; }
+.groups-needed__car { position: relative; display: grid; width: 100px; height: 57px; box-sizing: border-box; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 17px 13px 9px; place-items: center; border: 2px solid #6f94a7; border-bottom-width: 5px; border-radius: 12px 12px 9px 9px; background: linear-gradient(180deg, #fff, #eaf3f8); box-shadow: 0 5px 11px rgba(23, 56, 73, .13); }
+.groups-needed__car::before { position: absolute; top: -12px; left: 19px; width: 58px; height: 14px; box-sizing: border-box; border: 2px solid #6f94a7; border-bottom: 0; border-radius: 13px 13px 0 0; background: #d9eaf2; content: ""; }
+.groups-needed__car::after { position: absolute; bottom: -10px; left: 14px; width: 12px; height: 12px; border: 3px solid #eef5f8; border-radius: 50%; background: #344b56; box-shadow: 56px 0 0 -3px #344b56, 56px 0 0 0 #eef5f8; content: ""; }
+.groups-needed__seat { width: 12px; height: 12px; box-sizing: border-box; border: 2px solid #9eb3bd; border-radius: 50%; background: #fff; }
+.groups-needed__seat.is-filled { border-color: #095f86; background: linear-gradient(145deg, #2f92ba, #09577b); box-shadow: 0 1px 2px rgba(23, 56, 73, .2); }
+.groups-needed__car:last-child { border-color: #d99a20; background: linear-gradient(180deg, #fffaf0, #fff2c9); box-shadow: 0 5px 13px rgba(128, 84, 15, .16); }
+.groups-needed__car:last-child::before { border-color: #d99a20; background: #ffecb3; }
+
+.meaning-grid { display: grid; gap: 9px; grid-template-columns: 1fr 1fr; padding: 13px 20px 6px; }
+.meaning-grid article { position: relative; min-height: 54px; box-sizing: border-box; padding: 9px 12px 9px 17px; border: 2px solid #d7e3ea; border-radius: 11px; background: #fff; color: #52666f; opacity: .68; transition: opacity .18s ease, border-color .18s ease, background-color .18s ease, transform .18s ease; }
+.meaning-grid article::before { position: absolute; top: 9px; bottom: 9px; left: 7px; width: 4px; border-radius: 999px; background: #9db8c8; content: ""; }
+.meaning-grid article span, .meaning-grid article strong { display: block; }
+.meaning-grid article span { font-size: .72rem; line-height: 1.25; }
+.meaning-grid article strong { margin-top: 3px; color: #173849; font: 700 .88rem/1.25 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+.meaning-grid article.is-current { border-color: #d99a20; background: #fff8df; opacity: 1; transform: translateY(-2px); }
+.meaning-grid article.is-current::before { background: #d99a20; }
+.remainder-scene__caption { display: grid; height: 7.3em; box-sizing: border-box; padding: 11px 28px 5px; align-content: center; text-align: center; }
+.remainder-scene__caption h3 { margin: 0 0 5px; color: #09539d; font-size: 1.08rem; }
+.remainder-scene__caption p { max-width: 680px; margin: 0 auto; color: #344b56; font-size: .93rem; line-height: 1.45; }
+.remainder-scene__progress { display: flex; gap: 8px; padding: 0 22px 15px; justify-content: center; }
+.remainder-scene__dot { width: 9px; height: 9px; border-radius: 50%; background: #c6d4dc; }
+.remainder-scene__dot.is-current { width: 28px; border-radius: 999px; background: #116e93; }
+.remainder-scene__dot.is-past { background: #6c9bb0; }
+
+.meaning-table { display: grid; gap: 15px; grid-template-columns: 1fr 1fr; margin: 24px 0; }
+.meaning-table article { padding: 18px 20px; border: 2px solid #d9e4eb; border-top-width: 5px; border-radius: 15px; background: #fff; }
+.meaning-table article:nth-child(1) { border-top-color: #5d91b0; }
+.meaning-table article:nth-child(2) { border-top-color: #6b8f56; }
+.meaning-table article:nth-child(3) { border-top-color: #9667a5; }
+.meaning-table article:nth-child(4) { border-top-color: #d99a20; }
+.meaning-table__cue { color: #667982; font-size: .77rem; font-weight: 700; letter-spacing: .025em; }
+.meaning-table h2 { margin: 5px 0 8px; color: #173849; font-size: 1.12rem; }
+.meaning-table p { margin: 0 0 9px; color: #41535c; font-size: .9rem; line-height: 1.48; }
+.meaning-table p:last-child { margin-bottom: 0; }
+.meaning-table .meaning-table__example { padding-top: 9px; border-top: 1px solid #e0e8ed; color: #334b56; }
+
+.remainder-equivalence { display: flex; gap: 12px; margin: 25px 0; padding: 20px 22px; align-items: center; justify-content: center; border: 2px solid #c9dce8; border-radius: 17px; background: #fff; color: #173849; font: 700 1.25rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+.remainder-equivalence span { padding: 9px 12px; border-radius: 10px; background: #eef5fb; }
+.remainder-equivalence span:last-child { background: #fff2c9; color: #80540f; }
+.remainder-equivalence i { color: #6d858f; font-style: normal; }
+
+.remainder-lab { margin-top: 24px; padding: 22px; border: 2px solid #c9dce8; border-radius: 20px; background: linear-gradient(180deg, #fbfdff, #f2f8fc); box-shadow: 0 10px 26px rgba(20, 57, 78, .12); overflow-anchor: none; }
+.remainder-lab__inputs { display: flex; gap: 16px; align-items: center; justify-content: center; }
+.remainder-lab__inputs label { display: grid; gap: 6px; }
+.remainder-lab__inputs label span { color: #41535c; font-size: .78rem; font-weight: 700; letter-spacing: .03em; }
+.remainder-lab__inputs > span { margin-top: 20px; color: #b86821; font-size: 1.7rem; font-weight: 700; }
+.remainder-lab__inputs input { width: 175px; box-sizing: border-box; padding: 10px 14px; border: 2px solid #b8cbd7; border-radius: 12px; outline: none; background: #fff; color: #173849; font: 700 1.18rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; text-align: center; }
+.remainder-lab__inputs input:focus { border-color: #116e93; box-shadow: 0 0 0 4px rgba(17, 110, 147, .12); }
+.remainder-lab__inputs input[aria-invalid="true"] { border-color: #a3352b; background: #fffafa; }
+.remainder-lab__fact { min-height: 1.4em; margin: 19px 0 14px; color: #09539d; font: 700 1.2rem/1.4 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; text-align: center; }
+.remainder-lab__answers { display: grid; gap: 11px; grid-template-columns: 1fr 1fr; }
+.remainder-lab__answers article { min-height: 72px; box-sizing: border-box; padding: 12px 14px; border: 2px solid #d9e4eb; border-radius: 12px; background: #fff; }
+.remainder-lab__answers span, .remainder-lab__answers strong { display: block; }
+.remainder-lab__answers span { min-height: 2.4em; color: #61747d; font-size: .76rem; line-height: 1.25; }
+.remainder-lab__answers strong { margin-top: 3px; color: #173849; font: 700 .96rem/1.3 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+.remainder-lab__note { min-height: 2.8em; margin: 14px 0 0; color: #52666f; font-size: .86rem; line-height: 1.4; text-align: center; }
+
+.context-answers { display: grid; gap: 14px; margin: 24px 0; }
+.context-answers article { display: grid; gap: 18px; grid-template-columns: 1fr 1fr; padding: 16px 19px; align-items: center; border: 2px solid #d9e4eb; border-left: 6px solid #5d91b0; border-radius: 14px; background: #fff; }
+.context-answers article:nth-child(2) { border-left-color: #9667a5; }
+.context-answers article:nth-child(3) { border-left-color: #d99a20; }
+.context-answers h2 { margin: 0; color: #173849; font-size: 1rem; line-height: 1.4; }
+.context-answers p { margin: 0; color: #41535c; font-size: .9rem; line-height: 1.48; }
+
+@media (prefers-reduced-motion: reduce) {
+    .meaning-grid article { transition: none; }
+}

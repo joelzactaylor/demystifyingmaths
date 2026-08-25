@@ -39,6 +39,31 @@ function check(file) {
     }
 }
 
+// URLs created by browser JavaScript resolve against the document URL, not the
+// JavaScript file. A path such as "../images/..." in js/fractals.js therefore
+// points inside pages/images when used by pages/extracurricular/fractals.html.
+// Keep runtime asset URLs base-absolute, like the URLs in the HTML.
+function checkRuntimeUrls(dir) {
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+        if (e.name.startsWith(".")) continue;
+        const p = join(dir, e.name);
+        if (e.isDirectory()) {
+            checkRuntimeUrls(p);
+            continue;
+        }
+        if (!e.name.endsWith(".js")) continue;
+
+        const source = readFileSync(p, "utf8");
+        const relativeLocalUrl = /(["'`])((?:\.\.\/)+(?:pages|css|js|images|favicon_io|embed)\/.*?)\1/g;
+        for (const m of source.matchAll(relativeLocalUrl)) {
+            checked++;
+            broken++;
+            console.log(`RUNTIME-RELATIVE ${p.replace(ROOT + "/", "")}  ->  ${m[2]}`);
+        }
+    }
+}
+
 walk(ROOT);
+checkRuntimeUrls(join(ROOT, "js"));
 console.log(`\n${checked} local references checked, ${broken} broken.`);
 process.exit(broken ? 1 : 0);

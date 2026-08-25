@@ -10,11 +10,13 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/multiplyingDecimals.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
+    <script src="/demystifyingmaths/js/multiplyingDecimals.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -45,25 +47,341 @@
         <aside id="page-nav-container"></aside>
 
         <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>Multiplying decimals via the integer product then counting decimal places, e.g. 0.3 x 0.4 = 0.12; checking size against an estimate. Assumes long-multiplication; division by decimals lives on dividing-by-decimals; why products can shrink lives on numbers-below-one in the FDP topic. Both tiers. (N2)</p>
+            <section>
+                <h1>The same digits at a different size</h1>
+                <p class="prereq"><b>Before this page:</b> <span>be able to multiply whole numbers with
+                        <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/longMultiplication.html">long
+                            multiplication</a>, know what each digit is worth in
+                        <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/placeValue.html">integers
+                            and decimals</a>, and know what happens to a number when it is
+                        <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/powersOfTen.html">multiplied
+                            or divided by ten</a>.</span></p>
+
+                <p>Multiply 37 by 26 and you get 962. Multiply 3.7 by 2.6 and you get 9.62 &mdash; the same three
+                    digits, with a point dropped into them.</p>
+
+                <p>That is not a coincidence, and it is most of what you need. Decimals do not get a written method
+                    of their own. You run the whole-number method on the digits, then work out where the point
+                    belongs. The digits look after themselves; only the size is ever in doubt, and 962, 96.2, 9.62
+                    and 0.962 are the same digits at four different sizes.</p>
+
+                <p>Choosing between them turns out to be a count, and most of this page is about where that count
+                    comes from. There is one surprise on the way: 0.3 &times; 0.4 = 0.12, which is smaller than
+                    either number it came from.</p>
             </section>
 
             <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+                <h1>Making both numbers whole</h1>
+                <p>Start by getting rid of the points. Multiply 3.7 by 10 and you have 37. Multiply 2.6 by 10 and
+                    you have 26. As on the powers of ten page it is the digits that move, one place to the left
+                    each time, while the point stays where it is between the ones and the tenths.</p>
+
+                <p>You have now made one number ten times too big and the other ten times too big as well, so
+                    whatever they multiply to will be a hundred times too big. Keep that hundred in view. Everything
+                    that happens at the end of the calculation is undoing it.</p>
+
+                <div class="worked">
+                    <h2 class="worked__title">Example: calculate 3.7 &times; 2.6</h2>
+
+                    <div class="dec-scene" data-decimal-scene data-mode="scale" data-a="3.7" data-b="2.6">
+                        <div class="dec-scene__sticky">
+                            <p class="dec-scene__heading" data-heading>3.7 &times; 2.6</p>
+
+                            <div class="dec-stage">
+                                <div class="dec-paper" data-paper></div>
+                            </div>
+
+                            <div class="dec-scene__caption" aria-live="polite">
+                                <h3 data-step-title>3.7 &times; 2.6</h3>
+                                <p data-step-copy>Neither number is whole, and the columns are set out for whole
+                                    numbers. The digits, though, are the digits of an ordinary multiplication: 37
+                                    and 26. Only their places are in the way.</p>
+                            </div>
+
+                            <div class="dec-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript>
+                            <p><strong>3.7 &times; 2.6 = 9.62</strong></p>
+                        </noscript>
+                    </div>
+
+                    <p class="worked__answer"><strong>3.7 &times; 2.6 = 9.62</strong></p>
+                </div>
+
+                <p>The &times;100 going in and the &divide;100 coming out cancel each other, which is why the answer
+                    can be trusted. On the way back down each row hands its own place back as the answer shrinks, so
+                    every line the board shows is one you could check for yourself. Every decimal multiplication has
+                    that shape; the only thing that changes is how big the power of ten is.</p>
+            </section>
+
+            <section>
+                <h1>Counting the places</h1>
+                <p>You will not want to write out the &times;100 and the &divide;100 every time, and you do not have
+                    to. Each decimal place in the question is one factor of ten standing between you and a whole
+                    number, and every ten you clear at the start is a ten you put back at the end. So the places the
+                    answer ends up with are simply the places the question had.</p>
+
+                <p>Count the decimal places in the question. Give the answer that many. The rule is only ever a
+                    count.</p>
+
+                <figure class="count-figure">
+                    <div class="count-figure__row">
+                        <span class="count-figure__num">3.7<i>1 place</i></span>
+                        <span class="count-figure__op">&times;</span>
+                        <span class="count-figure__num">2.6<i>1 place</i></span>
+                        <span class="count-figure__op">=</span>
+                        <span class="count-figure__num count-figure__num--answer">9.62<i>2 places</i></span>
+                    </div>
+                    <figcaption>One place and one place make two, so the answer gets two.</figcaption>
+                </figure>
+
+                <div class="rule-card dec-rule">
+                    <h2 class="rule-card__statement">As many places in the answer as in the question</h2>
+                    <ol>
+                        <li><span>1</span><p><strong>Count</strong> the decimal places in the question.</p></li>
+                        <li><span>2</span><p><strong>Ignore</strong> the points and multiply the digits.</p></li>
+                        <li><span>3</span><p><strong>Place</strong> the point to give that many places.</p></li>
+                    </ol>
+                </div>
+
+                <p>Do the counting before you multiply, not after. Counting afterwards means looking at the answer
+                    you have just written down and counting the places in that, which will agree with itself
+                    whatever you did.</p>
+            </section>
+
+            <section>
+                <h1>Setting it out</h1>
+                <p>When you write the multiplication down, the points are not there at all. That catches people out,
+                    because addition and subtraction in columns need the points lined up and this needs the
+                    opposite.</p>
+
+                <p>The difference is in what the columns are for. Adding tenths to tenths only works if the tenths
+                    sit above each other, so the points have to agree. In a multiplication every digit on top meets
+                    every digit underneath whatever column it is in, so there is nothing to line up: you write the
+                    two whole numbers the way you would write any two whole numbers, ones under ones.</p>
+
+                <div class="setout-pair">
+                    <article class="setout-card">
+                        <h3>3.7 + 2.6, adding</h3>
+                        <div class="stack" role="img" aria-label="3.7 plus 2.6 set out with the decimal points in the same column, giving 6.3.">
+                            <span class="stack__line">  3.7</span>
+                            <span class="stack__line stack__line--ruled">+ 2.6</span>
+                            <span class="stack__line stack__line--answer">  6.3</span>
+                        </div>
+                        <p>Points in one column, so that tenths sit above tenths.</p>
+                    </article>
+                    <article class="setout-card">
+                        <h3>3.7 &times; 2.6, multiplying</h3>
+                        <div class="stack" role="img" aria-label="37 multiplied by 26 set out as whole numbers, giving 962.">
+                            <span class="stack__line">  37</span>
+                            <span class="stack__line stack__line--ruled">&times; 26</span>
+                            <span class="stack__line stack__line--answer"> 962</span>
+                        </div>
+                        <p>No points at all. Counted at the start, written back at the end.</p>
+                    </article>
+                </div>
+
+                <aside class="important-box" aria-labelledby="setout-title">
+                    <h2 class="important-box__title" id="setout-title">No need to pad the shorter number</h2>
+                    <p>4.75 &times; 0.6 becomes 475 &times; 6. Padding 0.6 out to 0.60 so the two match is a good
+                        habit when you are adding, and here it only makes work: you would multiply by 60 instead,
+                        count four places back instead of three, and tidy the spare zero off at the end. Same
+                        answer, more writing.</p>
+                </aside>
+            </section>
+
+            <section>
+                <h1>Why the answer can be smaller</h1>
+                <p>Here is the surprise. 0.3 &times; 0.4 = 0.12, and 0.12 is smaller than 0.3 and smaller than 0.4.
+                    Multiplying by a whole number bigger than 1 never does that to you.</p>
+
+                <p>It stops being strange as soon as you stop reading &times; as &ldquo;makes bigger&rdquo;.
+                    Multiplying by 0.4 means taking four tenths of something, and four tenths of anything is less
+                    than you had. Drawn as an area, you can count the answer rather than take it on trust.</p>
+
+                <div class="worked">
+                    <h2 class="worked__title">0.3 of a square, 0.4 of the way down</h2>
+
+                    <div class="dec-scene" data-decimal-scene data-mode="area" data-a="0.3" data-b="0.4">
+                        <div class="dec-scene__sticky">
+                            <p class="dec-scene__heading" data-heading>0.3 &times; 0.4</p>
+
+                            <div class="dec-stage">
+                                <div class="dec-paper" data-paper></div>
+                            </div>
+
+                            <div class="dec-scene__caption" aria-live="polite">
+                                <h3 data-step-title>One whole square</h3>
+                                <p data-step-copy>The square is 1 along the top and 1 down the side, so its area is
+                                    1 &times; 1 = 1. Everything that follows is a part of it.</p>
+                            </div>
+
+                            <div class="dec-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript>
+                            <p><strong>0.3 &times; 0.4 = 0.12</strong></p>
+                        </noscript>
+                    </div>
+
+                    <p class="worked__answer"><strong>0.3 &times; 0.4 = 0.12</strong></p>
+                </div>
+
+                <p>Twelve squares out of a hundred. The 12 is nothing more than 3 &times; 4; the hundredths come
+                    from the way the square was cut, since a tenth of a tenth is a hundredth. That is the counting
+                    rule again, this time as a picture.</p>
+
+                <p>Whether a product comes out bigger or smaller than what you started with depends only on whether
+                    the multiplier is above or below 1, which has a
+                    <a href="/demystifyingmaths/pages/curriculum/GCSE/number/fractions/powersRootsAndSize/numbersBelowOne.html">page
+                        of its own</a>.</p>
+            </section>
+
+            <section>
+                <h1>When the answer ends in a zero</h1>
+                <p>0.5 &times; 0.4 gives 5 &times; 4 = 20, and two places to count back. That lands on 0.20.</p>
+
+                <p>0.20 and 0.2 are the same number, so write the shorter one &mdash; but do it in that order. Tidy
+                    the 20 down to 2 first and you will count one place instead of two and finish at 2.0, which is
+                    ten times too big.</p>
+
+                <div class="worked">
+                    <h2 class="worked__title">Example: calculate 0.5 &times; 0.4</h2>
+
+                    <div class="dec-scene" data-decimal-scene data-mode="scale" data-a="0.5" data-b="0.4">
+                        <div class="dec-scene__sticky">
+                            <p class="dec-scene__heading" data-heading>0.5 &times; 0.4</p>
+
+                            <div class="dec-stage">
+                                <div class="dec-paper" data-paper></div>
+                            </div>
+
+                            <div class="dec-scene__caption" aria-live="polite">
+                                <h3 data-step-title>0.5 &times; 0.4</h3>
+                                <p data-step-copy>Both numbers are below 1, so the answer will come out smaller than
+                                    either of them. The digits are an ordinary multiplication all the same: 5 and 4.
+                                    Only their places are in the way.</p>
+                            </div>
+
+                            <div class="dec-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript>
+                            <p><strong>0.5 &times; 0.4 = 0.2</strong></p>
+                        </noscript>
+                    </div>
+
+                    <p class="worked__answer"><strong>0.5 &times; 0.4 = 0.2</strong></p>
+                </div>
+
+                <p>Two zeros turn up in that calculation doing opposite jobs. The one in front of the point is
+                    holding the ones column; take it away and the answer reads .2, which is easy to misread as 2.
+                    The one on the end is holding nothing, because there is nothing past it to keep in place.</p>
+            </section>
+
+            <section>
+                <h1>Where it turns up</h1>
+                <p>Decimals in a question are usually money or measurements, and both of them arrive with a unit
+                    that has to survive as far as the answer.</p>
+
+                <div class="reading-pair">
+                    <article class="reading-card">
+                        <h3>Money</h3>
+                        <p>Six tins at &pound;4.35 each. That is 435 &times; 6 = 2,610 with two places to come back,
+                            so <strong>&pound;26.10</strong>.</p>
+                        <p>Leave that last zero on. Prices are written to the penny, so this is one of the places
+                            where the tidy-up is not wanted.</p>
+                    </article>
+                    <article class="reading-card">
+                        <h3>Area</h3>
+                        <p>A rug 2.4 m by 1.5 m. That is 24 &times; 15 = 360 with two places to come back, so
+                            <strong>3.6 m&sup2;</strong>.</p>
+                        <p>Get both measurements into the same unit before you start, and remember the answer comes
+                            out in square units.</p>
+                    </article>
+                </div>
+
+                <p>The count of places never depends on what is being measured. What the context decides is whether
+                    a trailing zero is kept or dropped, and that is a question about writing the answer down rather
+                    than about the arithmetic.</p>
+            </section>
+
+            <section>
+                <h1>Multiply two chosen numbers</h1>
+                <p>Use whole numbers or decimals. The calculation treats their digits as whole numbers first, then
+                    restores the combined number of decimal places in the product.</p>
+
+                <div class="dec-scene" data-decimal-scene data-mode="scale">
+                    <div class="dec-scene__sticky">
+                        <div class="dec-scene__inputs">
+                            <label>
+                                <span>Number to multiply</span>
+                                <input type="text" inputmode="decimal" maxlength="6" value="6.3"
+                                    autocomplete="off" spellcheck="false" data-term="a">
+                            </label>
+                            <span class="dec-scene__times" aria-hidden="true">&times;</span>
+                            <label>
+                                <span>Multiply by</span>
+                                <input type="text" inputmode="decimal" maxlength="6" value="0.45"
+                                    autocomplete="off" spellcheck="false" data-term="b">
+                            </label>
+                        </div>
+
+                        <div class="dec-stage">
+                            <div class="dec-paper" data-paper></div>
+                        </div>
+
+                        <div class="dec-scene__caption" aria-live="polite">
+                            <h3 data-step-title>6.3 &times; 0.45</h3>
+                            <p data-step-copy>Neither number is whole, and the columns are set out for whole numbers.
+                                The digits, though, are the digits of an ordinary multiplication: 63 and 45. Only
+                                their places are in the way.</p>
+                        </div>
+
+                        <div class="dec-scene__progress" data-progress aria-hidden="true"></div>
+                    </div>
+                    <noscript>
+                        <p><strong>6.3 &times; 0.45 = 2.835</strong></p>
+                    </noscript>
+                </div>
+            </section>
+
+            <section>
+                <h1>Common mistakes</h1>
+                <p>The multiplication is the part that tends to go right. Nearly every lost mark here is the point
+                    landing in the wrong column, or a zero being treated as though it were doing a job it is not.</p>
+                <ul class="slips">
+                    <li><b>Counting the answer instead of the question</b><span>3.7 &times; 2.6 has two decimal
+                            places in it, so the answer gets two, however many digits the multiplication happens to
+                            throw up.</span></li>
+                    <li><b>Lining the points up</b><span>That is how you set out a column addition, and in a
+                            multiplication it puts the wrong digits above each other. Ignore the points until the
+                            answer.</span></li>
+                    <li><b>Losing a zero that holds a place</b><span>0.2 &times; 0.3 is 6 with two places, which
+                            gives <strong>0.06</strong>. Writing 0.6 is ten times too big: a zero has to go into the
+                            tenths column to push the 6 out into the hundredths.</span></li>
+                    <li><b>Tidying before counting</b><span>0.5 &times; 0.4 gives 20, and both places are counted
+                            back before the zero on the end comes off. Counting one place because 20 &ldquo;is
+                            really 2&rdquo; gives 2.0 instead of 0.2.</span></li>
+                </ul>
+            </section>
+
+            <section>
+                <h1>Summary</h1>
+                <ol class="recap">
+                    <li>A decimal multiplication is a whole-number multiplication with the point put back
+                        afterwards.</li>
+                    <li>Making both numbers whole multiplies the calculation by a power of ten, and dividing the
+                        answer by the same power puts it back.</li>
+                    <li>In practice that is a count: as many decimal places in the answer as in the question.</li>
+                    <li>Multiplying by a number below 1 leaves less than you started with, because a tenth of a
+                        tenth is a hundredth.</li>
+                    <li>Count the places first, then tidy any zero off the end &mdash; never the other way
+                        round.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/practiceWrittenMethodsReview.html" style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
-                        <h3>Written methods review</h3>
-                        <p>Column addition, subtraction and long multiplication with decimals throughout.</p>
-                        <span class="topic-card__meta"><span class="topic-card__count">Mixed review</span></span>
-                    </a>
                     <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/shortDivision.html" style="background-image: none">
                         <span class="topic-card__kicker">Next lesson</span>
                         <h3>Short division</h3>

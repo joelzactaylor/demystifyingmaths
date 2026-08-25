@@ -19,3 +19,13 @@
 }
 
 .worth b { padding: 8px 14px 9px; border: 2px solid #d99a20; border-radius: 11px; background: #fff8df; color: #9b5f12; }
+
+.reading-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 24px 0; }
+.reading-card { padding: 18px 20px 20px; border: 2px solid #d9e2ec; border-top: 5px solid #5d91b0; border-radius: 17px; background: #fff; }
+.reading-card:last-child { border-top-color: #d99a20; }
+.reading-card h2 { margin: 0 0 6px; color: #09539d; font-size: 1.02rem; }
+.reading-card p { margin: 0; color: #41535c; font-size: .92rem; line-height: 1.55; }
+
+@media (max-width: 700px) {
+    .reading-pair { grid-template-columns: 1fr; }
+}
