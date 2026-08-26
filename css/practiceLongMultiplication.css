@@ -1,0 +1,144 @@
+@import url("/demystifyingmaths/css/practiceWrittenMethods.css");
+
+/* Long multiplication keeps the shared practice shell and adds two things this
+   method needs: a column set-out wide enough to show the partial rows, and a
+   row-by-row answer control that mirrors it. */
+
+/* A worded context has no set-out to show, and the shared display rule would
+   otherwise keep an empty box on screen. */
+.practice-question__expression[hidden] { display: none !important; }
+
+/* The bare calculation, for the questions the reader sets out themselves. */
+.practice-question__expression.practice-mult--inline {
+    margin: 16px 0 0;
+    text-align: center;
+    letter-spacing: .02em;
+}
+
+/* The columns, one grid cell per place value. */
+.practice-question__expression.practice-mult {
+    display: grid;
+    width: max-content;
+    max-width: 100%;
+    box-sizing: border-box;
+    grid-template-columns: 26px repeat(var(--mult-cols, 4), minmax(1.05em, auto));
+    gap: 1px 0;
+    margin: 18px auto 0;
+    padding: 16px 22px 13px;
+    overflow-x: auto;
+    border: 2px solid #d8e1e5;
+    border-radius: 14px;
+    background: #f8fbfc;
+    font-size: 1.62rem;
+    font-variant-numeric: tabular-nums lining-nums;
+}
+
+.practice-mult__row { display: contents; }
+
+.practice-mult__op {
+    grid-column: 1;
+    color: #8c5c14;
+    text-align: left;
+}
+
+.practice-mult__cell {
+    padding-left: .2em;
+    text-align: right;
+}
+
+.practice-mult__rule {
+    grid-column: 2 / -1;
+    height: 3px;
+    margin: 5px 0 4px;
+    border-radius: 999px;
+    background: #526b76;
+}
+
+.practice-mult__box {
+    grid-column: 2 / -1;
+    height: 1.05em;
+    margin: 2px 0;
+    border: 2px dashed #a5521b;
+    border-radius: 6px;
+}
+
+/* One line for each digit of the multiplier, then their total. */
+
+.practice-rows { margin-top: 22px; }
+
+.practice-rows__list {
+    display: grid;
+    gap: 8px;
+    margin-top: 14px;
+    padding: 16px 18px;
+    border: 2px solid #d8e1e5;
+    border-radius: 14px;
+    background: #f8fbfc;
+}
+
+.practice-rows__cell {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 14px;
+    align-items: center;
+    padding: 8px 11px;
+    border: 2px solid transparent;
+    border-radius: 11px;
+    cursor: pointer;
+}
+
+.practice-rows__label {
+    color: #41535c;
+    font-size: .96rem;
+    font-weight: 700;
+}
+
+.practice-rows__cell input {
+    width: 168px;
+    padding: 9px 12px;
+    border: 2px solid #cfdbe0;
+    border-radius: 10px;
+    background: #fff;
+    color: #172f3b;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 1.2rem;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+}
+
+.practice-rows__cell input:focus-visible {
+    border-color: #b9832c;
+    outline: 3px solid #f0dcae;
+    outline-offset: 2px;
+}
+
+.practice-rows__cell.is-total {
+    margin-top: 6px;
+    background: #eef3f5;
+}
+
+.practice-rows__cell.is-correct {
+    border-color: #a9c9b0;
+    background: #eef6f0;
+}
+
+.practice-rows__cell.is-correct input { border-color: #6f9a7c; }
+
+.practice-rows__cell.is-wrong {
+    border-color: #e0b9ae;
+    background: #fdf1ed;
+}
+
+.practice-rows__cell.is-wrong input { border-color: #c07d68; border-style: dashed; }
+
+@media print {
+    .practice-question__expression.practice-mult,
+    .practice-rows__list { border-color: #999; background: #fff; }
+}
+
+@media (max-width: 520px) {
+    .practice-question__expression.practice-mult { padding: 14px 12px 11px; font-size: 1.3rem; }
+    .practice-rows__cell { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+    .practice-rows__cell input { width: 100%; }
+    .practice-rows__list { padding: 12px 10px; }
+}

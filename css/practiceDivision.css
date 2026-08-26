@@ -1,0 +1,183 @@
+@import url("/demystifyingmaths/css/practiceWrittenMethods.css");
+
+/* Short division keeps the shared practice shell and adds two things this
+   method needs: the bracket set-out with its carried numerals, and a row of
+   labelled boxes for an answer that has more than one part. */
+
+/* Some questions are stated as a bare calculation, so the set-out box must be
+   able to disappear rather than stand empty. */
+.practice-question__expression[hidden] { display: none !important; }
+
+.practice-question__expression.practice-divide--inline {
+    margin: 16px 0 0;
+    text-align: center;
+    letter-spacing: .02em;
+}
+
+/* The bracket: the quotient sits above the line, the divisor outside it. */
+.practice-question__expression.practice-divide {
+    display: grid;
+    width: max-content;
+    max-width: 100%;
+    box-sizing: border-box;
+    grid-template-columns: auto repeat(var(--div-cols, 3), minmax(1.05em, auto));
+    gap: 0;
+    margin: 18px auto 0;
+    padding: 14px 24px 14px 18px;
+    overflow-x: auto;
+    border: 2px solid #d8e1e5;
+    border-radius: 14px;
+    background: #f8fbfc;
+    font-size: 1.62rem;
+    font-variant-numeric: tabular-nums lining-nums;
+    line-height: 1.15;
+}
+
+.practice-divide__slot { border-bottom: 0; }
+
+.practice-divide__q {
+    padding: 0 0 6px .3em;
+    border-bottom: 3px solid #526b76;
+    text-align: right;
+}
+
+.practice-divide__q.is-point { padding-left: .08em; }
+
+.practice-divide__wide-box {
+    position: relative;
+    grid-column: 2 / -1;
+    height: 1.15em;
+    padding-bottom: 6px;
+    border-bottom: 3px solid #526b76;
+}
+
+.practice-divide__wide-box::before {
+    content: "";
+    position: absolute;
+    inset: 1px 3px 9px 3px;
+    border: 2px dashed #a5521b;
+    border-radius: 6px;
+}
+
+.practice-divide__box {
+    display: inline-block;
+    width: .7em;
+    height: .95em;
+    border: 2px dashed #a5521b;
+    border-radius: 5px;
+    vertical-align: -.12em;
+}
+
+.practice-divide__divisor {
+    padding: 9px .45em 0 0;
+    color: #8c5c14;
+    text-align: right;
+}
+
+.practice-divide__cell {
+    position: relative;
+    padding: 9px 0 0 .55em;
+    text-align: right;
+}
+
+.practice-divide__cell.is-first { border-left: 3px solid #526b76; padding-left: .5em; }
+.practice-divide__cell.is-point { padding-left: .08em; }
+
+.practice-divide__carry {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    color: #a5521b;
+    font-size: .5em;
+    font-style: normal;
+    font-weight: 700;
+}
+
+/* Sized in the carried numeral's own units, so the two sit on the same line. */
+.practice-divide__carry-box {
+    display: inline-block;
+    width: .62em;
+    height: .8em;
+    border: 2px dashed #a5521b;
+    border-radius: 4px;
+    vertical-align: -.06em;
+}
+
+/* A single digit needs a single-digit field, not the width of the card. */
+.practice-answer.is-digit input { max-width: 130px; }
+
+/* One labelled box for each part of a multi-part answer. */
+
+.practice-parts { margin-top: 22px; }
+
+.practice-parts__list {
+    display: grid;
+    gap: 8px;
+    margin-top: 14px;
+    padding: 16px 18px;
+    border: 2px solid #d8e1e5;
+    border-radius: 14px;
+    background: #f8fbfc;
+}
+
+.practice-parts__cell {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 14px;
+    align-items: center;
+    padding: 8px 11px;
+    border: 2px solid transparent;
+    border-radius: 11px;
+    cursor: pointer;
+}
+
+.practice-parts__label {
+    color: #41535c;
+    font-size: .96rem;
+    font-weight: 700;
+}
+
+.practice-parts__cell input {
+    width: 148px;
+    padding: 9px 12px;
+    border: 2px solid #cfdbe0;
+    border-radius: 10px;
+    background: #fff;
+    color: #172f3b;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 1.2rem;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+}
+
+.practice-parts__cell input:focus-visible {
+    border-color: #b9832c;
+    outline: 3px solid #f0dcae;
+    outline-offset: 2px;
+}
+
+.practice-parts__cell.is-correct {
+    border-color: #a9c9b0;
+    background: #eef6f0;
+}
+
+.practice-parts__cell.is-correct input { border-color: #6f9a7c; }
+
+.practice-parts__cell.is-wrong {
+    border-color: #e0b9ae;
+    background: #fdf1ed;
+}
+
+.practice-parts__cell.is-wrong input { border-color: #c07d68; border-style: dashed; }
+
+@media print {
+    .practice-question__expression.practice-divide,
+    .practice-parts__list { border-color: #999; background: #fff; }
+}
+
+@media (max-width: 520px) {
+    .practice-question__expression.practice-divide { padding: 12px 14px 12px 10px; font-size: 1.32rem; }
+    .practice-parts__cell { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+    .practice-parts__cell input { width: 100%; }
+    .practice-parts__list { padding: 12px 10px; }
+}
