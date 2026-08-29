@@ -27,32 +27,6 @@
 
 .optional h1 { font-size: 28px; color: #116e93; }
 
-/* The figure beside the sandbox belongs to that section rather than to the
-   lesson, and says so where it stands. */
-.optional-note {
-    margin: 0 0 4px;
-    color: #52666f;
-    font-size: .88rem;
-    line-height: 1.55;
-}
-
-.optional-note b { color: #116e93; }
-
-/* THE INDEX, WHERE THE RAISING CANNOT SURVIVE — a caret that is never seen and
-   never spoken, sitting between a base and its index. Strip the page to plain
-   text, copy an equation out of it, pipe it through anything that drops markup,
-   and `2<sup>5</sup>` is the two characters "25" and reads as twenty-five. With
-   the caret in the source it is "2^5", which nothing misreads. Assistive
-   technology takes the aria-label instead, so it never hears the caret. */
-.caret {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-}
-
 /* A COMPACT NOTE — a detail that belongs beside the definition it qualifies
    rather than in an explanation block of its own. */
 .note {

@@ -149,7 +149,7 @@ A first draft is a draft. After the page runs, read it once more as a whole and 
 
 ## Accessibility and presentation
 
-- Include the viewport meta tag and page-specific title, description and Open Graph metadata.
+- Include page-specific title, description and Open Graph metadata. No viewport meta tag: see "Never declare a viewport" above.
 - Maintain a valid heading hierarchy with no skipped levels.
 - Give every major teaching section a stable, descriptive heading ID when a paired practice page may deep-link to it. Put the ID on the heading itself so the site's heading scroll margin lands the reader at the top of the section rather than inside a sticky or scroll-animated scene.
 - Use real labels for every input, unique IDs, valid ARIA references and concise live regions.

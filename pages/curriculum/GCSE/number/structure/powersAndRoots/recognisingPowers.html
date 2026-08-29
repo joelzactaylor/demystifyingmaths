@@ -5,16 +5,18 @@
     <meta charset="UTF-8">
     <title>Demystifying Maths | GCSE Recognising powers of a number</title>
     <meta name="description" content="The squares, cubes and powers of 2, 3, 4 and 5 worth recalling.">
-    <meta property="og:title" content="Demystifying Maths">
+    <meta property="og:title" content="Demystifying Maths | Recognising powers of a number">
     <meta property="og:description" content="The squares, cubes and powers of 2, 3, 4 and 5 worth recalling.">
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/recognisingPowers.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
+    <script src="/demystifyingmaths/js/recognisingPowers.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -45,14 +47,364 @@
         <aside id="page-nav-container"></aside>
 
         <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>Recognising powers of 2, 3, 4 and 5, which N6 names explicitly; squares to 15 squared and cubes of 1 to 5 and 10; writing 64 as a power of 2, 4 or 8. Estimating roots of non-powers lives on Measures estimating-roots. Both tiers. (N6)</p>
+            <section>
+                <h1 id="reading-a-number-backwards">Reading a number backwards</h1>
+                <p class="prereq"><b>Before this page:</b> <span>be able to read and work out a power, from <a
+                            href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/indexNotation.html">index
+                            notation and powers</a>.</span></p>
+
+                <p>Working out <span class="sf" role="math" aria-label="2 to the power of 5">2<span class="caret" aria-hidden="true">^</span><sup>5</sup></span> is one direction. This page goes the other way: meeting 64 and recognising it
+                    as a power.</p>
+
+                <p>Two things make that possible. A handful of powers are worth knowing on sight, and any number can
+                    be tested against a base by dividing.</p>
             </section>
 
             <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+                <h1 id="square-numbers">The square numbers</h1>
+                <p>A square number is what a whole number gives when it is multiplied by itself. They are called
+                    square numbers because that many counters fill a square.</p>
+
+                <p>Each square is the one before it with a new row and a new column laid along two of its sides, and
+                    that addition is always the next odd number.</p>
+
+                <div class="worked">
+                    <h2 class="worked__title">One square, then the next</h2>
+
+                    <div class="powers-scene" data-powers-scene data-scene="square">
+                        <div class="powers-scene__sticky">
+                            <p class="powers-scene__heading" data-heading>Squares up to 7&sup2;</p>
+
+                            <div class="powers-board">
+                                <div class="powers-board__paper" data-board></div>
+                            </div>
+
+                            <div class="powers-scene__caption" aria-live="polite">
+                                <h3 data-step-title>One cell</h3>
+                                <p data-step-copy>A square of side 1 holds a single cell, so 1&sup2; = 1.</p>
+                            </div>
+
+                            <div class="powers-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                    </div>
+
+                    <p class="worked__answer"><strong role="math"
+                            aria-label="1, 4, 9, 16, 25, 36, 49, rising by 3, 5, 7, 9, 11 and 13">1, 4, 9, 16, 25, 36,
+                            49 &mdash; rising by 3, 5, 7, 9, 11, 13</strong></p>
+                </div>
+
+                <p>The odd numbers are what make the list easy to carry: each square is the last one plus the next
+                    odd number, so a forgotten entry can be rebuilt from its neighbour.</p>
+
+                <table class="recall recall--tall">
+                    <caption>The squares from 1 squared to 15 squared</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Power</th>
+                            <th scope="col">Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row"><span class="sf" role="math" aria-label="1 squared">1<span class="caret" aria-hidden="true">^</span><sup>2</sup></span></th>
+                            <td><span class="sf">1</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf" role="math" aria-label="2 squared">2<span class="caret" aria-hidden="true">^</span><sup>2</sup></span></th>
+                            <td><span class="sf">4</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf" role="math" aria-label="3 squared">3<span class="caret" aria-hidden="true">^</span><sup>2</sup></span></th>
+                            <td><span class="sf">9</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf" role="math" aria-label="4 squared">4<span class="caret" aria-hidden="true">^</span><sup>2</sup></span></th>
+                            <td><span class="sf">16</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf" role="math" aria-label="5 squared">5<span class="caret" aria-hidden="true">^</span><sup>2</sup></span></th>
+                            <td><span class="sf">25</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf" role="math" aria-label="6 squared">6<span class="caret" aria-hidden="true">^</span><sup>2</sup></span></th>
+                            <td><span class="sf">36</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf" role="math" aria-label="7 squared">7<span class="caret" aria-hidden="true">^</span><sup>2</sup></span></th>
+                            <td><span class="sf">49</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf" role="math" aria-label="8 squared">8<span class="caret" aria-hidden="true">^</span><sup>2</sup></span></th>
+                            <td><span class="sf">64</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf" role="math" aria-label="9 squared">9<span class="caret" aria-hidden="true">^</span><sup>2</sup></span></th>
+                            <td><span class="sf">81</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf" role="math" aria-label="10 squared">10<span class="caret" aria-hidden="true">^</span><sup>2</sup></span></th>
+                            <td><span class="sf">100</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf" role="math" aria-label="11 squared">11<span class="caret" aria-hidden="true">^</span><sup>2</sup></span></th>
+                            <td><span class="sf">121</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf" role="math" aria-label="12 squared">12<span class="caret" aria-hidden="true">^</span><sup>2</sup></span></th>
+                            <td><span class="sf">144</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf" role="math" aria-label="13 squared">13<span class="caret" aria-hidden="true">^</span><sup>2</sup></span></th>
+                            <td><span class="sf">169</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf" role="math" aria-label="14 squared">14<span class="caret" aria-hidden="true">^</span><sup>2</sup></span></th>
+                            <td><span class="sf">196</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf" role="math" aria-label="15 squared">15<span class="caret" aria-hidden="true">^</span><sup>2</sup></span></th>
+                            <td><span class="sf">225</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section>
+                <h1 id="cube-numbers">The cube numbers</h1>
+                <p>A cube number is a whole number multiplied by itself and then by itself again, and that many
+                    counters fill a cube. The ones worth knowing are short.</p>
+
+                <table class="recall recall--wide">
+                    <caption>The cubes of 1 to 5, and of 10</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Power</th>
+                            <th scope="col">Value</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row"><span class="sf" role="math" aria-label="1 cubed">1<span class="caret" aria-hidden="true">^</span><sup>3</sup></span></th>
+                            <td><span class="sf">1</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf" role="math" aria-label="2 cubed">2<span class="caret" aria-hidden="true">^</span><sup>3</sup></span></th>
+                            <td><span class="sf">8</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf" role="math" aria-label="3 cubed">3<span class="caret" aria-hidden="true">^</span><sup>3</sup></span></th>
+                            <td><span class="sf">27</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf" role="math" aria-label="4 cubed">4<span class="caret" aria-hidden="true">^</span><sup>3</sup></span></th>
+                            <td><span class="sf">64</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf" role="math" aria-label="5 cubed">5<span class="caret" aria-hidden="true">^</span><sup>3</sup></span></th>
+                            <td><span class="sf">125</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf" role="math" aria-label="10 cubed">10<span class="caret" aria-hidden="true">^</span><sup>3</sup></span></th>
+                            <td><span class="sf">1,000</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p class="note"><b>Note</b> &mdash; <span class="sf" role="math" aria-label="10 cubed">10<span class="caret" aria-hidden="true">^</span><sup>3</sup></span> is a thousand, which is worth holding on its own: it is
+                    the step between millimetres and metres, and between grams and kilograms.</p>
+            </section>
+
+            <section>
+                <h1 id="powers-of-small-bases">The powers of 2, 3, 4 and 5</h1>
+                <p>Beyond squares and cubes, four bases turn up often enough to be recognised. Read the table by
+                    column to learn one base, or by row to compare them at the same index.</p>
+
+                <table class="recall recall--grid">
+                    <caption>The first five powers of 2, 3, 4 and 5</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Index</th>
+                            <th scope="col"><span class="sf" role="math" aria-label="2 to the power of n">2<span class="caret" aria-hidden="true">^</span><sup>n</sup></span></th>
+                            <th scope="col"><span class="sf" role="math" aria-label="3 to the power of n">3<span class="caret" aria-hidden="true">^</span><sup>n</sup></span></th>
+                            <th scope="col"><span class="sf" role="math" aria-label="4 to the power of n">4<span class="caret" aria-hidden="true">^</span><sup>n</sup></span></th>
+                            <th scope="col"><span class="sf" role="math" aria-label="5 to the power of n">5<span class="caret" aria-hidden="true">^</span><sup>n</sup></span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row"><span class="sf">1</span></th>
+                            <td><span class="sf" role="math" aria-label="2">2</span></td>
+                            <td><span class="sf" role="math" aria-label="3">3</span></td>
+                            <td><span class="sf" role="math" aria-label="4">4</span></td>
+                            <td><span class="sf" role="math" aria-label="5">5</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf">2</span></th>
+                            <td><span class="sf" role="math" aria-label="4">4</span></td>
+                            <td><span class="sf" role="math" aria-label="9">9</span></td>
+                            <td><span class="sf" role="math" aria-label="16">16</span></td>
+                            <td><span class="sf" role="math" aria-label="25">25</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf">3</span></th>
+                            <td><span class="sf" role="math" aria-label="8">8</span></td>
+                            <td><span class="sf" role="math" aria-label="27">27</span></td>
+                            <td><span class="sf" role="math" aria-label="64">64</span></td>
+                            <td><span class="sf" role="math" aria-label="125">125</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf">4</span></th>
+                            <td><span class="sf" role="math" aria-label="16">16</span></td>
+                            <td><span class="sf" role="math" aria-label="81">81</span></td>
+                            <td><span class="sf" role="math" aria-label="256">256</span></td>
+                            <td><span class="sf" role="math" aria-label="625">625</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf">5</span></th>
+                            <td><span class="sf" role="math" aria-label="32">32</span></td>
+                            <td><span class="sf" role="math" aria-label="243">243</span></td>
+                            <td><span class="sf" role="math" aria-label="1,024">1,024</span></td>
+                            <td><span class="sf" role="math" aria-label="3,125">3,125</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p>The powers of 2 are worth carrying further than the rest, because they run through place value,
+                    computing and doubling problems: <span class="sf" role="math" aria-label="2 to the power of 6 equals 64, 2 to the power of 7 equals 128, 2 to the power of 8 equals 256, 2 to the power of 9 equals 512, 2 to the power of 10 equals 1,024">2<span class="caret" aria-hidden="true">^</span><sup>6</sup> = 64, 2<span class="caret" aria-hidden="true">^</span><sup>7</sup> = 128, 2<span class="caret" aria-hidden="true">^</span><sup>8</sup> = 256, 2<span class="caret" aria-hidden="true">^</span><sup>9</sup> = 512, 2<span class="caret" aria-hidden="true">^</span><sup>10</sup> = 1,024</span>.</p>
+            </section>
+
+            <section>
+                <h1 id="one-number-several-powers">One number, several powers</h1>
+                <p>A number can be a power of more than one base. Sixty-four is the clearest case: the same 64
+                    counters make a square of 8, a cube of 4, and a block halved six times.</p>
+
+                <div class="worked">
+                    <h2 class="worked__title">64 counters, arranged three ways</h2>
+
+                    <div class="powers-scene" data-powers-scene data-scene="regroup">
+                        <div class="powers-scene__sticky">
+                            <p class="powers-scene__heading" data-heading>64 counters</p>
+
+                            <div class="powers-board">
+                                <div class="powers-board__paper" data-board></div>
+                            </div>
+
+                            <div class="powers-scene__caption" aria-live="polite">
+                                <h3 data-step-title>Sixty-four counters</h3>
+                                <p data-step-copy>Set out in no particular arrangement, they are just 64 things.</p>
+                            </div>
+
+                            <div class="powers-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                    </div>
+
+                    <p class="worked__answer"><strong role="math"
+                            aria-label="64 equals 8 squared equals 4 cubed equals 2 to the power of 6">64 = <span class="sf" role="math" aria-label="8 squared">8<span class="caret" aria-hidden="true">^</span><sup>2</sup></span> = <span class="sf" role="math" aria-label="4 cubed">4<span class="caret" aria-hidden="true">^</span><sup>3</sup></span> =
+                            <span class="sf" role="math" aria-label="2 to the power of 6">2<span class="caret" aria-hidden="true">^</span><sup>6</sup></span></strong></p>
+                </div>
+
+                <p>Nothing was added or taken away between those arrangements. Which power 64 is depends only on the
+                    base it is being read against, and a question that asks for a power of 2 wants <span class="sf" role="math" aria-label="2 to the power of 6">2<span class="caret" aria-hidden="true">^</span><sup>6</sup></span>.</p>
+            </section>
+
+            <section>
+                <h1 id="testing-a-number">Testing a number against a base</h1>
+                <p>For a number not on the tables, divide by the base and keep dividing. Reaching 1 means the number
+                    is a power of that base, and the count of divisions is the index.</p>
+
+                <p>Stopping on a division that will not come out whole means it is not a power of that base at all.</p>
+
+                <div class="worked">
+                    <h2 class="worked__title">Divide until it stops</h2>
+
+                    <div class="powers-scene" data-powers-scene data-scene="ladder">
+                        <div class="powers-scene__sticky">
+                            <div class="powers-scene__head">
+                                <fieldset class="powers-picker">
+                                    <legend>Number</legend>
+                                    <div class="powers-picker__options">
+                                        <label class="powers-picker__tile"><input type="radio" name="powers-number" value="32" data-pick><span>32</span></label>
+                                        <label class="powers-picker__tile"><input type="radio" name="powers-number" value="64" data-pick><span>64</span></label>
+                                        <label class="powers-picker__tile"><input type="radio" name="powers-number" value="81" data-pick><span>81</span></label>
+                                        <label class="powers-picker__tile"><input type="radio" name="powers-number" value="100" data-pick><span>100</span></label>
+                                        <label class="powers-picker__tile"><input type="radio" name="powers-number" value="125" data-pick><span>125</span></label>
+                                        <label class="powers-picker__tile"><input type="radio" name="powers-number" value="243" data-pick checked><span>243</span></label>
+                                        <label class="powers-picker__tile"><input type="radio" name="powers-number" value="256" data-pick><span>256</span></label>
+                                    </div>
+                                </fieldset>
+                                <fieldset class="powers-picker">
+                                    <legend>Base</legend>
+                                    <div class="powers-picker__options">
+                                        <label class="powers-picker__tile"><input type="radio" name="powers-base" value="2" data-pick><span>2</span></label>
+                                        <label class="powers-picker__tile"><input type="radio" name="powers-base" value="3" data-pick checked><span>3</span></label>
+                                        <label class="powers-picker__tile"><input type="radio" name="powers-base" value="4" data-pick><span>4</span></label>
+                                        <label class="powers-picker__tile"><input type="radio" name="powers-base" value="5" data-pick><span>5</span></label>
+                                    </div>
+                                </fieldset>
+                            </div>
+
+                            <div class="powers-board">
+                                <div class="powers-board__paper" data-board></div>
+                            </div>
+
+                            <div class="powers-scene__caption" aria-live="polite">
+                                <h3 data-step-title>Start from 243</h3>
+                                <p data-step-copy>Divide by 3 again and again. Reaching 1 means 243 is a power of 3;
+                                    stopping short means it is not.</p>
+                            </div>
+
+                            <div class="powers-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript>
+                            <p><strong role="math"
+                                    aria-label="243 divided by 3 five times reaches 1, so 243 equals 3 to the power of 5">243
+                                    &divide; 3 five times reaches 1, so 243 = <span class="sf" role="math" aria-label="3 to the power of 5">3<span class="caret" aria-hidden="true">^</span><sup>5</sup></span></strong></p>
+                        </noscript>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <h1>Common mistakes</h1>
+                <ul class="slips">
+                    <li>
+                        <b>Wrong idea &mdash; <span class="sf" role="math" aria-label="6 squared equals 12">6<span class="caret" aria-hidden="true">^</span><sup>2</sup> = 12</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> Squaring multiplies a number by itself,
+                            and the doubling is a different operation.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math" aria-label="6 squared equals 6 times 6 equals 36">6<span class="caret" aria-hidden="true">^</span><sup>2</sup> = 6 &times; 6 = 36</span></span>
+                    </li>
+                    <li>
+                        <b>Wrong idea &mdash; 64 is a power of 2, so it is not a power of 4</b>
+                        <span><b class="slips__label">Why it is wrong.</b> A number can be a power of several bases
+                            at once.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math" aria-label="64 equals 8 squared equals 4 cubed equals 2 to the power of 6">64 = 8<span class="caret" aria-hidden="true">^</span><sup>2</sup> = 4<span class="caret" aria-hidden="true">^</span><sup>3</sup> = 2<span class="caret" aria-hidden="true">^</span><sup>6</sup></span></span>
+                    </li>
+                    <li>
+                        <b>Wrong idea &mdash; 100 is even, so it is a power of 2</b>
+                        <span><b class="slips__label">Why it is wrong.</b> Halving 100 reaches 25, which will not
+                            halve again, so the ladder stops above 1.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> 100 is <span class="sf" role="math" aria-label="10 squared">10<span class="caret" aria-hidden="true">^</span><sup>2</sup></span>, and no power
+                            of 2 at all.</span>
+                    </li>
+                    <li>
+                        <b>Wrong idea &mdash; <span class="sf" role="math" aria-label="2 to the power of 6 equals 6 squared">2<span class="caret" aria-hidden="true">^</span><sup>6</sup> = 6<span class="caret" aria-hidden="true">^</span><sup>2</sup></span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> The base and the index do different jobs,
+                            so swapping them gives a different number.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math" aria-label="2 to the power of 6 equals 64 while 6 squared equals 36">2<span class="caret" aria-hidden="true">^</span><sup>6</sup> = 64 while 6<span class="caret" aria-hidden="true">^</span><sup>2</sup> = 36</span></span>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h1>Remember</h1>
+                <ol class="recap">
+                    <li>The square numbers to 225 and the cubes of 1 to 5 and 10 are worth knowing on sight.</li>
+                    <li>Each square is the one before it plus the next odd number, so a forgotten entry can be
+                        rebuilt.</li>
+                    <li>The first five powers of 2, 3, 4 and 5 cover most of what a question will use.</li>
+                    <li>A number can be a power of more than one base: 64 is a square, a cube and a power of 2.</li>
+                    <li>To test any number, divide by the base until it reaches 1 or stops coming out whole.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">

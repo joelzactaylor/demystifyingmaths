@@ -1,0 +1,289 @@
+/* RECOGNISING POWERS OF A NUMBER
+
+   Three things this page needs beyond the shared teaching styles: the scroll-led
+   card that carries its three figures, the recall tables the page is largely
+   made of, and the division ladder that tests one number against one base.
+
+   The palette, the card furniture and the control styles are the written-methods
+   ones; nothing here invents a near-miss of them.
+
+   No viewport media queries below the reduced-motion block: .layout is a fixed
+   900px panel that shared.css scales with transform under 900px, so nothing here
+   may reflow. */
+
+/* THE RECALL TABLES — the lists this page exists to hand over. Real tables with
+   named columns, so a reader hearing one gets "power" and "value" against each
+   row rather than two numbers running together. */
+
+.recall {
+    width: 100%;
+    margin: 20px 0 6px;
+    border-collapse: separate;
+    border-spacing: 0 6px;
+    table-layout: fixed;
+}
+
+.recall caption {
+    margin-bottom: 8px;
+    color: #52666f;
+    font-size: .88rem;
+    text-align: left;
+}
+
+.recall thead th {
+    padding: 0 16px 2px;
+    color: #7b8b93;
+    font-size: .74rem;
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.recall tbody th,
+.recall tbody td {
+    padding: 8px 16px;
+    background: #f1f7fb;
+    text-align: left;
+    vertical-align: baseline;
+}
+
+.recall tbody th { border-radius: 12px 0 0 12px; color: #09539d; font-size: 1.02rem; }
+.recall tbody td:last-child { border-radius: 0 12px 12px 0; color: #173849; font-weight: 700; }
+
+/* Left as real tables. Laying a tbody out with grid would have packed fifteen
+   rows into three columns, but changing a table's display takes its semantics
+   with it: the rows stop being rows and the headers stop naming their columns
+   for anything that is listening rather than looking. A tall table on a page
+   whose job is handing over a list is the right shape anyway. */
+.recall--tall { max-width: 340px; }
+.recall--wide { max-width: 340px; }
+
+/* The powers of four bases at five indices is a genuine matrix: five columns,
+   with the index down the side. */
+.recall--grid tbody th { width: 74px; }
+.recall--grid tbody td { border-radius: 0; }
+.recall--grid tbody td:last-child { border-radius: 0 12px 12px 0; }
+
+/* A COMPACT NOTE — a detail that belongs beside the table it qualifies rather
+   than in an explanation block of its own. */
+.note {
+    margin: 16px 0;
+    padding: 10px 16px;
+    border-left: 4px solid #c9dce8;
+    border-radius: 0 10px 10px 0;
+    background: #f7fbfd;
+    color: #41535c;
+    font-size: .92rem;
+    line-height: 1.55;
+}
+
+.note > b {
+    margin-right: 8px;
+    color: #52666f;
+    font-size: .74rem;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+}
+
+/* THE SCROLL-LED CARD
+
+   The scene reserves its own scroll distance; the card inside it is pinned by
+   JavaScript while the reader passes through, so every drawing advances with the
+   scroll rather than on a timer. */
+
+.powers-scene {
+    position: relative;
+    min-height: 470px;
+    margin: 26px 0 8px;
+    overflow-anchor: none;
+}
+
+.powers-scene.is-ready { height: var(--scene-height); min-height: var(--scene-min-height); }
+
+.powers-scene__sticky {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: grid;
+    height: min(628px, calc(100vh - 104px));
+    min-height: 470px;
+    box-sizing: border-box;
+    grid-template-rows: auto minmax(0, 1fr) auto auto;
+    overflow: hidden;
+    border: 2px solid #c9dce8;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #fbfdff 0%, #f2f8fc 100%);
+    box-shadow: 0 12px 30px rgba(20, 57, 78, .14);
+    contain: layout paint;
+    overflow-anchor: none;
+    will-change: transform;
+}
+
+.powers-scene__sticky.is-pinned { position: fixed; right: auto; z-index: 900; transform-origin: top left; }
+
+.powers-scene__heading {
+    margin: 0;
+    padding: 20px 24px 2px;
+    color: #173849;
+    font: 700 1.34rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+}
+
+.powers-scene__caption { display: grid; align-content: center; height: 6.6em; box-sizing: border-box; padding: 14px 28px 6px; text-align: center; }
+.powers-scene__caption h3 { margin: 0 0 5px; color: #09539d; font-size: 1.1rem; }
+.powers-scene__caption p { margin: 0; color: #243a45; font-size: .97rem; line-height: 1.5; }
+
+.powers-scene__progress { display: flex; gap: 8px; padding: 0 22px 18px; justify-content: center; }
+
+.powers-scene__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #c6d4dc;
+    transition: width .25s ease, border-radius .25s ease, background-color .25s ease;
+}
+
+.powers-scene__dot.is-current { width: 28px; border-radius: 999px; background: #116e93; }
+.powers-scene__dot.is-past { background: #8fb3c6; }
+
+/* THE PICKERS — the number and the base are chosen from what is on offer, so
+   there is nothing to type, nothing to get wrong and nothing to warn about.
+   One bordered track holding the choices, exactly as the answer-mode switch on
+   the division pages holds its two. */
+
+.powers-scene__head { display: flex; gap: 26px; padding: 18px 24px 12px; justify-content: center; flex-wrap: wrap; }
+
+.powers-picker { min-width: 0; margin: 0; padding: 0; border: 0; }
+
+.powers-picker legend {
+    padding: 0 0 7px;
+    color: #52666f;
+    font-size: .74rem;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+}
+
+.powers-picker__options {
+    display: flex;
+    gap: 3px;
+    padding: 3px;
+    border: 2px solid #b8cbd7;
+    border-radius: 13px;
+    background: #fff;
+}
+
+.powers-picker__tile {
+    position: relative;
+    display: grid;
+    min-width: 34px;
+    height: 34px;
+    padding: 0 7px;
+    place-items: center;
+    border-radius: 9px;
+    background: #eef5fb;
+    color: #41535c;
+    cursor: pointer;
+    font: 700 1.02rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    transition: background-color .16s ease, color .16s ease;
+}
+
+.powers-picker__tile:hover { background: #dbe9f4; color: #09539d; }
+
+.powers-picker__tile input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.powers-picker__tile:has(input:checked) { background: #116e93; color: #fff; }
+.powers-picker__tile:has(input:focus-visible) { box-shadow: 0 0 0 3px rgba(17, 110, 147, .28); }
+
+/* Where :has is not understood the tiles still work; the chosen one is marked
+   by its own outline instead of by its parent's fill. */
+.powers-picker__tile input:checked { outline: 2px solid #116e93; outline-offset: -2px; border-radius: 8px; opacity: .12; }
+.powers-picker__tile:has(input:checked) input:checked { outline: 0; opacity: 0; }
+
+/* THE BOARD — whatever the scene draws sits centred in the card's one flexible
+   row, so every scene kind keeps the same four rows. */
+
+.powers-board { display: grid; min-height: 0; padding: 6px 24px 0; place-items: center; }
+.powers-board__paper { display: grid; gap: 6px; justify-items: center; width: 100%; }
+
+/* A full-size outer layer whose only job is centring a naturally sized figure,
+   so nothing is off-centre at any width the card is scaled to. */
+.powers-board__stage { display: grid; width: min(100%, 300px); place-items: center; }
+.powers-board__stage svg { display: block; width: 100%; height: auto; }
+
+.powers-board__tally {
+    margin: 0;
+    color: #b86821;
+    font: 700 1.06rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.powers-board__answer {
+    display: flex;
+    gap: 2px;
+    min-height: 1.7rem;
+    margin: 0;
+    align-items: baseline;
+    justify-content: center;
+    color: #173849;
+    font: 700 1.24rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.powers-board__answer i { font-style: normal; }
+
+/* A power drawn by a figure keeps the same raised index the writing uses, and
+   names `position` itself: a pinned card is moved onto the body, out of reach
+   of any rule that names the lesson. */
+.powers-board__power { position: relative; }
+.powers-board__power sup { position: relative; top: -.84em; font-size: .62em; line-height: 0; vertical-align: baseline; }
+
+/* THE LADDER — one division to a line, the divisor held out to the left so the
+   column of results reads straight down. */
+
+.ladder { display: grid; gap: 4px; justify-items: center; }
+
+.ladder__start,
+.ladder__row,
+.ladder__verdict {
+    display: flex;
+    gap: 12px;
+    margin: 0;
+    align-items: baseline;
+    justify-content: center;
+    min-width: 190px;
+    color: #173849;
+    font: 700 1.18rem/1.3 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.ladder__start { color: #09539d; }
+.ladder__op { color: #b86821; font-size: .84rem; font-style: normal; }
+.ladder__row b { min-width: 3.4em; text-align: left; }
+
+.ladder__verdict {
+    margin-top: 6px;
+    padding: 6px 16px;
+    border-radius: 12px;
+    background: #eef5fb;
+    color: #09539d;
+}
+
+.ladder__verdict.is-negative { background: #fdf1ef; color: #a3352b; }
+
+@media (prefers-reduced-motion: reduce) {
+    .powers-scene__sticky { position: relative; height: auto; transform: none !important; }
+    .powers-scene__dot { transition: none; }
+    .powers-picker__tile { transition: none; }
+}
