@@ -402,7 +402,7 @@
                     "title": "Standard form",
                     "description": "Converting both ways for large and small numbers, and correcting near-misses.",
                     "tier": "both",
-                    "written": true,
+                    "written": false,
                     "coverNote": "Converting both ways between ordinary numbers and A x 10 to the n with 1 at-most A < 10 and integer n, large and small; correcting near-misses like 34 x 10 to the 5; real contexts. Ordering and arithmetic live on the three sibling pages; calculator entry lives on calculator-standard-form. Both tiers. (N9)"
                 },
                 {
