@@ -504,12 +504,16 @@ document.addEventListener("DOMContentLoaded", () => {
        memorise into something to see. */
 
     const GNOMON_INK = ["#09539d", "#116e93", "#b86821", "#4c7a3f", "#7a4b93", "#a3352b", "#0f6b6b"];
-    const SIDES = 7;
+    const SIDES = 15;
+    /* Six sides one at a time, which is more than enough to see the rule, then
+       the rest of the list at once: the figure ends where the table ends
+       rather than where the drawing got awkward. */
+    const SHOWN_ONE_BY_ONE = 6;
 
     const squarePainter = {
         read: () => ({ sides: SIDES }),
 
-        stages: (model) => model.sides - 1,
+        stages: () => SHOWN_ONE_BY_ONE,
 
         heading: (model) => `Squares up to ${model.sides}${supText(2)}`,
 
@@ -547,6 +551,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     copy: `A square of side 1 holds a single cell, so 1${supText(2)} = 1.`
                 };
             }
+            if (index >= SHOWN_ONE_BY_ONE) {
+                return {
+                    title: `On to ${model.sides}${supText(2)}`,
+                    copy: `The same rule carries every square to the next, all the way to ${model.sides}${supText(2)} = ${model.sides * model.sides}.`
+                };
+            }
             const odd = side * side - (side - 1) * (side - 1);
             return {
                 title: `Side ${side}`,
@@ -555,7 +565,11 @@ document.addEventListener("DOMContentLoaded", () => {
         },
 
         paint(parts, model, index, within, eased) {
-            const at = index + eased;
+            /* Up to the last stage a ring arrives per stage; on the last one the
+               remaining rings sweep in together, one just behind the next. */
+            const at = index < SHOWN_ONE_BY_ONE
+                ? index + eased
+                : SHOWN_ONE_BY_ONE + eased * (model.sides - SHOWN_ONE_BY_ONE) * 1.35;
             parts.cells.forEach(({ rect, ring }) => {
                 const arrival = ease(clamp(at - ring));
                 rect.setAttribute("opacity", String(arrival));
@@ -564,7 +578,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 const centreY = Number(rect.getAttribute("y")) + Number(rect.getAttribute("height")) / 2;
                 rect.setAttribute("transform", `translate(${centreX} ${centreY}) scale(${grow}) translate(${-centreX} ${-centreY})`);
             });
-            const side = index + 1;
+            const side = index < SHOWN_ONE_BY_ONE
+                ? index + 1
+                : Math.max(SHOWN_ONE_BY_ONE, Math.min(model.sides, Math.floor(at) + 1));
             const odd = side * side - (side - 1) * (side - 1);
             parts.tally.textContent = index === 0 ? "1 cell" : `+ ${odd}`;
             parts.tally.style.opacity = String(ease(clamp((within - 0.1) / 0.4)));
@@ -882,7 +898,16 @@ document.addEventListener("DOMContentLoaded", () => {
         /* Loose: four rows of sixteen, which is none of the three answers. */
         const loose = [];
         for (let i = 0; i < TOTAL; i += 1) {
-            loose.push([(i % 16) * (span / 16) + span / 32, Math.floor(i / 16) * (span / 9) + span / 3]);
+            /* Spread over a coarser grid than the counters need and jittered off
+               it, so they land in no order at all and the caption saying so is
+               true. The jitter is a hash of the position, not a random number:
+               the same reader sees the same scatter on every visit. */
+            const slot = (i * 7 + Math.floor(i / 9) * 3) % 72;
+            const jitter = (seed) => ((Math.sin(seed * 12.9898) * 43758.5453) % 1 + 1) % 1 - 0.5;
+            loose.push([
+                ((slot % 9) + 0.5 + jitter(i + 1) * 0.7) * (span / 9),
+                (Math.floor(slot / 9) + 0.5 + jitter(i + 31) * 0.7) * (span / 8)
+            ]);
         }
         /* Eight rows of eight. */
         const square = [];
