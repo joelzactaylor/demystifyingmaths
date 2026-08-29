@@ -328,7 +328,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (stage === 1) {
                 return {
                     title: `Split ${readable(calc.b)} the same way`,
-                    copy: `${readable(calc.b)} is ${calc.bParts.map((part) => readable(part.value)).join(" + ")}. The parts of one number go along the top and the parts of the other down the side, giving every pair a box of its own.`
+                    copy: `${readable(calc.b)} is ${calc.bParts.map((part) => readable(part.value)).join(" + ")}, so the side splits the way the top did, and the rectangle fills with ${readable(calc.lines.length)} boxes.`
                 };
             }
             const index = stage - 2;
@@ -482,7 +482,7 @@ document.addEventListener("DOMContentLoaded", () => {
     /* --------------------------------------------- gathering the lines up */
 
     const gatherRenderer = (calc, paper) => {
-        const stages = calc.rows.length + 3;
+        const stages = calc.rows.length + 2;
         let parts = null;
 
         const build = () => {
@@ -563,16 +563,10 @@ document.addEventListener("DOMContentLoaded", () => {
                     copy: `${group.members.map(({ line }) => readable(line.value)).join(" + ")} = ${readable(fromDigits(group.row.digits))}, which is ${readable(calc.a)} × ${readable(part.value)}. ${capital(plural(group.members.length, "line"))} have become one.`
                 };
             }
-            if (index === groups.length) {
-                groups.forEach(({ element }) => element.classList.add("is-lit"));
-                return {
-                    title: `${capital(plural(groups.length, "row"))}, added`,
-                    copy: `${calc.rows.map((row) => readable(fromDigits(row.digits))).join(" + ")} = ${readable(calc.product)}. The ${plural(calc.lines.length, "line")} and the ${plural(groups.length, "row")} give the same answer, because they hold the same products.`
-                };
-            }
+            groups.forEach(({ element }) => element.classList.add("is-lit"));
             return {
-                title: `${readable(calc.a)} × ${readable(calc.b)} = ${readable(calc.product)}`,
-                copy: `One row for each digit of ${readable(calc.b)}, and one addition at the end. This is the shape the short form keeps; what it drops is the writing down of the lines.`
+                title: `${capital(plural(groups.length, "row"))}, added`,
+                copy: `${calc.rows.map((row) => readable(fromDigits(row.digits))).join(" + ")} = ${readable(calc.product)}. The ${plural(calc.lines.length, "line")} and the ${plural(groups.length, "row")} give the same answer, because they hold the same products.`
             };
         };
 
@@ -582,7 +576,7 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ------------------------------------------------------ the short form */
 
     const compactRenderer = (calc, paper) => {
-        const stages = calc.steps.length + 2;
+        const stages = calc.steps.length + (calc.sumRow ? 1 : 2);
         let board = null;
 
         const build = () => {
@@ -862,9 +856,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             return {
                 title: `${readable(calc.a)} × ${readable(calc.b)} = ${readable(calc.product)}`,
-                copy: calc.sumRow
-                    ? `Each row was ${readable(calc.a)} multiplied by one part of ${readable(calc.b)}, and those parts together are ${readable(calc.b)}. Nothing has been left out and nothing counted twice.`
-                    : `A single-digit multiplier needs one row, so that row is already the answer.`
+                copy: `A single-digit multiplier needs one row, so that row is already the answer.`
             };
         };
 

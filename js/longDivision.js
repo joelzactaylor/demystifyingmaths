@@ -373,7 +373,7 @@
                 const { operation } = stage.row;
                 if (operation.quotient === 0) return { title: `${operation.amount} is smaller than ${calc.divisor}`, copy: `No positive multiple of ${calc.divisor} can be subtracted, so write 0 in this quotient place and continue.` };
                 const next = (operation.quotient + 1) * calc.divisor;
-                return { title: `Choose ${operation.quotient} × ${calc.divisor} = ${operation.product}`, copy: `${operation.product} does not exceed ${operation.amount}${operation.quotient < 9 ? `, while the next multiple, ${next}, is too large` : ""}. Write ${operation.quotient} in the quotient.` };
+                return { title: `Choose ${operation.quotient} × ${calc.divisor} = ${operation.product}`, copy: `${operation.product} fits inside ${operation.amount}${operation.quotient < 9 ? ` and ${next} does not` : ""}, so the quotient digit is ${operation.quotient}.` };
             }
             if (stage.kind === "subtract") {
                 const { operation } = stage.row;
@@ -397,11 +397,11 @@
                 return { title: `${shown} ÷ ${calc.divisor} = ${calc.answer}`, copy: `Check: ${calc.quotient} × ${calc.divisor} + ${calc.finalRemainder} = ${shown}.` };
             }
             if (calc.resultMode === "remainder") {
-                return { title: `${shown} ÷ ${calc.divisor} = ${calc.answer}`, copy: "Nothing is left over, so no remainder needs to be written. Check the result by multiplying the quotient by the divisor." };
+                return { title: `${shown} ÷ ${calc.divisor} = ${calc.answer}`, copy: "Nothing is left over, so no remainder needs to be written." };
             }
             return calc.recurring
                 ? { title: `${shown} ÷ ${calc.divisor} begins ${calc.answer}`, copy: `The remainder ${calc.finalRemainder} is still non-zero, so the decimal continues.` }
-                : { title: `${shown} ÷ ${calc.divisor} = ${calc.answer}`, copy: "The division is exact. Check the result by multiplying the quotient by the divisor." };
+                : { title: `${shown} ÷ ${calc.divisor} = ${calc.answer}`, copy: "The division is exact: nothing is left to bring down." };
         };
         return { stages, paint, describe };
     };

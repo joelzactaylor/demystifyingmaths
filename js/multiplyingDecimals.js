@@ -108,7 +108,11 @@ document.addEventListener("DOMContentLoaded", () => {
             stages.push({ kind: "divide", term: "b", aBack, bBack, step: aBack + bBack });
         }
 
-        stages.push({ kind: "answer" });
+        /* The last ÷10 leaves the board reading the finished multiplication, so
+           a stage after it would draw nothing and only restate the rule for
+           counting places that the page states above. A zero factor gives no
+           places back, and keeps its stage to say why the answer is nothing. */
+        if (zero) stages.push({ kind: "answer" });
         if (trailing) stages.push({ kind: "tidy" });
 
         const maxExp = Math.max(a.digits.length - 1, b.digits.length - 1, answerDigits.length - 1);
@@ -131,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const indexOf = (kind) => list.findIndex((entry) => entry.kind === kind);
         const at = {
             scaleA: indexOf("scaleA"), scaleB: indexOf("scaleB"), tally: indexOf("tally"),
-            product: indexOf("product"), answer: indexOf("answer"), tidy: indexOf("tidy")
+            product: indexOf("product"), tidy: indexOf("tidy")
         };
         const divides = list.reduce((all, entry, index) => {
             if (entry.kind === "divide") all.push(index);
@@ -353,10 +357,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 const factor = 10 ** term.places;
                 return {
                     title: `${term.display} × ${readable(factor)} = ${readable(term.integer)}`,
-                    copy: `Multiplying by ${readable(factor)} moves every digit
-                        ${term.places === 1 ? "one place" : `${spell(term.places)} places`} to the left. The digits
-                        keep their order, and the point has not gone anywhere: it is the digits that move past
-                        it.`.replace(/\s+/g, " ")
+                    copy: `Every digit of ${term.display} moves
+                        ${term.places === 1 ? "one place" : `${spell(term.places)} places`} to the left, in the same
+                        order, leaving ${readable(term.integer)}.`.replace(/\s+/g, " ")
                 };
             }
 
@@ -365,13 +368,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 return {
                     title: `The calculation is now ${scaleWords.get(calc.places)} times too big`,
                     copy: both
-                        ? `One number went up by ${readable(10 ** a.places)} and the other by
-                           ${readable(10 ** b.places)}, so whatever they multiply to will be
-                           ${readable(10 ** calc.places)} times too big. That is fine as long as you remember it,
-                           because it comes off again at the end.`.replace(/\s+/g, " ")
-                        : `Only one number had to move, so the product will come out
-                           ${readable(10 ** calc.places)} times too big. That is the whole of what is owed, and it
-                           is paid back at the end.`.replace(/\s+/g, " ")
+                        ? `${readable(10 ** a.places)} × ${readable(10 ** b.places)} =
+                           ${readable(10 ** calc.places)}, which is what the board now owes.`.replace(/\s+/g, " ")
+                        : `Only one number had to move, so the board owes
+                           ${readable(10 ** calc.places)}.`.replace(/\s+/g, " ")
                 };
             }
 
@@ -404,26 +404,20 @@ document.addEventListener("DOMContentLoaded", () => {
                 };
             }
 
+            /* Reached only where a factor is zero: there are no places to give
+               back, so nothing on the board has moved and the answer needs
+               saying. */
             if (entry.kind === "answer") {
-                if (calc.zero) {
-                    return {
-                        title: `${a.display} × ${b.display} = 0`,
-                        copy: "Zero lots of anything is nothing, whatever the other number looks like."
-                    };
-                }
                 return {
-                    title: `${a.display} × ${b.display} = ${calc.product}`,
-                    copy: `${a.display} has ${plural(a.places, "decimal place")} and ${b.display} has
-                        ${spell(b.places)}, so ${plural(calc.places, "place")} came off at the start and
-                        ${calc.places === 1 ? "one has gone" : `${spell(calc.places)} have gone`} back on at the
-                        end.`.replace(/\s+/g, " ")
+                    title: `${a.display} × ${b.display} = 0`,
+                    copy: "Zero lots of anything is nothing, whatever the other number looks like."
                 };
             }
 
             return {
                 title: `${calc.product} is ${calc.tidied}`,
-                copy: `A zero on the end of a decimal is holding nothing in place, because there is nothing past
-                    it. It was needed while you counted the places; now it can go.`.replace(/\s+/g, " ")
+                copy: `That last zero was needed while the places were counted back. Nothing sits past it, so it
+                    goes.`.replace(/\s+/g, " ")
             };
         };
 

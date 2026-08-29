@@ -766,6 +766,9 @@
 /* Card furniture, shared by every scene on the page. */
 
 .power-scene__caption { display: grid; align-content: center; height: 6.6em; box-sizing: border-box; padding: 14px 28px 6px; text-align: center; }
+/* h3 under a card that has a worked title above it, h2 under one that does
+   not, so the heading order holds either way. Both read the same. */
+.power-scene__caption h2,
 .power-scene__caption h3 { margin: 0 0 5px; color: #09539d; font-size: 1.1rem; }
 .power-scene__caption p { margin: 0; color: #243a45; font-size: .97rem; line-height: 1.5; }
 

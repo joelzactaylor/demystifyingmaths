@@ -3,6 +3,7 @@
    inner panel within that space. No wheel or touch input is intercepted. */
 
 .ordering-example { margin: 28px 0 8px; }
+.ordering-example > h2,
 .ordering-example > h3 { margin: 0 0 14px; color: #09539d; font-size: 1.25rem; }
 .ordering-example__steps { margin: 20px 0 0; }
 

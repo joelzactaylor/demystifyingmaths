@@ -62,9 +62,13 @@
                     the first one to break. It works on 52 and it fails on 5.2, and because it fails silently it is
                     usually trusted long after it has stopped being true.</p>
                 <p>What is actually happening is simpler, and it never changes. The digits of a number keep their
-                    identity and their order; only their places change. Multiplying by 10 moves every digit one place
+                    identity and their order; only their places change.</p>
+
+                <p>Multiplying by 10 moves every digit one place
                     to the left, so each becomes worth ten times as much. Multiplying by 100 does it twice, and by
-                    1,000 three times. Dividing moves them the same way to the right. The decimal point does not
+                    1,000 three times.</p>
+
+                <p>Dividing moves them the same way to the right. The decimal point does not
                     move at all &mdash; the digits move past it.</p>
                 <p>For example, when 52.8 is multiplied by 100, the 5 moves from tens to thousands, the 2 moves from
                     ones to hundreds, and the 8 moves from tenths to tens. The digits keep their order, but each one
@@ -127,7 +131,7 @@
                     </svg>
 
                     <div class="power-machine__reading">
-                        <h3>Follow the calculation</h3>
+                        <h2>Follow the calculation</h2>
                         <ol>
                             <li data-machine-step="operation">The multiplier 100 contains two factors of 10, so each
                                 non-zero digit must move two places to the left.</li>
@@ -200,13 +204,16 @@
                     probably not moved far enough.</p>
 
                 <article class="wex">
-                    <h3 class="wex__title">Example 1: calculate 6.47 &times; 100</h3>
+                    <h2 class="wex__title">Example 1: calculate 6.47 &times; 100</h2>
                     <ol class="wex__steps">
-                        <li><span class="wex__do"><strong>6.47</strong></span><span class="wex__why">Start with 6 ones,
+                        <li><span class="wex__do"><strong>6.47</strong></span>
+                        <span class="wex__why">Start with 6 ones,
                                 4 tenths and 7 hundredths.</span></li>
-                        <li><span class="wex__do">Move every digit two places left.</span><span class="wex__why">Ones
+                        <li><span class="wex__do">Move every digit two places left.</span>
+                        <span class="wex__why">Ones
                                 become hundreds, tenths become tens and hundredths become ones.</span></li>
-                        <li><span class="wex__do"><strong>6.47 &times; 100 = 647</strong></span><span
+                        <li><span class="wex__do"><strong>6.47 &times; 100 = 647</strong></span>
+                        <span
                                 class="wex__why">The value is one hundred times as large.</span></li>
                     </ol>
                 </article>
@@ -214,11 +221,14 @@
                 <article class="wex">
                     <h3 class="wex__title">Example 2: calculate 0.39 &times; 1,000</h3>
                     <ol class="wex__steps">
-                        <li><span class="wex__do">3 tenths &rarr; 3 hundreds</span><span class="wex__why">The 3 moves
+                        <li><span class="wex__do">3 tenths &rarr; 3 hundreds</span>
+                        <span class="wex__why">The 3 moves
                                 from the tenths place to the hundreds place.</span></li>
-                        <li><span class="wex__do">9 hundredths &rarr; 9 tens</span><span class="wex__why">At the same
+                        <li><span class="wex__do">9 hundredths &rarr; 9 tens</span>
+                        <span class="wex__why">At the same
                                 time, the 9 moves three places from hundredths to tens.</span></li>
-                        <li><span class="wex__do"><strong>0.39 &times; 1,000 = 390</strong></span><span
+                        <li><span class="wex__do"><strong>0.39 &times; 1,000 = 390</strong></span>
+                        <span
                                 class="wex__why">A zero holds the empty ones place.</span></li>
                     </ol>
                 </article>
@@ -232,13 +242,16 @@
                     tenths and hundredths places all belong to one continuous place-value system.</p>
 
                 <article class="wex">
-                    <h3 class="wex__title">Example 3: calculate 725 &divide; 10</h3>
+                    <h2 class="wex__title">Example 3: calculate 725 &divide; 10</h2>
                     <ol class="wex__steps">
-                        <li><span class="wex__do">7 hundreds &rarr; 7 tens</span><span class="wex__why">The new place
+                        <li><span class="wex__do">7 hundreds &rarr; 7 tens</span>
+                        <span class="wex__why">The new place
                                 is worth one tenth of the original place.</span></li>
-                        <li><span class="wex__do">2 tens &rarr; 2 ones</span><span class="wex__why">The decimal point
+                        <li><span class="wex__do">2 tens &rarr; 2 ones</span>
+                        <span class="wex__why">The decimal point
                                 remains between the ones and tenths places.</span></li>
-                        <li><span class="wex__do"><strong>725 &divide; 10 = 72.5</strong></span><span
+                        <li><span class="wex__do"><strong>725 &divide; 10 = 72.5</strong></span>
+                        <span
                                 class="wex__why">The result has one tenth of the original magnitude.</span></li>
                     </ol>
                 </article>
@@ -246,11 +259,14 @@
                 <article class="wex">
                     <h3 class="wex__title">Example 4: calculate 4 &divide; 100</h3>
                     <ol class="wex__steps">
-                        <li><span class="wex__do">4 ones &rarr; 4 hundredths</span><span class="wex__why">Two factors of
+                        <li><span class="wex__do">4 ones &rarr; 4 hundredths</span>
+                        <span class="wex__why">Two factors of
                                 10 make the place value one hundred times smaller.</span></li>
-                        <li><span class="wex__do">Write zeros in the empty places.</span><span class="wex__why">Both
+                        <li><span class="wex__do">Write zeros in the empty places.</span>
+                        <span class="wex__why">Both
                                 the ones and tenths places must be held by zeros.</span></li>
-                        <li><span class="wex__do"><strong>4 &divide; 100 = 0.04</strong></span><span
+                        <li><span class="wex__do"><strong>4 &divide; 100 = 0.04</strong></span>
+                        <span
                                 class="wex__why">The placeholder zero prevents 4 being read as 4 tenths.</span></li>
                     </ol>
                 </article>
@@ -366,15 +382,17 @@
             <section>
                 <h1>Common mistakes</h1>
                 <ul class="slips power-slips">
-                    <li><b>Moving only the decimal point</b><span>The decimal point is the fixed boundary between the
+                    <li><b>Moving only the decimal point</b>
+                    <span>The decimal point is the fixed boundary between the
                             ones and tenths places. Move the digits between place-value columns instead.</span></li>
-                    <li><b>Always adding zeros</b><span>Zeros are not attached automatically:
+                    <li><b>Always adding zeros</b>
+                    <span>Zeros are not attached automatically:
                             <strong>3.4 &times; 10 = 34</strong>, not 3.40. Add a zero only when it must hold an empty
                             place.</span></li>
-                    <li><b>Forgetting placeholder zeros</b><span><strong>7 &divide; 100 = 0.07</strong>. Without the
-                            zero in the tenths place, the 7 would occupy the tenths place rather than the hundredths
-                            place.</span></li>
-                    <li><b>Assuming division always makes a number smaller</b><span>Dividing by a positive number greater
+                    <li><b>Forgetting placeholder zeros</b>
+                    <span><strong>7 &divide; 100 = 0.07</strong>. Writing 0.7 puts the 7 one column too far left.</span></li>
+                    <li><b>Assuming division always makes a number smaller</b>
+                    <span>Dividing by a positive number greater
                             than 1 reduces the magnitude, but dividing by a positive number between 0 and 1 increases
                             it. For example, dividing by 0.1 is equivalent to multiplying by 10.</span></li>
                 </ul>

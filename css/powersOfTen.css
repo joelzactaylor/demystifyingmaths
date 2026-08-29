@@ -99,6 +99,7 @@
     background: #fff;
 }
 
+.power-machine__reading h2,
 .power-machine__reading h3 { margin: 0 0 8px; color: #09539d; font-size: 1.1rem; }
 .power-machine__reading ol { margin: 0; padding: 0; list-style: none; counter-reset: machine-step; }
 

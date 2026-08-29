@@ -17,7 +17,7 @@
             ["Start with the division", "29 ÷ 4 gives 7 remainder 1. The context will decide what that result means.", null],
             ["State what is left", "When 29 counters are shared between four pupils, each receives 7 and 1 counter remains.", "left"],
             ["Share the leftover exactly", "When the amount can be split, share the remaining 1 between four groups: 7¼, or 7.25, each.", "exact"],
-            ["Count only complete groups", "Four flowers make a complete bouquet. Twenty-nine flowers make 7 complete bouquets, with 1 flower left.", "down"],
+            ["Count only complete groups", "Seven bouquets are filled and a single flower is left over, too few to make an eighth.", "down"],
             ["Make room for every item", "Seven cars hold only 28 passengers. The remaining passenger makes an eighth car necessary.", "up"]
         ];
         const make = (tag, className, text) => {
