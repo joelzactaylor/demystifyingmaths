@@ -220,6 +220,10 @@
 /* A full-size outer layer whose only job is centring a naturally sized figure,
    so nothing is off-centre at any width the card is scaled to. */
 .powers-board__stage { display: grid; width: min(100%, 300px); place-items: center; }
+
+/* The field of numbers needs the width to stay legible at 16 across; the card
+   has it, and the outer layer still does nothing but centre what is inside it. */
+.powers-board__stage--wide { width: min(100%, 452px); }
 .powers-board__stage svg { display: block; width: 100%; height: auto; }
 
 .powers-board__tally {

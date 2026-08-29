@@ -140,6 +140,238 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
+    /* THE CUBE THAT GROWS BY A SHELL --------------------------------------
+
+       The same idea one direction on. A cube of side n is the cube of side n-1
+       with a shell laid over three of its faces, and those shells are 7, 19, 37
+       and 61 — the gaps between the cube numbers, the way the odd numbers are
+       the gaps between the squares.
+
+       Drawn in isometric with no rotation to it: the camera sits at (1, 1, 1),
+       so a unit cube shows its top and two of its sides, and painting them in
+       order of x + y + z puts the far ones down first. */
+
+    const shade = (hex, amount) => {
+        const rgb = [1, 3, 5].map((at) => parseInt(hex.slice(at, at + 2), 16));
+        const mixed = rgb.map((channel) => Math.round(amount < 0
+            ? channel * (1 + amount)
+            : channel + (255 - channel) * amount));
+        return `rgb(${mixed[0]}, ${mixed[1]}, ${mixed[2]})`;
+    };
+
+    const CUBE_SIDES = 5;
+
+    const cubePainter = {
+        read: () => ({ sides: CUBE_SIDES }),
+
+        stages: (model) => model.sides - 1,
+
+        heading: (model) => `Cubes up to ${model.sides}${supText(3)}`,
+
+        build(board, model) {
+            board.replaceChildren();
+            const stage = el("div", "powers-board__stage");
+            const n = model.sides;
+            const W = 24, H = 12, V = 24;
+            const project = (x, y, z) => [(x - z) * W, (x + z) * H - y * V];
+            /* Every corner the drawing will use, so the figure can be centred
+               on what it actually covers rather than on the grid it came from. */
+            let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
+            for (const x of [0, n]) for (const y of [0, n]) for (const z of [0, n]) {
+                const [px, py] = project(x, y, z);
+                minX = Math.min(minX, px); maxX = Math.max(maxX, px);
+                minY = Math.min(minY, py); maxY = Math.max(maxY, py);
+            }
+            const pad = 8;
+            const svg = svgEl("svg", {
+                viewBox: `${minX - pad} ${minY - pad} ${maxX - minX + pad * 2} ${maxY - minY + pad * 2}`,
+                class: "solid", "aria-hidden": "true"
+            });
+            const cells = [];
+            for (let x = 0; x < n; x += 1) {
+                for (let y = 0; y < n; y += 1) {
+                    for (let z = 0; z < n; z += 1) {
+                        cells.push({ x, y, z, ring: Math.max(x, y, z) });
+                    }
+                }
+            }
+            /* Far ones first: with the camera on the (1, 1, 1) diagonal, a cube
+               is nearer exactly when x + y + z is larger. */
+            cells.sort((a, b) => (a.x + a.y + a.z) - (b.x + b.y + b.z));
+            const cubes = cells.map(({ x, y, z, ring }) => {
+                const ink = GNOMON_INK[ring % GNOMON_INK.length];
+                /* Where in the solid this one sits. Two cubes on the viewing
+                   diagonal land on the same place on screen, so the order they
+                   are painted in cannot be read back off the drawing; this is
+                   what makes it checkable. */
+                const group = svgEl("g", { opacity: 0, "data-at": `${x},${y},${z}` });
+                const face = (corners, fill) => {
+                    const points = corners.map(([cx, cy, cz]) => project(cx, cy, cz).join(",")).join(" ");
+                    group.append(svgEl("polygon", { points, fill, stroke: shade(ink, -0.45), "stroke-width": 0.7 }));
+                };
+                /* Top, then the two sides the camera can see. */
+                face([[x, y + 1, z], [x + 1, y + 1, z], [x + 1, y + 1, z + 1], [x, y + 1, z + 1]], shade(ink, 0.34));
+                face([[x + 1, y, z], [x + 1, y, z + 1], [x + 1, y + 1, z + 1], [x + 1, y + 1, z]], shade(ink, -0.1));
+                face([[x, y, z + 1], [x + 1, y, z + 1], [x + 1, y + 1, z + 1], [x, y + 1, z + 1]], shade(ink, -0.32));
+                svg.append(group);
+                return { group, ring };
+            });
+            stage.append(svg);
+            const tally = el("p", "powers-board__tally");
+            const answer = el("p", "powers-board__answer");
+            board.append(stage, tally, answer);
+            return { cubes, tally, answer };
+        },
+
+        caption(model, index) {
+            const side = index + 1;
+            if (index === 0) {
+                return {
+                    title: "One cube",
+                    copy: `A cube of side 1 is a single unit cube, so 1${supText(3)} = 1.`
+                };
+            }
+            const shell = side ** 3 - (side - 1) ** 3;
+            return {
+                title: `Side ${side}`,
+                copy: `A shell of ${shell} more unit cubes wraps the cube of side ${side - 1}, carrying ${(side - 1) ** 3} up to ${side ** 3}, so ${side}${supText(3)} = ${side ** 3}.`
+            };
+        },
+
+        paint(parts, model, index, within, eased) {
+            const at = index + eased;
+            parts.cubes.forEach(({ group, ring }) => {
+                group.setAttribute("opacity", String(ease(clamp(at - ring))));
+            });
+            const side = index + 1;
+            const shell = side ** 3 - (side - 1) ** 3;
+            parts.tally.textContent = index === 0 ? "1 cube" : `+ ${shell}`;
+            parts.tally.style.opacity = String(ease(clamp((within - 0.1) / 0.4)));
+            parts.answer.replaceChildren(powerNode("powers-board__power", side, 3), el("i", "", ` = ${side ** 3}`));
+            parts.answer.style.opacity = String(ease(clamp((within - 0.35) / 0.5)));
+        }
+    };
+
+    /* WHERE THE POWERS FALL ------------------------------------------------
+
+       Every number to 256, with the powers of each base marked in turn. Two
+       things come out of it that prose can only assert: how few numbers are
+       powers at all, and that the powers of 4 are already powers of 2. */
+
+    const MARK_INK = { 2: "#09539d", 3: "#b86821", 4: "#116e93", 5: "#4c7a3f" };
+    const MARK_BASES = [2, 3, 4, 5];
+    const GRID_TO = 256;
+
+    const claimsUpTo = (limit) => {
+        const claims = new Map();
+        for (const base of MARK_BASES) {
+            for (let value = base; value <= limit; value *= base) {
+                claims.set(value, [...(claims.get(value) || []), base]);
+            }
+        }
+        return claims;
+    };
+
+    const fieldPainter = {
+        read: () => ({ limit: GRID_TO, claims: claimsUpTo(GRID_TO) }),
+
+        stages: () => MARK_BASES.length + 1,
+
+        heading: () => `The numbers to ${GRID_TO}`,
+
+        build(board, model) {
+            board.replaceChildren();
+            const stage = el("div", "powers-board__stage powers-board__stage--wide");
+            const across = 16;
+            const cell = 30;
+            const span = across * cell;
+            const svg = svgEl("svg", { viewBox: `0 0 ${span} ${span}`, class: "field", "aria-hidden": "true" });
+            const cells = [];
+            for (let value = 1; value <= model.limit; value += 1) {
+                const at = value - 1;
+                const x = (at % across) * cell;
+                const y = Math.floor(at / across) * cell;
+                const box = svgEl("rect", {
+                    x: x + 1.5, y: y + 1.5, width: cell - 3, height: cell - 3, rx: 6,
+                    fill: "#eef3f7", stroke: "none"
+                });
+                const ring = svgEl("rect", {
+                    x: x + 4, y: y + 4, width: cell - 8, height: cell - 8, rx: 4,
+                    fill: "none", stroke: "#fff", "stroke-width": 1.6, opacity: 0
+                });
+                const label = svgEl("text", {
+                    x: x + cell / 2, y: y + cell / 2 + 3.6, "text-anchor": "middle",
+                    "font-size": 10.5, "font-family": "ui-monospace, Menlo, Consolas, monospace",
+                    fill: "#8ba0ad"
+                });
+                label.textContent = String(value);
+                svg.append(box, ring, label);
+                cells.push({ value, box, ring, label, claims: model.claims.get(value) || [] });
+            }
+            stage.append(svg);
+            const tally = el("p", "powers-board__tally");
+            board.append(stage, tally);
+            return { cells, tally };
+        },
+
+        caption(model, index) {
+            if (index === 0) {
+                return {
+                    title: `The numbers to ${GRID_TO}`,
+                    copy: "Every whole number from 1 to 256, before any of them is marked."
+                };
+            }
+            if (index <= MARK_BASES.length) {
+                const base = MARK_BASES[index - 1];
+                const marked = [...model.claims].filter(([, bases]) => bases.includes(base)).map(([value]) => value);
+                const fresh = [...model.claims].filter(([, bases]) => bases[0] === base).length;
+                if (base === 4) {
+                    return {
+                        title: "Powers of 4",
+                        copy: `${marked.join(", ")} — every one already marked, because multiplying by 4 is multiplying by 2 twice.`
+                    };
+                }
+                return {
+                    title: `Powers of ${base}`,
+                    copy: index === 1
+                        ? `${marked.join(", ")} — eight of them, and already most of what there is to find.`
+                        : `${marked.join(", ")} — ${fresh} more that no earlier base had claimed.`
+                };
+            }
+            return {
+                title: `${model.claims.size} numbers in ${GRID_TO}`,
+                copy: "Almost every number is a power of none of them, which is exactly why the ones that are can be learned."
+            };
+        },
+
+        paint(parts, model, index, within, eased) {
+            parts.cells.forEach(({ box, ring, label, claims }) => {
+                /* The bases marked so far, in the order they were marked. */
+                const shown = claims.filter((base) => MARK_BASES.indexOf(base) < index);
+                const arriving = claims.includes(MARK_BASES[index - 1]);
+                const strength = shown.length && arriving ? eased : shown.length ? 1 : 0;
+                box.setAttribute("fill", shown.length
+                    ? MARK_INK[shown[0]]
+                    : "#eef3f7");
+                box.setAttribute("opacity", String(shown.length ? lerp(0.25, 1, strength) : 1));
+                label.setAttribute("fill", shown.length ? "#fff" : "#8ba0ad");
+                label.setAttribute("font-weight", shown.length ? "700" : "400");
+                /* A second claim rings the cell in the later base's colour. */
+                const second = shown[1];
+                ring.setAttribute("stroke", second ? MARK_INK[second] : "#fff");
+                ring.setAttribute("opacity", String(second ? 1 : 0));
+                /* At the end the unmarked numbers step back so the marks read
+                   as the small set they are. */
+                const dim = index > MARK_BASES.length ? ease(clamp((within - 0.2) / 0.5)) : 0;
+                if (!shown.length) box.setAttribute("opacity", String(lerp(1, 0.35, dim)));
+                label.setAttribute("opacity", String(shown.length ? 1 : lerp(1, 0.3, dim)));
+            });
+            const total = model.claims.size;
+            parts.tally.textContent = index > MARK_BASES.length ? `${total} of ${GRID_TO}` : "";
+            parts.tally.style.opacity = String(index > MARK_BASES.length ? ease(clamp((within - 0.3) / 0.4)) : 0);
+        }
+    };
+
     /* SIXTY-FOUR, THREE WAYS ----------------------------------------------
 
        The same counters moved into a square, into four layers and then cut in
@@ -364,7 +596,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    const PAINTERS = { square: squarePainter, regroup: regroupPainter, ladder: ladderPainter };
+    const PAINTERS = { square: squarePainter, cube: cubePainter, field: fieldPainter, regroup: regroupPainter, ladder: ladderPainter };
 
     const createScene = (scene) => {
         const sticky = scene.querySelector(".powers-scene__sticky");

@@ -93,8 +93,7 @@
                             49 &mdash; rising by 3, 5, 7, 9, 11, 13</strong></p>
                 </div>
 
-                <p>The odd numbers are what make the list easy to carry: each square is the last one plus the next
-                    odd number, so a forgotten entry can be rebuilt from its neighbour.</p>
+                <p>So a forgotten entry can always be rebuilt from its neighbour.</p>
 
                 <table class="recall recall--tall">
                     <caption>The squares from 1 squared to 15 squared</caption>
@@ -167,12 +166,47 @@
                         </tr>
                     </tbody>
                 </table>
+
+                <p class="note"><b>Note</b> &mdash; every entry in that column is the number multiplied by itself,
+                    not doubled. <span class="sf" role="math" aria-label="6 squared equals 36">6<span class="caret"
+                            aria-hidden="true">^</span><sup>2</sup> = 36</span>, while doubling 6 gives 12.</p>
             </section>
 
             <section>
                 <h1 id="cube-numbers">The cube numbers</h1>
                 <p>A cube number is a whole number multiplied by itself and then by itself again, and that many
-                    counters fill a cube. The ones worth knowing are short.</p>
+                    counters fill a cube.</p>
+
+                <p>A cube grows the way a square does, one shell at a time &mdash; but the shell wraps three faces
+                    instead of two, so the numbers climb much faster.</p>
+
+                <div class="worked">
+                    <h2 class="worked__title">One cube, then the next</h2>
+
+                    <div class="powers-scene" data-powers-scene data-scene="cube">
+                        <div class="powers-scene__sticky">
+                            <p class="powers-scene__heading" data-heading>Cubes up to 5&sup3;</p>
+
+                            <div class="powers-board">
+                                <div class="powers-board__paper" data-board></div>
+                            </div>
+
+                            <div class="powers-scene__caption" aria-live="polite">
+                                <h3 data-step-title>One cube</h3>
+                                <p data-step-copy>A cube of side 1 is a single unit cube, so 1&sup3; = 1.</p>
+                            </div>
+
+                            <div class="powers-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                    </div>
+
+                    <p class="worked__answer"><strong role="math"
+                            aria-label="1, 8, 27, 64, 125, rising by 7, 19, 37 and 61">1, 8, 27, 64, 125 &mdash;
+                            rising by 7, 19, 37, 61</strong></p>
+                </div>
+
+                <p>Those shells are the gaps between the cube numbers, the way the odd numbers are the gaps between
+                    the squares.</p>
 
                 <table class="recall recall--wide">
                     <caption>The cubes of 1 to 5, and of 10</caption>
@@ -218,6 +252,36 @@
                 <h1 id="powers-of-small-bases">The powers of 2, 3, 4 and 5</h1>
                 <p>Beyond squares and cubes, four bases turn up often enough to be recognised. Read the table by
                     column to learn one base, or by row to compare them at the same index.</p>
+
+                <p>Marking those powers among the numbers they sit in shows how few of them there are, and shows
+                    something else besides.</p>
+
+                <div class="worked">
+                    <h2 class="worked__title">Where the powers fall</h2>
+
+                    <div class="powers-scene" data-powers-scene data-scene="field">
+                        <div class="powers-scene__sticky">
+                            <p class="powers-scene__heading" data-heading>The numbers to 256</p>
+
+                            <div class="powers-board">
+                                <div class="powers-board__paper" data-board></div>
+                            </div>
+
+                            <div class="powers-scene__caption" aria-live="polite">
+                                <h3 data-step-title>The numbers to 256</h3>
+                                <p data-step-copy>Every whole number from 1 to 256, before any of them is marked.</p>
+                            </div>
+
+                            <div class="powers-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                    </div>
+
+                    <p class="worked__answer"><strong>Only 16 of the first 256 numbers are a power of 2, 3, 4 or
+                            5</strong></p>
+                </div>
+
+                <p>Every power of 4 is also a power of 2, because multiplying by 4 is multiplying by 2 twice. That is
+                    the first sign that one number can answer to more than one base.</p>
 
                 <table class="recall recall--grid">
                     <caption>The first five powers of 2, 3, 4 and 5</caption>
@@ -269,8 +333,7 @@
                     </tbody>
                 </table>
 
-                <p>The powers of 2 are worth carrying further than the rest, because they run through place value,
-                    computing and doubling problems: <span class="sf" role="math" aria-label="2 to the power of 6 equals 64, 2 to the power of 7 equals 128, 2 to the power of 8 equals 256, 2 to the power of 9 equals 512, 2 to the power of 10 equals 1,024">2<span class="caret" aria-hidden="true">^</span><sup>6</sup> = 64, 2<span class="caret" aria-hidden="true">^</span><sup>7</sup> = 128, 2<span class="caret" aria-hidden="true">^</span><sup>8</sup> = 256, 2<span class="caret" aria-hidden="true">^</span><sup>9</sup> = 512, 2<span class="caret" aria-hidden="true">^</span><sup>10</sup> = 1,024</span>.</p>
+                <p>The powers of 2 are worth carrying further than the rest, because doubling turns up so often: <span class="sf" role="math" aria-label="2 to the power of 6 equals 64, 2 to the power of 7 equals 128, 2 to the power of 8 equals 256, 2 to the power of 9 equals 512, 2 to the power of 10 equals 1,024">2<span class="caret" aria-hidden="true">^</span><sup>6</sup> = 64, 2<span class="caret" aria-hidden="true">^</span><sup>7</sup> = 128, 2<span class="caret" aria-hidden="true">^</span><sup>8</sup> = 256, 2<span class="caret" aria-hidden="true">^</span><sup>9</sup> = 512, 2<span class="caret" aria-hidden="true">^</span><sup>10</sup> = 1,024</span>.</p>
             </section>
 
             <section>
@@ -305,6 +368,8 @@
 
                 <p>Nothing was added or taken away between those arrangements. Which power 64 is depends only on the
                     base it is being read against, and a question that asks for a power of 2 wants <span class="sf" role="math" aria-label="2 to the power of 6">2<span class="caret" aria-hidden="true">^</span><sup>6</sup></span>.</p>
+
+                <p>The base and the index are not interchangeable, though: <span class="sf" role="math" aria-label="2 to the power of 6">2<span class="caret" aria-hidden="true">^</span><sup>6</sup></span> is 64, while <span class="sf" role="math" aria-label="6 squared">6<span class="caret" aria-hidden="true">^</span><sup>2</sup></span> is 36.</p>
             </section>
 
             <section>

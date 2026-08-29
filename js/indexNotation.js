@@ -972,7 +972,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
                 {
                     title: "The area",
-                    copy: `Multiplying the two sides gives the same ${readable(value)} in one step.`
+                    copy: `Multiplying the width by the height gives the same ${readable(value)} in one step.`
                 }
             ][clamp(index, 0, 4)];
         },
@@ -1277,7 +1277,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
                 {
                     title: "The volume",
-                    copy: `Multiplying the three edges gives the same ${readable(value)} in one step.`
+                    copy: `Multiplying the three directions together gives the same ${readable(value)} in one step.`
                 }
             ][clamp(index, 0, 5)];
         },
