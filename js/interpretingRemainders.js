@@ -134,8 +134,23 @@
             });
         };
 
+        /* Pinning takes the card out of the page and puts it on the body, and
+           moving a node drops focus and the caret from whatever is inside it.
+           Both are put back, so the card can go on being positioned however the
+           reader is using it. */
+        const moveCard = (move) => {
+            const active = sticky.contains(document.activeElement) ? document.activeElement : null;
+            const caret = active && typeof active.selectionStart === "number"
+                ? [active.selectionStart, active.selectionEnd]
+                : null;
+            move();
+            if (!active || document.activeElement === active) return;
+            active.focus({ preventScroll: true });
+            if (caret) active.setSelectionRange(caret[0], caret[1]);
+        };
+
         const dock = (offset = 0, preserveSize = false) => {
-            if (sticky.parentNode !== scene) scene.insertBefore(sticky, scene.firstChild);
+            if (sticky.parentNode !== scene) moveCard(() => scene.insertBefore(sticky, scene.firstChild));
             sticky.classList.remove("is-pinned");
             sticky.style.removeProperty("left");
             sticky.style.removeProperty("transform");
@@ -149,7 +164,7 @@
             }
         };
         const pin = (left, top, width, scale) => {
-            if (sticky.parentNode !== document.body) document.body.append(sticky);
+            if (sticky.parentNode !== document.body) moveCard(() => document.body.append(sticky));
             sticky.classList.add("is-pinned");
             sticky.style.left = `${left}px`;
             sticky.style.top = `${top}px`;

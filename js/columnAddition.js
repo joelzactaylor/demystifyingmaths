@@ -375,8 +375,23 @@ document.addEventListener("DOMContentLoaded", () => {
         scene.classList.add("is-ready");
         let cardHeight = sticky.offsetHeight;
 
+        /* Pinning takes the card out of the page and puts it on the body, and
+           moving a node drops focus and the caret from whatever is inside it.
+           Both are put back, so the card can go on being positioned however the
+           reader is using it. */
+        const moveCard = (move) => {
+            const active = sticky.contains(document.activeElement) ? document.activeElement : null;
+            const caret = active && typeof active.selectionStart === "number"
+                ? [active.selectionStart, active.selectionEnd]
+                : null;
+            move();
+            if (!active || document.activeElement === active) return;
+            active.focus({ preventScroll: true });
+            if (caret) active.setSelectionRange(caret[0], caret[1]);
+        };
+
         const dock = (offset = 0) => {
-            if (sticky.parentNode !== scene) scene.insertBefore(sticky, scene.firstChild);
+            if (sticky.parentNode !== scene) moveCard(() => scene.insertBefore(sticky, scene.firstChild));
             sticky.classList.remove("is-pinned");
             sticky.style.removeProperty("left");
             sticky.style.removeProperty("width");
@@ -386,7 +401,7 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         const pin = (left, top, width, scale) => {
-            if (sticky.parentNode !== document.body) document.body.append(sticky);
+            if (sticky.parentNode !== document.body) moveCard(() => document.body.append(sticky));
             sticky.classList.add("is-pinned");
             sticky.style.left = `${left}px`;
             sticky.style.top = `${top}px`;
@@ -406,11 +421,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const update = () => {
             ticking = false;
             if (!calculation) return;
-
-            if (!fixed && sticky.contains(document.activeElement)) {
-                repaintInPlace();
-                return;
-            }
 
             if (reduceMotion.matches) {
                 dock(0);
@@ -478,29 +488,34 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             /* Rebuild the drawing against the new numbers and repaint at the
-               scroll position the reader is already at. The card is never
-               re-measured here: moving it while a field has focus would lose
-               the caret. */
+               scroll position the reader is already at. */
             buildBoard();
             stage = -1;
             if (active) {
                 repaintInPlace();
                 if (document.activeElement !== active) active.focus({ preventScroll: true });
                 if (selection) active.setSelectionRange(selection[0], selection[1]);
-                if (window.scrollX !== scrollLeft || window.scrollY !== scrollTop) {
-                    window.scrollTo({ left: scrollLeft, top: scrollTop, behavior: "auto" });
-                }
-            } else {
-                requestUpdate();
             }
+            /* A smaller calculation is a shorter scene, which can leave the
+               reader below the whole of it. They are put back where they were,
+               and no further down than the point at which the card comes to
+               rest at the foot of its travel: from there the finished working
+               is what is in front of them, not the empty page under it. */
+            const restRect = scene.getBoundingClientRect();
+            const restScale = scene.offsetWidth && restRect.width ? restRect.width / scene.offsetWidth : 1;
+            const restTop = Math.max(16, (window.innerHeight - cardHeight * restScale) / 2);
+            const lowest = Math.max(0, window.scrollY + restRect.top - restTop
+                + Math.max(1, scene.offsetHeight - cardHeight) * restScale);
+            const settled = Math.min(scrollTop, lowest);
+            if (window.scrollX !== scrollLeft || window.scrollY !== settled) {
+                window.scrollTo({ left: scrollLeft, top: settled, behavior: "auto" });
+            }
+            /* The rebuild can change the scene's height, so the card is
+               positioned again whether or not the reader is still in it. */
+            requestUpdate();
         };
 
         const reset = () => {
-            if (!fixed && sticky.contains(document.activeElement)) {
-                stage = -1;
-                repaintInPlace();
-                return;
-            }
             measure();
             stage = -1;
             requestUpdate();
