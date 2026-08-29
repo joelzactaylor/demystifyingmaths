@@ -1,0 +1,99 @@
+@import url("/demystifyingmaths/css/practiceWrittenMethods.css");
+
+/* Interpreting a remainder keeps the shared practice shell and adds two
+   things: a plain statement of the division being interpreted, and a row of
+   labelled boxes for an answer that has more than one part. */
+
+/* Several question families are stated in words alone, so the calculation
+   line must be able to disappear rather than stand empty. */
+.practice-question__expression[hidden] { display: none !important; }
+
+.practice-question__expression.practice-division-line {
+    margin: 16px 0 0;
+    padding: 12px 18px;
+    border: 2px solid #d8e1e5;
+    border-radius: 14px;
+    background: #f8fbfc;
+    color: #172f3b;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 1.5rem;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: .02em;
+    text-align: center;
+}
+
+/* One labelled box for each part of a multi-part answer. */
+
+.practice-parts { margin-top: 22px; }
+
+.practice-parts__list {
+    display: grid;
+    gap: 8px;
+    margin-top: 14px;
+    padding: 16px 18px;
+    border: 2px solid #d8e1e5;
+    border-radius: 14px;
+    background: #f8fbfc;
+}
+
+.practice-parts__cell {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 14px;
+    align-items: center;
+    padding: 8px 11px;
+    border: 2px solid transparent;
+    border-radius: 11px;
+    cursor: pointer;
+}
+
+.practice-parts__label {
+    color: #41535c;
+    font-size: .96rem;
+    font-weight: 700;
+}
+
+.practice-parts__cell input {
+    width: 148px;
+    padding: 9px 12px;
+    border: 2px solid #cfdbe0;
+    border-radius: 10px;
+    background: #fff;
+    color: #172f3b;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 1.2rem;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+}
+
+.practice-parts__cell input:focus-visible {
+    border-color: #b9832c;
+    outline: 3px solid #f0dcae;
+    outline-offset: 2px;
+}
+
+.practice-parts__cell.is-correct {
+    border-color: #a9c9b0;
+    background: #eef6f0;
+}
+
+.practice-parts__cell.is-correct input { border-color: #6f9a7c; }
+
+.practice-parts__cell.is-wrong {
+    border-color: #e0b9ae;
+    background: #fdf1ed;
+}
+
+.practice-parts__cell.is-wrong input { border-color: #c07d68; border-style: dashed; }
+
+@media print {
+    .practice-question__expression.practice-division-line,
+    .practice-parts__list { border-color: #999; background: #fff; }
+}
+
+@media (max-width: 520px) {
+    .practice-question__expression.practice-division-line { padding: 10px 12px; font-size: 1.3rem; }
+    .practice-parts__cell { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+    .practice-parts__cell input { width: 100%; }
+    .practice-parts__list { padding: 12px 10px; }
+}

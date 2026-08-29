@@ -1,97 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <title>Demystifying Maths | Practice: Interpreting a remainder</title>
-    <meta name="description" content="Whether a worded answer wants a remainder, a decimal, a fraction or rounding.">
-    <meta property="og:title" content="Demystifying Maths">
-    <meta property="og:description" content="Whether a worded answer wants a remainder, a decimal, a fraction or rounding.">
+    <title>Demystifying Maths | Practise interpreting a remainder</title>
+    <meta name="description" content="Supported GCSE practice reading a division in context: state the remainder, give the exact decimal or fraction, and let the wording decide whether the answer rounds up or down.">
+    <meta property="og:title" content="Demystifying Maths | Practise interpreting a remainder">
+    <meta property="og:description" content="Practise deciding what a remainder means in context, with hints, precise feedback and complete worked methods.">
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/practice.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/practiceInterpretingRemainders.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
+    <script src="/demystifyingmaths/js/practiceInterpretingRemainders.js" defer></script>
+    <noscript><style>.practice-coach { display: none; }</style></noscript>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&amp;display=swap" rel="stylesheet">
 </head>
-
 <body>
     <div class="layout">
         <div id="top-ribbon-placeholder"></div>
         <script>fetch("/demystifyingmaths/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
-
         <header>
             <h1>Demystifying - Interpreting a remainder</h1>
-            <nav aria-label="Breadcrumb">
-                <ol class="breadcrumb breadcrumb--deep">
-                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and calculation</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/">Written methods</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li>
-                        <p>Interpreting a remainder</p>
-                    </li>
-                </ol>
-            </nav>
+            <nav aria-label="Breadcrumb"><ol class="breadcrumb breadcrumb--deep">
+                <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
+                <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
+                <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
+                <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span aria-hidden="true">&rsaquo;</span></li>
+                <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and calculation</a><span aria-hidden="true">&rsaquo;</span></li>
+                <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/">Written methods</a><span aria-hidden="true">&rsaquo;</span></li>
+                <li><p>Interpreting a remainder practice</p></li>
+            </ol></nav>
         </header>
-
         <aside id="page-nav-container"></aside>
-
-        <main class="practice-main">
-            <section>
-                <div class="skill-strip">
-                    <span class="skill-strip__label">Drills</span>
-                    <p>Whether a worded answer wants a remainder, a decimal, a fraction or rounding.</p>
+        <main class="practice-main practice-main--guided">
+            <section aria-labelledby="practice-title">
+                <div class="skill-strip practice-goal"><span class="skill-strip__label">Goal</span><p>Divide, check that the remainder is smaller than the divisor, then let the wording decide what to do with it: state it, share it as a fraction or decimal, count only the complete groups, or allow one more group so that nothing is left behind.</p></div>
+                <h2 id="practice-title">Practise interpreting a remainder</h2>
+                <p class="practice-intro">For the full explanation, return to the lesson on <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/interpretingRemainders.html">interpreting a remainder</a>.</p>
+                <div class="practice-coach" id="interpreting-remainders-practice" data-practice-root>
+                    <div class="practice-coach__progress" aria-label="Practice progress">
+                        <div class="practice-coach__progress-copy"><span data-progress-stage>Writing the answer in the form asked for</span><strong data-progress-count>Question 1 of 12</strong></div>
+                        <div class="practice-coach__track" aria-hidden="true"><i data-progress-bar></i></div>
+                        <ol class="practice-coach__stages" aria-label="Practice stages">
+                            <li data-stage-indicator="0"><span>1</span><b>Writing the answer in the form asked for</b></li>
+                            <li data-stage-indicator="1"><span>2</span><b>Letting the context set the direction</b></li>
+                            <li data-stage-indicator="2"><span>3</span><b>Answering the question that was asked</b></li>
+                        </ol>
+                    </div>
+                    <div class="practice-question-view" data-question-view>
+                        <article class="practice-question" data-question-card aria-labelledby="practice-question-title">
+                            <div class="practice-question__heading"><h3 id="practice-question-title" tabindex="-1" data-question-title>Divide and record what is left</h3></div>
+                            <p class="practice-question__given" data-question-given-wrap hidden><span data-question-given-label>Given</span><strong data-question-given></strong></p>
+                            <div class="practice-question__task">
+                                <p data-question-prompt>Work out this division. Give the whole-number part and the remainder separately.</p>
+                                <div class="practice-question__expression" data-question-expression hidden></div>
+                            </div>
+                            <div class="practice-answer practice-answer--unit" data-single-answer hidden><label for="remainder-answer" data-answer-label>Your answer</label><div class="practice-answer__entry" data-answer-entry><span class="practice-answer__unit practice-answer__unit--prefix" data-unit-prefix hidden>&pound;</span><input id="remainder-answer" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" maxlength="12" aria-describedby="practice-feedback practice-hint" data-answer-input><span class="practice-answer__unit practice-answer__unit--suffix" data-unit-suffix hidden>m</span></div></div>
+                            <fieldset class="practice-choice" data-choice-answer hidden><legend data-choice-legend>Choose one option</legend><div class="practice-choice__options" data-choice-options></div></fieldset>
+                            <fieldset class="practice-multi practice-parts" data-parts-answer hidden><legend data-parts-legend>Each part of the answer</legend><div class="practice-parts__list" data-parts-list></div></fieldset>
+                            <div class="practice-question__actions">
+                                <button class="pbtn pbtn--primary" type="button" data-check-answer>Check my answer</button>
+                                <button class="pbtn" type="button" data-hint-button>Give me a hint</button>
+                                <button class="pbtn pbtn--quiet" type="button" data-new-question>Try different numbers</button>
+                            </div>
+                            <div class="practice-response">
+                                <p class="practice-feedback" id="practice-feedback" aria-live="polite" aria-atomic="true" data-feedback></p>
+                                <div class="practice-hint" id="practice-hint" data-hint-panel hidden><span>Hint</span><p data-hint-text></p></div>
+                                <button class="pbtn practice-solution-toggle" type="button" aria-expanded="false" aria-controls="practice-solution" data-solution-button>Show a worked solution</button>
+                                <div class="practice-solution" id="practice-solution" data-solution-panel hidden><h4>Worked solution</h4><ol data-solution-steps></ol></div>
+                            </div>
+                            <div class="practice-verdict-overlay" data-verdict-overlay aria-hidden="true"><span class="practice-verdict-overlay__sweep"></span><div class="practice-verdict-overlay__orbit"><i></i><i></i><i></i><i></i></div><div class="practice-verdict-overlay__copy"><strong data-verdict-word>YES</strong></div></div>
+                        </article>
+                        <div class="practice-navigation" aria-label="Move through the practice"><button class="pbtn" type="button" data-previous disabled>Previous question</button><button class="pbtn pbtn--primary" type="button" data-next>Move on for now</button></div>
+                    </div>
+                    <section class="practice-reflection" aria-labelledby="reflection-title" data-reflection hidden>
+                        <p class="practice-reflection__kicker">Round complete</p><h3 id="reflection-title" tabindex="-1">Review your questions</h3><p data-reflection-intro>All 12 questions are ready to review.</p>
+                        <div class="practice-reflection__counts" role="group" aria-label="Filter the question summary by outcome">
+                            <button type="button" data-reflection-filter="independent" aria-pressed="false"><strong data-independent-count>0</strong><span>completed independently</span></button>
+                            <button type="button" data-reflection-filter="supported" aria-pressed="false"><strong data-supported-count>0</strong><span>completed with support</span></button>
+                            <button type="button" data-reflection-filter="revisit" aria-pressed="false"><strong data-revisit-count>0</strong><span>worth revisiting</span></button>
+                        </div>
+                        <section class="practice-reflection__summary" aria-labelledby="question-summary-title"><div class="practice-reflection__summary-heading"><h4 id="question-summary-title">Your questions</h4><button type="button" data-show-all-questions hidden>Show all 12 questions</button></div><p data-reflection-summary-intro aria-live="polite">All 12 questions are listed below.</p><ol data-reflection-questions></ol></section>
+                        <h4 class="practice-reflection__lesson-heading">Review in the lesson</h4><ul class="practice-reflection__stages" data-reflection-stages></ul>
+                        <div class="practice-reflection__actions"><button class="pbtn pbtn--primary" type="button" data-fresh-round>Start a fresh round</button><button class="pbtn" type="button" data-review-last>Return to the last question</button></div>
+                    </section>
+                    <div class="practice-print-sheet" data-print-sheet aria-hidden="true"></div>
                 </div>
-
-                <div class="author-note">
-                    <span class="author-note__label">Author note &mdash; to cover</span>
-                    <p>Worded division answers: choosing between remainder form, exact decimal, fraction, and rounding up or down in context (coaches, boxes, tickets). One-digit divisors here; the context-forced rounding direction recurs on Measures rounding-in-context, so cross-reference rather than duplicate. Both tiers. (N2)</p>
-                    <ul>
-                        <li>Answer forms — express one-digit divisions as a remainder, exact decimal or fraction as requested (4 questions).</li>
-                        <li>Directed rounding — decide whether a one-digit division context requires rounding up or down (4 questions).</li>
-                        <li>Mixed contexts — choose the appropriate answer for coaches, boxes, tickets and leftovers; the decision is the catch (4 questions).</li>
-                    </ul>
-                </div>
-
-                <h1>The test</h1>
-                <p>&mdash;coming soon&mdash;</p>
+                <noscript><div class="practice-noscript"><h3>This practice needs JavaScript</h3><p>The questions, hints and worked methods are generated in the browser. Review the method in the lesson on <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/interpretingRemainders.html">interpreting a remainder</a>, or practise the division that produces the remainder in <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/practiceDivision.html">short division practice</a>.</p></div></noscript>
             </section>
-
-            <section class="topic-section lesson-actions" aria-labelledby="onward-title">
-                <h2 id="onward-title">Keep building</h2>
-                <div class="topic-grid">
-                    <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/longDivision.html" style="background-image: none"><span class="topic-card__kicker">Next lesson</span><h3>Long division</h3><p>Divide by a two-digit number using multiples, subtraction and bringing down.</p></a>
-                    <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/practiceLongDivision.html" style="background-image: none"><span class="practice-card__kicker">Next practice</span><h3>Long division</h3><p>Practise two-digit divisors and complete long-division layouts.</p></a>
-                </div>
-            </section>
+            <section class="topic-section lesson-actions" aria-labelledby="onward-title"><h2 id="onward-title">Keep building</h2><div class="topic-grid">
+                <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/longDivision.html" style="background-image: none"><span class="topic-card__kicker">Next lesson</span><h3>Long division</h3><p>Divide by a two-digit number using listed multiples and a clear written layout.</p></a>
+                <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/practiceLongDivision.html" style="background-image: none"><span class="practice-card__kicker">Next practice</span><h3>Long division</h3><p>Practise dividing by a two-digit divisor and continuing past the point.</p></a>
+            </div></section>
         </main>
-
-        <footer>
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h2>Explore</h2>
-                    <ul>
-                        <li><a href="/demystifyingmaths/pages/home.html">Home</a></li>
-                        <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a></li>
-                        <li><a href="/demystifyingmaths/pages/extracurricular/">Extracurricular</a></li>
-                        <li><a href="/demystifyingmaths/pages/about.html">About</a></li>
-                        <li><a href="/demystifyingmaths/pages/contact.html">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 demystifyingmaths &middot; joelzactaylor</p>
-            </div>
-        </footer>
+        <footer><div class="footer-content"><div class="footer-section"><h2>Explore</h2><ul><li><a href="/demystifyingmaths/pages/home.html">Home</a></li><li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a></li><li><a href="/demystifyingmaths/pages/extracurricular/">Extracurricular</a></li><li><a href="/demystifyingmaths/pages/about.html">About</a></li><li><a href="/demystifyingmaths/pages/contact.html">Contact</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 demystifyingmaths &middot; joelzactaylor</p></div></footer>
     </div>
 </body>
-
 </html>

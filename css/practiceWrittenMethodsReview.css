@@ -1,0 +1,69 @@
+@import url("/demystifyingmaths/css/practiceWrittenMethods.css");
+
+/* The written methods review keeps the shared practice shell and adds two
+   things: a plain statement of the calculation under discussion, and a
+   reflection row that can point at more than one lesson. */
+
+/* Several questions are stated in words alone, so the statement line must be
+   able to disappear rather than stand empty. */
+.practice-question__expression[hidden] { display: none !important; }
+
+.practice-question__expression.practice-division-line {
+    margin: 16px 0 0;
+    padding: 12px 18px;
+    border: 2px solid #d8e1e5;
+    border-radius: 14px;
+    background: #f8fbfc;
+    color: #172f3b;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 1.5rem;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: .02em;
+    text-align: center;
+}
+
+/* The set-out as it is written on paper: whole numbers right-aligned, decimal
+   parts running left, so the points fall in one line whatever their length.
+   Nothing here is padded — deciding that is the reader's job. */
+.practice-question__expression.practice-column {
+    display: grid;
+    width: min(320px, 100%);
+    margin: 18px auto 0;
+    gap: 3px 0;
+    align-items: baseline;
+    grid-template-columns: 30px minmax(0, 1fr) auto;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 1.5rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.practice-column__row { display: contents; }
+.practice-column__row span:first-child { color: #a5521b; text-align: left; }
+.practice-column__row strong { color: #172f3b; text-align: right; }
+.practice-column__fraction { color: #172f3b; text-align: left; }
+
+.practice-column__rule {
+    grid-column: 2 / 4;
+    height: 3px;
+    margin: 2px 0 0;
+    border-radius: 999px;
+    background: #526b76;
+}
+
+/* A review stage covers more than one lesson, so its row stacks the links. */
+.practice-reflection__stages li { align-items: flex-start; }
+.practice-reflection__stage-name { display: grid; gap: 3px; }
+.practice-reflection__stage-name span { color: #6d5a3a; font-size: .84rem; }
+.practice-reflection__stage-links { display: grid; gap: 4px; justify-items: end; text-align: right; }
+
+@media print {
+    .practice-question__expression.practice-division-line { border-color: #999; background: #fff; }
+    .practice-column__rule { background: #333; }
+}
+
+@media (max-width: 520px) {
+    .practice-question__expression.practice-division-line { padding: 10px 12px; font-size: 1.3rem; }
+    .practice-question__expression.practice-column { font-size: 1.3rem; grid-template-columns: 24px minmax(0, 1fr) auto; }
+    .practice-reflection__stages li { flex-direction: column; gap: 8px; }
+    .practice-reflection__stage-links { justify-items: start; text-align: left; }
+}

@@ -1,0 +1,199 @@
+@import url("/demystifyingmaths/css/practiceWrittenMethods.css");
+
+/* Long division keeps the shared practice shell and adds three things this
+   method needs: a plain statement of the calculation, the written long-division
+   layout with its bracket and subtraction rows, and a row of labelled boxes for
+   an answer that has more than one part. */
+
+/* Several question families are stated in words alone, so the calculation
+   line must be able to disappear rather than stand empty. */
+.practice-question__expression[hidden] { display: none !important; }
+
+.practice-question__expression.practice-division-line {
+    margin: 16px 0 0;
+    padding: 12px 18px;
+    border: 2px solid #d8e1e5;
+    border-radius: 14px;
+    background: #f8fbfc;
+    color: #172f3b;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 1.5rem;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: .02em;
+    text-align: center;
+}
+
+
+/* The written layout: the quotient above the line, the divisor outside the
+   bracket, and each subtraction row in the same columns as the dividend. */
+.practice-question__expression.practice-long {
+    --long-cell: 30px;
+    --long-gutter: 48px;
+    display: grid;
+    width: max-content;
+    max-width: 100%;
+    margin: 18px 0 0;
+    padding: 12px 16px 14px;
+    border: 2px solid #d8e1e5;
+    border-radius: 14px;
+    background: #f8fbfc;
+    color: #172f3b;
+    font: 700 1.16rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+    font-variant-numeric: tabular-nums;
+    text-align: left;
+}
+
+.practice-long__quotient {
+    display: grid;
+    min-height: 30px;
+    margin-left: var(--long-gutter);
+    grid-template-columns: repeat(var(--long-cols), var(--long-cell));
+    color: #09539d;
+}
+
+.practice-long__division { display: grid; grid-template-columns: var(--long-gutter) 1fr; }
+
+.practice-long__divisor { display: grid; padding-right: 10px; place-items: center end; }
+
+.practice-long__dividend {
+    display: grid;
+    min-height: 34px;
+    grid-template-columns: repeat(var(--long-cols), var(--long-cell));
+    border-top: 3px solid #173849;
+    border-left: 3px solid #173849;
+    border-radius: 12px 0 0 0;
+}
+
+.practice-long__work { margin-left: var(--long-gutter); }
+
+.practice-long__row {
+    position: relative;
+    display: grid;
+    min-height: 28px;
+    grid-template-columns: repeat(var(--long-cols), var(--long-cell));
+}
+
+.practice-long__cell { display: grid; grid-row: 1; place-items: center; }
+.practice-long__cell.is-appended { color: #6c7d85; }
+.practice-long__work .practice-long__cell { color: #7a4f12; }
+
+.practice-long__minus {
+    position: absolute;
+    top: 6px;
+    left: -17px;
+    color: #9a5e12;
+    font-style: normal;
+}
+
+.practice-long__rule {
+    align-self: end;
+    grid-row: 1;
+    height: 2px;
+    margin-bottom: 1px;
+    background: #52666f;
+}
+
+/* The value the reader has to supply, left as an empty box in its own place. */
+.practice-long__box {
+    display: block;
+    width: 100%;
+    min-width: 22px;
+    height: 24px;
+    border: 2px dashed #b9832c;
+    border-radius: 6px;
+    background: #fffaf0;
+}
+
+.practice-long__cell.is-box { padding: 0 2px; }
+
+.practice-long__remainder {
+    margin: 10px 0 0;
+    margin-left: var(--long-gutter);
+    color: #3c5662;
+    font-size: .92rem;
+}
+
+/* One labelled box for each part of a multi-part answer. */
+
+.practice-parts { margin-top: 22px; }
+
+.practice-parts__list {
+    display: grid;
+    gap: 8px;
+    margin-top: 14px;
+    padding: 16px 18px;
+    border: 2px solid #d8e1e5;
+    border-radius: 14px;
+    background: #f8fbfc;
+}
+
+.practice-parts__cell {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 14px;
+    align-items: center;
+    padding: 8px 11px;
+    border: 2px solid transparent;
+    border-radius: 11px;
+    cursor: pointer;
+}
+
+.practice-parts__label {
+    color: #41535c;
+    font-size: .96rem;
+    font-weight: 700;
+}
+
+.practice-parts__cell input {
+    width: 148px;
+    padding: 9px 12px;
+    border: 2px solid #cfdbe0;
+    border-radius: 10px;
+    background: #fff;
+    color: #172f3b;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 1.2rem;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+}
+
+.practice-parts__cell input:focus-visible {
+    border-color: #b9832c;
+    outline: 3px solid #f0dcae;
+    outline-offset: 2px;
+}
+
+.practice-parts__cell.is-correct {
+    border-color: #a9c9b0;
+    background: #eef6f0;
+}
+
+.practice-parts__cell.is-correct input { border-color: #6f9a7c; }
+
+.practice-parts__cell.is-wrong {
+    border-color: #e0b9ae;
+    background: #fdf1ed;
+}
+
+.practice-parts__cell.is-wrong input { border-color: #c07d68; border-style: dashed; }
+
+@media print {
+    .practice-question__expression.practice-division-line,
+    .practice-parts__list { border-color: #999; background: #fff; }
+}
+
+@media (max-width: 520px) {
+    .practice-question__expression.practice-division-line { padding: 10px 12px; font-size: 1.3rem; }
+    .practice-parts__cell { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+    .practice-parts__cell input { width: 100%; }
+    .practice-parts__list { padding: 12px 10px; }
+}
+
+@media print {
+    .practice-question__expression.practice-long { border-color: #999; background: #fff; }
+}
+
+@media (max-width: 520px) {
+    .practice-question__expression.practice-long { --long-cell: 23px; --long-gutter: 38px; font-size: .98rem; }
+    .practice-long__box { height: 20px; min-width: 17px; }
+}
