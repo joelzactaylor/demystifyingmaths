@@ -11,11 +11,34 @@
    900px panel that shared.css scales with transform under 900px, so nothing here
    may reflow. */
 
-/* THE RECALL TABLES — the lists this page exists to hand over. Real tables with
-   named columns, so a reader hearing one gets "power" and "value" against each
-   row rather than two numbers running together. */
+/* THE RECALL LISTS — the lists this page exists to hand over. Fifteen squares
+   in a two-column table is a tall thin strip against a 900px page; as a wrapped
+   row of chips the same fifteen read as one reference card, and each chip is a
+   whole statement, so nothing depends on a column heading to make sense. */
 
 .recall {
+    display: grid;
+    gap: 6px;
+    margin: 20px 0 6px;
+    padding: 0;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    list-style: none;
+}
+
+.recall--wide { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+.recall li {
+    padding: 9px 12px;
+    border-radius: 12px;
+    background: #f1f7fb;
+    color: #173849;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* The powers of four bases at five indices is a genuine matrix, and stays a
+   table: a cell there means nothing without the column it sits under. */
+.recall-grid {
     width: 100%;
     margin: 20px 0 6px;
     border-collapse: separate;
@@ -23,14 +46,14 @@
     table-layout: fixed;
 }
 
-.recall caption {
+.recall-grid caption {
     margin-bottom: 8px;
     color: #52666f;
     font-size: .88rem;
     text-align: left;
 }
 
-.recall thead th {
+.recall-grid thead th {
     padding: 0 16px 2px;
     color: #7b8b93;
     font-size: .74rem;
@@ -40,30 +63,11 @@
     text-transform: uppercase;
 }
 
-.recall tbody th,
-.recall tbody td {
-    padding: 8px 16px;
-    background: #f1f7fb;
-    text-align: left;
-    vertical-align: baseline;
-}
-
-.recall tbody th { border-radius: 12px 0 0 12px; color: #09539d; font-size: 1.02rem; }
-.recall tbody td:last-child { border-radius: 0 12px 12px 0; color: #173849; font-weight: 700; }
-
-/* Left as real tables. Laying a tbody out with grid would have packed fifteen
-   rows into three columns, but changing a table's display takes its semantics
-   with it: the rows stop being rows and the headers stop naming their columns
-   for anything that is listening rather than looking. A tall table on a page
-   whose job is handing over a list is the right shape anyway. */
-.recall--tall { max-width: 340px; }
-.recall--wide { max-width: 340px; }
-
-/* The powers of four bases at five indices is a genuine matrix: five columns,
-   with the index down the side. */
-.recall--grid tbody th { width: 74px; }
-.recall--grid tbody td { border-radius: 0; }
-.recall--grid tbody td:last-child { border-radius: 0 12px 12px 0; }
+.recall-grid tbody th,
+.recall-grid tbody td { padding: 8px 16px; background: #f1f7fb; text-align: left; vertical-align: baseline; }
+.recall-grid tbody th { width: 74px; border-radius: 12px 0 0 12px; color: #09539d; }
+.recall-grid tbody td { color: #173849; font-weight: 700; }
+.recall-grid tbody td:last-child { border-radius: 0 12px 12px 0; }
 
 /* A COMPACT NOTE — a detail that belongs beside the table it qualifies rather
    than in an explanation block of its own. */

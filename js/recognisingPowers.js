@@ -812,10 +812,14 @@ document.addEventListener("DOMContentLoaded", () => {
                     x: x + 4, y: y + 4, width: cell - 8, height: cell - 8, rx: 4,
                     fill: "none", stroke: "#fff", "stroke-width": 1.6, opacity: 0
                 });
+                /* Only the marked numbers are named. Two hundred and fifty-six
+                   labels at ten pixels is noise the eye has to work past, and
+                   the point of the field is which cells are lit, not which
+                   number every cell holds. */
                 const label = svgEl("text", {
-                    x: x + cell / 2, y: y + cell / 2 + 3.6, "text-anchor": "middle",
-                    "font-size": 10.5, "font-family": "ui-monospace, Menlo, Consolas, monospace",
-                    fill: "#8ba0ad"
+                    x: x + cell / 2, y: y + cell / 2 + 3.8, "text-anchor": "middle",
+                    "font-size": 11, "font-family": "ui-monospace, Menlo, Consolas, monospace",
+                    "font-weight": 700, fill: "#fff", opacity: 0
                 });
                 label.textContent = String(value);
                 svg.append(box, ring, label);
@@ -867,8 +871,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     ? MARK_INK[shown[0]]
                     : "#eef3f7");
                 box.setAttribute("opacity", String(shown.length ? lerp(0.25, 1, strength) : 1));
-                label.setAttribute("fill", shown.length ? "#fff" : "#8ba0ad");
-                label.setAttribute("font-weight", shown.length ? "700" : "400");
+                label.setAttribute("opacity", String(shown.length ? strength : 0));
                 /* A second claim rings the cell in the later base's colour. */
                 const second = shown[1];
                 ring.setAttribute("stroke", second ? MARK_INK[second] : "#fff");
@@ -876,8 +879,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 /* At the end the unmarked numbers step back so the marks read
                    as the small set they are. */
                 const dim = index > MARK_BASES.length ? ease(clamp((within - 0.2) / 0.5)) : 0;
-                if (!shown.length) box.setAttribute("opacity", String(lerp(1, 0.35, dim)));
-                label.setAttribute("opacity", String(shown.length ? 1 : lerp(1, 0.3, dim)));
+                if (!shown.length) box.setAttribute("opacity", String(lerp(1, 0.4, dim)));
             });
             const total = model.claims.size;
             parts.tally.textContent = index > MARK_BASES.length ? `${total} of ${GRID_TO}` : "";
