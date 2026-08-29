@@ -8,8 +8,441 @@
    one number can be a power of more than one base. And a number is tested
    against a base by dividing until it reaches 1 or stops coming out whole. */
 
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+/* Geometry and colour shared by the scroll-led scenes and the figures the
+   reader turns by hand. */
 const SVG = "http://www.w3.org/2000/svg";
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+const readable = (value) => Number(value).toLocaleString("en-GB");
+
+/* ------------------------------------------------------- quaternions */
+
+const qMultiply = (a, b) => [
+    a[0] * b[0] - a[1] * b[1] - a[2] * b[2] - a[3] * b[3],
+    a[0] * b[1] + a[1] * b[0] + a[2] * b[3] - a[3] * b[2],
+    a[0] * b[2] - a[1] * b[3] + a[2] * b[0] + a[3] * b[1],
+    a[0] * b[3] + a[1] * b[2] - a[2] * b[1] + a[3] * b[0]
+];
+
+const qNormalise = (q) => {
+    const length = Math.hypot(q[0], q[1], q[2], q[3]) || 1;
+    return [q[0] / length, q[1] / length, q[2] / length, q[3] / length];
+};
+
+const qFromAxisAngle = (axis, angle) => {
+    const half = angle / 2;
+    const sin = Math.sin(half);
+    const length = Math.hypot(axis[0], axis[1], axis[2]) || 1;
+    return [Math.cos(half), axis[0] / length * sin, axis[1] / length * sin, axis[2] / length * sin];
+};
+
+/* The point of the sphere the pointer is over, or the nearest point on its
+   silhouette once the pointer has left it. */
+const onSphere = (x, y) => {
+    const square = x * x + y * y;
+    if (square <= 1) return [x, y, Math.sqrt(1 - square)];
+    const length = Math.sqrt(square);
+    return [x / length, y / length, 0];
+};
+
+/* A rotation split into the part that turns the figure towards the reader
+   and the part that spins it about the line of sight. The second is the one
+   degree of freedom a drag has spare once the figure is facing where it was
+   pointed, and it is what the fourth direction is given. */
+const swingAndTwist = (q) => {
+    const length = Math.hypot(q[0], q[3]);
+    if (length < 1e-6) return { swing: q, twist: [1, 0, 0, 0] };
+    const twist = [q[0] / length, 0, 0, q[3] / length];
+    const inverse = [twist[0], -twist[1], -twist[2], -twist[3]];
+    return { swing: qNormalise(qMultiply(q, inverse)), twist };
+};
+
+/* The shortest rotation carrying one sphere point to another. */
+const arcBetween = (from, to) => qNormalise([
+    1 + from[0] * to[0] + from[1] * to[1] + from[2] * to[2],
+    from[1] * to[2] - from[2] * to[1],
+    from[2] * to[0] - from[0] * to[2],
+    from[0] * to[1] - from[1] * to[0]
+]);
+
+/* ------------------------------------------------------------ colour */
+
+/* Blending happens on triples and only becomes a string at the end, so a
+   blend can be blended again without being parsed back out of text. */
+const hexToRgb = (hex) => [1, 3, 5].map((at) => parseInt(hex.slice(at, at + 2), 16));
+const mix = (from, to, amount) => {
+    const t = clamp(amount, 0, 1);
+    return [0, 1, 2].map((channel) => from[channel] + (to[channel] - from[channel]) * t);
+};
+const rgb = ([r, g, b]) => `rgb(${Math.round(r)}, ${Math.round(g)}, ${Math.round(b)})`;
+const mixHex = (from, to, amount) => rgb(mix(hexToRgb(from), hexToRgb(to), amount));
+
+/* -------------------------------------------------------------- cube */
+
+/* Every small cube face of an n by n by n solid, as a quad of corners and
+   an outward normal. Only the outer faces are built: the ones inside the
+   solid can never be seen. */
+/* ROTATION IN ANY NUMBER OF DIMENSIONS
+
+   A shape of d directions is turned by an orthonormal d by d matrix, so nothing
+   is folded down to three or four dimensions before it is turned: a six
+   dimensional lattice is rotated in six dimensional space and only then cast
+   down onto the page.
+
+   A rotation of d-space has d(d−1)/2 planes and a pointer supplies two numbers,
+   so one gesture cannot reach every orientation at once. The drag is split the
+   way a hand turns an object: the part that carries the shape towards where it
+   was pointed rotates the two planes that contain the line of sight, and the
+   spin about that line — the one thing a drag can ask for that a solid has no
+   use for — is spent on the planes that leave the page, at rates that share no
+   common measure so that repeated drags reach everywhere. */
+
+const identityMatrix = (size) => Array.from({ length: size }, (row, i) =>
+    Array.from({ length: size }, (column, j) => (i === j ? 1 : 0)));
+
+/* One Givens rotation, applied on the left so the turn is read in the camera's
+   frame rather than the shape's. */
+const rotatePlane = (matrix, i, j, angle) => {
+    if (!angle || i >= matrix.length || j >= matrix.length) return matrix;
+    const cos = Math.cos(angle);
+    const sin = Math.sin(angle);
+    const rowI = matrix[i];
+    const rowJ = matrix[j];
+    for (let column = 0; column < matrix.length; column += 1) {
+        const a = rowI[column];
+        const b = rowJ[column];
+        rowI[column] = cos * a - sin * b;
+        rowJ[column] = sin * a + cos * b;
+    }
+    return matrix;
+};
+
+const applyRotation = (matrix, point) => matrix.map((row) => {
+    let total = 0;
+    for (let column = 0; column < row.length; column += 1) total += row[column] * (point[column] || 0);
+    return total;
+});
+
+/* Rounding drifts a matrix off the orthonormal after enough turns, which would
+   slowly shear the shape, so the rows are straightened after every gesture. */
+const straighten = (matrix) => {
+    for (let i = 0; i < matrix.length; i += 1) {
+        for (let j = 0; j < i; j += 1) {
+            let dot = 0;
+            for (let c = 0; c < matrix.length; c += 1) dot += matrix[i][c] * matrix[j][c];
+            for (let c = 0; c < matrix.length; c += 1) matrix[i][c] -= dot * matrix[j][c];
+        }
+        let length = 0;
+        for (let c = 0; c < matrix.length; c += 1) length += matrix[i][c] * matrix[i][c];
+        length = Math.sqrt(length) || 1;
+        for (let c = 0; c < matrix.length; c += 1) matrix[i][c] /= length;
+    }
+    return matrix;
+};
+
+/* The rates the hidden planes turn at, relative to the spin the drag asked for.
+   Deliberately not simple fractions of each other, so composing drags is not
+   confined to some smaller set of orientations. */
+const HIDDEN_RATES = [1, 0.618, 0.382];
+
+/* How fast a figure turns when it is left to itself. The two planes inside the
+   three directions a reader can point at turn slowly, at the pace of a tumble
+   anyone can follow. Every plane that reaches out of them turns faster, and
+   every one of them turns: that motion is the only sight anyone gets of a
+   direction that cannot be pointed at, and a plane left still is a direction
+   the figure never shows. No rate is a simple multiple of another, so the whole
+   never settles back into a pose it has already held. */
+const VISIBLE_RATES = [0.052, 0.037];
+const OUTWARD_RATES = [0.301, 0.233, 0.187, 0.271, 0.163, 0.211, 0.139, 0.247, 0.179, 0.121, 0.197, 0.151];
+
+/* Every plane the figure has, paired with the rate it turns at: the two inside
+   the visible three, then each plane that reaches into a direction beyond
+   them. Worked out once for each width of figure rather than every frame. */
+const driftPlanes = (live) => {
+    const planes = [];
+    for (let axis = 0; axis + 1 < live && axis < 2; axis += 1) {
+        planes.push([axis, axis + 1, VISIBLE_RATES[axis]]);
+    }
+    let n = 0;
+    for (let far = 3; far < live; far += 1) {
+        for (let near = 0; near < far; near += 1) {
+            planes.push([near, far, OUTWARD_RATES[n % OUTWARD_RATES.length]]);
+            n += 1;
+        }
+    }
+    return planes;
+};
+
+/* Draw a figure's turn out of the directions it no longer has. Taking them
+   away in one frame leaves the directions that remain holding a pose the reader
+   never saw them move into, which is the snap you get on the way from a
+   tesseract back to a cube. Easing the matrix towards the one it would have
+   been given instead lets it settle the way everything else on the page does.
+   Returns how far there is still to go, so the settling can stop when it is
+   done. */
+const confine = (matrix, live, amount) => {
+    const size = matrix.length;
+    let adrift = 0;
+    for (let row = 0; row < size; row += 1) {
+        for (let column = 0; column < size; column += 1) {
+            if (row < live && column < live) continue;
+            const gap = (row === column ? 1 : 0) - matrix[row][column];
+            const off = gap < 0 ? -gap : gap;
+            if (off > adrift) adrift = off;
+            matrix[row][column] += gap * amount;
+        }
+    }
+    return adrift;
+};
+
+/* How quickly it settles, as a proportion of what is left each second. */
+const SETTLE_RATE = 7;
+
+/* Scale a rotation down without changing its axis, so a turn can be handed on
+   to the next frame a little smaller than it was. */
+const easeRotation = (q, amount) => {
+    const axis = Math.hypot(q[1], q[2], q[3]);
+    if (axis < 1e-9) return [1, 0, 0, 0];
+    const angle = 2 * Math.atan2(axis, q[0]) * amount;
+    const half = Math.sin(angle / 2);
+    return qNormalise([Math.cos(angle / 2), q[1] / axis * half, q[2] / axis * half, q[3] / axis * half]);
+};
+
+const rotationAngle = (q) => 2 * Math.atan2(Math.hypot(q[1], q[2], q[3]), Math.abs(q[0]));
+
+const attachTrackball = (surface, options) => {
+    const size = Math.max(3, options.dimensions || 3);
+    /* `live` is how many directions are actually drawn at the moment. Turning
+       in a plane that reaches past them would give a point a coordinate along a
+       direction the figure has not been drawn out into, and the casts down to
+       the page would then bend it out of shape — a cube would stop looking like
+       a cube. */
+    const state = { matrix: identityMatrix(size), dimensions: size, live: size };
+    /* A quarter turn each way, so a solid never opens as a flat square. */
+    rotatePlane(state.matrix, 1, 2, 0.62);
+    rotatePlane(state.matrix, 0, 2, -0.42);
+
+    const still = reduceMotion.matches;
+    /* Every listener is hung on one signal, so a board that is replaced takes
+       its trackball with it. A stale one left listening would wake on the next
+       pointer event and paint its own dead drawing over the live one. */
+    const listening = new AbortController();
+    const on = (type, handler) => surface.addEventListener(type, handler, { signal: listening.signal });
+    let held = state.matrix.map((row) => row.slice());
+    let anchor = null;
+    let wanted = null;
+    let eased = null;
+    let previous = null;
+    let carried = null;
+    /* The planes the drift turns, rebuilt only when the figure gains or loses
+       a direction. */
+    let drifting = [];
+    let driftedAt = -1;
+    let running = false;
+    let last = 0;
+    const pointers = new Map();
+
+    /* One turn of the figure: the part that carries it towards where it was
+       pointed goes to the planes holding the line of sight, and the spin about
+       that line is spent on the planes that leave the page. */
+    const applyTurn = (matrix, rotation) => {
+        const { swing, twist } = swingAndTwist(rotation);
+        const axis = Math.hypot(swing[1], swing[2]);
+        if (axis > 1e-6) {
+            const along = Math.atan2(swing[1], -swing[2]);
+            const angle = 2 * Math.atan2(axis, Math.abs(swing[0])) * Math.sign(swing[0] || 1);
+            rotatePlane(matrix, 0, 1, -along);
+            rotatePlane(matrix, 0, 2, angle);
+            rotatePlane(matrix, 0, 1, along);
+        }
+        const spin = 2 * Math.atan2(twist[3], twist[0]);
+        if (state.live <= 3) {
+            rotatePlane(matrix, 0, 1, spin);
+        } else {
+            for (let hidden = 3; hidden < state.live; hidden += 1) {
+                rotatePlane(matrix, hidden - 1, hidden, spin * HIDDEN_RATES[hidden - 3]);
+            }
+        }
+        return matrix;
+    };
+
+    const pointAt = (point) => {
+        const box = surface.getBoundingClientRect();
+        if (!box.width || !box.height) return [0, 0, 1];
+        return onSphere(
+            ((point.x - box.left) / box.width) * 2 - 1,
+            1 - ((point.y - box.top) / box.height) * 2
+        );
+    };
+
+    const grip = () => {
+        const active = [...pointers.values()];
+        const sum = active.reduce((total, point) => ({ x: total.x + point.x, y: total.y + point.y }), { x: 0, y: 0 });
+        return { x: sum.x / active.length, y: sum.y / active.length };
+    };
+
+    /* Re-anchored whenever the gesture changes shape, so a second finger
+       landing or leaving never makes the figure jump. */
+    const reanchor = () => {
+        held = state.matrix.map((row) => row.slice());
+        anchor = pointAt(grip());
+        wanted = anchor;
+        eased = anchor;
+        previous = anchor;
+        carried = null;
+    };
+
+    const onScreen = () => {
+        const box = surface.getBoundingClientRect();
+        return box.bottom > 0 && box.top < window.innerHeight && box.width > 0;
+    };
+
+    const rest = options.rest || 0;
+    const frame = (now) => {
+        if (!running) return;
+        if (last && now - last < rest) { window.requestAnimationFrame(frame); return; }
+        const seconds = last ? Math.min(0.05, (now - last) / 1000) : 0;
+        last = now;
+        let moved = false;
+        const turning = pointers.size > 0 && Boolean(wanted);
+        /* Under the hand it is the orientation the drag is measured from that
+           turns, so the hand and everything else compose instead of one
+           waiting on the other. */
+        const turn = turning ? held : state.matrix;
+
+        /* A figure that has lost a direction eases out of the turn it held in
+           it rather than being cut back to three all at once. */
+        if (seconds && state.live < state.dimensions) {
+            if (confine(turn, state.live, 1 - Math.exp(-seconds * SETTLE_RATE)) > 2e-4) moved = true;
+        }
+
+        /* The drift never stops. */
+        if (options.drift && seconds && onScreen()) {
+            if (driftedAt !== state.live) {
+                drifting = driftPlanes(state.live);
+                driftedAt = state.live;
+            }
+            for (let n = 0; n < drifting.length; n += 1) {
+                const plane = drifting[n];
+                rotatePlane(turn, plane[0], plane[1], seconds * plane[2]);
+            }
+            moved = true;
+        }
+        if (moved) straighten(turn);
+
+        if (turning) {
+            /* The drawn orientation chases the pointer rather than snapping to
+               it, which is what takes the judder out of a drag. */
+            const catchUp = 1 - Math.exp(-seconds * 22);
+            const chased = eased.map((value, axis) => value + (wanted[axis] - value) * catchUp);
+            const length = Math.hypot(chased[0], chased[1], chased[2]) || 1;
+            eased = [chased[0] / length, chased[1] / length, chased[2] / length];
+            state.matrix = applyTurn(held.map((row) => row.slice()), arcBetween(anchor, eased));
+            carried = arcBetween(previous, eased);
+            previous = eased;
+            moved = true;
+        } else if (carried && rotationAngle(carried) > 2e-4) {
+            /* Let go and the figure carries on, slowing as it goes. */
+            applyTurn(state.matrix, carried);
+            carried = easeRotation(carried, Math.pow(0.06, seconds));
+            moved = true;
+        } else {
+            carried = null;
+        }
+
+        if (moved) {
+            straighten(state.matrix);
+            if (onScreen()) options.onTurn();
+        }
+        window.requestAnimationFrame(frame);
+    };
+
+    const start = () => {
+        if (running || still) return;
+        running = true;
+        last = 0;
+        window.requestAnimationFrame(frame);
+    };
+
+    /* Fewer directions on show means the turning has to be confined to them,
+       and any turn already carried into the others has to go: otherwise the
+       figure keeps the deformation it picked up while they were still there. */
+    state.setLive = (count) => {
+        const wanted = Math.max(3, Math.min(state.dimensions, count));
+        if (wanted === state.live) return;
+        state.live = wanted;
+        /* Where motion is unwelcome there is nothing to settle into: the turn
+           in the directions that have gone is taken away at once. */
+        if (still) {
+            confine(state.matrix, wanted, 1);
+            straighten(state.matrix);
+            if (pointers.size) reanchor();
+            return;
+        }
+        start();
+    };
+
+    state.stop = () => { running = false; listening.abort(); };
+    state.resize = (dimensions) => {
+        const size = Math.max(3, dimensions);
+        if (size === state.dimensions) return;
+        const grown = identityMatrix(size);
+        const keep = Math.min(size, state.matrix.length);
+        for (let i = 0; i < keep; i += 1) {
+            for (let j = 0; j < keep; j += 1) grown[i][j] = state.matrix[i][j];
+        }
+        state.matrix = straighten(grown);
+        state.dimensions = size;
+        if (pointers.size) reanchor();
+    };
+
+    on("pointerdown", (event) => {
+        pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+        surface.setPointerCapture(event.pointerId);
+        surface.classList.add("is-turning");
+        reanchor();
+        start();
+        event.preventDefault();
+    });
+
+    on("pointermove", (event) => {
+        if (!pointers.has(event.pointerId) || !anchor) return;
+        pointers.set(event.pointerId, { x: event.clientX, y: event.clientY });
+        wanted = pointAt(grip());
+        /* Where motion is unwelcome the drag is answered at once instead. */
+        if (still) {
+            state.matrix = applyTurn(held.map((row) => row.slice()), arcBetween(anchor, wanted));
+            straighten(state.matrix);
+            options.onTurn();
+        }
+    });
+
+    const release = (event) => {
+        if (!pointers.has(event.pointerId)) return;
+        pointers.delete(event.pointerId);
+        if (surface.hasPointerCapture(event.pointerId)) surface.releasePointerCapture(event.pointerId);
+        if (pointers.size) { reanchor(); return; }
+        surface.classList.remove("is-turning");
+    };
+    on("pointerup", release);
+    on("pointercancel", release);
+
+    on("keydown", (event) => {
+        const step = {
+            ArrowLeft: [0, 2, -0.19], ArrowRight: [0, 2, 0.19],
+            ArrowUp: [1, 2, -0.19], ArrowDown: [1, 2, 0.19],
+            PageUp: [2, 3, -0.19], PageDown: [2, 3, 0.19]
+        }[event.key];
+        if (!step) return;
+        rotatePlane(state.matrix, step[0], step[1], step[2]);
+        straighten(state.matrix);
+        options.onTurn();
+        event.preventDefault();
+    });
+
+    if (options.drift && !still) start();
+    return state;
+};
 
 document.addEventListener("DOMContentLoaded", () => {
     const scenes = document.querySelectorAll("[data-powers-scene]");
@@ -140,24 +573,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    /* THE CUBE THAT GROWS BY A SHELL --------------------------------------
+    /* THE CUBE, TURNED BY HAND -------------------------------------------
 
-       The same idea one direction on. A cube of side n is the cube of side n-1
-       with a shell laid over three of its faces, and those shells are 7, 19, 37
-       and 61 — the gaps between the cube numbers, the way the odd numbers are
-       the gaps between the squares.
+       A solid the reader can pick up. It grows from side 1 to side 5 with the
+       scroll, and at any point it can be turned to see that it really is n by n
+       by n — the count is not asserted, it is countable along three edges.
 
-       Drawn in isometric with no rotation to it: the camera sits at (1, 1, 1),
-       so a unit cube shows its top and two of its sides, and painting them in
-       order of x + y + z puts the far ones down first. */
-
-    const shade = (hex, amount) => {
-        const rgb = [1, 3, 5].map((at) => parseInt(hex.slice(at, at + 2), 16));
-        const mixed = rgb.map((channel) => Math.round(amount < 0
-            ? channel * (1 + amount)
-            : channel + (255 - channel) * amount));
-        return `rgb(${mixed[0]}, ${mixed[1]}, ${mixed[2]})`;
-    };
+       Only the outer faces of what has been built are drawn: a face that backs
+       onto a cube already in place can never be seen, so the figure shows the
+       surface of the solid rather than every small cube's own six sides. */
 
     const CUBE_SIDES = 5;
 
@@ -168,59 +592,137 @@ document.addEventListener("DOMContentLoaded", () => {
 
         heading: (model) => `Cubes up to ${model.sides}${supText(3)}`,
 
+        /* A rebuilt board takes its old drawing's animation with it. */
+        release: (parts) => parts.turning.stop(),
+
         build(board, model) {
             board.replaceChildren();
-            const stage = el("div", "powers-board__stage");
             const n = model.sides;
-            const W = 24, H = 12, V = 24;
-            const project = (x, y, z) => [(x - z) * W, (x + z) * H - y * V];
-            /* Every corner the drawing will use, so the figure can be centred
-               on what it actually covers rather than on the grid it came from. */
-            let minX = Infinity, maxX = -Infinity, minY = Infinity, maxY = -Infinity;
-            for (const x of [0, n]) for (const y of [0, n]) for (const z of [0, n]) {
-                const [px, py] = project(x, y, z);
-                minX = Math.min(minX, px); maxX = Math.max(maxX, px);
-                minY = Math.min(minY, py); maxY = Math.max(maxY, py);
-            }
-            const pad = 8;
-            const svg = svgEl("svg", {
-                viewBox: `${minX - pad} ${minY - pad} ${maxX - minX + pad * 2} ${maxY - minY + pad * 2}`,
-                class: "solid", "aria-hidden": "true"
-            });
-            const cells = [];
-            for (let x = 0; x < n; x += 1) {
-                for (let y = 0; y < n; y += 1) {
-                    for (let z = 0; z < n; z += 1) {
-                        cells.push({ x, y, z, ring: Math.max(x, y, z) });
-                    }
-                }
-            }
-            /* Far ones first: with the camera on the (1, 1, 1) diagonal, a cube
-               is nearer exactly when x + y + z is larger. */
-            cells.sort((a, b) => (a.x + a.y + a.z) - (b.x + b.y + b.z));
-            const cubes = cells.map(({ x, y, z, ring }) => {
-                const ink = GNOMON_INK[ring % GNOMON_INK.length];
-                /* Where in the solid this one sits. Two cubes on the viewing
-                   diagonal land on the same place on screen, so the order they
-                   are painted in cannot be read back off the drawing; this is
-                   what makes it checkable. */
-                const group = svgEl("g", { opacity: 0, "data-at": `${x},${y},${z}` });
-                const face = (corners, fill) => {
-                    const points = corners.map(([cx, cy, cz]) => project(cx, cy, cz).join(",")).join(" ");
-                    group.append(svgEl("polygon", { points, fill, stroke: shade(ink, -0.45), "stroke-width": 0.7 }));
-                };
-                /* Top, then the two sides the camera can see. */
-                face([[x, y + 1, z], [x + 1, y + 1, z], [x + 1, y + 1, z + 1], [x, y + 1, z + 1]], shade(ink, 0.34));
-                face([[x + 1, y, z], [x + 1, y, z + 1], [x + 1, y + 1, z + 1], [x + 1, y + 1, z]], shade(ink, -0.1));
-                face([[x, y, z + 1], [x + 1, y, z + 1], [x + 1, y + 1, z + 1], [x, y + 1, z + 1]], shade(ink, -0.32));
-                svg.append(group);
-                return { group, ring };
-            });
+            const stage = el("div", "solid__stage cube-stage");
+            stage.dataset.turn = "";
+            stage.tabIndex = 0;
+            stage.setAttribute("role", "img");
+            stage.setAttribute("aria-label",
+                `A cube built from unit cubes, growing from a single one to ${n} by ${n} by ${n}`);
+            stage.setAttribute("aria-describedby", "cube-hint");
+            const svg = svgEl("svg", { viewBox: "0 0 260 260", "aria-hidden": "true" });
             stage.append(svg);
             const tally = el("p", "powers-board__tally");
             const answer = el("p", "powers-board__answer");
-            board.append(stage, tally, answer);
-            return { cubes, tally, answer };
+            const figure = el("div", "cube-figure");
+            figure.append(stage, tally, answer);
+            board.append(figure);
+
+            /* Bottom layer first, so the solid stacks upwards as it grows. */
+            const order = [];
+            for (let y = 0; y < n; y += 1) {
+                for (let z = 0; z < n; z += 1) {
+                    for (let x = 0; x < n; x += 1) order.push([x, y, z]);
+                }
+            }
+            const step = 2 / n;
+            const at = new Map(order.map((cell, index) => [cell.join(","), index]));
+            /* The side at which each small cube first belongs to the solid. */
+            const ringOf = order.map(([x, y, z]) => Math.max(x, y, z));
+            const faces = [];
+            order.forEach(([x, y, z], cube) => {
+                const low = [-1 + x * step, -1 + y * step, -1 + z * step];
+                for (let axis = 0; axis < 3; axis += 1) {
+                    const u = (axis + 1) % 3;
+                    const v = (axis + 2) % 3;
+                    for (const side of [0, 1]) {
+                        const corners = [[0, 0], [1, 0], [1, 1], [0, 1]].map(([du, dv]) => {
+                            const point = [0, 0, 0];
+                            point[axis] = low[axis] + side * step;
+                            point[u] = low[u] + du * step;
+                            point[v] = low[v] + dv * step;
+                            return point;
+                        });
+                        const normal = [0, 0, 0];
+                        normal[axis] = side ? 1 : -1;
+                        const beside = [x, y, z];
+                        beside[axis] += normal[axis];
+                        const outside = beside[axis] < 0 || beside[axis] >= n;
+                        const neighbour = outside ? -1 : at.get(beside.join(","));
+                        faces.push({
+                            cube,
+                            ring: ringOf[cube],
+                            neighbour: neighbour === undefined ? -1 : neighbour,
+                            neighbourRing: neighbour === undefined || neighbour < 0 ? Infinity : ringOf[neighbour],
+                            corners: side ? corners : corners.slice().reverse(),
+                            normal
+                        });
+                    }
+                }
+            });
+
+            const nodes = faces.map(() => {
+                const polygon = svgEl("polygon", {
+                    stroke: "#5d91b0", "stroke-width": 1.2, "stroke-linejoin": "round"
+                });
+                svg.append(polygon);
+                return polygon;
+            });
+
+            const light = [-0.35, 0.62, 0.7];
+            const centre = 130;
+            const radius = 58;
+            const depth = 5.2;
+            let built = 0;
+
+            const render = () => {
+                const matrix = turning.matrix;
+                const drawn = [];
+                faces.forEach((face, index) => {
+                    const reveal = clamp(built - face.ring, 0, 1);
+                    if (reveal <= 0.01) return;
+                    /* Once the cube on the other side is there too, this face is
+                       inside the solid and cannot be seen. */
+                    if (built - face.neighbourRing >= 1) return;
+                    const normal = applyRotation(matrix, face.normal);
+                    if (normal[2] <= 0.02) return;
+                    const points = face.corners.map((corner) => applyRotation(matrix, corner));
+                    drawn.push({
+                        index,
+                        points,
+                        reveal,
+                        meanZ: (points[0][2] + points[1][2] + points[2][2] + points[3][2]) / 4,
+                        shade: clamp(normal[0] * light[0] + normal[1] * light[1] + normal[2] * light[2], 0, 1),
+                        ring: face.ring
+                    });
+                });
+                drawn.sort((a, b) => a.meanZ - b.meanZ);
+                nodes.forEach((node) => { node.style.display = "none"; });
+                drawn.forEach(({ index, points, shade, reveal, ring }) => {
+                    const node = nodes[index];
+                    node.style.display = "";
+                    node.setAttribute("opacity", reveal.toFixed(2));
+                    node.setAttribute("points", points.map(([x, y, z]) => {
+                        const scale = depth / (depth - z);
+                        const grow = 0.72 + reveal * 0.28;
+                        return `${(centre + x * radius * scale * grow).toFixed(2)},${(centre - y * radius * scale * grow).toFixed(2)}`;
+                    }).join(" "));
+                    /* Each side of the solid keeps the colour it arrived in, so
+                       a reader can see how much of the cube each step added. */
+                    const ink = GNOMON_INK[ring % GNOMON_INK.length];
+                    node.setAttribute("fill", mixHex(shade < 0.5 ? "#173849" : ink, "#f2f8fc", 0.22 + shade * 0.72));
+                });
+            };
+
+            const turning = attachTrackball(stage, {
+                dimensions: 3,
+                drift: true,
+                rest: 0,
+                onTurn: render
+            });
+
+            return {
+                render,
+                turning,
+                tally,
+                answer,
+                set(count) { built = count; render(); }
+            };
         },
 
         caption(model, index) {
@@ -231,21 +733,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     copy: `A cube of side 1 is a single unit cube, so 1${supText(3)} = 1.`
                 };
             }
-            const shell = side ** 3 - (side - 1) ** 3;
             return {
                 title: `Side ${side}`,
-                copy: `A shell of ${shell} more unit cubes wraps the cube of side ${side - 1}, carrying ${(side - 1) ** 3} up to ${side ** 3}, so ${side}${supText(3)} = ${side ** 3}.`
+                copy: `${side} layers of ${side} × ${side} = ${side * side}, so ${side}${supText(3)} = ${side ** 3}.`
             };
         },
 
         paint(parts, model, index, within, eased) {
-            const at = index + eased;
-            parts.cubes.forEach(({ group, ring }) => {
-                group.setAttribute("opacity", String(ease(clamp(at - ring))));
-            });
+            parts.set(index + eased);
             const side = index + 1;
-            const shell = side ** 3 - (side - 1) ** 3;
-            parts.tally.textContent = index === 0 ? "1 cube" : `+ ${shell}`;
+            parts.tally.textContent = `${side} × ${side} × ${side}`;
             parts.tally.style.opacity = String(ease(clamp((within - 0.1) / 0.4)));
             parts.answer.replaceChildren(powerNode("powers-board__power", side, 3), el("i", "", ` = ${side ** 3}`));
             parts.answer.style.opacity = String(ease(clamp((within - 0.35) / 0.5)));
@@ -499,104 +996,220 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    /* DIVIDING UNTIL IT STOPS ----------------------------------------------
+    /* READING A NUMBER BACKWARDS ------------------------------------------
 
-       A number is a power of a base exactly when dividing by that base over and
-       over reaches 1. The ladder shows both endings: the one that lands on 1,
-       and the one that stops on a division that will not come out whole. */
+       Type a number and the page asks it the three questions a reader actually
+       asks: is it one of the squares, is it one of the cubes, and does halving
+       take it to 1. Then it says every way the number is a power, which is more
+       than the three checks between them can find — 729 is 3 to the sixth, and
+       no list of squares to 225 was ever going to say so.
 
-    const NUMBER_MIN = 32;
-    const NUMBER_MAX = 625;
+       The strips show the neighbourhood rather than the whole list, because
+       what settles the question is which two known values the number falls
+       between. */
 
-    const ladderPainter = {
+    const NUMBER_MIN = 2;
+    const NUMBER_MAX = 10000;
+
+    const SQUARES = Array.from({ length: 15 }, (unused, at) => ({ root: at + 1, value: (at + 1) ** 2 }));
+    const CUBES = [1, 2, 3, 4, 5, 10].map((root) => ({ root, value: root ** 3 }));
+
+    /* Every way the number is a whole power of a whole base, smallest base
+       first, which is the same as longest index first. */
+    const everyPower = (value) => {
+        const found = [];
+        for (let base = 2; base * base <= value; base += 1) {
+            let running = base;
+            let index = 1;
+            while (running < value) { running *= base; index += 1; }
+            if (running === value) found.push({ base, index });
+        }
+        return found;
+    };
+
+    const nearest = (list, value) => {
+        const under = [...list].reverse().find((entry) => entry.value <= value) || null;
+        const over = list.find((entry) => entry.value >= value) || null;
+        return { under, over, exact: list.find((entry) => entry.value === value) || null };
+    };
+
+    const readPainter = {
         read(scene, inputs) {
-            const number = Number(inputs ? inputs.number : scene.dataset.number);
-            const base = Number(inputs ? inputs.base : scene.dataset.base);
-            if (!Number.isInteger(number) || !Number.isInteger(base)) return null;
-            if (number < NUMBER_MIN || number > NUMBER_MAX || base < 2 || base > 5) return null;
-            const chain = [];
-            let running = number;
-            while (running > 1 && running % base === 0 && chain.length < 12) {
-                chain.push({ from: running, to: running / base, step: chain.length + 1 });
-                running /= base;
+            const raw = inputs ? String(inputs.number).trim() : String(scene.dataset.number || "");
+            if (!/^\d{1,5}$/.test(raw)) return null;
+            const value = Number(raw);
+            if (value < NUMBER_MIN || value > NUMBER_MAX) return null;
+            const halving = [];
+            let running = value;
+            while (running > 1 && running % 2 === 0) {
+                halving.push({ from: running, to: running / 2 });
+                running /= 2;
             }
-            return { number, base, chain, stuck: running === 1 ? null : running, index: chain.length };
+            return {
+                value,
+                powers: everyPower(value),
+                squares: nearest(SQUARES, value),
+                cubes: nearest(CUBES, value),
+                halving,
+                halved: running === 1
+            };
         },
 
-        stages: (model) => model.chain.length + 1,
+        stages: () => 4,
 
-        heading: (model) => `Is ${readable(model.number)} a power of ${model.base}?`,
+        heading: (model) => readable(model.value),
 
         build(board, model) {
             board.replaceChildren();
-            const paper = el("div", "ladder");
-            const start = el("p", "ladder__start", readable(model.number));
-            paper.append(start);
-            const rows = model.chain.map((link) => {
-                const row = el("p", "ladder__row");
-                /* A space between them, or the row flattens to "÷ 216" the
-                   moment the layout is gone. */
-                row.append(el("i", "ladder__op", `÷ ${model.base}`), " ", el("b", "", readable(link.to)));
-                paper.append(row);
-                return row;
-            });
-            const verdict = el("p", "ladder__verdict");
-            paper.append(verdict);
+            const paper = el("div", "reading");
+            const strip = (name) => {
+                const holder = el("div", `reading__strip reading__strip--${name}`);
+                holder.append(el("p", "reading__label"), el("div", "reading__marks"));
+                return holder;
+            };
+            const squares = strip("squares");
+            const cubes = strip("cubes");
+            const halving = el("div", "reading__halving");
+            const verdict = el("p", "reading__verdict");
+            paper.append(squares, cubes, halving, verdict);
             board.append(paper);
-            return { start, rows, verdict };
+            return { paper, squares, cubes, halving, verdict, model };
         },
 
         caption(model, index) {
+            const { value } = model;
             if (index === 0) {
                 return {
-                    title: `Start from ${readable(model.number)}`,
-                    copy: `Divide by ${model.base} again and again. Reaching 1 means ${readable(model.number)} is a power of ${model.base}; stopping short means it is not.`
+                    title: readable(value),
+                    copy: "Three questions settle it: is it a square, is it a cube, and does halving take it to 1?"
                 };
             }
-            if (index <= model.chain.length) {
-                const link = model.chain[index - 1];
+            if (index === 1) {
+                const { exact, under, over } = model.squares;
+                if (exact) return { title: "It is a square", copy: `${readable(value)} is ${exact.root}${supText(2)}.` };
+                if (under && over) {
+                    return {
+                        title: "Not a square on the list",
+                        copy: `${readable(value)} falls between ${under.root}${supText(2)} = ${readable(under.value)} and ${over.root}${supText(2)} = ${readable(over.value)}.`
+                    };
+                }
                 return {
-                    title: `${readable(link.from)} ÷ ${model.base} = ${readable(link.to)}`,
-                    copy: link.to === 1
-                        ? `${link.step} division${link.step === 1 ? "" : "s"}, and the ladder has reached 1.`
-                        : `${link.step} division${link.step === 1 ? "" : "s"} so far, and ${readable(link.to)} is still above 1.`
+                    title: "Past the squares worth knowing",
+                    copy: `The list stops at 15${supText(2)} = 225, and ${readable(value)} is beyond it.`
                 };
             }
-            if (model.stuck === null) {
+            if (index === 2) {
+                const { exact, under, over } = model.cubes;
+                if (exact) return { title: "It is a cube", copy: `${readable(value)} is ${exact.root}${supText(3)}.` };
+                if (under && over) {
+                    return {
+                        title: "Not a cube on the list",
+                        copy: `${readable(value)} falls between ${under.root}${supText(3)} = ${readable(under.value)} and ${over.root}${supText(3)} = ${readable(over.value)}.`
+                    };
+                }
                 return {
-                    title: `${readable(model.number)} = ${model.base}${supText(model.index)}`,
-                    copy: `It took ${model.index} divisions to reach 1, and that count is the index.`
+                    title: "Past the cubes worth knowing",
+                    copy: `The list stops at 10${supText(3)} = 1,000, and ${readable(value)} is beyond it.`
                 };
             }
+            if (index === 3) {
+                if (model.halved) {
+                    return {
+                        title: `Halving reaches 1`,
+                        copy: `${model.halving.length} halvings take ${readable(value)} to 1, so it is 2${supText(model.halving.length)}.`
+                    };
+                }
+                const stuck = model.halving.length ? model.halving[model.halving.length - 1].to : value;
+                return {
+                    title: "Halving stops short",
+                    copy: model.halving.length
+                        ? `Halving reaches ${readable(stuck)}, which is odd, so ${readable(value)} is not a power of 2.`
+                        : `${readable(value)} is odd, so it is not a power of 2 at all.`
+                };
+            }
+            if (!model.powers.length) {
+                return {
+                    title: `${readable(model.value)} is not a power`,
+                    copy: "No whole number multiplied by itself any number of times reaches it."
+                };
+            }
+            const written = model.powers.map((one) => `${one.base}${supText(one.index)}`).join(" = ");
             return {
-                title: `${readable(model.number)} is not a power of ${model.base}`,
-                copy: `${readable(model.stuck)} does not divide by ${model.base}, so the ladder stops above 1.`
+                title: `${readable(model.value)} = ${written}`,
+                copy: model.powers.length === 1
+                    ? "One base reaches it, and one index."
+                    : `${model.powers.length} bases reach it, because a power of a power is a power of the original base.`
             };
         },
 
         paint(parts, model, index, within, eased) {
-            parts.start.style.opacity = String(index >= 1 ? 1 : eased);
-            parts.rows.forEach((row, at) => {
-                const shown = index > at + 1 ? 1 : index === at + 1 ? eased : 0;
-                row.style.opacity = String(shown);
-                row.style.transform = `translateY(${lerp(-8, 0, shown)}px)`;
+            const drawStrip = (holder, list, near, root, shown) => {
+                const label = holder.querySelector(".reading__label");
+                const marks = holder.querySelector(".reading__marks");
+                holder.style.opacity = String(shown);
+                label.textContent = root === 2 ? "The squares" : "The cubes";
+                /* Only the neighbourhood: the two entries the number sits
+                   between, and the one it lands on. */
+                const around = list.filter((entry) => {
+                    if (near.exact) return Math.abs(entry.root - near.exact.root) <= 2;
+                    const low = near.under ? near.under.root : list[0].root;
+                    const high = near.over ? near.over.root : list[list.length - 1].root;
+                    return entry.root >= low - 1 && entry.root <= high + 1;
+                });
+                if (marks.childElementCount !== around.length) {
+                    marks.replaceChildren(...around.map(() => {
+                        const cell = el("span", "reading__mark");
+                        cell.append(el("b", ""), el("i", ""));
+                        return cell;
+                    }));
+                }
+                Array.from(marks.children).forEach((cell, at) => {
+                    const entry = around[at];
+                    cell.querySelector("b").replaceChildren(powerNode("reading__power", entry.root, root));
+                    cell.querySelector("i").textContent = readable(entry.value);
+                    cell.classList.toggle("is-hit", Boolean(near.exact) && entry.root === near.exact.root);
+                    cell.classList.toggle("is-under", !near.exact && Boolean(near.under) && entry.root === near.under.root);
+                    cell.classList.toggle("is-over", !near.exact && Boolean(near.over) && entry.root === near.over.root);
+                });
+            };
+
+            drawStrip(parts.squares, SQUARES, model.squares, 2, index >= 1 ? (index === 1 ? eased : 1) : 0);
+            drawStrip(parts.cubes, CUBES, model.cubes, 3, index >= 2 ? (index === 2 ? eased : 1) : 0);
+
+            /* The halving, as far as it goes. */
+            const rows = Math.min(model.halving.length, 8);
+            if (parts.halving.childElementCount !== rows + (model.halving.length ? 0 : 1)) {
+                parts.halving.replaceChildren();
+                if (!model.halving.length) parts.halving.append(el("p", "reading__odd", "odd"));
+                else model.halving.slice(0, rows).forEach((link) => {
+                    const row = el("p", "reading__halve");
+                    row.append(el("i", "", "÷ 2"), " ", el("b", "", readable(link.to)));
+                    parts.halving.append(row);
+                });
+            }
+            parts.halving.style.opacity = String(index >= 3 ? (index === 3 ? eased : 1) : 0);
+            Array.from(parts.halving.children).forEach((row, at) => {
+                row.style.opacity = String(index > 3 ? 1 : ease(clamp((eased - at / Math.max(1, rows) * 0.7) / 0.3)));
             });
-            const done = index > model.chain.length;
+
+            const done = index >= 4;
             parts.verdict.replaceChildren();
             if (done) {
-                if (model.stuck === null) {
-                    parts.verdict.append(el("i", "", `${readable(model.number)} = `),
-                        powerNode("powers-board__power", model.base, model.index));
-                } else {
-                    parts.verdict.textContent = `not a power of ${model.base}`;
+                if (!model.powers.length) parts.verdict.textContent = `${readable(model.value)} is not a power`;
+                else {
+                    parts.verdict.append(el("i", "", `${readable(model.value)} = `));
+                    model.powers.forEach((one, at) => {
+                        if (at) parts.verdict.append(el("i", "", " = "));
+                        parts.verdict.append(powerNode("reading__power", one.base, one.index));
+                    });
                 }
             }
-            parts.verdict.classList.toggle("is-negative", done && model.stuck !== null);
-            parts.verdict.style.opacity = String(done ? ease(clamp((within - 0.25) / 0.5)) : 0);
+            parts.verdict.classList.toggle("is-negative", done && !model.powers.length);
+            parts.verdict.style.opacity = String(done ? ease(clamp((within - 0.2) / 0.5)) : 0);
         }
     };
 
-    const PAINTERS = { square: squarePainter, cube: cubePainter, field: fieldPainter, regroup: regroupPainter, ladder: ladderPainter };
+    const PAINTERS = { square: squarePainter, cube: cubePainter, field: fieldPainter, regroup: regroupPainter, read: readPainter };
 
     const createScene = (scene) => {
         const sticky = scene.querySelector(".powers-scene__sticky");
@@ -614,7 +1227,9 @@ document.addEventListener("DOMContentLoaded", () => {
         /* The numbers are chosen from what is on offer, so there is nothing to
            sanitise and nothing that can be out of range. */
         const picks = Array.from(scene.querySelectorAll("[data-pick]"));
-        const live = picks.length > 0;
+        const field = scene.querySelector("[data-number-input]");
+        const notice = scene.querySelector("[data-invalid]");
+        const live = picks.length > 0 || Boolean(field);
         const chosen = (group) => {
             const tile = picks.find((pick) => pick.name === group && pick.checked);
             return tile ? tile.value : "";
@@ -786,7 +1401,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 ? [active.selectionStart, active.selectionEnd]
                 : null;
 
-            const inputs = live ? { number: chosen("powers-number"), base: chosen("powers-base") } : null;
+            const inputs = live ? { number: field ? field.value : chosen("powers-number") } : null;
+            /* A number outside what the page can answer for leaves the card
+               standing at its own size with a quiet note in it, rather than
+               keeping the working from the last number that did fit. */
+            if (live && notice) {
+                const ok = Boolean(painter.read(scene, inputs));
+                sticky.classList.toggle("is-invalid", !ok);
+                if (field) field.setAttribute("aria-invalid", ok ? "false" : "true");
+                if (!ok) return;
+            }
             const next = painter.read(scene, inputs);
             if (!next) return;
 
@@ -840,6 +1464,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (live) picks.forEach((pick) => {
             pick.addEventListener("change", accept);
         });
+        /* Live on every keystroke that leaves a number the page can answer for;
+           nothing to press, and the caret is never moved. */
+        if (field) field.addEventListener("input", accept);
 
         /* The card is measured only once the board has something in it: an
            empty board would under-measure it and the pinned card would clip its

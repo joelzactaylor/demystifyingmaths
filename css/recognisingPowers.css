@@ -149,17 +149,14 @@
 .powers-scene__dot.is-current { width: 28px; border-radius: 999px; background: #116e93; }
 .powers-scene__dot.is-past { background: #8fb3c6; }
 
-/* THE PICKERS — the number and the base are chosen from what is on offer, so
-   there is nothing to type, nothing to get wrong and nothing to warn about.
-   One bordered track holding the choices, exactly as the answer-mode switch on
-   the division pages holds its two. */
+/* THE FIELD — one number, typed, and the card answers it. Nothing to press:
+   every keystroke that leaves a number the page can answer for redraws it. */
 
 .powers-scene__head { display: flex; gap: 26px; padding: 18px 24px 12px; justify-content: center; flex-wrap: wrap; }
 
-.powers-picker { min-width: 0; margin: 0; padding: 0; border: 0; }
+.powers-field { display: grid; gap: 6px; justify-items: center; }
 
-.powers-picker legend {
-    padding: 0 0 7px;
+.powers-field > span {
     color: #52666f;
     font-size: .74rem;
     font-weight: 700;
@@ -167,49 +164,22 @@
     text-transform: uppercase;
 }
 
-.powers-picker__options {
-    display: flex;
-    gap: 3px;
-    padding: 3px;
+.powers-field input {
+    width: 132px;
+    box-sizing: border-box;
+    padding: 10px 14px;
     border: 2px solid #b8cbd7;
-    border-radius: 13px;
+    border-radius: 12px;
+    outline: none;
     background: #fff;
-}
-
-.powers-picker__tile {
-    position: relative;
-    display: grid;
-    min-width: 34px;
-    height: 34px;
-    padding: 0 7px;
-    place-items: center;
-    border-radius: 9px;
-    background: #eef5fb;
-    color: #41535c;
-    cursor: pointer;
-    font: 700 1.02rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    color: #173849;
+    font: 700 1.18rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
     font-variant-numeric: tabular-nums;
-    transition: background-color .16s ease, color .16s ease;
+    text-align: center;
+    transition: border-color .18s ease, box-shadow .18s ease;
 }
 
-.powers-picker__tile:hover { background: #dbe9f4; color: #09539d; }
-
-.powers-picker__tile input {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    opacity: 0;
-    cursor: pointer;
-}
-
-.powers-picker__tile:has(input:checked) { background: #116e93; color: #fff; }
-.powers-picker__tile:has(input:focus-visible) { box-shadow: 0 0 0 3px rgba(17, 110, 147, .28); }
-
-/* Where :has is not understood the tiles still work; the chosen one is marked
-   by its own outline instead of by its parent's fill. */
-.powers-picker__tile input:checked { outline: 2px solid #116e93; outline-offset: -2px; border-radius: 8px; opacity: .12; }
-.powers-picker__tile:has(input:checked) input:checked { outline: 0; opacity: 0; }
+.powers-field input:focus { border-color: #116e93; box-shadow: 0 0 0 4px rgba(17, 110, 147, .12); }
 
 /* THE BOARD — whatever the scene draws sits centred in the card's one flexible
    row, so every scene kind keeps the same four rows. */
@@ -253,41 +223,145 @@
 .powers-board__power { position: relative; }
 .powers-board__power sup { position: relative; top: -.84em; font-size: .62em; line-height: 0; vertical-align: baseline; }
 
-/* THE LADDER — one division to a line, the divisor held out to the left so the
-   column of results reads straight down. */
+/* READING A NUMBER BACKWARDS — the two lists it is held against, then the
+   halving, then what it comes to. The neighbourhood of the number rather than
+   the whole list, because what settles the question is which two known values
+   it falls between. */
 
-.ladder { display: grid; gap: 4px; justify-items: center; }
+.reading { display: grid; gap: 9px; justify-items: center; width: 100%; }
 
-.ladder__start,
-.ladder__row,
-.ladder__verdict {
+.reading__strip { display: grid; gap: 4px; justify-items: center; width: 100%; }
+
+.reading__label {
+    margin: 0;
+    color: #7b8b93;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+}
+
+.reading__marks { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
+
+.reading__mark {
+    display: grid;
+    min-width: 54px;
+    padding: 5px 8px;
+    gap: 1px;
+    justify-items: center;
+    border: 2px solid #e2edf3;
+    border-radius: 11px;
+    background: #fff;
+    color: #52666f;
+    transition: border-color .18s ease, background-color .18s ease, color .18s ease;
+}
+
+.reading__mark b { font: 700 .9rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+.reading__mark i { font: 400 .78rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-style: normal; }
+
+/* The one it lands on, and the two it falls between: told apart by fill and by
+   border as well as by colour. */
+.reading__mark.is-hit { border-color: #116e93; background: #116e93; color: #fff; }
+.reading__mark.is-under,
+.reading__mark.is-over { border-color: #d99a20; background: #fff8df; color: #7a540a; }
+
+.reading__power { position: relative; }
+.reading__power sup { position: relative; top: -.84em; font-size: .62em; line-height: 0; vertical-align: baseline; }
+
+.reading__halving { display: flex; gap: 5px; justify-content: center; flex-wrap: wrap; min-height: 1.5rem; }
+
+.reading__halve,
+.reading__odd {
     display: flex;
-    gap: 12px;
+    gap: 5px;
     margin: 0;
     align-items: baseline;
-    justify-content: center;
-    min-width: 190px;
+    padding: 3px 9px;
+    border-radius: 9px;
+    background: #eef5fb;
     color: #173849;
-    font: 700 1.18rem/1.3 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font: 700 .84rem/1.3 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
     font-variant-numeric: tabular-nums;
 }
 
-.ladder__start { color: #09539d; }
-.ladder__op { color: #b86821; font-size: .84rem; font-style: normal; }
-.ladder__row b { min-width: 3.4em; text-align: left; }
+.reading__halve i { color: #b86821; font-size: .74rem; font-style: normal; }
+.reading__odd { background: #fdf1ef; color: #a3352b; }
 
-.ladder__verdict {
-    margin-top: 6px;
+.reading__verdict {
+    display: flex;
+    gap: 3px;
+    min-height: 2rem;
+    margin: 2px 0 0;
     padding: 6px 16px;
+    align-items: baseline;
     border-radius: 12px;
     background: #eef5fb;
     color: #09539d;
+    font: 700 1.2rem/1.3 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
 }
 
-.ladder__verdict.is-negative { background: #fdf1ef; color: #a3352b; }
+.reading__verdict i { font-style: normal; }
+.reading__verdict.is-negative { background: #fdf1ef; color: #a3352b; }
+
+/* A number the page cannot answer for: the working is hidden rather than left
+   standing for the number before it, and the card keeps its own size. */
+.powers-board { position: relative; }
+
+.powers-board__invalid {
+    position: absolute;
+    display: grid;
+    inset: 0;
+    margin: 0;
+    padding: 20px;
+    place-items: center;
+    border: 2px dashed #b8cbd7;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, .86);
+    color: #687b84;
+    font-size: .95rem;
+    text-align: center;
+    visibility: hidden;
+}
+
+.powers-scene__sticky.is-invalid .powers-board__paper { visibility: hidden; }
+.powers-scene__sticky.is-invalid .powers-board__invalid { visibility: visible; }
+
+/* THE SOLID THE READER TURNS — the same stage the index-notation cube uses, so
+   the two answer the hand identically. */
+
+.solid__stage {
+    display: grid;
+    width: min(100%, 260px);
+    height: min(100%, 260px);
+    place-items: center;
+    cursor: grab;
+    touch-action: none;
+}
+
+.solid__stage.is-turning { cursor: grabbing; }
+.solid__stage:focus-visible { outline: 3px solid #116e93; outline-offset: 3px; }
+.solid__stage svg { display: block; width: 100%; height: auto; }
+
+.cube-stage { width: min(100%, 300px); height: min(100%, 300px); }
+.cube-figure { display: grid; gap: 6px; justify-items: center; }
+
+/* Said to a screen reader, which cannot see that a figure invites a drag, and
+   to nobody else: a page that explains its own controls has the wrong controls. */
+.solid__hint {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
 
 @media (prefers-reduced-motion: reduce) {
     .powers-scene__sticky { position: relative; height: auto; transform: none !important; }
     .powers-scene__dot { transition: none; }
-    .powers-picker__tile { transition: none; }
+    .reading__mark { transition: none; }
+    .powers-field input { transition: none; }
 }

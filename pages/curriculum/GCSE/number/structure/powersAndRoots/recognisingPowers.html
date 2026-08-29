@@ -177,8 +177,9 @@
                 <p>A cube number is a whole number multiplied by itself and then by itself again, and that many
                     counters fill a cube.</p>
 
-                <p>A cube grows the way a square does, one shell at a time &mdash; but the shell wraps three faces
-                    instead of two, so the numbers climb much faster.</p>
+                <p>A cube of side <em>n</em> is <em>n</em> layers of <em>n</em> by <em>n</em>. That is how a cube
+                    number is worked out, and turning the solid is how you check it: count along three edges.</p>
+                <p class="solid__hint" id="cube-hint">The cube is turned by dragging it, or with the arrow keys.</p>
 
                 <div class="worked">
                     <h2 class="worked__title">One cube, then the next</h2>
@@ -200,13 +201,11 @@
                         </div>
                     </div>
 
-                    <p class="worked__answer"><strong role="math"
-                            aria-label="1, 8, 27, 64, 125, rising by 7, 19, 37 and 61">1, 8, 27, 64, 125 &mdash;
-                            rising by 7, 19, 37, 61</strong></p>
+                    <p class="worked__answer"><strong>1, 8, 27, 64, 125</strong></p>
                 </div>
 
-                <p>Those shells are the gaps between the cube numbers, the way the odd numbers are the gaps between
-                    the squares.</p>
+                <p>Adding one to the side does not add a little: it wraps a whole new face in each of the three
+                    directions, which is why the cubes pull away from the squares so quickly.</p>
 
                 <table class="recall recall--wide">
                     <caption>The cubes of 1 to 5, and of 10</caption>
@@ -373,60 +372,48 @@
             </section>
 
             <section>
-                <h1 id="testing-a-number">Testing a number against a base</h1>
-                <p>For a number not on the tables, divide by the base and keep dividing. Reaching 1 means the number
-                    is a power of that base, and the count of divisions is the index.</p>
+                <h1 id="reading-any-number">Reading any number backwards</h1>
+                <p>Given a number with no base to test it against, three questions settle it: is it one of the
+                    squares, is it one of the cubes, and does halving it reach 1?</p>
 
-                <p>Stopping on a division that will not come out whole means it is not a power of that base at all.</p>
+                <p>What the lists cannot answer, dividing can. A number that survives all three may still be a power
+                    of something further up, and the answer names every base that reaches it.</p>
 
                 <div class="worked">
-                    <h2 class="worked__title">Divide until it stops</h2>
+                    <h2 class="worked__title">Any whole number from 2 to 10,000</h2>
 
-                    <div class="powers-scene" data-powers-scene data-scene="ladder">
+                    <div class="powers-scene" data-powers-scene data-scene="read" data-number="144">
                         <div class="powers-scene__sticky">
                             <div class="powers-scene__head">
-                                <fieldset class="powers-picker">
-                                    <legend>Number</legend>
-                                    <div class="powers-picker__options">
-                                        <label class="powers-picker__tile"><input type="radio" name="powers-number" value="32" data-pick><span>32</span></label>
-                                        <label class="powers-picker__tile"><input type="radio" name="powers-number" value="64" data-pick><span>64</span></label>
-                                        <label class="powers-picker__tile"><input type="radio" name="powers-number" value="81" data-pick><span>81</span></label>
-                                        <label class="powers-picker__tile"><input type="radio" name="powers-number" value="100" data-pick><span>100</span></label>
-                                        <label class="powers-picker__tile"><input type="radio" name="powers-number" value="125" data-pick><span>125</span></label>
-                                        <label class="powers-picker__tile"><input type="radio" name="powers-number" value="243" data-pick checked><span>243</span></label>
-                                        <label class="powers-picker__tile"><input type="radio" name="powers-number" value="256" data-pick><span>256</span></label>
-                                    </div>
-                                </fieldset>
-                                <fieldset class="powers-picker">
-                                    <legend>Base</legend>
-                                    <div class="powers-picker__options">
-                                        <label class="powers-picker__tile"><input type="radio" name="powers-base" value="2" data-pick><span>2</span></label>
-                                        <label class="powers-picker__tile"><input type="radio" name="powers-base" value="3" data-pick checked><span>3</span></label>
-                                        <label class="powers-picker__tile"><input type="radio" name="powers-base" value="4" data-pick><span>4</span></label>
-                                        <label class="powers-picker__tile"><input type="radio" name="powers-base" value="5" data-pick><span>5</span></label>
-                                    </div>
-                                </fieldset>
+                                <label class="powers-field" for="powers-number"><span>Number</span>
+                                    <input id="powers-number" type="text" inputmode="numeric" value="144"
+                                        maxlength="5" autocomplete="off" spellcheck="false"
+                                        aria-describedby="powers-range" data-number-input>
+                                </label>
                             </div>
 
                             <div class="powers-board">
                                 <div class="powers-board__paper" data-board></div>
+                                <p class="powers-board__invalid" id="powers-range" data-invalid>A whole number from
+                                    2 to 10,000.</p>
                             </div>
 
                             <div class="powers-scene__caption" aria-live="polite">
-                                <h3 data-step-title>Start from 243</h3>
-                                <p data-step-copy>Divide by 3 again and again. Reaching 1 means 243 is a power of 3;
-                                    stopping short means it is not.</p>
+                                <h3 data-step-title>144</h3>
+                                <p data-step-copy>Three questions settle it: is it a square, is it a cube, and does
+                                    halving take it to 1?</p>
                             </div>
 
                             <div class="powers-scene__progress" data-progress aria-hidden="true"></div>
                         </div>
                         <noscript>
-                            <p><strong role="math"
-                                    aria-label="243 divided by 3 five times reaches 1, so 243 equals 3 to the power of 5">243
-                                    &divide; 3 five times reaches 1, so 243 = <span class="sf" role="math" aria-label="3 to the power of 5">3<span class="caret" aria-hidden="true">^</span><sup>5</sup></span></strong></p>
+                            <p><strong role="math" aria-label="144 equals 12 squared">144 = <span class="sf" role="math" aria-label="12 squared">12<span class="caret" aria-hidden="true">^</span><sup>2</sup></span></strong></p>
                         </noscript>
                     </div>
                 </div>
+
+                <p>Numbers that are a power of more than one base, such as <span class="sf" role="math" aria-label="64 equals 2 to the power of 6 equals 4 cubed equals 8 squared">64 = 2<span class="caret" aria-hidden="true">^</span><sup>6</sup> = 4<span class="caret" aria-hidden="true">^</span><sup>3</sup> = 8<span class="caret" aria-hidden="true">^</span><sup>2</sup></span>, come out with every reading at
+                    once.</p>
             </section>
 
             <section>
