@@ -765,30 +765,54 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    /* WHERE THE POWERS FALL ------------------------------------------------
+    /* WHAT THERE IS TO RECOGNISE ------------------------------------------
 
-       Every number to 256, with the powers of each base marked in turn. Two
-       things come out of it that prose can only assert: how few numbers are
-       powers at all, and that the powers of 4 are already powers of 2. */
+       Every number to 256 that this page asks the reader to know, marked in
+       four passes: the squares, the cubes, the powers of 2, and the powers of 3
+       and 5. Each pass says how many of its own were already lit by an earlier
+       one, which is the first sight of the overlap the page comes back to.
 
-    const MARK_INK = { 2: "#09539d", 3: "#b86821", 4: "#116e93", 5: "#4c7a3f" };
-    const MARK_BASES = [2, 3, 4, 5];
+       Twenty-six in two hundred and fifty-six is the whole of what there is to
+       learn, and seeing how little of the grid it covers is the argument for
+       learning it. */
+
     const GRID_TO = 256;
 
-    const claimsUpTo = (limit) => {
-        const claims = new Map();
-        for (const base of MARK_BASES) {
-            for (let value = base; value <= limit; value *= base) {
-                claims.set(value, [...(claims.get(value) || []), base]);
-            }
+    const upTo = (step) => {
+        const out = [];
+        for (let n = 1; ; n += 1) {
+            const value = step(n);
+            if (value > GRID_TO) break;
+            out.push(value);
         }
-        return claims;
+        return out;
+    };
+    const powersOf = (base) => {
+        const out = [];
+        for (let value = base; value <= GRID_TO; value *= base) out.push(value);
+        return out;
     };
 
-    const fieldPainter = {
-        read: () => ({ limit: GRID_TO, claims: claimsUpTo(GRID_TO) }),
+    const MARK_GROUPS = [
+        { name: "The squares", ink: "#09539d", values: upTo((n) => n * n) },
+        { name: "The cubes", ink: "#b86821", values: upTo((n) => n * n * n) },
+        { name: "The powers of 2", ink: "#116e93", values: powersOf(2) },
+        { name: "The powers of 3 and 5", ink: "#4c7a3f", values: [...powersOf(3), ...powersOf(5)].sort((a, b) => a - b) }
+    ];
 
-        stages: () => MARK_BASES.length + 1,
+    const fieldPainter = {
+        read() {
+            /* Which groups claim each number, in the order they are marked. */
+            const claims = new Map();
+            MARK_GROUPS.forEach((group, at) => {
+                group.values.forEach((value) => {
+                    claims.set(value, [...(claims.get(value) || []), at]);
+                });
+            });
+            return { limit: GRID_TO, claims };
+        },
+
+        stages: () => MARK_GROUPS.length + 1,
 
         heading: () => `The numbers to ${GRID_TO}`,
 
@@ -812,10 +836,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     x: x + 4, y: y + 4, width: cell - 8, height: cell - 8, rx: 4,
                     fill: "none", stroke: "#fff", "stroke-width": 1.6, opacity: 0
                 });
-                /* Only the marked numbers are named. Two hundred and fifty-six
-                   labels at ten pixels is noise the eye has to work past, and
-                   the point of the field is which cells are lit, not which
-                   number every cell holds. */
+                /* Only a marked number is named. Two hundred and fifty-six
+                   labels at ten pixels is noise to see past, and what the field
+                   shows is which cells are lit. */
                 const label = svgEl("text", {
                     x: x + cell / 2, y: y + cell / 2 + 3.8, "text-anchor": "middle",
                     "font-size": 11, "font-family": "ui-monospace, Menlo, Consolas, monospace",
@@ -835,55 +858,47 @@ document.addEventListener("DOMContentLoaded", () => {
             if (index === 0) {
                 return {
                     title: `The numbers to ${GRID_TO}`,
-                    copy: "Every whole number from 1 to 256, before any of them is marked."
+                    copy: `Every whole number from 1 to ${GRID_TO}, before any of them is marked.`
                 };
             }
-            if (index <= MARK_BASES.length) {
-                const base = MARK_BASES[index - 1];
-                const marked = [...model.claims].filter(([, bases]) => bases.includes(base)).map(([value]) => value);
-                const fresh = [...model.claims].filter(([, bases]) => bases[0] === base).length;
-                if (base === 4) {
-                    return {
-                        title: "Powers of 4",
-                        copy: `${marked.join(", ")} — every one already marked, because multiplying by 4 is multiplying by 2 twice.`
-                    };
+            if (index <= MARK_GROUPS.length) {
+                const group = MARK_GROUPS[index - 1];
+                /* How many of this group an earlier pass had already lit. */
+                const already = group.values.filter((value) => model.claims.get(value)[0] < index - 1).length;
+                const listed = group.values.join(", ");
+                if (!already) {
+                    return { title: group.name, copy: `${listed} — ${group.values.length} of them, none marked before.` };
                 }
                 return {
-                    title: `Powers of ${base}`,
-                    copy: index === 1
-                        ? `${marked.join(", ")} — eight of them, and already most of what there is to find.`
-                        : `${marked.join(", ")} — ${fresh} more that no earlier base had claimed.`
+                    title: group.name,
+                    copy: `${listed} — ${already} of the ${group.values.length} already marked by an earlier list.`
                 };
             }
             return {
                 title: `${model.claims.size} numbers in ${GRID_TO}`,
-                copy: "Almost every number is a power of none of them, which is exactly why the ones that are can be learned."
+                copy: "That is the whole of what this page asks you to recognise."
             };
         },
 
         paint(parts, model, index, within, eased) {
             parts.cells.forEach(({ box, ring, label, claims }) => {
-                /* The bases marked so far, in the order they were marked. */
-                const shown = claims.filter((base) => MARK_BASES.indexOf(base) < index);
-                const arriving = claims.includes(MARK_BASES[index - 1]);
+                const shown = claims.filter((group) => group < index);
+                const arriving = claims.includes(index - 1);
                 const strength = shown.length && arriving ? eased : shown.length ? 1 : 0;
-                box.setAttribute("fill", shown.length
-                    ? MARK_INK[shown[0]]
-                    : "#eef3f7");
+                box.setAttribute("fill", shown.length ? MARK_GROUPS[shown[0]].ink : "#eef3f7");
                 box.setAttribute("opacity", String(shown.length ? lerp(0.25, 1, strength) : 1));
                 label.setAttribute("opacity", String(shown.length ? strength : 0));
-                /* A second claim rings the cell in the later base's colour. */
+                /* A number claimed by more than one list is ringed in the
+                   colour of the later one. */
                 const second = shown[1];
-                ring.setAttribute("stroke", second ? MARK_INK[second] : "#fff");
-                ring.setAttribute("opacity", String(second ? 1 : 0));
-                /* At the end the unmarked numbers step back so the marks read
-                   as the small set they are. */
-                const dim = index > MARK_BASES.length ? ease(clamp((within - 0.2) / 0.5)) : 0;
+                ring.setAttribute("stroke", second === undefined ? "#fff" : MARK_GROUPS[second].ink);
+                ring.setAttribute("opacity", String(second === undefined ? 0 : 1));
+                const dim = index > MARK_GROUPS.length ? ease(clamp((within - 0.2) / 0.5)) : 0;
                 if (!shown.length) box.setAttribute("opacity", String(lerp(1, 0.4, dim)));
             });
-            const total = model.claims.size;
-            parts.tally.textContent = index > MARK_BASES.length ? `${total} of ${GRID_TO}` : "";
-            parts.tally.style.opacity = String(index > MARK_BASES.length ? ease(clamp((within - 0.3) / 0.4)) : 0);
+            const done = index > MARK_GROUPS.length;
+            parts.tally.textContent = done ? `${model.claims.size} of ${GRID_TO}` : "";
+            parts.tally.style.opacity = String(done ? ease(clamp((within - 0.3) / 0.4)) : 0);
         }
     };
 
