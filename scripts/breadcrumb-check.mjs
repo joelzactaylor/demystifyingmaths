@@ -10,7 +10,9 @@ const pages = new Map(); // repo-relative path -> { trail, leaf, deep, count, he
 const decode = (s) => s
     .replace(/&rsaquo;/g, "›").replace(/&amp;/g, "&")
     .replace(/&ndash;/g, "–").replace(/&mdash;/g, "—")
-    .replace(/&#39;|&apos;/g, "'").replace(/&quot;/g, '"').trim();
+    .replace(/&#39;|&apos;/g, "'").replace(/&quot;/g, '"')
+    // A label wrapped across lines in the source is one label on screen.
+    .replace(/\s+/g, " ").trim();
 
 // site URL ("/pages/x/" or "/pages/x.html") -> repo-relative file path
 const urlToFile = (u) => u.endsWith("/") ? u.slice(1) + "index.html" : u.slice(1);
@@ -111,8 +113,11 @@ for (const [rel, p] of pages) {
         }
     }
 
-    // 5. parent actually links to this page somewhere
-    if (parent) {
+    // 5. parent actually links to this page somewhere. A page that says it is
+    // still being written is unreachable on purpose: the index carries it as a
+    // coming-soon card, which by design has nothing to click.
+    const placeholder = /still under construction/i.test(p.html);
+    if (parent && !placeholder) {
         const pp = pages.get(urlToFile(parent.href));
         if (pp && !pp.html.includes(`"${p.url}"`))
             problems.push(`${rel}: parent ${parent.href} contains no link to ${p.url}`);
