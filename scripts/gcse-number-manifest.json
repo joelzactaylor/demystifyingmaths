@@ -130,7 +130,7 @@
                     "title": "Index notation and powers",
                     "description": "What the base and index mean, and writing repeated multiplication as a power.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Meaning of base and index for positive integer powers; writing repeated multiplication as a power and back; evaluating squares, cubes and small powers like 2 to the 5 without a calculator. The index laws live in their own group; algebraic indices live in Algebra. Both tiers. (N6)"
                 },
                 {

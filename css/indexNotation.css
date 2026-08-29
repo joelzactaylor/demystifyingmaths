@@ -1,0 +1,810 @@
+/* INDEX NOTATION AND POWERS
+
+   Three things this page needs beyond the shared teaching styles: the scroll-led
+   card that unpacks a power and multiplies it out, the square that fills row by
+   row to explain the word "squared", and the row of factors that gathers itself
+   into powers when the notation is read backwards.
+
+   The palette, the card furniture and the control styles are the written-methods
+   ones; nothing here invents a near-miss of them.
+
+   No viewport media queries below the reduced-motion block: .layout is a fixed
+   900px panel that shared.css scales with transform under 900px, so nothing here
+   may reflow. */
+
+/* THE OPTIONAL SECTION — the geometry the pattern points at, which the course
+   does not ask for. Set in a panel of its own with a quieter, smaller heading,
+   so a reader skimming the page can see where the lesson pauses and where it
+   picks up again. Not dashed: on this site a dashed border means scaffolding
+   still to be written. */
+.optional {
+    padding: 26px 28px 28px;
+    border: 2px solid #cfe3ee;
+    border-radius: 18px;
+    background: linear-gradient(180deg, #fbfdff 0%, #f2f8fc 100%);
+    box-shadow: 0 8px 22px rgba(23, 56, 73, .11);
+}
+
+.optional h1 { font-size: 28px; color: #116e93; }
+
+/* The figure beside the sandbox belongs to that section rather than to the
+   lesson, and says so where it stands. */
+.optional-note {
+    margin: 0 0 4px;
+    color: #52666f;
+    font-size: .88rem;
+    line-height: 1.55;
+}
+
+.optional-note b { color: #116e93; }
+
+/* THE INDEX, WHERE THE RAISING CANNOT SURVIVE — a caret that is never seen and
+   never spoken, sitting between a base and its index. Strip the page to plain
+   text, copy an equation out of it, pipe it through anything that drops markup,
+   and `2<sup>5</sup>` is the two characters "25" and reads as twenty-five. With
+   the caret in the source it is "2^5", which nothing misreads. Assistive
+   technology takes the aria-label instead, so it never hears the caret. */
+.caret {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+/* A COMPACT NOTE — a detail that belongs beside the definition it qualifies
+   rather than in an explanation block of its own. */
+.note {
+    margin: 16px 0;
+    padding: 10px 16px;
+    border-left: 4px solid #c9dce8;
+    border-radius: 0 10px 10px 0;
+    background: #f7fbfd;
+    color: #41535c;
+    font-size: .92rem;
+    line-height: 1.55;
+}
+
+.note > b {
+    margin-right: 8px;
+    color: #52666f;
+    font-size: .74rem;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+}
+
+/* THE CHOICE ABOUT WHAT LIES PAST THREE DIRECTIONS ---------------------- */
+
+/* Deliberately quieter than the boxes that carry the mathematics: this one is
+   an aside about the page rather than a part of the lesson, and a reader who
+   does not need it should be able to pass over it. */
+.beyond {
+    margin: 22px 0 20px;
+    padding: 14px 18px;
+    border: 1px solid #dbe7ef;
+    border-radius: 12px;
+    background: #fafcfe;
+}
+
+.beyond p {
+    margin: 0 0 12px;
+    color: #52666f;
+    font-size: .92rem;
+    line-height: 1.55;
+}
+
+.beyond__choice {
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.beyond__choice input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+}
+
+.beyond__choice-label {
+    color: #52666f;
+    font-size: .86rem;
+    font-weight: 700;
+}
+
+/* Sized border-box, so the 38 by 22 is the whole of the switch and not the
+   inside of it: without that the border adds four pixels the knob knows nothing
+   about, and the knob sits high and short of the end of its travel. */
+.beyond__switch {
+    position: relative;
+    box-sizing: border-box;
+    width: 38px;
+    height: 22px;
+    flex: none;
+    border: 2px solid #c9dce8;
+    border-radius: 999px;
+    background: #fff;
+    transition: background-color .18s ease, border-color .18s ease;
+}
+
+/* Centred off its own middle rather than measured down from the top, so it sits
+   true whatever the switch or the border comes to. Its travel is the width
+   inside the border, less the knob, less the two pixels it starts from:
+   34 - 14 - 2 = 18, and it starts at 2, so it moves 16. */
+.beyond__switch::after {
+    position: absolute;
+    top: 50%;
+    left: 2px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #a9c1cf;
+    content: "";
+    transform: translateY(-50%);
+    transition: transform .18s ease, background-color .18s ease;
+}
+
+.beyond__choice:has(input:checked) .beyond__switch { border-color: #116e93; background: #eef5fb; }
+.beyond__choice:has(input:checked) .beyond__switch::after { background: #116e93; transform: translate(16px, -50%); }
+.beyond__choice:has(input:checked) .beyond__choice-label { color: #09539d; }
+.beyond__choice:has(input:focus-visible) .beyond__switch { box-shadow: 0 0 0 4px rgba(17, 110, 147, .16); }
+
+/* What the choice governs. The figure beside the calculation goes with it, and
+   the card it sits in closes up to the working alone. */
+.is-curriculum-only [data-beyond] { display: none; }
+.is-curriculum-only .power-board--split { grid-template-columns: minmax(0, 1fr); }
+
+@media (prefers-reduced-motion: reduce) {
+    .beyond__switch,
+    .beyond__switch::after { transition: none; }
+}
+
+/* THE ANATOMY OF A POWER — the notation named once, in large type. */
+
+/* A power is a small figure sitting high on the shoulder of its base. Left to
+   the browser a superscript is nearly full size and barely lifted, so the base
+   and the index read as two numbers standing side by side rather than as one
+   power. The lift is a relative offset rather than vertical-align, and the line
+   box is taken out of it, so raising the index cannot push a paragraph's lines
+   apart. */
+.lesson-main sup {
+    position: relative;
+    /* .52 of the base's size — but `top` is measured in the index's own em, so
+       the figure written here is that share divided by .62. Reading it as .52
+       of the base is what leaves an index sitting beside its base instead of
+       above it. */
+    top: -.84em;
+    font-size: .62em;
+    line-height: 0;
+    vertical-align: baseline;
+}
+
+/* The figures set their own powers, at sizes chosen against the drawing they
+   sit in rather than against a line of prose. They are lifted by the same
+   proportion of the base they belong to, so a power reads the same wherever it
+   is on the page: an index sits with its baseline a little over half the base's
+   own size above it. Each rule below divides that proportion by the size the
+   index is drawn at, because `top` here is measured in the index's own em. */
+.anatomy sup,
+.power-board sup,
+.gather-board sup {
+    /* Set here rather than left to the rule above: a pinned card is moved out
+       of the page and onto the body, where a selector naming the lesson no
+       longer reaches it, and the powers inside it would drop to the line. */
+    position: relative;
+    top: 0;
+    line-height: normal;
+    vertical-align: baseline;
+}
+
+.anatomy {
+    display: grid;
+    justify-items: center;
+    margin: 26px 0 22px;
+    padding: 26px 24px 22px;
+    border: 2px solid #c9dce8;
+    border-radius: 18px;
+    background: #fff;
+    box-shadow: 0 8px 22px rgba(23, 56, 73, .11);
+}
+
+.anatomy__power {
+    margin: 0;
+    color: #173849;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: 4.4rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.anatomy__power sup { top: -1.08em; font-size: .48em; }
+.anatomy__power .is-base { color: #09539d; }
+.anatomy__power .is-index { color: #b86821; }
+
+/* Term then meaning, in that order in the source, laid into two columns by
+   grid rather than by wrapping each pair in a box of its own: the term keeps
+   the top of the card and its meaning the bottom, and a reader without the
+   stylesheet still gets "Base — 2" followed by what a base is. */
+.anatomy__legend { display: grid; margin-top: 22px; column-gap: 14px; grid-template-columns: 1fr 1fr; }
+
+.anatomy__legend dt {
+    padding: 13px 16px 0;
+    border-radius: 14px 14px 0 0;
+    background: #eef5fb;
+    font-size: .98rem;
+    font-weight: 700;
+    grid-row: 1;
+}
+
+.anatomy__legend dd {
+    margin: 0;
+    padding: 4px 16px 13px;
+    border-radius: 0 0 14px 14px;
+    background: #eef5fb;
+    color: #41535c;
+    font-size: .92rem;
+    grid-row: 2;
+    line-height: 1.55;
+}
+
+.anatomy__legend dt:nth-of-type(1) { color: #09539d; grid-column: 1; }
+.anatomy__legend dd:nth-of-type(1) { grid-column: 1; }
+.anatomy__legend dt:nth-of-type(2) { background: #fff8df; color: #9b5f12; grid-column: 2; }
+.anatomy__legend dd:nth-of-type(2) { background: #fff8df; grid-column: 2; }
+
+/* THE TURNING SURFACE — the stage a figure is turned on, whether it is the
+   cube stacking itself or the points beside a calculation. It takes focus, it
+   answers the arrow keys, and it never scrolls the page out from under a drag. */
+
+.solid__stage {
+    display: block;
+    width: min(100%, 300px);
+    height: min(100%, 300px);
+    border-radius: 16px;
+    cursor: grab;
+    touch-action: none;
+}
+
+.solid__stage.is-turning { cursor: grabbing; }
+.solid__stage:focus-visible { outline: 3px solid #116e93; outline-offset: 3px; }
+.solid__stage svg,
+.solid__stage canvas { display: block; width: 100%; height: 100%; }
+
+/* Nothing to draw yet: the stage keeps its space rather than collapsing. */
+.solid__stage.is-empty svg,
+.solid__stage.is-empty canvas { visibility: hidden; }
+
+/* The cube is stacked and turned inside its own card, so its stage fills the
+   drawing area rather than sitting in a panel of its own. */
+.cube-stage { width: min(100%, 300px); height: min(100%, 300px); }
+
+/* Said to a screen reader, which cannot see that a figure invites a drag, and
+   to nobody else: a page that explains its own controls has the wrong controls. */
+.solid__hint {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+/* THE DOUBLING TABLE — a real table with three named columns, so a reader
+   hearing it gets "power", "expanded form", "value" against each row instead of
+   three numbers running into one another. Rows are separated by border-spacing
+   rather than by margins, which a table row cannot take. */
+
+.growth {
+    width: 100%;
+    margin: 18px 0 6px;
+    border-collapse: separate;
+    border-spacing: 0 6px;
+    table-layout: fixed;
+}
+
+.growth caption {
+    margin-bottom: 8px;
+    color: #52666f;
+    font-size: .88rem;
+    text-align: left;
+}
+
+.growth thead th {
+    padding: 0 16px 2px;
+    color: #7b8b93;
+    font-size: .74rem;
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.growth thead th:first-child { width: 108px; }
+.growth thead th:last-child { width: 92px; }
+
+.growth tbody th,
+.growth tbody td {
+    padding: 9px 16px;
+    background: #f1f7fb;
+    text-align: left;
+    vertical-align: baseline;
+}
+
+.growth tbody th { border-radius: 12px 0 0 12px; color: #09539d; font-size: 1.05rem; }
+.growth tbody td:last-child { border-radius: 0 12px 12px 0; color: #173849; font-size: 1.05rem; font-weight: 700; }
+.growth tbody td { color: #52666f; font-size: .9rem; }
+
+/* THE SCROLL-LED CARD
+
+   The scene reserves its own scroll distance; the card inside it is pinned by
+   JavaScript while the reader passes through, so every drawing advances with the
+   scroll rather than on a timer. */
+
+.power-scene {
+    position: relative;
+    min-height: 470px;
+    margin: 26px 0 8px;
+    overflow-anchor: none;
+}
+
+.power-scene.is-ready { height: var(--scene-height); min-height: var(--scene-min-height); }
+
+.power-scene__sticky {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: grid;
+    height: min(628px, calc(100vh - 104px));
+    min-height: 470px;
+    box-sizing: border-box;
+    grid-template-rows: auto minmax(0, 1fr) auto auto;
+    overflow: hidden;
+    border: 2px solid #c9dce8;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #fbfdff 0%, #f2f8fc 100%);
+    box-shadow: 0 12px 30px rgba(20, 57, 78, .14);
+    contain: layout paint;
+    overflow-anchor: none;
+    will-change: transform;
+}
+
+.power-scene__sticky.is-pinned { position: fixed; right: auto; z-index: 900; transform-origin: top left; }
+
+.power-scene__heading {
+    margin: 0;
+    padding: 20px 24px 2px;
+    color: #173849;
+    font: 700 1.34rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+}
+
+/* THE PICKERS — the base and the index are chosen from what is on offer, so
+   there is nothing to type, nothing to get wrong and nothing to warn about. */
+
+.power-scene__head { display: flex; gap: 26px; padding: 18px 24px 12px; justify-content: center; flex-wrap: wrap; }
+
+.power-picker { min-width: 0; margin: 0; padding: 0; border: 0; }
+
+.power-picker legend {
+    padding: 0 0 7px;
+    color: #52666f;
+    font-size: .74rem;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+}
+
+/* One bordered track holding all the choices, exactly as the answer-mode switch
+   on the division pages holds its two: the row reads as a single control rather
+   than as six numbers that happen to sit in boxes, and the tiles are tinted so
+   each one is visibly something to press against the white of the card. */
+.power-picker__options {
+    display: flex;
+    gap: 3px;
+    padding: 3px;
+    border: 2px solid #b8cbd7;
+    border-radius: 13px;
+    background: #fff;
+}
+
+.power-picker__tile {
+    position: relative;
+    display: grid;
+    width: 34px;
+    height: 34px;
+    place-items: center;
+    border-radius: 9px;
+    background: #eef5fb;
+    color: #41535c;
+    cursor: pointer;
+    font: 700 1.02rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    transition: background-color .16s ease, color .16s ease;
+}
+
+.power-picker__tile:hover { background: #dbe9f4; color: #09539d; }
+
+/* The control is the tile: the radio itself only has to be reachable, and it
+   is what the keyboard and assistive technology actually operate. */
+.power-picker__tile input {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* The chosen one is filled, not merely outlined: the same solid #116e93 the
+   division pages use, so a reader can see at a glance which is selected. */
+.power-picker__tile:has(input:checked) { background: #116e93; color: #fff; }
+
+.power-picker__tile:has(input:focus-visible) { box-shadow: 0 0 0 3px rgba(17, 110, 147, .28); }
+
+/* Where :has is not understood the tiles still work; the chosen one is marked
+   by its own outline instead of by its parent's fill. */
+.power-picker__tile input:checked { outline: 2px solid #116e93; outline-offset: -2px; border-radius: 8px; opacity: .12; }
+.power-picker__tile:has(input:checked) input:checked { outline: 0; opacity: 0; }
+
+/* THE BOARD — whatever the scene draws sits centred in the card's one flexible
+   row, so every scene kind keeps the same four rows. */
+
+.power-board { display: grid; min-height: 0; padding: 6px 24px 0; place-items: center; }
+.power-board__paper { display: grid; gap: 4px; justify-items: center; width: 100%; }
+
+
+/* The sandbox shows one calculation two ways: the running product on the left,
+   the same base and index set out as points on the right. */
+.power-board--split {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    gap: 10px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    padding-inline: 8px;
+}
+
+.power-board--split .power-board__paper { justify-items: center; align-content: center; }
+.power-board--split { align-items: stretch; }
+.power-board__solid { display: grid; min-width: 0; min-height: 0; place-items: center; }
+.power-board__solid .solid__stage { width: 100%; height: 100%; max-width: 360px; max-height: 360px; background: none; }
+
+/* The cube is stacked and turned inside its own card, so its stage fills the
+   drawing area rather than sitting in a panel of its own. */
+.cube-stage { width: min(100%, 300px); height: min(100%, 300px); background: none; }
+
+/* The solid and its tally, set out the way the square and its tally are. */
+.cube-figure { display: grid; gap: 14px; justify-items: center; }
+
+/* Unpacking a power: the notation, its factors, and the running product. */
+
+/* The two figures are set as one power and nothing is allowed between them.
+   The words BASE and INDEX are wider than the numbers they name, so while they
+   were in the flow they held the 2 and the 5 a whole word apart and made two
+   numbers of what should read as one. They hang off the figures instead, out of
+   the flow, where they can be as wide as they like. */
+.power-board__power {
+    display: flex;
+    /* Room for the labels above and below, which take up none of their own. */
+    padding: 26px 0 28px;
+    gap: 1px;
+    align-items: baseline;
+    line-height: 1;
+}
+
+.power-board__stack {
+    position: relative;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.power-board__stack i {
+    position: absolute;
+    left: 50%;
+    font-family: Aleo, serif;
+    font-size: .7rem;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transform: translateX(-50%);
+}
+
+.power-board__stack--base { color: #09539d; }
+.power-board__stack--base b { font-size: 3rem; }
+.power-board__stack--base i { top: 100%; margin-top: 7px; color: #52666f; }
+
+/* The index stands on the base's shoulder: the two share a baseline, and the
+   index is then lifted by the same fraction of the base's size as every other
+   power on the page — .52 of 3rem. */
+.power-board__stack--index { top: -1.56rem; color: #b86821; }
+.power-board__stack--index sup { font-size: 1.5rem; }
+.power-board__stack--index i { bottom: 100%; margin-bottom: 5px; color: #9b5f12; }
+
+/* The row leaves room on either side for the gold frame that gathers the
+   factors, so it never runs up against the edge of the card. */
+.power-board__expansion {
+    position: relative;
+    display: flex;
+    gap: var(--factor-gap, 9px);
+    margin-top: 20px;
+    padding: 0 14px;
+    align-items: center;
+    justify-content: center;
+}
+
+/* The gold frame is drawn behind the factors it gathers, so every mark it
+   covers must sit on a layer above it — the same arrangement the written-method
+   boards use for their digits and cursor. */
+.power-board__factor {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    min-width: var(--factor-size, 40px);
+    height: 46px;
+    place-items: center;
+    border-radius: 11px;
+    background: #eef5fb;
+    color: #09539d;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: var(--factor-type, 1.5rem);
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+}
+
+.power-board__times { position: relative; z-index: 1; color: #b86821; font-size: 1.2rem; font-style: normal; font-weight: 700; }
+
+.power-board__frame {
+    position: absolute;
+    z-index: 0;
+    box-sizing: border-box;
+    border: 2px solid #d99a20;
+    border-radius: 13px;
+    background: #fff2c9;
+    opacity: 0;
+    pointer-events: none;
+    will-change: left, top, width, height, opacity;
+}
+
+.power-board__ladder { display: grid; gap: 3px; margin-top: 22px; justify-items: center; }
+
+.power-board__row {
+    display: grid;
+    gap: 8px;
+    grid-template-columns: 4.6em 1em 2.2em 1em 5em;
+    align-items: baseline;
+    color: #41535c;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: 1.06rem;
+    font-variant-numeric: tabular-nums;
+    will-change: transform, opacity;
+}
+
+.power-board__row span:first-child { text-align: right; }
+.power-board__row i { color: #b86821; font-style: normal; text-align: center; }
+.power-board__row b { color: #173849; text-align: left; }
+
+.power-board__answer {
+    margin: 20px 0 0;
+    color: #09539d;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: 1.35rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    will-change: transform, opacity;
+}
+
+.power-board__answer sup { top: -.74em; font-size: .7em; }
+
+/* The square as an area — the counterpart of the figure on the multiplying
+   decimals page, so the two read as the same idea seen twice. */
+
+.area-figure { display: grid; gap: 14px; justify-items: center; }
+
+.area-frame {
+    display: grid;
+    width: max-content;
+    gap: 6px;
+    grid-template-columns: 40px 250px;
+    grid-template-rows: 24px 250px;
+    margin: 0 auto;
+}
+
+.area-bracket {
+    position: relative;
+    display: grid;
+    place-items: center;
+    color: #52666f;
+    font: 700 .82rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    opacity: 0;
+}
+
+.area-bracket::before,
+.area-bracket::after { position: absolute; background: currentColor; content: ""; }
+
+.area-bracket--top {
+    width: 100%;
+    height: 18px;
+    align-self: end;
+    justify-self: start;
+    border-bottom: 2px solid currentColor;
+    color: #09539d;
+    grid-area: 1 / 2;
+}
+
+.area-bracket--top::before { bottom: 0; left: 0; width: 2px; height: 7px; }
+.area-bracket--top::after { right: 0; bottom: 0; width: 2px; height: 7px; }
+
+.area-bracket--side {
+    width: 34px;
+    height: 100%;
+    align-self: start;
+    justify-self: end;
+    border-right: 2px solid currentColor;
+    color: #9b5f12;
+    grid-area: 2 / 1;
+}
+
+.area-bracket--side::before { top: 0; right: 0; width: 7px; height: 2px; }
+.area-bracket--side::after { right: 0; bottom: 0; width: 7px; height: 2px; }
+
+.area-square {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    box-sizing: border-box;
+    border: 2px solid #173849;
+    border-radius: 4px;
+    background: #fff;
+    grid-area: 2 / 2;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.area-rule { position: absolute; background: #c9dce8; opacity: 0; }
+.area-rule--column { top: 0; bottom: 0; width: 1px; }
+.area-rule--row { right: 0; left: 0; height: 1px; }
+
+.area-unit {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: grid;
+    box-sizing: border-box;
+    place-items: center;
+    background: #fff8df;
+    box-shadow: inset 0 0 0 2px #d99a20;
+    color: #9b5f12;
+    font: 700 .8rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-style: normal;
+    opacity: 0;
+}
+
+.area-cell {
+    position: absolute;
+    box-sizing: border-box;
+    background: rgba(93, 145, 176, .18);
+    box-shadow: inset 0 0 0 2px #b86821;
+    opacity: 0;
+}
+
+.area-tally {
+    min-height: 1.4em;
+    margin: 0;
+    color: #09539d;
+    font: 700 1.12rem/1.25 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    opacity: 0;
+}
+
+/* Reading the notation backwards: equal factors gather into one power. */
+
+.gather-board { position: relative; display: grid; gap: 26px; justify-items: center; }
+.gather-board__row { position: relative; display: flex; gap: 9px; align-items: center; justify-content: center; }
+
+.gather-board__chip {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    min-width: 40px;
+    height: 46px;
+    place-items: center;
+    border-radius: 11px;
+    background: #eef5fb;
+    color: #09539d;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: 1.5rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    will-change: opacity, transform;
+}
+
+.gather-board__chip.is-second { background: #fff8df; color: #9b5f12; }
+.gather-board__sign { position: relative; z-index: 1; color: #b86821; font-size: 1.2rem; font-weight: 700; will-change: opacity; }
+
+.gather-board__powers {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    color: #173849;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: 2rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+}
+
+/* Each power fades in on its own as its factors are gathered, so it is the
+   powers rather than the row that carry the change. */
+.gather-board__powers > * { opacity: 0; will-change: opacity, transform; }
+
+.gather-board__powers sup { top: -.9em; font-size: .58em; }
+.gather-board__value sup { top: -.9em; font-size: .58em; }
+.gather-board__powers .is-first { color: #09539d; }
+.gather-board__powers .is-second { color: #9b5f12; }
+.gather-board__powers i { color: #b86821; font-size: 1.3rem; font-style: normal; }
+
+.gather-board__value {
+    margin: 0;
+    color: #09539d;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: 1.3rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    will-change: opacity, transform;
+}
+
+/* Card furniture, shared by every scene on the page. */
+
+.power-scene__caption { display: grid; align-content: center; height: 6.6em; box-sizing: border-box; padding: 14px 28px 6px; text-align: center; }
+.power-scene__caption h3 { margin: 0 0 5px; color: #09539d; font-size: 1.1rem; }
+.power-scene__caption p { margin: 0; color: #243a45; font-size: .97rem; line-height: 1.5; }
+
+.power-scene__progress { display: flex; gap: 8px; padding: 0 22px 18px; justify-content: center; }
+
+.power-scene__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #c6d4dc;
+    transition: width .25s ease, border-radius .25s ease, background-color .25s ease;
+}
+
+.power-scene__dot.is-current { width: 28px; border-radius: 999px; background: #116e93; }
+.power-scene__dot.is-past { background: #6c9bb0; }
+
+/* Nothing is animated when the reader has asked for no motion: each card sits in
+   the flow at its finished state and its scene keeps no surplus scroll. */
+/* An odd number of misconceptions leaves the last one alone in a two-column
+   grid, half a row wide against a gap. It takes the whole width instead. */
+.slips li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+/* WHERE MARKS ARE LOST — each slip is named, explained, then corrected. The
+   correction is the line a reader copies down, so it is set in the page's ink
+   rather than in the quieter grey of the explanation above it. Selected through
+   the list item, to outweigh the `.slips li > span` it shares its box with. */
+.slips__label { color: #52666f; }
+
+.slips li > .slips__fix {
+    margin-top: 7px;
+    padding-top: 7px;
+    border-top: 1px solid #ecf2f6;
+    color: #173849;
+    font-weight: 700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .power-scene.is-ready { height: auto; min-height: 0; }
+    .power-scene__sticky { position: relative; height: auto; transform: none !important; }
+    .power-scene__dot { transition: none; }
+    .power-picker__tile { transition: none; }
+}
