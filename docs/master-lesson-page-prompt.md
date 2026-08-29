@@ -39,6 +39,7 @@ Create `<TARGET>` from the ground up as a finished Demystifying Maths teaching p
 - Use descriptive section headings, worked examples, an inverse check, common mistakes and a five-point summary when those elements suit the topic.
 - End with the established practice and next-lesson cards, with exact links and titles from the curriculum sequence.
 - Remove the author note, stub text, TODOs, “coming soon”, AI-facing commentary and unnecessary descriptions of page functionality.
+- Never write copy that explains the page's own controls, and never narrate how a figure was drawn. State the mathematics a figure shows and stop; sentences like “there is nowhere left to put it, so it has to be drawn as a grid inside a grid” describe a rendering decision, not the subject, and no reader wants them. No “drag to rotate, hold shift for…”, no key lists, no notes about what a slider does. If an interaction needs a sentence of instruction, the interaction is wrong: derive the extra freedom from the gesture already in use, or drop the feature. A hint that assistive technology genuinely needs goes in a visually hidden span, never on the page. Mathematical prose about what a figure *shows* is a different thing and still belongs there. No “drag to rotate, hold shift for…”, no key lists, no notes about what a slider does. If an interaction needs a sentence of instruction, the interaction is wrong: derive the extra freedom from the gesture already in use, or drop the feature. A hint that assistive technology genuinely needs goes in a visually hidden span, never on the page. Mathematical prose about what a figure *shows* is a different thing and still belongs there.
 
 ## Make animations teach rather than decorate
 
@@ -75,6 +76,76 @@ Create `<TARGET>` from the ground up as a finished Demystifying Maths teaching p
 - Test exact results, remainders, zeroes, a leading value smaller than the divisor, minimum and maximum inputs, empty input and invalid characters.
 - On division pages, make the starting-position decision prominent: compare successive leading blocks and begin with the shortest one at least as large as the divisor. Do not leave this as a passing sentence or let the animation silently skip to the chosen block.
 - For division sandboxes, include a known non-terminating test such as `1456 ÷ 76`. Verify that the last subtraction, drawn quotient and final caption all say or show that the decimal continues.
+
+## Never declare a viewport
+
+The site has **no `<meta name="viewport">` on any page**, and a new page must not add one. This is what gives every page its fixed-aspect layout: `.layout` in `css/shared.css` is a hard 900px, and a phone with no viewport declaration falls back to a 980px virtual viewport and scales the whole page down uniformly to fit the screen. The layout is therefore identical everywhere, only smaller.
+
+Adding `width=device-width` opts the page out of that scaling. The 900px layout is then laid out inside a 390px viewport, the text renders at full size against a screen less than half as wide, and the page appears enormous and clipped. The only exception on the site is `vocab/index.html`, a standalone unlisted tool with its own responsive stylesheet.
+
+The same reasoning rules out anything else that would break the uniform scale: no viewport-relative font sizes that would compound with the browser's own scaling, and no `@media (max-width: …)` rule intended to reflow the page for phones. Phone breakpoints below `900px` never fire on a phone, because the viewport is reported as 980px wide. Write one layout at 900px and let the browser shrink it.
+
+## Match the written-methods house style exactly
+
+The written-methods lessons (`pages/curriculum/GCSE/number/structure/writtenMethods/`) and their dedicated stylesheets are the reference implementation of the teaching-page style. A new lesson must be indistinguishable from them. Read at least `columnAddition.html`, `longDivision.html` and their CSS before writing a line, and reuse the values below rather than inventing near-misses. Never import a colour, radius or control style from a practice page: the ochre practice identity and the blue teaching identity are deliberately different, and mixing them is the most visible way a new page looks wrong.
+
+**The palette.** Use these and no other near-equivalents:
+
+| Role | Value |
+| --- | --- |
+| Lesson blue — section headings, emphasis, quotient and answer figures | `#09539d` |
+| Dark ink — numerals, set-out digits, figure text | `#173849` |
+| Body copy inside cards | `#41535c`; caption body `#243a45` |
+| Small labels, kickers, uppercase captions | `#52666f` |
+| Teal — numbered markers, the current progress dot, input focus | `#116e93` |
+| Ochre emphasis — operators, signs, the second colour in a figure | `#b86821` |
+| Deep ochre text | `#9b5f12`, `#80540f`, `#7a540a` |
+| Gold — highlight frame border, important-box border, carry badges | `#d99a20` |
+| Gold fills — highlight frame `#fff2c9`; important box and badges `#fff8df` |
+| Raised card border | `#c9dce8`; flat panel border `#d9e4eb` or `#d9e2ec` |
+| Pale blue fills | `#eef5fb`, `#eaf3f8`, `#f1f7fb` |
+| Mid blues for strokes and rules | `#5d91b0`, `#6c9bb0`, `#526b76` |
+| Control borders and inactive dots | `#b8cbd7`, `#c6d4dc` |
+| Scene card gradient | `linear-gradient(180deg, #fbfdff 0%, #f2f8fc 100%)` |
+| Warning red — only in `.slips` and only as a border | `#a3352b` |
+
+**Type.** Every numeral, set-out, expression and input uses `ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace` with `font-variant-numeric: tabular-nums`. Prose stays in the inherited Aleo. Notation inside a sentence goes in `<span class="sf">`, which already styles `sup` for powers.
+
+**The scroll-led card.** Copy the structure, not an approximation of it: a `.<topic>-scene` wrapper (`position: relative; overflow-anchor: none;`) that takes `height: var(--scene-height); min-height: var(--scene-min-height)` once `is-ready`, holding a `.<topic>-scene__sticky` card that is `position: absolute` until JavaScript pins it. The card is `2px solid #c9dce8`, `border-radius: 22px`, the gradient above, `box-shadow: 0 12px 30px rgba(20, 57, 78, .14)`, `contain: layout paint`, `overflow: hidden`, and a `grid-template-rows` with exactly one `minmax(0, 1fr)` row for the drawing. Give every scene kind the same number of grid children in both its worked and sandbox forms — wrap sandbox controls in one header block rather than adding a row.
+
+**Card furniture.** Reuse these verbatim, changing only the block name:
+
+- Caption: `display: grid; align-content: center; height: 6.6em; padding: 14px 28px 6px; text-align: center;` with `h3` at `#09539d`/`1.1rem` and `p` at `#243a45`/`.97rem`/`line-height: 1.5`. Fixing the height is what stops the card resizing between steps.
+- Progress: `display: flex; gap: 8px; padding: 0 22px 18px; justify-content: center;` with 9px round dots at `#c6d4dc`; the current dot becomes `width: 28px; border-radius: 999px; background: #116e93`, and past dots `#6c9bb0`. Use the class names `is-current` and `is-past`.
+- Highlight frame: `2px solid #d99a20`, `border-radius: 13px`, `background: #fff2c9`, positioned absolutely and interpolated between measured targets.
+- Inputs: `width` to suit, `padding: 10px 14px`, `2px solid #b8cbd7`, `border-radius: 12px`, `outline: none`, `background: #fff`, `color: #173849`, `font: 700 1.18rem/1.2` in the monospace stack, `tabular-nums`, `text-align: center`, and `transition: border-color .18s ease, box-shadow .18s ease`. Focus is `border-color: #116e93; box-shadow: 0 0 0 4px rgba(17, 110, 147, .12)` — never a practice-page outline ring.
+- Invalid entry: the house treatment is quiet, not alarming. Grey the affected text to `#687b84` and either hide the stale working with `visibility: hidden` so the card keeps its size, or show a `2px dashed #b8cbd7` panel on `rgba(255, 255, 255, .86)` saying what is needed. Never use a red practice-page warning.
+- Reduced motion: end the stylesheet with a `@media (prefers-reduced-motion: reduce)` block that returns `.<topic>-scene.is-ready` to `height: auto; min-height: 0`, makes the card `position: relative; height: auto; transform: none !important`, and removes every transition.
+
+**Structural styles come from `lesson.css`.** Use `.prereq`, `.rule-card`, `.important-box`, `.wex`, `.worked`, `.slips` and `.recap` for the prerequisite strip, definitions, noticed facts, worked examples, animated examples, misconceptions and the summary. Only build a bespoke component when none of those can carry the idea, and when you do, give it the palette, the `14px`–`18px` radii and the `0 8px 22px rgba(23, 56, 73, .11)` shadow the neighbouring pages use.
+
+**Those components lay themselves out with flex and grid, so each assumes a particular set of element children.** Give them exactly the children they expect, or the layout algorithm will treat every stray inline element as a column of its own:
+
+- `.prereq` is a flex row of exactly two items: `<p class="prereq"><b>Before this page:</b> <span>…</span></p>`. The whole sentence, including its links, goes inside the single `<span>`. Text or a link left loose beside the `<b>` becomes a separate flex item and the sentence breaks into columns.
+- `.slips > li` needs a direct `<b>` for the name of the slip and a direct `<span>` for the correction; the CSS targets them with child combinators so notation inside stays inline.
+- `.wex__steps > li` needs a `.wex__do` and a `.wex__why` — the grid has a column for each.
+- `.important-box` carries an `.important-box__title` with an `id`, and the box is `aria-labelledby` that same `id`.
+- Anything you build yourself follows the same discipline: if a container is flex or grid, wrap its prose so that the container has children, not loose runs of text.
+
+None of this is visible without a browser, so assert it — a small structural check over the finished page costs less than a rendering pass you cannot run.
+
+**Write the stylesheet the way the others are written.** One file per page at `css/<pageName>.css`, opening with a comment that says what the page needs beyond the shared styles and why, and carrying no viewport media queries except the reduced-motion block — `.layout` is a fixed 900px panel that `shared.css` scales with a transform below 900px, so nothing in a page stylesheet may reflow.
+
+## Audit, reorder and animate before you call it finished
+
+A first draft is a draft. After the page runs, read it once more as a whole and rebuild it around what actually explains the idea best:
+
+- Put capability before vocabulary. A reader should be able to *do* the thing before being taught the names for its special cases, unless a name is needed to read the next sentence.
+- Move every misconception to the point where the reader has just seen the evidence that settles it, not to a list at the end. The end-of-page `.slips` list is a reminder of misconceptions already met, not their first appearance.
+- Cut any section that does not change what the reader can do. If two sections teach the same decision, merge them.
+- Then ask what is still being asserted in prose that could be shown. Every idea on the page that has a shape, a growth, a movement or a rearrangement deserves its own scroll-led scene, and a page with one animation is usually a page that stopped too early. Build a separate scene for each genuinely different picture rather than restyling one scene's caption.
+- Animate the reverse direction as well as the forward one wherever a topic is read both ways.
+- Re-run every check after reordering: heading order, deep-link IDs, practice pairing and the scene harnesses all depend on the structure you have just changed.
 
 ## Accessibility and presentation
 

@@ -46,7 +46,7 @@ body {
 
 @media screen and (max-width: 900px) {
     :root {
-        --scale: min(1, 100vw / var(--design-width));
+        --scale: min(1, 100vw / (var(--design-width) * 1px));
     }
 
     .layout {
