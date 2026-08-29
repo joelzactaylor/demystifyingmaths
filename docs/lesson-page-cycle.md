@@ -35,6 +35,14 @@ carrying every figure, a run of pure reference, prose totals that swing by 3×.
 - **Check the scope boundary** against the manifest `coverNote`: nothing a later
   page owns, and nothing the previous page was supposed to have taught.
 
+## 2b. Voice pass — does every sentence do mathematical work?
+
+`lesson-prose-voice.md` holds twenty-four rules taken from the written-methods
+pages by reading them, not by impression. Judge each sentence against it. The
+faults cluster in the introduction, the hinge between sections, and any sentence
+beside a widget — so read those hardest, and do not copy an opener from a
+reference page without testing it first.
+
 ## 3. Contrivance pass — is it honest?
 
 The hardest pass, because everything here was put there on purpose. For each
