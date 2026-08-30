@@ -1,371 +1,140 @@
 /* RECOGNISING POWERS OF A NUMBER
 
-   Three things this page needs beyond the shared teaching styles: the scroll-led
-   card that carries its three figures, the recall tables the page is largely
-   made of, and the division ladder that tests one number against one base.
+   The shared lesson styles carry the prose and recap. This page adds compact
+   recall lists and short comparisons, without a scroll scene or controls. */
 
-   The palette, the card furniture and the control styles are the written-methods
-   ones; nothing here invents a near-miss of them.
-
-   No viewport media queries below the reduced-motion block: .layout is a fixed
-   900px panel that shared.css scales with transform under 900px, so nothing here
-   may reflow. */
-
-/* THE RECALL LISTS — the lists this page exists to hand over. Fifteen squares
-   in a two-column table is a tall thin strip against a 900px page; as a wrapped
-   row of chips the same fifteen read as one reference card, and each chip is a
-   whole statement, so nothing depends on a column heading to make sense. */
-
-.recall {
+.recognition {
     display: grid;
-    gap: 6px;
-    margin: 20px 0 6px;
+    gap: 10px;
+    width: min(100%, 520px);
+    margin: 24px auto;
+}
+
+.recognition p {
+    display: grid;
+    grid-template-columns: 108px 1fr;
+    margin: 0;
+    align-items: center;
+    border: 2px solid #d9e4eb;
+    border-radius: 14px;
+    background: #f8fbfd;
+    overflow: hidden;
+}
+
+.recognition p > span {
+    padding: 13px 14px;
+    background: #eef5fb;
+    color: #52666f;
+    font-size: .76rem;
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+}
+
+.recognition strong {
+    padding: 13px 18px;
+    color: #173849;
+    font: 700 1.15rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+}
+
+.recognition sup,
+.fact-list sup,
+.example-strip sup,
+.power-identity sup {
+    position: relative;
+    top: -.78em;
+    font-size: .62em;
+    line-height: 0;
+    vertical-align: baseline;
+}
+
+.fact-list {
+    display: grid;
+    gap: 7px;
+    margin: 20px 0;
     padding: 0;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
     list-style: none;
 }
 
-.recall--wide { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.fact-list--squares { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.fact-list--cubes { grid-template-columns: repeat(6, minmax(0, 1fr)); }
 
-.recall li {
-    padding: 9px 12px;
+.fact-list li {
+    display: grid;
+    gap: 2px;
+    padding: 9px 7px;
+    justify-items: center;
+    border-radius: 11px;
+    background: #f1f7fb;
+    color: #52666f;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.fact-list li > span { font-size: .8rem; }
+.fact-list b { color: #173849; font-size: 1.03rem; }
+
+.power-chains {
+    display: grid;
+    gap: 8px;
+    margin: 20px 0;
+}
+
+.power-chains div {
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    align-items: baseline;
     border-radius: 12px;
     background: #f1f7fb;
-    color: #173849;
-    font-size: 1rem;
-    text-align: center;
-}
-
-/* The powers of four bases at five indices is a genuine matrix, and stays a
-   table: a cell there means nothing without the column it sits under. */
-.recall-grid {
-    width: 100%;
-    margin: 20px 0 6px;
-    border-collapse: separate;
-    border-spacing: 0 6px;
-    table-layout: fixed;
-}
-
-.recall-grid caption {
-    margin-bottom: 8px;
-    color: #52666f;
-    font-size: .88rem;
-    text-align: left;
-}
-
-.recall-grid thead th {
-    padding: 0 16px 2px;
-    color: #7b8b93;
-    font-size: .74rem;
-    font-weight: 700;
-    letter-spacing: .05em;
-    text-align: left;
-    text-transform: uppercase;
-}
-
-.recall-grid tbody th,
-.recall-grid tbody td { padding: 8px 16px; background: #f1f7fb; text-align: left; vertical-align: baseline; }
-.recall-grid tbody th { width: 74px; border-radius: 12px 0 0 12px; color: #09539d; }
-.recall-grid tbody td { color: #173849; font-weight: 700; }
-.recall-grid tbody td:last-child { border-radius: 0 12px 12px 0; }
-
-/* A COMPACT NOTE — a detail that belongs beside the table it qualifies rather
-   than in an explanation block of its own. */
-.note {
-    margin: 16px 0;
-    padding: 10px 16px;
-    border-left: 4px solid #c9dce8;
-    border-radius: 0 10px 10px 0;
-    background: #f7fbfd;
-    color: #41535c;
-    font-size: .92rem;
-    line-height: 1.55;
-}
-
-.note > b {
-    margin-right: 8px;
-    color: #52666f;
-    font-size: .74rem;
-    letter-spacing: .05em;
-    text-transform: uppercase;
-}
-
-/* THE SCROLL-LED CARD
-
-   The scene reserves its own scroll distance; the card inside it is pinned by
-   JavaScript while the reader passes through, so every drawing advances with the
-   scroll rather than on a timer. */
-
-.powers-scene {
-    position: relative;
-    min-height: 470px;
-    margin: 26px 0 8px;
-    overflow-anchor: none;
-}
-
-.powers-scene.is-ready { height: var(--scene-height); min-height: var(--scene-min-height); }
-
-.powers-scene__sticky {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    display: grid;
-    height: min(628px, calc(100vh - 104px));
-    min-height: 470px;
-    box-sizing: border-box;
-    grid-template-rows: auto minmax(0, 1fr) auto auto;
     overflow: hidden;
-    border: 2px solid #c9dce8;
-    border-radius: 22px;
-    background: linear-gradient(180deg, #fbfdff 0%, #f2f8fc 100%);
-    box-shadow: 0 12px 30px rgba(20, 57, 78, .14);
-    contain: layout paint;
-    overflow-anchor: none;
-    will-change: transform;
 }
 
-.powers-scene__sticky.is-pinned { position: fixed; right: auto; z-index: 900; transform-origin: top left; }
-
-.powers-scene__heading {
-    margin: 0;
-    padding: 20px 24px 2px;
-    color: #173849;
-    font: 700 1.34rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-    font-variant-numeric: tabular-nums;
-    text-align: center;
-}
-
-.powers-scene__caption { display: grid; align-content: center; height: 6.6em; box-sizing: border-box; padding: 14px 28px 6px; text-align: center; }
-.powers-scene__caption h3 { margin: 0 0 5px; color: #09539d; font-size: 1.1rem; }
-.powers-scene__caption p { margin: 0; color: #243a45; font-size: .97rem; line-height: 1.5; }
-
-.powers-scene__progress { display: flex; gap: 8px; padding: 0 22px 18px; justify-content: center; }
-
-.powers-scene__dot {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: #c6d4dc;
-    transition: width .25s ease, border-radius .25s ease, background-color .25s ease;
-}
-
-.powers-scene__dot.is-current { width: 28px; border-radius: 999px; background: #116e93; }
-.powers-scene__dot.is-past { background: #8fb3c6; }
-
-/* THE FIELD — one number, typed, and the card answers it. Nothing to press:
-   every keystroke that leaves a number the page can answer for redraws it. */
-
-.powers-scene__head { display: flex; gap: 26px; padding: 18px 24px 12px; justify-content: center; flex-wrap: wrap; }
-
-.powers-field { display: grid; gap: 6px; justify-items: center; }
-
-.powers-field > span {
-    color: #52666f;
-    font-size: .74rem;
+.power-chains dt {
+    padding: 11px 14px;
+    background: #eaf3f8;
+    color: #09539d;
     font-weight: 700;
-    letter-spacing: .07em;
-    text-transform: uppercase;
 }
 
-.powers-field input {
-    width: 132px;
-    box-sizing: border-box;
-    padding: 10px 14px;
-    border: 2px solid #b8cbd7;
-    border-radius: 12px;
-    outline: none;
-    background: #fff;
+.power-chains dd {
+    margin: 0;
+    padding: 11px 16px;
     color: #173849;
-    font: 700 1.18rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-    font-variant-numeric: tabular-nums;
-    text-align: center;
-    transition: border-color .18s ease, box-shadow .18s ease;
-}
-
-.powers-field input:focus { border-color: #116e93; box-shadow: 0 0 0 4px rgba(17, 110, 147, .12); }
-
-/* THE BOARD — whatever the scene draws sits centred in the card's one flexible
-   row, so every scene kind keeps the same four rows. */
-
-.powers-board { display: grid; min-height: 0; padding: 6px 24px 0; place-items: center; }
-.powers-board__paper { display: grid; gap: 6px; justify-items: center; width: 100%; }
-
-/* A full-size outer layer whose only job is centring a naturally sized figure,
-   so nothing is off-centre at any width the card is scaled to. */
-.powers-board__stage { display: grid; width: min(100%, 300px); place-items: center; }
-
-/* The field of numbers needs the width to stay legible at 16 across; the card
-   has it, and the outer layer still does nothing but centre what is inside it. */
-.powers-board__stage--wide { width: min(100%, 452px); }
-.powers-board__stage svg { display: block; width: 100%; height: auto; }
-
-.powers-board__tally {
-    margin: 0;
-    color: #b86821;
-    font: 700 1.06rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font: 700 .95rem/1.4 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
     font-variant-numeric: tabular-nums;
 }
 
-.powers-board__answer {
-    display: flex;
-    gap: 2px;
-    min-height: 1.7rem;
-    margin: 0;
-    align-items: baseline;
-    justify-content: center;
-    color: #173849;
-    font: 700 1.24rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-    font-variant-numeric: tabular-nums;
-}
-
-.powers-board__answer i { font-style: normal; }
-
-/* A power drawn by a figure keeps the same raised index the writing uses, and
-   names `position` itself: a pinned card is moved onto the body, out of reach
-   of any rule that names the lesson. */
-.powers-board__power { position: relative; }
-.powers-board__power sup { position: relative; top: -.84em; font-size: .62em; line-height: 0; vertical-align: baseline; }
-
-/* READING A NUMBER BACKWARDS — the two lists it is held against, then the
-   halving, then what it comes to. The neighbourhood of the number rather than
-   the whole list, because what settles the question is which two known values
-   it falls between. */
-
-.reading { display: grid; gap: 9px; justify-items: center; width: 100%; }
-
-.reading__strip { display: grid; gap: 4px; justify-items: center; width: 100%; }
-
-.reading__label {
-    margin: 0;
-    color: #7b8b93;
-    font-size: .7rem;
-    font-weight: 700;
-    letter-spacing: .05em;
-    text-transform: uppercase;
-}
-
-.reading__marks { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
-
-.reading__mark {
+.example-strip {
     display: grid;
-    min-width: 54px;
-    padding: 5px 8px;
-    gap: 1px;
-    justify-items: center;
-    border: 2px solid #e2edf3;
-    border-radius: 11px;
-    background: #fff;
-    color: #52666f;
-    transition: border-color .18s ease, background-color .18s ease, color .18s ease;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    margin: 22px 0 0;
 }
 
-.reading__mark b { font: 700 .9rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
-.reading__mark i { font: 400 .78rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-style: normal; }
-
-/* The one it lands on, and the two it falls between: told apart by fill and by
-   border as well as by colour. */
-.reading__mark.is-hit { border-color: #116e93; background: #116e93; color: #fff; }
-.reading__mark.is-under,
-.reading__mark.is-over { border-color: #d99a20; background: #fff8df; color: #7a540a; }
-
-.reading__power { position: relative; }
-.reading__power sup { position: relative; top: -.84em; font-size: .62em; line-height: 0; vertical-align: baseline; }
-
-.reading__halving { display: flex; gap: 5px; justify-content: center; flex-wrap: wrap; min-height: 1.5rem; }
-
-.reading__halve,
-.reading__odd {
-    display: flex;
+.example-strip p {
+    display: grid;
     gap: 5px;
     margin: 0;
-    align-items: baseline;
-    padding: 3px 9px;
-    border-radius: 9px;
-    background: #eef5fb;
-    color: #173849;
-    font: 700 .84rem/1.3 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-    font-variant-numeric: tabular-nums;
-}
-
-.reading__halve i { color: #b86821; font-size: .74rem; font-style: normal; }
-.reading__odd { background: #fdf1ef; color: #a3352b; }
-
-.reading__verdict {
-    display: flex;
-    gap: 3px;
-    min-height: 2rem;
-    margin: 2px 0 0;
-    padding: 6px 16px;
-    align-items: baseline;
-    border-radius: 12px;
-    background: #eef5fb;
-    color: #09539d;
-    font: 700 1.2rem/1.3 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-    font-variant-numeric: tabular-nums;
-}
-
-.reading__verdict i { font-style: normal; }
-.reading__verdict.is-negative { background: #fdf1ef; color: #a3352b; }
-
-/* A number the page cannot answer for: the working is hidden rather than left
-   standing for the number before it, and the card keeps its own size. */
-.powers-board { position: relative; }
-
-.powers-board__invalid {
-    position: absolute;
-    display: grid;
-    inset: 0;
-    margin: 0;
-    padding: 20px;
-    place-items: center;
-    border: 2px dashed #b8cbd7;
+    padding: 15px 18px;
+    border: 2px solid #d9e4eb;
     border-radius: 14px;
-    background: rgba(255, 255, 255, .86);
-    color: #687b84;
-    font-size: .95rem;
+    background: #fff;
+}
+
+.example-strip b { color: #09539d; font-size: 1.04rem; }
+.example-strip p > span { color: #52666f; font-size: .86rem; }
+.example-strip strong { color: #173849; font: 700 1rem/1.3 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+
+.power-identity {
+    margin: 22px 0;
+    padding: 20px 24px;
+    border: 2px solid #d99a20;
+    border-radius: 16px;
+    background: #fff8df;
+    color: #173849;
+    font: 700 1.5rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
     text-align: center;
-    visibility: hidden;
-}
-
-.powers-scene__sticky.is-invalid .powers-board__paper { visibility: hidden; }
-.powers-scene__sticky.is-invalid .powers-board__invalid { visibility: visible; }
-
-/* THE SOLID THE READER TURNS — the same stage the index-notation cube uses, so
-   the two answer the hand identically. */
-
-.solid__stage {
-    display: grid;
-    width: min(100%, 260px);
-    height: min(100%, 260px);
-    place-items: center;
-    cursor: grab;
-    touch-action: none;
-}
-
-.solid__stage.is-turning { cursor: grabbing; }
-.solid__stage:focus-visible { outline: 3px solid #116e93; outline-offset: 3px; }
-.solid__stage svg { display: block; width: 100%; height: auto; }
-
-.cube-stage { width: min(100%, 300px); height: min(100%, 300px); }
-.cube-figure { display: grid; gap: 6px; justify-items: center; }
-
-/* Said to a screen reader, which cannot see that a figure invites a drag, and
-   to nobody else: a page that explains its own controls has the wrong controls. */
-.solid__hint {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .powers-scene__sticky { position: relative; height: auto; transform: none !important; }
-    .powers-scene__dot { transition: none; }
-    .reading__mark { transition: none; }
-    .powers-field input { transition: none; }
 }

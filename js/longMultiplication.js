@@ -223,7 +223,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const corner = add("×", "grid-table__cell grid-table__corner");
         const columnHeads = calc.aParts.map((part) => add(readable(part.value), "grid-table__cell grid-table__head"));
-        if (totals) add("Row total", "grid-table__cell grid-table__head grid-table__head--total");
+        const totalHead = totals
+            ? add("Row total", "grid-table__cell grid-table__head grid-table__head--total")
+            : null;
+        if (totalHead) totalHead.style.opacity = "0";
 
         const cells = [];
         const rowHeads = [];
@@ -240,7 +243,7 @@ document.addEventListener("DOMContentLoaded", () => {
             grandTotal = add(readable(calc.product), "grid-table__cell grid-table__grand");
         }
 
-        return { table, corner, columnHeads, rowHeads, cells, rowTotals, grandTotal };
+        return { table, corner, columnHeads, rowHeads, cells, rowTotals, grandTotal, totalHead };
     };
 
     const splitLine = (value, parts) => {
@@ -313,6 +316,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 cell.style.transform = `scale(${lerp(.72, 1, reveal)})`;
             });
 
+            show(grid.totalHead, ease((t - (2 + calc.lines.length) - .15) / .4));
             grid.rowTotals.forEach((total, index) => show(total, ease((t - (2 + calc.lines.length) - .15 - index * .25) / .4)));
             show(grid.grandTotal, ease((t - (3 + calc.lines.length) - .15) / .4));
             paper.classList.toggle("is-complete", t >= stages - .4);

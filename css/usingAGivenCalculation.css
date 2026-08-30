@@ -68,18 +68,12 @@
 .inverse-reading__facts > div { display: grid; gap: 6px; padding: 13px 12px; place-items: center; border: 2px solid #d9e4eb; border-radius: 12px; background: #fff; text-align: center; }
 .inverse-reading__facts > div:last-child { border-color: #e3c77f; background: #fffaf0; }
 
-.deduction-pair,
-.checking-pair { display: grid; gap: 18px; grid-template-columns: 1fr 1fr; margin: 24px 0; }
-.deduction-pair article,
-.checking-pair article { padding: 18px 20px; border: 2px solid #d9e4eb; border-left: 5px solid #5d91b0; border-radius: 14px; background: #fff; }
-.deduction-pair article:nth-child(2),
-.checking-pair article:nth-child(2) { border-left-color: #d99a20; }
-.deduction-pair h2,
-.checking-pair h2 { margin: 0 0 9px; color: #173849; font-size: 1.04rem; }
-.deduction-pair p,
-.checking-pair p { margin: 0 0 9px; color: #41535c; font-size: .88rem; line-height: 1.5; }
-.deduction-pair p:last-child,
-.checking-pair p:last-child { margin-bottom: 0; }
+.deduction-pair { display: grid; gap: 18px; grid-template-columns: 1fr 1fr; margin: 24px 0; }
+.deduction-pair article { padding: 18px 20px; border: 2px solid #d9e4eb; border-left: 5px solid #5d91b0; border-radius: 14px; background: #fff; }
+.deduction-pair article:nth-child(2) { border-left-color: #d99a20; }
+.deduction-pair h2 { margin: 0 0 9px; color: #173849; font-size: 1.04rem; }
+.deduction-pair p { margin: 0 0 9px; color: #41535c; font-size: .88rem; line-height: 1.5; }
+.deduction-pair p:last-child { margin-bottom: 0; }
 .deduction-pair .deduction-pair__answer { padding-top: 9px; border-top: 1px solid #d9e4eb; color: #09539d; font: .91rem/1.35 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
 
 .deduction-example { margin: 28px 0 40px; }
