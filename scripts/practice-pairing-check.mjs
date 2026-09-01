@@ -98,7 +98,10 @@ for (const manifestPath of manifests) {
         } else {
             problems.push(`${label}: ${drill.file} has invalid kind ${drill.kind}`);
         }
-        if (displayPage) {
+        /* Only a dedicated lesson drill is expected on its teaching page. A
+           review is listed in the group index and reached from the practice
+           page before it, so that following the links walks the index order. */
+        if (displayPage && drill.kind !== "review") {
             if (!expectedByPage.has(displayPage)) expectedByPage.set(displayPage, []);
             expectedByPage.get(displayPage).push(url);
         }

@@ -12,9 +12,12 @@ const ROOT = "/Users/joeltaylor/Documents/Code/demystifyingmaths";
 // in their group's folder. All asset and page URLs are root-absolute and are
 // written with the site's base prefix (see scripts/site-base.mjs); the URLs
 // used inside this script and in the manifests stay base-less.
-// Hand-written pages (standard-form, place-value, and the five original
-// practice tests) are never touched: teaching pages marked "written" and
-// drills without "generate" are skipped. Manifest validation runs before the
+// Nothing that holds work is ever touched. write() refuses to replace a page
+// that does not carry the stub marker, whatever the manifest says, so a lesson
+// or drill finished without its flag being set is still safe; teaching pages
+// marked "written" and drills without "generate" are skipped by intent as well.
+// Menus are pure derivations and are always rebuilt. Manifest validation runs
+// before the
 // first write so ownership drift cannot silently replace an authored page.
 const SCRIPTS = dirname(new URL(import.meta.url).pathname);
 const manifestPaths = process.argv.length > 2
@@ -349,7 +352,14 @@ function generate(manifestPath) {
                 <p>&mdash;coming soon&mdash;</p>
             </section>`);
             const pageKey = `${topic.key}/${st.slug}`;
-            const drills = [...(lessonDrills.get(pageKey) || []), ...(unlockedReviews.get(pageKey) || [])];
+            /* A lesson shows its own practice and the next lesson, and nothing
+               else. Traversing the links in either direction then walks the
+               pages in the order the index lists them: lesson, its practice,
+               next lesson, its practice. A mixed review sits in that order too,
+               after the last practice of its group, so it is reached from that
+               practice page — bolting it onto a lesson page puts a third card
+               in a two-card pattern and jumps the reader over the practice. */
+            const drills = [...(lessonDrills.get(pageKey) || [])];
             const nextPage = teachingSequence[teachingOrder.get(pageKey) + 1];
             const next = nextPage
                 ? {
