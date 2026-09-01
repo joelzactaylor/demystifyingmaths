@@ -1,0 +1,19 @@
+@import url("/demystifyingmaths/css/practiceWrittenMethods.css");
+@import url("/demystifyingmaths/css/practiceRootsShell.css");
+
+/* Practice: powers and roots review.
+
+   The shared practice shell comes from practiceWrittenMethods.css, so this is
+   the same page as every other drill with different questions in it, and
+   practiceRootsShell.css adds the drawn root sign that carries its order in the
+   crook. What a review needs on top of a drill is one thing: a reflection row
+   that can point at more than one lesson, because a review stage is not a
+   section of a single lesson.
+
+   No viewport media queries: .layout is a fixed 900px panel that shared.css
+   scales with a transform under 900px, so nothing here may reflow. */
+
+/* A review stage stacks several lesson links, so the row aligns to its top.
+   The links' own layout comes from practiceWrittenMethods.css, beside the
+   engine that renders them. */
+.practice-reflection__stages li { align-items: flex-start; }

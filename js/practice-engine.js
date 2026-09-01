@@ -935,6 +935,24 @@
                 const stageStates = states.slice(stageIndex * 4, stageIndex * 4 + 4);
                 const revisit = stageStates.filter(function (item) { return !item.outcome; }).length;
                 const row = element("li");
+                /* A drill's stages are sections of its one lesson, so each row
+                   deep-links to the section. A review draws on several lessons,
+                   and names them: stage.lessons carries {label, url} and the row
+                   offers one link per lesson instead of an anchor. */
+                if (stage.lessons) {
+                    const heading = element("div", "practice-reflection__stage-name");
+                    heading.appendChild(element("b", "", stage.name));
+                    if (revisit) heading.appendChild(element("span", "", revisit + " to revisit"));
+                    row.appendChild(heading);
+                    const links = element("div", "practice-reflection__stage-links");
+                    stage.lessons.forEach(function (lesson) {
+                        const each = element("a", "", "Open the lesson on " + lesson.label.toLowerCase());
+                        each.href = lesson.url;
+                        links.appendChild(each);
+                    });
+                    row.appendChild(links);
+                    return row;
+                }
                 row.appendChild(element("b", "", stage.name));
                 const link = element("a", "", revisit
                     ? revisit + " to revisit · open this section of the lesson"

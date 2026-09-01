@@ -606,3 +606,13 @@
    shared.css scales with a transform below 900px, so a viewport breakpoint
    reflows the content inside a panel that is only being made smaller. A phone
    reports a 980px viewport and never fires one at all. */
+
+/* A REVIEW'S STAGE ROW — a drill's stage is a section of its one lesson, so its
+   row carries a single anchor link. A review's stage draws on several lessons
+   and names them, and js/practice-engine.js renders that shape whenever a bank
+   gives a stage a `lessons` list. The rules live here, with the engine that
+   emits them, so a new review cannot ship with the row unstyled. Nothing on a
+   drill page carries these classes, so nothing on one moves. */
+.practice-reflection__stage-name { display: grid; gap: 3px; }
+.practice-reflection__stage-name span { color: #6d5a3a; font-size: .84rem; }
+.practice-reflection__stage-links { display: grid; gap: 4px; justify-items: end; text-align: right; }

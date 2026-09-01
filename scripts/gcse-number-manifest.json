@@ -3039,7 +3039,7 @@
                 "Roots — square roots of perfect squares and of decimals, cube roots including negatives, and higher roots read from the order in the crook (4 questions).",
                 "Both roots, and the sign — what the root sign names against the solutions of x² = k, answered as a single choice naming all solutions or by typing the named root; no question ever asks for two typed values (4 questions)."
             ],
-            "generate": true,
+            "generate": false,
             "kind": "review",
             "learningPages": [
                 "structure/index-notation",
