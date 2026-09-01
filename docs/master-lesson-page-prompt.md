@@ -4,7 +4,7 @@ Use this prompt from the repository root. Replace `<TARGET>` only when a specifi
 
 Quick invocation for a new Codex turn:
 
-> Read and execute `docs/master-lesson-page-prompt.md` for the next unwritten teaching page. Treat the prompt as the complete brief and continue until every review and validation gate passes.
+> "Read and execute `docs/master-lesson-page-prompt.md` for the next unwritten teaching page. Treat the prompt as the complete brief and continue until every review and validation gate passes."
 
 To name the page explicitly:
 
@@ -35,6 +35,9 @@ Create `<TARGET>` from the ground up as a finished Demystifying Maths teaching p
 - Make the nouns and units do real teaching work in contextual examples. Do not use fractional people, cars, boxes or other indivisible objects.
 - Include only examples that earn their place: reveal a structural issue, misconception, zero, decimal boundary, contextual decision or check.
 - Whenever a rule explicitly mentions ignoring, retaining or removing trailing zeroes, include one short numerical example that makes that decision concrete instead of leaving it as prose.
+- **Mark the glossary terms by hand, as part of writing the page.** `js/glossary.js` carries the terms the course teaches and the card that shows them; the marks themselves are `<span class="gloss" data-term="quotient">quotient</span>` written into the prose. Marking used to be done by a scanner at load time, and it could not be taught the difference between "the difference of two squares" and "the difference is in what the columns are for", or between an algebraic identity and "the digits keep their identity". Read the page and decide. `node scripts/glossary-mark.mjs --write <page>` will propose a first set of marks; treat what it proposes as a draft to edit, not an answer. Mark a term **once per page**, at the first place a reader who did not know it would be stopped by it — in running prose only, never in a heading, a link, a bold label, a control, or notation, and never on the page whose own heading names that term, because that page is the definition. Be generous: a reader who has forgotten what a divisor is has forgotten it on every page, not only the one that teaches it. To add a term, add it to `js/glossary.js`; a word whose everyday sense is the one these pages use — mean, range, carry, solve — is refused by `scripts/glossary-check.mjs` on purpose.
+- **Never write a false statement because the true one is out of scope.** A page may leave a topic out; it may not say something that is wrong. "x² = −9 has no solution" is false — −9 has two square roots — and a reader who meets them later has been taught something they must unlearn, which is worse than never having been told. Scope the claim instead of breaking it: "no number on the number line squares to −9" is true, needs no vocabulary the page has not got, and stays true for the rest of the reader's life. The same move fixes "you cannot subtract a larger number from a smaller one", "a fraction cannot have a denominator of zero because it would be very large", and every other convenience that a later page has to undo. Where the honest version leaves a question open, name where it is answered and link it — `pages/extracurricular/` exists for exactly this, and a one-clause pointer costs nothing.
+- **Only real mistakes belong in `.slips`.** Every entry names an error a pupil actually makes — a rule misapplied, two procedures confused, a pattern over-generalised, a place-holder dropped — and states the specific wrong answer it produces. Test each one by asking who makes it and why. If the answer is "nobody would ever write that", it is a straw man: it teaches nothing, it pads the list, and it makes the real entries beside it look invented too. `&radic;36 = 1,296` fails the test, because no reader asked for a square root multiplies 36 by itself. A fact the page has already taught is not a mistake, and neither is advice to take care or to check the question: "Ignoring the requested direction — check whether the question asks for ascending or descending" names no wrong answer, where "Writing 5, 2, 0, &minus;1, &minus;6 answers the descending question instead" does. Do not tell the same mistake twice with different numbers. Four real slips beat six with two invented.
 - When a written method can produce an internal zero in the answer, visibly model one deliberate example. Align the zero in its correct column and explain that it holds the place when the current amount is smaller than the divisor; a warning in “common mistakes” is not enough.
 - Use descriptive section headings, worked examples, an inverse check, common mistakes and a five-point summary when those elements suit the topic.
 - End with the established practice and next-lesson cards, with exact links and titles from the curriculum sequence.
@@ -48,6 +51,7 @@ Create `<TARGET>` from the ground up as a finished Demystifying Maths teaching p
 - Give every step a generous stationary reading interval. Movement happens between stops; a highlight must not glide continuously through the entire calculation.
 - Ease scroll-driven opacity, position, line and highlight changes. Avoid abrupt class swaps that make writing or emphasis snap between frames; preserve a stationary interval after each eased reveal.
 - In written algorithms, use one continuous gold frame around the complete current amount, not separate boxes around its digits. Interpolate that frame's position and size between real step boundaries.
+- **The gold frame is drawn behind the marks it lights, and the stylesheet has to say so.** This is the trap: an absolutely positioned element painted after its siblings sits in front of them by default, so a frame appended last covers the very digits it was meant to pick out — and it looks deliberate enough that it survives a read-through. Give the frame `z-index: 0` and every mark it can reach `position: relative; z-index: 1`, which is what `longDivision`, `longMultiplication` and `indexNotation` already do. Two consequences follow. A frame that is a sibling of an opaque panel cannot just be lowered beneath it — it would go behind that panel's own background and vanish — so it moves *inside* the panel, above the background and below the contents; drop the panel's `overflow: hidden` if the frame's padding needs to sit proud of the edge, and measure the frame against the panel it now lives in. And anything that has to cross the frame — a travelling numeral, a subtraction rule, a brought-down digit — needs a layer above both. Fills are chosen to read through: a tinted mark over gold shows the gold, a solid one hides it.
 - Give written calculations generous, even vertical rhythm. Every adjacent numeral row—including the dividend and first product—must have the same centre-to-centre spacing whether or not a subtraction rule lies between them. If the dividend row must remain taller to clear its bracket and highlight, offset the working stack by half the row-height difference rather than leaving an oversized first gap. Overlay subtraction rules within the shared gaps instead of letting them alter the spacing. Keep numerals clearly separated from division brackets, fraction bars and subtraction rules; centre the gold frame around the numerals themselves instead of sizing it from the full row, so it never touches or crosses a neighbouring rule.
 - Reuse the established measured-cursor model from the neighbouring written-method pages: measure digit centres from the completed layout, cache the targets, use the same rounded gold treatment, hold the frame at each step, then ease its movement late in the transition. Do not derive its shape from entire grid-row rectangles.
 - Drive linked reference highlights from continuous scroll progress rather than abrupt stage-only class toggles. Keep the selected source highlighted while its value is chosen and copied, ease it away afterward, and aggregate repeated matches so an inactive step cannot overwrite the current highlight.
@@ -111,6 +115,42 @@ The written-methods lessons (`pages/curriculum/GCSE/number/structure/writtenMeth
 
 **Type.** Every numeral, set-out, expression and input uses `ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace` with `font-variant-numeric: tabular-nums`. Prose stays in the inherited Aleo. Notation inside a sentence goes in `<span class="sf">`, which already styles `sup` for powers.
 
+**Notation HTML cannot draw — never shy away from `<math>`, except for the radical.** Where the mathematics needs a shape no HTML element makes — a fraction bar, a raised index, a stacked coefficient — write MathML and let the browser render it:
+
+```html
+<math><mfrac><mn>3</mn><mn>10</mn></mfrac><mo>=</mo><mn>0.3</mn></math>
+```
+
+Getting the mathematics to render correctly outranks keeping the markup uniform, and a fraction or a superscript is laid out from ordinary box metrics, so it renders properly everywhere.
+
+**A square root is the exception. Always draw it — never write `<msqrt>`, and never assemble a `&radic;` character and a border by hand.** A browser lays `<msqrt>` out from the OpenType MATH table of whatever font the expression is set in: the rule thickness, the gap above the radicand, and the point where the bar meets the arm all come from that table, and the sign itself has to be a *stretchy* glyph. **macOS ships no font with a MATH table**, so the browser stretches a plain U+221A and guesses the rest — the bar floats away from the arm and the radicand sits loose beneath it. Naming math fonts in the stack does not fix it; it only moves the guess to whichever machine lacks them. A `&radic;` character with a `border-top` beside it fails the same way, because the glyph's arm ends somewhere different in every font and at every size.
+
+Use `.rad` from `lesson.css`, exactly as written, everywhere a root appears — in prose, in headings, in worked answers, in slips, and in whatever the page's JavaScript draws on its boards. It is one pattern with no variants:
+
+```html
+<span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">49</span></span>
+```
+
+Three things make it work, and all three have to stay:
+
+- **The sign is out of the flow and the radicand is in it.** Both boxes start at the same `y`, so the arm meets the bar exactly; and the whole radical takes its baseline from the radicand, so it sits on the line of the sentence around it instead of riding above it. An `inline-flex` radical takes its baseline from the SVG instead and floats a quarter of an em high.
+- **The stroke and the border are the same fraction of an em.** 3 units of a 40-unit viewBox drawn 1.32em tall is .099em, which is the `.1em` border. Change one and you change the other.
+- **The radicand keeps the surrounding font.** A root reads as part of its sentence rather than switching typeface mid-expression, which is what setting the whole expression in a math font does.
+
+Where a root sits in a flex row beside other marks — a statement being built a step at a time — give the row `align-items: baseline` so the radicand's baseline is what the row aligns on.
+
+**A bar over an expression carries grouping, and the clipped sign has to carry it too.** `.rad` over a single number needs only the clipped `&radic;`, because the flattened text reads `&radic;49`. Over a sum it does not: the bar is what says the root covers the whole of `9 + 16`, and stripped of styling that becomes `&radic;9 + 16`, which is a different and false statement. Open a bracket in the clipped sign and close it after the radical, so the flattened text reads `&radic;(9 + 16)`:
+
+```html
+<span class="rad"><span class="caret" aria-hidden="true">&radic;(</span>…<span class="rad__over">9 + 16</span></span><span class="caret" aria-hidden="true">)</span>
+```
+
+`scripts/notation-check.mjs` enforces both halves: a radicand holding an operator must open the bracket, and an opened bracket must be closed.
+
+Build MathML in JavaScript with `document.createElementNS("http://www.w3.org/1998/Math/MathML", tag)`. MathML elements are not HTML elements — `className` is not writable and neither are `offsetLeft` and friends — so set classes with `setAttribute("class", ...)` and measure positions from `getBoundingClientRect()`, dividing by the card's own scale.
+
+Stripped of its styling, positional notation loses the very thing that gives it meaning: `<msqrt><mn>49</mn></msqrt>` and `.rad` both flatten to "49", turning &radic;49 = 7 into the false 49 = 7. Put a clipped `<span class="caret" aria-hidden="true">&radic;</span>` inside the radical — the same span that stops `2<sup>5</sup>` flattening to twenty-five — so the flattened text reads once and reads true. Repair only the character that was lost: a clipped copy of the whole statement makes the stripped page read it twice.
+
 **The scroll-led card.** Copy the structure, not an approximation of it: a `.<topic>-scene` wrapper (`position: relative; overflow-anchor: none;`) that takes `height: var(--scene-height); min-height: var(--scene-min-height)` once `is-ready`, holding a `.<topic>-scene__sticky` card that is `position: absolute` until JavaScript pins it. The card is `2px solid #c9dce8`, `border-radius: 22px`, the gradient above, `box-shadow: 0 12px 30px rgba(20, 57, 78, .14)`, `contain: layout paint`, `overflow: hidden`, and a `grid-template-rows` with exactly one `minmax(0, 1fr)` row for the drawing. Give every scene kind the same number of grid children in both its worked and sandbox forms — wrap sandbox controls in one header block rather than adding a row.
 
 **Card furniture.** Reuse these verbatim, changing only the block name:
@@ -172,7 +212,7 @@ Complete at least two review passes after the first implementation:
 1. **Teacher pass:** challenge every phrase, calculation, unit, prerequisite and narrative transition. Look specifically for mixed routes, premature concepts and technically correct but unnatural explanations.
 2. **Pupil and visual pass:** imagine the drawing at every scroll stop and every input state. Look for static opening frames, off-centre compositions, overlapping labels, ambiguous pictures, layout jumps, focus loss, clipped marks and changing card dimensions.
 3. **Accessibility pass:** verify headings, labels, keyboard behaviour, live updates, reduced motion, non-colour cues and no-JavaScript fallbacks.
-4. **Repository pass:** run JavaScript syntax checks, `git diff --check`, the local link checker, practice-pairing checker, DOM/ID/ARIA checks, arithmetic assertions and CSS structural checks. Use the in-app browser for rendered testing when available; if it is unavailable, say so rather than silently substituting another browser surface.
+4. **Repository pass:** run JavaScript syntax checks, `git diff --check`, the local link checker, practice-pairing checker, `scripts/panel-check.mjs`, `scripts/notation-check.mjs`, `scripts/glossary-check.mjs`, DOM/ID/ARIA checks, arithmetic assertions and CSS structural checks. Use the in-app browser for rendered testing when available; if it is unavailable, say so rather than silently substituting another browser surface.
 
 If a flaw is found, fix it and repeat the relevant checks. Finish only when the page is mathematically precise, narratively ordered, visually centred, mechanically stable, accessible and indistinguishable in quality from the strongest completed pages.
 

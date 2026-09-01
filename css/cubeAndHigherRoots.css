@@ -1,0 +1,109 @@
+/* CUBE ROOTS AND HIGHER ROOTS
+
+   One thing this page needs beyond the shared teaching styles: the strip of
+   factors that shows a product's sign turning over as the count of negative
+   factors goes odd, even, odd. That is the whole of why an odd root reaches
+   every number and an even one does not, and it is the one idea here the reader
+   can drive rather than read.
+
+   The root sign and the index in its crook are .rad and .rad__index in
+   lesson.css, so any page can write a cube root.
+
+   The palette and the control styles are the written-methods ones; nothing here
+   invents a near-miss of them.
+
+   No viewport media queries below the reduced-motion block: .layout is a fixed
+   900px panel that shared.css scales with transform under 900px, so nothing here
+   may reflow. */
+
+.parity {
+    margin: 30px 0;
+    padding: 24px 34px 20px;
+    border: 2px solid #c9dce8;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 8px 22px rgba(23, 56, 73, .11);
+}
+
+/* The product written out in full, which is what grows as the count rises. Its
+   box is fixed so the strip below it does not move when a factor is added. */
+.parity__factors {
+    height: 2.4rem;
+    margin: 0 0 18px;
+    color: #173849;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: 1.24rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    line-height: 2.4rem;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.parity__cap {
+    display: block;
+    margin-bottom: 6px;
+    color: #52666f;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+}
+
+.parity__scale {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(5, 1fr);
+    outline: none;
+    cursor: pointer;
+    touch-action: none;
+}
+
+.parity__scale:focus-visible { border-radius: 14px; box-shadow: 0 0 0 4px rgba(17, 110, 147, .22); }
+
+.parity__cell {
+    display: grid;
+    gap: 3px;
+    padding: 10px 6px 11px;
+    box-sizing: border-box;
+    border: 2px solid #c6d4dc;
+    border-radius: 12px;
+    background: #fff;
+    text-align: center;
+    transition: border-color .18s ease, background-color .18s ease;
+}
+
+.parity__cell b {
+    color: #52666f;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: .72rem;
+    font-variant-numeric: tabular-nums;
+}
+
+/* The sign is carried by the minus itself; the colour only repeats it, so a
+   reader who cannot separate the two loses nothing. */
+.parity__cell i {
+    color: #09539d;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: 1.02rem;
+    font-style: normal;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+}
+
+.parity__cell.is-negative i { color: #9b5f12; }
+.parity__cell.is-current { border-color: #d99a20; background: #fff8df; }
+
+.parity__reading {
+    min-height: 3rem;
+    margin: 20px 0 0;
+    color: #173849;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* Nothing here animates on its own: a cell changes because the reader moved to
+   it. The easing on that change is the one exception. */
+@media (prefers-reduced-motion: reduce) {
+    .parity__cell { transition: none; }
+}

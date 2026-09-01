@@ -176,16 +176,6 @@
     color: #1a5276;
 }
 
-@media (max-width: 768px) {
-    .boxes-container {
-        flex-direction: column;
-    }
-
-    .sort-box {
-        min-height: 250px;
-    }
-}
-
 /* PRIME SORTING */
 
 .sorting-activity.prime-activity {
@@ -349,16 +339,6 @@
     color: #1a5276;
 }
 
-@media (max-width: 768px) {
-    .boxes-container {
-        flex-direction: column;
-    }
-
-    .sort-box {
-        min-height: 250px;
-    }
-}
-
 /* SINGLE VENN DIAGRAM */
 
 .single-venn-diagram {
@@ -428,28 +408,6 @@
 }
 
 /* Responsive tweaks */
-@media (max-width: 640px) {
-    .single-venn-universe {
-        max-width: 100%;
-        padding: 32px 20px 26px 20px;
-        min-height: 240px;
-    }
-
-    .single-venn-circle {
-        width: 150px;
-    }
-
-    .single-venn-title {
-        margin-bottom: 22px;
-        font-size: 1rem;
-    }
-
-    .single-venn-outside-label {
-        margin-top: 16px;
-        font-size: 0.9rem;
-    }
-}
-
 /* PARTITION VENN DIAGRAM */
 
 .partition-diagram {
@@ -559,31 +517,6 @@
 }
 
 /* Responsive: stack circles in two rows on small screens */
-@media (max-width: 640px) {
-    .partition-universe {
-        padding: 28px 20px 24px 20px;
-        min-height: 280px;
-    }
-
-    .partition-universe-circles-row {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px 24px;
-    }
-
-    .partition-circle {
-        max-width: 110px;
-    }
-
-    .partition-circle .partition-label {
-        font-size: 0.9rem;
-    }
-
-    .partition-other-region {
-        margin-top: 8px;
-    }
-}
-
 /* TWO-VENN DIAGRAM */
 
 .two-venn-diagram {
@@ -622,23 +555,6 @@
     width: 100%;
     height: auto;
     display: block;
-}
-
-@media (max-width: 640px) {
-    .two-venn-universe {
-        max-width: 100%;
-        padding: 32px 20px 26px 20px;
-        min-height: 240px;
-    }
-
-    .two-venn-title {
-        margin-bottom: 20px;
-        font-size: 1rem;
-    }
-
-    .two-venn-circles {
-        width: 320px;
-    }
 }
 
 /* OPERATION CONTAINERS */
@@ -1021,45 +937,6 @@
 }
 
 /* Responsive: stack cells on very small screens */
-@media (max-width: 640px) {
-    .number-sets-table thead {
-        display: none;
-    }
-
-    .number-sets-table,
-    .number-sets-table tbody,
-    .number-sets-table tr,
-    .number-sets-table td {
-        display: block;
-        width: 100%;
-    }
-
-    .number-sets-table tbody tr {
-        margin-bottom: 14px;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
-        background: #ffffff;
-    }
-
-    .number-sets-table tbody td {
-        border-bottom: 1px solid rgba(148, 163, 184, 0.3);
-    }
-
-    .number-sets-table tbody td:first-child {
-        background: linear-gradient(135deg, #0b4f7f 0%, #1565c0 100%);
-        color: #f9fafb;
-        font-size: 1.2rem;
-        padding: 10px 12px;
-        border-bottom: none;
-    }
-
-    .number-sets-table tbody td:nth-child(2),
-    .number-sets-table tbody td:nth-child(3) {
-        padding: 8px 12px;
-    }
-}
-
 /* SET LAWS */
 
 .set-laws-section {
@@ -1262,25 +1139,6 @@
     display: none;
 }
 
-@media (max-width: 640px) {
-    .set-laws-checker {
-        padding: 1.1rem;
-    }
-
-    .set-law-quiz-card {
-        padding: 1rem;
-    }
-
-    .set-law-quiz-options {
-        flex-direction: column;
-    }
-
-    .set-law-quiz-options button {
-        width: 100%;
-        text-align: center;
-    }
-}
-
 /* SHARED */
 
 .definition {
@@ -1306,3 +1164,8 @@ section h3 {
 .set-symbol {
     font-family: "Cambria Math", "STIX Two Math", "Latin Modern Math", serif;
 }
+
+/* No width media query here on purpose: .layout is a fixed 900px panel that
+   shared.css scales with a transform below 900px, so a viewport breakpoint
+   reflows the content inside a panel that is only being made smaller. A phone
+   reports a 980px viewport and never fires one at all. */

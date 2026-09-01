@@ -1,0 +1,228 @@
+/* POSITIVE AND NEGATIVE SQUARE ROOTS
+
+   Two things this page needs beyond the shared teaching styles: the pair of
+   movable lines that carry a number and its square at the same time, and the
+   three short lines that count how many numbers reach a given square.
+
+   The palette and the control styles are the written-methods ones; nothing here
+   invents a near-miss of them.
+
+   No viewport media queries below the reduced-motion block: .layout is a fixed
+   900px panel that shared.css scales with transform under 900px, so nothing here
+   may reflow. */
+
+/* A NUMBER AND ITS SQUARE, ON TWO LINES THAT MOVE TOGETHER
+
+   The upper line is the numbers −10 to 10; the lower is their squares, 0 to 100,
+   with a tick at each square. Moving either marker moves the other, because both
+   are views of one value. The upper line carries a second, hollow marker at the
+   number of the same size and the opposite sign: two places above, one below,
+   which is the whole of the lesson in one picture. The two markers meet only at
+   0, and the squares crowd towards the left because squaring is not a stretch by
+   a constant.
+
+   Nothing on the page says a marker can be moved. It is the only thing on either
+   line that can be taken hold of, and the slider role on each axis is how a
+   keyboard and a screen reader find the same affordance. */
+
+.mirror {
+    margin: 30px 0;
+    padding: 26px 58px 22px;
+    border: 2px solid #c9dce8;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 8px 22px rgba(23, 56, 73, .11);
+}
+
+.mirror__row + .mirror__row { margin-top: 34px; }
+
+.mirror__cap {
+    display: block;
+    margin-bottom: 4px;
+    color: #52666f;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+}
+
+/* Tall enough to take hold of on a touch screen without the line itself moving:
+   the height is the target, and the rule through the middle is the axis. */
+.mirror__axis {
+    position: relative;
+    height: 74px;
+    outline: none;
+    cursor: ew-resize;
+    touch-action: none;
+}
+
+.mirror__axis:focus-visible { border-radius: 12px; box-shadow: 0 0 0 4px rgba(17, 110, 147, .22); }
+
+.mirror__line {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    height: 2px;
+    background: #5d91b0;
+}
+
+.mirror__tick {
+    position: absolute;
+    top: calc(50% - 7px);
+    width: 2px;
+    height: 16px;
+    background: #b8cbd7;
+    transform: translateX(-50%);
+}
+
+.mirror__mark {
+    position: absolute;
+    top: calc(50% + 14px);
+    color: #09539d;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: .74rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    transform: translateX(-50%);
+}
+
+.mirror__row--square .mirror__mark { color: #9b5f12; }
+
+/* Eased between steps, so a key press moves a marker rather than teleporting
+   it. While a finger is down the easing comes off, or the marker would trail
+   behind the point it is being dragged to. */
+.mirror__marker,
+.mirror__value { transition: left .16s ease; }
+.mirror.is-dragging .mirror__marker,
+.mirror.is-dragging .mirror__value { transition: none; }
+
+.mirror__marker {
+    position: absolute;
+    top: calc(50% - 15px);
+    width: 2px;
+    height: 30px;
+    background: #b86821;
+    transform: translateX(-50%);
+}
+
+.mirror__marker::after {
+    position: absolute;
+    top: calc(50% - 9px);
+    left: -8px;
+    width: 18px;
+    height: 18px;
+    box-sizing: border-box;
+    border: 3px solid #b86821;
+    border-radius: 50%;
+    background: #fff8df;
+    content: "";
+}
+
+/* The second number of the pair, held by nothing: it is not what the reader is
+   moving, and it is not drawn as though it were. */
+.mirror__marker--mirror { background: #c6a06a; }
+.mirror__marker--mirror::after { border-style: dashed; background: #fff; }
+
+/* The value rides above its own marker, so each line is readable on its own. */
+.mirror__value {
+    position: absolute;
+    top: calc(50% - 42px);
+    padding: 2px 8px;
+    border-radius: 8px;
+    background: #b86821;
+    color: #fff;
+    font: 700 .78rem/1.4 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    transform: translateX(-50%);
+}
+
+.mirror__value--mirror {
+    border: 2px dashed #b86821;
+    background: #fff;
+    color: #9b5f12;
+    padding: 0 6px;
+}
+
+/* At 0 the two markers stand in the same place, so the second one is taken off
+   rather than left stacked under the first. */
+.mirror__marker--mirror.is-merged,
+.mirror__value--mirror.is-merged { opacity: 0; }
+
+.mirror__reading {
+    min-height: 1.5em;
+    margin: 26px 0 0;
+    color: #173849;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* HOW MANY NUMBERS REACH A GIVEN SQUARE
+
+   Three lines from −10 to 10 with 0 marked, carrying a dot at every value that
+   squares to the number beside them: two, then one, then none. */
+
+.cases {
+    margin: 28px 0;
+    padding: 22px 26px 16px;
+    border: 2px solid #d9e2ec;
+    border-radius: 16px;
+    background: #f8fbfd;
+}
+
+.cases__list { display: grid; gap: 18px; margin: 0; padding: 0; list-style: none; }
+
+.cases__case { display: grid; gap: 18px; grid-template-columns: 116px 1fr 176px; align-items: center; }
+
+.cases__label {
+    color: #173849;
+    font: 700 1.02rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+}
+
+.cases__line { position: relative; display: block; height: 22px; }
+
+.cases__rule {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    left: 0;
+    height: 2px;
+    background: #5d91b0;
+}
+
+.cases__zero {
+    position: absolute;
+    top: 2px;
+    left: 50%;
+    width: 2px;
+    height: 18px;
+    background: #b8cbd7;
+    transform: translateX(-50%);
+}
+
+.cases__dot {
+    position: absolute;
+    top: 4px;
+    width: 14px;
+    height: 14px;
+    box-sizing: border-box;
+    border: 3px solid #b86821;
+    border-radius: 50%;
+    background: #fff8df;
+    transform: translateX(-50%);
+}
+
+.cases__count { color: #41535c; font-size: .92rem; }
+
+.cases__reading { margin: 16px 0 0; color: #52666f; font-size: .86rem; text-align: center; }
+
+/* A marker moves because the reader moved it, so nothing here animates on its
+   own. The easing between keyboard steps is the one exception, and it goes when
+   the reader has asked for no motion. */
+@media (prefers-reduced-motion: reduce) {
+    .mirror__marker,
+    .mirror__value { transition: none; }
+}

@@ -222,6 +222,91 @@ a.topic-card--next:hover { border-left-color: #09539d; background-color: #eef7fc
 .topic-card__count { color: #41535c; font-size: .88rem; font-weight: 700; }
 .topic-card__count + .topic-card__soon { padding-left: 10px; border-left: 1px solid #d9e2ec; }
 
+/* THE GLOSSARY — a word the course teaches, marked where it is first used, with
+   its meaning in a card on hover, on focus or on a tap.
+
+   Quiet by design: a dotted underline in the page's own ink, no colour change,
+   no icon. It has to be findable without becoming the thing the eye lands on,
+   because a paragraph with three of these in it should still read as a
+   paragraph.
+
+   The card lives inside .layout, so the transform shared.css puts on the panel
+   below 900px scales the card with everything else instead of leaving it
+   floating at full size over a shrunken page. */
+
+/* Marked plainly enough to be seen without being read as a link. A dotted rule
+   in the panel's stroke blue, two pixels thick like every other rule on the
+   site, set below the baseline so descenders are not struck through. Dotted
+   rather than solid is the whole distinction: a solid underline in body text
+   means somewhere to go, and these go nowhere. It turns solid and teal under
+   the pointer, which is the one moment a card is about to appear. */
+.gloss {
+    text-decoration: underline dotted #5d91b0;
+    text-decoration-thickness: 2px;
+    text-underline-offset: .2em;
+    text-decoration-skip-ink: auto;
+    cursor: help;
+}
+
+.gloss:hover,
+.gloss.is-open {
+    text-decoration-style: solid;
+    text-decoration-color: #116e93;
+}
+.gloss:focus-visible { outline: 3px solid #09539d; outline-offset: 2px; border-radius: 3px; }
+
+/* Read after the word by assistive technology, through aria-describedby, so the
+   meaning arrives without the card being involved at all. */
+.gloss__spoken {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+/* A layer of its own, so the card has a containing block at every width. It
+   takes no space and the card hangs off it. */
+.gloss-layer { position: relative; height: 0; }
+
+.gloss-card {
+    position: absolute;
+    z-index: 40;
+    width: 290px;
+    box-sizing: border-box;
+    padding: 12px 15px 13px;
+    border: 2px solid #c9dce8;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 10px 26px rgba(20, 57, 78, .18);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 4px);
+    transition: opacity .14s ease, transform .14s ease;
+    visibility: hidden;
+}
+
+.gloss-card.is-shown { opacity: 1; visibility: visible; transform: translate(-50%, 0); }
+.gloss-card.is-below { transform: translate(-50%, -4px); }
+.gloss-card.is-below.is-shown { transform: translate(-50%, 0); }
+.gloss-card.is-still { transition: none; }
+
+.gloss-card b {
+    display: block;
+    margin-bottom: 4px;
+    color: #09539d;
+    font-size: .82rem;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+
+.gloss-card p { margin: 0; color: #41535c; font-size: .9rem; line-height: 1.5; text-shadow: none; }
+
+@media (prefers-reduced-motion: reduce) {
+    .gloss-card { transition: none; }
+}
+
 /* AUTHOR NOTE — the owner's to-cover brief on stub pages (teaching and practice).
    Dashed on purpose: it is scaffolding, deleted as each page's content is written. */
 

@@ -26,6 +26,7 @@
 .reading-card h2 { margin: 0 0 6px; color: #09539d; font-size: 1.02rem; }
 .reading-card p { margin: 0; color: #41535c; font-size: .92rem; line-height: 1.55; }
 
-@media (max-width: 700px) {
-    .reading-pair { grid-template-columns: 1fr; }
-}
+/* No width media query here on purpose: .layout is a fixed 900px panel that
+   shared.css scales with a transform below 900px, so a viewport breakpoint
+   reflows the content inside a panel that is only being made smaller. A phone
+   reports a 980px viewport and never fires one at all. */

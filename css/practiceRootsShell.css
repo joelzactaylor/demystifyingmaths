@@ -1,0 +1,184 @@
+/* WHAT THE POWERS-AND-ROOTS DRILLS NEED BEYOND THE SHARED SHELL
+
+   practiceWrittenMethods.css carries the practice shell every drill on the site
+   uses: the coach, the question card, the controls, the verdict and the
+   reflection. Two things it does not carry are needed here.
+
+   Notation. A practice page loads shared.css, curriculum.css, practice.css and
+   its own stylesheet — never lesson.css, which is where the teaching pages keep
+   their notation. So a power or a root generated into a question card arrives
+   with no styles at all: the clipped caret that should be invisible renders as
+   a literal "^", and a drawn radical loses its bar and its sign. The rules
+   below are the ones from lesson.css, copied so a power and a root read the
+   same on a drill as in the lesson that taught them.
+
+   The multi-part answer. A question answered in two labelled boxes uses the
+   control practiceLongDivision.css defines for itself; it is repeated here so
+   these pages do not have to import a drill on a different method to get it.
+
+   No viewport media queries: .layout is a fixed 900px panel that shared.css
+   scales with a transform under 900px, so nothing here may reflow. */
+
+.caret {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.rad {
+    position: relative;
+    display: inline-block;
+    /* Room for the sign, which is laid over it. */
+    padding-left: .79em;
+    line-height: 1;
+}
+
+.rad__sign {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: .79em;
+    height: 1.32em;
+    overflow: visible;
+}
+
+/* A ROOT OF A HIGHER ORDER — the index sits in the crook of the sign.
+
+   There is no room for it inside the crook itself: the sign is .79em wide and
+   the crook is the first 5 units of a 24-unit viewBox, about .16em, which will
+   not hold a digit. So the sign moves right and the index takes the space that
+   opens up on its left, overlapping the crook the way it is written by hand.
+
+   The offsets are read off the same viewBox as the sign. The arm's foot runs
+   along y = 24 of 40, which at 1.32em tall is .79em down; an index set at .56em
+   with its top at .16em puts its baseline there, on the line the arm starts
+   from. Change the sign's box and these move with it. */
+
+.rad--order { padding-left: 1.1em; }
+.rad--order .rad__sign { left: .31em; }
+
+/* The order is drawn by the stylesheet rather than written into the element.
+   Anything in the DOM survives having the markup stripped, so an index written
+   as text flattens into the radicand beside it and the cube root of 27 reads as
+   "³√327". Generated content is not text, so the clipped sign is left as the one
+   place the order is spelled — which is what keeps the flattened line true. */
+.rad__index {
+    position: absolute;
+    top: .16em;
+    left: 0;
+    font-size: .56em;
+    line-height: 1;
+}
+
+.rad__index::before { content: attr(data-order); }
+
+/* An inline-block takes its baseline from its last line box, so this is what
+   puts the radical on the sentence's baseline. */
+.rad__over {
+    display: block;
+    border-top: .1em solid currentColor;
+    padding: .17em .18em 0 .02em;
+    line-height: 1;
+}
+
+/* The two shapes the practice engine generates. Both keep the card's monospace
+   figures and sit on the sentence's own line. */
+
+.practice-power {
+    display: inline-block;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.practice-power sup {
+    font-size: .62em;
+    line-height: 0;
+    vertical-align: super;
+}
+
+.practice-radical {
+    display: inline-block;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+/* THE MULTI-PART ANSWER — two labelled boxes, each marked on its own. */
+
+.practice-parts { margin-top: 22px; }
+
+.practice-parts__list {
+    display: grid;
+    gap: 8px;
+    margin-top: 14px;
+    padding: 16px 18px;
+    border: 2px solid #d8e1e5;
+    border-radius: 14px;
+    background: #f8fbfc;
+}
+
+.practice-parts__cell {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 14px;
+    align-items: center;
+    padding: 8px 11px;
+    border: 2px solid transparent;
+    border-radius: 11px;
+    cursor: pointer;
+}
+
+.practice-parts__label {
+    color: #41535c;
+    font-size: .96rem;
+    font-weight: 700;
+}
+
+.practice-parts__cell input {
+    width: 148px;
+    padding: 9px 12px;
+    border: 2px solid #cfdbe0;
+    border-radius: 10px;
+    background: #fff;
+    color: #172f3b;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+    font-size: 1.2rem;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+}
+
+.practice-parts__cell input:focus-visible {
+    border-color: #b9832c;
+    outline: 3px solid #f0dcae;
+    outline-offset: 2px;
+}
+
+.practice-parts__cell.is-correct {
+    border-color: #a9c9b0;
+    background: #eef6f0;
+}
+
+.practice-parts__cell.is-correct input { border-color: #6f9a7c; }
+
+.practice-parts__cell.is-wrong {
+    border-color: #e0b9ae;
+    background: #fdf1ed;
+}
+
+.practice-parts__cell.is-wrong input { border-color: #c07d68; border-style: dashed; }
+
+@media print {
+    .practice-question__expression.practice-division-line,
+    .practice-parts__list { border-color: #999; background: #fff; }
+}
+
+@media print {
+    .practice-question__expression.practice-long { border-color: #999; background: #fff; }
+}
+
+/* No width media query here on purpose: .layout is a fixed 900px panel that
+   shared.css scales with a transform below 900px, so a viewport breakpoint
+   reflows the content inside a panel that is only being made smaller. A phone
+   reports a 980px viewport and never fires one at all. */

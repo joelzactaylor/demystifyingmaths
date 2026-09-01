@@ -16,6 +16,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
+    <script src="/demystifyingmaths/js/glossary.js" defer></script>
     <script src="/demystifyingmaths/js/inequalitySymbols.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,7 +54,7 @@
                 <h1>Six symbols describe how two values compare</h1>
                 <p class="prereq"><b>Before this page:</b> <span>be able to put numbers in
                         <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/orderingNumbers.html">order</a>, decimals and
-                        negatives included. Every symbol below is a statement about which of two quantities is the
+                        <span class="gloss" data-term="negative">negatives</span> included. Every symbol below is a statement about which of two <span class="gloss" data-term="quantity">quantities</span> is the
                         larger.</span></p>
 
                 <p>An equals sign records that two quantities match. Five related symbols record that they differ or
@@ -180,12 +181,12 @@
                     <article>
                         <h2>Decimals</h2>
                         <p class="worked-comparisons__statement">0.72 &lt; 0.8</p>
-                        <p>Write 0.8 as 0.80. Both whole-number parts are zero, then 7 tenths is less than 8 tenths.</p>
+                        <p>Write 0.8 as 0.80. Both whole-number parts are <span class="gloss" data-term="zero">zero</span>, then 7 <span class="gloss" data-term="tenth">tenths</span> is less than 8 tenths.</p>
                     </article>
                     <article>
                         <h3>Negative numbers</h3>
                         <p class="worked-comparisons__statement">&minus;3 &gt; &minus;8</p>
-                        <p>&minus;3 is closer to zero, so it lies further right on the number line and is the larger
+                        <p>&minus;3 is closer to zero, so it lies further right on the <span class="gloss" data-term="number line">number line</span> and is the larger
                             value.</p>
                     </article>
                 </div>
@@ -285,7 +286,7 @@
                         <defs>
                             <linearGradient id="integer-line-range" x1="0" y1="0" x2="1" y2="0">
                                 <stop offset="0" stop-color="#78a7c5" />
-                                <stop offset="1" stop-color="#3568b8" />
+                                <stop offset="1" stop-color="#5d91b0" />
                             </linearGradient>
                             <marker id="integer-line-arrow-start" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7"
                                 markerHeight="7" orient="auto">
@@ -363,7 +364,7 @@
                             <p>The closed right boundary is included.</p>
                         </li>
                         <li>
-                            <p>Read the integer points between the boundaries.</p>
+                            <p>Read the <span class="gloss" data-term="integer">integer</span> points between the boundaries.</p>
                         </li>
                     </ol>
                     <p class="integer-example__answer"><strong data-boundary-answer><i>n</i> = &minus;1, 0, 1, 2 or
@@ -390,6 +391,27 @@
                     <li><b>Reading only left to right</b><span>3 &lt; <i>n</i> means that <i>n</i> is greater than
                             3.</span></li>
                 </ul>
+            </section>
+
+            <section>
+                <h1 id="remember">Remember</h1>
+                <ol class="recap">
+                    <li>The six symbols are <span class="sf">=</span>, <span class="sf">&ne;</span>, <span
+                            class="sf">&lt;</span>, <span class="sf">&gt;</span>, <span class="sf">&le;</span> and
+                        <span class="sf">&ge;</span>, and each one describes the value on the left against the value on
+                        the right.</li>
+                    <li>The point of <span class="sf">&lt;</span> or <span class="sf">&gt;</span> faces the smaller
+                        value and the wide opening faces the larger, so <span class="sf">4 &lt; 9</span> and <span
+                            class="sf">9 &gt; 4</span> record the same comparison.</li>
+                    <li>The line underneath in <span class="sf">&le;</span> and <span class="sf">&ge;</span> adds
+                        &ldquo;or equal to&rdquo;, so <span class="sf">n &le; 12</span> includes 12 while <span
+                            class="sf">n &lt; 12</span> leaves it out.</li>
+                    <li>&ldquo;No more than 12&rdquo; is <span class="sf">n &le; 12</span> and &ldquo;no less than
+                        4&rdquo; is <span class="sf">n &ge; 4</span>, which are the phrases that name a boundary the
+                        value is allowed to reach.</li>
+                    <li>Two inequalities joined hold a value between boundaries: the integers satisfying <span
+                            class="sf">&minus;2 &lt; n &le; 3</span> are &minus;1, 0, 1, 2 and 3.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">

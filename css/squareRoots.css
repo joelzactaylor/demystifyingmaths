@@ -1,0 +1,533 @@
+/* SQUARE ROOTS
+
+   Four things this page needs beyond the shared teaching styles: the root sign
+   with a bar over the number it covers, the scroll-led card that reads a square
+   backwards into its side, the unit square that shows why a root below 1 is
+   larger than its number, and the row of decimal places that halves when a
+   decimal is rooted.
+
+   The palette, the card furniture and the input styles are the written-methods
+   ones; nothing here invents a near-miss of them.
+
+   No viewport media queries below the reduced-motion block: .layout is a fixed
+   900px panel that shared.css scales with transform under 900px, so nothing here
+   may reflow. */
+
+/* THE SCROLL-LED CARD
+
+   The scene reserves its own scroll distance; the card inside it is pinned by
+   JavaScript while the reader passes through, so every drawing advances with the
+   scroll rather than on a timer. */
+
+/* Before JavaScript sets its travel — and for a reader without it — the scene
+   still has to be as tall as the card standing in it, or the card would hang
+   over the paragraph beneath. */
+.root-scene {
+    position: relative;
+    min-height: min(628px, calc(100vh - 104px));
+    margin: 26px 0 8px;
+    overflow-anchor: none;
+}
+
+.root-scene.is-ready { height: var(--scene-height); min-height: var(--scene-min-height); }
+
+.root-scene__sticky {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: grid;
+    height: min(628px, calc(100vh - 104px));
+    min-height: 470px;
+    box-sizing: border-box;
+    grid-template-rows: auto minmax(0, 1fr) auto auto;
+    overflow: hidden;
+    border: 2px solid #c9dce8;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #fbfdff 0%, #f2f8fc 100%);
+    box-shadow: 0 12px 30px rgba(20, 57, 78, .14);
+    contain: layout paint;
+    overflow-anchor: none;
+    will-change: transform;
+}
+
+.root-scene__sticky.is-pinned { position: fixed; right: auto; z-index: 900; transform-origin: top left; }
+
+.root-scene__heading {
+    margin: 0;
+    padding: 20px 24px 2px;
+    color: #173849;
+    font: 700 1.34rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+}
+
+/* THE BOARD — whatever the scene draws sits centred in the card's one flexible
+   row, so every scene kind keeps the same four rows. */
+
+.root-board { position: relative; display: grid; min-height: 0; padding: 6px 24px 0; place-items: center; }
+.root-board__paper { position: relative; display: grid; justify-items: center; width: 100%; }
+
+/* One gold frame, shared by every scene, interpolated between measured targets
+   rather than snapped between class names.
+
+   It is drawn BEHIND the marks it lights, which is what the fill is for: the
+   gold shows through and around them. That takes saying out loud, because an
+   absolutely positioned element painted after its siblings sits in front of them
+   by default — so the frame would cover the very digits it is meant to pick out.
+   Every mark the frame can reach is therefore given a layer above it. */
+.root-mark {
+    position: absolute;
+    z-index: 0;
+    box-sizing: border-box;
+    border: 2px solid #d99a20;
+    border-radius: 13px;
+    background: #fff2c9;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.root-line {
+    min-height: 1.5em;
+    margin: 0;
+    color: #09539d;
+    font: 700 1.24rem/1.25 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    opacity: 0;
+    will-change: opacity, transform;
+}
+
+.root-line--quiet { color: #173849; font-size: 1.08rem; }
+
+/* MEASURING A SIDE OFF AN AREA — the tiles are there first and the side is what
+   is read off them, which is the direction a root is taken in. */
+
+.root-tiles { display: grid; gap: 12px; justify-items: center; }
+
+.root-tiles__frame {
+    position: relative;
+    display: grid;
+    width: max-content;
+    gap: 6px;
+    grid-template-columns: 40px 224px;
+    grid-template-rows: 24px 224px;
+    margin: 0 auto;
+}
+
+.root-bracket {
+    position: relative;
+    display: grid;
+    place-items: center;
+    color: #52666f;
+    font: 700 .82rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    opacity: 0;
+}
+
+.root-bracket::before,
+.root-bracket::after { position: absolute; background: currentColor; content: ""; }
+
+.root-bracket--top,
+.root-bracket--top-half {
+    height: 18px;
+    align-self: end;
+    justify-self: start;
+    border-bottom: 2px solid currentColor;
+    color: #09539d;
+}
+
+.root-bracket--top::before,
+.root-bracket--top-half::before { bottom: 0; left: 0; width: 2px; height: 7px; }
+.root-bracket--top::after,
+.root-bracket--top-half::after { right: 0; bottom: 0; width: 2px; height: 7px; }
+
+.root-bracket--side,
+.root-bracket--side-half {
+    align-self: start;
+    justify-self: end;
+    border-right: 2px solid currentColor;
+    color: #9b5f12;
+}
+
+.root-bracket--side::before,
+.root-bracket--side-half::before { top: 0; right: 0; width: 7px; height: 2px; }
+.root-bracket--side::after,
+.root-bracket--side-half::after { right: 0; bottom: 0; width: 7px; height: 2px; }
+
+.root-tiles__frame .root-bracket--top { width: 100%; grid-area: 1 / 2; }
+.root-tiles__frame .root-bracket--side { width: 34px; height: 100%; grid-area: 2 / 1; }
+
+.root-tiles__square {
+    position: relative;
+    width: 224px;
+    height: 224px;
+    box-sizing: border-box;
+    border: 2px solid #173849;
+    border-radius: 4px;
+    background: #fff;
+    grid-area: 2 / 2;
+    opacity: 0;
+}
+
+.root-tiles__cell {
+    position: absolute;
+    z-index: 1;
+    box-sizing: border-box;
+    background: rgba(93, 145, 176, .18);
+    box-shadow: inset 0 0 0 2px #b86821;
+    opacity: 0;
+}
+
+/* Sized around the tiles rather than around the grid row. The tiles are tinted
+   rather than solid, so the gold reads through them. */
+.root-tiles__square .root-mark { border-radius: 8px; background: rgba(255, 242, 201, .5); }
+
+.root-tiles__tally {
+    min-height: 1.4em;
+    margin: 0;
+    color: #52666f;
+    font: 700 .96rem/1.25 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    opacity: 0;
+}
+
+/* READING THE SQUARES BACKWARDS — the statement being built, and the squares of
+   1 to 15 under it as the reference it is read out of. */
+
+.root-find { position: relative; display: grid; gap: 18px; justify-items: center; width: 100%; }
+
+/* The sign, the equals and the answer are separate boxes so each can be drawn
+   in its own step; the gap is the space an operator would otherwise carry. */
+.root-find__statement {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    min-height: 1.5em;
+    margin: 0;
+    gap: .3em;
+    align-items: baseline;
+    color: #173849;
+    font: 700 1.9rem/1.15 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.root-find__radicand { opacity: 0; }
+.root-find__equals { color: #b86821; opacity: 0; }
+.root-find__answer { color: #09539d; opacity: 0; }
+
+.root-find__list {
+    display: grid;
+    gap: 3px 30px;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(5, auto);
+}
+
+.root-find__row {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 7px;
+    grid-template-columns: 44px 10px 44px;
+    align-items: baseline;
+    padding: 2px 5px;
+    color: #173849;
+    font: 700 .96rem/1.35 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    opacity: 0;
+}
+
+.root-find__row > b { color: #09539d; text-align: right; }
+.root-find__row > i { color: #52666f; font-style: normal; text-align: center; }
+.root-find__row > span { text-align: left; }
+.root-find__row sup { position: relative; top: -.62em; font-size: .68em; line-height: 0; vertical-align: baseline; }
+
+/* The number that was squared, copied out of its row and into the answer. The
+   original stays where it is, so the movement reads as copying rather than as
+   the list losing a value. */
+/* The travelling numeral passes over both the list and the frame on it. */
+.root-find__flier {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    display: grid;
+    place-items: center;
+    color: #09539d;
+    font: 700 1.9rem/1.15 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.root-find__note {
+    min-height: 1.5em;
+    margin: 0;
+    color: #173849;
+    font: 700 1.12rem/1.25 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    opacity: 0;
+}
+
+/* WHERE A NUMBER FALLS AMONG THE SQUARES
+
+   Two lines, one number. The upper one is the numbers 1 to 100 with a tick at
+   each square; the lower one is the roots 1 to 10 with a tick at each whole
+   number. Both carry a marker for the same value, and either can be moved: the
+   other follows. The two markers do not sit at the same place, and that is the
+   point — 50 is halfway along the numbers while its root is two thirds of the
+   way along the roots, because squaring is not a stretch by a constant.
+
+   Nothing on the page says a marker can be moved. It is the only thing on either
+   line that can be taken hold of, and the slider role on each axis is how a
+   keyboard and a screen reader find the same affordance. */
+
+.between {
+    margin: 30px 0;
+    padding: 26px 58px 22px;
+    border: 2px solid #c9dce8;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 8px 22px rgba(23, 56, 73, .11);
+}
+
+.between__row + .between__row { margin-top: 34px; }
+
+.between__cap {
+    display: block;
+    margin-bottom: 4px;
+    color: #52666f;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .07em;
+    text-transform: uppercase;
+}
+
+/* Tall enough to take hold of on a touch screen without the line itself moving:
+   the height is the target, and the rule through the middle is the axis. */
+.between__axis {
+    position: relative;
+    height: 74px;
+    outline: none;
+    cursor: ew-resize;
+    touch-action: none;
+}
+
+.between__axis:focus-visible { border-radius: 12px; box-shadow: 0 0 0 4px rgba(17, 110, 147, .22); }
+
+.between__line {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: 0;
+    height: 2px;
+    background: #5d91b0;
+}
+
+.between__tick {
+    position: absolute;
+    top: calc(50% - 7px);
+    width: 2px;
+    height: 16px;
+    background: #b8cbd7;
+    transform: translateX(-50%);
+}
+
+.between__mark {
+    position: absolute;
+    top: calc(50% + 14px);
+    color: #09539d;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: .74rem;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+    transform: translateX(-50%);
+}
+
+.between__row--root .between__mark { color: #9b5f12; }
+
+.between__marker {
+    position: absolute;
+    top: calc(50% - 15px);
+    width: 2px;
+    height: 30px;
+    background: #b86821;
+    transform: translateX(-50%);
+}
+
+.between__marker::after {
+    position: absolute;
+    top: calc(50% - 9px);
+    left: -8px;
+    width: 18px;
+    height: 18px;
+    box-sizing: border-box;
+    border: 3px solid #b86821;
+    border-radius: 50%;
+    background: #fff8df;
+    content: "";
+}
+
+/* The value rides above its own marker, so each line is readable on its own. */
+.between__value {
+    position: absolute;
+    top: calc(50% - 42px);
+    padding: 2px 8px;
+    border-radius: 8px;
+    background: #b86821;
+    color: #fff;
+    font: 700 .78rem/1.4 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    transform: translateX(-50%);
+}
+
+.between__reading {
+    margin: 26px 0 0;
+    color: #173849;
+    font-size: 1rem;
+    text-align: center;
+}
+
+/* A ROOT LARGER THAN ITS NUMBER — one square of side 1, halved both ways, with
+   the corner piece measured. The 1 and the 0.5 sit in separate bracket rows, so
+   neither label crosses the other. */
+
+.root-unit { display: grid; gap: 12px; justify-items: center; }
+
+.root-unit__frame {
+    position: relative;
+    display: grid;
+    width: max-content;
+    gap: 5px;
+    grid-template-columns: 32px 28px 216px;
+    grid-template-rows: 20px 20px 216px;
+    margin: 0 auto;
+}
+
+.root-unit__frame .root-bracket--top { width: 100%; grid-area: 1 / 3; }
+.root-unit__frame .root-bracket--top-half { width: 50%; color: #b86821; grid-area: 2 / 3; }
+.root-unit__frame .root-bracket--side { width: 26px; height: 100%; grid-area: 3 / 1; }
+.root-unit__frame .root-bracket--side-half { width: 22px; height: 50%; color: #b86821; grid-area: 3 / 2; }
+
+.root-unit__square {
+    position: relative;
+    width: 216px;
+    height: 216px;
+    box-sizing: border-box;
+    border: 2px solid #173849;
+    border-radius: 4px;
+    background: #fff;
+    grid-area: 3 / 3;
+    overflow: hidden;
+    opacity: 0;
+}
+
+.root-unit__rule { position: absolute; background: #5d91b0; opacity: 0; }
+.root-unit__rule--column { top: 0; bottom: 0; left: 50%; width: 2px; }
+.root-unit__rule--row { top: 50%; right: 0; left: 0; height: 2px; }
+
+.root-unit__quarter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%;
+    box-sizing: border-box;
+    background: rgba(184, 104, 33, .17);
+    box-shadow: inset 0 0 0 2px #b86821;
+    opacity: 0;
+}
+
+.root-unit__area {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    color: #9b5f12;
+    font: 700 1.02rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+}
+
+/* HALVING A COUNT OF DECIMAL PLACES — the places are counted under the digits
+   they belong to, so a count of four is something to see rather than a claim to
+   take on trust. The tick row keeps its height whether or not it holds a mark,
+   so counting them cannot move the line above. */
+
+.root-dec { position: relative; display: grid; gap: 4px; justify-items: center; width: 100%; }
+
+.root-dec__line {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: .16em;
+    align-items: baseline;
+    color: #173849;
+    font: 700 1.86rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.root-dec__ticks { position: relative; z-index: 1; width: 100%; height: 1.2em; }
+
+.root-dec__tick {
+    position: absolute;
+    top: 0;
+    color: #9b5f12;
+    font: 700 .76rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    opacity: 0;
+    transform: translateX(-50%);
+}
+
+.root-dec__char { opacity: 0; }
+.root-dec__equals { color: #b86821; opacity: 0; }
+.root-dec__answer { color: #09539d; opacity: 0; }
+
+.root-dec__figures {
+    min-height: 1.6em;
+    margin: 6px 0 0;
+    color: #09539d;
+    font: 700 1.2rem/1.3 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    opacity: 0;
+    will-change: opacity, transform;
+}
+
+.root-dec__check {
+    min-height: 1.5em;
+    margin: 0;
+    color: #173849;
+    font: 700 1.06rem/1.3 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    opacity: 0;
+    will-change: opacity, transform;
+}
+
+/* Card furniture, shared by every scene on the page. */
+
+.root-scene__caption { display: grid; align-content: center; height: 6.6em; box-sizing: border-box; padding: 14px 28px 6px; text-align: center; }
+/* h3 under a card that has a worked title above it, h2 under one that does
+   not, so the heading order holds either way. Both read the same. */
+.root-scene__caption h2,
+.root-scene__caption h3 { margin: 0 0 5px; color: #09539d; font-size: 1.1rem; }
+.root-scene__caption p { margin: 0; color: #243a45; font-size: .97rem; line-height: 1.5; }
+
+.root-scene__progress { display: flex; gap: 8px; padding: 0 22px 18px; justify-content: center; }
+
+.root-scene__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #c6d4dc;
+    transition: width .25s ease, border-radius .25s ease, background-color .25s ease;
+}
+
+.root-scene__dot.is-current { width: 28px; border-radius: 999px; background: #116e93; }
+.root-scene__dot.is-past { background: #6c9bb0; }
+
+/* Nothing is animated when the reader has asked for no motion: each card sits in
+   the flow at its finished state and its scene keeps no surplus scroll. */
+@media (prefers-reduced-motion: reduce) {
+    .root-scene.is-ready { height: auto; min-height: 0; }
+    .root-scene__sticky { position: relative; height: auto; transform: none !important; }
+    .root-scene__dot { transition: none; }
+}

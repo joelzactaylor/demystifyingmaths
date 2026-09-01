@@ -32,8 +32,7 @@
     .practice-question__expression.practice-division-line { border-color: #999; background: #fff; }
 }
 
-@media (max-width: 520px) {
-    .practice-question__expression.practice-division-line { padding: 10px 12px; font-size: 1.3rem; }
-    .practice-reflection__stages li { flex-direction: column; gap: 8px; }
-    .practice-reflection__stage-links { justify-items: start; text-align: left; }
-}
+/* No width media query here on purpose: .layout is a fixed 900px panel that
+   shared.css scales with a transform below 900px, so a viewport breakpoint
+   reflows the content inside a panel that is only being made smaller. A phone
+   reports a 980px viewport and never fires one at all. */

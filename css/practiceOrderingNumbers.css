@@ -626,10 +626,7 @@
     overflow-wrap: normal;
 }
 
-@media (max-width: 700px) {
-    .practice-sequence__order { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-
-@media (max-width: 460px) {
-    .practice-choice__options.is-value-grid { grid-template-columns: 1fr; }
-}
+/* No width media query here on purpose: .layout is a fixed 900px panel that
+   shared.css scales with a transform below 900px, so a viewport breakpoint
+   reflows the content inside a panel that is only being made smaller. A phone
+   reports a 980px viewport and never fires one at all. */

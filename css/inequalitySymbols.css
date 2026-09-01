@@ -87,7 +87,7 @@
     padding: 50px 20px;
     border: 2px solid #c8d9e7;
     border-radius: 20px;
-    color: #183b70;
+    color: #09539d;
     font-size: 2.6rem;
     text-align: center;
 }
@@ -109,7 +109,7 @@
 }
 
 .inequality-cloud__keeper-symbol {
-    fill: #183b70;
+    fill: #09539d;
     font-family: Aleo, serif;
     font-size: 49px;
     font-weight: 700;
@@ -119,7 +119,7 @@
 
 .inequality-cloud__keeper-card {
     fill: #fff;
-    stroke: #3568b8;
+    stroke: #5d91b0;
     stroke-width: 2;
 }
 
@@ -158,7 +158,7 @@
     stroke-width: 2.5;
     stroke-linecap: round;
 }
-.inequality-intro__leader--left { stroke: #3568b8; }
+.inequality-intro__leader--left { stroke: #5d91b0; }
 .inequality-intro__leader--right { stroke: #b86821; }
 
 .inequality-intro__card {
@@ -169,20 +169,20 @@
 }
 
 .inequality-intro__card rect { stroke-width: 2.5; }
-.inequality-intro__card--left rect { fill: #edf5ff; stroke: #3568b8; }
-.inequality-intro__card--right rect { fill: #fff4e6; stroke: #b86821; }
+.inequality-intro__card--left rect { fill: #eef5fb; stroke: #5d91b0; }
+.inequality-intro__card--right rect { fill: #fff8df; stroke: #b86821; }
 .inequality-intro__card text {
     font-size: 31px;
     font-weight: 700;
     text-anchor: middle;
 }
-.inequality-intro__card--left text { fill: #183b70; }
-.inequality-intro__card--right text { fill: #7a3c09; }
+.inequality-intro__card--left text { fill: #09539d; }
+.inequality-intro__card--right text { fill: #9b5f12; }
 
 .inequality-intro__handle { cursor: ew-resize; touch-action: none; }
 .inequality-intro__handle-hit { fill: transparent; pointer-events: all; }
 .inequality-intro__handle-point { stroke: #fff; stroke-width: 3; }
-.inequality-intro__handle--left .inequality-intro__handle-point { fill: #3568b8; }
+.inequality-intro__handle--left .inequality-intro__handle-point { fill: #5d91b0; }
 .inequality-intro__handle--right .inequality-intro__handle-point { fill: #b86821; }
 .inequality-intro__handle:focus { outline: none; }
 .inequality-intro__handle:focus .inequality-intro__handle-point { stroke: #1f333c; stroke-width: 4; }
@@ -205,7 +205,7 @@
 }
 
 .equality-card--not-equal { border-color: #e5c499; }
-.equality-card__statement { margin: 0 0 13px; color: #183b70; font-size: 2rem; font-weight: 700; text-align: center; }
+.equality-card__statement { margin: 0 0 13px; color: #09539d; font-size: 2rem; font-weight: 700; text-align: center; }
 .equality-card--not-equal .equality-card__statement { color: #8b4a12; }
 .equality-card h2,
 .equality-card h3 { margin: 0 0 7px; color: #25434f; font-size: 1.08rem; text-align: center; }
@@ -259,11 +259,11 @@
     box-sizing: border-box;
     padding: 10px 18px;
     border: 2px solid #9db9d0;
-    border-bottom: 5px solid #3568b8;
+    border-bottom: 5px solid #5d91b0;
     border-radius: 14px;
     background: #f4f8ff;
     box-shadow: 0 5px 12px rgba(20, 57, 78, .08);
-    color: #183b70;
+    color: #09539d;
     font: 700 1.9rem Aleo, serif;
     text-align: center;
 }
@@ -272,7 +272,7 @@
     border-color: #dbb58c;
     border-bottom-color: #b86821;
     background: #fff8ef;
-    color: #7a3c09;
+    color: #9b5f12;
 }
 .comparator__input:focus { border-color: #116e93; outline: 3px solid rgba(17, 110, 147, .18); }
 .comparator__input:last-child:focus { border-color: #b86821; outline-color: rgba(184, 104, 33, .2); }
@@ -309,7 +309,7 @@
 .worked-comparisons p { font-size: .93rem; line-height: 1.52; }
 .worked-comparisons .worked-comparisons__statement {
     margin: 13px 0;
-    color: #183b70;
+    color: #09539d;
     font-size: 1.55rem;
     font-weight: 700;
     text-align: center;
@@ -332,7 +332,7 @@
 }
 
 .boundary-card--greater { border-color: #e5c499; background: #fffaf2; }
-.boundary-card__statement { margin-bottom: 12px; color: #183b70; font-size: 2.25rem; font-weight: 700; text-align: center; }
+.boundary-card__statement { margin-bottom: 12px; color: #09539d; font-size: 2.25rem; font-weight: 700; text-align: center; }
 .boundary-card--greater .boundary-card__statement { color: #8b4a12; }
 .boundary-card h3 { margin: 0 0 8px; color: #25434f; font-size: 1.08rem; text-align: center; }
 .boundary-card p { margin: 0; font-size: .94rem; line-height: 1.55; }
@@ -350,7 +350,7 @@
     font-weight: 700;
 }
 
-.boundary-card__values .is-boundary { border-color: #3568b8; background: #3568b8; color: #fff; }
+.boundary-card__values .is-boundary { border-color: #116e93; background: #116e93; color: #fff; }
 .boundary-card--greater .boundary-card__values .is-boundary { border-color: #b86821; background: #b86821; }
 
 /* Compound inequality and its included integers. */
@@ -373,13 +373,13 @@
 .integer-line__range { fill: none; stroke: url(#integer-line-range); stroke-width: 9; stroke-linecap: round; }
 .integer-line__ticks { fill: none; stroke: #41535c; stroke-width: 2; }
 .integer-line__labels { fill: #405660; font-size: 18px; text-anchor: middle; }
-.integer-line__answers { fill: #3568b8; }
+.integer-line__answers { fill: #5d91b0; }
 .integer-line__boundary-guide {
     fill: none;
     stroke-width: 2.5;
     stroke-linecap: round;
 }
-.integer-line__boundary-guide--open { stroke: #3568b8; }
+.integer-line__boundary-guide--open { stroke: #5d91b0; }
 .integer-line__boundary-guide--closed { stroke: #b86821; }
 .integer-line__boundary-chip {
     cursor: ew-resize;
@@ -388,27 +388,28 @@
 }
 .integer-line__boundary-chip rect { stroke-width: 2; }
 .integer-line__boundary-chip text { font-size: 14px; font-weight: 700; text-anchor: middle; }
-.integer-line__boundary-chip--open rect { fill: #edf5ff; stroke: #3568b8; }
-.integer-line__boundary-chip--open text { fill: #183b70; }
-.integer-line__boundary-chip--closed rect { fill: #fff4e6; stroke: #b86821; }
-.integer-line__boundary-chip--closed text { fill: #7a3c09; }
+.integer-line__boundary-chip--open rect { fill: #eef5fb; stroke: #5d91b0; }
+.integer-line__boundary-chip--open text { fill: #09539d; }
+.integer-line__boundary-chip--closed rect { fill: #fff8df; stroke: #b86821; }
+.integer-line__boundary-chip--closed text { fill: #9b5f12; }
 .integer-line__boundary-handle { cursor: ew-resize; touch-action: none; }
 .integer-line__handle-hit { fill: transparent; pointer-events: all; }
-.integer-line__open { fill: #fff; stroke: #3568b8; stroke-width: 4; }
+.integer-line__open { fill: #fff; stroke: #5d91b0; stroke-width: 4; }
 .integer-line__closed { fill: #b86821; stroke: #fff; stroke-width: 3; }
 .integer-line__boundary-handle:focus { outline: none; }
 .integer-line__boundary-handle:focus .integer-line__open,
 .integer-line__boundary-handle:focus .integer-line__closed { stroke: #1f333c; stroke-width: 4; }
-.integer-line__direction { fill: #183b70; font-size: 17px; font-weight: 700; text-anchor: middle; }
+.integer-line__direction { fill: #09539d; font-size: 17px; font-weight: 700; text-anchor: middle; }
 .integer-example__steps { margin: 10px 0 0; }
-.integer-example__answer { margin: 18px 0 0; color: #183b70; font-size: 1.15rem; text-align: center; }
-
-@media (max-width: 700px) {
-    .inequality-cloud__sticky { height: min(590px, calc(100vh - 150px)); }
-}
+.integer-example__answer { margin: 18px 0 0; color: #09539d; font-size: 1.15rem; text-align: center; }
 
 @media (prefers-reduced-motion: reduce) {
     .inequality-cloud.is-ready { height: auto; min-height: 0; }
     .inequality-cloud__sticky { position: relative; height: 560px; transform: none !important; }
     .comparator__sign { transition: none; }
 }
+
+/* No width media query here on purpose: .layout is a fixed 900px panel that
+   shared.css scales with a transform below 900px, so a viewport breakpoint
+   reflows the content inside a panel that is only being made smaller. A phone
+   reports a 980px viewport and never fires one at all. */

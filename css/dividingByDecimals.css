@@ -78,23 +78,11 @@
 .reading-pair h2 { margin: 0 0 8px; color: #173849; font-size: 1.06rem; }
 .reading-pair p { margin: 0; color: #41535c; font-size: .91rem; line-height: 1.5; }
 
-@media (max-width: 720px) {
-    .scale-cases { grid-template-columns: 1fr; }
-    .equivalence-strip { display: grid; grid-template-columns: 1fr; }
-    .equivalence-strip > i { height: 14px; }
-    .piece-model { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 540px) {
-    .scale-board { min-height: 300px; padding-right: 18px; padding-left: 18px; }
-    .scale-board__row { grid-template-columns: minmax(95px, 1fr) 28px minmax(82px, 1fr); font-size: 1.05rem; }
-    .scale-board__arrow span { margin-left: 96px; }
-    .decimal-division-sandbox__inputs { flex-wrap: wrap; }
-    .decimal-division-sandbox__inputs input { width: 135px; }
-    .decimal-division-sandbox__equation { flex-wrap: wrap; font-size: .98rem; }
-    .decimal-division-rule .rule-card__statement { flex-wrap: wrap; font-size: .9rem; }
-}
-
 @media (prefers-reduced-motion: reduce) {
     .decimal-division-scene__dot { transition: none; }
 }
+
+/* No width media query here on purpose: .layout is a fixed 900px panel that
+   shared.css scales with a transform below 900px, so a viewport breakpoint
+   reflows the content inside a panel that is only being made smaller. A phone
+   reports a 980px viewport and never fires one at all. */

@@ -28,8 +28,28 @@ const camel = (kebab) => kebab.split("-").map((w, i) =>
 
 // site URL -> file path under the repo (menus are folder indexes)
 const urlToPath = (u) => join(ROOT, u.endsWith("/") ? u + "index.html" : u);
+/* Written work is never overwritten, whatever the manifest says.
+
+   The manifest's "written" and "generate" flags are a person's memory of which
+   pages hold real work, and a page finished without its flag being set is
+   invisible to them. Running this script then replaces a finished lesson or
+   drill with a stub, and nothing in git can help if the work was never
+   committed — which is how fourteen finished practice pages were destroyed.
+
+   So the check is made against the file itself rather than against the record
+   of it: a page that does not carry the stub marker is holding something, and
+   is left alone. Menus are pure derivations of the manifest and are always
+   rebuilt. */
+const STUB_MARK = "&mdash;coming soon&mdash;";
+const preserved = [];
+
 const write = (url, content) => {
     const p = urlToPath(url);
+    const isMenu = url.endsWith("/");
+    if (!isMenu && existsSync(p) && !readFileSync(p, "utf8").includes(STUB_MARK)) {
+        preserved.push(url);
+        return;
+    }
     mkdirSync(dirname(p), { recursive: true });
     writeFileSync(p, withBase(content));
 };
@@ -141,7 +161,10 @@ ${FOOTER}
 }
 
 /* The strand menu keeps the head shape of the original hand-written
-   number/index.html: no og: tags, no navPanel script, no aside. */
+   number/index.html: no og: tags, no navPanel script, no aside. It does carry
+   the glossary, which every curriculum page loads — scripts/glossary-check.mjs
+   fails a page that does not, and a menu written without it silently drops the
+   line the last person to touch the page added by hand. */
 function strandIndexPage(strand, topicCards) {
     return `<!DOCTYPE html>
 <html lang="en">
@@ -153,6 +176,7 @@ function strandIndexPage(strand, topicCards) {
     <link rel="stylesheet" href="/css/shared.css">
     <link rel="stylesheet" href="/css/curriculum.css">
 ${HEAD_TAIL}
+    <script src="/js/glossary.js" defer></script>
 ${FONTS}
 </head>
 
@@ -350,7 +374,7 @@ ${[...drills.map((d) => practiceCard(d)), onwardCard(next)].join("\n")}
                 title: `Demystifying Maths | GCSE ${st.title}`,
                 description: st.description,
                 styles: ["shared.css", "curriculum.css", "lesson.css"],
-                scripts: ["navPanel.js"],
+                scripts: ["navPanel.js", "glossary.js"],
                 headerTitle: st.title,
                 breadcrumb: crumbs([...BASE_CRUMBS,
                     { href: topicUrl(topic), label: topic.crumbLabel || topic.title },
@@ -378,7 +402,7 @@ ${drills.map((d) => practiceCard(d)).join("\n")}
                 title: `Demystifying Maths | GCSE ${g.title}`,
                 description: g.lead,
                 styles: ["shared.css", "curriculum.css"],
-                scripts: ["navPanel.js"],
+                scripts: ["navPanel.js", "glossary.js"],
                 headerTitle: g.title,
                 breadcrumb: crumbs([...BASE_CRUMBS,
                     { href: topicUrl(topic), label: topic.crumbLabel || topic.title },
@@ -415,7 +439,7 @@ ${items.map((st) => teachCard(topic, groupOf, st)).join("\n")}
             title: `Demystifying Maths | GCSE ${topic.title}`,
             description: topic.metaDescription,
             styles: ["shared.css", "curriculum.css"],
-            scripts: ["navPanel.js"],
+            scripts: ["navPanel.js", "glossary.js"],
             headerTitle: topic.title,
             breadcrumb: crumbs([...BASE_CRUMBS, { label: topic.title }]),
             aside: false,
@@ -461,7 +485,7 @@ ${learning.map((p) => `                    <li><a href="${teachUrl(p.topic, grou
             title: `Demystifying Maths | Practice: ${d.title}`,
             description: d.description,
             styles: ["shared.css", "curriculum.css", "practice.css"],
-            scripts: ["navPanel.js"],
+            scripts: ["navPanel.js", "glossary.js"],
             headerTitle: d.title,
             breadcrumb: crumbs([...BASE_CRUMBS,
                 { href: topicUrl(topic), label: topic.crumbLabel || topic.title },
@@ -497,6 +521,10 @@ ${learningLinks}
                     </a>`).join("\n");
     write(strand.url, strandIndexPage(strand, topicCards) + "\n");
     written.push(`${strand.url}  (strand menu, ${manifest.topics.length} topic cards)`);
+    if (preserved.length) {
+        written.push(`\n${preserved.length} page(s) left alone because they hold work, not a stub:`);
+        preserved.forEach((u) => written.push(`  kept  ${u}`));
+    }
 
     console.log(written.join("\n"));
     console.log(`\n${strand.key}: ${written.length} files written`);

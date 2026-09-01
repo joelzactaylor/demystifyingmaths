@@ -4,20 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Demystifying Maths | GCSE Positive and negative square roots</title>
-    <meta name="description" content="Why a squared equation has two solutions while the root sign gives one.">
-    <meta property="og:title" content="Demystifying Maths">
-    <meta property="og:description" content="Why a squared equation has two solutions while the root sign gives one.">
+    <meta name="description"
+        content="Why two numbers square to 49, why the root sign names only the non-negative one, and how plus-or-minus records both solutions of x squared = 49.">
+    <meta property="og:title" content="Demystifying Maths | Positive and negative square roots">
+    <meta property="og:description"
+        content="Why two numbers square to 49, why the root sign names only the non-negative one, and how plus-or-minus records both solutions of x squared = 49.">
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/positiveAndNegativeRoots.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
+    <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/positiveAndNegativeRoots.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&amp;display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -29,12 +34,18 @@
             <h1>Demystifying - Positive and negative square roots</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
-                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and calculation</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/">Powers and roots</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span>
+                    </li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and
+                            calculation</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/">Powers and
+                            roots</a><span aria-hidden="true">&rsaquo;</span></li>
                     <li>
                         <p>Positive and negative square roots</p>
                     </li>
@@ -45,25 +56,268 @@
         <aside id="page-nav-container"></aside>
 
         <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>Why x squared = k has two solutions while the root sign denotes only the positive one; plus-or-minus notation; giving both roots of 49. Solving quadratic equations lives in Algebra; roots of negatives have no real value at GCSE, and complex numbers are A level. Both tiers. (N6)</p>
+            <section>
+                <h1 id="two-numbers-square-to-49">Two numbers square to 49</h1>
+                <p class="prereq"><b>Before this page:</b> <span>be able to square a <span class="gloss" data-term="whole number">whole number</span> using <a
+                            href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/indexNotation.html">index
+                            notation</a>, and know the square root as the reverse of squaring from <a
+                            href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/squareRoots.html">square
+                            roots</a>.</span></p>
+
+                <p><span class="sf">7 &times; 7 = 49</span>, and <span class="sf">(&minus;7) &times; (&minus;7) = 49</span>. A number and its
+                    negative have the same square.</p>
+
+                <p>Multiplying two negatives gives a positive, which is why <span class="sf">(&minus;7) &times; (&minus;7)</span>
+                    comes to 49 rather than &minus;49, and <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/multiplyingDividingNegatives.html">multiplying
+                        and dividing negative numbers</a> sets that rule out in full.</p>
+
+                <figure class="mirror">
+                    <div class="mirror__row">
+                        <span class="mirror__cap" id="mirror-x-cap">The number</span>
+                        <div class="mirror__axis" data-axis="x" role="slider" tabindex="0" aria-valuemin="-10"
+                            aria-valuemax="10" aria-valuenow="7"
+                            aria-valuetext="7, whose square is 49, shared with negative 7"
+                            aria-labelledby="mirror-x-cap">
+                            <i class="mirror__line" aria-hidden="true"></i>
+                            <i class="mirror__tick" style="left: 0.0000%"></i><span class="mirror__mark" style="left: 0.0000%">&minus;10</span>
+                            <i class="mirror__tick" style="left: 5.0000%"></i>
+                            <i class="mirror__tick" style="left: 10.0000%"></i><span class="mirror__mark" style="left: 10.0000%">&minus;8</span>
+                            <i class="mirror__tick" style="left: 15.0000%"></i>
+                            <i class="mirror__tick" style="left: 20.0000%"></i><span class="mirror__mark" style="left: 20.0000%">&minus;6</span>
+                            <i class="mirror__tick" style="left: 25.0000%"></i>
+                            <i class="mirror__tick" style="left: 30.0000%"></i><span class="mirror__mark" style="left: 30.0000%">&minus;4</span>
+                            <i class="mirror__tick" style="left: 35.0000%"></i>
+                            <i class="mirror__tick" style="left: 40.0000%"></i><span class="mirror__mark" style="left: 40.0000%">&minus;2</span>
+                            <i class="mirror__tick" style="left: 45.0000%"></i>
+                            <i class="mirror__tick" style="left: 50.0000%"></i><span class="mirror__mark" style="left: 50.0000%">0</span>
+                            <i class="mirror__tick" style="left: 55.0000%"></i>
+                            <i class="mirror__tick" style="left: 60.0000%"></i><span class="mirror__mark" style="left: 60.0000%">2</span>
+                            <i class="mirror__tick" style="left: 65.0000%"></i>
+                            <i class="mirror__tick" style="left: 70.0000%"></i><span class="mirror__mark" style="left: 70.0000%">4</span>
+                            <i class="mirror__tick" style="left: 75.0000%"></i>
+                            <i class="mirror__tick" style="left: 80.0000%"></i><span class="mirror__mark" style="left: 80.0000%">6</span>
+                            <i class="mirror__tick" style="left: 85.0000%"></i>
+                            <i class="mirror__tick" style="left: 90.0000%"></i><span class="mirror__mark" style="left: 90.0000%">8</span>
+                            <i class="mirror__tick" style="left: 95.0000%"></i>
+                            <i class="mirror__tick" style="left: 100.0000%"></i><span class="mirror__mark" style="left: 100.0000%">10</span>
+                            <i class="mirror__marker mirror__marker--mirror" data-marker="mirror" style="left: 15.0000%" aria-hidden="true"></i>
+                            <span class="mirror__value mirror__value--mirror" data-value="mirror" style="left: 15.0000%" aria-hidden="true">&minus;7</span>
+                            <i class="mirror__marker" data-marker="x" style="left: 85.0000%" aria-hidden="true"></i>
+                            <span class="mirror__value" data-value="x" style="left: 85.0000%" aria-hidden="true">7</span>
+                        </div>
+                    </div>
+
+                    <div class="mirror__row mirror__row--square">
+                        <span class="mirror__cap" id="mirror-square-cap">Its square</span>
+                        <div class="mirror__axis" data-axis="square" role="slider" tabindex="0" aria-valuemin="0"
+                            aria-valuemax="100" aria-valuenow="49"
+                            aria-valuetext="49, reached from 7 and from negative 7"
+                            aria-labelledby="mirror-square-cap">
+                            <i class="mirror__line" aria-hidden="true"></i>
+                            <i class="mirror__tick" style="left: 0.0000%"></i><span class="mirror__mark" style="left: 0.0000%">0</span>
+                            <i class="mirror__tick" style="left: 1.0000%"></i>
+                            <i class="mirror__tick" style="left: 4.0000%"></i><span class="mirror__mark" style="left: 4.0000%">4</span>
+                            <i class="mirror__tick" style="left: 9.0000%"></i>
+                            <i class="mirror__tick" style="left: 16.0000%"></i><span class="mirror__mark" style="left: 16.0000%">16</span>
+                            <i class="mirror__tick" style="left: 25.0000%"></i>
+                            <i class="mirror__tick" style="left: 36.0000%"></i><span class="mirror__mark" style="left: 36.0000%">36</span>
+                            <i class="mirror__tick" style="left: 49.0000%"></i>
+                            <i class="mirror__tick" style="left: 64.0000%"></i><span class="mirror__mark" style="left: 64.0000%">64</span>
+                            <i class="mirror__tick" style="left: 81.0000%"></i>
+                            <i class="mirror__tick" style="left: 100.0000%"></i><span class="mirror__mark" style="left: 100.0000%">100</span>
+                            <i class="mirror__marker" data-marker="square" style="left: 49.0000%" aria-hidden="true"></i>
+                            <span class="mirror__value" data-value="square" style="left: 49.0000%" aria-hidden="true">49</span>
+                        </div>
+                    </div>
+
+                    <figcaption class="mirror__reading" data-reading><span class="sf" role="math"
+                            aria-label="7 squared equals 49 and negative 7 squared equals 49"><span class="sf">7<span class="caret" aria-hidden="true">^</span><sup>2</sup></span> = 49 and <span class="sf">(&minus;7)<span class="caret" aria-hidden="true">^</span><sup>2</sup></span> = 49</span>, so
+                        two numbers square to 49.</figcaption>
+                </figure>
             </section>
 
             <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+                <h1 id="what-the-root-sign-names">What the root sign names</h1>
+                <p><span class="sf" role="math" aria-label="the square root of 49 equals 7"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">49</span></span> = 7</span>. The sign names one
+                    number, and the one it names is never negative.</p>
+
+                <div class="rule-card">
+                    <h2 class="rule-card__statement" aria-label="the square root of 49 equals 7"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">49</span></span> = 7</h2>
+                    <ol class="rule-card__conditions">
+                        <li>7 and &minus;7 both square to 49.</li>
+                        <li>The sign names the non-negative one of the two.</li>
+                    </ol>
+                </div>
+
+                <p>&minus;7 is a square root of 49, and it is written <span class="sf" role="math"
+                        aria-label="negative the square root of 49">&minus;<span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">49</span></span></span>. The one the sign names, 7, is
+                    the principal square root.</p>
+
+                <p>One symbol stands for one number. Were <span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">49</span></span> to stand for 7 and &minus;7 at once,
+                    <span class="sf" role="math" aria-label="the square root of 49 plus 1"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">49</span></span> + 1</span> would come to both 8
+                    and &minus;6. Neither value could then be carried into the next line.</p>
+            </section>
+
+            <section>
+                <h1 id="solving-x-squared-equals-49">Solving x&sup2; = 49</h1>
+                <p><span class="sf" role="math" aria-label="x squared"><var>x</var><span class="caret" aria-hidden="true">^</span><sup>2</sup></span> = 49 asks which numbers square to 49. <span class="sf">7 &times; 7 = 49</span> and
+                    <span class="sf">(&minus;7) &times; (&minus;7) = 49</span>, so the <span class="gloss" data-term="equation">equation</span> has two
+                    <span class="gloss" data-term="solution">solutions</span>.</p>
+
+                <p>x = &plusmn;7 records both solutions on one line, and &plusmn;7 is read
+                    &ldquo;plus or minus 7&rdquo;.</p>
+
+                <div class="important-box" aria-labelledby="one-value-or-two">
+                    <h2 class="important-box__title" id="one-value-or-two">A sign that names one, a question that asks
+                        for both</h2>
+                    <p><span class="sf" role="math" aria-label="the square root of 49 equals 7"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">49</span></span> = 7</span> is a
+                        number, and 7 is the whole of it. <span class="sf" role="math"
+                            aria-label="x squared equals 49"><span class="sf"><var>x</var><span class="caret" aria-hidden="true">^</span><sup>2</sup></span> = 49</span> is a question about the <span class="gloss" data-term="unknown">unknown</span> x, and it
+                        is answered by <span class="sf" role="math"
+                            aria-label="x equals plus or minus 7">x = &plusmn;7</span>.</p>
+                </div>
+
+                <div class="wex">
+                    <h2 class="wex__title" aria-label="Example: solve x squared equals 81">Example: solve <span class="sf" role="math" aria-label="x squared"><var>x</var><span class="caret" aria-hidden="true">^</span><sup>2</sup></span> = 81</h2>
+                    <p class="wex__task">Find both numbers that square to 81, then record them on one line.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math" aria-label="x squared equals 81"><span><var>x</var><span class="caret" aria-hidden="true">^</span><sup>2</sup></span> = 81</span></span>
+                            <span class="wex__why">81 stands on the right, so the question is which numbers square to
+                                81.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf">9 &times; 9 = 81</span></span>
+                            <span class="wex__why">The squares of 1 to 15 give 9, and (&minus;9) &times; (&minus;9) makes
+                                the same 81.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math" aria-label="x equals plus or minus 9">x = &plusmn;9</span></span>
+                            <span class="wex__why">Squaring either value returns the 81 the equation started from, which
+                                is the check.</span>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <section>
+                <h1 id="how-many-numbers-square-to-a-value">How many numbers square to a value</h1>
+                <p><span class="sf" role="math" aria-label="x squared equals 0"><span><var>x</var><span class="caret" aria-hidden="true">^</span><sup>2</sup></span> = 0</span> has one solution. 0 is
+                    its own negative, so the two values that a positive square would give fall together on 0.</p>
+
+                <p>No number on the <span class="gloss" data-term="number line">number line</span> squares to &minus;9. A square is a number multiplied by itself, so
+                    its two <span class="gloss" data-term="factor">factors</span> carry the same sign and their <span class="gloss" data-term="product">product</span> is positive.</p>
+
+                <figure class="cases">
+                    <ol class="cases__list">
+                        <li class="cases__case">
+                            <span class="cases__label"><span class="sf" role="math"
+                                    aria-label="x squared equals 49"><span class="sf"><var>x</var><span class="caret" aria-hidden="true">^</span><sup>2</sup></span> = 49</span></span>
+                            <span class="cases__line" aria-hidden="true">
+                                <i class="cases__rule"></i>
+                                <i class="cases__zero"></i>
+                                <i class="cases__dot" style="left: 15%"></i>
+                                <i class="cases__dot" style="left: 85%"></i>
+                            </span>
+                            <span class="cases__count">Two solutions, <span class="sf" role="math"
+                                    aria-label="x equals plus or minus 7">x = &plusmn;7</span></span>
+                        </li>
+                        <li class="cases__case">
+                            <span class="cases__label"><span class="sf" role="math"
+                                    aria-label="x squared equals 0"><span class="sf"><var>x</var><span class="caret" aria-hidden="true">^</span><sup>2</sup></span> = 0</span></span>
+                            <span class="cases__line" aria-hidden="true">
+                                <i class="cases__rule"></i>
+                                <i class="cases__zero"></i>
+                                <i class="cases__dot" style="left: 50%"></i>
+                            </span>
+                            <span class="cases__count">One solution, <span class="sf" role="math"
+                                    aria-label="x equals 0">x = 0</span></span>
+                        </li>
+                        <li class="cases__case">
+                            <span class="cases__label"><span class="sf" role="math"
+                                    aria-label="x squared equals negative 9"><span class="sf"><var>x</var><span class="caret" aria-hidden="true">^</span><sup>2</sup></span> = &minus;9</span></span>
+                            <span class="cases__line" aria-hidden="true">
+                                <i class="cases__rule"></i>
+                                <i class="cases__zero"></i>
+                            </span>
+                            <span class="cases__count">No number on the line</span>
+                        </li>
+                    </ol>
+                    <figcaption class="cases__reading">Each line runs from &minus;10 to 10, with 0 at its centre and a
+                        dot at every value that squares to the number on its left.</figcaption>
+                </figure>
+            </section>
+
+            <section>
+                <h1 id="common-mistakes">Common mistakes</h1>
+                <ul class="slips">
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math"
+                                aria-label="the square root of 49 equals plus or minus 7"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">49</span></span> = &plusmn;7</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> &plusmn;7 answers
+                            <span class="sf" role="math" aria-label="x squared equals 49"><span><var>x</var><span class="caret" aria-hidden="true">^</span><sup>2</sup></span> = 49</span>; the sign names
+                            the non-negative root alone.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
+                                aria-label="the square root of 49 equals 7, while x squared equals 49 gives x equals plus or minus 7"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">49</span></span> = 7, while <span class="sf"><var>x</var><span class="caret" aria-hidden="true">^</span><sup>2</sup></span> = 49 gives x = &plusmn;7</span></span>
+                    </li>
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math"
+                                aria-label="x squared equals 49, so x equals 7"><span class="sf"><var>x</var><span class="caret" aria-hidden="true">^</span><sup>2</sup></span> = 49, so x = 7</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> <span class="sf" role="math"
+                            aria-label="negative 7 squared equals 49">(&minus;7)<span class="caret" aria-hidden="true">^</span><sup>2</sup> = 49</span> as
+                            well, so an answer of 7 alone leaves one of the two solutions unwritten.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
+                                aria-label="x equals plus or minus 7">x = &plusmn;7</span></span>
+                    </li>
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math"
+                                aria-label="x squared equals negative 9, so x equals negative 3"><span class="sf"><var>x</var><span class="caret" aria-hidden="true">^</span><sup>2</sup></span> = &minus;9, so x = &minus;3</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> The minus sign does not pass through the
+                            squaring: <span class="sf" role="math" aria-label="negative 3 squared equals 9">(&minus;3)<span class="caret" aria-hidden="true">^</span><sup>2</sup> = 9</span>, which is 9 and not &minus;9.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
+                                aria-label="x squared equals negative 9 has no solution on the number line"><span class="sf"><var>x</var><span class="caret" aria-hidden="true">^</span><sup>2</sup></span> = &minus;9 has no solution on the number line</span></span>
+                    </li>
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math"
+                                aria-label="x squared equals 0, so x equals plus or minus 0"><span class="sf"><var>x</var><span class="caret" aria-hidden="true">^</span><sup>2</sup></span> = 0, so x = &plusmn;0</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> &plusmn; separates two values, and 0 and
+                            &minus;0 are the same number, so it separates nothing.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
+                                aria-label="x equals 0">x = 0</span></span>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h1 id="remember">Remember</h1>
+                <ol class="recap">
+                    <li>Every positive square is reached from two numbers that differ only in sign: 49 from 7 and from
+                        &minus;7.</li>
+                    <li>The sign <span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">49</span></span> names the principal square root, so it stands for the single number 7.</li>
+                    <li><span class="sf" role="math" aria-label="x squared equals 49"><span><var>x</var><span class="caret" aria-hidden="true">^</span><sup>2</sup></span> = 49</span> asks for every
+                        number that squares to 49, and <span class="sf" role="math"
+                            aria-label="x equals plus or minus 7">x = &plusmn;7</span> records both answers on one
+                        line.</li>
+                    <li><span class="sf" role="math" aria-label="x squared equals 0"><span><var>x</var><span class="caret" aria-hidden="true">^</span><sup>2</sup></span> = 0</span> has the one
+                        solution 0, and no number on the number line squares to &minus;9, since a number on the line
+                        multiplied by itself is positive or zero.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
                 <h2 id="practice-heading">Practice and continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/practicePositiveAndNegativeRoots.html" style="background-image: none">
+                    <a class="topic-card topic-card--practice"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/practicePositiveAndNegativeRoots.html"
+                        style="background-image: none">
                         <span class="practice-card__kicker">Practice</span>
                         <h3>Positive and negative square roots</h3>
                         <p>Why a squared equation has two solutions while the root sign gives one.</p>
                     </a>
-                    <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/cubeAndHigherRoots.html" style="background-image: none">
+                    <a class="topic-card topic-card--next"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/cubeAndHigherRoots.html"
+                        style="background-image: none">
                         <span class="topic-card__kicker">Next lesson</span>
                         <h3>Cube roots and higher roots</h3>
                         <p>Cube roots and nth roots as the inverse of a power, including negatives.</p>

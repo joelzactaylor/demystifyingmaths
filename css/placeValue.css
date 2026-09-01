@@ -1,33 +1,238 @@
-/* Interactive place-value tray. */
+/* PLACE VALUE
+
+   Four things this page needs beyond the shared teaching styles: the table that
+   shows one digit taking six different values, the chart of the places from
+   millions to thousandths, the pair of numbers that shows what a place-holding
+   zero does, and the interactive tray that reads any number back place by place.
+
+   The palette is the written-methods one. Nothing here carries meaning by colour
+   alone: every coloured part is also named in text or marked by position.
+
+   No viewport media queries below the reduced-motion block: .layout is a fixed
+   900px panel that shared.css scales with transform under 900px, so nothing here
+   may reflow. */
+
+/* Fractions are drawn by MathML, because a fraction bar has to stretch over
+   whatever stands above and below it and no HTML element does that. The font is
+   inherited so the notation reads as the text around it. */
+math {
+    font-family: inherit;
+    font-size: inherit;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ONE DIGIT, SIX VALUES — set as a table, because the claim is that three
+   things vary together across six rows. */
+
+.digit-scale {
+    width: 100%;
+    margin: 18px 0 6px;
+    border-collapse: separate;
+    border-spacing: 0 6px;
+    table-layout: fixed;
+}
+
+.digit-scale caption {
+    margin-bottom: 8px;
+    color: #52666f;
+    font-size: .88rem;
+    text-align: left;
+}
+
+.digit-scale thead th {
+    padding: 0 16px 2px;
+    color: #52666f;
+    font-size: .74rem;
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.digit-scale thead th:first-child { width: 120px; }
+
+.digit-scale tbody th,
+.digit-scale tbody td {
+    padding: 11px 16px;
+    background: #f8fbfd;
+    text-align: left;
+}
+
+.digit-scale tbody th { border-radius: 12px 0 0 12px; color: #09539d; font-size: 1.05rem; }
+.digit-scale tbody td { color: #52666f; font-size: .93rem; }
+.digit-scale tbody td:last-child { border-radius: 0 12px 12px 0; color: #173849; font-weight: 700; }
+
+/* THE PLACES — one column per place, so the row reads left to right the way a
+   number is written. The decimal point is a column of its own rather than a
+   border, so the chart says where it stands rather than implying it. */
+
+.place-chart {
+    width: 100%;
+    margin: 20px 0 8px;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.place-chart caption {
+    margin-bottom: 10px;
+    color: #52666f;
+    font-size: .88rem;
+    text-align: left;
+}
+
+.place-chart th,
+.place-chart td { padding: 8px 4px; text-align: center; }
+
+.place-chart thead th {
+    border-bottom: 2px solid #c9dce8;
+    color: #52666f;
+    font-size: .68rem;
+    font-weight: 700;
+    line-height: 1.25;
+    vertical-align: bottom;
+}
+
+.place-chart tbody td {
+    color: #09539d;
+    font: 700 .82rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+/* The decimal side takes the page's ochre, and is also the side of the point
+   the header row names, so the tint is a second cue rather than the only one. */
+.place-chart th:nth-child(n+9),
+.place-chart td:nth-child(n+9) { background: #fff8df; color: #9b5f12; }
+.place-chart thead th:nth-child(n+9) { border-bottom-color: #d99a20; }
+.place-chart th:nth-child(-n+7),
+.place-chart td:nth-child(-n+7) { background: #eef5fb; }
+
+.place-chart__point { width: 22px; background: none !important; }
+
+.place-chart__point span[aria-hidden] {
+    color: #b86821;
+    font: 700 1.5rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+.place-chart thead .place-chart__point { border-bottom: 0; }
+
+/* Named for assistive technology, which would otherwise meet a column headed
+   with a full stop. */
+.place-chart__vh {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+/* WHAT A PLACE-HOLDING ZERO DOES — the same digits with and without it, side by
+   side, each panel saying in words which number it is. */
+
+.holders { display: grid; gap: 18px; grid-template-columns: 1fr 1fr; margin: 22px 0; }
+
+.holders__case {
+    padding: 18px 20px 16px;
+    border: 2px solid #c9dce8;
+    border-left: 5px solid #5d91b0;
+    border-radius: 14px;
+    background: #fff;
+    box-shadow: 0 8px 22px rgba(23, 56, 73, .11);
+}
+
+.holders__case--wrong { border-left-color: #a3352b; }
+
+.holders__figure {
+    margin: 0 0 6px;
+    color: #173849;
+    font: 700 2.1rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Marked as well as tinted: the zero carries a rule under it, so it is still
+   picked out where colour is not available. */
+.holders__zero {
+    padding-bottom: 2px;
+    border-bottom: 3px solid #a3352b;
+    color: #a3352b;
+    font: inherit;
+}
+
+.holders__name { margin: 0 0 8px; color: #09539d; font-size: .96rem; font-weight: 700; }
+.holders__why { margin: 0; color: #41535c; font-size: .9rem; line-height: 1.5; }
+
+/* The words a number is built from, quoted before it is built. */
+.words-given {
+    margin: 18px 0;
+    padding: 14px 18px;
+    border-left: 5px solid #b86821;
+    border-radius: 0 12px 12px 0;
+    background: #fff8df;
+    color: #173849;
+    font-size: 1.02rem;
+}
+
+/* REWRITING THE DECIMAL PARTS OVER A COMMON PLACE */
+
+.fraction-bridge {
+    display: grid;
+    gap: 10px;
+    margin: 22px 0;
+    padding: 20px 24px 18px;
+    justify-items: center;
+    border: 2px solid #d99a20;
+    border-radius: 18px;
+    background: #fff8df;
+}
+
+.fraction-bridge__line {
+    display: flex;
+    margin: 0;
+    gap: 12px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: #9b5f12;
+    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.fraction-bridge__note { margin: 0; color: #9b5f12; font-size: .84rem; font-weight: 700; text-align: center; }
+.fraction-bridge__note span { display: block; font-size: 1.1rem; line-height: 1; }
+.fraction-bridge__total { padding: 2px 8px; border-radius: 10px; background: #fff2c9; }
+
+/* THE INTERACTIVE TRAY — a number typed in is split into its places, each digit
+   shown in the column it occupies and read back as a count of that place. */
 
 .place-lab {
     margin: 24px 0 8px;
     padding: 22px 24px 24px;
-    border: 2px solid #c8d9e7;
+    border: 2px solid #c9dce8;
     border-radius: 20px;
     background: linear-gradient(180deg, #fbfdff 0%, #f2f8fc 100%);
-    box-shadow: 0 12px 30px rgba(20, 57, 78, .12);
+    box-shadow: 0 12px 30px rgba(20, 57, 78, .14);
 }
 
 .place-lab__field { display: flex; gap: 14px; align-items: center; }
-.place-lab__field span { color: #183b70; font-weight: 700; }
+.place-lab__field span { color: #52666f; font-size: .74rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
 
 .place-lab__field input {
     width: 190px;
     box-sizing: border-box;
     padding: 10px 14px;
-    border: 2px solid #8db0c2;
-    border-radius: 10px;
+    border: 2px solid #b8cbd7;
+    border-radius: 12px;
     outline: none;
     background: #fff;
     color: #173849;
-    font: 700 1.15rem ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font: 700 1.18rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
     font-variant-numeric: tabular-nums;
     text-align: center;
     transition: border-color .18s ease, box-shadow .18s ease;
 }
 
-.place-lab__field input:focus { border-color: #09539d; box-shadow: 0 0 0 4px rgba(9, 83, 157, .14); }
+.place-lab__field input:focus { border-color: #116e93; box-shadow: 0 0 0 4px rgba(17, 110, 147, .12); }
 
 .place-lab__strip {
     display: flex;
@@ -48,17 +253,17 @@
     transition: border-color .18s ease, background-color .18s ease;
 }
 
-.place-lab__cell--whole { background: #eef4ff; }
-.place-lab__cell--decimal { background: #fff4e6; }
-.place-lab__cell.is-active { border-color: #3568b8; background: #fff; }
-.place-lab__cell.is-empty .place-lab__digit { color: #a8b5bf; }
+.place-lab__cell--whole { background: #eef5fb; }
+.place-lab__cell--decimal { background: #fff8df; }
+.place-lab__cell.is-active { border-color: #116e93; background: #fff; }
+.place-lab__cell.is-empty .place-lab__digit { color: #b8cbd7; }
 
-.place-lab__place { min-height: 2.2em; color: #405660; font: 700 .62rem/1.1 Aleo, serif; text-align: center; }
-.place-lab__digit { color: #183b70; font: 700 1.7rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
-.place-lab__unit { color: #7c8d96; font: 700 .6rem/1 Aleo, serif; }
+.place-lab__place { min-height: 2.2em; color: #52666f; font: 700 .62rem/1.1 Aleo, serif; text-align: center; }
+.place-lab__digit { color: #09539d; font: 700 1.7rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+.place-lab__unit { color: #52666f; font: 700 .6rem/1 Aleo, serif; }
 .place-lab__cell--decimal .place-lab__place,
-.place-lab__cell--decimal .place-lab__unit { color: #8a6a4a; }
-.place-lab__cell--decimal .place-lab__digit { color: #7a3c09; }
+.place-lab__cell--decimal .place-lab__unit { color: #9b5f12; }
+.place-lab__cell--decimal .place-lab__digit { color: #9b5f12; }
 .place-lab__cell--point { width: 22px; padding-right: 0; padding-left: 0; background: none; }
 .place-lab__cell--point .place-lab__digit { color: #b86821; font-family: Aleo, serif; font-size: 2rem; }
 
@@ -67,26 +272,26 @@
 .place-lab__parts li {
     padding: 8px 12px;
     border-radius: 10px;
-    color: #29444f;
+    color: #41535c;
     font-size: .95rem;
     line-height: 1.5;
     transition: background-color .18s ease;
 }
 
-.place-lab__parts li + li { border-top: 1px solid #e2ebf0; }
-.place-lab__parts li.is-active { background: #e8f2f9; }
-.place-lab__parts b { color: #183b70; }
+.place-lab__parts li + li { border-top: 1px solid #d9e4eb; }
+.place-lab__parts li.is-active { background: #eaf3f8; }
+.place-lab__parts b { color: #173849; }
 .place-lab__parts strong { color: #09539d; }
-.place-lab__holder { color: #62757e; }
-.place-lab__holder b { color: #8b9aa3; }
+.place-lab__holder { color: #52666f; }
+.place-lab__holder b { color: #b8cbd7; }
 
 .place-lab__words {
     margin: 16px 0 0;
     padding: 14px 18px;
-    border: 2px solid #d5e1e9;
+    border: 2px solid #d9e2ec;
     border-radius: 14px;
     background: #fff;
-    color: #29444f;
+    color: #41535c;
     line-height: 1.5;
 }
 
@@ -97,36 +302,3 @@
     .place-lab__parts li,
     .place-lab__field input { transition: none; }
 }
-
-/* Rewriting the decimal parts over a common place. */
-
-.fraction-bridge {
-    display: grid;
-    gap: 10px;
-    margin: 22px 0;
-    padding: 20px 24px 18px;
-    justify-items: center;
-    border: 2px solid #e4ccb3;
-    border-radius: 18px;
-    background: #fffaf3;
-}
-
-.fraction-bridge__line { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; justify-content: center; }
-.fraction-bridge__sign { color: #b86821; font-size: 1.3rem; font-weight: 700; }
-.fraction-bridge__note { margin: 0; color: #8a6a4a; font-size: .84rem; font-weight: 700; text-align: center; }
-.fraction-bridge__note span { display: block; font-size: 1.1rem; line-height: 1; }
-.fraction-bridge figcaption { margin-top: 4px; color: #52666f; font-size: .9rem; text-align: center; }
-
-.fraction {
-    display: grid;
-    padding: 4px 10px;
-    gap: 3px;
-    justify-items: center;
-    color: #7a3c09;
-    font-variant-numeric: tabular-nums;
-    font-weight: 700;
-}
-
-.fraction b { font-size: 1.2rem; }
-.fraction i { padding-top: 3px; border-top: 2px solid #b86821; font-size: 1.2rem; font-style: normal; }
-.fraction--total { border-radius: 10px; background: #fff1dd; color: #7a3c09; }

@@ -22,4 +22,8 @@ header { display: block; height: 5vh; margin: 0; padding: 20px; background-image
 .poly-text h1, #reset-opacity-wrapper h1 { font-size: 50px; }
 .home-links { display: flex; gap: 16px; flex-wrap: wrap; margin: 25px 0; }
 .home-links a { display: inline-block; padding: 13px 18px; border: 2px solid #116e93; border-radius: 8px; background: rgba(255,255,255,.65); font-weight: 700; text-decoration: none; }
-@media (max-width: 650px) { #title-section { min-height: 60vh; margin: 35px 50px 50px; padding: 3rem 1.5rem; } #title-section::after { top: -80px; right: -80px; width: 250px; height: 250px; } .poly-block, .route-block { padding: 2rem; } }
+
+/* No width media query here on purpose: .layout is a fixed 900px panel that
+   shared.css scales with a transform below 900px, so a viewport breakpoint
+   reflows the content inside a panel that is only being made smaller. A phone
+   reports a 980px viewport and never fires one at all. */

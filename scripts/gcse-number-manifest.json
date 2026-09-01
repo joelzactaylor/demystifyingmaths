@@ -146,7 +146,7 @@
                     "title": "Square roots",
                     "description": "The square root as the inverse of squaring, found by reversing a known square.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "The square root as the inverse of squaring; roots of perfect squares to 225 and of decimals like root 0.25, non-calculator. The two-solution issue lives on positive-and-negative-roots; estimating irrational roots lives on Measures estimating-roots; surd manipulation is Higher, in the surds group. Both tiers. (N6, N7)"
                 },
                 {
@@ -154,7 +154,7 @@
                     "title": "Positive and negative square roots",
                     "description": "Why a squared equation has two solutions while the root sign gives one.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Why x squared = k has two solutions while the root sign denotes only the positive one; plus-or-minus notation; giving both roots of 49. Solving quadratic equations lives in Algebra; roots of negatives have no real value at GCSE, and complex numbers are A level. Both tiers. (N6)"
                 },
                 {
@@ -162,7 +162,7 @@
                     "title": "Cube roots and higher roots",
                     "description": "Cube roots and nth roots as the inverse of a power, including negatives.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Cube roots of perfect cubes including negatives like the cube root of -27, and higher roots such as the fifth root of 32, as inverses of powers; calculator root keys. Fractional-index notation for roots is Higher, on unit-fractional-indices; estimation lives on Measures. Both tiers. (N6, N7)"
                 },
                 {
@@ -1641,7 +1641,7 @@
                 "Place-holders — identify or complete numbers where zeros hold whole-number or decimal places (4 questions).",
                 "Words and figures — convert between words and figures, including internal zeros and decimal parts (4 questions)."
             ],
-            "generate": true
+            "generate": false
         },
         {
             "file": "practiceOrderingNumbers.html",
@@ -1663,7 +1663,7 @@
                 "Negative order — choose correctly ordered lists containing positive and negative integers and decimals (4 questions).",
                 "Number lines and contexts — order values ascending or descending in number-line and temperature contexts (4 questions)."
             ],
-            "generate": true
+            "generate": false
         },
         {
             "file": "practiceInequalitySymbols.html",
@@ -1685,7 +1685,7 @@
                 "Extended symbols — translate at most, at least and not equal into ≤, ≥ and ≠, including which allow equality (4 questions).",
                 "Integer solutions — select the integers satisfying statements such as −2 < n ≤ 3 (4 questions)."
             ],
-            "generate": true
+            "generate": false
         },
         {
             "file": "practiceWrittenMethods.html",
@@ -1707,7 +1707,7 @@
                 "Carrying — add values that require carrying through one or more columns (4 questions).",
                 "Application — solve addition-only money and measure problems, with units fixed by the prompt (4 questions)."
             ],
-            "generate": true
+            "generate": false
         },
         {
             "file": "practiceColumnSubtraction.html",
@@ -1729,7 +1729,7 @@
                 "Exchange — subtract with ordinary single-column exchanges, excluding any exchange that must pass through a zero (4 questions).",
                 "Application — solve change and difference problems with non-negative answers and no across-zero exchange (4 questions)."
             ],
-            "generate": true
+            "generate": false
         },
         {
             "file": "practiceExchangingAcrossZeros.html",
@@ -1751,7 +1751,7 @@
                 "Decimals — subtract values such as 4.03 − 1.276 with zero place-holders and chained exchange (4 questions).",
                 "Application — solve subtraction contexts whose written method requires an exchange across zeros (4 questions)."
             ],
-            "generate": true
+            "generate": false
         },
         {
             "file": "practiceLongMultiplication.html",
@@ -1773,7 +1773,7 @@
                 "Structure — complete missing partial products and place-holder zeros in later rows (4 questions).",
                 "Application — solve integer-only cost and area problems by long multiplication (4 questions)."
             ],
-            "generate": true
+            "generate": false
         },
         {
             "file": "practiceDivision.html",
@@ -1795,7 +1795,7 @@
                 "Exact decimals — continue past the decimal point until a one-digit division terminates exactly (4 questions).",
                 "Structure — complete missing quotient digits or carried remainders in short-division layouts (4 questions)."
             ],
-            "generate": true
+            "generate": false
         },
         {
             "file": "practiceInterpretingRemainders.html",
@@ -1817,7 +1817,7 @@
                 "Directed rounding — decide whether a one-digit division context requires rounding up or down (4 questions).",
                 "Mixed contexts — choose the appropriate answer for coaches, boxes, tickets and leftovers; the decision is the catch (4 questions)."
             ],
-            "generate": true
+            "generate": false
         },
         {
             "file": "practiceLongDivision.html",
@@ -1839,7 +1839,7 @@
                 "Exact decimals — divide integer or decimal dividends and continue past the point to an exact answer (4 questions).",
                 "Structure and application — complete missing long-division steps or solve a context with a two-digit divisor (4 questions)."
             ],
-            "generate": true
+            "generate": false
         },
         {
             "file": "practiceGivenCalculation.html",
@@ -1856,7 +1856,7 @@
                 "Quotients — deducing divisions from the stated fact, in both directions (4 questions).",
                 "Reversed deductions — finding a missing factor or dividend from the stated fact, where blind digit-shifting gives the wrong power of ten (4 questions)."
             ],
-            "generate": true,
+            "generate": false,
             "kind": "lesson",
             "learningPages": [
                 "structure/using-a-given-calculation"
@@ -1883,7 +1883,7 @@
                 "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
                 "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
             ],
-            "generate": true
+            "generate": false
         },
         {
             "file": "practiceRecognisingPowers.html",
@@ -1905,7 +1905,7 @@
                 "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
                 "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
             ],
-            "generate": true
+            "generate": false
         },
         {
             "file": "practiceSquareRoots.html",
@@ -1927,7 +1927,7 @@
                 "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
                 "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
             ],
-            "generate": true
+            "generate": false
         },
         {
             "file": "practicePositiveAndNegativeRoots.html",
@@ -1949,7 +1949,7 @@
                 "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
                 "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
             ],
-            "generate": true
+            "generate": false
         },
         {
             "file": "practiceCubeAndHigherRoots.html",
@@ -1971,7 +1971,7 @@
                 "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
                 "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
             ],
-            "generate": true
+            "generate": false
         },
         {
             "file": "practiceNegatives.html",
@@ -2817,7 +2817,7 @@
             "groups": [
                 "index-laws"
             ],
-            "generate": false,
+            "generate": true,
             "kind": "review",
             "learningPages": [
                 "structure/negative-indices",
@@ -2854,7 +2854,7 @@
             "groups": [
                 "surds"
             ],
-            "generate": false,
+            "generate": true,
             "kind": "review",
             "learningPages": [
                 "structure/simplifying-surds",
@@ -2869,6 +2869,28 @@
             "availableAfter": "structure/rationalising-conjugates"
         },
         {
+            "file": "practiceRationalAndIrrational.html",
+            "title": "Rational and irrational numbers",
+            "description": "Classifying a number as rational or irrational, including roots that turn out rational.",
+            "skill": "Classifying a number as rational or irrational, including roots that turn out rational.",
+            "topic": "structure",
+            "groups": [
+                "surds"
+            ],
+            "kind": "lesson",
+            "learningPages": [
+                "structure/rational-and-irrational"
+            ],
+            "tier": "both",
+            "scope": "Definitions and classification: rational as one integer over another, including integers, terminating and recurring decimals; pi and non-square roots as irrational; deciding for root(9/16) and root 0.25. Foundation needs the vocabulary and examples; Higher links to surds. Irrationality proofs are A level. (N8, N10)",
+            "sections": [
+                "Fluency — direct questions on rational and irrational numbers, limited to this lesson's stated scope (4 questions).",
+                "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
+                "Check — single-choice classification where root(9/16) and root 0.25 catch the 'roots are irrational' reflex; fraction-valued answers appear only as choice options (4 questions)."
+            ],
+            "generate": true
+        },
+        {
             "file": "practiceFractionArithmetic.html",
             "title": "Fraction arithmetic review",
             "description": "The four operations with fractions and mixed numbers.",
@@ -2876,7 +2898,7 @@
             "groups": [
                 "calculating-with-fractions"
             ],
-            "generate": false,
+            "generate": true,
             "kind": "review",
             "learningPages": [
                 "fractions/adding-fractions",
@@ -2900,7 +2922,7 @@
                 "error-intervals",
                 "calculating-with-bounds"
             ],
-            "generate": false,
+            "generate": true,
             "kind": "review",
             "learningPages": [
                 "measures/rounding-place-value",
@@ -2941,7 +2963,7 @@
                 "Ordering — choosing the correct inequality symbol between two values, and single-choice questions picking the correctly ordered list; no ordering is ever typed (4 questions).",
                 "Powers of ten — multiplying and dividing by 10, 100, 1000, 0.1 and 0.01, ending with a division by 0.1 that catches the 'dividing makes smaller' reflex (4 questions)."
             ],
-            "generate": true,
+            "generate": false,
             "kind": "review",
             "learningPages": [
                 "structure/place-value",
@@ -2966,7 +2988,7 @@
                 "Long multiplication — decimal pairs via the integer product, placing the point by counting decimal places and checking against an estimate (4 questions).",
                 "Application — worded money and measure problems with the unit fixed in the prompt and a bare number demanded (money always pounds to two decimal places), ending with a subtraction like 12 − 3.475 that catches unpadded columns (4 questions)."
             ],
-            "generate": true,
+            "generate": false,
             "kind": "review",
             "learningPages": [
                 "structure/column-addition",
@@ -2992,7 +3014,7 @@
                 "Decimal divisors — rewriting divisions like 55.2 ÷ 0.46 as integer equivalents before dividing (4 questions).",
                 "Remainders in context — worded problems needing long division by a two-digit divisor first, then the round-up, round-down or state-the-leftover decision; the choice is the catch (4 questions)."
             ],
-            "generate": true,
+            "generate": false,
             "kind": "review",
             "learningPages": [
                 "structure/short-division",
@@ -3005,17 +3027,17 @@
         {
             "file": "practicePowersRootsReview.html",
             "title": "Powers and roots review",
-            "description": "Evaluating powers and roots without a calculator, both square roots, and spotting irrational results.",
-            "skill": "Evaluating powers and roots without a calculator, and deciding whether the result is rational.",
+            "description": "Evaluating powers and roots without a calculator, cube roots of negatives, and every solution a squared equation has.",
+            "skill": "Evaluating powers and roots without a calculator, and giving every solution a squared equation has.",
             "topic": "structure",
             "groups": [
                 "powers-and-roots"
             ],
             "tier": "both",
             "sections": [
-                "Fluency — index notation, evaluating squares, cubes and small powers, recognising numbers like 64 as powers (4 questions).",
-                "Roots — square, cube and higher roots, cube roots of negatives, and x² = k answered either as a single choice naming all solutions or by typing the negative root; no question ever asks for two typed values (5 questions).",
-                "Rational or irrational — single-choice classification where √(9/16) and √0.25 catch the 'roots are irrational' reflex; fraction-valued answers appear only as choice options (3 questions)."
+                "Fluency — index notation, evaluating squares, cubes and small powers, and recognising numbers like 64 as powers (4 questions).",
+                "Roots — square roots of perfect squares and of decimals, cube roots including negatives, and higher roots read from the order in the crook (4 questions).",
+                "Both roots, and the sign — what the root sign names against the solutions of x² = k, answered as a single choice naming all solutions or by typing the named root; no question ever asks for two typed values (4 questions)."
             ],
             "generate": true,
             "kind": "review",
@@ -3024,10 +3046,9 @@
                 "structure/recognising-powers",
                 "structure/square-roots",
                 "structure/positive-and-negative-roots",
-                "structure/cube-and-higher-roots",
-                "structure/rational-and-irrational"
+                "structure/cube-and-higher-roots"
             ],
-            "availableAfter": "structure/rational-and-irrational"
+            "availableAfter": "structure/cube-and-higher-roots"
         },
         {
             "file": "practiceNegativesReview.html",

@@ -1,0 +1,11 @@
+@import url("/demystifyingmaths/css/practiceWrittenMethods.css");
+@import url("/demystifyingmaths/css/practiceRootsShell.css");
+
+/* Practice: recognising powers.
+
+   The shared practice shell comes from practiceWrittenMethods.css, which is
+   what every drill in written methods loads, so this page is the same page with
+   different questions in it. practiceRootsShell.css adds the one thing a drill on
+   powers and roots needs and the written-method drills never did: a raised index, and the rows of powers a reader reads back.
+
+   Nothing page-specific is needed beyond those, so nothing is added here. */

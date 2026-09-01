@@ -543,11 +543,6 @@
     overflow-wrap: normal;
 }
 
-@media (max-width: 460px) {
-    .practice-choice__options.is-value-grid { grid-template-columns: 1fr; }
-}
-
-
 /* The question itself keeps the place-value alignment visible. */
 
 .practice-question__expression.practice-column {
@@ -607,7 +602,7 @@
 .practice-answer__entry.has-suffix input { border-radius: 11px 0 0 11px; }
 .practice-answer__entry.has-prefix.has-suffix input { border-radius: 0; }
 
-@media (max-width: 520px) {
-    .practice-answer--unit { align-items: stretch; flex-direction: column; }
-    .practice-answer__entry { min-width: 0; max-width: none; }
-}
+/* No width media query here on purpose: .layout is a fixed 900px panel that
+   shared.css scales with a transform below 900px, so a viewport breakpoint
+   reflows the content inside a panel that is only being made smaller. A phone
+   reports a 980px viewport and never fires one at all. */

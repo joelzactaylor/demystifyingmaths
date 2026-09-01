@@ -543,10 +543,6 @@
     overflow-wrap: normal;
 }
 
-@media (max-width: 460px) {
-    .practice-choice__options.is-value-grid { grid-template-columns: 1fr; }
-}
-
 /* Direct controls for inequality notation and integer solution sets. */
 
 .practice-choice__options.is-symbol-grid {
@@ -605,7 +601,7 @@
 .practice-multi__option.is-correct::after { color: #315640; content: "Fits"; }
 .practice-multi__option.is-wrong::after { color: #8b4a12; content: "Outside"; }
 
-@media (max-width: 460px) {
-    .practice-choice__options.is-symbol-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .practice-multi__option { min-width: 68px; }
-}
+/* No width media query here on purpose: .layout is a fixed 900px panel that
+   shared.css scales with a transform below 900px, so a viewport breakpoint
+   reflows the content inside a panel that is only being made smaller. A phone
+   reports a 980px viewport and never fires one at all. */

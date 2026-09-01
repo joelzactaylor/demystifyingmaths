@@ -87,9 +87,17 @@ Create `<TARGET>` from the ground up as a finished Demystifying Maths practice p
 - Respect `prefers-reduced-motion`. Motion may clarify a state change, but never delay feedback, move focus or become the only cue.
 - Do not add decorative animation to imitate a teaching-page scroll scene. The interaction itself is the practice page's differentiator.
 
+## Never declare a viewport
+
+A practice page sits in the same `.layout` as every other page on the site: a hard 900px panel that `shared.css` scales with a transform below 900px. No page carries a `<meta name="viewport">`, and a new one must not add one. A phone with no viewport declaration falls back to a 980px virtual viewport and scales the whole page down uniformly to fit, so the layout is identical everywhere, only smaller.
+
+Adding `width=device-width` opts the page out of that scaling. The 900px layout is then laid out inside a 390px viewport and the page appears enormous and clipped. The only exception on the site is `vocab/index.html`, a standalone unlisted tool with its own responsive stylesheet.
+
+The same reasoning rules out `@media (max-width: …)` in a practice stylesheet. A breakpoint below 900px never fires on a phone, because the viewport is reported as 980px wide; on a narrowed desktop window it reflows the content inside a panel that is only being made smaller, giving a layout no phone reader ever sees. Write one layout at 900px and let the browser shrink it. The reduced-motion block is the only `@media` a practice stylesheet carries.
+
 ## Accessibility and mathematical presentation
 
-- Include the viewport meta tag and page-specific title, description and Open Graph metadata. Describe the page as supported practice, never as a scored test.
+- Include page-specific title, description and Open Graph metadata. Describe the page as supported practice, never as a scored test. **No viewport meta tag**: see "Never declare a viewport" above.
 - Maintain one page-level `h1`, a valid heading hierarchy and landmarks that make the goal, current practice and onward links easy to find.
 - Put visible labels on every input. Use `fieldset` and `legend` for related choices, unique IDs, valid ARIA references and short `aria-live="polite"` messages.
 - Do not rely on placeholder text, colour, ticks or crosses to convey correctness. Pair colour with precise text and a border, icon shape or other structural cue.
@@ -106,7 +114,11 @@ Complete at least two review passes after the first implementation:
 2. **Learner pass:** try the first question blank, correct, partly correct and wrong. Request hints in different orders, open the worked solution before attempting, revise after feedback, generate another question and complete a round. Verify that Enter checks, a second distinct Enter continues, checked controls change labels, and held Enter cannot skip. On the finish screen, use every outcome filter and every return-to-question link. Check that lesson review links land at the top of the matching section and that the blue next-lesson card precedes the ochre next-practice card. Look for judgemental copy, filler, dead ends, unwanted resets, focus loss, scroll jumps and a first screen that resembles an exam paper.
 3. **Generator pass:** run deterministic arithmetic assertions and a large sample from every question family. Check constraints, exactness, equivalence parsing, negative and zero cases, minimum and maximum values, contexts, units, fallbacks and that no later skill leaks in.
 4. **Accessibility pass:** verify headings, labels, fieldsets, IDs, ARIA references, keyboard behaviour, live-region brevity, non-colour states, focus management, reduced motion and the no-JavaScript fallback.
-5. **Repository pass:** run JavaScript syntax checks, `git diff --check`, the local link checker, the practice-pairing checker, DOM/ID/ARIA checks and CSS structural checks. Use the in-app browser for rendered testing when available; if it is unavailable, say so rather than silently substituting another browser surface.
+- **A label ends in a colon, never a dash.** An em dash directly against notation is read as a sign — `Wrong idea &mdash; &radic;49` puts a dash where a minus could be — so a label that introduces mathematics ends in a colon. A dash between clauses is ordinary punctuation and stays. `scripts/notation-check.mjs` enforces it.
+
+- **Mark the glossary terms in the question copy.** A drill page's prose is its instructions, and "Work out the quotient" is exactly where a reader meets a word they may have lost since the lesson. Mark it there, by hand, as `<span class="gloss" data-term="quotient">quotient</span>` — once per page, in running prose, never in a heading, a bold stage label or a control. `node scripts/glossary-mark.mjs --write <page>` proposes a first set; edit what it proposes. The terms live in `js/glossary.js` and `scripts/glossary-check.mjs` validates both them and the marks.
+
+5. **Repository pass:** run JavaScript syntax checks, `git diff --check`, the local link checker, the practice-pairing checker, `scripts/panel-check.mjs`, `scripts/notation-check.mjs`, `scripts/glossary-check.mjs`, DOM/ID/ARIA checks and CSS structural checks. Use the in-app browser for rendered testing when available; if it is unavailable, say so rather than silently substituting another browser surface.
 
 After those passes, compare the result against `docs/syllabus-coverage.md` line by line. If a flaw is found, fix it and repeat the relevant checks. Finish only when the practice is mathematically exact, narratively progressive, visually calm, mechanically stable, accessible, genuinely useful after a mistake and inviting enough to return to.
 

@@ -338,22 +338,6 @@
     object-fit: cover;
 }
 
-@media (max-width: 899px) {
-    .sim-images img {
-        width: calc(50% - 0.5rem);
-    }
-}
-
-@media (max-width: 640px) {
-    .sim-images {
-        flex-direction: column;
-    }
-
-    .sim-images img {
-        width: 100%;
-    }
-}
-
 .i-squared-feedback {
     margin-top: 8px;
     font-weight: 700;
@@ -372,3 +356,8 @@ canvas {
     touch-action: pinch-zoom;
     user-select: none;
 }
+
+/* No width media query here on purpose: .layout is a fixed 900px panel that
+   shared.css scales with a transform below 900px, so a viewport breakpoint
+   reflows the content inside a panel that is only being made smaller. A phone
+   reports a 980px viewport and never fires one at all. */

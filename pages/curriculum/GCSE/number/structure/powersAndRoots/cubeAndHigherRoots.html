@@ -10,11 +10,14 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/cubeAndHigherRoots.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
+    <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/cubeAndHigherRoots.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -45,14 +48,201 @@
         <aside id="page-nav-container"></aside>
 
         <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>Cube roots of perfect cubes including negatives like the cube root of -27, and higher roots such as the fifth root of 32, as inverses of powers; calculator root keys. Fractional-index notation for roots is Higher, on unit-fractional-indices; estimation lives on Measures. Both tiers. (N6, N7)</p>
+            <section>
+                <h1 id="the-cube-root">The cube root</h1>
+                <p class="prereq"><b>Before this page:</b> <span>be able to cube a number using <a
+                            href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/indexNotation.html">index
+                            notation</a>, and recall the cubes of 1 to 5 and 10 from <a
+                            href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/recognisingPowers.html">recognising
+                            powers of a number</a>.</span></p>
+
+                <p><span class="sf">3 &times; 3 &times; 3 = 27</span>. The cube root of 27 is the number that was cubed:
+                    3.</p>
+
+                <p>27 unit cubes pack into a cube with 3 along every <span class="gloss" data-term="edge">edge</span>, so 3 is the edge length that goes with a
+                    <span class="gloss" data-term="volume">volume</span> of 27. A cube root is that edge.</p>
+
+                <div class="rule-card">
+                    <h2 class="rule-card__statement" aria-label="the cube root of 27 equals 3"><span class="rad rad--order"><span class="caret" aria-hidden="true">&sup3;&radic;</span><span class="rad__index" data-order="3" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">27</span></span> = 3</h2>
+                    <ol class="rule-card__conditions">
+                        <li>27 stands under the sign, and it is the volume of the cube.</li>
+                        <li>3 is the value of the root, and it is that cube's edge.</li>
+                    </ol>
+                </div>
+
+                <p>The small 3 in the crook of the sign is the order, and it says how many equal <span class="gloss" data-term="factor">factors</span> the root is
+                    looking for. A square root shows no order, because 2 is the order left unwritten.</p>
+
+                <div class="wex">
+                    <h2 class="wex__title" aria-label="Example: work out the cube root of 125">Example: work out <span class="rad rad--order"><span class="caret" aria-hidden="true">&sup3;&radic;</span><span class="rad__index" data-order="3" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">125</span></span></h2>
+                    <p class="wex__task">Match the number to a cube, read the number that was cubed, then cube it
+                        back.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math" aria-label="the cube root of 125"><span class="rad rad--order"><span class="caret" aria-hidden="true">&sup3;&radic;</span><span class="rad__index" data-order="3" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">125</span></span></span></span>
+                            <span class="wex__why">125 stands under the sign, so the question is which number three
+                                equal factors multiply to.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf">5 &times; 5 &times; 5 = 125</span></span>
+                            <span class="wex__why">125 is the cube of 5, one of the cubes worth recalling.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math" aria-label="the cube root of 125 equals 5"><span class="rad rad--order"><span class="caret" aria-hidden="true">&sup3;&radic;</span><span class="rad__index" data-order="3" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">125</span></span> = 5</span></span>
+                            <span class="wex__why">Cubing 5 returns the 125 that stood under the sign, which is the
+                                check.</span>
+                        </li>
+                    </ol>
+                </div>
             </section>
 
             <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+                <h1 id="the-cube-root-of-a-negative">The cube root of a negative number</h1>
+                <p><span class="sf">(&minus;3) &times; (&minus;3) &times; (&minus;3) = &minus;27</span>, so
+                    <span class="sf" role="math" aria-label="the cube root of negative 27 equals negative 3"><span class="rad rad--order"><span class="caret" aria-hidden="true">&sup3;&radic;(</span><span class="rad__index" data-order="3" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">&minus;27</span></span><span class="caret" aria-hidden="true">)</span> = &minus;3</span>.</p>
+
+                <p>The first two negative factors multiply to a positive 9, and the third turns that back to
+                    &minus;27. An odd count of negative factors leaves the <span class="gloss" data-term="product">product</span> negative.</p>
+
+                <p>A square has two equal factors carrying the same sign, so nothing on the <span class="gloss" data-term="number line">number line</span> squares to
+                    &minus;9. A cube has three, and three negative factors reach &minus;27.</p>
+
+                <div class="important-box" aria-labelledby="one-root-not-two">
+                    <h2 class="important-box__title" id="one-root-not-two">One root, with nothing for &plusmn; to
+                        separate</h2>
+                    <p>Two numbers square to 49, which is why <span class="sf" role="math" aria-label="the square root of 49"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">49</span></span></span> names one of them and
+                        <span class="sf" role="math" aria-label="x squared equals 49">x<span class="caret" aria-hidden="true">^</span><sup>2</sup> = 49</span>
+                        is answered by <span class="sf" role="math" aria-label="x equals plus or minus 7">x = &plusmn;7</span>.
+                        One number on the line cubes to &minus;27, so <span class="sf" role="math"
+                        aria-label="the cube root of negative 27"><span class="rad rad--order"><span class="caret" aria-hidden="true">&sup3;&radic;(</span><span class="rad__index" data-order="3" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">&minus;27</span></span><span class="caret" aria-hidden="true">)</span></span> is &minus;3 and there is
+                        no second value to record.</p>
+                </div>
+            </section>
+
+            <section>
+                <h1 id="higher-roots">Higher roots</h1>
+                <p>An order of 4 or 5 works the same way. <span class="sf" role="math" aria-label="the fifth root of 32 equals 2"><span class="rad rad--order"><span class="caret" aria-hidden="true">&#8309;&radic;</span><span class="rad__index" data-order="5" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">32</span></span> = 2</span>, because
+                    <span class="sf">2 &times; 2 &times; 2 &times; 2 &times; 2 = 32</span>.</p>
+
+                <div class="rule-card">
+                    <h2 class="rule-card__statement" aria-label="the nth root of x"><span class="rad rad--order"><span class="caret" aria-hidden="true">&#8319;&radic;</span><span class="rad__index" data-order="n" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over"><var>x</var></span></span></h2>
+                    <ol class="rule-card__conditions">
+                        <li><var>n</var> is the order, written in the crook of the sign.</li>
+                        <li>The root is the number that <var>n</var> equal factors multiply to make <var>x</var>.</li>
+                    </ol>
+                </div>
+
+                <div class="wex">
+                    <h2 class="wex__title" aria-label="Example: work out the fourth root of 16">Example: work out <span class="rad rad--order"><span class="caret" aria-hidden="true">&#8308;&radic;</span><span class="rad__index" data-order="4" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">16</span></span></h2>
+                    <p class="wex__task">Read the order, then find the number that many equal factors multiply to.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math" aria-label="the fourth root of 16"><span class="rad rad--order"><span class="caret" aria-hidden="true">&#8308;&radic;</span><span class="rad__index" data-order="4" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">16</span></span></span></span>
+                            <span class="wex__why">The order is 4, so the question asks for four equal factors.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf">2 &times; 2 &times; 2 &times; 2 = 16</span></span>
+                            <span class="wex__why">Four factors of 2 come to 16, working one factor at a time: 2, 4, 8,
+                                16.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math" aria-label="the fourth root of 16 equals 2"><span class="rad rad--order"><span class="caret" aria-hidden="true">&#8308;&radic;</span><span class="rad__index" data-order="4" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">16</span></span> = 2</span></span>
+                            <span class="wex__why">Raising 2 to the fourth <span class="gloss" data-term="power">power</span> returns the 16 under the sign.</span>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="important-box" aria-labelledby="root-keys">
+                    <h2 class="important-box__title" id="root-keys">The root keys</h2>
+                    <p>A calculator carries a cube root key, and a key marked with a raised <var>x</var> before the
+                        sign for any other order. Key the order, then that key, then the number: 5 and 32 give 2.</p>
+                </div>
+            </section>
+
+            <section>
+                <h1 id="odd-and-even-roots">Odd and even roots</h1>
+                <p>An odd order reaches every number on the line: <span class="sf" role="math" aria-label="the cube root of negative 27 equals negative 3"><span class="rad rad--order"><span class="caret" aria-hidden="true">&sup3;&radic;(</span><span class="rad__index" data-order="3" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">&minus;27</span></span><span class="caret" aria-hidden="true">)</span> = &minus;3</span> and <span class="sf" role="math" aria-label="the fifth root of negative 32 equals negative 2"><span class="rad rad--order"><span class="caret" aria-hidden="true">&#8309;&radic;(</span><span class="rad__index" data-order="5" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">&minus;32</span></span><span class="caret" aria-hidden="true">)</span> = &minus;2</span>.</p>
+
+                <p>An even count of negative factors leaves a positive product, so an even order reaches 0 and the
+                    positive numbers only. A square root is that case with the order left unwritten.</p>
+
+                <figure class="parity">
+                    <p class="parity__factors" data-factors aria-hidden="true"></p>
+                    <span class="parity__cap" id="parity-cap">Factors of &minus;3</span>
+                    <div class="parity__scale" data-scale role="slider" tabindex="0" aria-valuemin="2" aria-valuemax="6"
+                        aria-valuenow="3" aria-valuetext="3 factors of negative 3, multiplying to negative 27"
+                        aria-labelledby="parity-cap">
+
+                            <span class="parity__cell" data-cell="2" aria-hidden="true"><b>2</b><i>9</i></span>
+                            <span class="parity__cell" data-cell="3" aria-hidden="true"><b>3</b><i>&minus;27</i></span>
+                            <span class="parity__cell" data-cell="4" aria-hidden="true"><b>4</b><i>81</i></span>
+                            <span class="parity__cell" data-cell="5" aria-hidden="true"><b>5</b><i>&minus;243</i></span>
+                            <span class="parity__cell" data-cell="6" aria-hidden="true"><b>6</b><i>729</i></span>
+                    </div>
+                    <figcaption class="parity__reading" data-reading></figcaption>
+                </figure>
+
+                <div class="rule-card">
+                    <h2 class="rule-card__statement" aria-label="the nth root of x"><span class="rad rad--order"><span class="caret" aria-hidden="true">&#8319;&radic;</span><span class="rad__index" data-order="n" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over"><var>x</var></span></span></h2>
+                    <ol class="rule-card__conditions">
+                        <li><var>n</var> odd: one number on the line, whatever the sign of <var>x</var>.</li>
+                        <li><var>n</var> even and <var>x</var> above 0: two numbers on the line, and the sign names
+                            the non-negative one.</li>
+                        <li><var>n</var> even and <var>x</var> below 0: no number on the line.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <section>
+                <h1 id="common-mistakes">Common mistakes</h1>
+                <ul class="slips">
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math"
+                                aria-label="the cube root of negative 27 equals 3"><span class="rad rad--order"><span class="caret" aria-hidden="true">&sup3;&radic;(</span><span class="rad__index" data-order="3" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">&minus;27</span></span><span class="caret" aria-hidden="true">)</span> = 3</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> <span class="sf">3 &times; 3 &times; 3 = 27</span>,
+                            which is positive, so 3 cubes to 27 rather than to &minus;27.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
+                                aria-label="the cube root of negative 27 equals negative 3"><span class="rad rad--order"><span class="caret" aria-hidden="true">&sup3;&radic;(</span><span class="rad__index" data-order="3" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">&minus;27</span></span><span class="caret" aria-hidden="true">)</span> = &minus;3</span></span>
+                    </li>
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math"
+                                aria-label="the cube root of negative 27 equals plus or minus 3"><span class="rad rad--order"><span class="caret" aria-hidden="true">&sup3;&radic;(</span><span class="rad__index" data-order="3" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">&minus;27</span></span><span class="caret" aria-hidden="true">)</span> = &plusmn;3</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> &plusmn; separates two values, and
+                            <span class="sf">3 &times; 3 &times; 3 = 27</span> shows that 3 is not one of them.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
+                                aria-label="the cube root of negative 27 equals negative 3"><span class="rad rad--order"><span class="caret" aria-hidden="true">&sup3;&radic;(</span><span class="rad__index" data-order="3" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">&minus;27</span></span><span class="caret" aria-hidden="true">)</span> = &minus;3</span></span>
+                    </li>
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math"
+                                aria-label="the cube root of 27 equals 9"><span class="rad rad--order"><span class="caret" aria-hidden="true">&sup3;&radic;</span><span class="rad__index" data-order="3" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">27</span></span> = 9</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> 9 is 27 divided by 3, and dividing is not
+                            rooting: <span class="sf">9 &times; 9 &times; 9 = 729</span>.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
+                                aria-label="3 cubed equals 27, so the cube root of 27 equals 3">3<span class="caret" aria-hidden="true">^</span><sup>3</sup> = 27, so <span class="rad rad--order"><span class="caret" aria-hidden="true">&sup3;&radic;</span><span class="rad__index" data-order="3" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">27</span></span> = 3</span></span>
+                    </li>
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math"
+                                aria-label="the fourth root of negative 16 equals negative 2"><span class="rad rad--order"><span class="caret" aria-hidden="true">&#8308;&radic;(</span><span class="rad__index" data-order="4" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">&minus;16</span></span><span class="caret" aria-hidden="true">)</span> = &minus;2</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> The order 4 is even, and
+                            <span class="sf" role="math" aria-label="negative 2 to the fourth power equals 16">(&minus;2)<span class="caret" aria-hidden="true">^</span><sup>4</sup> = 16</span>,
+                            which is positive.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
+                                aria-label="the fourth root of negative 16 has no value on the number line"><span class="rad rad--order"><span class="caret" aria-hidden="true">&#8308;&radic;(</span><span class="rad__index" data-order="4" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">&minus;16</span></span><span class="caret" aria-hidden="true">)</span> has no value on the number line</span></span>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h1 id="remember">Remember</h1>
+                <ol class="recap">
+                    <li>A cube root is the edge of a cube with that volume: <span class="sf" role="math" aria-label="the cube root of 27 equals 3"><span class="rad rad--order"><span class="caret" aria-hidden="true">&sup3;&radic;</span><span class="rad__index" data-order="3" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">27</span></span> = 3</span>, because
+                        <span class="sf">3 &times; 3 &times; 3 = 27</span>.</li>
+                    <li>The order in the crook counts the equal factors the root is looking for, and a square root
+                        leaves the order 2 unwritten.</li>
+                    <li>An odd order reaches every number on the line and reaches each one once, so <span class="sf" role="math" aria-label="the cube root of negative 27 equals negative 3"><span class="rad rad--order"><span class="caret" aria-hidden="true">&sup3;&radic;(</span><span class="rad__index" data-order="3" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">&minus;27</span></span><span class="caret" aria-hidden="true">)</span> = &minus;3</span> and there is no second value for &plusmn; to
+                        record.</li>
+                    <li>An even order reaches no negative number, so <span class="sf" role="math" aria-label="the fourth root of negative 16"><span class="rad rad--order"><span class="caret" aria-hidden="true">&#8308;&radic;(</span><span class="rad__index" data-order="4" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">&minus;16</span></span><span class="caret" aria-hidden="true">)</span></span> has no value on the number line.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
@@ -62,6 +252,11 @@
                         <span class="practice-card__kicker">Practice</span>
                         <h3>Cube roots and higher roots</h3>
                         <p>Cube roots and nth roots as the inverse of a power, including negatives.</p>
+                    </a>
+                    <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/practicePowersRootsReview.html" style="background-image: none">
+                        <span class="practice-card__kicker">Practice</span>
+                        <h3>Powers and roots review</h3>
+                        <p>Evaluating powers and roots without a calculator, cube roots of negatives, and every solution a squared equation has.</p>
                     </a>
                     <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/addingSubtractingNegatives.html" style="background-image: none">
                         <span class="topic-card__kicker">Next lesson</span>

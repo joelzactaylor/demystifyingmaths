@@ -51,6 +51,83 @@
     white-space: nowrap;
 }
 
+/* THE ROOT SIGN — always drawn, never left to the font.
+
+   A browser lays <msqrt> out from the OpenType MATH table of whatever font the
+   expression is set in: the rule thickness, the gap above the radicand, and the
+   point where the bar meets the arm all come from that table, and the sign has
+   to be a stretchy glyph. macOS ships no font that has one, so the browser
+   stretches a plain U+221A and guesses the rest — the bar floats away from the
+   arm. Naming math fonts only moves the guess to whichever machine lacks them.
+
+   So the sign is an SVG whose arm ends at the very top of its own box, and the
+   bar is a border along the top of the radicand's box. The sign is taken out of
+   the flow and the radicand left in it, which does two things: both start at the
+   same y, so the arm meets the bar exactly at every size; and the whole radical
+   takes its baseline from the radicand, so it sits on the line of the sentence
+   around it instead of riding above it.
+
+   The stroke and the border are the same fraction of an em — 3 units of a
+   40-unit viewBox drawn 1.32em tall is .099em — so the join holds as the type
+   scales. The radicand keeps the surrounding font, so a root reads as part of
+   its sentence rather than switching typeface mid-expression. */
+
+.rad {
+    position: relative;
+    display: inline-block;
+    /* Room for the sign, which is laid over it. */
+    padding-left: .79em;
+    line-height: 1;
+}
+
+.rad__sign {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: .79em;
+    height: 1.32em;
+    overflow: visible;
+}
+
+/* A ROOT OF A HIGHER ORDER — the index sits in the crook of the sign.
+
+   There is no room for it inside the crook itself: the sign is .79em wide and
+   the crook is the first 5 units of a 24-unit viewBox, about .16em, which will
+   not hold a digit. So the sign moves right and the index takes the space that
+   opens up on its left, overlapping the crook the way it is written by hand.
+
+   The offsets are read off the same viewBox as the sign. The arm's foot runs
+   along y = 24 of 40, which at 1.32em tall is .79em down; an index set at .56em
+   with its top at .16em puts its baseline there, on the line the arm starts
+   from. Change the sign's box and these move with it. */
+
+.rad--order { padding-left: 1.1em; }
+.rad--order .rad__sign { left: .31em; }
+
+/* The order is drawn by the stylesheet rather than written into the element.
+   Anything in the DOM survives having the markup stripped, so an index written
+   as text flattens into the radicand beside it and the cube root of 27 reads as
+   "³√327". Generated content is not text, so the clipped sign is left as the one
+   place the order is spelled — which is what keeps the flattened line true. */
+.rad__index {
+    position: absolute;
+    top: .16em;
+    left: 0;
+    font-size: .56em;
+    line-height: 1;
+}
+
+.rad__index::before { content: attr(data-order); }
+
+/* An inline-block takes its baseline from its last line box, so this is what
+   puts the radical on the sentence's baseline. */
+.rad__over {
+    display: block;
+    border-top: .1em solid currentColor;
+    padding: .17em .18em 0 .02em;
+    line-height: 1;
+}
+
 /* IMPORTANT FACTS — short ideas pupils should notice and remember. */
 
 .important-box {
@@ -126,6 +203,24 @@
    notation, which must stay inline. */
 .slips li > b { display: block; margin-bottom: 6px; color: #a3352b; font-size: .98rem; }
 .slips li > span { display: block; color: #41535c; font-size: .92rem; line-height: 1.55; }
+
+/* An odd number of misconceptions leaves the last one alone in a two-column
+   grid, half a row wide against a gap. It takes the whole width instead. */
+.slips li:last-child:nth-child(odd) { grid-column: 1 / -1; }
+
+/* WHERE MARKS ARE LOST — each slip is named, explained, then corrected. The
+   correction is the line a reader copies down, so it is set in the page's ink
+   rather than in the quieter grey of the explanation above it. Selected through
+   the list item, to outweigh the `.slips li > span` it shares its box with. */
+.slips__label { color: #52666f; }
+
+.slips li > .slips__fix {
+    margin-top: 7px;
+    padding-top: 7px;
+    border-top: 1px solid #ecf2f6;
+    color: #173849;
+    font-weight: 700;
+}
 
 /* PREREQUISITES — one line at the head of a lesson, naming what the reader is
    assumed to be able to do already and linking to the pages that teach it. */

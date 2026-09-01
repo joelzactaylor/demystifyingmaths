@@ -16,6 +16,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
+    <script src="/demystifyingmaths/js/glossary.js" defer></script>
     <script src="/demystifyingmaths/js/orderingNumbers.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,24 +50,24 @@
         <main class="lesson-main">
             <section>
                 <h1>Place value reveals the size of a number</h1>
-                <p class="prereq"><b>Before this page:</b> <span>know what each digit is worth in
+                <p class="prereq"><b>Before this page:</b> <span>know what each <span class="gloss" data-term="digit">digit</span> is worth in
                         <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/placeValue.html">integers and decimals</a>,
                         since every comparison here is made one place value at a time.</span></p>
 
-                <p><strong>0.8 = 0.80</strong>, so 0.8 is greater than 0.75 at the hundredths column.
+                <p><strong>0.8 = 0.80</strong>, so 0.8 is greater than 0.75 at the <span class="gloss" data-term="hundredth">hundredths</span> <span class="gloss" data-term="column">column</span>.
                     <strong>&minus;2</strong> lies to the right of &minus;7, so it is greater. Place value and position
                     settle both comparisons.</p>
 
                 <p>Compare from the greatest place value towards the smallest. The first unequal place determines the
-                    order; a number line gives the same result through position.</p>
+                    order; a <span class="gloss" data-term="number line">number line</span> gives the same result through position.</p>
                 <h2>What does it mean to order numbers?</h2>
                 <p>Ordering numbers means arranging them according to their value:</p>
                 <ul>
-                    <li><p><strong>ascending order</strong> &mdash; from smallest to largest</p></li>
-                    <li><p><strong>descending order</strong> &mdash; from largest to smallest</p></li>
+                    <li><p><strong><span class="gloss" data-term="ascending">ascending</span> order</strong> &mdash; from smallest to largest</p></li>
+                    <li><p><strong><span class="gloss" data-term="descending">descending</span> order</strong> &mdash; from largest to smallest</p></li>
                 </ul>
-                <p>A number line makes the order visible. Numbers further to the <span style="color: #183b70">left</span>
-                    are smaller, and numbers further to the <span style="color: #7a3c09">right</span> are larger.</p>
+                <p>A number line makes the order visible. Numbers further to the left are smaller, and numbers
+                    further to the right are larger.</p>
 
                 <svg viewBox="0 0 920 230" role="img" aria-labelledby="number-line-title number-line-description"
                     style="display: block; width: 100%; max-width: 920px; height: auto; margin: 1.5rem auto; font-family: Aleo, serif;">
@@ -76,12 +77,12 @@
                     <defs>
                         <marker id="ordering-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7"
                             markerHeight="7" orient="auto-start-reverse">
-                            <path d="M0 0l10 5-10 5z" fill="#3568b8" />
+                            <path d="M0 0l10 5-10 5z" fill="#5d91b0" />
                         </marker>
                     </defs>
                     <path d="M82 119H838" stroke="#41535c" stroke-width="4" stroke-linecap="round" />
-                    <path d="M113 54H807" stroke="#3568b8" stroke-width="3" marker-end="url(#ordering-arrow)" />
-                    <text x="460" y="38" fill="#183b70" font-size="20" font-weight="700" text-anchor="middle">values increase</text>
+                    <path d="M113 54H807" stroke="#5d91b0" stroke-width="3" marker-end="url(#ordering-arrow)" />
+                    <text x="460" y="38" fill="#09539d" font-size="20" font-weight="700" text-anchor="middle">values increase</text>
                     <g stroke="#41535c" stroke-width="3">
                         <path d="M100 103v32 M190 103v32 M280 103v32 M370 103v32 M460 98v42 M550 103v32 M640 103v32 M730 103v32 M820 103v32" />
                     </g>
@@ -91,8 +92,8 @@
                         <text x="460" y="170">0</text><text x="550" y="170">1</text>
                         <text x="640" y="170">2</text><text x="730" y="170">3</text><text x="820" y="170">4</text>
                     </g>
-                    <text x="100" y="211" fill="#183b70" font-size="18" font-weight="700" text-anchor="middle">smaller</text>
-                    <text x="820" y="211" fill="#7a3c09" font-size="18" font-weight="700" text-anchor="middle">larger</text>
+                    <text x="100" y="211" fill="#09539d" font-size="18" font-weight="700" text-anchor="middle">smaller</text>
+                    <text x="820" y="211" fill="#9b5f12" font-size="18" font-weight="700" text-anchor="middle">larger</text>
                 </svg>
                 <p>For example, <strong>&minus;3, 0, 2, 4</strong> is in ascending order: it reads from left to right
                     along the number line.</p>
@@ -100,7 +101,7 @@
 
             <section>
                 <h1>Ordering whole numbers</h1>
-                <p>Place value tells us which of two positive whole numbers is larger.</p>
+                <p><span class="gloss" data-term="place value">Place value</span> tells us which of two positive whole numbers is larger.</p>
                 <p>First compare the digits in the largest place. If they are equal, move one place to the right and
                     compare again. Stop at the first place where the digits are different.</p>
 
@@ -130,14 +131,14 @@
                     <h2 class="important-box__title" id="whole-number-important-title">Important</h2>
                     <p>For positive whole numbers, a number with more digits is larger. For example,
                         <strong>9,999 &lt; 10,000</strong>.</p>
-                    <p>This shortcut does not work for negative numbers or decimals.</p>
+                    <p>This shortcut does not work for <span class="gloss" data-term="negative">negative</span> numbers or decimals.</p>
                 </aside>
             </section>
 
             <section>
                 <h1 id="ordering-decimal-numbers">Ordering decimal numbers</h1>
-                <p>Line up the decimal points so that digits with the same place value sit underneath each other.</p>
-                <p>You can add zeros to the end of a decimal without changing its value. This makes decimal numbers
+                <p>Line up the <span class="gloss" data-term="decimal point">decimal points</span> so that digits with the same place value sit underneath each other.</p>
+                <p>You can add <span class="gloss" data-term="zero">zeros</span> to the end of a decimal without changing its value. This makes decimal numbers
                     the same length and easier to compare:</p>
                 <p style="text-align: center; font-size: 1.25rem;"><strong>3.7 = 3.70 = 3.700</strong></p>
 
@@ -156,9 +157,9 @@
                         <noscript><p><strong>Ascending order: 3.07, 3.17, 3.7, 3.705</strong></p></noscript>
                     </div>
                     <ol class="ordering-example__steps">
-                        <li><p>Add placeholder zeros: <strong>3.700, 3.170, 3.705, 3.070</strong>.</p></li>
-                        <li><p>The tenths digits put 3.070 first, 3.170 second, and the two numbers beginning 3.70 last.</p></li>
-                        <li><p>3.700 and 3.705 first differ in the thousandths place, so 3.700 is smaller.</p></li>
+                        <li><p>Add <span class="gloss" data-term="placeholder">placeholder</span> zeros: <strong>3.700, 3.170, 3.705, 3.070</strong>.</p></li>
+                        <li><p>The <span class="gloss" data-term="tenth">tenths</span> digits put 3.070 first, 3.170 second, and the two numbers beginning 3.70 last.</p></li>
+                        <li><p>3.700 and 3.705 first differ in the <span class="gloss" data-term="thousandth">thousandths</span> place, so 3.700 is smaller.</p></li>
                     </ol>
                     <p><strong>Ascending order: 3.07, 3.17, 3.7, 3.705</strong></p>
                 </div>
@@ -245,9 +246,25 @@
                     <span>0.625 is not larger than 0.7. Write 0.7 as 0.700, then compare place values.</span></li>
                     <li><b>Adding zeros in the wrong place</b>
                     <span>Zeros may be added to the end of a decimal: 2.5 = 2.50. Writing 2.05 changes the value.</span></li>
-                    <li><b>Ignoring the requested direction</b>
-                    <span>Check whether the question asks for ascending (smallest first) or descending (largest first).</span></li>
+                    <li><b>Answering in the other direction</b>
+                    <span>Ascending is smallest first: &minus;6, &minus;1, 0, 2, 5. Writing 5, 2, 0, &minus;1, &minus;6 answers the descending question instead, and scores nothing.</span></li>
                 </ul>
+            </section>
+
+            <section>
+                <h1 id="remember">Remember</h1>
+                <ol class="recap">
+                    <li>Compare from the greatest place towards the smallest, and the first place where the digits
+                        differ settles the order.</li>
+                    <li>Zeros written on the end of a decimal change nothing, so 3.7, 3.17 and 3.705 compare as 3.700,
+                        3.170 and 3.705.</li>
+                    <li>More digits does not make a decimal larger: <span class="sf">0.8 = 0.800</span>, which is
+                        greater than 0.75, because 8 tenths beats 7 tenths.</li>
+                    <li>Every negative number is smaller than zero and than every positive number, and among negatives
+                        the value closer to zero is the larger, so &minus;2 is greater than &minus;7.</li>
+                    <li>Ascending order runs from smallest to largest and descending order from largest to smallest,
+                        which a number line shows as reading left to right or right to left.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">

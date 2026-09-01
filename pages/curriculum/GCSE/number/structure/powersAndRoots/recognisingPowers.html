@@ -16,6 +16,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
+    <script src="/demystifyingmaths/js/glossary.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -46,13 +47,13 @@
         <main class="lesson-main">
             <section>
                 <h1 id="reading-a-power-backwards">Reading a power backwards</h1>
-                <p class="prereq"><b>Before this page:</b> <span>be able to read and evaluate powers using <a
+                <p class="prereq"><b>Before this page:</b> <span>be able to read and <span class="gloss" data-term="evaluate">evaluate</span> powers using <a
                             href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/indexNotation.html">index
                             notation</a>.</span></p>
 
                 <p>Evaluating <span class="sf" role="math" aria-label="3 to the power of 4">3<span class="caret"
                             aria-hidden="true">^</span><sup>4</sup></span> gives 81. Recognising a power reverses that
-                    calculation: starting with 81, supply an equal power.</p>
+                    <span class="gloss" data-term="calculation">calculation</span>: starting with 81, supply an equal power.</p>
 
                 <div class="recognition">
                     <p><span>evaluate</span><strong role="math" aria-label="3 to the power of 4 equals 81">3<span
@@ -62,7 +63,7 @@
                             &longrightarrow; 3<span class="caret" aria-hidden="true">^</span><sup>4</sup></strong></p>
                 </div>
 
-                <p>The final numeral does not reveal its equal factors. Recognition depends on knowing the power facts
+                <p>The final numeral does not reveal its equal <span class="gloss" data-term="factor">factors</span>. Recognition depends on knowing the power facts
                     that produce it.</p>
             </section>
 
@@ -99,7 +100,7 @@
                     <li><span>10<span class="caret" aria-hidden="true">^</span><sup>3</sup></span><b>1,000</b></li>
                 </ol>
 
-                <p>Both 0 and 1 are square and cube numbers: <span class="sf" role="math"
+                <p>Both 0 and 1 are square and <span class="gloss" data-term="cube number">cube numbers</span>: <span class="sf" role="math"
                         aria-label="0 squared equals 0 cubed equals 0">0<span class="caret"
                             aria-hidden="true">^</span><sup>2</sup> = 0<span class="caret"
                             aria-hidden="true">^</span><sup>3</sup> = 0</span>, and <span class="sf" role="math"
@@ -108,7 +109,7 @@
                             aria-hidden="true">^</span><sup>3</sup> = 1</span>.</p>
 
                 <p>Known powers give both matches and bounds. An exact match recognises a power; a value strictly
-                    between consecutive powers is ruled out.</p>
+                    between <span class="gloss" data-term="consecutive">consecutive</span> powers is ruled out.</p>
 
                 <div class="example-strip">
                     <p><b>50 is not a square</b><span>It lies between consecutive squares.</span><strong
@@ -124,7 +125,7 @@
 
             <section>
                 <h1 id="powers-of-2-3-4-and-5">Powers of 2, 3, 4 and 5</h1>
-                <p>Each row begins with its base and repeatedly multiplies by that same base.</p>
+                <p>Each row begins with its <span class="gloss" data-term="base">base</span> and repeatedly multiplies by that same base.</p>
 
                 <dl class="power-chains">
                     <div>
@@ -166,11 +167,80 @@
                         aria-hidden="true">^</span><sup>2</sup>
                 </p>
 
-                <p>Changing the base changes the index. Swapping them is not valid: <span class="sf"
+                <p>Changing the base changes the <span class="gloss" data-term="index">index</span>. Swapping them is not valid: <span class="sf"
                         role="math" aria-label="4 cubed equals 64">4<span class="caret"
                             aria-hidden="true">^</span><sup>3</sup> = 64</span>, while <span class="sf" role="math"
                         aria-label="3 to the power of 4 equals 81">3<span class="caret"
                             aria-hidden="true">^</span><sup>4</sup> = 81</span>.</p>
+            </section>
+
+            <section>
+                <h1 id="common-mistakes">Common mistakes</h1>
+                <ul class="slips">
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math"
+                                aria-label="4 cubed equals 81">4<span class="caret"
+                                    aria-hidden="true">^</span><sup>3</sup> = 81</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> 81 is <span class="sf" role="math"
+                                aria-label="3 to the power of 4">3<span class="caret"
+                                    aria-hidden="true">^</span><sup>4</sup></span>, read with the base and the index
+                            the wrong way round. Three factors of 4 come to 64.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
+                                aria-label="4 cubed equals 64, and 3 to the power of 4 equals 81">4<span class="caret"
+                                    aria-hidden="true">^</span><sup>3</sup> = 64, and 3<span class="caret"
+                                    aria-hidden="true">^</span><sup>4</sup> = 81</span></span>
+                    </li>
+                    <li>
+                        <b>Wrong idea: 50 is a square number</b>
+                        <span><b class="slips__label">Why it is wrong.</b> 50 falls between two squares that follow
+                            one another, and consecutive squares leave no square between them.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
+                                aria-label="7 squared equals 49, which is less than 50, which is less than 64, which equals 8 squared">7<span
+                                    class="caret" aria-hidden="true">^</span><sup>2</sup> = 49 &lt; 50 &lt; 64 = 8<span
+                                    class="caret" aria-hidden="true">^</span><sup>2</sup></span></span>
+                    </li>
+                    <li>
+                        <b>Wrong idea: 64 cannot be written as a power of 4</b>
+                        <span><b class="slips__label">Why it is wrong.</b> The six factors of 2 in 64 group into three
+                            factors of 4, and into two factors of 8.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
+                                aria-label="64 equals 2 to the power of 6 equals 4 cubed equals 8 squared">64 = 2<span
+                                    class="caret" aria-hidden="true">^</span><sup>6</sup> = 4<span class="caret"
+                                    aria-hidden="true">^</span><sup>3</sup> = 8<span class="caret"
+                                    aria-hidden="true">^</span><sup>2</sup></span></span>
+                    </li>
+                    <li>
+                        <b>Wrong idea: 100 is a cube number</b>
+                        <span><b class="slips__label">Why it is wrong.</b> The cubes either side of 100 are 64 and
+                            125, so no <span class="gloss" data-term="whole number">whole number</span> cubes to 100.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
+                                aria-label="100 equals 10 squared, a square number">100 = 10<span class="caret"
+                                    aria-hidden="true">^</span><sup>2</sup></span>, a <span class="gloss" data-term="square number">square number</span></span>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h1 id="remember">Remember</h1>
+                <ol class="recap">
+                    <li>Recognising a power reverses evaluating one: 81 is <span class="sf" role="math"
+                            aria-label="3 to the power of 4">3<span class="caret"
+                                aria-hidden="true">^</span><sup>4</sup></span> because four factors of 3 multiply to
+                        81.</li>
+                    <li>The squares worth recalling run 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196 and
+                        225.</li>
+                    <li>The cubes worth recalling are 1, 8, 27, 64 and 125, together with <span class="sf" role="math"
+                            aria-label="10 cubed equals 1,000">10<span class="caret"
+                                aria-hidden="true">^</span><sup>3</sup> = 1,000</span>.</li>
+                    <li>A value between two consecutive powers is not itself a power, so 49 &lt; 50 &lt; 64 rules 50
+                        out as a square number.</li>
+                    <li>One number can carry several power names, since <span class="sf" role="math"
+                            aria-label="64 equals 2 to the power of 6 equals 4 cubed equals 8 squared">64 = 2<span
+                                class="caret" aria-hidden="true">^</span><sup>6</sup> = 4<span class="caret"
+                                aria-hidden="true">^</span><sup>3</sup> = 8<span class="caret"
+                                aria-hidden="true">^</span><sup>2</sup></span>, but swapping a base and its index
+                        changes the value.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">

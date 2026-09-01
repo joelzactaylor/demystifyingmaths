@@ -168,7 +168,7 @@
     .practice-grid__columns { border-color: #999; background: #fff; }
 }
 
-@media (max-width: 520px) {
-    .practice-grid__cell input { width: 52px; font-size: 1.1rem; }
-    .practice-grid__columns { gap: 6px; padding: 12px 10px; }
-}
+/* No width media query here on purpose: .layout is a fixed 900px panel that
+   shared.css scales with a transform below 900px, so a viewport breakpoint
+   reflows the content inside a panel that is only being made smaller. A phone
+   reports a 980px viewport and never fires one at all. */

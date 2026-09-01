@@ -85,24 +85,23 @@
 .ordering-tick-label { fill: #405660; font-size: 15px; text-anchor: middle; }
 .ordering-token__stem {
     fill: none;
-    stroke: #3568b8;
+    stroke: #5d91b0;
     stroke-width: 2.5;
     stroke-linecap: round;
 }
-.ordering-token__card { fill: #fff; stroke: #3568b8; stroke-width: 2; }
-.ordering-token__text { fill: #183b70; font-size: 18px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
+.ordering-token__card { fill: #fff; stroke: #5d91b0; stroke-width: 2; }
+.ordering-token__text { fill: #09539d; font-size: 18px; font-weight: 700; text-anchor: middle; dominant-baseline: middle; }
 
 .ordering-direction { fill: none; stroke: #b86821; stroke-width: 5; stroke-linecap: round; }
 .ordering-direction__head { fill: #b86821; }
-
-@media (max-width: 700px) {
-    .ordering-scene__sticky {
-        height: min(590px, calc(100vh - 150px));
-    }
-}
 
 @media (prefers-reduced-motion: reduce) {
     .ordering-scene.is-ready { height: auto; min-height: 0; }
     .ordering-scene__sticky { position: relative; height: 540px; transform: none !important; }
     .ordering-scene__dot { transition: none; }
 }
+
+/* No width media query here on purpose: .layout is a fixed 900px panel that
+   shared.css scales with a transform below 900px, so a viewport breakpoint
+   reflows the content inside a panel that is only being made smaller. A phone
+   reports a 980px viewport and never fires one at all. */

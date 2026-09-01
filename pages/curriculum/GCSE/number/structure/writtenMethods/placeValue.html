@@ -17,6 +17,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
+    <script src="/demystifyingmaths/js/glossary.js" defer></script>
     <script src="/demystifyingmaths/js/placeValue.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -50,264 +51,196 @@
         <aside id="page-nav-container"></aside>
 
         <main class="lesson-main">
-
             <section>
-                <h1>Ten symbols, and the places they stand in</h1>
-                <p class="prereq"><b>Before this page:</b> <span>be able to read and write whole numbers and say
-                        which digit is which. The KS2 page on
-                        <a href="/demystifyingmaths/pages/curriculum/KS2/numberPlaceValue.html">number and place value</a> covers that ground.</span></p>
+                <h1 id="the-value-a-place-carries">The value a place carries</h1>
+                <p class="prereq"><b>Before this page:</b> <span>be able to read and write <span class="gloss" data-term="whole number">whole numbers</span> and say which
+                        digit is which, which the KS2 page on <a
+                            href="/demystifyingmaths/pages/curriculum/KS2/numberPlaceValue.html">number and place
+                            value</a> covers.</span></p>
 
-                <p>Ten symbols, 0 to 9, are enough to write every number there is. That is only possible because a
-                    digit's position carries meaning of its own: the symbol says how many, and the place it sits in
-                    says how many of what.</p>
+                <p>Ten symbols, 0 to 9, write every number there is. A digit says how many; the place it stands in says
+                    how many of what.</p>
 
-                <p>Without that convention, a fresh symbol would be needed for every new
-                    quantity, and arithmetic would be an act of memory rather than a method.</p>
-                <p>Place value connects comparing, ordering, column arithmetic, powers of ten, rounding and standard
-                    form. In each case, the position of a digit fixes the quantity it contributes.</p>
+                <table class="digit-scale">
+                    <caption>The digit 5 in six places</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Number</th>
+                            <th scope="col">Where the 5 stands</th>
+                            <th scope="col">What the 5 is worth</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row"><span class="sf">5</span></th>
+                            <td>ones</td>
+                            <td>five ones, <span class="sf">5</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf">50</span></th>
+                            <td>tens</td>
+                            <td>five tens, <span class="sf">50</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf">500</span></th>
+                            <td>hundreds</td>
+                            <td>five hundreds, <span class="sf">500</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf">0.5</span></th>
+                            <td>tenths</td>
+                            <td>five tenths, <span class="sf">0.5</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf">0.05</span></th>
+                            <td>hundredths</td>
+                            <td>five hundredths, <span class="sf">0.05</span></td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><span class="sf">0.005</span></th>
+                            <td>thousandths</td>
+                            <td>five thousandths, <span class="sf">0.005</span></td>
+                        </tr>
+                    </tbody>
+                </table>
 
-                <h2>What is place value?</h2>
-                <p>Place value is the value a digit takes from its position in a number. The same digit written in a
-                    different place means a different quantity.</p>
-                <p>For example, the digit <span style="color: blue;">5</span> has a different value in each of the
-                    following numbers:</p>
-                <ul>
-                    <li>
-                        <p>The digit <span style="color: blue;">5</span> in '<span style="color: blue;">5</span>' is
-                            worth
-                            five ones</p>
-                    </li>
-                    <li>
-                        <p>The digit <span style="color: blue;">5</span> in '<span style="color: blue;">5</span>0' is
-                            worth
-                            five tens</p>
-                    </li>
-                    <li>
-                        <p>The digit <span style="color: blue;">5</span> in '<span style="color: blue;">5</span>00' is
-                            worth
-                            five hundreds</p>
-                    </li>
-                    <li>
-                        <p>The digit <span style="color: blue;">5</span> in '0.<span style="color: blue;">5</span>' is
-                            worth
-                            five tenths</p>
-                    </li>
-                    <li>
-                        <p>The digit <span style="color: blue;">5</span> in '0.0<span style="color: blue;">5</span>' is
-                            worth
-                            five hundredths</p>
-                    </li>
-                    <li>
-                        <p>The digit <span style="color: blue;">5</span> in '0.00<span style="color: blue;">5</span>'
-                            is worth five thousandths</p>
-                    </li>
-                </ul>
-                <p>The symbol is the same in every one of them. Everything that separates five thousandths from
-                    five hundred is the place it was written in.</p>
+                <p>The symbol is the same in all six. What separates five <span class="gloss" data-term="thousandth">thousandths</span> from five hundred is the place it
+                    was written in.</p>
+
+                <div class="rule-card">
+                    <h2 class="rule-card__statement"><span class="sf">500 = 5 &times; 100</span></h2>
+                    <ol class="rule-card__conditions">
+                        <li>The digit 5 says how many.</li>
+                        <li>The hundreds place says how many of what, and 100 is what one hundreds place is worth.</li>
+                    </ol>
+                </div>
             </section>
 
             <section>
                 <h1 id="digit-values">The values of the places</h1>
-                <p>Every position in a number always means the same thing:</p>
-                <svg viewBox="0 0 1510 500" role="img" aria-labelledby="place-value-title place-value-description"
-                    style="display: block; width: 100%; height: auto; margin: 1.5rem auto; font-family: Aleo, serif;">
-                    <title id="place-value-title">Place-value diagram</title>
-                    <desc id="place-value-description">Nine integer places, from hundred millions to ones, followed
-                        by a decimal point and nine decimal places, from tenths to hundred-millionths.</desc>
+                <p>Every place carries a fixed value, running from millions down to thousandths.</p>
 
-                    <rect x="25" y="210" width="702" height="72" rx="8" fill="#eef4ff" stroke="#3568b8"
-                        stroke-width="2" />
-                    <rect x="783" y="210" width="702" height="72" rx="8" fill="#fff4e6" stroke="#b86821"
-                        stroke-width="2" />
+                <table class="place-chart">
+                    <caption>The places, from millions to thousandths, with the decimal point between ones and tenths
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">millions</th>
+                            <th scope="col">hundred thousands</th>
+                            <th scope="col">ten thousands</th>
+                            <th scope="col">thousands</th>
+                            <th scope="col">hundreds</th>
+                            <th scope="col">tens</th>
+                            <th scope="col" class="place-chart__last-whole">ones</th>
+                            <th scope="col" class="place-chart__point"><span class="place-chart__vh">decimal
+                                    point</span><span aria-hidden="true">.</span></th>
+                            <th scope="col">tenths</th>
+                            <th scope="col">hundredths</th>
+                            <th scope="col">thousandths</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1,000,000</td>
+                            <td>100,000</td>
+                            <td>10,000</td>
+                            <td>1,000</td>
+                            <td>100</td>
+                            <td>10</td>
+                            <td class="place-chart__last-whole">1</td>
+                            <td class="place-chart__point" aria-hidden="true"></td>
+                            <td>0.1</td>
+                            <td>0.01</td>
+                            <td>0.001</td>
+                        </tr>
+                    </tbody>
+                </table>
 
-                    <g stroke="#b7c6dc" stroke-width="1">
-                        <path
-                            d="M103 210v72 M181 210v72 M259 210v72 M337 210v72 M415 210v72 M493 210v72 M571 210v72 M649 210v72" />
-                    </g>
-                    <g stroke="#ddc4a9" stroke-width="1">
-                        <path
-                            d="M861 210v72 M939 210v72 M1017 210v72 M1095 210v72 M1173 210v72 M1251 210v72 M1329 210v72 M1407 210v72" />
-                    </g>
+                <p>Digits to the left of the point make the whole-number part, and digits to the right make the decimal
+                    part. One step left multiplies a place by 10 and one step right divides it by 10, so hundreds, tens
+                    and ones are followed by <span class="gloss" data-term="tenth">tenths</span>.</p>
 
-                    <g fill="#183b70" font-size="38" font-weight="700" text-anchor="middle">
-                        <text x="64" y="258">?</text><text x="142" y="258">?</text>
-                        <text x="220" y="258">?</text><text x="298" y="258">?</text>
-                        <text x="376" y="258">?</text><text x="454" y="258">?</text>
-                        <text x="532" y="258">?</text><text x="610" y="258">?</text>
-                        <text x="688" y="258">?</text>
-                    </g>
-                    <text x="755" y="258" fill="#222" font-size="42" font-weight="700" text-anchor="middle">.</text>
-                    <g fill="#7a3c09" font-size="38" font-weight="700" text-anchor="middle">
-                        <text x="822" y="258">?</text><text x="900" y="258">?</text>
-                        <text x="978" y="258">?</text><text x="1056" y="258">?</text>
-                        <text x="1134" y="258">?</text><text x="1212" y="258">?</text>
-                        <text x="1290" y="258">?</text><text x="1368" y="258">?</text>
-                        <text x="1446" y="258">?</text>
-                    </g>
+                <p>Commas group whole-number digits in threes, which is why a million is written 1,000,000 rather than
+                    1000000.</p>
 
-                    <g fill="#183b70" font-size="17" text-anchor="start">
-                        <text transform="translate(64 195) rotate(-58)">hundred millions</text>
-                        <text transform="translate(142 195) rotate(-58)">ten millions</text>
-                        <text transform="translate(220 195) rotate(-58)">millions</text>
-                        <text transform="translate(298 195) rotate(-58)">hundred thousands</text>
-                        <text transform="translate(376 195) rotate(-58)">ten thousands</text>
-                        <text transform="translate(454 195) rotate(-58)">thousands</text>
-                        <text transform="translate(532 195) rotate(-58)">hundreds</text>
-                        <text transform="translate(610 195) rotate(-58)">tens</text>
-                        <text transform="translate(688 195) rotate(-58)">ones</text>
-                    </g>
-                    <g fill="#7a3c09" font-size="17" text-anchor="end">
-                        <text transform="translate(822 298) rotate(-58)">tenths</text>
-                        <text transform="translate(900 298) rotate(-58)">hundredths</text>
-                        <text transform="translate(978 298) rotate(-58)">thousandths</text>
-                        <text transform="translate(1056 298) rotate(-58)">ten-thousandths</text>
-                        <text transform="translate(1134 298) rotate(-58)">hundred-thousandths</text>
-                        <text transform="translate(1212 298) rotate(-58)">millionths</text>
-                        <text transform="translate(1290 298) rotate(-58)">ten-millionths</text>
-                        <text transform="translate(1368 298) rotate(-58)">hundred-millionths</text>
-                        <text transform="translate(1446 298) rotate(-58)">billionths</text>
-                    </g>
-
-                    <text x="376" y="475" fill="#183b70" font-size="20" font-weight="700" text-anchor="middle">whole
-                        number
-                        places</text>
-                    <text x="1134" y="475" fill="#7a3c09" font-size="20" font-weight="700" text-anchor="middle">decimal
-                        places</text>
-                </svg>
-                <p>The digits to the left of the decimal point (.) always make up the <span style="color: #183b70">whole
-                        number</span> part.</p>
-                <p>The digits to the right of the decimal point always make up the <span
-                        style="color: #7a3c09">decimal</span> part.</p>
-
-                <p>The parts in the diagram above are:</p>
-                <ul>
-                    <li>
-                        <p><span style="color: #183b70">Hundred Millions — 100,000,000</span></p>
-                    </li>
-                    <li>
-                        <p><span style="color: #183b70">Ten Millions — 10,000,000</span></p>
-                    </li>
-                    <li>
-                        <p><span style="color: #183b70">Millions — 1,000,000</span></p>
-                    </li>
-                    <li>
-                        <p><span style="color: #183b70">Hundred Thousands — 100,000</span></p>
-                    </li>
-                    <li>
-                        <p><span style="color: #183b70">Ten Thousands — 10,000</span></p>
-                    </li>
-                    <li>
-                        <p><span style="color: #183b70">Thousands — 1,000</span></p>
-                    </li>
-                    <li>
-                        <p><span style="color: #183b70">Hundreds — 100</span></p>
-                    </li>
-                    <li>
-                        <p><span style="color: #183b70">Tens — 10</span></p>
-                    </li>
-                    <li>
-                        <p><span style="color: #183b70">Ones/Units — 1</span></p>
-                    </li>
-
-                    <p>(Decimal point)</p>
-
-                    <li>
-                        <p><span style="color: #7a3c09">Tenths — 0.1</span></p>
-                    </li>
-                    <li>
-                        <p><span style="color: #7a3c09">Hundredths — 0.01</span></p>
-                    </li>
-                    <li>
-                        <p><span style="color: #7a3c09">Thousandths — 0.001</span></p>
-                    </li>
-                    <li>
-                        <p><span style="color: #7a3c09">Ten-thousandths — 0.000 1</span></p>
-                    </li>
-                    <li>
-                        <p><span style="color: #7a3c09">Hundred-thousandths — 0.000 01</span></p>
-                    </li>
-                    <li>
-                        <p><span style="color: #7a3c09">Millionths — 0.000 001</span></p>
-                    </li>
-                    <li>
-                        <p><span style="color: #7a3c09">Ten-millionths — 0.000 000 1</span></p>
-                    </li>
-                    <li>
-                        <p><span style="color: #7a3c09">Hundred-millionths — 0.000 000 01</span></p>
-                    </li>
-                    <li>
-                        <p><span style="color: #7a3c09">Billionths — 0.000 000 001</span></p>
-                    </li>
-                </ul>
-                <aside class="important-box" aria-labelledby="number-separators-title">
-                    <h2 class="important-box__title" id="number-separators-title">Group digits in threes</h2>
-                    <p>Commas group whole-number digits in threes to the left of the decimal point.</p>
-                    <p>Thin spaces group decimal digits in threes to the right.</p>
-                </aside>
-                <p>If you write a number with more digits than the places listed above on either side of the decimal point, the value
-                    of their place
-                    will continue growing or shrinking following a predictable pattern:</p>
-
-                <ul>
-                    <li>
-                        <p>A number further to the <span style="color: #183b70">left</span> will have a larger place
-                            value</p>
-                    </li>
-                    <li>
-                        <p>A number further to the <span style="color: #7a3c09">right</span> will have a smaller place
-                            value</p>
-                    </li>
-                </ul>
-                <p>Furthermore;</p>
-                <ul>
-                    <li>
-                        <p>Moving one place to the <span style="color: #183b70">left</span> will make the place
-                            value 10 times bigger</p>
-                    </li>
-                    <li>
-                        <p>Moving one place to the <span style="color: #7a3c09">right</span> will make the place
-                            value 10 times smaller</p>
-                    </li>
-                </ul>
+                <div class="important-box" aria-labelledby="the-ones-place-is-the-centre">
+                    <h2 class="important-box__title" id="the-ones-place-is-the-centre">The ones place is the centre
+                    </h2>
+                    <p>Tens and tenths sit either side of ones, and hundreds and <span class="gloss" data-term="hundredth">hundredths</span> outside them. The mirror is
+                        the ones place rather than the point, which is why the first place to the right of the point is
+                        tenths and not oneths.</p>
+                </div>
             </section>
 
             <section>
-                <h1 id="words-and-figures">Constructing words for numbers</h1>
-                <p>Take this number apart, digit by digit, and read the meaning of each one:</p>
+                <h1 id="zeros-that-hold-a-place">Zeros that hold a place</h1>
+                <p>Six thousand and forty has no hundreds. A zero stands in the hundreds place to hold it open, and
+                    without that zero the remaining digits close up into a different number.</p>
+
+                <div class="holders">
+                    <div class="holders__case">
+                        <p class="holders__figure"><span class="sf">6<b class="holders__zero">0</b>40</span></p>
+                        <p class="holders__name">six thousand and forty</p>
+                        <p class="holders__why">The 6 is 6 thousands. The marked zero holds the hundreds place.</p>
+                    </div>
+                    <div class="holders__case holders__case--wrong">
+                        <p class="holders__figure"><span class="sf">640</span></p>
+                        <p class="holders__name">six hundred and forty</p>
+                        <p class="holders__why">With the hundreds place unheld, the 6 slides into it and the number is
+                            smaller by 5,400.</p>
+                    </div>
+                </div>
+
+                <p>The same holds after the point. Seven thousandths is <span class="sf">0.007</span>, where zeros hold
+                    the tenths and hundredths places open; <span class="sf">0.7</span> is seven tenths, a hundred times
+                    as much.</p>
+
+                <p>A zero written after the last decimal digit behaves differently: <span class="sf">0.860</span> and
+                    <span class="sf">0.86</span> are the same number, because the extra zero adds no thousandths. A
+                    zero after the last whole-number digit is never spare, since <span class="sf">470</span> is ten
+                    times <span class="sf">47</span>.
+                </p>
+            </section>
+
+            <section>
+                <h1 id="words-and-figures">Reading a number aloud</h1>
+                <p>Take 4,582.307 apart digit by digit, and each digit names a <span class="gloss" data-term="quantity">quantity</span>.</p>
+
                 <svg viewBox="0 0 920 330" role="img"
                     aria-labelledby="example-place-value-title example-place-value-description"
                     style="display: block; width: 100%; max-width: 920px; height: auto; margin: 1.5rem auto; font-family: Aleo, serif;">
                     <title id="example-place-value-title">The place values in 4,582.307</title>
                     <desc id="example-place-value-description">The number four thousand five hundred and eighty-two
-                        point three zero seven. The whole-number digits are blue and the decimal digits are brown. Each
-                        digit is labelled with its place and value.</desc>
+                        point three zero seven. Each digit is labelled with its place and what it is worth: 4
+                        thousands is 4,000, 5 hundreds is 500, 8 tens is 80, 2 ones is 2, 3 tenths is 0.3, 0
+                        hundredths is 0, and 7 thousandths is 0.007.</desc>
 
-                    <rect x="34" y="72" width="488" height="94" rx="12" fill="#eef4ff" stroke="#3568b8"
+                    <rect x="34" y="72" width="488" height="94" rx="12" fill="#eef5fb" stroke="#5d91b0"
                         stroke-width="2" />
-                    <rect x="558" y="72" width="328" height="94" rx="12" fill="#fff4e6" stroke="#b86821"
+                    <rect x="558" y="72" width="328" height="94" rx="12" fill="#fff8df" stroke="#b86821"
                         stroke-width="2" />
 
-                    <g stroke="#b7c6dc" stroke-width="1.5">
+                    <g stroke="#c9dce8" stroke-width="1.5">
                         <path d="M156 72v94 M278 72v94 M400 72v94" />
                     </g>
-                    <g stroke="#ddc4a9" stroke-width="1.5">
+                    <g stroke="#d99a20" stroke-width="1.5">
                         <path d="M668 72v94 M777 72v94" />
                     </g>
 
-                    <g fill="#183b70" font-size="56" font-weight="700" text-anchor="middle">
+                    <g fill="#09539d" font-size="56" font-weight="700" text-anchor="middle">
                         <text x="95" y="137">4</text>
                         <text x="217" y="137">5</text>
                         <text x="339" y="137">8</text>
                         <text x="461" y="137">2</text>
                     </g>
-                    <text x="540" y="137" fill="#222" font-size="56" font-weight="700" text-anchor="middle">.</text>
-                    <g fill="#7a3c09" font-size="56" font-weight="700" text-anchor="middle">
+                    <text x="540" y="137" fill="#173849" font-size="56" font-weight="700" text-anchor="middle">.</text>
+                    <g fill="#9b5f12" font-size="56" font-weight="700" text-anchor="middle">
                         <text x="613" y="137">3</text>
                         <text x="722" y="137">0</text>
                         <text x="831" y="137">7</text>
                     </g>
 
-                    <g fill="#183b70" font-size="18" text-anchor="middle">
+                    <g fill="#09539d" font-size="18" text-anchor="middle">
                         <text x="95" y="202">thousands</text>
                         <text x="95" y="228" font-weight="700">4,000</text>
                         <text x="217" y="202">hundreds</text>
@@ -317,185 +250,122 @@
                         <text x="461" y="202">ones</text>
                         <text x="461" y="228" font-weight="700">2</text>
                     </g>
-                    <g fill="#7a3c09" font-size="18" text-anchor="middle">
+                    <g fill="#9b5f12" font-size="18" text-anchor="middle">
                         <text x="613" y="202">tenths</text>
                         <text x="613" y="228" font-weight="700">0.3</text>
                         <text x="722" y="202">hundredths</text>
-                        <text x="722" y="228" font-weight="700">0.00</text>
+                        <text x="722" y="228" font-weight="700">0</text>
                         <text x="831" y="202">thousandths</text>
                         <text x="831" y="228" font-weight="700">0.007</text>
                     </g>
 
-                    <path d="M34 276H522" stroke="#3568b8" stroke-width="3" stroke-linecap="round" />
+                    <path d="M34 276H522" stroke="#5d91b0" stroke-width="3" stroke-linecap="round" />
                     <path d="M558 276H886" stroke="#b86821" stroke-width="3" stroke-linecap="round" />
-                    <text x="278" y="309" fill="#183b70" font-size="19" font-weight="700"
+                    <text x="278" y="309" fill="#09539d" font-size="19" font-weight="700"
                         text-anchor="middle">whole-number
                         places</text>
-                    <text x="722" y="309" fill="#7a3c09" font-size="19" font-weight="700" text-anchor="middle">decimal
+                    <text x="722" y="309" fill="#9b5f12" font-size="19" font-weight="700" text-anchor="middle">decimal
                         places</text>
                 </svg>
-                <ul>
-                    <li>
-                        <p>The 4 in the <span style="color: #183b70">thousands
-                                place</span> represents 4 lots of 1000,
-                            which equals <strong>four thousand</strong></p>
-                    </li>
-                    <li>
-                        <p>The 5 in the <span style="color: #183b70">hundreds
-                                place</span> represents 5 lots of 100,
-                            which equals <strong>five hundred</strong></p>
-                    </li>
-                    <li>
-                        <p>The 8 in the <span style="color: #183b70">tens
-                                place</span> represents 8 lots of 10,
-                            which equals <strong>eighty</strong></p>
-                    </li>
-                    <li>
-                        <p>The 2 in the <span style="color: #183b70">ones place</span> represents 2 lots of 1,
-                            which equals <strong>two</strong></p>
-                    </li>
-                    <li>
-                        <p>The 3 in the <span style="color: #7a3c09">tenths place</span> represents 3 lots of 0.1,
-                            which equals <strong>three tenths</strong></p>
-                    </li>
-                    <li>
-                        <p>The 0 in the <span style="color: #7a3c09">hundredths place</span> represents 0 lots of 0.01,
-                            which equals <strong>zero hundredths</strong></p>
-                    </li>
-                    <li>
-                        <p>The 7 in the <span style="color: #7a3c09">thousandths place</span> represents 7 lots of
-                            0.001, which equals <strong>seven thousandths</strong></p>
-                    </li>
-                </ul>
-                <br>
-                <p>Put the parts together:</p>
-                <p><strong>four thousand five hundred and eighty–two, three tenths, and seven thousandths</strong></p>
-                <p>The decimal part can be restated:</p>
-                <p><strong>four thousand five hundred and eighty–two, and three hundred and seven thousandths</strong>
-                </p>
-                                <p>Both forms describe the same quantity. The second one collects the decimal parts into a single
-                    count, and to do that they must first be counted in the same place.</p>
 
-                                <p>Thousandths are the smallest
-                    place used here, so every part is rewritten in thousandths: one tenth is one hundred thousandths,
-                    and one hundredth is ten thousandths.</p>
-
-                <figure class="fraction-bridge">
-                    <div class="fraction-bridge__line" role="img"
-                        aria-label="Three tenths plus zero hundredths plus seven thousandths.">
-                        <span class="fraction"><b>3</b><i>10</i></span>
-                        <span class="fraction-bridge__sign">+</span>
-                        <span class="fraction"><b>0</b><i>100</i></span>
-                        <span class="fraction-bridge__sign">+</span>
-                        <span class="fraction"><b>7</b><i>1000</i></span>
-                    </div>
-                    <p class="fraction-bridge__note"><span aria-hidden="true">&darr;</span> each part rewritten in
-                        thousandths</p>
-                    <div class="fraction-bridge__line" role="img"
-                        aria-label="Three hundred thousandths plus zero thousandths plus seven thousandths equals three hundred and seven thousandths.">
-                        <span class="fraction"><b>300</b><i>1000</i></span>
-                        <span class="fraction-bridge__sign">+</span>
-                        <span class="fraction"><b>0</b><i>1000</i></span>
-                        <span class="fraction-bridge__sign">+</span>
-                        <span class="fraction"><b>7</b><i>1000</i></span>
-                        <span class="fraction-bridge__sign">=</span>
-                        <span class="fraction fraction--total"><b>307</b><i>1000</i></span>
-                    </div>
-                </figure>
-
-                <p>The digits were already saying this. Reading <span style="color: #7a3c09">307</span> as one number
-                    and naming it by the place of its last digit gives
-                    <span style="color: #7a3c09">307 thousandths</span> directly.</p>
-
-                <p>That is the shortcut: take
-                    the place of the final decimal digit, then read all the decimal digits together as a single count
-                    of that place.</p>
-
-                <h2>Read any number</h2>
-                <p>The same reading works on any number.</p>
-
-                <div class="place-lab" data-place-lab>
-                    <label class="place-lab__field">
-                        <span>Enter a number</span>
-                        <input type="text" inputmode="decimal" value="4582.307" autocomplete="off" spellcheck="false"
-                            data-place-input>
-                    </label>
-                    <div class="place-lab__strip" data-place-strip></div>
-                    <ul class="place-lab__parts" data-place-parts></ul>
-                    <p class="place-lab__words" aria-live="polite">In words: <strong data-place-words></strong></p>
-                    <noscript>
-                        <p>4,582.307 is four thousand five hundred and eighty-two, and three hundred and seven
-                            thousandths.</p>
-                    </noscript>
+                <div class="wex">
+                    <h2 class="wex__title">Example: read 4,582.307 aloud</h2>
+                    <p class="wex__task">Name each digit by its place, gather the whole-number part, then the decimal
+                        part.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do"><span class="sf">4,000 + 500 + 80 + 2</span></span>
+                            <span class="wex__why">The whole-number digits are 4 thousands, 5 hundreds, 8 tens and 2
+                                ones.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">four thousand five hundred and eighty-two</span>
+                            <span class="wex__why">Said in groups of three from the largest, the whole-number part
+                                reads as one phrase.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf">0.307</span> is 307 thousandths</span>
+                            <span class="wex__why">The last decimal digit stands in the thousandths place, so all three
+                                decimal digits count thousandths together.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">four thousand five hundred and eighty-two, and three hundred and
+                                seven thousandths</span>
+                            <span class="wex__why">The whole-number part and the decimal part are said one after the
+                                other.</span>
+                        </li>
+                    </ol>
                 </div>
 
-                <aside class="important-box" aria-labelledby="place-name-symmetry-title">
-                    <h2 class="important-box__title" id="place-name-symmetry-title">The ones place is the centre</h2>
-                    <p>The place names form matching pairs:</p>
-                    <ul>
-                        <li>
-                            <p><span style="color: #183b70">Tens (10)</span> and <span style="color: #7a3c09">Tenths
-                                    (0.1)</span></p>
-                        </li>
-                        <li>
-                            <p><span style="color: #183b70">Hundreds (100)</span> and <span
-                                    style="color: #7a3c09">Hundredths (0.01)</span></p>
-                        </li>
-                    </ul>
-                    <p>The symmetry is not centred on the decimal point. It is centred on the ones place.</p>
-                    <p>There is no inverse of <span style="color: #183b70">Ones (1)</span>, or rather the unit is its
-                        own inverse.</p>
-                </aside>
+                <p>Three tenths, no hundredths and seven thousandths are counted in three different places, so they
+                    cannot be added as they stand. A tenth is a hundred thousandths and a hundredth is ten thousandths,
+                    which puts all three parts in the same place.</p>
 
+                <figure class="fraction-bridge">
+                    <p class="fraction-bridge__line"><span class="caret" aria-hidden="true">3/10 + 0/100 +
+                            7/1000</span><math><mfrac><mn>3</mn><mn>10</mn></mfrac><mo>+</mo><mfrac><mn>0</mn><mn>100</mn></mfrac><mo>+</mo><mfrac><mn>7</mn><mn>1000</mn></mfrac></math>
+                    </p>
+                    <p class="fraction-bridge__note"><span aria-hidden="true">&darr;</span> each part rewritten in
+                        thousandths</p>
+                    <p class="fraction-bridge__line"><span class="caret" aria-hidden="true">300/1000 + 0/1000 + 7/1000 =
+                            307/1000</span><math><mfrac><mn>300</mn><mn>1000</mn></mfrac><mo>+</mo><mfrac><mn>0</mn><mn>1000</mn></mfrac><mo>+</mo><mfrac><mn>7</mn><mn>1000</mn></mfrac><mo>=</mo><mfrac
+                                class="fraction-bridge__total"><mn>307</mn><mn>1000</mn></mfrac></math>
+                    </p>
+                </figure>
+
+                <p>The digits were already saying this. Reading 307 as one number and naming it by the place of its
+                    last digit gives 307 thousandths without any rewriting.</p>
             </section>
+
             <section>
-                <h1 id="zero-placeholders">Constructing numbers from words</h1>
-                <p>The reverse process builds a number from its words. Each group of words names a place, and the places fix where its digits belong.</p>
-                <p>Suppose we are given:</p>
-                <p><strong>six million, three hundred and twelve thousand, forty-seven and eighty-six
-                        hundredths</strong></p>
+                <h1 id="zero-placeholders">Building a number from its words</h1>
+                <p>The reverse builds figures from words. Each group of words names a place, and that place fixes where
+                    its digits belong.</p>
+
+                <p class="words-given"><strong>six million, three hundred and twelve thousand, forty-seven and
+                        eighty-six hundredths</strong></p>
+
                 <svg viewBox="0 0 920 430" role="img"
                     aria-labelledby="words-to-number-title words-to-number-description"
                     style="display: block; width: 100%; max-width: 920px; height: auto; margin: 1.5rem auto; font-family: Aleo, serif;">
                     <title id="words-to-number-title">Constructing 6,312,047.86 from words</title>
                     <desc id="words-to-number-description">Four groups of words point to their matching digit groups.
-                        Six million becomes 006, three hundred and twelve thousand becomes 312, forty-seven becomes
-                        047, and eighty-six hundredths becomes 860 in the thousandths group.</desc>
+                        Six million becomes 006, three hundred and twelve thousand becomes 312, forty-seven becomes 047, and eighty-six hundredths becomes 860 in the thousandths group, where the three cells count hundreds, tens and ones of thousandths.</desc>
 
                     <text x="460" y="28" fill="#41535c" font-size="18" text-anchor="middle">Separate the words by
                         place-value group</text>
 
-                    <g fill="#eef4ff" stroke="#3568b8" stroke-width="2">
+                    <g fill="#eef5fb" stroke="#5d91b0" stroke-width="2">
                         <rect x="24" y="50" width="194" height="78" rx="12" />
                         <rect x="250" y="50" width="194" height="78" rx="12" />
                         <rect x="476" y="50" width="194" height="78" rx="12" />
                     </g>
-                    <rect x="702" y="50" width="194" height="78" rx="12" fill="#fff4e6" stroke="#b86821"
+                    <rect x="702" y="50" width="194" height="78" rx="12" fill="#fff8df" stroke="#b86821"
                         stroke-width="2" />
 
-                    <g fill="#183b70" font-size="17" font-weight="700" text-anchor="middle">
+                    <g fill="#09539d" font-size="17" font-weight="700" text-anchor="middle">
                         <text x="121" y="84">six million</text>
                         <text x="347" y="79">three hundred and</text>
                         <text x="347" y="102">twelve thousand</text>
                         <text x="573" y="84">forty-seven</text>
                     </g>
-                    <g fill="#7a3c09" font-size="17" font-weight="700" text-anchor="middle">
+                    <g fill="#9b5f12" font-size="17" font-weight="700" text-anchor="middle">
                         <text x="799" y="79">eighty-six</text>
                         <text x="799" y="102">hundredths</text>
                     </g>
 
                     <g fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3">
-                        <path d="M121 142V207" stroke="#3568b8" />
-                        <path d="M113 198l8 9 8-9" stroke="#3568b8" />
-                        <path d="M347 142V207" stroke="#3568b8" />
-                        <path d="M339 198l8 9 8-9" stroke="#3568b8" />
-                        <path d="M573 142V207" stroke="#3568b8" />
-                        <path d="M565 198l8 9 8-9" stroke="#3568b8" />
+                        <path d="M121 142V207" stroke="#5d91b0" />
+                        <path d="M113 198l8 9 8-9" stroke="#5d91b0" />
+                        <path d="M347 142V207" stroke="#5d91b0" />
+                        <path d="M339 198l8 9 8-9" stroke="#5d91b0" />
+                        <path d="M573 142V207" stroke="#5d91b0" />
+                        <path d="M565 198l8 9 8-9" stroke="#5d91b0" />
                         <path d="M799 142V207" stroke="#b86821" />
                         <path d="M791 198l8 9 8-9" stroke="#b86821" />
                     </g>
 
-                    <g fill="#fff" stroke="#3568b8" stroke-width="2.5">
+                    <g fill="#fff" stroke="#5d91b0" stroke-width="2.5">
                         <rect x="40" y="224" width="50" height="92" rx="12" />
                         <rect x="96" y="224" width="50" height="92" rx="12" />
                         <rect x="152" y="224" width="50" height="92" rx="12" />
@@ -512,9 +382,9 @@
                         <rect x="830" y="224" width="50" height="92" rx="12" />
                     </g>
 
-                    <g fill="#183b70" font-size="42" font-weight="700" text-anchor="middle">
-                        <text x="65" y="279" fill="#a8b5bf">0</text>
-                        <text x="121" y="279" fill="#a8b5bf">0</text>
+                    <g fill="#09539d" font-size="42" font-weight="700" text-anchor="middle">
+                        <text x="65" y="279" fill="#b8cbd7">0</text>
+                        <text x="121" y="279" fill="#b8cbd7">0</text>
                         <text x="177" y="279">6</text>
                         <text x="291" y="279">3</text>
                         <text x="347" y="279">1</text>
@@ -523,14 +393,14 @@
                         <text x="573" y="279">4</text>
                         <text x="629" y="279">7</text>
                     </g>
-                    <text x="688" y="279" fill="#222" font-size="42" font-weight="700" text-anchor="middle">.</text>
-                    <g fill="#7a3c09" font-size="42" font-weight="700" text-anchor="middle">
+                    <text x="688" y="279" fill="#173849" font-size="42" font-weight="700" text-anchor="middle">.</text>
+                    <g fill="#9b5f12" font-size="42" font-weight="700" text-anchor="middle">
                         <text x="743" y="279">8</text>
                         <text x="799" y="279">6</text>
-                        <text x="855" y="279" fill="#b9a58e">0</text>
+                        <text x="855" y="279" fill="#b8cbd7">0</text>
                     </g>
 
-                    <g fill="#55666e" font-size="15" text-anchor="middle">
+                    <g fill="#52666f" font-size="15" text-anchor="middle">
                         <text x="65" y="301" font-size="10">hundreds</text>
                         <text x="121" y="301" font-size="10">tens</text>
                         <text x="177" y="301" font-size="10">ones</text>
@@ -545,51 +415,97 @@
                         <text x="855" y="301" font-size="10">ones</text>
                     </g>
 
-                    <g fill="#183b70" font-size="15" font-weight="700" text-anchor="middle">
+                    <g fill="#09539d" font-size="15" font-weight="700" text-anchor="middle">
                         <text x="121" y="340">millions group</text>
                         <text x="347" y="340">thousands group</text>
                         <text x="573" y="340">units group</text>
                     </g>
-                    <text x="799" y="340" fill="#7a3c09" font-size="15" font-weight="700"
+                    <text x="799" y="340" fill="#9b5f12" font-size="15" font-weight="700"
                         text-anchor="middle">thousandths group</text>
                 </svg>
-                <p>Start by separating the whole-number part into groups of three digits:</p>
-                <ul>
+
+                <p>Six million fills the millions group with 6. Three hundred and twelve thousand fills the thousands
+                    group with 312. Forty-seven has no hundreds, so a zero holds that place and the group is 047,
+                    which makes the whole-number part <span class="sf">6,312,047</span>.</p>
+
+                <p>Every group of three carries its own hundreds, tens and ones, and the group's name says what they
+                    count. In the thousands group, 312 is 3 hundreds, 1 ten and 2 ones of thousands. The same reading
+                    works after the point: eighty-six hundredths fills the thousandths group with 8 hundreds, 6 tens
+                    and 0 ones of thousandths, which is 860 thousandths.</p>
+
+                <p>860 thousandths is <span class="sf">0.860</span>, and dropping the final zero leaves the same 860
+                    thousandths, so the decimal part is written <span class="sf">.86</span> and the number is <span
+                        class="sf">6,312,047.86</span>.</p>
+            </section>
+
+            <section>
+                <h1 id="read-any-number">Read any number</h1>
+                <p>The same reading works on any number from 1,000,000 down to 0.001.</p>
+
+                <div class="place-lab" data-place-lab>
+                    <label class="place-lab__field">
+                        <span>Enter a number</span>
+                        <input type="text" inputmode="decimal" value="4582.307" autocomplete="off" spellcheck="false"
+                            data-place-input>
+                    </label>
+                    <div class="place-lab__strip" data-place-strip></div>
+                    <ul class="place-lab__parts" data-place-parts></ul>
+                    <p class="place-lab__words" aria-live="polite">In words: <strong data-place-words></strong></p>
+                    <noscript>
+                        <p>4,582.307 is four thousand five hundred and eighty-two, and three hundred and seven
+                            thousandths.</p>
+                    </noscript>
+                </div>
+            </section>
+
+            <section>
+                <h1 id="common-mistakes">Common mistakes</h1>
+                <ul class="slips">
                     <li>
-                        <p><span style="color: #183b70">six million</span> gives the millions group <strong>6</strong>
-                        </p>
+                        <b>Wrong idea: six thousand and forty is <span class="sf">640</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> The words name no hundreds, so a zero has to
+                            hold that place; 640 puts the 6 in the hundreds and is 5,400 short.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf">6,040</span></span>
                     </li>
                     <li>
-                        <p><span style="color: #183b70">three hundred and twelve thousand</span> gives the thousands
-                            group <strong>312</strong></p>
+                        <b>Wrong idea: the 7 in <span class="sf">4,582.307</span> is worth 7</b>
+                        <span><b class="slips__label">Why it is wrong.</b> The 7 stands in the thousandths place, so it
+                            counts thousandths rather than ones.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> seven thousandths, <span
+                                class="sf">0.007</span></span>
                     </li>
                     <li>
-                        <p><span style="color: #183b70">forty-seven</span> gives the final group <strong>047</strong>.
-                            There are no hundreds in “forty-seven”, so a zero holds the hundreds place. Without it,
-                            the thousands group would slide up into the hundreds place and change the value of the
-                            number</p>
+                        <b>Wrong idea: eighty-six hundredths is <span class="sf">0.086</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> 0.086 puts the 6 in the thousandths place,
+                            which makes it eighty-six thousandths, a tenth of the amount named.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf">0.86</span></span>
+                    </li>
+                    <li>
+                        <b>Wrong idea: a zero on the end never changes a number</b>
+                        <span><b class="slips__label">Why it is wrong.</b> After the last decimal digit a zero adds
+                            nothing, but after the last whole-number digit it multiplies by ten.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf">0.860 =
+                                0.86</span>, while <span class="sf">470 = 10 &times; 47</span></span>
                     </li>
                 </ul>
-                <p>Putting these groups together gives <strong><span style="color: #183b70">6,312,047</span></strong>.
-                </p>
-                <p>Next, <span style="color: #7a3c09">eighty-six hundredths</span> means
-                    <strong><span style="color: #7a3c09">0.86</span></strong>. The last digit is in the
-                    hundredths place, so the decimal part has two digits.</p>
-
-                <p>In the diagram, this is shown as
-                    <strong><span style="color: #7a3c09">860 thousandths</span></strong> so that the decimal digits
-                    still fill
-                    a group of three. This does not change the value, because
-                    <strong><span style="color: #7a3c09">0.860 = 0.86</span></strong>.</p>
-
-                <p>The zero at the end is only there
-                    to
-                    keep the grouping clear, and it can be left out when writing the final number.
-                </p>
-                <p>Combining the whole-number and decimal parts gives:</p>
-                <p><strong><span style="color: #183b70">6,312,047</span><span style="color: #7a3c09">.86</span></strong>
-                </p>
             </section>
+
+            <section>
+                <h1 id="remember">Remember</h1>
+                <ol class="recap">
+                    <li>A digit's value is the digit multiplied by its place, so the 5 in <span class="sf">500</span>
+                        is worth <span class="sf">5 &times; 100</span>.</li>
+                    <li>The places run millions, hundred thousands, ten thousands, thousands, hundreds, tens and ones,
+                        then tenths, hundredths and thousandths, each one ten times the place to its right.</li>
+                    <li>The places mirror around the ones place rather than the <span class="gloss" data-term="decimal point">decimal point</span>, so the first place to
+                        the right of the point is tenths.</li>
+                    <li>A zero holds a place open, which is why six thousand and forty is <span
+                            class="sf">6,040</span> and not <span class="sf">640</span>.</li>
+                    <li>A zero after the last decimal digit changes nothing, since <span class="sf">0.860 =
+                            0.86</span>, while a zero after the last whole-number digit multiplies by ten.</li>
+                </ol>
+            </section>
+
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
                 <h2 id="practice-heading">Practice and continue</h2>

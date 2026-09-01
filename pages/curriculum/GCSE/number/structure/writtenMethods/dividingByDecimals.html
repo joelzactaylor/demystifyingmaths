@@ -15,6 +15,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
+    <script src="/demystifyingmaths/js/glossary.js" defer></script>
     <script src="/demystifyingmaths/js/dividingByDecimals.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,17 +45,17 @@
             <section>
                 <h1>Make the divisor whole without changing the quotient</h1>
                 <p class="prereq"><b>Before this page:</b> <span>know how to <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/powersOfTen.html">multiply by powers of ten</a>, then divide with <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/shortDivision.html">short division</a> or <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/longDivision.html">long division</a>.</span></p>
-                <p>Standard written division needs an integer divisor. A decimal divisor can be made into an integer by multiplying it by 10, 100 or 1,000—but the dividend must be multiplied by exactly the same number.</p>
-                <p>Scaling both numbers equally changes their sizes but not their ratio, so it does not change the quotient.</p>
+                <p>Standard written division needs an <span class="gloss" data-term="integer">integer</span> <span class="gloss" data-term="divisor">divisor</span>. A decimal divisor can be made into an integer by multiplying it by 10, 100 or 1,000—but the dividend must be multiplied by exactly the same number.</p>
+                <p>Scaling both numbers equally changes their sizes but not their <span class="gloss" data-term="ratio">ratio</span>, so it does not change the <span class="gloss" data-term="quotient">quotient</span>.</p>
                 <div class="rule-card decimal-division-rule">
                     <p class="rule-card__statement"><span><i>a</i> &divide; <i>b</i></span><strong>=</strong><span>(<i>a</i> &times; <i>k</i>) &divide; (<i>b</i> &times; <i>k</i>)</span></p>
-                    <p>Use the same positive scale factor <i>k</i> on both numbers.</p>
+                    <p>Use the same positive <span class="gloss" data-term="scale factor">scale factor</span> <i>k</i> on both numbers.</p>
                 </div>
             </section>
 
             <section>
                 <h1>Scale both numbers together</h1>
-                <p>The divisor 0.46 has two decimal places. One multiplication by 10 is not enough; multiply both numbers by 10 again, then stop because the divisor is an integer.</p>
+                <p>The divisor 0.46 has two <span class="gloss" data-term="decimal place">decimal places</span>. One multiplication by 10 is not enough; multiply both numbers by 10 again, then stop because the divisor is an integer.</p>
                 <div class="decimal-division-scene" data-decimal-division-scene>
                     <div class="decimal-division-scene__sticky">
                         <p class="decimal-division-scene__heading">55.2 &divide; 0.46</p>
@@ -71,7 +72,7 @@
 
             <section>
                 <h1>Why equal scaling preserves the answer</h1>
-                <p>The quotient counts how many divisor-sized groups make the dividend. Scaling both numbers makes every group larger and makes the total larger by the same factor, so the number of groups does not change.</p>
+                <p>The quotient counts how many divisor-sized groups make the <span class="gloss" data-term="dividend">dividend</span>. Scaling both numbers makes every group larger and makes the total larger by the same <span class="gloss" data-term="factor">factor</span>, so the number of groups does not change.</p>
                 <p>Here, 120 groups of 0.46 make 55.2. After both numbers are multiplied by 100, the same 120 groups of 46 make 5,520.</p>
                 <div class="equivalence-strip" aria-label="Three equivalent divisions, all with quotient 120">
                     <article><span>55.2 &divide; 0.46</span><strong>120</strong></article><i aria-hidden="true">=</i>
@@ -86,7 +87,7 @@
 
             <section>
                 <h1>Choose the smallest sufficient power of ten</h1>
-                <p>Count the divisor's decimal places after ignoring trailing zeroes. Use the first power of ten that makes that divisor an integer.</p>
+                <p>Count the divisor's decimal places after ignoring trailing zeroes. Use the first <span class="gloss" data-term="power">power</span> of ten that makes that divisor an integer.</p>
                 <div class="scale-cases">
                     <article><span class="scale-cases__factor">both &times; 10</span><h2>One decimal place</h2><p><strong>7.2 &divide; 0.3 = 72 &divide; 3 = 24</strong></p></article>
                     <article><span class="scale-cases__factor">both &times; 100</span><h2>Two decimal places</h2><p><strong>1.8 &divide; 0.04 = 180 &divide; 4 = 45</strong></p></article>
@@ -98,7 +99,7 @@
 
             <section>
                 <h1>Scale a chosen division</h1>
-                <p>A positive decimal divisor determines the smallest sufficient power of ten. Applying that scale to both numbers produces an equivalent division with an integer divisor.</p>
+                <p>A positive decimal divisor determines the smallest sufficient power of ten. Applying that scale to both numbers produces an <span class="gloss" data-term="equivalent">equivalent</span> division with an integer divisor.</p>
                 <div class="decimal-division-sandbox" data-decimal-division-sandbox>
                     <div class="decimal-division-sandbox__inputs">
                         <label for="decimal-dividend"><span>Dividend</span><input id="decimal-dividend" type="text" inputmode="decimal" value="12.6" maxlength="7" autocomplete="off" spellcheck="false" aria-describedby="decimal-division-status" data-dividend-input></label>
@@ -116,10 +117,10 @@
 
             <section>
                 <h1>Why the quotient can exceed the dividend</h1>
-                <p>Division can ask how many equal pieces of a given size fit into an amount. If each piece is smaller than 1 unit, more than one piece fits into each whole unit.</p>
+                <p>Division can ask how many equal pieces of a given size fit into an amount. If each piece is smaller than 1 <span class="gloss" data-term="unit">unit</span>, more than one piece fits into each whole unit.</p>
                 <div class="piece-model">
                     <div class="piece-model__measure" aria-hidden="true"><span>55.2 m total</span><div></div><small>120 equal lengths, each 0.46 m</small></div>
-                    <div><h2>55.2 metres cut into 0.46 metre lengths</h2><p>Each length is less than 1 metre, so more than one length fits into each metre. Exactly <strong>120 lengths</strong> can be cut.</p></div>
+                    <div><h2>55.2 metres cut into 0.46 metre lengths</h2><p>Each <span class="gloss" data-term="length">length</span> is less than 1 metre, so more than one length fits into each metre. Exactly <strong>120 lengths</strong> can be cut.</p></div>
                 </div>
                 <p>This size effect is explored further on <a href="/demystifyingmaths/pages/curriculum/GCSE/number/fractions/powersRootsAndSize/numbersBelowOne.html">multiplying and dividing by numbers below one</a>.</p>
             </section>
@@ -142,7 +143,7 @@
                     <li><b>Forcing both numbers to be integers</b>
                     <span>Stop once the divisor is an integer. A decimal dividend can be divided using the methods already learned.</span></li>
                     <li><b>Using different scale factors</b>
-                    <span>The two numbers must move through the same number of place-value columns.</span></li>
+                    <span>The two numbers must move through the same number of place-value <span class="gloss" data-term="column">columns</span>.</span></li>
                 </ul>
             </section>
 

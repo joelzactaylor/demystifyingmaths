@@ -480,17 +480,7 @@
     opacity: 0.65;
 }
 
-@media (max-width: 700px) {
-    .arc-unit-svgs {
-        width: 94%;
-    }
-
-    .arc-row {
-        grid-template-columns: 1fr;
-        gap: 0.4rem;
-    }
-
-    .arc-label {
-        text-align: left;
-    }
-}
+/* No width media query here on purpose: .layout is a fixed 900px panel that
+   shared.css scales with a transform below 900px, so a viewport breakpoint
+   reflows the content inside a panel that is only being made smaller. A phone
+   reports a 980px viewport and never fires one at all. */

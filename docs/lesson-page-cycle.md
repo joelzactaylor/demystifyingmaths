@@ -32,6 +32,13 @@ carrying every figure, a run of pure reference, prose totals that swing by 3×.
 - **Test every sentence that quantifies.** "12 is not a power of any whole
   number" is false — 12 is 12 to the power of 1. Sentences with *every*, *any*,
   *never* and *only* are where the errors are.
+- **Find the scope each claim is silently assuming.** The commonest falsehood on
+  a teaching page is a sentence that is true of the numbers the course has met
+  and false of the ones it has not: "x² = −9 has no solution", "you cannot take
+  a larger number from a smaller one", "a square root is smaller than its
+  number". Being out of syllabus is never a licence to be wrong. Say what is
+  true of the numbers in play — "no number on the number line squares to −9" —
+  and link where the rest is answered.
 - **Check the scope boundary** against the manifest `coverNote`: nothing a later
   page owns, and nothing the previous page was supposed to have taught.
 
@@ -59,6 +66,11 @@ figure, table and example, ask what decided it:
   number and no base.
 - Are the offered values chosen so the demonstration works? Seven tiles, five of
   them powers, is a rigged deck.
+- Is every named misconception one somebody actually has? Ask who makes it and
+  why. A wrong idea nobody would ever write — squaring a number when asked for
+  its root — is a straw man, and it makes the real slips beside it look invented.
+  So does the same mistake told twice with different numbers, and so does advice
+  to check the question dressed up as an error.
 
 ## 4. Figure pass — does it move, and does it say something new?
 
@@ -67,9 +79,18 @@ Drive every scene through every stage and print every caption. Look for:
 - **stages that draw nothing the stage before drew** — the reader scrolls and
   only the words change, which is a paragraph pretending to be an animation.
   Pull the text into the body and delete the stage.
+- **a whole scene whose every stage is a line of text appearing.** The per-stage
+  check will pass — each stage does draw something the last one did not — and
+  the scene is still a list in a box. Describe what the drawing *does* between
+  two stages without naming any text; if nothing survives that description,
+  delete the scene and set the lines out as a worked example.
 - **captions repeating a heading or a paragraph** the reader has just passed.
   Seven consecutive words in common is quotation; five is shared vocabulary.
 - **captions that do not match the drawing** at that moment.
+- **a highlight covering what it highlights.** The gold frame is painted after
+  the marks it lights and will sit in front of them unless the stylesheet puts
+  it behind. Drive a scene to a stage where the frame is up and check the digits
+  underneath are still legible, not a gold rectangle where they used to be.
 - **prose that could be shown**: anything with a shape, a growth, a movement or
   a rearrangement.
 
@@ -77,7 +98,9 @@ Drive every scene through every stage and print every caption. Look for:
 
 Flatten the page: no stylesheet, no script, no ARIA. Then check
 
-- every power still reads as a power (`2^5`, never `25`);
+- every power still reads as a power (`2^5`, never `25`), and every root still
+  reads as a root (`√49 = 7`, never the false `49 = 7` a stripped radical leaves
+  behind) — and reads it *once*, not followed by its own bare digits;
 - no two parts run together (`÷ 216`, `Ignoring the remainderA leftover`) — in
   the markup **and in what the figures build at run time**;
 - every scene leaves its conclusion behind;

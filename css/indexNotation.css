@@ -761,24 +761,6 @@
 
 /* Nothing is animated when the reader has asked for no motion: each card sits in
    the flow at its finished state and its scene keeps no surplus scroll. */
-/* An odd number of misconceptions leaves the last one alone in a two-column
-   grid, half a row wide against a gap. It takes the whole width instead. */
-.slips li:last-child:nth-child(odd) { grid-column: 1 / -1; }
-
-/* WHERE MARKS ARE LOST — each slip is named, explained, then corrected. The
-   correction is the line a reader copies down, so it is set in the page's ink
-   rather than in the quieter grey of the explanation above it. Selected through
-   the list item, to outweigh the `.slips li > span` it shares its box with. */
-.slips__label { color: #52666f; }
-
-.slips li > .slips__fix {
-    margin-top: 7px;
-    padding-top: 7px;
-    border-top: 1px solid #ecf2f6;
-    color: #173849;
-    font-weight: 700;
-}
-
 @media (prefers-reduced-motion: reduce) {
     .power-scene.is-ready { height: auto; min-height: 0; }
     .power-scene__sticky { position: relative; height: auto; transform: none !important; }

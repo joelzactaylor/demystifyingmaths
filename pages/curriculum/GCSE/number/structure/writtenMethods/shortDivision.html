@@ -18,6 +18,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
+    <script src="/demystifyingmaths/js/glossary.js" defer></script>
     <script src="/demystifyingmaths/js/shortDivision.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,21 +59,21 @@
             <section>
                 <h1>One place at a time</h1>
                 <p class="prereq"><b>Before this page:</b> <span>know the multiplication tables to 12 &times; 12 and
-                        understand the value of each digit from
+                        understand the value of each <span class="gloss" data-term="digit">digit</span> from
                         <a
                             href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/placeValue.html">place
                             value</a>.</span></p>
 
                 <p>Short division records a large division as a sequence of smaller divisions by the same one-digit
-                    divisor. It starts at the greatest occupied place and moves right, so every digit written in the
-                    answer keeps the same place value as the digit beneath it.</p>
+                    <span class="gloss" data-term="divisor">divisor</span>. It starts at the greatest occupied place and moves right, so every digit written in the
+                    answer keeps the same <span class="gloss" data-term="place value">place value</span> as the digit beneath it.</p>
 
                 <aside class="important-box" aria-labelledby="division-reading-title">
                     <h2 class="important-box__title" id="division-reading-title">Read the layout as 984 divided by 4
                     </h2>
                     <p>In <span class="inline-division" role="img"
                             aria-label="4 outside the short-division bracket and 984 inside"><span>4</span><span>984</span></span>,
-                        <strong>4</strong> is the divisor, <strong>984</strong> is the dividend and the quotient is
+                        <strong>4</strong> is the divisor, <strong>984</strong> is the <span class="gloss" data-term="dividend">dividend</span> and the <span class="gloss" data-term="quotient">quotient</span> is
                         written above the line.
                     </p>
                 </aside>
@@ -109,8 +110,8 @@
                     </li>
                 </ul>
 
-                <p>The small carried numerals are a compact record of those exchanges. They do not alter the
-                    dividend: they show how the remainder from one place is renamed in the next smaller place.</p>
+                <p>The small carried numerals are a compact record of those <span class="gloss" data-term="exchange">exchanges</span>. They do not alter the
+                    dividend: they show how the <span class="gloss" data-term="remainder">remainder</span> from one place is renamed in the next smaller place.</p>
 
                 <div class="worked">
                     <h2 class="worked__title">Example: calculate 984 &divide; 4</h2>
@@ -199,7 +200,7 @@
 
                 <aside class="important-box" aria-labelledby="zero-title">
                     <h2 class="important-box__title" id="zero-title">Zero holds the empty places</h2>
-                    <p>Writing 18 instead would move the 1 and 8 into the wrong columns. The inverse check exposes the
+                    <p>Writing 18 instead would move the 1 and 8 into the wrong <span class="gloss" data-term="column">columns</span>. The <span class="gloss" data-term="inverse">inverse</span> check exposes the
                         error: 18 &times; 6 = 108, whereas 1,008 &times; 6 = 6,048.</p>
                 </aside>
             </section>
@@ -207,7 +208,7 @@
             <section>
                 <h1>The decimal point stays on its boundary</h1>
                 <p>The decimal point is not divided or carried. Put the point in the quotient directly above the point
-                    in the dividend, then continue through the decimal places with the same routine. If the quotient
+                    in the dividend, then continue through the <span class="gloss" data-term="decimal place">decimal places</span> with the same routine. If the quotient
                     is below 1, write a zero before its decimal point.</p>
 
                 <figure class="decimal-lift" role="img"
@@ -228,7 +229,7 @@
                 </figure>
 
                 <p>For 18.9 &divide; 7, the first two digits make 18 ones. This gives 2 ones remainder 4. Exchange the
-                    remaining 4 ones for 40 tenths; with the next 9 tenths, there are 49 tenths. Then
+                    remaining 4 ones for 40 <span class="gloss" data-term="tenth">tenths</span>; with the next 9 tenths, there are 49 tenths. Then
                     49 &divide; 7 = 7, so the quotient is 2.7.</p>
 
                 <div class="worked">
@@ -289,7 +290,7 @@
             <section>
                 <h1 id="following-the-decimal-route">Following the decimal route</h1>
                 <p>If the original digits run out and the question requires an exact decimal, extend the dividend
-                    with a zero after its decimal point. Add the point first if the dividend is a whole number. This
+                    with a zero after its decimal point. Add the point first if the dividend is a <span class="gloss" data-term="whole number">whole number</span>. This
                     does not change its value: 13 = 13.0 = 13.00 = 13.000.</p>
 
                 <p>Here the first digit, 1, is smaller than 8, so begin with 13. Then 13 &divide; 8 = 1 remainder 5;
@@ -315,7 +316,7 @@
                     <p class="worked__answer"><strong>13 &divide; 8 = 1.625</strong></p>
                 </div>
 
-                <p>A terminating decimal finishes when its remainder reaches zero. Some divisions continue with a
+                <p>A <span class="gloss" data-term="terminating">terminating</span> decimal finishes when its remainder reaches zero. Some divisions continue with a
                     repeating pattern instead; those are written using
                     <a
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/fractions/fractionsAndDecimals/recurringDecimalNotation.html">recurring-decimal
@@ -365,7 +366,7 @@
                             <strong>1.625 &times; 8 = 13</strong>. Following Route 2 also gives
                             <strong>246.25 &times; 4 = 985</strong>.
                         </li>
-                        <li>For an integer remainder: <strong>985 &divide; 4 = 246 remainder 1</strong>, and
+                        <li>For an <span class="gloss" data-term="integer">integer</span> remainder: <strong>985 &divide; 4 = 246 remainder 1</strong>, and
                             <strong>246 &times; 4 + 1 = 985</strong>.
                         </li>
                     </ul>

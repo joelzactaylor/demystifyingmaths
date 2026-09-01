@@ -101,20 +101,6 @@
 
 /* Responsive tweaks */
 
-@media screen and (max-width: 700px) {
-    .contact-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-form button {
-        width: 100%;
-    }
-
-    .form-actions {
-        align-items: stretch;
-    }
-}
-
 section h1,
 section h2,
 section h1 a,
@@ -125,3 +111,8 @@ section h2 a {
     text-shadow: #44444449 0 0 5px;
     width: fit-content;
 }
+
+/* No width media query here on purpose: .layout is a fixed 900px panel that
+   shared.css scales with a transform below 900px, so a viewport breakpoint
+   reflows the content inside a panel that is only being made smaller. A phone
+   reports a 980px viewport and never fires one at all. */

@@ -26,10 +26,6 @@
 .zero-quotient-example ol { display: grid; gap: 10px; margin: 0; padding-left: 22px; color: #41535c; }
 .zero-quotient-example li { padding-left: 3px; line-height: 1.45; }
 
-@media (max-width: 680px) {
-    .zero-quotient-example { grid-template-columns: 1fr; }
-}
-
 .long-scene { position: relative; min-height: 520px; margin: 24px 0 8px; overflow-anchor: none; }
 .long-scene.is-ready { height: var(--scene-height); min-height: var(--scene-min-height); }
 .long-scene__sticky { position: absolute; top: 0; right: 0; left: 0; display: grid; height: min(650px, calc(100vh - 84px)); min-height: 520px; box-sizing: border-box; grid-template-rows: auto minmax(0, 1fr) auto auto; overflow: hidden; border: 2px solid #c9dce8; border-radius: 22px; background: linear-gradient(180deg, #fbfdff, #f2f8fc); box-shadow: 0 12px 30px rgba(20, 57, 78, .14); contain: layout paint; overflow-anchor: none; will-change: transform; }
@@ -99,3 +95,8 @@
 @media (prefers-reduced-motion: reduce) {
     .long-board__cell, .long-board__minus, .long-board__cursor, .long-board__subtraction-line, .multiples-crib__item, .long-scene__dot { transition: none; }
 }
+
+/* No width media query here on purpose: .layout is a fixed 900px panel that
+   shared.css scales with a transform below 900px, so a viewport breakpoint
+   reflows the content inside a panel that is only being made smaller. A phone
+   reports a 980px viewport and never fires one at all. */
