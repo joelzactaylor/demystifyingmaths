@@ -178,7 +178,7 @@
                     "title": "Multiplying and dividing negative numbers",
                     "description": "The sign of a product or quotient, and what several negatives together do.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Sign rules for products and quotients of negatives, integers and decimals, including chains of three or more factors and mixed sign counts. Powers of negatives get their own page; negative indices are a different idea entirely, on negative-indices. Both tiers. (N2)"
                 },
                 {

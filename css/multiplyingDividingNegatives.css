@@ -1,0 +1,347 @@
+/* MULTIPLYING AND DIVIDING NEGATIVE NUMBERS
+
+   The page before this one drew every number as an arrow, and this one keeps
+   that drawing and does two things to it. Multiplying stretches an arrow: three
+   arrows of −4 laid tip to tail reach as far as one arrow three times as long.
+   Multiplying by a negative number stretches it and turns it round, so its tip
+   travels through zero and comes out the other side — which is the whole of why
+   two negatives give a positive, drawn rather than announced. Dividing cuts an
+   arrow into equal parts, or counts how many of one fill another.
+
+   One set of .scale rules serves all three scroll-led scenes and the sandbox,
+   because they are the same drawing with different numbers in it. Positions
+   along the line are percentages, so nothing here depends on a measurement and
+   nothing shifts when a webfont arrives late; only the arrow heads are sized in
+   pixels, and calc() pulls each back by its own width so the point lands on its
+   number.
+
+   No viewport media queries below: .layout is a fixed 900px panel that
+   shared.css scales with transform under 900px, so nothing here may reflow. The
+   reduced-motion block at the end is the only @media. */
+
+/* THE SCROLL-LED CARD ---------------------------------------------------- */
+
+.prod-scene {
+    position: relative;
+    min-height: min(628px, calc(100vh - 104px));
+    margin: 26px 0 8px;
+    overflow-anchor: none;
+}
+
+.prod-scene.is-ready { height: var(--scene-height); min-height: var(--scene-min-height); }
+
+.prod-scene__sticky {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: grid;
+    height: min(628px, calc(100vh - 104px));
+    min-height: 470px;
+    box-sizing: border-box;
+    grid-template-rows: auto minmax(0, 1fr) auto auto;
+    overflow: hidden;
+    border: 2px solid #c9dce8;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #fbfdff 0%, #f2f8fc 100%);
+    box-shadow: 0 12px 30px rgba(20, 57, 78, .14);
+    contain: layout paint;
+    overflow-anchor: none;
+    will-change: transform;
+}
+
+.prod-scene__sticky.is-pinned { position: fixed; right: auto; z-index: 900; transform-origin: top left; }
+
+.prod-scene__heading {
+    margin: 0;
+    padding: 20px 24px 2px;
+    color: #173849;
+    font: 700 1.34rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+}
+
+.prod-board { position: relative; display: grid; min-height: 0; padding: 6px 24px 0; place-items: center; }
+.prod-board__paper { position: relative; display: grid; justify-items: center; width: 100%; }
+
+.prod-statement {
+    min-height: 1.5em;
+    margin: 0;
+    color: #09539d;
+    font: 700 1.26rem/1.3 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    opacity: 0;
+    text-align: center;
+    will-change: opacity, transform;
+}
+
+/* The answer to a question already written, arriving beside it. It holds its
+   space from the first frame, so the question neither moves nor fades to make
+   room for it. */
+.prod-statement__answer { opacity: 0; }
+
+/* THE ARROWS ------------------------------------------------------------
+
+   The rule sits at y28 with its numbers above it, and the arrows hang below in
+   rows 30px apart. Every mark that belongs on the line is centred on y28; every
+   arrow is centred on its own row. */
+
+.scale { display: grid; gap: 14px; justify-items: center; width: 100%; }
+.scale__track { position: relative; width: 100%; }
+.scale__working { display: grid; gap: 6px; justify-items: center; width: 100%; }
+
+/* One written line at a time, all of them in the same cell, so a scene that
+   changes its question keeps the card exactly the height it was. */
+.scale__working--single > * { grid-area: 1 / 1; }
+
+.scale__rule {
+    position: absolute;
+    top: 27px;
+    right: 0;
+    left: 0;
+    height: 2px;
+    background: #5d91b0;
+    opacity: 0;
+}
+
+.scale__tick {
+    position: absolute;
+    top: 20px;
+    width: 2px;
+    height: 16px;
+    background: #b8cbd7;
+    opacity: 0;
+    transform: translateX(-50%);
+}
+
+.scale__tick--zero { top: 15px; width: 3px; height: 26px; background: #52666f; }
+
+.scale__label {
+    position: absolute;
+    top: 0;
+    color: #173849;
+    font: 700 .82rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    opacity: 0;
+    transform: translateX(-50%);
+}
+
+.scale__label--negative { color: #9b5f12; }
+.scale__label--zero { color: #52666f; }
+
+/* Where the calculation has reached, riding the line above the arrows. */
+.scale__marker {
+    position: absolute;
+    z-index: 3;
+    top: 19px;
+    width: 18px;
+    height: 18px;
+    box-sizing: border-box;
+    border: 3px solid #b86821;
+    border-radius: 50%;
+    background: #fff8df;
+    opacity: 0;
+    transform: translateX(-50%);
+}
+
+/* An arrow is a shaft and a tip, and the tip is on the end that moves. A
+   right-pointing arrow is blue and a left-pointing one ochre, so direction is
+   carried by the shape and by the colour together. */
+.scale__shaft {
+    position: absolute;
+    z-index: 1;
+    height: 4px;
+    border-radius: 2px;
+    background: #09539d;
+    opacity: 0;
+}
+
+.scale__shaft--back { background: #b86821; }
+
+.scale__head {
+    position: absolute;
+    z-index: 1;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    opacity: 0;
+}
+
+.scale__head--right { border-width: 5px 0 5px 9px; border-color: transparent transparent transparent #09539d; }
+.scale__head--left { border-width: 5px 9px 5px 0; border-color: transparent #b86821 transparent transparent; }
+
+/* The drop from one row to the next, standing where the row above finished. */
+.scale__riser {
+    position: absolute;
+    width: 2px;
+    background: #b8cbd7;
+    opacity: 0;
+}
+
+/* What an arrow stands for, written on it. The quiet background keeps it
+   legible where a riser passes behind. */
+.scale__term {
+    position: absolute;
+    z-index: 2;
+    padding: 0 4px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, .88);
+    color: #173849;
+    font: 700 .78rem/1.3 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    opacity: 0;
+    transform: translateX(-50%);
+}
+
+/* Where an arrow is cut into equal parts. */
+.scale__cut {
+    position: absolute;
+    z-index: 2;
+    width: 3px;
+    height: 16px;
+    background: #52666f;
+    opacity: 0;
+    transform: translateX(-50%);
+}
+
+/* Which division an answer row belongs to, standing clear of the arrows at the
+   end of the line the numbers never reach. */
+.scale__aside {
+    position: absolute;
+    right: 0;
+    color: #52666f;
+    font: 700 .8rem/1.3 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    opacity: 0;
+    white-space: nowrap;
+}
+
+/* Counting off the arrows that fill another, one gold badge each. */
+.scale__count {
+    position: absolute;
+    z-index: 2;
+    padding: 0 6px;
+    border: 2px solid #d99a20;
+    border-radius: 8px;
+    background: #fff8df;
+    color: #7a540a;
+    font: 700 .74rem/1.35 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    opacity: 0;
+    transform: translateX(-50%);
+}
+
+/* THE SANDBOX -----------------------------------------------------------
+
+   The same arrows, multiplied by hand. A number is pressed, the arrow that was
+   there stretches and turns into the new one, and the line of writing underneath
+   changes to match. */
+
+.factors {
+    margin: 30px 0;
+    padding: 24px 30px 22px;
+    border: 2px solid #c9dce8;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 8px 22px rgba(23, 56, 73, .11);
+}
+
+.factors__board { padding: 0 12px; }
+
+.factors__reading {
+    min-height: 1.5em;
+    margin: 12px 0 18px;
+    color: #09539d;
+    font: 700 1.34rem/1.3 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+}
+
+.factors__controls { display: grid; gap: 12px; justify-items: center; }
+.factors__tiles { display: flex; gap: 7px; flex-wrap: wrap; justify-content: center; }
+.factors__actions { display: flex; gap: 10px; margin-top: 2px; }
+
+.factors__tile {
+    min-width: 46px;
+    padding: 8px 6px;
+    border: 2px solid #b8cbd7;
+    border-radius: 12px;
+    background: #fff;
+    color: #173849;
+    cursor: pointer;
+    font: 700 1.1rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    transition: border-color .18s ease, background-color .18s ease, box-shadow .18s ease;
+}
+
+.factors__tile:hover:enabled { border-color: #6c9bb0; }
+
+.factors__tile:focus-visible,
+.factors__action:focus-visible {
+    border-color: #116e93;
+    box-shadow: 0 0 0 4px rgba(17, 110, 147, .12);
+    outline: none;
+}
+
+.factors__tile:disabled,
+.factors__action:disabled {
+    border-color: #d9e4eb;
+    color: #8aa0ab;
+    cursor: default;
+}
+
+.factors__action {
+    padding: 7px 14px;
+    border: 2px solid #b8cbd7;
+    border-radius: 10px;
+    background: #fff;
+    color: #41535c;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: .84rem;
+    font-weight: 700;
+    transition: border-color .18s ease, box-shadow .18s ease;
+}
+
+.factors__action:hover:enabled { border-color: #6c9bb0; }
+
+/* CARD FURNITURE, shared by every scene on the page. */
+
+.prod-scene__caption {
+    display: grid;
+    height: 6.6em;
+    box-sizing: border-box;
+    align-content: center;
+    padding: 14px 28px 6px;
+    text-align: center;
+}
+
+.prod-scene__caption h3 { margin: 0 0 5px; color: #09539d; font-size: 1.1rem; }
+.prod-scene__caption p { margin: 0; color: #243a45; font-size: .97rem; line-height: 1.5; }
+
+.prod-scene__progress { display: flex; gap: 8px; padding: 0 22px 18px; justify-content: center; }
+
+.prod-scene__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #c6d4dc;
+    transition: width .25s ease, border-radius .25s ease, background-color .25s ease;
+}
+
+.prod-scene__dot.is-current { width: 28px; border-radius: 999px; background: #116e93; }
+.prod-scene__dot.is-past { background: #6c9bb0; }
+
+@media (prefers-reduced-motion: reduce) {
+    .prod-scene.is-ready { height: auto; min-height: 0; }
+
+    .prod-scene__sticky {
+        position: relative;
+        height: auto;
+        transform: none !important;
+    }
+
+    .prod-scene__dot,
+    .factors__tile,
+    .factors__action { transition: none; }
+}

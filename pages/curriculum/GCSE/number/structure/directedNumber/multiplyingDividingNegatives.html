@@ -4,18 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Demystifying Maths | GCSE Multiplying and dividing negative numbers</title>
-    <meta name="description" content="The sign of a product or quotient, and what several negatives together do.">
+    <meta name="description"
+        content="Why one negative number makes a product negative and two make it positive, with arrows that stretch and turn on the number line.">
     <meta property="og:title" content="Demystifying Maths">
-    <meta property="og:description" content="The sign of a product or quotient, and what several negatives together do.">
+    <meta property="og:description"
+        content="Why one negative number makes a product negative and two make it positive, with arrows that stretch and turn on the number line.">
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/multiplyingDividingNegatives.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/multiplyingDividingNegatives.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -30,12 +34,18 @@
             <h1>Demystifying - Multiplying and dividing negative numbers</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
-                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and calculation</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/">Directed number</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span>
+                    </li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and
+                            calculation</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/">Directed
+                            number</a><span aria-hidden="true">&rsaquo;</span></li>
                     <li>
                         <p>Multiplying and dividing negative numbers</p>
                     </li>
@@ -46,25 +56,368 @@
         <aside id="page-nav-container"></aside>
 
         <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>Sign rules for products and quotients of negatives, integers and decimals, including chains of three or more factors and mixed sign counts. Powers of negatives get their own page; negative indices are a different idea entirely, on negative-indices. Both tiers. (N2)</p>
+            <section>
+                <h1 id="several-of-the-same-length">Several arrows of the same length</h1>
+                <p class="prereq"><b>Before this page:</b> <span>be able to lay negative numbers out as arrows on the
+                        line from <a
+                            href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/addingSubtractingNegatives.html">adding
+                            and subtracting negative numbers</a>, and divide by a one-digit number using <a
+                            href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/shortDivision.html">short
+                            division</a>.</span></p>
+
+                <p>Multiplying by a positive whole number lays the same arrow down again and again. Three arrows of &minus;4,
+                    laid tip to tail from zero, finish at &minus;12. Together they reach as far as one arrow
+                    three times as long.</p>
+
+                <div class="worked">
+                    <h2 class="worked__title">Example: three arrows of &minus;4</h2>
+
+                    <div class="prod-scene" data-prod-scene data-scene="repeat">
+                        <div class="prod-scene__sticky">
+                            <p class="prod-scene__heading" role="math"
+                                aria-label="negative 4 times 3">(&minus;4) &times; 3</p>
+
+                            <div class="prod-board">
+                                <div class="prod-board__paper" data-board aria-hidden="true"></div>
+                            </div>
+
+                            <div class="prod-scene__caption" aria-live="polite">
+                                <h3 data-step-title>One arrow of &minus;4</h3>
+                                <p data-step-copy>&minus;4 runs four units to the left of zero.</p>
+                            </div>
+
+                            <div class="prod-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                    </div>
+
+                    <p class="worked__answer"><strong role="math"
+                            aria-label="negative 4 times 3 equals negative 12">(&minus;4) &times; 3 =
+                            &minus;12</strong></p>
+                </div>
+
+                <p>Swapping the two numbers leaves the <span class="gloss" data-term="product">product</span>
+                    unchanged, so <span class="sf" role="math"
+                        aria-label="3 times negative 4 equals negative 12">3 &times; (&minus;4) = &minus;12</span> as
+                    well. One negative number multiplied by a positive one gives a negative product, whichever way
+                    round the two are written.</p>
+
+                <div class="wex">
+                    <h2 class="wex__title">Example: work out 6 &times; (&minus;7)</h2>
+                    <p class="wex__task">Multiply 6 by &minus;7.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do">6 &times; 7 = 42</span>
+                            <span class="wex__why">The two distances from zero multiply to give the length of the
+                                answer.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">One of the numbers is negative.</span>
+                            <span class="wex__why">Six arrows of &minus;7 all run to the left.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">6 &times; (&minus;7) = &minus;42</span>
+                            <span class="wex__why">An arrow 42 units long, pointing left.</span>
+                        </li>
+                    </ol>
+                </div>
             </section>
 
             <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+                <h1 id="stepping-past-zero">Stepping the second number past zero</h1>
+
+                <p>Arrows can be laid out three times or twice, never &minus;2 times. <span class="sf" role="math"
+                        aria-label="negative 3 times negative 2">(&minus;3) &times; (&minus;2)</span> is reached
+                    instead by the steps between the products that come before it.</p>
+
+                <p>Lowering the second number by one takes away one copy of the first: <span class="sf"
+                        role="math"
+                        aria-label="negative 3 times 3 equals negative 9">(&minus;3) &times; 3 = &minus;9</span> and
+                    <span class="sf" role="math"
+                        aria-label="negative 3 times 2 equals negative 6">(&minus;3) &times; 2 = &minus;6</span>, a
+                    move of 3 to the right. The same move of 3 happens at every step down, and it carries on as the
+                    second number passes zero.
+                </p>
+
+                <div class="worked">
+                    <h2 class="worked__title">Example: the second number stepping down to &minus;2</h2>
+
+                    <div class="prod-scene" data-prod-scene data-scene="ladder">
+                        <div class="prod-scene__sticky">
+                            <p class="prod-scene__heading" role="math"
+                                aria-label="negative 3 times 3, down to negative 3 times negative 2">(&minus;3) &times;
+                                3 down to (&minus;3) &times; (&minus;2)</p>
+
+                            <div class="prod-board">
+                                <div class="prod-board__paper" data-board aria-hidden="true"></div>
+                            </div>
+
+                            <div class="prod-scene__caption" aria-live="polite">
+                                <h3 data-step-title>Three lots of &minus;3</h3>
+                                <p data-step-copy>The arrow reaches &minus;9, nine units to the left of zero.</p>
+                            </div>
+
+                            <div class="prod-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                    </div>
+
+                    <p class="worked__answer"><strong role="math"
+                            aria-label="negative 3 times negative 2 equals 6">(&minus;3) &times; (&minus;2) =
+                            6</strong></p>
+                </div>
+
+                <p>Multiplying by a negative number turns the arrow round, and the size of that number fixes the
+                    length it becomes. Turning &minus;3 round
+                    gives 3, which is what <span class="sf" role="math"
+                        aria-label="negative 3 times negative 1 equals 3">(&minus;3) &times; (&minus;1) = 3</span>
+                    says. Stretching that arrow to twice its length gives <span class="sf" role="math"
+                        aria-label="negative 3 times negative 2 equals 6">(&minus;3) &times; (&minus;2) = 6</span>.</p>
+
+                <div class="rule-card">
+                    <h2 class="rule-card__statement" role="math"
+                        aria-label="negative 3 times negative 2 equals 6">(&minus;3) &times; (&minus;2) = 6</h2>
+                    <ul class="rule-card__conditions">
+                        <li>One negative number turns the arrow round once, so the product is negative.</li>
+                        <li>Two negative numbers turn it round twice, so the product is positive.</li>
+                        <li>A zero gives an arrow of no length, so the product is zero and has no sign.</li>
+                    </ul>
+                </div>
+
+                <p>A <span class="gloss" data-term="decimal">decimal</span> product takes its sign the same way.
+                    <span class="sf" role="math" aria-label="0 point 8 times negative 5 equals negative 4">0.8
+                        &times; (&minus;5) = &minus;4</span> has one negative number in it, and <span class="sf"
+                        role="math" aria-label="negative 0 point 6 times negative 7 equals 4 point 2">(&minus;0.6)
+                        &times; (&minus;7) = 4.2</span> has two. The digits there multiply as 6 &times; 7 = 42, and
+                    the point is placed by the method on <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/multiplyingDecimals.html">multiplying
+                        decimals</a>.</p>
+
+                <div class="wex">
+                    <h2 class="wex__title">Example: work out (&minus;5) &times; (&minus;6)</h2>
+                    <p class="wex__task">Multiply &minus;5 by &minus;6.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do">5 &times; 6 = 30</span>
+                            <span class="wex__why">The two distances from zero multiply to give the length of the
+                                answer.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">Both numbers are negative.</span>
+                            <span class="wex__why">The arrow for &minus;5 is turned round twice, which leaves it
+                                pointing right.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">(&minus;5) &times; (&minus;6) = 30</span>
+                            <span class="wex__why">A right-pointing arrow 30 units long.</span>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <section>
+                <h1 id="dividing">Dividing, by cutting and by counting</h1>
+
+                <p>Dividing cuts an arrow into equal parts, or counts how many of one arrow fit inside another.
+                    The arrow for &minus;12 can be cut into three equal parts, and arrows of &minus;3 can be laid tip
+                    to tail from zero until they reach it.</p>
+
+                <div class="worked">
+                    <h2 class="worked__title">Example: cutting &minus;12 and filling it</h2>
+
+                    <div class="prod-scene" data-prod-scene data-scene="share">
+                        <div class="prod-scene__sticky">
+                            <p class="prod-scene__heading" role="math"
+                                aria-label="negative 12 divided by 3, and negative 12 divided by negative 3">&minus;12
+                                &divide; 3 and &minus;12 &divide; (&minus;3)</p>
+
+                            <div class="prod-board">
+                                <div class="prod-board__paper" data-board aria-hidden="true"></div>
+                            </div>
+
+                            <div class="prod-scene__caption" aria-live="polite">
+                                <h3 data-step-title>Twelve units to the left</h3>
+                                <p data-step-copy>&minus;12 is one arrow running from zero to twelve below it.</p>
+                            </div>
+
+                            <div class="prod-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                    </div>
+
+                    <p class="worked__answer"><strong role="math"
+                            aria-label="negative 12 divided by 3 equals negative 4, and negative 12 divided by negative 3 equals 4">&minus;12
+                            &divide; 3 = &minus;4 and &minus;12 &divide; (&minus;3) = 4</strong></p>
+                </div>
+
+                <p>A <span class="gloss" data-term="quotient">quotient</span> takes its sign from the same count as
+                    a product. <span class="sf" role="math"
+                        aria-label="negative 12 divided by 3 equals negative 4">&minus;12 &divide; 3 =
+                        &minus;4</span> has one negative number and is negative; <span class="sf" role="math"
+                        aria-label="negative 12 divided by negative 3 equals 4">&minus;12 &divide; (&minus;3) =
+                        4</span> has two and is positive.</p>
+
+                <p>Arrows of &minus;3 laid from zero never reach 12, however many of them there are. Division has
+                    multiplication as its <span class="gloss" data-term="inverse">inverse</span>, so <span class="sf"
+                        role="math" aria-label="12 divided by negative 3">12 &divide; (&minus;3)</span> is the number
+                    that multiplies &minus;3 to give 12. That number is &minus;4, because <span class="sf" role="math"
+                        aria-label="negative 3 times negative 4 equals 12">(&minus;3) &times; (&minus;4) =
+                        12</span>.</p>
+
+                <div class="wex">
+                    <h2 class="wex__title">Example: work out &minus;4.2 &divide; 6</h2>
+                    <p class="wex__task">Divide &minus;4.2 into six equal parts.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do">4.2 &divide; 6 = 0.7</span>
+                            <span class="wex__why">Sharing 42 tenths between 6 gives 7 tenths.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">One of the numbers is negative.</span>
+                            <span class="wex__why">Six equal parts of a left-pointing arrow all point left.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">&minus;4.2 &divide; 6 = &minus;0.7</span>
+                            <span class="wex__why">Each part is an arrow 0.7 long, pointing left.</span>
+                        </li>
+                    </ol>
+                </div>
+
+                <p>A decimal divisor is turned into a whole number first, by the method on <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/dividingByDecimals.html">dividing
+                        by a decimal</a>. The sign is then settled by the same count: <span class="sf" role="math"
+                        aria-label="negative 7 point 2 divided by 0 point 9 equals negative 8">&minus;7.2 &divide; 0.9
+                        = &minus;8</span>.</p>
+            </section>
+
+            <section>
+                <h1 id="longer-products">Longer products</h1>
+
+                <p>Each negative number in a product turns the arrow round once. Two turns leave it facing the way
+                    it started, so <span class="sf" role="math"
+                        aria-label="negative 2 times 3 times negative 5 equals 30">(&minus;2) &times; 3 &times;
+                        (&minus;5) = 30</span>. A third turns it away again, so <span class="sf" role="math"
+                        aria-label="negative 1 times negative 2 times negative 3 equals negative 6">(&minus;1) &times;
+                        (&minus;2) &times; (&minus;3) = &minus;6</span>.</p>
+
+                <div class="important-box" aria-labelledby="counting-the-negatives">
+                    <h2 class="important-box__title" id="counting-the-negatives">Counting the negatives</h2>
+                    <p>The size of the answer comes from multiplying the numbers without their signs: 2 &times; 3
+                        &times; 5 = 30.</p>
+                    <p>An even count of negative numbers leaves the answer positive, and an odd count leaves it
+                        negative.</p>
+                </div>
+
+                <div class="factors" data-factors>
+                    <p class="factors__reading" role="math"
+                        aria-label="negative 2 times 3 times negative 4 equals 24">(&minus;2) &times; 3 &times;
+                        (&minus;4) = 24</p>
+                </div>
+
+                <div class="wex">
+                    <h2 class="wex__title">Example: work out (&minus;1) &times; (&minus;2) &times; (&minus;3)</h2>
+                    <p class="wex__task">Multiply the three numbers together.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do">1 &times; 2 &times; 3 = 6</span>
+                            <span class="wex__why">The three distances from zero multiply to give the length of
+                                the answer.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">Three of the numbers are negative.</span>
+                            <span class="wex__why">Three turns leave the arrow pointing left, as one turn does.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">(&minus;1) &times; (&minus;2) &times; (&minus;3) = &minus;6</span>
+                            <span class="wex__why">An arrow 6 units long, pointing left.</span>
+                        </li>
+                    </ol>
+                </div>
+
+                <p>A negative <span class="gloss" data-term="divisor">divisor</span> turns the arrow round in the
+                    same way, so <span class="sf"
+                        role="math"
+                        aria-label="open bracket negative 6 times negative 4 close bracket divided by negative 3 equals 24 divided by negative 3 equals negative 8">((&minus;6)
+                        &times; (&minus;4)) &divide; (&minus;3) = 24 &divide; (&minus;3) = &minus;8</span> has three
+                    negative numbers and a negative answer.</p>
+            </section>
+
+            <section>
+                <h1 id="common-mistakes">Common mistakes</h1>
+                <ul class="slips">
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math"
+                                aria-label="negative 12 divided by negative 3 equals negative 4">&minus;12 &divide;
+                                (&minus;3) = &minus;4</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> This divides 12 by 3 and writes a minus
+                            in front because both numbers had one. Four arrows of &minus;3 reach &minus;12, and the
+                            answer counts those arrows, so it is 4.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf"
+                                role="math" aria-label="negative 12 divided by negative 3 equals 4">&minus;12 &divide;
+                                (&minus;3) = 4</span></span>
+                    </li>
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math"
+                                aria-label="negative 4 minus 3 equals 7">&minus;4 &minus; 3 = 7</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> This turns two negatives into a positive
+                            in a subtraction. Nothing is being multiplied: starting at &minus;4 and moving a
+                            further 3 to the left reaches &minus;7.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf"
+                                role="math" aria-label="negative 4 minus 3 equals negative 7">&minus;4 &minus; 3 =
+                                &minus;7</span></span>
+                    </li>
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math"
+                                aria-label="negative 1 times negative 2 times negative 3 equals 6">(&minus;1) &times;
+                                (&minus;2) &times; (&minus;3) = 6</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> This pairs off two of the negatives and
+                            drops the third. The third turns the arrow round once more, and it finishes pointing
+                            left.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf"
+                                role="math"
+                                aria-label="negative 1 times negative 2 times negative 3 equals negative 6">(&minus;1)
+                                &times; (&minus;2) &times; (&minus;3) = &minus;6</span></span>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h1 id="remember">Remember</h1>
+                <ol class="recap">
+                    <li>Three arrows of &minus;4 laid tip to tail reach &minus;12, so <span class="sf" role="math"
+                            aria-label="negative 4 times 3 equals negative 12">(&minus;4) &times; 3 =
+                            &minus;12</span>.</li>
+                    <li>Multiplying by a negative number turns the arrow round, so <span class="sf" role="math"
+                            aria-label="negative 3 times negative 2 equals 6">(&minus;3) &times; (&minus;2) =
+                            6</span>.</li>
+                    <li>One negative number makes a product or a quotient negative, and two make it positive:
+                        <span class="sf" role="math"
+                            aria-label="0 point 8 times negative 5 equals negative 4">0.8 &times; (&minus;5) =
+                            &minus;4</span>.
+                    </li>
+                    <li>A division answers a multiplication, so <span class="sf" role="math"
+                            aria-label="12 divided by negative 3 equals negative 4">12 &divide; (&minus;3) =
+                            &minus;4</span>, since <span class="sf" role="math"
+                            aria-label="negative 3 times negative 4 equals 12">(&minus;3) &times; (&minus;4) =
+                            12</span>.</li>
+                    <li>In a longer product, an even count of negative numbers leaves the answer positive:
+                        <span class="sf" role="math"
+                            aria-label="negative 2 times 3 times negative 5 equals 30">(&minus;2) &times; 3 &times;
+                            (&minus;5) = 30</span>.
+                    </li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
                 <h2 id="practice-heading">Practice and continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/practiceMultiplyingDividingNegatives.html" style="background-image: none">
+                    <a class="topic-card topic-card--practice"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/practiceMultiplyingDividingNegatives.html"
+                        style="background-image: none">
                         <span class="practice-card__kicker">Practice</span>
                         <h3>Multiplying and dividing negative numbers</h3>
                         <p>The sign of a product or quotient, and what several negatives together do.</p>
                     </a>
-                    <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/orderOfOperations.html" style="background-image: none">
+                    <a class="topic-card topic-card--next"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/orderOfOperations.html"
+                        style="background-image: none">
                         <span class="topic-card__kicker">Next lesson</span>
                         <h3>Order of operations</h3>
                         <p>Brackets, powers and roots first, with the fraction bar as grouping.</p>
