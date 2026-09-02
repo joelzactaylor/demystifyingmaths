@@ -10,12 +10,14 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/addingSubtractingNegatives.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/addingSubtractingNegatives.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -30,12 +32,18 @@
             <h1>Demystifying - Adding and subtracting negative numbers</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
-                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and calculation</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/">Directed number</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span>
+                    </li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and
+                            calculation</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/">Directed
+                            number</a><span aria-hidden="true">&rsaquo;</span></li>
                     <li>
                         <p>Adding and subtracting negative numbers</p>
                     </li>
@@ -46,25 +54,269 @@
         <aside id="page-nav-container"></aside>
 
         <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>Adding and subtracting directed numbers, integers and decimals, including double signs like 5 - (-3); number-line reasoning; temperature and bank-balance differences. Products and quotients live on multiplying-dividing-negatives; negative fractions live in the FDP topic. Both tiers. (N2)</p>
+            <section>
+                <h1 id="moving-along-the-line">Moving along the line</h1>
+                <p class="prereq"><b>Before this page:</b> <span>be able to place negative numbers and decimals in
+                        order from <a
+                            href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/orderingNumbers.html">ordering
+                            positive and negative numbers</a>, and read the value of a digit from <a
+                            href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/placeValue.html">place
+                            value in integers and decimals</a>.</span></p>
+
+                <p>Every number can be drawn as an arrow on the <span class="gloss" data-term="number line">number
+                        line</span>.
+                    A positive number points right and a negative number points left. The arrow's length is the
+                    <span class="gloss" data-term="magnitude">magnitude</span> of the number, so 6 runs six units to
+                    the right and &minus;4 runs four units to the left. The first arrow has its tail on zero.</p>
+
+                <div class="worked">
+                    <h2 class="worked__title">Example: two moves from &minus;4</h2>
+
+                    <div class="line-scene" data-line-scene data-scene="chain">
+                        <div class="line-scene__sticky">
+                            <p class="line-scene__heading" data-heading>&minus;4 + 6 &minus; 5 = &minus;3</p>
+
+                            <div class="line-board">
+                                <div class="line-board__paper" data-board aria-hidden="true"></div>
+                            </div>
+
+                            <div class="line-scene__caption" aria-live="polite">
+                                <h3 data-step-title>The first arrow</h3>
+                                <p data-step-copy>&minus;4 is an arrow four units long, drawn from zero and
+                                    pointing left.</p>
+                            </div>
+
+                            <div class="line-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                    </div>
+
+                    <p class="worked__answer"><strong role="math"
+                            aria-label="negative 4 plus 6 minus 5 equals negative 3">&minus;4 + 6 &minus; 5 =
+                            &minus;3</strong></p>
+                </div>
+
+                <div class="important-box" aria-labelledby="laying-the-arrows">
+                    <h2 class="important-box__title" id="laying-the-arrows">How the arrows are laid</h2>
+                    <p>Adding lays the next arrow tip to tail: its tail sits on the tip of the one before, and the
+                        total moves along to its tip.</p>
+                    <p>Subtracting lays it tip to tip: its tip meets the tip of the one before, and the total moves
+                        back to its tail.</p>
+                </div>
+
+                <p>Counting one unit at a time works for short arrows and becomes slow for long ones. The length
+                    of the arrow is what the arithmetic gives: <span class="sf" role="math"
+                        aria-label="negative 27 plus 40 equals 13">&minus;27 + 40 = 13</span>, because 27 of the 40
+                    units reach zero and 13 remain.</p>
+
+                <div class="wex">
+                    <h2 class="wex__title">Example: work out &minus;7 + 3</h2>
+                    <p class="wex__task">Start at &minus;7 and add 3.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do">Start at &minus;7.</span>
+                            <span class="wex__why">Seven units to the left of zero.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">Adding 3 moves 3 right.</span>
+                            <span class="wex__why">The 3 is positive, so the move runs towards the larger
+                                numbers.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">&minus;7 + 3 = &minus;4</span>
+                            <span class="wex__why">Three units from &minus;7 reach &minus;4, which is still left
+                                of zero because 3 is smaller than 7.</span>
+                        </li>
+                    </ol>
+                </div>
+
+                <p>A <span class="gloss" data-term="decimal">decimal</span> moves by the same rules.
+                    <span class="sf" role="math"
+                        aria-label="negative 2 point 5 plus 1 point 8 equals negative 0 point 7">&minus;2.5 + 1.8 =
+                        &minus;0.7</span>, because an arrow 1.8 long is not enough to reach zero from &minus;2.5 and
+                    leaves 0.7 of the distance still to go.
+                </p>
             </section>
 
             <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+                <h1 id="two-signs-meeting">Two signs meeting</h1>
+
+                <p>Subtracting a number is adding it with its sign changed. Changing the sign of 5 gives
+                    &minus;5, and changing the sign of &minus;3 gives 3.</p>
+
+                <p>Subtracting &minus;3 lays an arrow pointing left with its tip on the current total, so its tail
+                    lands three units to the right. That is the same move adding 3 makes.</p>
+
+                <div class="arrows" data-arrows>
+                    <p class="arrows__reading" role="math" aria-label="3 minus negative 2 equals 3 plus 2 equals 5">3
+                        &minus; (&minus;2) = 3 + 2 = 5</p>
+                </div>
+
+                <div class="rule-card">
+                    <h2 class="rule-card__statement" role="math"
+                        aria-label="5 minus negative 3 equals 5 plus 3 equals 8">5 &minus; (&minus;3) = 5 + 3 = 8</h2>
+                    <ul class="rule-card__conditions">
+                        <li>Subtracting a negative number moves right, so the total increases.</li>
+                        <li>Adding a negative number moves left, so the total decreases.</li>
+                    </ul>
+                </div>
+
+                <p>The first sign is the <span class="gloss" data-term="operation">operation</span> and the second
+                    belongs to the number. Combining them changes the operation and leaves the number untouched: <span
+                        class="sf" role="math" aria-label="negative 4 minus negative 9 equals negative 4 plus 9 equals 5">&minus;4
+                        &minus;
+                        (&minus;9) = &minus;4 + 9 = 5</span> still has its 9, and <span class="sf" role="math"
+                        aria-label="3 plus negative 7 equals 3 minus 7 equals negative 4">3 + (&minus;7) = 3 &minus; 7 =
+                        &minus;4</span> still has its 7.</p>
+
+                <div class="wex">
+                    <h2 class="wex__title">Example: work out &minus;4 &minus; (&minus;9)</h2>
+                    <p class="wex__task">Subtract &minus;9 from &minus;4.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do">The signs between the numbers are &minus; and &minus;.</span>
+                            <span class="wex__why">A subtraction sign followed by a negative number.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">&minus;4 &minus; (&minus;9) = &minus;4 + 9</span>
+                            <span class="wex__why">Subtracting &minus;9 adds 9, the same number with its sign
+                                changed.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">&minus;4 + 9 = 5</span>
+                            <span class="wex__why">Four of the nine units reach zero, and five remain.</span>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <section>
+                <h1 id="the-gap-between-two-numbers">The gap between two numbers</h1>
+
+                <p>The <span class="gloss" data-term="difference">difference</span> between two numbers is the
+                    distance between them along the line, counted as a positive amount. Zero falls between
+                    &minus;6&deg;C and 4&deg;C, so the rise from one to the other is made of two parts.</p>
+
+                <div class="worked">
+                    <h2 class="worked__title">Example: the rise from &minus;6&deg;C to 4&deg;C</h2>
+
+                    <div class="line-scene" data-line-scene data-scene="gap">
+                        <div class="line-scene__sticky">
+                            <p class="line-scene__heading" data-heading>&minus;6&deg;C to 4&deg;C</p>
+
+                            <div class="line-board">
+                                <div class="line-board__paper" data-board aria-hidden="true"></div>
+                            </div>
+
+                            <div class="line-scene__caption" aria-live="polite">
+                                <h3 data-step-title>The colder reading</h3>
+                                <p data-step-copy>&minus;6&deg;C stands six degrees below zero.</p>
+                            </div>
+
+                            <div class="line-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                    </div>
+
+                    <p class="worked__answer"><strong role="math" aria-label="4 minus negative 6 equals 10">4 &minus;
+                            (&minus;6) = 10</strong></p>
+                </div>
+
+                <p>Subtracting the lower reading from the higher one gives that distance without counting: <span
+                        class="sf" role="math" aria-label="4 minus negative 6 equals 4 plus 6 equals 10">4 &minus;
+                        (&minus;6) = 4 + 6 = 10</span>, a rise of 10 degrees. Subtracting the other way round gives
+                    <span class="sf" role="math" aria-label="negative 10">&minus;10</span>, a fall of the same 10
+                    degrees.
+                </p>
+
+                <div class="wex">
+                    <h2 class="wex__title">Example: a balance moving from &minus;&pound;85.40 to &pound;32.10</h2>
+                    <p class="wex__task">Work out how much was paid in.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do">The balance rises, so the amount paid in is the increase.</span>
+                            <span class="wex__why">&minus;&pound;85.40 is an overdraft of &pound;85.40.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">32.10 &minus; (&minus;85.40) = 32.10 + 85.40</span>
+                            <span class="wex__why">Subtracting a negative adds, so the two amounts combine.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">32.10 + 85.40 = 117.50</span>
+                            <span class="wex__why">&pound;85.40 clears the overdraft and &pound;32.10 is left, so
+                                &pound;117.50 was paid in.</span>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <section>
+                <h1 id="common-mistakes">Common mistakes</h1>
+                <ul class="slips">
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math"
+                                aria-label="negative 6 plus 4 equals negative 10">&minus;6 + 4 = &minus;10</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> This adds 6 and 4 and keeps the minus.
+                            Adding 4 moves 4 to the right, towards zero, so the answer is closer to zero than &minus;6
+                            is.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
+                                aria-label="negative 6 plus 4 equals negative 2">&minus;6 + 4 = &minus;2</span></span>
+                    </li>
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math" aria-label="5 minus negative 3 equals 2">5 &minus;
+                                (&minus;3) = 2</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> This reads the two signs as a single minus
+                            and takes 3 away. The second sign belongs to the 3, so the number being subtracted is
+                            &minus;3, and subtracting it adds 3.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
+                                aria-label="5 minus negative 3 equals 5 plus 3 equals 8">5 &minus; (&minus;3) = 5 + 3 =
+                                8</span></span>
+                    </li>
+                    <li>
+                        <b>Wrong idea: the difference between &minus;6&deg;C and 4&deg;C is 2 degrees</b>
+                        <span><b class="slips__label">Why it is wrong.</b> This subtracts 4 from 6 and ignores the side
+                            of zero each reading sits on. The gap runs 6 degrees up to zero and 4 degrees beyond
+                            it.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
+                                aria-label="4 minus negative 6 equals 10 degrees">4 &minus; (&minus;6) = 10</span>
+                            degrees</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h1 id="remember">Remember</h1>
+                <ol class="recap">
+                    <li>An arrow points right for a positive number and left for a negative one, and its length is
+                        the number's distance from zero.</li>
+                    <li><span class="sf" role="math" aria-label="negative 7 plus 3 equals negative 4">&minus;7 + 3 =
+                            &minus;4</span>: adding less than the distance to zero leaves the answer negative.</li>
+                    <li>Subtracting a number is adding it with its sign changed, so <span class="sf" role="math"
+                            aria-label="5 minus negative 3 equals 5 plus 3 equals 8">5 &minus; (&minus;3) = 5 + 3 =
+                            8</span>; adding a negative runs left, so <span class="sf" role="math"
+                            aria-label="3 plus negative 7 equals 3 minus 7 equals negative 4">3 + (&minus;7) = 3 &minus;
+                            7 = &minus;4</span>.
+                    </li>
+                    <li>The difference between two numbers is the distance between them, and subtracting the lower from
+                        the higher gives it: <span class="sf" role="math" aria-label="4 minus negative 6 equals 10">4
+                            &minus; (&minus;6) = 10</span>.</li>
+                    <li>Decimals move by the same rules, so <span class="sf" role="math"
+                            aria-label="negative 2 point 5 plus 1 point 8 equals negative 0 point 7">&minus;2.5 + 1.8 =
+                            &minus;0.7</span>.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
                 <h2 id="practice-heading">Practice and continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/practiceNegatives.html" style="background-image: none">
+                    <a class="topic-card topic-card--practice"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/practiceNegatives.html"
+                        style="background-image: none">
                         <span class="practice-card__kicker">Practice</span>
                         <h3>Adding and subtracting negative numbers</h3>
                         <p>Number-line reasoning, two signs meeting, and temperature differences.</p>
                     </a>
-                    <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/multiplyingDividingNegatives.html" style="background-image: none">
+                    <a class="topic-card topic-card--next"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/multiplyingDividingNegatives.html"
+                        style="background-image: none">
                         <span class="topic-card__kicker">Next lesson</span>
                         <h3>Multiplying and dividing negative numbers</h3>
                         <p>The sign of a product or quotient, and what several negatives together do.</p>

@@ -1,0 +1,413 @@
+/* ADDING AND SUBTRACTING NEGATIVE NUMBERS
+
+   Every number is an arrow, and the page draws them straight and parallel,
+   stacked one row below the next like a column of candles. Adding lays the next
+   arrow tip to tail; subtracting lays it tip to tip, and the tail is then what
+   marks the answer. That single picture carries the whole page, so one set of
+   .chain rules serves both the scroll-led worked example and the sandbox the
+   reader builds by hand — they are the same drawing with different numbers in
+   it.
+
+   Positions along the line are percentages, so nothing here depends on a
+   measurement and nothing shifts when a webfont arrives late. Only the arrow
+   heads are sized in pixels, and they are pulled back by their own width with
+   calc() so the point lands exactly on its number.
+
+   No viewport media queries below: .layout is a fixed 900px panel that
+   shared.css scales with transform under 900px, so nothing here may reflow. The
+   reduced-motion block at the end is the only @media. */
+
+/* THE SCROLL-LED CARD ---------------------------------------------------- */
+
+.line-scene {
+    position: relative;
+    min-height: min(628px, calc(100vh - 104px));
+    margin: 26px 0 8px;
+    overflow-anchor: none;
+}
+
+.line-scene.is-ready { height: var(--scene-height); min-height: var(--scene-min-height); }
+
+.line-scene__sticky {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: grid;
+    height: min(628px, calc(100vh - 104px));
+    min-height: 470px;
+    box-sizing: border-box;
+    grid-template-rows: auto minmax(0, 1fr) auto auto;
+    overflow: hidden;
+    border: 2px solid #c9dce8;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #fbfdff 0%, #f2f8fc 100%);
+    box-shadow: 0 12px 30px rgba(20, 57, 78, .14);
+    contain: layout paint;
+    overflow-anchor: none;
+    will-change: transform;
+}
+
+.line-scene__sticky.is-pinned { position: fixed; right: auto; z-index: 900; transform-origin: top left; }
+
+.line-scene__heading {
+    margin: 0;
+    padding: 20px 24px 2px;
+    color: #173849;
+    font: 700 1.34rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+}
+
+.line-board { position: relative; display: grid; min-height: 0; padding: 6px 24px 0; place-items: center; }
+.line-board__paper { position: relative; display: grid; justify-items: center; width: 100%; }
+
+.line-statement {
+    min-height: 1.5em;
+    margin: 0;
+    color: #09539d;
+    font: 700 1.42rem/1.25 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    opacity: 0;
+    will-change: opacity, transform;
+}
+
+/* THE ARROWS ------------------------------------------------------------
+
+   The rule sits at y28 with its numbers above it, and the arrows hang below in
+   rows 30px apart. Every mark that belongs on the line is centred on y28; every
+   arrow is centred on its own row. */
+
+.chain { display: grid; gap: 14px; justify-items: center; width: 100%; }
+.chain__track { position: relative; width: 100%; }
+
+.chain__rule {
+    position: absolute;
+    top: 27px;
+    right: 0;
+    left: 0;
+    height: 2px;
+    background: #5d91b0;
+    opacity: 0;
+}
+
+.chain__tick {
+    position: absolute;
+    top: 20px;
+    width: 2px;
+    height: 16px;
+    background: #b8cbd7;
+    opacity: 0;
+    transform: translateX(-50%);
+}
+
+.chain__tick--zero { top: 15px; width: 3px; height: 26px; background: #52666f; }
+
+.chain__label {
+    position: absolute;
+    top: 0;
+    color: #173849;
+    font: 700 .82rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    opacity: 0;
+    transform: translateX(-50%);
+}
+
+.chain__label--negative { color: #9b5f12; }
+.chain__label--zero { color: #52666f; }
+
+/* The running total, riding the line above every arrow that made it. */
+.chain__marker {
+    position: absolute;
+    z-index: 3;
+    top: 19px;
+    width: 18px;
+    height: 18px;
+    box-sizing: border-box;
+    border: 3px solid #b86821;
+    border-radius: 50%;
+    background: #fff8df;
+    opacity: 0;
+    transform: translateX(-50%);
+}
+
+/* An arrow is a shaft and a tip. The tip belongs to the number, so it
+   follows the number's sign: right for a positive, left for a negative. Which
+   end of the shaft is laid against the running total follows the operation
+   instead, and that is the whole of the difference between adding and
+   subtracting. */
+.chain__shaft {
+    position: absolute;
+    z-index: 1;
+    height: 4px;
+    border-radius: 2px;
+    background: #09539d;
+    opacity: 0;
+}
+
+.chain__shaft--back { background: #b86821; }
+
+.chain__head {
+    position: absolute;
+    z-index: 1;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    opacity: 0;
+}
+
+.chain__head--right { border-width: 5px 0 5px 9px; border-color: transparent transparent transparent #09539d; }
+.chain__head--left { border-width: 5px 9px 5px 0; border-color: transparent #b86821 transparent transparent; }
+
+/* The drop from one arrow to the next, standing on the total they meet at. */
+.chain__link {
+    position: absolute;
+    width: 2px;
+    background: #b8cbd7;
+    opacity: 0;
+}
+
+/* The term each arrow stands for, written on it. The quiet background keeps it
+   legible where a drop line passes behind. */
+.chain__term {
+    position: absolute;
+    z-index: 2;
+    padding: 0 4px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, .88);
+    color: #173849;
+    font: 700 .78rem/1.3 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    opacity: 0;
+    transform: translateX(-50%);
+}
+
+/* THE SANDBOX -----------------------------------------------------------
+
+   The same arrows, laid by hand. Nothing on the page explains the controls: a
+   number is pressed and its arrow appears, and the line of writing underneath
+   changes to match. */
+
+.arrows {
+    margin: 30px 0;
+    padding: 24px 30px 22px;
+    border: 2px solid #c9dce8;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 8px 22px rgba(23, 56, 73, .11);
+}
+
+.arrows__board { padding: 0 12px; }
+
+.arrows__reading {
+    min-height: 1.5em;
+    margin: 12px 0 18px;
+    color: #09539d;
+    font: 700 1.34rem/1.3 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+}
+
+.arrows__controls { display: grid; gap: 12px; justify-items: center; }
+.arrows__ops { display: flex; gap: 10px; }
+.arrows__tiles { display: flex; gap: 7px; flex-wrap: wrap; justify-content: center; }
+.arrows__actions { display: flex; gap: 10px; margin-top: 2px; }
+
+.arrows__op,
+.arrows__tile {
+    min-width: 46px;
+    padding: 8px 6px;
+    border: 2px solid #b8cbd7;
+    border-radius: 12px;
+    background: #fff;
+    color: #173849;
+    cursor: pointer;
+    font: 700 1.1rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    transition: border-color .18s ease, background-color .18s ease, box-shadow .18s ease;
+}
+
+.arrows__op { min-width: 54px; font-size: 1.3rem; }
+
+.arrows__op:hover:enabled,
+.arrows__tile:hover:enabled { border-color: #6c9bb0; }
+
+.arrows__op:focus-visible,
+.arrows__tile:focus-visible,
+.arrows__action:focus-visible {
+    border-color: #116e93;
+    box-shadow: 0 0 0 4px rgba(17, 110, 147, .12);
+    outline: none;
+}
+
+/* The armed operation, which the next arrow will be laid with. */
+.arrows__op.is-armed { border-color: #116e93; background: #eef5fb; color: #09539d; }
+
+.arrows__op:disabled,
+.arrows__tile:disabled,
+.arrows__action:disabled {
+    border-color: #d9e4eb;
+    color: #8aa0ab;
+    cursor: default;
+}
+
+.arrows__action {
+    padding: 7px 14px;
+    border: 2px solid #b8cbd7;
+    border-radius: 10px;
+    background: #fff;
+    color: #41535c;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: .84rem;
+    font-weight: 700;
+    transition: border-color .18s ease, box-shadow .18s ease;
+}
+
+.arrows__action:hover:enabled { border-color: #6c9bb0; }
+
+/* MEASURING A DIFFERENCE ------------------------------------------------
+
+   The scale stands upright, because a temperature is read that way and because
+   the span between two readings is then a height rather than a width. */
+
+.line-gap { display: grid; gap: 0 26px; grid-template-columns: auto auto; justify-content: center; width: 100%; }
+
+.line-column { position: relative; width: 250px; height: 250px; }
+
+.line-column__rule {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 58px;
+    width: 2px;
+    background: #5d91b0;
+    opacity: 0;
+}
+
+.line-column__tick {
+    position: absolute;
+    left: 51px;
+    width: 16px;
+    height: 2px;
+    background: #b8cbd7;
+    opacity: 0;
+    transform: translateY(-50%);
+}
+
+.line-column__tick--zero { left: 46px; width: 26px; height: 3px; background: #52666f; }
+
+.line-column__label {
+    position: absolute;
+    left: 0;
+    width: 42px;
+    color: #173849;
+    font: 700 .82rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    opacity: 0;
+    text-align: right;
+    transform: translateY(-50%);
+}
+
+.line-column__label--negative { color: #9b5f12; }
+.line-column__label--zero { color: #52666f; }
+
+.line-column__reading {
+    position: absolute;
+    z-index: 2;
+    left: 74px;
+    padding: 2px 9px;
+    border-radius: 8px;
+    background: #09539d;
+    color: #fff;
+    font: 700 .82rem/1.45 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    opacity: 0;
+    white-space: nowrap;
+    transform: translateY(-50%);
+}
+
+.line-column__reading--cold { background: #b86821; }
+
+/* The span is a bar with a cap at each end, grown from the lower reading to the
+   upper one so the measurement is made rather than announced. It is drawn in
+   two segments meeting at zero, in the two colours the axis already gives each
+   side of it, so the six and the four are seen as lengths that add. */
+.line-column__span {
+    position: absolute;
+    left: 150px;
+    width: 3px;
+    background: #09539d;
+    opacity: 0;
+}
+
+.line-column__span--low { background: #b86821; }
+
+.line-column__cap {
+    position: absolute;
+    left: 140px;
+    width: 23px;
+    height: 3px;
+    background: #d99a20;
+    opacity: 0;
+    transform: translateY(-50%);
+}
+
+.line-column__amount {
+    position: absolute;
+    left: 172px;
+    padding: 3px 10px;
+    border: 2px solid #d99a20;
+    border-radius: 9px;
+    background: #fff8df;
+    color: #7a540a;
+    font: 700 .92rem/1.4 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    opacity: 0;
+    white-space: nowrap;
+    transform: translateY(-50%);
+}
+
+.line-gap__working { display: grid; gap: 8px; align-content: center; justify-items: start; }
+
+/* CARD FURNITURE, shared by every scene on the page. */
+
+.line-scene__caption {
+    display: grid;
+    height: 6.6em;
+    box-sizing: border-box;
+    align-content: center;
+    padding: 14px 28px 6px;
+    text-align: center;
+}
+
+.line-scene__caption h3 { margin: 0 0 5px; color: #09539d; font-size: 1.1rem; }
+.line-scene__caption p { margin: 0; color: #243a45; font-size: .97rem; line-height: 1.5; }
+
+.line-scene__progress { display: flex; gap: 8px; padding: 0 22px 18px; justify-content: center; }
+
+.line-scene__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #c6d4dc;
+    transition: width .25s ease, border-radius .25s ease, background-color .25s ease;
+}
+
+.line-scene__dot.is-current { width: 28px; border-radius: 999px; background: #116e93; }
+.line-scene__dot.is-past { background: #6c9bb0; }
+
+@media (prefers-reduced-motion: reduce) {
+    .line-scene.is-ready { height: auto; min-height: 0; }
+
+    .line-scene__sticky {
+        position: relative;
+        height: auto;
+        transform: none !important;
+    }
+
+    .line-scene__dot,
+    .arrows__op,
+    .arrows__tile,
+    .arrows__action { transition: none; }
+}
