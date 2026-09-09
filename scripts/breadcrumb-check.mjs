@@ -49,7 +49,10 @@ function load(abs) {
     const trail = [];
     let leaf = null;
     lis.forEach((li, i) => {
-        const link = li.match(/<a href="([^"]+)">([\s\S]*?)<\/a>/);
+        /* Whitespace between attributes is nothing to HTML, and editors reflow
+           these tags freely, so match on the tag rather than on the one line it
+           happens to sit on. */
+        const link = li.match(/<a\s+href="([^"]+)">([\s\S]*?)<\/a>/);
         const plain = li.match(/<p>([\s\S]*?)<\/p>/);
         if (i < lis.length - 1) {
             if (!link) problems.push(`${rel}: crumb ${i + 1} is not a link`);

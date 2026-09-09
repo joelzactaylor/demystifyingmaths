@@ -66,8 +66,11 @@ for (const page of pages) {
         if (!opener) {
             problems.push(`${name}: a .rad whose clipped root sign is missing or not first`);
         } else if (opener[2] === "(") {
-            const after = html.slice(m.index + m[0].length, m.index + m[0].length + 90);
-            if (!/^\s*<span class="caret" aria-hidden="true">\)<\/span>/.test(after)) {
+            const after = html.slice(m.index + m[0].length, m.index + m[0].length + 200);
+            /* Whitespace between attributes is nothing to HTML, and editors
+               reflow these spans freely, so match on the tags rather than on
+               the line they happen to sit on. */
+            if (!/^\s*<span\s+class="caret"\s+aria-hidden="true">\)<\/span>/.test(after)) {
                 problems.push(`${name}: a grouped .rad opens a clipped bracket and never closes it`);
             }
         }

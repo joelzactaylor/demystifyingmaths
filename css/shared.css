@@ -259,6 +259,16 @@ section a {
     margin: 0 auto;
 }
 
+/* A Wayback capture standing beside an outward link, so a dead page is still
+   readable. It follows the sentence it sits in rather than taking the `large`
+   above, and stays quieter than the link it backs up. */
+.archived {
+    font-size: .85em;
+    color: #5d91b0;
+    text-shadow: none;
+    text-decoration: underline;
+}
+
 section h1,
 section h1 a {
     font-size: 40px;

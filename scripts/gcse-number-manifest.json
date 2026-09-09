@@ -186,15 +186,15 @@
                     "title": "Order of operations",
                     "description": "Brackets, powers and roots first, with the fraction bar as grouping.",
                     "tier": "both",
-                    "written": false,
-                    "coverNote": "Evaluating multi-step calculations with brackets, indices, roots and the four operations; the fraction bar and root sign as implicit grouping; N3 names reciprocals within priority notation, so include them. Calculator keying lives on calculator-methods; algebraic substitution lives in Algebra. Both tiers. (N3)"
+                    "written": true,
+                    "coverNote": "Evaluating multi-step calculations with brackets, indices, roots and the four operations; the fraction bar and root sign as implicit grouping. Reciprocals within priority notation live on reciprocals; calculator keying lives on calculator-methods; algebraic substitution lives in Algebra. Both tiers. (N3)"
                 },
                 {
                     "slug": "powers-of-negatives",
                     "title": "Powers of a negative number",
                     "description": "Why −3² and (−3)² differ, and how an odd or even index fixes the sign.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Why -3 squared and (-3) squared differ, and how an odd or even index fixes the sign; evaluating powers like (-2) to the 4 without a calculator. Assumes index-notation and the sign rules; substitution errors with x squared live in Algebra. Both tiers. (N2, N3, N6)"
                 },
                 {
@@ -202,7 +202,7 @@
                     "title": "Checking an answer with the inverse operation",
                     "description": "Undoing a calculation with its inverse to test an answer without repeating it.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Checking a completed calculation by the inverse operation, across the four operations and powers against roots; choosing which inverse statement verifies a given result. Estimation-based checking lives on Measures checking-answers; regrouping for easier arithmetic lives on reordering-a-calculation. Both tiers. (N3)"
                 },
                 {
@@ -2031,7 +2031,7 @@
                 "structure/order-of-operations"
             ],
             "tier": "both",
-            "scope": "Evaluating multi-step calculations with brackets, indices, roots and the four operations; the fraction bar and root sign as implicit grouping; N3 names reciprocals within priority notation, so include them. Calculator keying lives on calculator-methods; algebraic substitution lives in Algebra. Both tiers. (N3)",
+            "scope": "Evaluating multi-step calculations with brackets, indices, roots and the four operations; the fraction bar and root sign as implicit grouping. Reciprocals within priority notation live on reciprocals; calculator keying lives on calculator-methods; algebraic substitution lives in Algebra. Both tiers. (N3)",
             "sections": [
                 "Fluency — direct questions on order of operations, limited to this lesson's stated scope (4 questions).",
                 "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",

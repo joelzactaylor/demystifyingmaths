@@ -6,16 +6,19 @@
     <title>Demystifying Maths | GCSE Checking an answer with the inverse operation</title>
     <meta name="description" content="Undoing a calculation with its inverse to test an answer without repeating it.">
     <meta property="og:title" content="Demystifying Maths">
-    <meta property="og:description" content="Undoing a calculation with its inverse to test an answer without repeating it.">
+    <meta property="og:description"
+        content="Undoing a calculation with its inverse to test an answer without repeating it.">
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/checkingWithInverses.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/checkingWithInverses.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -30,12 +33,18 @@
             <h1>Demystifying - Checking an answer with the inverse operation</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
-                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and calculation</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/">Directed number</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span>
+                    </li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and
+                            calculation</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/">Directed
+                            number</a><span aria-hidden="true">&rsaquo;</span></li>
                     <li>
                         <p>Checking an answer with the inverse operation</p>
                     </li>
@@ -46,25 +55,391 @@
         <aside id="page-nav-container"></aside>
 
         <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>Checking a completed calculation by the inverse operation, across the four operations and powers against roots; choosing which inverse statement verifies a given result. Estimation-based checking lives on Measures checking-answers; regrouping for easier arithmetic lives on reordering-a-calculation. Both tiers. (N3)</p>
+            <p class="prereq"><b>Before this page:</b> <span>be able to add, subtract, multiply and divide with the <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/columnSubtraction.html">written
+                        methods</a>, and know a <span class="gloss" data-term="square root">square root</span> as the
+                    operation that undoes squaring from <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/squareRoots.html">square
+                        roots</a>.</span></p>
+
+            <section aria-labelledby="is-the-answer-845">
+                <h1 id="is-the-answer-845">Does 802 &minus; 47 come to 845?</h1>
+
+                <p>Working it out again runs the same steps in the same order, so a slip made the first time is made
+                    again and the two attempts agree. Undoing it tests the answer instead, and a wrong answer carried
+                    backwards has no reason to land where it started.</p>
+
+                <div class="wex">
+                    <h2 class="wex__title">Example: <span class="sf" role="math"
+                            aria-label="is 802 minus 47 equal to 845">802 &minus; 47 &#8799; 845</span></h2>
+                    <p class="wex__task">Add back what was taken away.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math" aria-label="845 plus 47">845 +
+                                    47</span></span>
+                            <span class="wex__why">The check starts from the answer, not from the numbers that made
+                                it.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math" aria-label="845 plus 47 equals 892">845 +
+                                    47 = 892</span></span>
+                            <span class="wex__why">Nothing here repeats the original working.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math" aria-label="892 is not equal to 802">892
+                                    &ne; 802</span></span>
+                            <span class="wex__why">The subtraction started at 802, so 845 cannot be its
+                                answer.</span>
+                        </li>
+                    </ol>
+                </div>
+
+                <p>The check does more than disagree: the gap is the size of the slip. 892 overshoots 802 by 90,
+                    and 845 stands the same 90 above the answer the subtraction really has. Ninety is nine tens and
+                    no units, so the units digit is sound and the slip is in the tens column. The subtraction comes
+                    to 755, and <span class="sf" role="math" aria-label="755 plus 47 equals 802">755 + 47 =
+                        802</span> confirms it.</p>
             </section>
 
-            <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+            <section aria-labelledby="which-statement">
+                <h1 id="which-statement">Which statement undoes the calculation</h1>
+
+                <p>The shape of the calculation decides which statement tests it.</p>
+
+                <ul class="undoes">
+                    <li>
+                        <span class="undoes__from sf" role="math" aria-label="is 38 plus 56 equal to 94">38 + 56 &#8799;
+                            94</span>
+                        <span class="undoes__arrow" aria-hidden="true">&rarr;</span>
+                        <span class="undoes__to sf" role="math" aria-label="checked by 94 minus 56 equals 38">94 &minus;
+                            56 = 38</span>
+                    </li>
+                    <li>
+                        <span class="undoes__from sf" role="math" aria-label="is 94 minus 56 equal to 38">94 &minus; 56
+                            &#8799; 38</span>
+                        <span class="undoes__arrow" aria-hidden="true">&rarr;</span>
+                        <span class="undoes__to sf" role="math" aria-label="checked by 38 plus 56 equals 94">38 + 56 =
+                            94</span>
+                    </li>
+                    <li>
+                        <span class="undoes__from sf" role="math" aria-label="is 24 times 15 equal to 360">24 &times; 15
+                            &#8799; 360</span>
+                        <span class="undoes__arrow" aria-hidden="true">&rarr;</span>
+                        <span class="undoes__to sf" role="math" aria-label="checked by 360 divided by 15 equals 24">360
+                            &divide; 15 = 24</span>
+                    </li>
+                    <li>
+                        <span class="undoes__from sf" role="math" aria-label="is 360 divided by 15 equal to 24">360
+                            &divide; 15 &#8799; 24</span>
+                        <span class="undoes__arrow" aria-hidden="true">&rarr;</span>
+                        <span class="undoes__to sf" role="math" aria-label="checked by 24 times 15 equals 360">24
+                            &times; 15 = 360</span>
+                    </li>
+                    <li>
+                        <span class="undoes__from sf" role="math" aria-label="is 6 to the power 2 equal to 36">6<span
+                                class="caret" aria-hidden="true">^</span><sup>2</sup> &#8799; 36</span>
+                        <span class="undoes__arrow" aria-hidden="true">&rarr;</span>
+                        <span class="undoes__to sf" role="math"
+                            aria-label="checked by the square root of 36 equals 6"><span class="rad"><span class="caret"
+                                    aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40"
+                                    aria-hidden="true" focusable="false">
+                                    <path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor"
+                                        stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt" />
+                                </svg><span class="rad__over">36</span></span> = 6</span>
+                    </li>
+                </ul>
+
+                <p>Every one of those pairings is the same move. The two end numbers change places, and the
+                    operation between them turns into its inverse: a subtraction into an addition, a division into a
+                    multiplication, a power into a root.</p>
+
+                <div class="worked">
+                    <div class="inv-scene" data-inv-scene data-scene="rearrange">
+                        <div class="inv-scene__sticky">
+                            <div class="inv-board">
+                                <div class="inv-board__paper" data-board aria-hidden="true"></div>
+                            </div>
+
+                            <div class="inv-scene__caption" aria-live="polite">
+                                <h2 data-step-title>The ends change places</h2>
+                                <p data-step-copy>Swapping them and inverting the operation between them writes
+                                    the check.</p>
+                            </div>
+
+                            <div class="inv-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                    </div>
+
+                    <p class="worked__answer"><strong class="sf" role="math"
+                            aria-label="802 minus 47 equals 755">802 &minus; 47 = 755</strong> is checked by <strong
+                            class="sf" role="math" aria-label="755 plus 47 equals 802">755 + 47 = 802</strong>, <strong
+                            class="sf" role="math" aria-label="391 divided by 23 equals 17">391 &divide; 23 =
+                            17</strong> by <strong class="sf" role="math"
+                            aria-label="17 times 23 equals 391">17 &times; 23 = 391</strong>, and <strong class="sf"
+                            role="math" aria-label="4 to the power 3 equals 64">4<span class="caret"
+                                aria-hidden="true">^</span><sup>3</sup> = 64</strong> by <strong class="sf" role="math"
+                            aria-label="the cube root of 64 equals 4"><span class="rad rad--order"><span class="caret"
+                                    aria-hidden="true">&sup3;&radic;</span><span class="rad__index" data-order="3"
+                                    aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0 24 40"
+                                    aria-hidden="true" focusable="false">
+                                    <path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor"
+                                        stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt" />
+                                </svg><span class="rad__over">64</span></span> = 4</strong>.</p>
+                </div>
+
+                <div class="rule-card">
+                    <h2 class="rule-card__statement">Writing the check</h2>
+                    <ol class="rule-card__conditions">
+                        <li>Start from the answer, not from the numbers that made it.</li>
+                        <li>Apply the opposite operation, using one of the numbers that made it.</li>
+                        <li>The other one comes back if the answer is right.</li>
+                    </ol>
+                </div>
+
+                <p>That statement always tests the answer, and it is not the only one that does: <span class="sf"
+                        role="math" aria-label="94 minus 56 equals 38">94 &minus; 56 = 38</span> is confirmed by <span
+                        class="sf" role="math" aria-label="38 plus 56 equals 94">38 + 56 = 94</span> and equally
+                    by <span class="sf" role="math" aria-label="94 minus 38 equals 56">94 &minus; 38 = 56</span>. What
+                    never works is rearranging the three numbers into an unrelated calculation — one that is not tied to
+                    the original question.</p>
+
+                <div class="wex">
+                    <h2 class="wex__title">Example: <span class="sf" role="math"
+                            aria-label="is 17 times 23 equal to 391">17 &times; 23 &#8799; 391</span></h2>
+                    <p class="wex__task">Undo the multiplication with a division.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math" aria-label="391 divided by 23">391
+                                    &divide; 23</span></span>
+                            <span class="wex__why">Start from the answer and divide by one of the numbers.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math"
+                                    aria-label="391 divided by 23 equals 17">391 &divide; 23 = 17</span></span>
+                            <span class="wex__why">The other number comes back, so the multiplication holds.</span>
+                        </li>
+                    </ol>
+                </div>
+
+            </section>
+
+            <section aria-labelledby="one-statement-not-enough">
+                <h1 id="one-statement-not-enough">When one inverse statement is not enough</h1>
+
+                <p>A division that leaves a remainder has two pieces of answer, and both have to go back in. The whole
+                    groups are multiplied and the remainder is added on afterwards.</p>
+
+                <figure class="grid">
+                    <div class="grid__figure" aria-hidden="true">
+                        <div class="grid__rect">
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                            <span class="grid__cell"></span>
+                        </div>
+                        <span class="grid__plus">+</span>
+                        <div class="grid__spares">
+                            <span class="grid__cell grid__cell--spare"></span>
+                            <span class="grid__cell grid__cell--spare"></span>
+                            <span class="grid__cell grid__cell--spare"></span>
+                            <span class="grid__cell grid__cell--spare"></span>
+                            <span class="grid__cell grid__cell--spare"></span>
+                        </div>
+                    </div>
+                    <figcaption class="grid__caption">Seven columns of six fill 42 squares, and the five left
+                        over cannot make an eighth column. <span class="sf" role="math"
+                            aria-label="7 times 6 plus 5 equals 47">7 &times; 6 + 5 = 47</span>.</figcaption>
+                </figure>
+
+                <div class="wex">
+                    <h2 class="wex__title">Example: <span class="sf" role="math"
+                            aria-label="is 47 divided by 6 equal to 7 remainder 5">47 &divide; 6 &#8799; 7 r 5</span>
+                    </h2>
+                    <p class="wex__task">Put the whole groups and the remainder back together.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math" aria-label="7 times 6 equals 42">7
+                                    &times; 6 = 42</span></span>
+                            <span class="wex__why">The whole groups, multiplied back.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math" aria-label="42 plus 5 equals 47">42 + 5 =
+                                    47</span></span>
+                            <span class="wex__why">The remainder is added on, and 47 comes back.</span>
+                        </li>
+                    </ol>
+                </div>
+
+            </section>
+
+            <section aria-labelledby="what-a-root-leaves">
+                <h1 id="what-a-root-leaves">What a root check leaves unsettled</h1>
+
+                <p>A root undoes a power, but a square root hands back only the size of the number that was
+                    squared. Two numbers square to 49, and the root sign names one of them: <span class="sf" role="math"
+                        aria-label="the square root of 49 equals 7"><span class="rad"><span class="caret"
+                                aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40"
+                                aria-hidden="true" focusable="false">
+                                <path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3"
+                                    stroke-linejoin="miter" stroke-linecap="butt" />
+                            </svg><span class="rad__over">49</span></span> = 7</span>, while <span class="sf"
+                        role="math"
+                        aria-label="open bracket negative 7 close bracket to the power 2 equals 49">(&minus;7)<span
+                            class="caret" aria-hidden="true">^</span><sup>2</sup> = 49</span> as well. So the check
+                    settles the size and says nothing about which of the two signs was meant.</p>
+
+                <div class="wex">
+                    <h2 class="wex__title">Example: <span class="sf" role="math"
+                            aria-label="is open bracket negative 7 close bracket to the power 2 equal to 49">(&minus;7)<span
+                                class="caret" aria-hidden="true">^</span><sup>2</sup> &#8799; 49</span></h2>
+                    <p class="wex__task">Test the size with a root, then settle the sign separately.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math"
+                                    aria-label="the square root of 49 equals 7"><span class="rad"><span class="caret"
+                                            aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40"
+                                            aria-hidden="true" focusable="false">
+                                            <path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor"
+                                                stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt" />
+                                        </svg><span class="rad__over">49</span></span> = 7</span></span>
+                            <span class="wex__why">Undoing the squaring gives the size of the number that was
+                                squared.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math"
+                                    aria-label="7 is not equal to negative 7">7 &ne; &minus;7</span></span>
+                            <span class="wex__why">Not a disagreement. &minus;7 is the same size as 7, and the root
+                                sign can only hand back one of the two.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">The index 2 is even.</span>
+                            <span class="wex__why">What the root cannot settle, the index does: an even index makes
+                                the answer positive whichever sign went in, so 49 is right.</span>
+                        </li>
+                    </ol>
+                </div>
+
+                <p>A cube root keeps the sign of the number under it, so a cube needs no second step:
+                    <span class="sf" role="math" aria-label="the cube root of negative 64 equals negative 4"><span
+                            class="rad rad--order"><span class="caret" aria-hidden="true">&sup3;&radic;</span><span
+                                class="rad__index" data-order="3" aria-hidden="true"></span><svg class="rad__sign"
+                                viewBox="0 0 24 40" aria-hidden="true" focusable="false">
+                                <path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3"
+                                    stroke-linejoin="miter" stroke-linecap="butt" />
+                            </svg><span class="rad__over">&minus;64</span></span> = &minus;4</span> checks <span
+                        class="sf" role="math"
+                        aria-label="open bracket negative 4 close bracket to the power 3 equals negative 64">(&minus;4)<span
+                            class="caret" aria-hidden="true">^</span><sup>3</sup> = &minus;64</span> by itself. Only an
+                    even index hands back two numbers of the same size, and choosing between them is settled on <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/positiveAndNegativeRoots.html">positive
+                        and negative square roots</a>.
+                </p>
+
+            </section>
+
+            <section aria-labelledby="common-mistakes">
+                <h1 id="common-mistakes">Common mistakes</h1>
+                <ul class="slips">
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math"
+                                aria-label="47 divided by 6 equals 7 remainder 5, checked as 7 times 6 equals 42">47
+                                &divide; 6 = 7 r 5, checked by 7 &times; 6 = 42</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> This multiplies the whole groups back and
+                            stops, so the check lands on 42 and not on the 47 it started from. The remainder is part
+                            of the answer and has to go back in.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
+                                aria-label="7 times 6 plus 5 equals 47">7 &times; 6 + 5 = 47</span></span>
+                    </li>
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math"
+                                aria-label="94 minus 56 equals 38, checked as 56 minus 38 equals 18">94 &minus; 56 =
+                                38, checked by 56 &minus; 38 = 18</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> This rearranges the three numbers into a
+                            calculation the original never made, so whatever it comes to says nothing about the
+                            answer. A test has to use the 38 as the answer it is checking.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
+                                aria-label="38 plus 56 equals 94">38 + 56 = 94</span></span>
+                    </li>
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math"
+                                aria-label="is 600 minus 247 equal to 447, checked by working it out again">600 &minus;
+                                247
+                                &#8799; 447, checked by working it out again</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> Running the same steps in the same order
+                            reproduces the same exchange slip, so 447 comes back a second time and looks
+                            confirmed.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
+                                aria-label="447 plus 247 equals 694, which is not equal to 600">447 + 247 = 694
+                                &ne; 600</span></span>
+                    </li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="remember">
+                <h1 id="remember">Remember</h1>
+                <ol class="recap">
+                    <li>Redoing a calculation repeats its slips; undoing it does not.</li>
+                    <li>A check starts from the answer and applies the opposite operation.</li>
+                    <li>The gap between the check and the original number is the size of the slip.</li>
+                    <li>A remainder is part of the answer, so <span class="sf" role="math"
+                            aria-label="7 times 6 plus 5 equals 47">7 &times; 6 + 5 = 47</span> and not <span class="sf"
+                            role="math" aria-label="7 times 6 equals 42">7 &times; 6 = 42</span>.</li>
+                    <li>A square root gives back the size of a number and not its sign, so an even index leaves
+                        one more thing to settle; an odd index leaves nothing.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
                 <h2 id="practice-heading">Practice and continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/practiceCheckingWithInverses.html" style="background-image: none">
+                    <a class="topic-card topic-card--practice"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/practiceCheckingWithInverses.html"
+                        style="background-image: none">
                         <span class="practice-card__kicker">Practice</span>
                         <h3>Checking an answer with the inverse operation</h3>
                         <p>Undoing a calculation with its inverse to test an answer without repeating it.</p>
                     </a>
-                    <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/reorderingACalculation.html" style="background-image: none">
+                    <a class="topic-card topic-card--next"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/reorderingACalculation.html"
+                        style="background-image: none">
                         <span class="topic-card__kicker">Next lesson</span>
                         <h3>Reordering a calculation</h3>
                         <p>Using commutativity and associativity to pair the easiest numbers first.</p>

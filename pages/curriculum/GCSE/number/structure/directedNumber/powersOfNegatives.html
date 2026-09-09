@@ -4,18 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Demystifying Maths | GCSE Powers of a negative number</title>
-    <meta name="description" content="Why &minus;3&sup2; and (&minus;3)&sup2; differ, and how an odd or even index fixes the sign.">
+    <meta name="description"
+        content="Why &minus;3&sup2; and (&minus;3)&sup2; differ, and how an odd or even index fixes the sign.">
     <meta property="og:title" content="Demystifying Maths">
-    <meta property="og:description" content="Why &minus;3&sup2; and (&minus;3)&sup2; differ, and how an odd or even index fixes the sign.">
+    <meta property="og:description"
+        content="Why &minus;3&sup2; and (&minus;3)&sup2; differ, and how an odd or even index fixes the sign.">
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/powersOfNegatives.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/powersOfNegatives.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -30,12 +34,19 @@
             <h1>Demystifying - Powers of a negative number</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
-                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and calculation</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/">Directed number</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span>
+                    </li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and
+                            calculation</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a
+                            href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/">Directed
+                            number</a><span aria-hidden="true">&rsaquo;</span></li>
                     <li>
                         <p>Powers of a negative number</p>
                     </li>
@@ -46,20 +57,224 @@
         <aside id="page-nav-container"></aside>
 
         <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>Why -3 squared and (-3) squared differ, and how an odd or even index fixes the sign; evaluating powers like (-2) to the 4 without a calculator. Assumes index-notation and the sign rules; substitution errors with x squared live in Algebra. Both tiers. (N2, N3, N6)</p>
+            <p class="prereq"><b>Before this page:</b> <span>be able to read a <span class="gloss"
+                        data-term="base">base</span> and its <span class="gloss" data-term="index">index</span> from <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/indexNotation.html">index
+                        notation and powers</a>, know the sign of a product from <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/multiplyingDividingNegatives.html">multiplying
+                        and dividing negative numbers</a>, and know that indices are worked first from <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/orderOfOperations.html">the
+                        order of operations</a>.</span></p>
+
+            <section aria-labelledby="what-the-index-covers">
+                <h1 id="what-the-index-covers">Is &minus;3&sup2; equal to &minus;9 or to 9?</h1>
+
+                <p>BIDMAS works indices before adding and subtracting, and that settles this one too: the squaring
+                    is done first, and the minus is applied to whatever it produces.</p>
+
+                <div class="worked">
+                    <div class="pow-scene" data-pow-scene data-scene="covers">
+                        <div class="pow-scene__sticky">
+                            <p class="pow-scene__heading" role="math"
+                                aria-label="negative 3 to the power 2, and open bracket negative 3 close bracket to the power 2">
+                                &minus;3<span class="caret" aria-hidden="true">^</span><sup>2</sup> and
+                                (&minus;3)<span class="caret" aria-hidden="true">^</span><sup>2</sup></p>
+
+                            <div class="pow-board">
+                                <div class="pow-board__paper" data-board aria-hidden="true"></div>
+                            </div>
+
+                            <div class="pow-scene__caption">
+                                <h2 data-step-title>Two ways to read three symbols</h2>
+                                <p data-step-copy>The index is written against the 3 on the left and against the
+                                    bracket on the right.</p>
+                            </div>
+
+                            <div class="pow-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                    </div>
+
+                    <p class="worked__answer" role="math"
+                        aria-label="negative 3 to the power 2 equals negative 9, and open bracket negative 3 close bracket to the power 2 equals 9">
+                        &minus;3<span class="caret" aria-hidden="true">^</span><sup>2</sup> = &minus;9, and
+                        (&minus;3)<span class="caret" aria-hidden="true">^</span><sup>2</sup> = 9</p>
+                </div>
+
+                <p>A bracket is the only thing that puts the minus inside the squaring. Nothing else changes: the
+                    same <span class="gloss" data-term="order of operations">order of operations</span> gives <span
+                        class="sf" role="math"
+                        aria-label="5 minus 3 to the power 2 equals 5 minus 9 equals negative 4">5 &minus; 3<span
+                            class="caret" aria-hidden="true">^</span><sup>2</sup> = 5 &minus; 9 = &minus;4</span>.</p>
+
+                <div class="wex">
+                    <h2 class="wex__title">Example: work out &minus;5&sup2; and (&minus;5)&sup2;</h2>
+                    <p class="wex__task">Work out each of the two readings.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math"
+                                    aria-label="5 to the power 2 equals 25">5<span class="caret"
+                                        aria-hidden="true">^</span><sup>2</sup> = 25</span></span>
+                            <span class="wex__why">The index stands against the 5 in both.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math"
+                                    aria-label="negative 5 to the power 2 equals negative 25">&minus;5<span
+                                        class="caret" aria-hidden="true">^</span><sup>2</sup> = &minus;25</span></span>
+                            <span class="wex__why">No bracket, so the minus stays outside the squaring.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math"
+                                    aria-label="open bracket negative 5 close bracket to the power 2 equals 25">(&minus;5)<span
+                                        class="caret" aria-hidden="true">^</span><sup>2</sup> = 25</span></span>
+                            <span class="wex__why">The bracket puts the minus inside, and two negatives make a
+                                positive.</span>
+                        </li>
+                    </ol>
+                </div>
             </section>
 
-            <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+            <section aria-labelledby="the-index-counts">
+                <h1 id="the-index-counts">The index says how many negatives are multiplied</h1>
+
+                <p>Once a bracket has put the minus inside, the index counts the <span class="gloss"
+                        data-term="factor">factors</span>, and every one of them is negative. So the index alone
+                    decides the sign, without any of them being written out.</p>
+
+                <p>Two negatives multiplied together make a positive, so the factors pair off into positive <span
+                        class="gloss" data-term="product">products</span>. An odd index leaves one with nothing to
+                    pair with, and that one turns the answer negative.</p>
+
+                <div class="worked">
+                    <div class="pow-scene" data-pow-scene data-scene="pairs">
+                        <div class="pow-scene__sticky">
+                            <p class="pow-scene__heading" role="math"
+                                aria-label="open bracket negative 2 close bracket to the power 5">(&minus;2)<span
+                                    class="caret" aria-hidden="true">^</span><sup>5</sup></p>
+
+                            <div class="pow-board">
+                                <div class="pow-board__paper" data-board aria-hidden="true"></div>
+                            </div>
+
+                            <div class="pow-scene__caption">
+                                <h2 data-step-title>Five negative factors</h2>
+                                <p data-step-copy>The index counts how many copies of &minus;2 are multiplied
+                                    together.</p>
+                            </div>
+
+                            <div class="pow-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                    </div>
+
+                    <p class="worked__answer" role="math"
+                        aria-label="open bracket negative 2 close bracket to the power 5 equals negative 32">
+                        (&minus;2)<span class="caret" aria-hidden="true">^</span><sup>5</sup> = &minus;32</p>
+                </div>
+
+                <p>The size never depends on the sign: <span class="sf" role="math"
+                        aria-label="2 to the power 5 equals 32">2<span class="caret"
+                            aria-hidden="true">^</span><sup>5</sup> = 32</span> gives the 32 in <span class="sf"
+                        role="math" aria-label="open bracket negative 2 close bracket to the power 5">(&minus;2)<span
+                            class="caret" aria-hidden="true">^</span><sup>5</sup></span> as well.</p>
+
+                <div class="rule-card">
+                    <h2 class="rule-card__statement">A power of a negative number</h2>
+                    <div class="rule-card__conditions">
+                        <p>Work out the power of the number without its sign. Then make the answer negative if the
+                            index is odd, and leave it positive if the index is even.</p>
+                    </div>
+                </div>
+
+                <div class="wex">
+                    <h2 class="wex__title">Example: work out (&minus;2)&#8310;</h2>
+                    <p class="wex__task">Take the size and the sign separately.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math"
+                                    aria-label="2 to the power 6 equals 64">2<span class="caret"
+                                        aria-hidden="true">^</span><sup>6</sup> = 64</span></span>
+                            <span class="wex__why">The power of the number without its sign.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">6 is even</span>
+                            <span class="wex__why">Six negatives make three pairs, with none left over.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math"
+                                    aria-label="open bracket negative 2 close bracket to the power 6 equals 64">(&minus;2)<span
+                                        class="caret" aria-hidden="true">^</span><sup>6</sup> = 64</span></span>
+                            <span class="wex__why">An even index leaves the answer positive.</span>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <section aria-labelledby="common-mistakes">
+                <h1 id="common-mistakes">Common mistakes</h1>
+                <ul class="slips">
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math"
+                                aria-label="negative 3 to the power 2 equals 9">&minus;3<span class="caret"
+                                    aria-hidden="true">^</span><sup>2</sup> = 9</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> This squares the minus along with the 3,
+                            which is what a bracket would have asked for. The index stands against the 3 alone, so the
+                            squaring gives 9 and the minus is still in front of it.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf"
+                                role="math"
+                                aria-label="negative 3 to the power 2 equals negative 9, while open bracket negative 3 close bracket to the power 2 equals 9">&minus;3<span
+                                    class="caret" aria-hidden="true">^</span><sup>2</sup> = &minus;9, while
+                                (&minus;3)<span class="caret"
+                                    aria-hidden="true">^</span><sup>2</sup> = 9</span></span>
+                    </li>
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math"
+                                aria-label="open bracket negative 2 close bracket to the power 4 equals negative 16">(&minus;2)<span
+                                    class="caret" aria-hidden="true">^</span><sup>4</sup> = &minus;16</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> This keeps a minus because the number
+                            being multiplied was negative. Four negatives make two pairs and each pair is positive, so
+                            nothing is left to carry a minus.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf"
+                                role="math"
+                                aria-label="open bracket negative 2 close bracket to the power 4 equals 16">(&minus;2)<span
+                                    class="caret" aria-hidden="true">^</span><sup>4</sup> = 16</span></span>
+                    </li>
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math"
+                                aria-label="open bracket negative 2 close bracket to the power 3 equals 8">(&minus;2)<span
+                                    class="caret" aria-hidden="true">^</span><sup>3</sup> = 8</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> This takes every power of a negative number
+                            to be positive, which holds for squares because two negatives pair off. Three negatives
+                            leave one unpaired.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf"
+                                role="math"
+                                aria-label="open bracket negative 2 close bracket to the power 3 equals negative 8">(&minus;2)<span
+                                    class="caret" aria-hidden="true">^</span><sup>3</sup> = &minus;8</span></span>
+                    </li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="remember">
+                <h1 id="remember">Remember</h1>
+                <ol class="recap">
+                    <li>BIDMAS works the index before the minus, so <span class="sf" role="math"
+                            aria-label="negative 3 to the power 2 equals negative 9">&minus;3<span class="caret"
+                                aria-hidden="true">^</span><sup>2</sup> = &minus;9</span>.</li>
+                    <li>A bracket gathers the minus in with the number, so <span class="sf" role="math"
+                            aria-label="open bracket negative 3 close bracket to the power 2 equals 9">(&minus;3)<span
+                                class="caret" aria-hidden="true">^</span><sup>2</sup> = 9</span>.</li>
+                    <li>The index counts the negative factors: an even index leaves the answer positive, an odd one
+                        leaves it negative.</li>
+                    <li>The size is the same power of the number without its sign: <span class="sf" role="math"
+                            aria-label="2 to the power 5 equals 32">2<span class="caret"
+                                aria-hidden="true">^</span><sup>5</sup> = 32</span>.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
                 <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/checkingWithInverses.html" style="background-image: none">
+                    <a class="topic-card topic-card--next"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/checkingWithInverses.html"
+                        style="background-image: none">
                         <span class="topic-card__kicker">Next lesson</span>
                         <h3>Checking an answer with the inverse operation</h3>
                         <p>Undoing a calculation with its inverse to test an answer without repeating it.</p>

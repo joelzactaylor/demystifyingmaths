@@ -104,14 +104,25 @@ document.addEventListener("DOMContentLoaded", () => {
        is written rather than assumed. A worked calculation is written the way
        it is written in the prose — "−4 + 6 − 5 = −3" — because there the first
        arrow simply is the starting number. */
-    const transcribe = (terms, fromZero) => {
-        if (!terms.length) return "0";
-        const parts = terms.map((t) => `${t.op} ${bracketed(t.value)}`);
-        const head = (fromZero || terms[0].op === MINUS)
-            ? "0 " + parts.join(" ")
-            : [signed(terms[0].value)].concat(parts.slice(1)).join(" ");
-        return `${head} = ${signed(totalOf(terms))}`;
+    /* The first arrow is written as the number it is, never as a move away from
+       a zero nobody wrote: "3 − (−2)", not "0 + 3 − (−2)". A first arrow laid
+       by subtracting keeps its sign in front of it, so "−(−2)" says what was
+       done and comes to the 2 the arrow reaches. */
+    const opening = (term) => (term.op === MINUS ? MINUS + bracketed(term.value) : signed(term.value));
+
+    const transcribe = (terms) => {
+        if (!terms.length) return "";
+        const parts = terms.slice(1).map((t) => `${t.op} ${bracketed(t.value)}`);
+        const head = [opening(terms[0])].concat(parts).join(" ");
+        /* One arrow is its own value, and writing it out twice says nothing. */
+        return terms.length < 2 ? head : `${head} = ${signed(totalOf(terms))}`;
     };
+
+    /* The same, with the answer left off. A card heading names the calculation
+       it works; the worked example under the card is where the answer is
+       written, and writing it twice gives a reader without JavaScript two of
+       them. */
+    const written = (terms) => transcribe(terms).split(" = ")[0];
 
     const buildLine = (track, min, max, labelEvery) => {
         const setup = [];
@@ -184,7 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         stages: (model) => model.terms.length - 1,
 
-        heading: (model, node) => { node.textContent = transcribe(model.terms, false); },
+        heading: (model, node) => { node.textContent = written(model.terms); },
 
         build(board, model) {
             board.replaceChildren();
@@ -622,7 +633,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const total = totalOf(terms);
             marker.style.left = `${place(total)}%`;
-            reading.textContent = transcribe(terms, true);
+            reading.textContent = transcribe(terms);
 
             opButtons.forEach(({ op, button }) => {
                 button.classList.toggle("is-armed", op === armed);

@@ -1,0 +1,385 @@
+/* ORDER OF OPERATIONS
+
+   Four figures, and between them one idea: a calculation written in a line is
+   already grouped, and the writing says how. So the drawings are all about
+   extent — how far a part reaches — rather than about quantity.
+
+   The reduction figure is set on a character grid. Everything in it is
+   monospace, so one character is exactly 1ch wide whatever font the machine
+   actually has, and the gold frame and the value travelling down into the next
+   line are placed from character counts rather than from measurement. Nothing
+   here calls getBoundingClientRect, and nothing shifts when a webfont arrives
+   late.
+
+   .frac is drawn rather than left to <mfrac>, for the reason .rad is drawn: a
+   stacked fraction flattens to its two rows run together, so 12 + 8 over 5 − 1
+   becomes the false "12 + 85 − 1". Built from two boxes and a border it needs
+   no font metrics, and a clipped ")/(" between the rows puts back exactly the
+   characters the flattening drops. If the fractions topic wants this later it
+   belongs in lesson.css; it is here while this is the only page with one.
+
+   No viewport media queries below: .layout is a fixed 900px panel that
+   shared.css scales with transform under 900px, so nothing here may reflow. The
+   reduced-motion block at the end is the only @media. */
+
+/* A DRAWN FRACTION ------------------------------------------------------- */
+
+.frac {
+    display: inline-block;
+    line-height: 1.15;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.frac__top { display: block; padding: 0 .32em .06em; }
+
+.frac__bot {
+    display: block;
+    border-top: .09em solid currentColor;
+    padding: .06em .32em 0;
+}
+
+/* ONE CALCULATION, FOUR NUMBERS -----------------------------------------
+
+   The catalogue that makes an agreed order feel necessary before one is named.
+   Four routes through the same three operations, each step of each of them a
+   correct calculation, each route reaching a different number. None is marked:
+   the point is that nothing here picks between them, and the next paragraph is
+   where the agreement arrives. */
+
+.spread { margin: 24px 0 22px; }
+
+.spread__from {
+    margin: 0 0 14px;
+    color: #173849;
+    font: 700 1.34rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+}
+
+.spread__ways { display: grid; gap: 12px; grid-template-columns: repeat(4, 1fr); }
+
+.spread__way {
+    padding: 14px 8px 16px;
+    border: 2px solid #d9e2ec;
+    border-radius: 14px;
+    background: #fff;
+    text-align: center;
+}
+
+.spread__order {
+    margin: 0 0 10px;
+    color: #52666f;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+}
+
+.spread__line {
+    margin: 0 0 6px;
+    color: #173849;
+    font: 700 1rem/1.35 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.spread__line--end {
+    margin: 9px 0 0;
+    padding-top: 9px;
+    border-top: 2px solid #c9dce8;
+    color: #09539d;
+    font-size: 1.34rem;
+}
+
+/* THE SCROLL-LED CARD ---------------------------------------------------- */
+
+.calc-scene {
+    position: relative;
+    min-height: min(628px, calc(100vh - 104px));
+    margin: 26px 0 8px;
+    overflow-anchor: none;
+}
+
+.calc-scene.is-ready { height: var(--scene-height); min-height: var(--scene-min-height); }
+
+.calc-scene__sticky {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: grid;
+    height: min(628px, calc(100vh - 104px));
+    min-height: 470px;
+    box-sizing: border-box;
+    grid-template-rows: auto minmax(0, 1fr) auto auto;
+    overflow: hidden;
+    border: 2px solid #c9dce8;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #fbfdff 0%, #f2f8fc 100%);
+    box-shadow: 0 12px 30px rgba(20, 57, 78, .14);
+    contain: layout paint;
+    overflow-anchor: none;
+    will-change: transform;
+}
+
+.calc-scene__sticky.is-pinned { position: fixed; right: auto; z-index: 900; transform-origin: top left; }
+
+.calc-scene__heading {
+    margin: 0;
+    padding: 20px 24px 2px;
+    color: #173849;
+    font: 700 1.34rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+}
+
+.calc-scene__heading sup { font-size: .62em; }
+
+.calc-board { position: relative; display: grid; min-height: 0; padding: 6px 24px 0; place-items: center; }
+.calc-board__paper { position: relative; display: grid; justify-items: center; width: 100%; }
+
+/* A CALCULATION, WORKED ONE PART AT A TIME -------------------------------
+
+   Each line is written out in full below the one before, with the gold frame
+   over the part that is about to become a single number and that number
+   travelling down out of the frame into its place. */
+
+/* Every position in this figure — the lines, the frame that gathers part of
+   one, the braces under the sandbox's — is measured in characters. `ch` is the
+   width of a "0" in the element's own font, so the font has to be set here, on
+   the figure, and inherited by all of them. Set on .calc__line alone it would
+   leave the frame measuring in the page's body face at two thirds the width,
+   and every gold box would sit narrow and to the left of what it gathers. */
+.calc {
+    position: relative;
+    width: 100%;
+    color: #173849;
+    font: 700 1.55rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.calc__line {
+    position: absolute;
+    left: 50%;
+    opacity: 0;
+    transform: translateX(-50%);
+    white-space: pre;
+}
+
+/* The frame is drawn behind the characters it gathers, so each one sits on a
+   layer above it — the arrangement the written-method boards use for their
+   digits and cursor. */
+.calc__atom { position: relative; z-index: 1; display: inline-block; }
+.calc__atom--value { color: #09539d; }
+
+/* An index keeps a whole character column, so the grid the frame is placed on
+   survives a power appearing in the line. */
+.calc__pow {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    width: 1ch;
+    height: 0;
+}
+
+/* Out of the flow, so the index cannot make its line taller than the lines
+   around it — the frame is sized once for every line and would sit off-centre
+   on the one line that carried a power. */
+.calc__pow sup {
+    position: absolute;
+    bottom: .3em;
+    left: 0;
+    font-size: .62em;
+    line-height: 1;
+}
+
+/* The brace under the two numbers and the sign being gathered, and the stem
+   from it down to the single number they make. This is how every simplification
+   on the page is drawn — scrolled through or standing still — so there is one
+   thing to learn to read. Gold for the gathering, blue for what it makes. */
+.calc__brace {
+    position: absolute;
+    z-index: 0;
+    height: 7px;
+    box-sizing: border-box;
+    border: 2px solid #d99a20;
+    border-top: 0;
+    border-radius: 0 0 6px 6px;
+}
+
+.calc__stem { position: absolute; z-index: 0; width: 2px; background: #d99a20; }
+
+/* TWO READINGS OF THE SAME SYMBOLS, AS AREA ------------------------------
+
+   A product is a rectangle, and the brackets change what its side is made of.
+   Nothing in the drawing is numbered: the 3 wears one colour and the 4 another,
+   in the sides, in the loose squares and in the calculation written underneath,
+   so each can be followed from one reading to the other.
+
+   Purple and teal are outside the house palette, and they are here because the
+   figure needs two numbers told apart at a glance and neither may read as an
+   error. The rectangle itself stays the palest thing on the card, so the two
+   coloured lengths are what the eye goes to.
+
+   No rectangle is drawn as two blocks stacked. Reading it that way is the
+   distributive property, which this page has not taught and does not need. */
+
+.area { position: relative; width: 100%; }
+
+.area__col { position: absolute; bottom: 34px; }
+
+/* One colour, one number, wherever it appears: purple is the 3, teal the 4 and
+   ochre the 5, in the sides and in the squares alike. A square that belongs to no
+   single one of them — every square of a rectangle five across and four up — is
+   left plainly grey, so the three colours keep their meaning. */
+.area__cell {
+    position: absolute;
+    box-sizing: border-box;
+    border: 2px solid #b8cbd7;
+    border-radius: 3px;
+    background: #f3f6f8;
+    opacity: 0;
+}
+
+/* A square wears the colour of the length to its left, so which side it belongs
+   to can be read off it. */
+.area__cell--three { border-color: #6b4e9b; background: #efeaf7; }
+.area__cell--four { border-color: #116e93; background: #e7f0f5; }
+
+/* Once the 3 and the 4 have closed into one side of seven, that side is neither
+   of them and wears the colour between the two — #3e5e97, which the script
+   interpolates to as they join. Every square of the rectangle it makes wears it
+   too, so one rectangle can never be read as two. */
+.area__cell--joined { border-color: #3e5e97; background: #eaeef6; }
+
+/* A side, drawn as a line in the colour of the number it measures. The sides
+   are lengths; the squares are the area. */
+.area__rule { position: absolute; border-radius: 4px; opacity: 0; }
+
+/* Where two lengths are brought together into one side, the ends that meet are
+   square and the ends that do not stay round, so the join reads as one line
+   rather than as two bars touching. Named for the end that is squared, since
+   naming them for the direction of the join is how they came to be the wrong
+   way round the first time. */
+.area__rule--square-top { border-radius: 0 0 4px 4px; }
+.area__rule--square-bottom { border-radius: 4px 4px 0 0; }
+
+.area__rule--three { background: #6b4e9b; }
+.area__rule--four { background: #116e93; }
+.area__rule--five { background: #b86821; }
+
+/* The calculation is written a piece at a time, each piece arriving with the
+   part of the drawing it names. Every piece holds its place from the first
+   frame, so the line never shifts as it fills in. */
+.area__label {
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    color: #173849;
+    font: 700 1.06rem/1.3 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+    white-space: pre;
+}
+
+.area__label span { opacity: 0; }
+
+/* The written calculation wears the drawing's colours. */
+.area__three { color: #6b4e9b; }
+.area__four { color: #116e93; }
+.area__five { color: #b86821; }
+.area__total { color: #09539d; }
+
+/* THE SANDBOX -----------------------------------------------------------
+
+   The same calculation with a pair of brackets moved about it. Pressing a
+   placing writes the calculation out again with the brackets in, and works it
+   through to its answer. */
+
+.brackets {
+    margin: 30px 0;
+    padding: 24px 30px 22px;
+    border: 2px solid #c9dce8;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 8px 22px rgba(23, 56, 73, .11);
+}
+
+.brackets__board { position: relative; padding: 4px 12px 0; }
+
+.brackets__reading {
+    min-height: 1.5em;
+    margin: 14px 0 18px;
+    color: #09539d;
+    font: 700 1.34rem/1.3 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+}
+
+.brackets__controls { display: grid; gap: 12px; justify-items: center; }
+.brackets__tiles { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+
+.brackets__tile {
+    padding: 9px 13px;
+    border: 2px solid #b8cbd7;
+    border-radius: 12px;
+    background: #fff;
+    color: #173849;
+    cursor: pointer;
+    font: 700 1rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    transition: border-color .18s ease, background-color .18s ease, box-shadow .18s ease;
+}
+
+.brackets__tile:hover:enabled { border-color: #6c9bb0; }
+
+.brackets__tile:focus-visible {
+    border-color: #116e93;
+    box-shadow: 0 0 0 4px rgba(17, 110, 147, .12);
+    outline: none;
+}
+
+.brackets__tile.is-armed { border-color: #116e93; background: #eef5fb; color: #09539d; }
+
+/* CARD FURNITURE, shared by every scene on the page. */
+
+.calc-scene__caption {
+    display: grid;
+    height: 6.6em;
+    box-sizing: border-box;
+    align-content: center;
+    padding: 14px 28px 6px;
+    text-align: center;
+}
+
+/* A scene under a worked title is a level below it; a scene that stands on its
+   own is a level up. The caption looks the same either way. */
+.calc-scene__caption h2,
+.calc-scene__caption h3 { margin: 0 0 5px; color: #09539d; font-size: 1.1rem; }
+.calc-scene__caption p { margin: 0; color: #243a45; font-size: .97rem; line-height: 1.5; }
+
+.calc-scene__progress { display: flex; gap: 8px; padding: 0 22px 18px; justify-content: center; }
+
+.calc-scene__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #c6d4dc;
+    transition: width .25s ease, border-radius .25s ease, background-color .25s ease;
+}
+
+.calc-scene__dot.is-current { width: 28px; border-radius: 999px; background: #116e93; }
+.calc-scene__dot.is-past { background: #6c9bb0; }
+
+@media (prefers-reduced-motion: reduce) {
+    .calc-scene.is-ready { height: auto; min-height: 0; }
+
+    .calc-scene__sticky {
+        position: relative;
+        height: auto;
+        transform: none !important;
+    }
+
+    .calc-scene__dot,
+    .brackets__tile { transition: none; }
+}

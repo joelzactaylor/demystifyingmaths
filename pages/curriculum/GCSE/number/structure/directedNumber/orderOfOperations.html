@@ -4,18 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Demystifying Maths | GCSE Order of operations</title>
-    <meta name="description" content="Brackets, powers and roots first, with the fraction bar as grouping.">
+    <meta name="description"
+        content="Why 3 + 4 &times; 5 comes to 23 and not 35, what brackets change, and how a root sign and a fraction bar group what is under them.">
     <meta property="og:title" content="Demystifying Maths">
-    <meta property="og:description" content="Brackets, powers and roots first, with the fraction bar as grouping.">
+    <meta property="og:description"
+        content="Why 3 + 4 &times; 5 comes to 23 and not 35, what brackets change, and how a root sign and a fraction bar group what is under them.">
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/orderOfOperations.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/orderOfOperations.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -30,12 +34,18 @@
             <h1>Demystifying - Order of operations</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
-                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and calculation</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/">Directed number</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span>
+                    </li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and
+                            calculation</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/">Directed
+                            number</a><span aria-hidden="true">&rsaquo;</span></li>
                     <li>
                         <p>Order of operations</p>
                     </li>
@@ -46,28 +56,461 @@
         <aside id="page-nav-container"></aside>
 
         <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>Evaluating multi-step calculations with brackets, indices, roots and the four operations; the fraction bar and root sign as implicit grouping; N3 names reciprocals within priority notation, so include them. Calculator keying lives on calculator-methods; algebraic substitution lives in Algebra. Both tiers. (N3)</p>
+            <p class="prereq"><b>Before this page:</b> <span>be able to read a base and its index from <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/indexNotation.html">index
+                        notation and powers</a>, and work out a root of a perfect square from <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/squareRoots.html">square
+                        roots</a>.</span></p>
+
+            <section>
+                <h1 id="two-answers">Does 3 + 4 &times; 5 come to 23 or to 35?</h1>
+
+                <p>Two people can work the same five symbols and hand in different numbers. Gathering the 3 + 4
+                    first leaves 7 &times; 5, which is 35; gathering the 4 &times; 5 first leaves 3 + 20, which is
+                    23.</p>
+
+                <p>Neither of them has made a mistake: 3 + 4 is 7, and 4 &times; 5 is 20. All that separates the two
+                    answers is which pair went first, and so far nothing has settled that.</p>
             </section>
 
             <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+                <h1 id="no-agreed-order">What happens with no agreed order</h1>
+
+                <p>Three operations leave far more room to disagree. <span class="sf" role="math"
+                        aria-label="2 plus 3 times 4 minus 1">2 + 3 &times; 4 &minus; 1</span> can be worked from
+                    either end, or from the middle outwards, and the answers do not match.</p>
+
+                <div class="spread">
+                    <p class="spread__from" role="math" aria-label="2 plus 3 times 4 minus 1">2 + 3 &times; 4 &minus; 1
+                    </p>
+                    <div class="spread__ways">
+                        <div class="spread__way">
+                            <p class="spread__order">left to right</p>
+                            <p class="spread__line" aria-hidden="true">5 &times; 4 &minus; 1</p>
+                            <p class="spread__line" aria-hidden="true">20 &minus; 1</p>
+                            <p class="spread__line spread__line--end">19</p>
+                        </div>
+                        <div class="spread__way">
+                            <p class="spread__order">right to left</p>
+                            <p class="spread__line" aria-hidden="true">2 + 3 &times; 3</p>
+                            <p class="spread__line" aria-hidden="true">2 + 9</p>
+                            <p class="spread__line spread__line--end">11</p>
+                        </div>
+                        <div class="spread__way">
+                            <p class="spread__order">the ends first</p>
+                            <p class="spread__line" aria-hidden="true">5 &times; 4 &minus; 1</p>
+                            <p class="spread__line" aria-hidden="true">5 &times; 3</p>
+                            <p class="spread__line spread__line--end">15</p>
+                        </div>
+                        <div class="spread__way">
+                            <p class="spread__order">the &times; first</p>
+                            <p class="spread__line" aria-hidden="true">2 + 12 &minus; 1</p>
+                            <p class="spread__line" aria-hidden="true">14 &minus; 1</p>
+                            <p class="spread__line spread__line--end">13</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p>Four numbers, one calculation, and not a mistake among them: every step of every route is a
+                    correct calculation on the two numbers in front of it. A cake at &pound;5 and three coffees at
+                    &pound;4 is written <span class="sf" role="math" aria-label="5 plus 3 times 4">5 + 3 &times;
+                        4</span>. A till that gathered the 5 + 3 first
+                    would charge &pound;32 for a &pound;17 order.</p>
+
+                <p>So it is agreed, once and for everybody: multiplying and dividing are done before adding and
+                    subtracting. That picks 13 out of the four possible answers, and it settles <span class="sf"
+                        role="math" aria-label="3 plus 4 times 5 equals 23">3 + 4 &times; 5 = 23</span> as well.</p>
+
+                <div class="wex">
+                    <h2 class="wex__title">Example: work out 10 &minus; 2 &times; 3</h2>
+                    <p class="wex__task">Take 2 &times; 3 from 10.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do">The terms are 10 and 2 &times; 3.</span>
+                            <span class="wex__why">The minus sign separates them.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">2 &times; 3 = 6</span>
+                            <span class="wex__why">Two threes make one amount of 6.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">10 &minus; 2 &times; 3 = 4</span>
+                            <span class="wex__why">Six taken from ten leaves four.</span>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <section>
+                <h1 id="brackets">What a pair of brackets can move</h1>
+
+                <p>Brackets are how to ask for the other reading. <span class="sf" role="math"
+                        aria-label="open bracket 3 plus 4 close bracket times 5 equals 35">(3 + 4) &times; 5 =
+                        35</span>, because they make 3 + 4 the first step.</p>
+
+                <div class="worked">
+
+                    <div class="calc-scene" data-calc-scene data-scene="terms">
+                        <div class="calc-scene__sticky">
+                            <p class="calc-scene__heading" role="math"
+                                aria-label="3 plus 4 times 5, and open bracket 3 plus 4 close bracket times 5">3 +
+                                4 &times; 5 and (3 + 4) &times; 5</p>
+
+                            <div class="calc-board">
+                                <div class="calc-board__paper" data-board aria-hidden="true"></div>
+                            </div>
+
+                            <div class="calc-scene__caption" aria-live="polite">
+                                <h2 data-step-title>A rectangle 4 by 5</h2>
+                                <p data-step-copy>4 &times; 5 is a rectangle: four squares up the side, five along
+                                    the bottom, 20 in all.</p>
+                            </div>
+
+                            <div class="calc-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                    </div>
+
+                    <p class="worked__answer"><strong role="math"
+                            aria-label="3 plus 4 times 5 equals 23, and open bracket 3 plus 4 close bracket times 5 equals 35">3
+                            + 4 &times; 5 = 23, and (3 + 4) &times; 5 = 35</strong></p>
+                </div>
+
+                <p>Moving one pair of brackets moves the answer a long way. <span class="sf" role="math"
+                        aria-label="2 times 3 plus 4 times 5">2 &times; 3 + 4 &times; 5</span> is 6 + 20 = 26,
+                    and bracketing 3 + 4 gives <span class="sf" role="math"
+                        aria-label="2 times open bracket 3 plus 4 close bracket times 5 equals 70">2 &times; (3 + 4)
+                        &times; 5 = 70</span> instead.</p>
+
+                <div class="brackets" data-brackets>
+                    <p class="brackets__reading" role="math" aria-label="2 times 3 plus 4 times 5 equals 26">2 &times; 3
+                        + 4 &times; 5 = 26</p>
+                </div>
+
+                <p>Not every placing changes the answer. Brackets round a product change nothing, because it
+                    is gathered already: <span class="sf" role="math"
+                        aria-label="2 times 3 plus open bracket 4 times 5 close bracket equals 26">2
+                        &times; 3 + (4 &times; 5) = 26</span> as before.</p>
+
+                <div class="wex">
+                    <h2 class="wex__title">Example: put brackets in 3 + 5 &times; 2 to make 16</h2>
+                    <p class="wex__task">Find the placing that gives 16.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do">3 + 5 &times; 2 = 13</span>
+                            <span class="wex__why">Five twos make one amount of 10, and 3 + 10 = 13.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">Brackets round 3 + 5 make it the amount to be doubled.</span>
+                            <span class="wex__why">The 2 then multiplies the whole of 3 + 5 rather than the 5.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">(3 + 5) &times; 2 = 16</span>
+                            <span class="wex__why">Eight taken twice.</span>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <section>
+                <h1 id="powers-first">Powers and roots before anything else</h1>
+
+                <p>A <span class="gloss" data-term="power">power</span> is repeated multiplication, so it goes
+                    before the multiplying around it. <span class="sf" role="math"
+                        aria-label="3 times 4 to the power 2">3 &times; 4<span class="caret"
+                            aria-hidden="true">^</span><sup>2</sup></span> is three sixteens, 48. A <span class="gloss"
+                        data-term="square root">square root</span> goes at the same point: <span class="sf" role="math"
+                        aria-label="5 times the square root of 9 equals 15">5 &times; <span class="rad"><span
+                                class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign"
+                                viewBox="0 0 24 40" aria-hidden="true" focusable="false">
+                                <path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3"
+                                    stroke-linejoin="miter" stroke-linecap="butt" />
+                            </svg><span class="rad__over">9</span></span> = 15</span>.</p>
+
+                <div class="worked">
+
+                    <div class="calc-scene" data-calc-scene data-scene="reduce">
+                        <div class="calc-scene__sticky">
+                            <p class="calc-scene__heading" role="math"
+                                aria-label="2 plus 3 times 4 to the power 2 divided by 8">2 + 3 &times; 4<span
+                                    class="caret" aria-hidden="true">^</span><sup>2</sup> &divide; 8</p>
+
+                            <div class="calc-board">
+                                <div class="calc-board__paper" data-board aria-hidden="true"></div>
+                            </div>
+
+                            <div class="calc-scene__caption" aria-live="polite">
+                                <h2 data-step-title>The power first</h2>
+                                <p data-step-copy>4 &times; 4 = 16, and by convention nothing else can be worked until
+                                    it
+                                    is.</p>
+                            </div>
+
+                            <div class="calc-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                    </div>
+
+                    <p class="worked__answer"><strong role="math"
+                            aria-label="2 plus 3 times 4 to the power 2 divided by 8 equals 8">2 + 3 &times; 4<span
+                                class="caret" aria-hidden="true">^</span><sup>2</sup> &divide; 8 = 8</strong></p>
+                </div>
+
+                <p>Neither &times; nor &divide; outranks the other, and the same holds for + and &minus;, so each pair
+                    is worked from the left.
+                    <span class="sf" role="math" aria-label="3 times 16 divided by 8 equals 48 divided by 8 equals 6">3
+                        &times; 16 &divide; 8 =
+                        48 &divide; 8 = 6</span>, and <span class="sf" role="math"
+                        aria-label="20 minus 8 plus 5 equals 12 plus 5 equals 17">20 &minus; 8 + 5 = 12 + 5 =
+                        17</span>.
+                </p>
+
+                <div class="rule-card">
+                    <h2 class="rule-card__statement" role="math"
+                        aria-label="2 plus 3 times 4 to the power 2 divided by 8 equals 8">2 + 3 &times; 4<span
+                            class="caret" aria-hidden="true">^</span><sup>2</sup> &divide; 8 = 8</h2>
+                    <ul class="rule-card__conditions">
+                        <li>Brackets first, and the innermost pair before the pair around it.</li>
+                        <li>Then powers and roots.</li>
+                        <li>Then multiplying and dividing, from the left.</li>
+                        <li>Then adding and subtracting, from the left.</li>
+                    </ul>
+                </div>
+
+                <p>BIDMAS is those four lines as six letters: <b>b</b>rackets, <b>i</b>ndices,
+                    <b>d</b>ivision, <b>m</b>ultiplication, <b>a</b>ddition, <b>s</b>ubtraction. The D and M are one
+                    strength and so are the A and S, so neither pair is necessarily worked in the order its letters
+                    happen to
+                    fall.
+                </p>
+
+                <div class="important-box" aria-labelledby="other-names">
+                    <div class="important-box__head">
+                        <h2 class="important-box__title" id="other-names">The same order under other names</h2>
+                        <span class="important-box__tag">Extra info</span>
+                    </div>
+                    <p>BODMAS is the older British form, its O standing for &ldquo;of&rdquo; or
+                        &ldquo;order&rdquo;; it is still usual in the United Kingdom and India. PEMDAS is taught in
+                        the United States, where brackets are parentheses and indices exponents. BEDMAS, with E for
+                        exponents, is usual in Canada and New Zealand.</p>
+                    <p>The letters differ in order only to make a pronounceable word: BIDMAS puts D before M, PEMDAS
+                        puts
+                        M before D. Neither ordering is a ruling.</p>
+                </div>
+
+                <div class="important-box" aria-labelledby="no-agreed-reading">
+                    <div class="important-box__head">
+                        <h2 class="important-box__title" id="no-agreed-reading">An implied multiplication is not written
+                        after an obelus</h2>
+                        <span class="important-box__tag">Extra info</span>
+                    </div>
+                    <p>A number written against a bracket, as in <span class="sf" role="math"
+                            aria-label="8 open bracket 1 plus 3 close bracket">8(1 + 3)</span>, is a multiplication
+                        with its sign left out. Standing after an obelus &mdash; the &divide; sign &mdash; it is read
+                        two ways, and no convention settles which. Taking &divide; and &times; as one strength from
+                        the left (strict BIDMAS) gives <span class="sf" role="math"
+                            aria-label="4 divided by 8 times 4 equals 2">4
+                            &divide; 8 &times; 4 = 2</span>; doing the implied multiplication first (IMF) gives <span
+                            class="sf" role="math" aria-label="4 divided by 32 equals 0 point 125">4 &divide; 32 =
+                            0.125</span>. Calculators
+                        and school courses mostly read it the first way, some physics and algebra texts the
+                        second.</p>
+                    <p>So an implied multiplication should never be written after a &divide;. Putting the division under
+                        a bar,
+                        or a bracket round the
+                        product, leaves one reading only: <span class="sf" role="math"
+                            aria-label="4 over open bracket 8 open bracket 1 plus 3 close bracket close bracket equals 0 point 125"><span
+                                class="frac"><span class="frac__top">4</span><span class="caret"
+                                    aria-hidden="true">/(</span><span class="frac__bot">8(1 + 3)</span></span><span
+                                class="caret" aria-hidden="true">)</span> = 0.125</span>, or <span class="sf"
+                            role="math"
+                            aria-label="open bracket 4 divided by 8 close bracket open bracket 1 plus 3 close bracket equals 2">(4
+                            &divide; 8)(1 + 3) = 2</span>.</p>
+                    <p class="important-box__note">Style guides and ISO 80000-2, the international standard for
+                        mathematical notation, ask for that bracket or bar rather than settling which reading is
+                        right. Dave Peterson works through both conventions and lands in the same place in <a
+                            href="https://www.themathdoctors.org/implied-multiplication-1-not-as-bad-as-you-think/"
+                            target="_blank" rel="noopener noreferrer">Implied Multiplication 1: Not as Bad as You
+                            Think</a> (<a class="archived"
+                            href="https://web.archive.org/web/20260903070341/https://www.themathdoctors.org/implied-multiplication-1-not-as-bad-as-you-think/"
+                            target="_blank" rel="noopener noreferrer">archived</a>).</p>
+                </div>
+
+                <div class="wex">
+                    <h2 class="wex__title">Example: work out 40 &divide; 5 &times; 2</h2>
+                    <p class="wex__task">Divide 40 by 5, then multiply by 2.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do">Dividing and multiplying have the same strength.</span>
+                            <span class="wex__why">Neither outranks the other.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">40 &divide; 5 = 8</span>
+                            <span class="wex__why">The leftmost of the two comes first.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">40 &divide; 5 &times; 2 = 16</span>
+                            <span class="wex__why">Eight doubled. Multiplying first would give 40 &divide; 10 = 4,
+                                a different calculation.</span>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <section>
+                <h1 id="bars-that-group">Bars that group without brackets</h1>
+
+                <p>A root's bar fixes how far the root reaches. <span class="sf" role="math"
+                        aria-label="the square root of open bracket 9 plus 16 close bracket"><span class="rad"><span
+                                class="caret" aria-hidden="true">&radic;(</span><svg class="rad__sign"
+                                viewBox="0 0 24 40" aria-hidden="true" focusable="false">
+                                <path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3"
+                                    stroke-linejoin="miter" stroke-linecap="butt" />
+                            </svg><span class="rad__over">9 + 16</span></span><span class="caret"
+                            aria-hidden="true">)</span></span> has both numbers under one bar, so the 9 + 16 is
+                    added before the root is taken, and the answer is 5. Shortening the bar to cover the 9 alone
+                    leaves the 16 outside it, and <span class="sf" role="math"
+                        aria-label="the square root of 9 plus 16 equals 19"><span class="rad"><span class="caret"
+                                aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40"
+                                aria-hidden="true" focusable="false">
+                                <path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3"
+                                    stroke-linejoin="miter" stroke-linecap="butt" />
+                            </svg><span class="rad__over">9</span></span> + 16 = 19</span>.</p>
+
+                <p>A fraction bar groups the same way, one amount above it and one below, so <span class="sf"
+                        role="math"
+                        aria-label="open bracket 12 plus 8 close bracket over open bracket 5 minus 1 close bracket"><span
+                            class="caret" aria-hidden="true">(</span><span class="frac"><span class="frac__top">12 +
+                                8</span><span class="caret" aria-hidden="true">)/(</span><span class="frac__bot">5
+                                &minus; 1</span></span><span class="caret" aria-hidden="true">)</span></span> is 20
+                    &divide; 4, which is 5. Either bar is a bracket that nobody has to write.</p>
+
+
+                <div class="wex">
+                    <h2 class="wex__title">Example: work out <span class="caret" aria-hidden="true">(</span><span
+                            class="frac"><span class="frac__top">7 + 5</span><span class="caret"
+                                aria-hidden="true">)/(</span><span class="frac__bot">9 &minus; 3</span></span><span
+                            class="caret" aria-hidden="true">)</span></h2>
+                    <p class="wex__task">Divide the amount above the bar by the amount below it.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do">7 + 5 = 12</span>
+                            <span class="wex__why">The bar holds the whole of 7 + 5 together.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">9 &minus; 3 = 6</span>
+                            <span class="wex__why">And the whole of 9 &minus; 3 below it.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">12 &divide; 6 = 2</span>
+                            <span class="wex__why">The bar divides one amount by the other.</span>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <section>
+                <h1 id="common-mistakes">Common mistakes</h1>
+                <ul class="slips">
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math" aria-label="2 plus 6 times 3 equals 24">2 + 6
+                            &times; 3 = 24</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> This works from the left and adds 2 and 6
+                            first. By convention the 6 &times; 3 is worked before the addition, so the amount added
+                            to 2 is 18.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
+                                aria-label="2 plus 6 times 3 equals 2 plus 18 equals 20">2 + 6 &times; 3 =
+                                2 + 18 = 20</span></span>
+                    </li>
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math" aria-label="3 times 4 to the power 2 equals 144">3
+                                &times; 4<span class="caret" aria-hidden="true">^</span><sup>2</sup> = 144</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> This multiplies first and squares 12. The
+                            index sits on the 4 alone, so the 4 is squared and the 3 multiplies the 16.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
+                                aria-label="3 times 4 to the power 2 equals 3 times 16 equals 48">3
+                                &times; 4<span class="caret" aria-hidden="true">^</span><sup>2</sup> = 3 &times; 16 =
+                                48</span></span>
+                    </li>
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math"
+                                aria-label="the square root of open bracket 9 plus 16 close bracket equals 7"><span
+                                    class="rad"><span class="caret" aria-hidden="true">&radic;(</span><svg
+                                        class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false">
+                                        <path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor"
+                                            stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt" />
+                                    </svg><span class="rad__over">9 + 16</span></span><span class="caret"
+                                    aria-hidden="true">)</span> = 7</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> This takes the root of the 9 and of the 16
+                            separately and adds 3 and 4. A root does not come apart over a sum: one bar runs over
+                            the whole of it, so the number under it is 25.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
+                                aria-label="the square root of open bracket 9 plus 16 close bracket equals the square root of 25 equals 5"><span
+                                    class="rad"><span class="caret" aria-hidden="true">&radic;(</span><svg
+                                        class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false">
+                                        <path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor"
+                                            stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt" />
+                                    </svg><span class="rad__over">9 + 16</span></span><span class="caret"
+                                    aria-hidden="true">)</span> = <span class="rad"><span class="caret"
+                                        aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40"
+                                        aria-hidden="true" focusable="false">
+                                        <path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor"
+                                            stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt" />
+                                    </svg><span class="rad__over">25</span></span> = 5</span></span>
+                    </li>
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math" aria-label="20 minus 8 plus 5 equals 7">20 &minus; 8
+                                + 5 = 7</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> This adds 8 and 5 first and takes 13 from
+                            20. Adding and subtracting have the same strength, so the 20 &minus; 8 on the left is
+                            worked first.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
+                                aria-label="20 minus 8 plus 5 equals 12 plus 5 equals 17">20 &minus; 8 + 5
+                                = 12 + 5 = 17</span></span>
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h1 id="remember">Remember</h1>
+                <ol class="recap">
+                    <li>By convention multiplying and dividing come before adding and subtracting: <span class="sf" role="math"
+                            aria-label="3 plus 4 times 5 equals 3 plus 20 equals 23">3 + 4 &times; 5 = 3 +
+                            20 = 23</span>.</li>
+                    <li>Brackets are how to ask for a different grouping, so <span class="sf" role="math"
+                            aria-label="open bracket 3 plus 4 close bracket times 5 equals 35">(3 + 4) &times; 5 =
+                            35</span>.</li>
+                    <li>Powers and roots are worked before the multiplying around them: <span class="sf" role="math"
+                            aria-label="3 times 4 to the power 2 equals 48">3 &times; 4<span class="caret"
+                                aria-hidden="true">^</span><sup>2</sup> = 48</span>.</li>
+                    <li>Operations of the same strength are worked from the left: <span class="sf" role="math"
+                            aria-label="40 divided by 5 times 2 equals 16">40 &divide; 5 &times; 2 = 16</span>.</li>
+                    <li>A root's bar and a fraction bar group what is under them, so <span class="sf" role="math"
+                            aria-label="the square root of open bracket 9 plus 16 close bracket equals 5"><span
+                                class="rad"><span class="caret" aria-hidden="true">&radic;(</span><svg class="rad__sign"
+                                    viewBox="0 0 24 40" aria-hidden="true" focusable="false">
+                                    <path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor"
+                                        stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt" />
+                                </svg><span class="rad__over">9 + 16</span></span><span class="caret"
+                                aria-hidden="true">)</span> = 5</span>.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
                 <h2 id="practice-heading">Practice and continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/practiceOrderOfOperations.html" style="background-image: none">
+                    <a class="topic-card topic-card--practice"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/practiceOrderOfOperations.html"
+                        style="background-image: none">
                         <span class="practice-card__kicker">Practice</span>
                         <h3>Order of operations</h3>
                         <p>Brackets, powers and roots first, with the fraction bar as grouping.</p>
                     </a>
-                    <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/powersOfNegatives.html" style="background-image: none">
+                    <a class="topic-card topic-card--next"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/powersOfNegatives.html"
+                        style="background-image: none">
                         <span class="topic-card__kicker">Next lesson</span>
                         <h3>Powers of a negative number</h3>
-                        <p>Why &minus;3&sup2; and (&minus;3)&sup2; differ, and how an odd or even index fixes the sign.</p>
+                        <p>Why &minus;3&sup2; and (&minus;3)&sup2; differ, and how an odd or even index fixes the
+                            sign.</p>
                     </a>
                 </div>
             </section>

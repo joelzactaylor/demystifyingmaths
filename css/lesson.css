@@ -10,7 +10,12 @@
 
 /* THE RULE — a definition set apart so it can be checked at a glance. */
 
+/* The panels carry their own vertical spacing, because the thing above one is
+   as often another panel as it is a paragraph. Without a top margin here a rule
+   card and the worked example under it met with no gap at all. Adjacent margins
+   collapse, so this never doubles up against the panel above. */
 .rule-card {
+    margin: 24px 0;
     padding: 24px 26px;
     border: 2px solid #d9e2ec;
     border-radius: 18px;
@@ -140,6 +145,31 @@
     box-shadow: 0 5px 14px rgba(122, 84, 10, .12);
 }
 
+/* A standing label on a box that carries context rather than the lesson, so a
+   reader can tell at a glance what is safe to skip. */
+/* Heading on the left, its tag pushed to the right on the same baseline. */
+.important-box__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 14px;
+    margin: 0 0 6px;
+}
+
+.important-box__head .important-box__title { margin: 0; }
+
+.important-box__tag {
+    flex: none;
+    padding: 3px 11px;
+    border-radius: 999px;
+    background: #f2ddaa;
+    color: #7a540a;
+    font-size: .7rem;
+    font-weight: 700;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+}
+
 .important-box__title {
     margin: 0 0 6px;
     color: #7a540a;
@@ -148,10 +178,31 @@
 
 .important-box p:last-child { margin-bottom: 0; }
 
+/* A trailing aside inside the box: where a rule comes from, or who else keeps
+   it. A reader can skip it without losing the rule above. */
+.important-box__note {
+    margin: 13px 0 0;
+    padding-top: 11px;
+    border-top: 1px solid rgba(217, 154, 32, .5);
+    color: #7a540a;
+    font-size: .92rem;
+}
+
+/* `section a` in shared.css centres links as shrink-to-fit blocks; this one
+   runs inline inside a sentence. Same reset `.site-notice a` uses. */
+.important-box__note a {
+    width: auto;
+    margin: 0;
+    font-size: inherit;
+    text-shadow: none;
+    color: #8c5c14;
+    text-decoration: underline;
+}
+
 /* WORKED EXAMPLES — method on the left, reason on the right, as a mark scheme
    would set it out. The reason column is the part worth reading twice. */
 
-.wex { margin-bottom: 22px; padding: 22px 26px; border: 2px solid #d9e2ec; border-radius: 18px; background: #f8fbfd; }
+.wex { margin: 24px 0 22px; padding: 22px 26px; border: 2px solid #d9e2ec; border-radius: 18px; background: #f8fbfd; }
 .wex:last-child { margin-bottom: 0; }
 .wex__title { margin: 0 0 4px; color: #09539d; font-size: 1.2rem; }
 .wex__task { margin: 0 0 16px; color: #4d5c62; font-size: .95rem; }

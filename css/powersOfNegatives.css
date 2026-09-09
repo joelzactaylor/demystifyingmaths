@@ -1,0 +1,186 @@
+/* Powers of a negative number.
+
+   Two scroll-led figures, neither of which the shared styles cover:
+
+   - `covers` writes −3² and (−3)² out side by side and expands each into the
+     product it stands for, so the bracket is the visible difference between
+     them rather than a claim about them.
+   - `pairs` lays the factors of (−2)⁵ in a row and ties them together two at a
+     time. What is left when the ties run out is the whole of the sign rule.
+
+   Everything else — the prerequisite strip, worked examples, the rule card,
+   slips and the recap — comes from lesson.css. */
+
+/* THE SCROLL-LED CARD ---------------------------------------------------- */
+
+.pow-scene {
+    position: relative;
+    min-height: min(628px, calc(100vh - 104px));
+    margin: 26px 0 8px;
+    overflow-anchor: none;
+}
+
+.pow-scene.is-ready { height: var(--scene-height); min-height: var(--scene-min-height); }
+
+.pow-scene__sticky {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: grid;
+    height: min(628px, calc(100vh - 104px));
+    min-height: 470px;
+    box-sizing: border-box;
+    grid-template-rows: auto minmax(0, 1fr) auto auto;
+    overflow: hidden;
+    border: 2px solid #c9dce8;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #fbfdff 0%, #f2f8fc 100%);
+    box-shadow: 0 12px 30px rgba(20, 57, 78, .14);
+    contain: layout paint;
+    overflow-anchor: none;
+    will-change: transform;
+}
+
+.pow-scene__sticky.is-pinned { position: fixed; right: auto; z-index: 900; transform-origin: top left; }
+
+.pow-scene__heading {
+    margin: 0;
+    padding: 20px 24px 2px;
+    color: #173849;
+    font: 700 1.34rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+}
+
+.pow-scene__heading sup { font-size: .62em; }
+
+.pow-board { position: relative; display: grid; min-height: 0; padding: 6px 24px 0; place-items: center; }
+.pow-board__paper { position: relative; display: grid; justify-items: center; width: 100%; }
+
+/* h3 under a card that has a worked title above it, h2 under one that does
+   not, so the heading order holds either way. Both read the same. */
+.pow-scene__caption h2,
+.pow-scene__caption h3 { margin: 0 0 5px; color: #09539d; font-size: 1.1rem; }
+
+.pow-scene__caption {
+    display: grid;
+    align-content: center;
+    height: 6.6em;
+    box-sizing: border-box;
+    padding: 14px 28px 6px;
+    text-align: center;
+}
+
+.pow-scene__caption p { margin: 0; color: #243a45; font-size: .97rem; line-height: 1.5; }
+
+.pow-scene__progress { display: flex; gap: 8px; padding: 0 22px 18px; justify-content: center; }
+
+.pow-scene__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: #c6d4dc;
+    transition: width .25s ease, background-color .25s ease;
+}
+
+.pow-scene__dot.is-past { background: #6c9bb0; }
+.pow-scene__dot.is-current { width: 28px; background: #116e93; }
+
+/* WHAT THE INDEX COVERS --------------------------------------------------
+
+   Two columns, each holding a statement that grows a line at a time. The gold
+   frame lights the part the index is written against — the 3 on one side and
+   the whole bracket on the other — and that is the only difference the reader
+   has to see. */
+
+.covers { position: relative; display: grid; width: 100%; gap: 0 46px; grid-template-columns: 1fr 1fr; }
+
+.covers__col { position: relative; display: grid; justify-items: center; gap: 13px; }
+
+.covers__line {
+    position: relative;
+    z-index: 1;
+    color: #173849;
+    font: 700 1.5rem/1.25 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.covers__line sup { font-size: .62em; }
+
+/* The part the index is written against. It is a box of its own only so the
+   frame has something to measure itself against; it changes nothing visually. */
+.covers__marked { position: relative; z-index: 1; display: inline-block; }
+
+.covers__line--answer { color: #09539d; }
+
+/* The frame is painted after the marks it lights, so it is put behind them
+   here and every line is raised above it. */
+.covers__frame {
+    position: absolute;
+    z-index: 0;
+    box-sizing: border-box;
+    border: 2px solid #d99a20;
+    border-radius: 13px;
+    background: #fff2c9;
+}
+
+/* PAIRING THE NEGATIVES --------------------------------------------------
+
+   The factors stand in a row and the ties are drawn under them, two at a time.
+   A tied pair turns blue because it has become a positive amount; whatever the
+   ties cannot reach keeps the ochre of a negative and is what the sign of the
+   whole answer comes from. */
+
+.pairs { position: relative; display: grid; justify-items: center; width: 100%; gap: 22px; }
+
+.pairs__row { position: relative; display: flex; gap: 14px; align-items: flex-end; justify-content: center; }
+
+.pairs__factor {
+    position: relative;
+    z-index: 1;
+    box-sizing: border-box;
+    padding: 9px 13px;
+    border: 2px solid #e0b978;
+    border-radius: 12px;
+    background: #fff8df;
+    color: #b86821;
+    font: 700 1.26rem/1.1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    transition: none;
+}
+
+.pairs__factor--paired { border-color: #9dc0d5; background: #eaf3f8; color: #09539d; }
+
+/* The tie is drawn beneath the pair it joins: two uprights and a bar. */
+.pairs__tie { position: absolute; box-sizing: border-box; border: 2px solid #5d91b0; border-top: none; border-radius: 0 0 9px 9px; }
+
+.pairs__value {
+    min-height: 1.2em;
+    color: #09539d;
+    font: 700 1.62rem/1.15 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.pairs__value--negative { color: #b86821; }
+
+.pairs__note { min-height: 3em; max-width: 30em; margin: 0; color: #243a45; font-size: .95rem; line-height: 1.5; text-align: center; }
+
+/* REDUCED MOTION ---------------------------------------------------------
+
+   The card is never pinned and never scrubbed: it draws its finished state and
+   stays where it sits in the page. */
+
+@media (prefers-reduced-motion: reduce) {
+    .pow-scene.is-ready { height: auto; min-height: 0; }
+
+    .pow-scene__sticky {
+        position: relative;
+        height: auto;
+        transform: none !important;
+    }
+
+    .pow-scene__dot,
+    .pairs__factor { transition: none; }
+}
