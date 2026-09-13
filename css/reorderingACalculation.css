@@ -1,0 +1,230 @@
+/* Reordering a calculation.
+
+   Two scroll-led figures and one still one. Both scroll-led figures rearrange a
+   calculation that is already written: the marks that move are the ones a
+   reader is allowed to move, and the gold frame is put round the pair being
+   taken first. The still figure is one rectangle drawn twice, a quarter turn
+   apart, which is the whole of why two numbers multiplied can change places.
+
+   Everything else comes from lesson.css.
+
+   No viewport media queries below: .layout is a fixed 900px panel that
+   shared.css scales with transform under 900px, so nothing here may reflow. The
+   reduced-motion block at the end is the only @media. */
+
+/* THE SCROLL-LED CARD ---------------------------------------------------- */
+
+.reorder-scene {
+    position: relative;
+    min-height: min(430px, calc(100vh - 104px));
+    margin: 26px 0 8px;
+    overflow-anchor: none;
+}
+
+.reorder-scene.is-ready { height: var(--scene-height); min-height: var(--scene-min-height); }
+
+.reorder-scene__sticky {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: grid;
+    height: min(430px, calc(100vh - 104px));
+    min-height: 380px;
+    box-sizing: border-box;
+    /* board, caption, progress. The calculation names itself on the board, so
+       there is no heading row to hold a copy of it. */
+    grid-template-rows: minmax(0, 1fr) auto auto;
+    overflow: hidden;
+    border: 2px solid #c9dce8;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #fbfdff 0%, #f2f8fc 100%);
+    box-shadow: 0 12px 30px rgba(20, 57, 78, .14);
+    contain: layout paint;
+    overflow-anchor: none;
+    will-change: transform;
+}
+
+.reorder-scene__sticky.is-pinned { position: fixed; right: auto; z-index: 900; transform-origin: top left; }
+
+.reorder-board { position: relative; display: grid; min-height: 0; padding: 6px 24px 0; place-items: center; }
+.reorder-board__paper { position: relative; display: grid; justify-items: center; width: 100%; }
+
+.reorder-scene__caption {
+    display: grid;
+    align-content: center;
+    height: 6.6em;
+    box-sizing: border-box;
+    padding: 14px 28px 6px;
+    text-align: center;
+}
+
+.reorder-scene__caption h3 { margin: 0 0 5px; color: #09539d; font-size: 1.1rem; }
+.reorder-scene__caption p { margin: 0; color: #243a45; font-size: .97rem; line-height: 1.5; }
+
+.reorder-scene__progress { display: flex; gap: 8px; padding: 0 22px 18px; justify-content: center; }
+
+.reorder-scene__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: #c6d4dc;
+    transition: width .25s ease, background-color .25s ease;
+}
+
+.reorder-scene__dot.is-past { background: #6c9bb0; }
+.reorder-scene__dot.is-current { width: 28px; background: #116e93; }
+
+/* THE CALCULATION, REARRANGING ------------------------------------------
+
+   One expression on an upper line with the marks that may move, and the
+   reduction it produces on a lower line. The two lines keep their places from
+   the first frame, so the board never reflows under a pinned card. */
+
+.regroup {
+    --mark-gap: 20px;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    gap: 34px;
+    width: 100%;
+}
+
+/* The frame is drawn inside this box and the marks above it, so the row is the
+   containing block for both. */
+.regroup__row { position: relative; display: grid; justify-items: center; height: 68px; align-content: center; }
+
+.regroup__line {
+    display: flex;
+    align-items: baseline;
+    /* One space between marks, wherever the mark boundary happens to fall. A
+       sign and the number it belongs to are one box here, but that is a fact
+       about what travels together, not about how a calculation is set: an
+       operator sits the same distance from the number on each side of it, and
+       binding one of those gaps tighter than the other made 38 + 62 − 17 read
+       as a list of signed numbers rather than as a sum. */
+    gap: var(--mark-gap);
+    font: 700 2.05rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    color: #173849;
+}
+
+/* Every mark sits above the frame. An absolutely positioned box painted after
+   its siblings covers them by default, and a gold panel over the digits it was
+   drawn to pick out looks deliberate enough to survive a read-through. */
+.regroup__tok { position: relative; z-index: 1; }
+.regroup__tok--op { color: #b86821; }
+
+/* The sign and the number it belongs to are one mark, and the figure is about
+   their travelling together, so they are one box with the sign set apart only
+   by the space inside it. */
+.regroup__tok--term { display: inline-flex; gap: var(--mark-gap); }
+.regroup__tok--term .regroup__sign { color: #b86821; }
+
+/* THE PAIR BEING TAKEN FIRST --------------------------------------------- */
+
+.regroup__frame {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    border: 2px solid #d99a20;
+    border-radius: 13px;
+    background: #fff2c9;
+    opacity: 0;
+}
+
+/* WHAT THE PAIR LEAVES --------------------------------------------------
+
+   The line the reduction is written on. The statement it settles at is written
+   into the element and the ones it passes through are drawn by the stylesheet,
+   so the line that survives the stylesheet being stripped is the answer rather
+   than every stage of the working at once. */
+
+.regroup__result {
+    display: inline-grid;
+    justify-items: center;
+    font: 700 2.05rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    color: #09539d;
+}
+
+.regroup__face { grid-area: 1 / 1; white-space: nowrap; }
+.regroup__face--from::before { content: attr(data-face); }
+
+/* ONE RECTANGLE, A QUARTER TURN APART ------------------------------------
+
+   A still figure. Both rectangles hold the same 24 squares, and the only
+   difference between them is which side counts 4 and which counts 6, so
+   nothing here has to move. */
+
+.turn {
+    margin: 24px 0;
+    padding: 22px 26px;
+    border: 2px solid #d9e2ec;
+    border-radius: 18px;
+    background: #f8fbfd;
+}
+
+.turn__figure { display: flex; gap: 26px; align-items: start; justify-content: center; }
+
+/* Both rectangles are given the same band to stand in, so the two labels sit on
+   one line. Centring the columns against each other instead put the label of
+   the shorter rectangle level with the middle of the taller one, which reads as
+   two unrelated pictures rather than one rectangle turned. */
+.turn__one { display: grid; grid-template-rows: 210px auto; justify-items: center; align-items: center; gap: 12px; }
+
+.turn__rect {
+    background:
+        repeating-linear-gradient(to right, #5d91b0 0 2px, transparent 2px 34px),
+        repeating-linear-gradient(to bottom, #5d91b0 0 2px, transparent 2px 34px),
+        #dfeaf2;
+    border: 2px solid #5d91b0;
+    border-radius: 3px;
+}
+
+/* 4 across and 6 down, then the same rectangle turned. The two are the same
+   picture, so their sides are the same two lengths in the other order. */
+.turn__rect--tall { width: 138px; height: 206px; }
+.turn__rect--wide { width: 206px; height: 138px; }
+
+.turn__label {
+    color: #173849;
+    font: 700 1.14rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.turn__equals {
+    display: grid;
+    height: 210px;
+    align-items: center;
+    color: #b86821;
+    font: 700 1.6rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+.turn__caption {
+    margin: 16px auto 0;
+    max-width: 34em;
+    color: #243a45;
+    font-size: .95rem;
+    line-height: 1.55;
+    text-align: center;
+}
+
+/* REDUCED MOTION ---------------------------------------------------------
+
+   The card is never pinned and never scrubbed: it draws its finished state and
+   stays where it sits in the page. */
+
+@media (prefers-reduced-motion: reduce) {
+    .reorder-scene.is-ready { height: auto; min-height: 0; }
+
+    .reorder-scene__sticky {
+        position: relative;
+        height: auto;
+        transform: none !important;
+    }
+
+    .reorder-scene__dot { transition: none; }
+}

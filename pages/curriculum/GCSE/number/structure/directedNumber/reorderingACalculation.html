@@ -10,12 +10,14 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/reorderingACalculation.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/reorderingACalculation.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -30,12 +32,18 @@
             <h1>Demystifying - Reordering a calculation</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
-                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and calculation</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/">Directed number</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span>
+                    </li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and
+                            calculation</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/">Directed
+                            number</a><span aria-hidden="true">&rsaquo;</span></li>
                     <li>
                         <p>Reordering a calculation</p>
                     </li>
@@ -46,20 +54,333 @@
         <aside id="page-nav-container"></aside>
 
         <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>Using commutativity and associativity to regroup sums and products, like 4 x 17 x 25, and cancellation to simplify before calculating; recognising that subtraction and division cannot be reordered freely. Law names optional; algebraic manipulation lives in Algebra. Both tiers. (N3)</p>
+            <p class="prereq"><b>Before this page:</b> <span>know which operation a calculation does first from <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/orderOfOperations.html">order
+                        of operations</a>, and be able to add and subtract a negative number from <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/addingSubtractingNegatives.html">adding
+                        and subtracting negative numbers</a>.</span></p>
+
+            <section aria-labelledby="easier-order">
+                <h1 id="easier-order">Choosing an easier order for the same calculation</h1>
+
+                <p>A calculation need not be worked in the order it is written. A different order can make the
+                    arithmetic much easier
+                    without changing the answer, and 4 &times; 17 &times; 25 is a calculation worth
+                    rearranging.</p>
+
+                <p>4 &times; 17 &times; 25 has three numbers and two multiplications. Worked from the left it gives
+                    <span class="sf" role="math" aria-label="4 times 17 equals 68">4 &times; 17 = 68</span>, and then
+                    68 &times; 25, which needs writing out. Taking the 4 and the 25 together instead gives 100, and
+                    <span class="sf" role="math" aria-label="100 times 17 equals 1700">100 &times; 17 = 1,700</span>,
+                    which is easy to calculate.
+                </p>
+
+                <div class="worked">
+                    <h2 class="worked__title">Work out 4 &times; 17 &times; 25</h2>
+
+                    <div class="reorder-scene" data-reorder-scene data-scene="product">
+                        <div class="reorder-scene__sticky">
+                            <div class="reorder-board">
+                                <div class="reorder-board__paper" data-board aria-hidden="true"></div>
+                            </div>
+
+                            <div class="reorder-scene__caption" aria-live="polite">
+                                <h3 data-step-title>A pair chosen for the round number it makes</h3>
+                                <p data-step-copy>4 and 25 multiply to 100, so taking that pair first leaves a
+                                    multiplication by 100.</p>
+                            </div>
+
+                            <div class="reorder-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                    </div>
+
+                    <p class="worked__answer"><strong class="sf" role="math"
+                            aria-label="4 times 17 times 25 equals 1700">4 &times; 17 &times; 25 = 1,700</strong></p>
+                </div>
+
+                <p>Nothing was added, dropped or altered on the way. The 25 kept its multiplication sign when it
+                    changed places, and every reordering has to do the same.</p>
             </section>
 
-            <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+            <section aria-labelledby="what-can-move">
+                <h1 id="what-can-move">Which numbers can change places</h1>
+
+                <p>Two numbers multiplied give the same product either way round. 4 &times; 6 and 6 &times; 4 both
+                    count the squares of one rectangle, and turning that rectangle a quarter turn changes which
+                    number counts the rows.</p>
+
+                <figure class="turn">
+                    <div class="turn__figure" aria-hidden="true">
+                        <div class="turn__one">
+                            <div class="turn__rect turn__rect--tall"></div>
+                            <span class="turn__label">4 &times; 6</span>
+                        </div>
+                        <span class="turn__equals">=</span>
+                        <div class="turn__one">
+                            <div class="turn__rect turn__rect--wide"></div>
+                            <span class="turn__label">6 &times; 4</span>
+                        </div>
+                    </div>
+                    <figcaption class="turn__caption">Twenty-four squares stand in the rectangle whichever way it is
+                        turned, so <span class="sf" role="math" aria-label="4 times 6 equals 24">4 &times; 6 =
+                            24</span> and <span class="sf" role="math" aria-label="6 times 4 equals 24">6 &times; 4 =
+                            24</span>.</figcaption>
+                </figure>
+
+                <p>Three numbers work the same way. 8 &times; 7 &times; 5 can start from <span class="sf" role="math"
+                        aria-label="8 times 7 equals 56">8 &times; 7 = 56</span> or from <span class="sf" role="math"
+                        aria-label="7 times 5 equals 35">7 &times; 5 = 35</span>, and 56 &times; 5 and
+                    8 &times; 35 both come to 280. Adding behaves like this too: any two of the numbers being added can
+                    be paired first, and the total is unchanged.</p>
+
+                <div class="wex">
+                    <h2 class="wex__title">Example: work out <span class="sf" role="math"
+                            aria-label="47 plus 86 plus 53">47 + 86 + 53</span></h2>
+                    <p class="wex__task">Pair the two numbers that make a round number.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math" aria-label="47 plus 53 equals 100">47 +
+                                    53 = 100</span></span>
+                            <span class="wex__why">47 and 53 are the pair that reaches a hundred, and the 86 waits
+                                where it is.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math" aria-label="100 plus 86 equals 186">100
+                                    + 86 = 186</span></span>
+                            <span class="wex__why">Adding 86 to a hundred needs no column addition.
+                                Starting with 47 + 86 = 133 does.</span>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="important-box" aria-labelledby="the-two-names">
+                    <div class="important-box__head">
+                        <h2 class="important-box__title" id="the-two-names">The names for the two moves</h2>
+                        <span class="important-box__tag">Context</span>
+                    </div>
+                    <p>An operation is <span class="gloss" data-term="commutative">commutative</span> when its two
+                        numbers can change places. 4 &times; 6 = 6 &times; 4 records that. It is associative when the
+                        pairing can move instead: 8 &times; 7 &times; 5 comes to 280 whether the 8 &times; 7 or the
+                        7 &times; 5 is taken first. Adding and multiplying are both commutative and associative. A GCSE
+                        question asks for the reordering itself, not for the name of either property.</p>
+                </div>
+            </section>
+
+            <section aria-labelledby="fixed-order">
+                <h1 id="fixed-order">Where the order is fixed</h1>
+
+                <p>Subtracting and dividing give a different answer the other way round. <span class="sf" role="math"
+                        aria-label="9 minus 4 equals 5">9 &minus; 4 = 5</span> while <span class="sf" role="math"
+                        aria-label="4 minus 9 equals negative 5">4 &minus; 9 = &minus;5</span>, and <span class="sf"
+                        role="math" aria-label="20 divided by 4 equals 5">20 &divide; 4 = 5</span> while <span
+                        class="sf" role="math" aria-label="4 divided by 20 equals 0.2">4 &divide; 20 = 0.2</span>. In 9
+                    &minus; 4 the 9 is the number started from and the 4 is the number taken
+                    away, so swapping them swaps those two roles.</p>
+
+                <p>Changing which pair is taken first fails for the same two operations. <span class="sf" role="math"
+                        aria-label="20 divided by 4, then divided by 2, equals 2.5">(20 &divide; 4) &divide; 2 =
+                        2.5</span>, but pairing the last two instead gives <span class="sf" role="math"
+                        aria-label="20 divided by, open bracket, 4 divided by 2, close bracket, equals 10">20 &divide;
+                        (4 &divide; 2) = 10</span>. The &divide; 2 was meant to halve the answer; halving the
+                    <span class="gloss" data-term="divisor">divisor</span> doubles the answer instead.
+                </p>
+
+                <div class="wex">
+                    <h2 class="wex__title">Example: work out <span class="sf" role="math"
+                            aria-label="72 divided by 6 divided by 3">72 &divide; 6 &divide; 3</span></h2>
+                    <p class="wex__task">Divide from the left, without pairing the 6 and the 3.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math" aria-label="72 divided by 6 equals 12">72
+                                    &divide; 6 = 12</span></span>
+                            <span class="wex__why">Neither &times; nor &divide; outranks the other, so with no brackets
+                                a line of them is worked from the left.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math" aria-label="12 divided by 3 equals 4">12
+                                    &divide; 3 = 4</span></span>
+                            <span class="wex__why">Pairing 6 &divide; 3 = 2 first would divide 72 by 2 and reach 36,
+                                which is nine times too large.</span>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <section aria-labelledby="signs-travel">
+                <h1 id="signs-travel">A number moves with the sign in front of it</h1>
+
+                <p>38 &minus; 17 + 62 has a minus in it. Its numbers can still be reordered, because the minus
+                    belongs to the 17. The calculation adds 38, takes 17 and adds 62, and those three instructions
+                    can be carried out in any order. Moving the 17 on its own is what fails; moving &minus;17 as a
+                    single number
+                    does not.</p>
+
+                <div class="worked">
+                    <h2 class="worked__title">Work out 38 &minus; 17 + 62</h2>
+
+                    <div class="reorder-scene" data-reorder-scene data-scene="signs">
+                        <div class="reorder-scene__sticky">
+                            <div class="reorder-board">
+                                <div class="reorder-board__paper" data-board aria-hidden="true"></div>
+                            </div>
+
+                            <div class="reorder-scene__caption" aria-live="polite">
+                                <h3 data-step-title>The minus travels with the 17</h3>
+                                <p data-step-copy>Sending &minus;17 to the end leaves 38 and 62 side by side, and they
+                                    make 100.</p>
+                            </div>
+
+                            <div class="reorder-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                    </div>
+
+                    <p class="worked__answer"><strong class="sf" role="math"
+                            aria-label="38 minus 17 plus 62 equals 83">38 &minus; 17 + 62 = 83</strong></p>
+                </div>
+
+                <div class="rule-card">
+                    <h2 class="rule-card__statement">Reordering a calculation</h2>
+                    <ol class="rule-card__conditions">
+                        <li>A number moves with the sign written in front of it, and never without it.</li>
+                        <li>Within a run of adding and subtracting, or a run of multiplying and dividing, those
+                            numbers may be written in any order, each keeping the sign in front of
+                            it.</li>
+                        <li>The rearranged line is still worked from the left, because reordering adds no
+                            brackets.</li>
+                        <li>The first number in a run carries a + in a sum and a &times; in a product, even though
+                            neither is written.</li>
+                    </ol>
+                </div>
+
+                <p>Moving a term is not the same as swapping two numbers. A term takes its sign with it, so
+                    every number goes on doing what it did before. Swapping the two numbers of a subtraction
+                    changes what each one does, which is why 4 &minus; 9 is not another way of writing
+                    9 &minus; 4.</p>
+
+                <div class="wex">
+                    <h2 class="wex__title">Example: work out <span class="sf" role="math"
+                            aria-label="63 minus 28 plus 37">63 &minus; 28 + 37</span></h2>
+                    <p class="wex__task">Send &minus;28 to the end, so the two numbers being added meet.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math" aria-label="63 plus 37 minus 28">63 + 37
+                                    &minus; 28</span></span>
+                            <span class="wex__why">&minus;28 moves with its minus, which leaves the two numbers
+                                being added next to each other.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math" aria-label="63 plus 37 equals 100">63 +
+                                    37 = 100</span></span>
+                            <span class="wex__why">The pair that reaches a hundred is taken first.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math" aria-label="100 minus 28 equals 72">100
+                                    &minus; 28 = 72</span></span>
+                            <span class="wex__why">28 is taken from a hundred at the end, so no exchanging is
+                                needed.</span>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <section aria-labelledby="cancelling">
+                <h1 id="cancelling">Cancelling before multiplying</h1>
+
+                <p>A division sign travels with its number in the same way. 36 &times; 15 &divide; 9 is a run of
+                    multiplying and dividing, so the &divide; 9 can be brought forward to meet the 36. That gives
+                    <span class="sf" role="math" aria-label="36 divided by 9 equals 4">36 &divide; 9 = 4</span>, and
+                    <span class="sf" role="math" aria-label="4 times 15 equals 60">4 &times; 15 = 60</span>. What moves is the
+                    &divide; 9 and not the 9 on its own: <span class="sf" role="math"
+                            aria-label="36 times 9 divided by 15 equals 21.6">36 &times; 9 &divide; 15 = 21.6</span>
+                    leaves both signs where they were and answers a different question. Dividing first also keeps
+                    the numbers small; multiplying first gives 36 &times; 15 = 540 and turns the question into a
+                    three-digit division.
+                </p>
+
+                <div class="wex">
+                    <h2 class="wex__title">Example: work out <span class="sf" role="math"
+                            aria-label="25 times 32 divided by 8">25 &times; 32 &divide; 8</span></h2>
+                    <p class="wex__task">Cancel before multiplying.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math" aria-label="32 divided by 8 equals 4">32
+                                    &divide; 8 = 4</span></span>
+                            <span class="wex__why">The &divide; 8 moves to the 32, because 8 divides 32
+                                exactly.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math" aria-label="25 times 4 equals 100">25
+                                    &times; 4 = 100</span></span>
+                            <span class="wex__why">Multiplying first reaches 100 as well, but only
+                                through 25 &times; 32 = 800 and then 800 &divide; 8.</span>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <section aria-labelledby="common-mistakes">
+                <h1 id="common-mistakes">Common mistakes</h1>
+                <ul class="slips">
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math"
+                                aria-label="24 minus 31 rewritten as 31 minus 24 equals 7">24 &minus; 31 written as 31
+                                &minus; 24 = 7</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> Subtracting is not commutative, so taking
+                            the smaller number from the larger answers a different question. 24 &minus; 31 starts at 24
+                            and takes 31 away, which carries
+                            it past zero to 7 below.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
+                                aria-label="24 minus 31 equals negative 7">24 &minus; 31 =
+                                &minus;7</span></span>
+                    </li>
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math"
+                                aria-label="38 minus 17 plus 62 reordered as 38 plus 62 plus 17 equals 117">38 &minus;
+                                17 + 62 reordered as 38 + 62 + 17 = 117</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> The 17 has moved and its minus has been
+                            left behind, so 17 is added where it should be taken away. Adding 17
+                            instead of taking it away misses by 34, which is twice 17.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
+                                aria-label="38 plus 62 minus 17 equals 83">38 + 62 &minus; 17 =
+                                83</span></span>
+                    </li>
+                    <li>
+                        <b>Wrong idea: <span class="sf" role="math"
+                                aria-label="72 divided by 6 divided by 3 worked as 72 divided by, open bracket, 6 divided by 3, close bracket, equals 36">72
+                                &divide; 6 &divide; 3 worked as 72 &divide; (6 &divide; 3) = 36</span></b>
+                        <span><b class="slips__label">Why it is wrong.</b> 6 &divide; 3 is the easier pair to see, but
+                            dividing is not associative, so pairing it first divides 72 by 2 instead of dividing the
+                            answer by 3. The result is nine times the right one.</span>
+                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
+                                aria-label="72 divided by 6 divided by 3 equals 4">72 &divide; 6 &divide;
+                                3 = 4</span></span>
+                    </li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="remember">
+                <h1 id="remember">Remember</h1>
+                <ol class="recap">
+                    <li>Adding and multiplying give the same answer whichever order their numbers are taken in.</li>
+                    <li>A number carries the sign written in front of it wherever it moves, so &minus;17 travels as
+                        &minus;17.</li>
+                    <li>Swapping the two numbers of a subtraction or a division changes the answer: <span class="sf"
+                            role="math" aria-label="24 minus 31 equals negative 7">24 &minus; 31 = &minus;7</span> and
+                        not 7.</li>
+                    <li>Changing which pair of a division is taken first changes the answer too, so 72 &divide; 6
+                        &divide; 3 is 4 and not
+                        36.</li>
+                    <li>Choose the order for the arithmetic it makes: pairing 4 and 25 turns 4 &times; 17 &times; 25
+                        into a multiplication by 100.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
                 <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/factorsAndFactorPairs.html" style="background-image: none">
+                    <a class="topic-card topic-card--next"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/factorsAndFactorPairs.html"
+                        style="background-image: none">
                         <span class="topic-card__kicker">Next lesson</span>
                         <h3>Factors and factor pairs</h3>
                         <p>Listing every factor of a number in pairs, so none is missed or repeated.</p>
