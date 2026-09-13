@@ -302,36 +302,36 @@ Three topic menus, 22 group menus, and 147 teaching pages. Lesson drills are nar
 *`/pages/curriculum/GCSE/number/structure/writtenMethods/` — Place value and written methods* (group menu) — What each digit is worth, comparing numbers, and the four written methods. Drills: `/pages/curriculum/GCSE/number/structure/writtenMethods/practicePlaceValue.html`, `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceOrderingNumbers.html`, `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceInequalitySymbols.html`, `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceWrittenMethods.html`, `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceColumnSubtraction.html`, `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceExchangingAcrossZeros.html`, `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceLongMultiplication.html`, `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceDivision.html`, `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceInterpretingRemainders.html`, `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceLongDivision.html`, `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceGivenCalculation.html`, `/pages/curriculum/GCSE/number/structure/writtenMethods/practicePlaceValueReview.html`, `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceWrittenMethodsReview.html`, `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceDivisionReview.html`.
 
 - `/pages/curriculum/GCSE/number/structure/writtenMethods/placeValue.html` — Place value in integers and decimals: What each digit is worth in integers and decimals, and zeros as place-holders. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practicePlaceValue.html` — **written**
-- `/pages/curriculum/GCSE/number/structure/writtenMethods/orderingNumbers.html` — Ordering integers, decimals and negatives: Ordering numbers, including negatives and decimals of different lengths. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceOrderingNumbers.html`
-- `/pages/curriculum/GCSE/number/structure/writtenMethods/inequalitySymbols.html` — The inequality symbols: The less-than, greater-than, at-most, at-least and not-equal signs. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceInequalitySymbols.html`
-- `/pages/curriculum/GCSE/number/structure/writtenMethods/powersOfTen.html` — Multiplying and dividing by powers of ten: The effect on every digit of multiplying or dividing by 10, 100, 0.1 and 0.01. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practicePlaceValueReview.html`
-- `/pages/curriculum/GCSE/number/structure/writtenMethods/columnAddition.html` — Column addition: Adding integers and decimals in columns, lining up the point and carrying. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceWrittenMethods.html`
-- `/pages/curriculum/GCSE/number/structure/writtenMethods/columnSubtraction.html` — Column subtraction: Subtracting in columns with exchange, lining up decimals of different lengths. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceColumnSubtraction.html`
-- `/pages/curriculum/GCSE/number/structure/writtenMethods/exchangingAcrossZeros.html` — Exchanging across zeros: Subtracting when a column holds a zero, and where the exchange comes from. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceExchangingAcrossZeros.html`
-- `/pages/curriculum/GCSE/number/structure/writtenMethods/longMultiplication.html` — Long multiplication: Multiplying multi-digit integers, and the place-holder zero in the second row. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceLongMultiplication.html`
-- `/pages/curriculum/GCSE/number/structure/writtenMethods/multiplyingDecimals.html` — Multiplying decimals: Multiplying as whole numbers, then counting decimal places to fix the point. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceWrittenMethodsReview.html`
-- `/pages/curriculum/GCSE/number/structure/writtenMethods/shortDivision.html` — Short division: Dividing by a one-digit number, carrying each remainder into the next digit. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceDivision.html`
-- `/pages/curriculum/GCSE/number/structure/writtenMethods/interpretingRemainders.html` — Interpreting a remainder: Whether a worded answer wants a remainder, a decimal, a fraction or rounding. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceInterpretingRemainders.html`
-- `/pages/curriculum/GCSE/number/structure/writtenMethods/longDivision.html` — Long division: Dividing by a two-digit number, continuing past the point for an exact answer. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceLongDivision.html`
-- `/pages/curriculum/GCSE/number/structure/writtenMethods/dividingByDecimals.html` — Dividing by a decimal: Scaling both numbers by the same power of ten, and why the answer can grow. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceDivisionReview.html`
-- `/pages/curriculum/GCSE/number/structure/writtenMethods/usingAGivenCalculation.html` — Using a given calculation: Related products and quotients from a stated result, without recalculating. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceGivenCalculation.html`
+- `/pages/curriculum/GCSE/number/structure/writtenMethods/orderingNumbers.html` — Ordering integers, decimals and negatives: Ordering numbers, including negatives and decimals of different lengths. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceOrderingNumbers.html` — **written**
+- `/pages/curriculum/GCSE/number/structure/writtenMethods/inequalitySymbols.html` — The inequality symbols: The less-than, greater-than, at-most, at-least and not-equal signs. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceInequalitySymbols.html` — **written**
+- `/pages/curriculum/GCSE/number/structure/writtenMethods/powersOfTen.html` — Multiplying and dividing by powers of ten: The effect on every digit of multiplying or dividing by 10, 100, 0.1 and 0.01. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practicePlaceValueReview.html` — **written**
+- `/pages/curriculum/GCSE/number/structure/writtenMethods/columnAddition.html` — Column addition: Adding integers and decimals in columns, lining up the point and carrying. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceWrittenMethods.html` — **written**
+- `/pages/curriculum/GCSE/number/structure/writtenMethods/columnSubtraction.html` — Column subtraction: Subtracting in columns with exchange, lining up decimals of different lengths. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceColumnSubtraction.html` — **written**
+- `/pages/curriculum/GCSE/number/structure/writtenMethods/exchangingAcrossZeros.html` — Exchanging across zeros: Subtracting when a column holds a zero, and where the exchange comes from. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceExchangingAcrossZeros.html` — **written**
+- `/pages/curriculum/GCSE/number/structure/writtenMethods/longMultiplication.html` — Long multiplication: Multiplying multi-digit integers, and the place-holder zero in the second row. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceLongMultiplication.html` — **written**
+- `/pages/curriculum/GCSE/number/structure/writtenMethods/multiplyingDecimals.html` — Multiplying decimals: Multiplying as whole numbers, then counting decimal places to fix the point. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceWrittenMethodsReview.html` — **written**
+- `/pages/curriculum/GCSE/number/structure/writtenMethods/shortDivision.html` — Short division: Dividing by a one-digit number, carrying each remainder into the next digit. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceDivision.html` — **written**
+- `/pages/curriculum/GCSE/number/structure/writtenMethods/interpretingRemainders.html` — Interpreting a remainder: Whether a worded answer wants a remainder, a decimal, a fraction or rounding. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceInterpretingRemainders.html` — **written**
+- `/pages/curriculum/GCSE/number/structure/writtenMethods/longDivision.html` — Long division: Dividing by a two-digit number, continuing past the point for an exact answer. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceLongDivision.html` — **written**
+- `/pages/curriculum/GCSE/number/structure/writtenMethods/dividingByDecimals.html` — Dividing by a decimal: Scaling both numbers by the same power of ten, and why the answer can grow. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceDivisionReview.html` — **written**
+- `/pages/curriculum/GCSE/number/structure/writtenMethods/usingAGivenCalculation.html` — Using a given calculation: Related products and quotients from a stated result, without recalculating. — drilled by `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceGivenCalculation.html` — **written**
 
 *`/pages/curriculum/GCSE/number/structure/powersAndRoots/` — Powers and roots* (group menu) — Index notation, powers worth recalling, and roots as the inverse of a power. Drills: `/pages/curriculum/GCSE/number/structure/powersAndRoots/practicePowersRoots.html`, `/pages/curriculum/GCSE/number/structure/powersAndRoots/practiceRecognisingPowers.html`, `/pages/curriculum/GCSE/number/structure/powersAndRoots/practiceSquareRoots.html`, `/pages/curriculum/GCSE/number/structure/powersAndRoots/practicePositiveAndNegativeRoots.html`, `/pages/curriculum/GCSE/number/structure/powersAndRoots/practiceCubeAndHigherRoots.html`, `/pages/curriculum/GCSE/number/structure/powersAndRoots/practicePowersRootsReview.html`.
 
-- `/pages/curriculum/GCSE/number/structure/powersAndRoots/indexNotation.html` — Index notation and powers: What the base and index mean, and writing repeated multiplication as a power. — drilled by `/pages/curriculum/GCSE/number/structure/powersAndRoots/practicePowersRoots.html`
-- `/pages/curriculum/GCSE/number/structure/powersAndRoots/recognisingPowers.html` — Recognising powers of a number: The squares, cubes and powers of 2, 3, 4 and 5 worth recalling. — drilled by `/pages/curriculum/GCSE/number/structure/powersAndRoots/practiceRecognisingPowers.html`
-- `/pages/curriculum/GCSE/number/structure/powersAndRoots/squareRoots.html` — Square roots: The square root as the inverse of squaring, found by reversing a known square. — drilled by `/pages/curriculum/GCSE/number/structure/powersAndRoots/practiceSquareRoots.html`
-- `/pages/curriculum/GCSE/number/structure/powersAndRoots/positiveAndNegativeRoots.html` — Positive and negative square roots: Why a squared equation has two solutions while the root sign gives one. — drilled by `/pages/curriculum/GCSE/number/structure/powersAndRoots/practicePositiveAndNegativeRoots.html`
-- `/pages/curriculum/GCSE/number/structure/powersAndRoots/cubeAndHigherRoots.html` — Cube roots and higher roots: Cube roots and nth roots as the inverse of a power, including negatives. — drilled by `/pages/curriculum/GCSE/number/structure/powersAndRoots/practiceCubeAndHigherRoots.html`
+- `/pages/curriculum/GCSE/number/structure/powersAndRoots/indexNotation.html` — Index notation and powers: What the base and index mean, and writing repeated multiplication as a power. — drilled by `/pages/curriculum/GCSE/number/structure/powersAndRoots/practicePowersRoots.html` — **written**
+- `/pages/curriculum/GCSE/number/structure/powersAndRoots/recognisingPowers.html` — Recognising powers of a number: The squares, cubes and powers of 2, 3, 4 and 5 worth recalling. — drilled by `/pages/curriculum/GCSE/number/structure/powersAndRoots/practiceRecognisingPowers.html` — **written**
+- `/pages/curriculum/GCSE/number/structure/powersAndRoots/squareRoots.html` — Square roots: The square root as the inverse of squaring, found by reversing a known square. — drilled by `/pages/curriculum/GCSE/number/structure/powersAndRoots/practiceSquareRoots.html` — **written**
+- `/pages/curriculum/GCSE/number/structure/powersAndRoots/positiveAndNegativeRoots.html` — Positive and negative square roots: Why a squared equation has two solutions while the root sign gives one. — drilled by `/pages/curriculum/GCSE/number/structure/powersAndRoots/practicePositiveAndNegativeRoots.html` — **written**
+- `/pages/curriculum/GCSE/number/structure/powersAndRoots/cubeAndHigherRoots.html` — Cube roots and higher roots: Cube roots and nth roots as the inverse of a power, including negatives. — drilled by `/pages/curriculum/GCSE/number/structure/powersAndRoots/practiceCubeAndHigherRoots.html`, `/pages/curriculum/GCSE/number/structure/powersAndRoots/practicePowersRootsReview.html` — **written**
 
 *`/pages/curriculum/GCSE/number/structure/directedNumber/` — Directed number and the order of operations* (group menu) — Arithmetic with negatives, the order of operations, and checking the result. Drills: `/pages/curriculum/GCSE/number/structure/directedNumber/practiceNegatives.html`, `/pages/curriculum/GCSE/number/structure/directedNumber/practiceMultiplyingDividingNegatives.html`, `/pages/curriculum/GCSE/number/structure/directedNumber/practiceOrderOfOperations.html`, `/pages/curriculum/GCSE/number/structure/directedNumber/practiceCheckingWithInverses.html`, `/pages/curriculum/GCSE/number/structure/directedNumber/practiceNegativesReview.html`, `/pages/curriculum/GCSE/number/structure/directedNumber/practiceOrderOfOperationsReview.html`.
 
-- `/pages/curriculum/GCSE/number/structure/directedNumber/addingSubtractingNegatives.html` — Adding and subtracting negative numbers: Number-line reasoning, two signs meeting, and temperature differences. — drilled by `/pages/curriculum/GCSE/number/structure/directedNumber/practiceNegatives.html`
-- `/pages/curriculum/GCSE/number/structure/directedNumber/multiplyingDividingNegatives.html` — Multiplying and dividing negative numbers: The sign of a product or quotient, and what several negatives together do. — drilled by `/pages/curriculum/GCSE/number/structure/directedNumber/practiceMultiplyingDividingNegatives.html`
-- `/pages/curriculum/GCSE/number/structure/directedNumber/orderOfOperations.html` — Order of operations: Brackets, powers and roots first, with the fraction bar as grouping. — drilled by `/pages/curriculum/GCSE/number/structure/directedNumber/practiceOrderOfOperations.html`
-- `/pages/curriculum/GCSE/number/structure/directedNumber/powersOfNegatives.html` — Powers of a negative number: Why −3² and (−3)² differ, and how an odd or even index fixes the sign. — drilled by `/pages/curriculum/GCSE/number/structure/directedNumber/practiceNegativesReview.html`
-- `/pages/curriculum/GCSE/number/structure/directedNumber/checkingWithInverses.html` — Checking an answer with the inverse operation: Undoing a calculation with its inverse to test an answer without repeating it. — drilled by `/pages/curriculum/GCSE/number/structure/directedNumber/practiceCheckingWithInverses.html`
-- `/pages/curriculum/GCSE/number/structure/directedNumber/reorderingACalculation.html` — Reordering a calculation: Using commutativity and associativity to pair the easiest numbers first. — drilled by `/pages/curriculum/GCSE/number/structure/directedNumber/practiceOrderOfOperationsReview.html`
+- `/pages/curriculum/GCSE/number/structure/directedNumber/addingSubtractingNegatives.html` — Adding and subtracting negative numbers: Number-line reasoning, two signs meeting, and temperature differences. — drilled by `/pages/curriculum/GCSE/number/structure/directedNumber/practiceNegatives.html` — **written**
+- `/pages/curriculum/GCSE/number/structure/directedNumber/multiplyingDividingNegatives.html` — Multiplying and dividing negative numbers: The sign of a product or quotient, and what several negatives together do. — drilled by `/pages/curriculum/GCSE/number/structure/directedNumber/practiceMultiplyingDividingNegatives.html` — **written**
+- `/pages/curriculum/GCSE/number/structure/directedNumber/orderOfOperations.html` — Order of operations: Brackets, powers and roots first, with the fraction bar as grouping. — drilled by `/pages/curriculum/GCSE/number/structure/directedNumber/practiceOrderOfOperations.html` — **written**
+- `/pages/curriculum/GCSE/number/structure/directedNumber/powersOfNegatives.html` — Powers of a negative number: Why −3² and (−3)² differ, and how an odd or even index fixes the sign. — drilled by `/pages/curriculum/GCSE/number/structure/directedNumber/practiceNegativesReview.html` — **written**
+- `/pages/curriculum/GCSE/number/structure/directedNumber/checkingWithInverses.html` — Checking an answer with the inverse operation: Undoing a calculation with its inverse to test an answer without repeating it. — drilled by `/pages/curriculum/GCSE/number/structure/directedNumber/practiceCheckingWithInverses.html` — **written**
+- `/pages/curriculum/GCSE/number/structure/directedNumber/reorderingACalculation.html` — Reordering a calculation: Using commutativity and associativity to pair the easiest numbers first. — drilled by `/pages/curriculum/GCSE/number/structure/directedNumber/practiceOrderOfOperationsReview.html` — **written**
 
 *`/pages/curriculum/GCSE/number/structure/factorsAndPrimes/` — Factors, multiples, primes and counting* (group menu) — What a prime factorisation tells you, and listing without repeats or gaps. Drills: `/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practiceCounting.html`, `/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practicePrimeFactors.html`, `/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practicePrimesAndPrimality.html`, `/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practicePrimeFactorisation.html`, `/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practiceHCFLCM.html`, `/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practiceLCMFromPrimeFactors.html`, `/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practiceHCFLCMVenn.html`, `/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practiceSquaresCubesFromPrimeFactors.html`, `/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practiceProductRule.html`, `/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practicePrimeFactorsReview.html`, `/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practiceHCFLCMReview.html`, `/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practiceCountingReview.html`.
 
@@ -364,7 +364,7 @@ Three topic menus, 22 group menus, and 147 teaching pages. Lesson drills are nar
 
 *`/pages/curriculum/GCSE/number/structure/workingInStandardForm/` — Working in standard form* (group menu) — A digit string times a power of ten, ordered and calculated with. Both tiers. Drills: `/pages/curriculum/GCSE/number/structure/workingInStandardForm/practiceStandardFormLesson.html`, `/pages/curriculum/GCSE/number/structure/workingInStandardForm/practiceStandardFormOrdering.html`, `/pages/curriculum/GCSE/number/structure/workingInStandardForm/practiceStandardFormMultiplyDivide.html`, `/pages/curriculum/GCSE/number/structure/workingInStandardForm/practiceStandardForm.html`.
 
-- `/pages/curriculum/GCSE/number/structure/workingInStandardForm/standardForm.html` — Standard form: Converting both ways for large and small numbers, and correcting near-misses. — drilled by `/pages/curriculum/GCSE/number/structure/workingInStandardForm/practiceStandardFormLesson.html` — **written**
+- `/pages/curriculum/GCSE/number/structure/workingInStandardForm/standardForm.html` — Standard form: Converting both ways for large and small numbers, and correcting near-misses. — drilled by `/pages/curriculum/GCSE/number/structure/workingInStandardForm/practiceStandardFormLesson.html`
 - `/pages/curriculum/GCSE/number/structure/workingInStandardForm/standardFormOrdering.html` — Ordering numbers in standard form: Comparing by the power of ten first, then by the front number. — drilled by `/pages/curriculum/GCSE/number/structure/workingInStandardForm/practiceStandardFormOrdering.html`
 - `/pages/curriculum/GCSE/number/structure/workingInStandardForm/standardFormMultiplyDivide.html` — Multiplying and dividing in standard form: Products, quotients and how-many-times-bigger comparisons. — drilled by `/pages/curriculum/GCSE/number/structure/workingInStandardForm/practiceStandardFormMultiplyDivide.html`
 - `/pages/curriculum/GCSE/number/structure/workingInStandardForm/standardFormAddSubtract.html` — Adding and subtracting in standard form: Matching the powers of ten before combining, then renormalising the result. — drilled by `/pages/curriculum/GCSE/number/structure/workingInStandardForm/practiceStandardForm.html`
@@ -377,9 +377,9 @@ Three topic menus, 22 group menus, and 147 teaching pages. Lesson drills are nar
 - `/pages/curriculum/GCSE/number/structure/usingACalculator/calculatorAnsMemory.html` — The answer and memory keys: Carrying a full unrounded value into the next step, not a retyped rounded one. — drilled by `/pages/curriculum/GCSE/number/structure/usingACalculator/practiceCalculatorReview.html`
 - `/pages/curriculum/GCSE/number/structure/usingACalculator/exactAnswers.html` — Exact answers and multiples of π: Holding π, a fraction or a root as a symbol rather than a decimal. — drilled by `/pages/curriculum/GCSE/number/structure/usingACalculator/practiceExactAnswers.html`
 
-*`/pages/curriculum/GCSE/number/structure/surds/` — Rational, irrational and surds* (group menu) — Where a number sits in the number system, and Higher-tier surd arithmetic. Drills: `/pages/curriculum/GCSE/number/structure/surds/practiceSimplifyingSurds.html`, `/pages/curriculum/GCSE/number/structure/surds/practiceAddingSubtractingSurds.html`, `/pages/curriculum/GCSE/number/structure/surds/practiceMultiplyingSurds.html`, `/pages/curriculum/GCSE/number/structure/surds/practiceSquaringASurd.html`, `/pages/curriculum/GCSE/number/structure/surds/practiceDividingSurds.html`, `/pages/curriculum/GCSE/number/structure/surds/practiceExpandingSurds.html`, `/pages/curriculum/GCSE/number/structure/surds/practiceRationalisingDenominators.html`, `/pages/curriculum/GCSE/number/structure/surds/practiceSurds.html`.
+*`/pages/curriculum/GCSE/number/structure/surds/` — Rational, irrational and surds* (group menu) — Where a number sits in the number system, and Higher-tier surd arithmetic. Drills: `/pages/curriculum/GCSE/number/structure/surds/practiceSimplifyingSurds.html`, `/pages/curriculum/GCSE/number/structure/surds/practiceAddingSubtractingSurds.html`, `/pages/curriculum/GCSE/number/structure/surds/practiceMultiplyingSurds.html`, `/pages/curriculum/GCSE/number/structure/surds/practiceSquaringASurd.html`, `/pages/curriculum/GCSE/number/structure/surds/practiceDividingSurds.html`, `/pages/curriculum/GCSE/number/structure/surds/practiceExpandingSurds.html`, `/pages/curriculum/GCSE/number/structure/surds/practiceRationalisingDenominators.html`, `/pages/curriculum/GCSE/number/structure/surds/practiceSurds.html`, `/pages/curriculum/GCSE/number/structure/surds/practiceRationalAndIrrational.html`.
 
-- `/pages/curriculum/GCSE/number/structure/surds/rationalAndIrrational.html` — Rational and irrational numbers: Which numbers are one integer over another, and where π and surds sit. — drilled by `/pages/curriculum/GCSE/number/structure/powersAndRoots/practicePowersRootsReview.html`
+- `/pages/curriculum/GCSE/number/structure/surds/rationalAndIrrational.html` — Rational and irrational numbers: Which numbers are one integer over another, and where π and surds sit. — drilled by `/pages/curriculum/GCSE/number/structure/surds/practiceRationalAndIrrational.html`
 - `/pages/curriculum/GCSE/number/structure/surds/simplifyingSurds.html` — Simplifying surds **(H)**: Extracting the largest square factor to write a√b, and comparing surds. — drilled by `/pages/curriculum/GCSE/number/structure/surds/practiceSimplifyingSurds.html`
 - `/pages/curriculum/GCSE/number/structure/surds/addingSubtractingSurds.html` — Adding and subtracting surds **(H)**: Collecting like surds after simplifying every term. — drilled by `/pages/curriculum/GCSE/number/structure/surds/practiceAddingSubtractingSurds.html`
 - `/pages/curriculum/GCSE/number/structure/surds/multiplyingSurds.html` — Multiplying surds **(H)**: Multiplying roots and coefficients separately, then simplifying the result. — drilled by `/pages/curriculum/GCSE/number/structure/surds/practiceMultiplyingSurds.html`
@@ -1469,7 +1469,7 @@ on the practice page itself.
 | `/pages/curriculum/KS3/practiceProbability.html` | Single events, sample space diagrams, expected frequency | `/pages/curriculum/KS3/probability.html` |
 | `/pages/curriculum/KS3/practiceAveragesRange.html` | Averages from lists and from frequency tables | `/pages/curriculum/KS3/statistics.html` |
 
-### GCSE — 396 pages
+### GCSE — 397 pages
 
 | Page | Drills | Available after |
 | --- | --- | --- |
@@ -1528,14 +1528,15 @@ on the practice page itself.
 | `/pages/curriculum/GCSE/number/fractions/calculatingWithFractions/practiceMultiplyingDividingMixedNumbers.html` | Multiplying and dividing mixed numbers by converting to improper fractions | `/pages/curriculum/GCSE/number/fractions/calculatingWithFractions/multiplyingDividingMixedNumbers.html` |
 | `/pages/curriculum/GCSE/number/measures/errorIntervals/practiceErrorIntervalsRounding.html` | The interval a rounded value came from, half a unit either side | `/pages/curriculum/GCSE/number/measures/errorIntervals/errorIntervalsRounding.html` |
 | `/pages/curriculum/GCSE/number/structure/indexLaws/practiceIndexLaws.html` | Mixed review — Negative and fractional indices | `/pages/curriculum/GCSE/number/structure/indexLaws/negativeFractionalIndices.html` |
-| `/pages/curriculum/GCSE/number/structure/workingInStandardForm/practiceStandardForm.html` | Mixed review — Converting and calculating, with fresh numbers available for further practice | `/pages/curriculum/GCSE/number/structure/workingInStandardForm/standardFormAddSubtract.html` |
+| `/pages/curriculum/GCSE/number/structure/workingInStandardForm/practiceStandardForm.html` | Mixed review — Converting and calculating. A marked test, with fresh numbers every attempt | `/pages/curriculum/GCSE/number/structure/workingInStandardForm/standardFormAddSubtract.html` |
 | `/pages/curriculum/GCSE/number/structure/surds/practiceSurds.html` | Mixed review — Simplifying and rationalising denominators | `/pages/curriculum/GCSE/number/structure/surds/rationalisingConjugates.html` |
+| `/pages/curriculum/GCSE/number/structure/surds/practiceRationalAndIrrational.html` | Classifying a number as rational or irrational, including roots that turn out rational | `/pages/curriculum/GCSE/number/structure/surds/rationalAndIrrational.html` |
 | `/pages/curriculum/GCSE/number/fractions/calculatingWithFractions/practiceFractionArithmetic.html` | Mixed review — The four operations with fractions and mixed numbers | `/pages/curriculum/GCSE/number/fractions/calculatingWithFractions/multiplyingDividingNegativeFractions.html` |
 | `/pages/curriculum/GCSE/number/measures/roundingAndTruncation/practiceBounds.html` | Mixed review — Significant figures, error intervals and bounds | `/pages/curriculum/GCSE/number/measures/calculatingWithBounds/suitableAccuracyBounds.html` |
 | `/pages/curriculum/GCSE/number/structure/writtenMethods/practicePlaceValueReview.html` | Mixed review — Decimal digit values, ordering with inequality symbols, and scaling by powers of ten | `/pages/curriculum/GCSE/number/structure/writtenMethods/powersOfTen.html` |
 | `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceWrittenMethodsReview.html` | Mixed review — Column addition, subtraction and long multiplication with decimals throughout — past the KS2 integer drills | `/pages/curriculum/GCSE/number/structure/writtenMethods/multiplyingDecimals.html` |
 | `/pages/curriculum/GCSE/number/structure/writtenMethods/practiceDivisionReview.html` | Mixed review — Short and long division with decimal answers, decimal divisors, and remainders interpreted in context | `/pages/curriculum/GCSE/number/structure/writtenMethods/dividingByDecimals.html` |
-| `/pages/curriculum/GCSE/number/structure/powersAndRoots/practicePowersRootsReview.html` | Mixed review — Evaluating powers and roots without a calculator, both square roots, and spotting irrational results | `/pages/curriculum/GCSE/number/structure/surds/rationalAndIrrational.html` |
+| `/pages/curriculum/GCSE/number/structure/powersAndRoots/practicePowersRootsReview.html` | Mixed review — Evaluating powers and roots without a calculator, cube roots of negatives, and every solution a squared equation has | `/pages/curriculum/GCSE/number/structure/powersAndRoots/cubeAndHigherRoots.html` |
 | `/pages/curriculum/GCSE/number/structure/directedNumber/practiceNegativesReview.html` | Mixed review — Directed-number arithmetic with decimals and powers of negatives — a step up from KS3 | `/pages/curriculum/GCSE/number/structure/directedNumber/powersOfNegatives.html` |
 | `/pages/curriculum/GCSE/number/structure/directedNumber/practiceOrderOfOperationsReview.html` | Mixed review — Multi-step BIDMAS with indices, plus choosing valid reorderings and inverse checks | `/pages/curriculum/GCSE/number/structure/directedNumber/reorderingACalculation.html` |
 | `/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practicePrimeFactorsReview.html` | Mixed review — Divisibility, spotting primes, and reading squares, cubes and factor counts from prime factorisations | `/pages/curriculum/GCSE/number/structure/factorsAndPrimes/countingFactors.html` |
@@ -1940,7 +1941,7 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/number/structure/writtenMethods/practiceInterpretingRemainders.html`** — Whether a worded answer wants a remainder, a decimal, a fraction or rounding.
 - Answer forms — express one-digit divisions as a remainder, exact decimal or fraction as requested (4 questions).
 - Directed rounding — decide whether a one-digit division context requires rounding up or down (4 questions).
-- Mixed contexts — choose the appropriate answer for coaches, boxes, tickets and leftovers; interpreting the context is the focus (4 questions).
+- Mixed contexts — choose the appropriate answer for coaches, boxes, tickets and leftovers; the decision is the catch (4 questions).
 
 **`/pages/curriculum/GCSE/number/structure/writtenMethods/practiceLongDivision.html`** — Dividing by a two-digit number, continuing past the point for an exact answer.
 - Integer quotients — divide by two-digit integer divisors using listed multiples and long division (4 questions).
@@ -2040,7 +2041,7 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practiceProductRule.html`** **(H)** — Counting combined choices with the product rule for counting.
 - Fluency — multiplying choices across independent slots: menus, codes and outfits (4 questions).
 - Application — arrangements and selections without repetition, the factor shrinking slot by slot (4 questions).
-- Distinguishing cases — compare repeats-forbidden with repeats-allowed prompts, explaining why the number of choices changes (4 questions).
+- Catch — repeats-forbidden against repeats-allowed on near-identical prompts, where the memorised formula picks the wrong count (4 questions).
 
 **`/pages/curriculum/GCSE/number/structure/indexLaws/practiceSimplifyingPowers.html`** — Adding the indices, derived by counting the repeated factors on each side.
 - Fluency — direct questions on multiplying powers of the same base, limited to this lesson's stated scope (4 questions).
@@ -2120,7 +2121,7 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/number/structure/usingACalculator/practiceExactAnswers.html`** — Giving and recognising exact answers, as fractions or in terms of π, rather than rounded decimals.
 - Fluency — single-choice questions picking the exact value of a calculation from rounded lookalikes; fraction answers appear only as choices, since the engine cannot parse a typed fraction (4 questions).
 - Application — multi-step calculations whose exact answer is a fraction or a multiple of π, with the coefficient of π typed as a bare number and the form chosen (4 questions).
-- Equivalent forms — distinguish exact fractions such as 1/3 from rounded decimals such as 0.333 (3 questions).
+- Catch — recurring decimals like 0.333… offered beside 1/3, where the rounded option is the trap (3 questions).
 
 **`/pages/curriculum/GCSE/number/structure/surds/practiceSimplifyingSurds.html`** **(H)** — Extracting the largest square factor to write a√b, and comparing surds.
 - Fluency — direct questions on simplifying surds, limited to this lesson's stated scope (4 questions).
@@ -2167,6 +2168,11 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 - Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).
 - Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions).
 
+**`/pages/curriculum/GCSE/number/structure/surds/practiceRationalAndIrrational.html`** — Classifying a number as rational or irrational, including roots that turn out rational.
+- Fluency — direct questions on rational and irrational numbers, limited to this lesson's stated scope (4 questions).
+- Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).
+- Check — single-choice classification where root(9/16) and root 0.25 catch the 'roots are irrational' reflex; fraction-valued answers appear only as choice options (4 questions).
+
 **`/pages/curriculum/GCSE/number/structure/writtenMethods/practicePlaceValueReview.html`** *(mixed review)* — Reading decimal place value: digit values, ordering with inequality symbols, and scaling by powers of ten.
 - Fluency — digit values in decimals, and single-choice questions naming the smallest or largest of a list including negatives (4 questions).
 - Ordering — choosing the correct inequality symbol between two values, and single-choice questions picking the correctly ordered list; no ordering is ever typed (4 questions).
@@ -2180,17 +2186,17 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/number/structure/writtenMethods/practiceDivisionReview.html`** *(mixed review)* — Dividing by short and long division into exact decimal answers, turning decimal divisors into integer ones, and interpreting remainders in context.
 - Fluency — short and long division continued past the point into exact decimal answers, two-digit divisors included; the decimal continuation keeps it past the KS2 integer-remainder drill (4 questions).
 - Decimal divisors — rewriting divisions like 55.2 ÷ 0.46 as integer equivalents before dividing (4 questions).
-- Remainders in context — worded problems needing long division by a two-digit divisor first, then a reasoned round-up, round-down or state-the-leftover decision (4 questions).
+- Remainders in context — worded problems needing long division by a two-digit divisor first, then the round-up, round-down or state-the-leftover decision; the choice is the catch (4 questions).
 
-**`/pages/curriculum/GCSE/number/structure/powersAndRoots/practicePowersRootsReview.html`** *(mixed review)* — Evaluating powers and roots without a calculator, and deciding whether the result is rational.
-- Fluency — index notation, evaluating squares, cubes and small powers, recognising numbers like 64 as powers (4 questions).
-- Roots — square, cube and higher roots, cube roots of negatives, and x² = k answered either as a single choice naming all solutions or by typing the negative root; no question ever asks for two typed values (5 questions).
-- Rational or irrational — single-choice classification including √(9/16) and √0.25, addressing the misconception that roots are always irrational; fraction-valued answers appear only as choice options (3 questions).
+**`/pages/curriculum/GCSE/number/structure/powersAndRoots/practicePowersRootsReview.html`** *(mixed review)* — Evaluating powers and roots without a calculator, and giving every solution a squared equation has.
+- Fluency — index notation, evaluating squares, cubes and small powers, and recognising numbers like 64 as powers (4 questions).
+- Roots — square roots of perfect squares and of decimals, cube roots including negatives, and higher roots read from the order in the crook (4 questions).
+- Both roots, and the sign — what the root sign names against the solutions of x² = k, answered as a single choice naming all solutions or by typing the named root; no question ever asks for two typed values (4 questions).
 
 **`/pages/curriculum/GCSE/number/structure/directedNumber/practiceNegativesReview.html`** *(mixed review)* — Adding, subtracting, multiplying and dividing negative numbers, including decimals and powers of negatives.
 - Fluency — adding and subtracting with double signs, including decimal values (4 questions).
 - Multiplying and dividing — sign chains of three or more factors and decimal quotients (4 questions).
-- Powers and context — powers of negatives, contrasting (−2)⁴ with −2⁴, then worded temperature and balance problems (4 questions).
+- Powers and context — powers of negatives, where (−2)⁴ against −2⁴ catches the memorised rule, then worded temperature and balance problems (4 questions).
 
 **`/pages/curriculum/GCSE/number/structure/directedNumber/practiceOrderOfOperationsReview.html`** *(mixed review)* — Evaluating multi-step calculations in the right order, and recognising valid reorderings and inverse checks.
 - Fluency — multi-step BIDMAS with indices, brackets and fraction bars (5 questions).
@@ -2205,7 +2211,7 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practiceHCFLCMReview.html`** *(mixed review)* — Finding the HCF and LCM of two or three numbers from prime factors, and choosing which a problem needs — past the two-number KS3 drill.
 - Fluency — HCF and LCM from given index-form factorisations of numbers past 100, with shared and separate prime factors presented as text lists (the structure the Venn diagram shows, without generated graphics); larger numbers than the KS3 drill (4 questions).
 - Harder cases — three numbers, and the smallest possible number with both its HCF and LCM with another stated, pinned so the generated answer is unique (4 questions).
-- Worded — bus, tile and gear problems where the central decision is choosing HCF or LCM (4 questions).
+- Worded — bus, tile and gear problems where deciding between HCF and LCM is the mark (4 questions).
 
 **`/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practiceCountingReview.html`** *(mixed review)* — Counting possibilities exactly by systematic listing.
 - Fluency — listing factor pairs systematically, marked by the number of pairs or the missing partner of a given factor; counting all factors is left to the prime-factorisation drill (4 questions).
@@ -2215,7 +2221,7 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/number/structure/indexLaws/practiceSimplifyingPowersReview.html`** *(mixed review)* — Simplifying powers with the multiply, divide and power-of-a-power laws, and solving equations in the index — combined laws and larger indices, past the KS3 one-law drill; negative and fractional indices stay in the existing Index laws drill.
 - Warm-up — one law at a time with indices larger than the KS3 drill uses, plus the zero index (3 questions).
 - Combined — several laws in one simplification, powers of products and quotients included, answered as single choices between index-form expressions since the engine cannot read a typed expression (5 questions).
-- Index equations — typed numeric answers solving for the index, ending with mixed bases like 2ˣ × 4 = 2⁷ to address an inappropriate 'just add the indices' approach (4 questions).
+- Index equations — typed numeric answers solving for the index, ending with mixed bases like 2ˣ × 4 = 2⁷ that catch 'just add the indices' (4 questions).
 
 **`/pages/curriculum/GCSE/number/structure/usingACalculator/practiceCalculatorReview.html`** *(mixed review)* — Evaluating multi-step calculations on a calculator at full accuracy, rounding only at the final answer.
 - Fluency — keying fraction bars, roots and powers in one go, rounding to 3 significant figures (4 questions).
@@ -2504,12 +2510,12 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/algebra/notation/expandingBrackets/practiceExpandFactoriseReview.html`** *(mixed review)* — Expanding double brackets and factorising quadratics, including the difference of two squares.
 - Fluency — expanding double brackets including coefficients and squared brackets like (x + 4)², answered as single choices between expansions since the engine cannot read a typed expression (4 questions).
 - Factorising — quadratics x² + bx + c with negative constants included, chosen from near-miss bracket pairs that swap or mis-sign the numbers (4 questions).
-- Difference of two squares — factorising x² − 49 and 4x² − 9, with feedback addressing the near-miss (x − 7)² (4 questions).
+- Difference of two squares — factorising x² − 49 and 4x² − 9, with (x − 7)² offered as the trap for anyone squaring instead (4 questions).
 
 **`/pages/curriculum/GCSE/algebra/notation/simplifying/practiceSimplifyingTermsReview.html`** *(mixed review)* — Simplifying expressions by collecting like terms and multiplying and dividing single terms.
 - Fluency — collecting like terms in expressions with two letters and both signs, answered as single choices between simplified forms since the engine cannot read a typed expression (4 questions).
 - Products and quotients — simplifying terms like 3a × 4b and 12ab ÷ 4a, coefficients and letters handled separately (4 questions).
-- Powers — collecting expressions that mix x and x², with feedback addressing the unlike-term error 3x + 2x² = 5x³ (4 questions).
+- Powers — collecting expressions that mix x and x², where combining 3x and 2x² into 5x³ is the offered trap (4 questions).
 
 **`/pages/curriculum/GCSE/algebra/notation/substitution/practiceSubstitutionReview.html`** *(mixed review)* — Substituting positive and negative values into expressions and formulae, powers handled in the right order.
 - Fluency — substituting positive integers into two-term expressions, answers typed as numbers (4 questions).
@@ -2524,7 +2530,7 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/algebra/notation/algebraicFractions/practiceAlgebraicFractionsReview.html`** **(H)** *(mixed review)* — Manipulating algebraic fractions by factorising and cancelling common factors, never single terms.
 - Fluency — simplifying fractions whose top and bottom factorise, answered as single choices between simplified forms (4 questions).
 - Multiplying and dividing — products and quotients that cancel to a simple form after factorising (4 questions).
-- Adding and subtracting — sums and differences over a common denominator, with feedback addressing invalid cancellation across terms (4 questions).
+- Adding and catching — sums and differences over a common denominator, with the term-cancelled fraction offered as the trap (4 questions).
 
 **`/pages/curriculum/GCSE/algebra/notation/functions/practiceFunctionsReview.html`** **(H)** *(mixed review)* — Evaluating functions, inverse functions and composite functions at given values from formal notation.
 - Fluency — evaluating f(3), f(−2) and 2f(1) from a given linear or quadratic rule, answers typed as numbers (4 questions).
@@ -2559,17 +2565,17 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/algebra/graphs/quadraticGraphs/practiceQuadraticGraphsReview.html`** *(mixed review)* — Reading roots, intercepts and turning points of a quadratic from its factorised form.
 - Fluency — roots and y-intercepts from factorised form, typed as numbers with their signs (4 questions).
 - Turning points — the x-coordinate midway between the roots by symmetry, then the y-coordinate by substitution (4 questions).
-- Matching — pair equations with described sketches by roots, intercept and opening direction, paying particular attention to the sign of the x² term (4 questions).
+- Matching — pairing equations with described sketches by roots, intercept and opening direction, where the sign of the x² term is the catch (4 questions).
 
 **`/pages/curriculum/GCSE/algebra/graphs/realLifeGraphs/practiceDistanceTimeReview.html`** *(mixed review)* — Reading speeds, distances and accelerations from distance–time and velocity–time journeys, gradient by gradient.
 - Fluency — the speed of a single journey segment from its distance and time, arranged to divide exactly (4 questions).
-- Whole journeys — total distance and average speed across a journey with a rest, addressing the misconception of averaging the two speeds directly (4 questions).
+- Whole journeys — total distance and average speed across a journey with a rest, where averaging the two speeds is the trap (4 questions).
 - Velocity–time — acceleration as the gradient and distance as the area under constant and straight-line sections, all values exact (4 questions).
 
 **`/pages/curriculum/GCSE/algebra/graphs/graphTransformations/practiceGraphTransformationsReview.html`** **(H)** *(mixed review)* — Tracking translations and reflections of a graph through its equation and the image of a marked point.
 - Fluency — naming the equation after a described translation of y = f(x), chosen from f(x) + a, f(x + a) and their sign variants (4 questions).
 - Image points — the new coordinates of a marked point after a stated translation or reflection, typed exactly (4 questions).
-- Horizontal or vertical — contrast f(x + a) with f(x) + a, with particular attention to the reversed direction of the horizontal shift (4 questions).
+- Direction catch — f(x + a) against f(x) + a on near-identical prompts, where the horizontal shift runs against the sign (4 questions).
 
 **`/pages/curriculum/GCSE/algebra/graphs/circle/practiceCircleEquationReview.html`** **(H)** *(mixed review)* — Using x² + y² = r² to find radii, test points and build tangent equations at a point.
 - Fluency — the radius from a circle’s equation and the equation from a radius, squares kept exact (4 questions).
@@ -2838,7 +2844,7 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/ratio/ratio/notationAndSimplifying/practiceSimplifyingRatiosReview.html`** *(mixed review)* — Simplifying a ratio to its simplest form or 1 : n, and moving between a ratio and the fractions of the whole.
 - Fluency — simplifying two- and three-part ratios, including pairs with mixed units like 40 cm : 1 m converted before simplifying (4 questions).
 - The form 1 : n — dividing through by one part, decimal answers exact by construction, and part:part rewritten as part:whole (4 questions).
-- Ratios and fractions — the fraction of the whole one part represents, and one part as a fraction or multiple of another, addressing the error of reading 2 : 3 as 2/3 of the total (4 questions).
+- Ratios and fractions — the fraction of the whole one part represents, and one part as a fraction or multiple of another, where 2 : 3 read as 2/3 of the total is the trap (4 questions).
 
 **`/pages/curriculum/GCSE/ratio/ratio/sharing/practiceSharingReview.html`** *(mixed review)* — Dividing a quantity in a given ratio, recovering the whole from partial information, and combining two ratios.
 - Fluency — sharing amounts in two- and three-part ratios, every share a whole number of pounds or grams (4 questions).
@@ -2853,7 +2859,7 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/ratio/ratio/similarShapes/practiceSimilarShapesReview.html`** *(mixed review)* — Using the length, area and volume scale factors of similar shapes, and converting between them.
 - Fluency — missing lengths in similar shapes from a stated pair of corresponding sides, integer factors throughout (4 questions).
 - Areas and volumes — squaring and cubing an integer length factor to scale an area or a volume exactly (4 questions).
-- Choosing the factor — given an area or volume factor, recover the length factor by roots of perfect squares and cubes rather than applying the stated factor unchanged (4 questions).
+- Choosing the factor — given an area or volume factor, recovering the length factor by roots of perfect squares and cubes, where applying the length factor unchanged is the trap (4 questions).
 
 **`/pages/curriculum/GCSE/ratio/proportion/usingDirectProportion/practiceProportionReview.html`** *(mixed review)* — Solving direct and inverse proportion problems, and recognising which kind of proportion a situation shows.
 - Fluency — direct proportion by the unitary method, costs and quantities chosen to divide exactly (4 questions).
@@ -2888,7 +2894,7 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/ratio/compound/ratesPerUnit/practiceRatesReview.html`** *(mixed review)* — Forming a rate per unit, using it in both directions, and converting it between units.
 - Fluency — pay from hours and unit prices from pack prices, including part hours as exact fractions of an hour (4 questions).
 - Flow — filling and emptying times from a stated rate, litres and minutes chosen to divide exactly (4 questions).
-- Converting — rates rewritten in new units, like pence per gram into pounds per kilogram, with feedback addressing cases where only one unit is scaled (4 questions).
+- Converting — rates rewritten in new units, like pence per gram into pounds per kilogram, where scaling only one of the two units is the trap (4 questions).
 
 **`/pages/curriculum/GCSE/ratio/compound/ratesOnGraphs/practiceRateOfChange.html`** *(mixed review)* — Reading the gradient of a straight line as a rate of change with its units.
 - Fluency — gradients from two stated points on a line, read as a rate with its units (4 questions).
@@ -3292,47 +3298,47 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/geometry/properties/parallelLines/practiceAngleRulesReview.html`** *(mixed review)* — Finding angles with the point, line, parallel-line and polygon rules, and naming the reason for every step.
 - Fluency — angles at a point, on a straight line, vertically opposite and in a triangle, all whole degrees with a typed answer (4 questions).
 - Parallel lines and polygons — alternate, corresponding and co-interior angles, then interior and exterior angles of regular polygons, each paired with a single-choice reason (4 questions).
-- Look closely — distinguish co-interior from equal angles, resolve the possible base angles in an isosceles triangle, and use the exterior-angle theorem correctly (4 questions).
+- Catch — co-interior angles offered as equal, an isosceles triangle with two possible base angles, and an exterior angle taken from 180° instead of summing the opposite interiors (4 questions).
 
 **`/pages/curriculum/GCSE/geometry/properties/quadrilateralsAndSymmetry/practiceQuadrilateralsReview.html`** *(mixed review)* — Identifying the special quadrilaterals from side, angle, diagonal and symmetry facts.
 - Fluency — single-choice naming of the quadrilateral fixed by stated side and angle facts, all six special quadrilaterals appearing (4 questions).
 - Diagonals and symmetry — typed counts of mirror lines and orders of rotational symmetry, and single-choice questions naming the shape from its diagonal properties (4 questions).
-- Hierarchy — true-or-false single choices such as whether every square is a rhombus, using inclusive definitions rather than judging from one familiar picture (4 questions).
+- Hierarchy — true-or-false single choices such as whether every square is a rhombus, where the inclusive definitions catch shape-as-picture thinking (4 questions).
 
 **`/pages/curriculum/GCSE/geometry/properties/congruence/practiceCongruence.html`** *(mixed review)* — Deciding congruence from marked facts and naming the criterion that proves it.
 - Fluency — single-choice questions naming the criterion, SSS, SAS, ASA or RHS, that the marked facts of a triangle pair satisfy (4 questions).
 - Application — congruent-or-not-provable decisions with the facts given in words, including pairs that need the shared side spotted (4 questions).
-- Sufficient information — compare genuine congruence criteria with two sides and a non-included angle or with three matched angles, explaining why the latter two are insufficient (4 questions).
+- Catch — two sides with a non-included angle, and three matched angles, offered beside genuine criteria; both must be rejected (4 questions).
 
 **`/pages/curriculum/GCSE/geometry/properties/similarity/practiceSimilarity.html`** *(mixed review)* — Finding scale factors and missing lengths in similar shapes, corresponding sides paired correctly.
 - Fluency — integer and half-integer scale factors from a matched pair of sides, then a missing length by multiplying, every answer exact (4 questions).
 - Application — nested and bow-tie triangle configurations where the corresponding sides must be identified before scaling, whole-number answers throughout (4 questions).
-- Look closely — address additive rather than multiplicative comparison, and distinguish a shared angle from enough information to prove similarity (4 questions).
+- Catch — problems where adding the difference between sides gives a plausible wrong answer, and a shared-angle pair that is not similar at all (4 questions).
 
 **`/pages/curriculum/GCSE/geometry/properties/transformations/practiceTransformations.html`** *(mixed review)* — Applying the four transformations on coordinate axes and describing them fully.
 - Fluency — image coordinates of a marked vertex after a stated reflection, rotation about the origin or column-vector translation, typed as integers (4 questions).
 - Describing — single-choice complete descriptions of the transformation mapping object to image, distractors omitting the centre, direction or mirror line (4 questions).
-- Look closely — distinguish reflection in y = x from the axes, keep the direction of rotation, and match corresponding sides before reading an enlargement factor (4 questions).
+- Catch — reflections in y = x set against the axes, rotations with the direction reversed, and an enlargement whose scale factor is read from the wrong side pair (4 questions).
 
 **`/pages/curriculum/GCSE/geometry/properties/circleTheorems/practiceCircleTheoremsReview.html`** **(H)** *(mixed review)* — Finding angles with the circle theorems and naming the theorem that justifies each step.
 - Fluency — one theorem per figure: centre and circumference, semicircle, same segment and cyclic quadrilateral, every angle a whole number of degrees (4 questions).
 - Application — figures chaining two or three theorems, tangents and the alternate segment included, with the intermediate angle asked first (4 questions).
-- Justification — single-choice questions selecting the theorem that supports the step, with feedback distinguishing related theorems that share the same diagram (4 questions).
+- Justification — single-choice questions picking the theorem that earns the reason mark, the tempting wrong theorem sharing the same diagram (4 questions).
 
 **`/pages/curriculum/GCSE/geometry/properties/solidsAndCoordinates/practiceSolidsReview.html`** *(mixed review)* — Recognising solids from their counts, nets, plans and elevations.
 - Fluency — typed counts of the faces, edges and vertices of named solids, prisms and pyramids on stated bases included (4 questions).
 - Nets and views — single-choice matching of a net to its solid and of a plan or elevation to the drawn solid (4 questions).
-- Nets and viewpoints — include arrangements of six squares that do not fold into a cube and similar-looking elevations viewed from different directions (4 questions).
+- Catch — arrangements of six squares that do not fold into a cube, and lookalike elevations taken from the wrong direction (4 questions).
 
 **`/pages/curriculum/GCSE/geometry/mensuration/measuresAndBearings/practiceBearingsReview.html`** *(mixed review)* — Reading, writing and calculating three-figure bearings, and converting scaled lengths.
 - Fluency — writing directions as three-figure bearings with leading zeros required, and reading the bearing of B from A off a marked diagram (4 questions).
 - Back bearings and journeys — the return bearing by adding or subtracting 180°, and two-leg journeys using angle facts at the turn, whole degrees throughout (4 questions).
-- Scale — convert between map and ground with ratio scales like 1:25 000 and drawing scales like 1 cm to 5 km, with particular attention to the unit change (4 questions).
+- Scale — converting between map and ground with ratio scales like 1:25 000 and drawing scales like 1 cm to 5 km, the unit change being the catch (4 questions).
 
 **`/pages/curriculum/GCSE/geometry/mensuration/perimeterAndArea/practiceAreaReview.html`** *(mixed review)* — Finding perimeters and areas of straight-sided shapes, and running the formulas backwards.
 - Fluency — areas of rectangles, triangles, parallelograms and trapezia from labelled integer sides and heights (4 questions).
 - Composite — L-shapes and joined shapes needing missing sides deduced first, with area and perimeter asked in separate questions (4 questions).
-- Choosing a length — distinguish slant and perpendicular heights, then recover a missing base from a stated area (4 questions).
+- Catch — figures labelled with both slant and perpendicular heights, and a missing base recovered from a stated area (4 questions).
 
 **`/pages/curriculum/GCSE/geometry/mensuration/circlesAndSectors/practiceMensurationReview.html`** *(mixed review)* — Calculating circle measures and solid volumes exactly, answers left in terms of π.
 - Fluency — circumference and area from an integer radius or diameter, answered as the coefficient of π (4 questions).
@@ -3342,12 +3348,12 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/geometry/mensuration/pythagoras/practicePythagorasReview.html`** *(mixed review)* — Applying Pythagoras’ theorem forwards, backwards and in three dimensions, with triple-based exact answers.
 - Fluency — hypotenuses and shorter sides from Pythagorean triples like 3-4-5, 5-12-13 and 8-15-17, scaled copies included (4 questions).
 - Application — distances between coordinate points and diagonals of rectangles, each engineered to land on a triple (4 questions).
-- Choosing the route — include a converse decision from three given sides, subtraction when the hypotenuse is known, and a cuboid diagonal such as 3 by 4 by 12 giving exactly 13 (4 questions).
+- Catch — a converse decision from three given sides, adding when the hypotenuse is known, and a cuboid diagonal such as 3 by 4 by 12 giving exactly 13 (4 questions).
 
 **`/pages/curriculum/GCSE/geometry/mensuration/rightAngledTrigonometry/practiceTrigonometryReview.html`** *(mixed review)* — Choosing and using the right trigonometric ratio in right-angled triangles, with exact values throughout.
 - Fluency — labelling opposite, adjacent and hypotenuse, then sides found with tan 45° = 1, sin 30° = ½ and cos 60° = ½ (4 questions).
 - Exact values — recalling sin, cos and tan at 0°, 30°, 45°, 60° and 90°, and angles recovered from exact ratios like tan θ = √3 (4 questions).
-- Choosing the ratio — include a division where multiplication is needed, a rotated triangle whose opposite and adjacent sides must be relabelled, and an elevation angle placed at the correct vertex (4 questions).
+- Catch — a division where multiplication is expected, opposite and adjacent swapped by a rotated triangle, and an elevation angle placed at the wrong vertex (4 questions).
 
 **`/pages/curriculum/GCSE/geometry/mensuration/nonRightAngledTriangles/practiceSineCosineRulesReview.html`** **(H)** *(mixed review)* — Solving non-right-angled triangles with the sine rule, cosine rule and ½ab sin C.
 - Fluency — sine rule sides and angles with pairings like 30° opposite 5 and 90° opposite 10, every ratio exact (4 questions).
@@ -3357,7 +3363,7 @@ Lesson-scoped and mixed-review question-bank briefs generated from the strand ma
 **`/pages/curriculum/GCSE/geometry/vectors/vectorArithmetic/practiceVectorsReview.html`** *(mixed review)* — Calculating with column vectors: sums, differences, scalar multiples and magnitudes.
 - Fluency — adding and subtracting column vectors and multiplying by scalars, negative components throughout (4 questions).
 - Application — the vector translating one given point to another, resultants of two-leg journeys, and a missing component from a stated resultant (4 questions).
-- Magnitude and position — use 3-4-5 and 5-12-13 components and distinguish a vector from the coordinates of a point (4 questions).
+- Catch — magnitudes built on 3-4-5 and 5-12-13 components, and a distractor treating a vector as the coordinates of a point (4 questions).
 
 **`/pages/curriculum/GCSE/geometry/vectors/vectorGeometry/practiceVectorProofsReview.html`** **(H)** *(mixed review)* — Building vector expressions around a figure and arguing parallelism and collinearity from them.
 - Fluency — single-choice expressions in a and b for marked routes around triangles and parallelograms, reversed vectors negated (4 questions).
