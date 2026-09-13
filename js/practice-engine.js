@@ -124,6 +124,29 @@
         return tidyMisses(built);
     }
 
+    /* How many questions each stage holds, and where each stage starts.
+       buildRound has always made one question per family, so a stage with five
+       families produces five questions — but selfCheck and the reflection both
+       assumed four, which is only true of the drills written so far. A review
+       that opens on a longer fluency stage needs these derived. */
+    function stageSizes() {
+        return bank.families.map(function (families) { return families.length; });
+    }
+
+    function stageStart(stageIndex) {
+        return stageSizes().slice(0, stageIndex).reduce(function (a, b) { return a + b; }, 0);
+    }
+
+    function stageOf(index) {
+        const sizes = stageSizes();
+        let seen = 0;
+        for (let stage = 0; stage < sizes.length; stage += 1) {
+            seen += sizes[stage];
+            if (index < seen) return stage;
+        }
+        return sizes.length - 1;
+    }
+
     function buildRound(rng) {
         const round = [];
         bank.families.forEach(function (families, stage) {
@@ -300,9 +323,10 @@
         for (let seed = 1; seed <= rounds; seed += 1) {
             const rng = createSeededRandom(seed * 2654435761);
             const round = buildRound(rng);
-            if (round.length !== 12) problems.push("Round " + seed + " has " + round.length + " questions.");
+            const expected = stageSizes().reduce(function (a, b) { return a + b; }, 0);
+            if (round.length !== expected) problems.push("Round " + seed + " has " + round.length + " questions, not " + expected + ".");
             round.forEach(function (question, index) {
-                const stage = Math.floor(index / 4);
+                const stage = stageOf(index);
                 if (question.stage !== stage) problems.push("Question " + index + " has stage " + question.stage + ".");
                 validateQuestion(question).forEach(function (problem) {
                     problems.push("Seed " + seed + " Q" + (index + 1) + " (" + question.family + "): " + problem);
@@ -932,7 +956,7 @@
                     + (counts.revisit === 1 ? "is" : "are") + " worth revisiting.";
             renderReflectionQuestions("all");
             reflectionStages.replaceChildren.apply(reflectionStages, bank.stages.map(function (stage, stageIndex) {
-                const stageStates = states.slice(stageIndex * 4, stageIndex * 4 + 4);
+                const stageStates = states.slice(stageStart(stageIndex), stageStart(stageIndex) + stageSizes()[stageIndex]);
                 const revisit = stageStates.filter(function (item) { return !item.outcome; }).length;
                 const row = element("li");
                 /* A drill's stages are sections of its one lesson, so each row
