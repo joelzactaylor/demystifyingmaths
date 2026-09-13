@@ -210,7 +210,7 @@
                     "title": "Reordering a calculation",
                     "description": "Using commutativity and associativity to pair the easiest numbers first.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Using commutativity and associativity to regroup sums and products, like 4 x 17 x 25, and cancellation to simplify before calculating; recognising that subtraction and division cannot be reordered freely. Law names optional; algebraic manipulation lives in Algebra. Both tiers. (N3)"
                 },
                 {
@@ -1993,7 +1993,7 @@
                 "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
                 "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
             ],
-            "generate": true
+            "generate": false
         },
         {
             "file": "practiceMultiplyingDividingNegatives.html",
@@ -2015,7 +2015,7 @@
                 "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
                 "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
             ],
-            "generate": true
+            "generate": false
         },
         {
             "file": "practiceOrderOfOperations.html",
@@ -2037,7 +2037,7 @@
                 "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
                 "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
             ],
-            "generate": true
+            "generate": false
         },
         {
             "file": "practiceCheckingWithInverses.html",
@@ -2059,7 +2059,7 @@
                 "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
                 "Check — questions built around the exclusions and likely misconceptions named in the lesson brief (4 questions)."
             ],
-            "generate": true
+            "generate": false
         },
         {
             "file": "practiceCounting.html",
@@ -3065,7 +3065,7 @@
                 "Multiplying and dividing — sign chains of three or more factors and decimal quotients (4 questions).",
                 "Powers and context — powers of negatives, where (−2)⁴ against −2⁴ catches the memorised rule, then worded temperature and balance problems (4 questions)."
             ],
-            "generate": true,
+            "generate": false,
             "kind": "review",
             "learningPages": [
                 "structure/adding-subtracting-negatives",
@@ -3089,7 +3089,7 @@
                 "Reordering — single-choice questions picking which regrouping of a calculation is valid and mental, alternated with separate numeric questions evaluating a regrouped calculation; one answer per question (4 questions).",
                 "Checking — choosing the inverse calculation that checks a given result, then a final expression where left-to-right working gives a plausible wrong answer (4 questions)."
             ],
-            "generate": true,
+            "generate": false,
             "kind": "review",
             "learningPages": [
                 "structure/order-of-operations",
