@@ -226,7 +226,7 @@
                     "title": "Multiples and divisibility tests",
                     "description": "The multiples of a number, and the tests for divisibility by 2, 3, 4, 5 and 9.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Multiples and common multiples, and the divisibility tests for 2, 3, 4, 5, 9 and 10 applied to three- and four-digit numbers. LCM method lives on lcm-from-prime-factors; primality testing by trial division lives on primes-and-primality. Both tiers. (N4)"
                 },
                 {

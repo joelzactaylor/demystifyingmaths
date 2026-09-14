@@ -1,0 +1,239 @@
+/* Multiples and the divisibility tests.
+
+   Two scroll-led figures and one still one. The first counts in 4s and in 6s
+   along a single line, so a common multiple is visibly a place both counts
+   reach rather than an entry in two lists that happen to agree. The second
+   takes 4,518 apart by place and splits each place into a part made of 9s and
+   a single digit left over, which is the whole of why the digit sum answers
+   the question. The still figure is the four last-digit tests set against the
+   reason each one works.
+
+   Everything else comes from lesson.css.
+
+   No viewport media queries below: .layout is a fixed 900px panel that
+   shared.css scales with transform under 900px, so nothing here may reflow.
+   The reduced-motion block at the end is the only @media. */
+
+/* THE SCROLL-LED CARD ---------------------------------------------------- */
+
+.mult-scene {
+    position: relative;
+    min-height: min(430px, calc(100vh - 104px));
+    margin: 26px 0 8px;
+    overflow-anchor: none;
+}
+
+.mult-scene.is-ready { height: var(--scene-height); min-height: var(--scene-min-height); }
+
+.mult-scene__sticky {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: grid;
+    height: min(430px, calc(100vh - 104px));
+    min-height: 380px;
+    box-sizing: border-box;
+    /* board, caption, progress */
+    grid-template-rows: minmax(0, 1fr) auto auto;
+    overflow: hidden;
+    border: 2px solid #c9dce8;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #fbfdff 0%, #f2f8fc 100%);
+    box-shadow: 0 12px 30px rgba(20, 57, 78, .14);
+    contain: layout paint;
+    overflow-anchor: none;
+    will-change: transform;
+}
+
+.mult-scene__sticky.is-pinned { position: fixed; right: auto; z-index: 900; transform-origin: top left; }
+
+.mult-board { position: relative; display: grid; min-height: 0; padding: 6px 24px 0; place-items: center; }
+.mult-board__paper { position: relative; display: grid; justify-items: center; width: 100%; }
+
+.mult-scene__caption {
+    display: grid;
+    align-content: center;
+    height: 6.6em;
+    box-sizing: border-box;
+    padding: 14px 28px 6px;
+    text-align: center;
+}
+
+.mult-scene__caption h3 { margin: 0 0 5px; color: #09539d; font-size: 1.1rem; }
+.mult-scene__caption p { margin: 0; color: #243a45; font-size: .97rem; line-height: 1.5; }
+
+.mult-scene__progress { display: flex; gap: 8px; padding: 0 22px 18px; justify-content: center; }
+
+.mult-scene__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: #c6d4dc;
+    transition: width .25s ease, background-color .25s ease;
+}
+
+.mult-scene__dot.is-past { background: #6c9bb0; }
+.mult-scene__dot.is-current { width: 28px; background: #116e93; }
+
+/* TWO COUNTS ALONG ONE LINE ----------------------------------------------
+
+   Counting in 4s is marked above the line and counting in 6s below it, so
+   neither count is the one the line belongs to and a place both reach is
+   plainly reached twice. The meetings are ringed where they stand rather than
+   copied into a third list. */
+
+.cline { display: grid; align-content: center; justify-items: center; gap: 22px; width: 100%; }
+.cline__svg { display: block; width: 100%; max-width: 744px; overflow: visible; }
+
+/* Nothing is drawn until the scrub asks for it. The marks are built before the
+   first frame is painted, so without a closed starting state the whole figure
+   would flash on at once as it is made. */
+.cline__step,
+.cline__meet { opacity: 0; }
+
+.cline__axis { stroke: #4a6570; stroke-width: 2; stroke-linecap: round; }
+.cline__tick { stroke: #c2d3dd; stroke-width: 1.5; }
+
+/* The two counts are told apart by side and by shape as well as by colour: the
+   fours sit above the line as discs, the sixes below it as squares. */
+.cline__four { fill: #116e93; }
+.cline__six { fill: #b86821; }
+.cline__stem { stroke-width: 1.5; }
+.cline__stem--four { stroke: #7fb0c7; }
+.cline__stem--six { stroke: #d5a271; }
+
+.cline__label {
+    font: 700 13px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    text-anchor: middle;
+    paint-order: stroke;
+    stroke: #f7fbfd;
+    stroke-width: 3;
+}
+
+.cline__label--four { fill: #09539d; }
+.cline__label--six { fill: #9b5f12; }
+.cline__label--floor { fill: #173849; }
+
+/* A meeting is ringed on the line itself, in neither count's colour, because
+   what it says belongs to both. */
+.cline__ring { fill: none; stroke: #173849; stroke-width: 2.5; }
+
+.cline__note {
+    display: inline-grid;
+    margin: 0;
+    justify-items: center;
+    color: #09539d;
+    font: 700 1.3rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.cline__face { grid-area: 1 / 1; white-space: nowrap; }
+.cline__face--from::before { content: attr(data-face); }
+
+/* 4,518 TAKEN APART BY PLACE --------------------------------------------
+
+   One column per place. The top row is what the place is worth, the middle row
+   the part of it made of 9s, and the bottom row the single digit that is left.
+   The two totals underneath are what the whole test comes down to: a multiple
+   of 9, and a number small enough to recognise. */
+
+.nines { display: grid; justify-items: center; gap: 16px; width: 100%; }
+
+.nines__whole {
+    color: #173849;
+    font: 700 1.9rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.nines__places { display: grid; gap: 14px; grid-auto-flow: column; justify-content: center; }
+
+.nines__col {
+    display: grid;
+    gap: 7px;
+    justify-items: center;
+    padding: 9px 13px;
+    border: 2px solid #d9e4eb;
+    border-radius: 14px;
+    background: #fff;
+}
+
+.nines__value,
+.nines__made,
+.nines__left {
+    font: 700 1.04rem/1.1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.nines__value { color: #173849; }
+/* the part of the place that is already a whole number of 9s */
+.nines__made { color: #5d91b0; }
+/* and the single digit it leaves behind, which is what the test adds up */
+.nines__left { color: #b86821; }
+
+.nines__totals { display: grid; gap: 10px; grid-auto-flow: column; justify-content: center; align-items: stretch; }
+
+.nines__total {
+    display: grid;
+    gap: 3px;
+    justify-items: center;
+    padding: 9px 18px;
+    border-radius: 14px;
+    font-variant-numeric: tabular-nums;
+}
+
+.nines__total--made { border: 2px solid #b8cbd7; background: #eef5fb; color: #09539d; }
+.nines__total--left { border: 2px solid #d99a20; background: #fff8df; color: #9b5f12; }
+
+.nines__sum { font: 700 1.24rem/1.1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+.nines__caption { font-size: .78rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+
+.nines__col,
+.nines__total,
+.nines__whole { opacity: 0; }
+
+/* WHAT EACH TEST READS ---------------------------------------------------
+
+   A still figure. The number tested for, the rule, and the reason the rule can
+   be trusted, in one row each, so the reason is never further away than the
+   rule it justifies. */
+
+.place-tests { margin: 24px 0; padding: 6px 0; border: 2px solid #d9e2ec; border-radius: 18px; background: #f8fbfd; }
+.place-tests__list { margin: 0; padding: 0; list-style: none; }
+
+.place-tests__list li {
+    display: grid;
+    align-items: baseline;
+    gap: 18px;
+    grid-template-columns: 44px 1fr 1fr;
+    padding: 11px 24px;
+}
+
+.place-tests__list li + li { border-top: 1px solid #e4edf3; }
+
+.place-tests__by {
+    color: #09539d;
+    font: 700 1.3rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+}
+
+.place-tests__rule { color: #173849; font-size: 1rem; }
+.place-tests__why { color: #52666f; font-size: .92rem; line-height: 1.5; }
+
+/* REDUCED MOTION ---------------------------------------------------------
+
+   The card is never pinned and never scrubbed: it draws its finished state and
+   stays where it sits in the page. */
+
+@media (prefers-reduced-motion: reduce) {
+    .mult-scene.is-ready { height: auto; min-height: 0; }
+
+    .mult-scene__sticky {
+        position: relative;
+        height: auto;
+        transform: none !important;
+    }
+
+    .mult-scene__dot { transition: none; }
+}
