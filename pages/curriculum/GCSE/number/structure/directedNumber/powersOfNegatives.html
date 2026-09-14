@@ -211,44 +211,27 @@
             <section aria-labelledby="common-mistakes">
                 <h1 id="common-mistakes">Common mistakes</h1>
                 <ul class="slips">
-                    <li>
-                        <b>Wrong idea: <span class="sf" role="math"
-                                aria-label="negative 3 to the power 2 equals 9">&minus;3<span class="caret"
-                                    aria-hidden="true">^</span><sup>2</sup> = 9</span></b>
-                        <span><b class="slips__label">Why it is wrong.</b> This squares the minus along with the 3,
-                            which is what a bracket would have asked for. The index stands against the 3 alone, so the
-                            squaring gives 9 and the minus is still in front of it.</span>
-                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf"
-                                role="math"
-                                aria-label="negative 3 to the power 2 equals negative 9, while open bracket negative 3 close bracket to the power 2 equals 9">&minus;3<span
-                                    class="caret" aria-hidden="true">^</span><sup>2</sup> = &minus;9, while
-                                (&minus;3)<span class="caret"
-                                    aria-hidden="true">^</span><sup>2</sup> = 9</span></span>
-                    </li>
-                    <li>
-                        <b>Wrong idea: <span class="sf" role="math"
-                                aria-label="open bracket negative 2 close bracket to the power 4 equals negative 16">(&minus;2)<span
-                                    class="caret" aria-hidden="true">^</span><sup>4</sup> = &minus;16</span></b>
-                        <span><b class="slips__label">Why it is wrong.</b> This keeps a minus because the number
-                            being multiplied was negative. Four negatives make two pairs and each pair is positive, so
-                            nothing is left to carry a minus.</span>
-                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf"
-                                role="math"
-                                aria-label="open bracket negative 2 close bracket to the power 4 equals 16">(&minus;2)<span
-                                    class="caret" aria-hidden="true">^</span><sup>4</sup> = 16</span></span>
-                    </li>
-                    <li>
-                        <b>Wrong idea: <span class="sf" role="math"
-                                aria-label="open bracket negative 2 close bracket to the power 3 equals 8">(&minus;2)<span
-                                    class="caret" aria-hidden="true">^</span><sup>3</sup> = 8</span></b>
-                        <span><b class="slips__label">Why it is wrong.</b> This takes every power of a negative number
-                            to be positive, which holds for squares because two negatives pair off. Three negatives
-                            leave one unpaired.</span>
-                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf"
-                                role="math"
-                                aria-label="open bracket negative 2 close bracket to the power 3 equals negative 8">(&minus;2)<span
-                                    class="caret" aria-hidden="true">^</span><sup>3</sup> = &minus;8</span></span>
-                    </li>
+                    <li><b>Squaring the minus along with the number</b>
+                    <span><span class="sf" role="math" aria-label="negative 3 squared">&minus;3<span
+                            class="caret" aria-hidden="true">^</span><sup>2</sup></span> is not 9. The
+                            index stands against the 3 alone, so the squaring gives 9 and the minus is
+                            still in front of it: <span class="sf" role="math" aria-label="negative 3
+                            squared equals negative 9, while, open bracket, negative 3, close bracket,
+                            squared equals 9">&minus;3<span class="caret"
+                            aria-hidden="true">^</span><sup>2</sup> = &minus;9, while (&minus;3)<span
+                            class="caret" aria-hidden="true">^</span><sup>2</sup> = 9</span>.</span></li>
+                    <li><b>Keeping a minus because the base was negative</b>
+                    <span><span class="sf" role="math" aria-label="open bracket, negative 2, close
+                            bracket, to the power of 4">(&minus;2)<span class="caret"
+                            aria-hidden="true">^</span><sup>4</sup></span> is not &minus;16. Four
+                            negatives make two pairs, and each pair is positive, so nothing is left to
+                            carry a minus: the answer is 16.</span></li>
+                    <li><b>Taking every power of a negative number to be positive</b>
+                    <span>That holds for squares, because two negatives pair off. Three negatives
+                            leave one unpaired, so <span class="sf" role="math" aria-label="open
+                            bracket, negative 2, close bracket, cubed equals negative 8">(&minus;2)<span
+                            class="caret" aria-hidden="true">^</span><sup>3</sup> = &minus;8</span>, not
+                            8.</span></li>
                 </ul>
             </section>
 

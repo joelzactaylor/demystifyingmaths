@@ -1,7 +1,12 @@
 @import url("/demystifyingmaths/css/practiceWrittenMethods.css");
+@import url("/demystifyingmaths/css/practiceRootsShell.css");
 
 /* Practice: order of operations.
 
    The shared guided shell comes from practiceWrittenMethods.css, which every
    drill on the site loads, so this page is that page with different questions
-   in it. Nothing page-specific is needed beyond the shell. */
+   in it. practiceRootsShell.css carries the notation this page draws that the
+   written-method drills never did: a raised index inside a line, and a drawn root over a sum.
+   Without it the root's SVG has no size of its own and is drawn at the
+   browser's default, and the clipped carets that keep the flattened text true
+   are not clipped at all. */

@@ -218,7 +218,7 @@
                     "title": "Factors and factor pairs",
                     "description": "Listing every factor of a number in pairs, so none is missed or repeated.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Listing every factor of numbers to about 100 in ordered pairs so none is missed; factor and divisor vocabulary; square numbers having an odd factor count. Divisibility tests live on multiples-and-divisibility; counting factors from indices lives on counting-factors. Both tiers. (N4)"
                 },
                 {

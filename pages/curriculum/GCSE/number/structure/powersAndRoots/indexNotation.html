@@ -458,60 +458,34 @@
             <section>
                 <h1>Common mistakes</h1>
                 <ul class="slips">
-                    <li>
-                        <b>Wrong idea: <span class="sf" role="math"
-                                aria-label="3 to the power of 4 equals 12">3<span class="caret"
-                                    aria-hidden="true">^</span><sup>4</sup> = 12</span></b>
-                        <span><b class="slips__label">Why it is wrong.</b> The index counts four factors of 3; it is
-                            not multiplied by the base.</span>
-                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
-                                aria-label="3 to the power of 4 equals 3 times 3 times 3 times 3 equals 81">3<span
-                                    class="caret" aria-hidden="true">^</span><sup>4</sup>
-                                = 3 &times; 3 &times; 3 &times; 3 = 81</span></span>
-                    </li>
-                    <li>
-                        <b>Wrong idea: <span class="sf" role="math"
-                                aria-label="2 times 2 times 2 equals 2 squared">2 &times; 2 &times; 2 =
-                                2<span class="caret" aria-hidden="true">^</span><sup>2</sup></span></b>
-                        <span><b class="slips__label">Why it is wrong.</b> There are three factors, even though there
-                            are two multiplication signs.</span>
-                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
-                                aria-label="2 times 2 times 2 equals 2 cubed">2 &times; 2 &times; 2 =
-                                2<span class="caret" aria-hidden="true">^</span><sup>3</sup></span></span>
-                    </li>
-                    <li>
-                        <b>Wrong idea: <span class="sf" role="math" aria-label="5 squared equals 10">5<span
-                                    class="caret" aria-hidden="true">^</span><sup>2</sup> = 10</span></b>
-                        <span><b class="slips__label">Why it is wrong.</b> Squared means multiply the number by itself;
-                            it does not mean double it.</span>
-                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
-                                aria-label="5 squared equals 5 times 5 equals 25">5<span class="caret"
-                                    aria-hidden="true">^</span><sup>2</sup> = 5 &times; 5 =
-                                25</span></span>
-                    </li>
-                    <li>
-                        <b>Wrong idea: <span class="sf" role="math"
-                                aria-label="2 squared times 5 cubed equals 10 to the power of 5">2<span class="caret"
-                                    aria-hidden="true">^</span><sup>2</sup> &times;
-                                5<span class="caret" aria-hidden="true">^</span><sup>3</sup> = 10<span class="caret"
-                                    aria-hidden="true">^</span><sup>5</sup></span></b>
-                        <span><b class="slips__label">Why it is wrong.</b> A power is one number multiplied by
-                            itself, so two different bases need two powers.</span>
-                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
-                                aria-label="2 squared times 5 cubed equals 4 times 125 equals 500">2<span class="caret"
-                                    aria-hidden="true">^</span><sup>2</sup>
-                                &times; 5<span class="caret" aria-hidden="true">^</span><sup>3</sup> = 4 &times; 125 =
-                                500</span></span>
-                    </li>
-                    <li>
-                        <b>Wrong idea: writing three squared as &ldquo;32&rdquo;</b>
-                        <span><b class="slips__label">Why it is wrong.</b> On the baseline, this means thirty-two, not
-                            three squared.</span>
-                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
-                                aria-label="3 squared equals 3 times 3 equals 9">3<span class="caret"
-                                    aria-hidden="true">^</span><sup>2</sup> = 3 &times; 3 =
-                                9</span></span>
-                    </li>
+                    <li><b>Multiplying the index by the base</b>
+                    <span><span class="sf" role="math" aria-label="3 to the power of 4">3<span
+                            class="caret" aria-hidden="true">^</span><sup>4</sup></span> is not 12. The
+                            index counts how many 3s are multiplied together: <span class="sf"
+                            role="math" aria-label="3 times 3 times 3 times 3 equals 81">3 &times; 3
+                            &times; 3 &times; 3 = 81</span>. The same reading turns five squared into
+                            10, when two factors of 5 make 25.</span></li>
+                    <li><b>Counting the multiplication signs</b>
+                    <span><span class="sf" role="math" aria-label="2 times 2 times 2">2 &times; 2
+                            &times; 2</span> has three factors even though it has two signs, so it is
+                            <span class="sf" role="math" aria-label="2 cubed">2<span class="caret"
+                            aria-hidden="true">^</span><sup>3</sup></span> rather than <span class="sf"
+                            role="math" aria-label="2 squared">2<span class="caret"
+                            aria-hidden="true">^</span><sup>2</sup></span>.</span></li>
+                    <li><b>Gathering two bases into one power</b>
+                    <span>A power is one number multiplied by itself, so <span class="sf" role="math"
+                            aria-label="2 squared times 5 cubed">2<span class="caret"
+                            aria-hidden="true">^</span><sup>2</sup> &times; 5<span class="caret"
+                            aria-hidden="true">^</span><sup>3</sup></span> needs both bases worked
+                            separately: <span class="sf" role="math" aria-label="4 times 125 equals
+                            500">4 &times; 125 = 500</span>, not <span class="sf" role="math"
+                            aria-label="10 to the power of 5">10<span class="caret"
+                            aria-hidden="true">^</span><sup>5</sup></span>.</span></li>
+                    <li><b>Writing the index on the baseline</b>
+                    <span>Written on the baseline, &ldquo;32&rdquo; is the number thirty-two. Raising
+                            the 2 is what makes it an index: <span class="sf" role="math" aria-label="3
+                            squared equals 3 times 3 equals 9">3<span class="caret"
+                            aria-hidden="true">^</span><sup>2</sup> = 3 &times; 3 = 9</span>.</span></li>
                 </ul>
             </section>
 

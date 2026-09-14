@@ -378,38 +378,36 @@
             <section aria-labelledby="common-mistakes">
                 <h1 id="common-mistakes">Common mistakes</h1>
                 <ul class="slips">
-                    <li>
-                        <b>Wrong idea: <span class="sf" role="math"
-                                aria-label="47 divided by 6 equals 7 remainder 5, checked as 7 times 6 equals 42">47
-                                &divide; 6 = 7 r 5, checked by 7 &times; 6 = 42</span></b>
-                        <span><b class="slips__label">Why it is wrong.</b> This multiplies the whole groups back and
-                            stops, so the check lands on 42 and not on the 47 it started from. The remainder is part
-                            of the answer and has to go back in.</span>
-                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
-                                aria-label="7 times 6 plus 5 equals 47">7 &times; 6 + 5 = 47</span></span>
-                    </li>
-                    <li>
-                        <b>Wrong idea: <span class="sf" role="math"
-                                aria-label="94 minus 56 equals 38, checked as 56 minus 38 equals 18">94 &minus; 56 =
-                                38, checked by 56 &minus; 38 = 18</span></b>
-                        <span><b class="slips__label">Why it is wrong.</b> This rearranges the three numbers into a
-                            calculation the original never made, so whatever it comes to says nothing about the
-                            answer. A test has to use the 38 as the answer it is checking.</span>
-                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
-                                aria-label="38 plus 56 equals 94">38 + 56 = 94</span></span>
-                    </li>
-                    <li>
-                        <b>Wrong idea: <span class="sf" role="math"
-                                aria-label="is 600 minus 247 equal to 447, checked by working it out again">600 &minus;
-                                247
-                                &#8799; 447, checked by working it out again</span></b>
-                        <span><b class="slips__label">Why it is wrong.</b> Running the same steps in the same order
-                            reproduces the same exchange slip, so 447 comes back a second time and looks
-                            confirmed.</span>
-                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
-                                aria-label="447 plus 247 equals 694, which is not equal to 600">447 + 247 = 694
-                                &ne; 600</span></span>
-                    </li>
+                    <li><b>Leaving the remainder out of the check</b>
+                    <span><span class="sf" role="math" aria-label="7 times 6 equals 42">7 &times; 6 =
+                            42</span> multiplies the whole groups back and stops, so it lands on 42 and
+                            not on the 47 it started from. The remainder is part of the answer and has
+                            to go back in: <span class="sf" role="math" aria-label="7 times 6 plus 5
+                            equals 47">7 &times; 6 + 5 = 47</span>.</span></li>
+                    <li><b>Undoing with the wrong root</b>
+                    <span>A square root undoes a squaring, and <span class="sf" role="math"
+                            aria-label="4 cubed equals 64">4<span class="caret"
+                            aria-hidden="true">^</span><sup>3</sup> = 64</span> was a cubing. <span
+                            class="sf" role="math" aria-label="the square root of 64 equals 8"><span
+                            class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg
+                            class="rad__sign" viewBox="0 0 24 40" aria-hidden="true"
+                            focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none"
+                            stroke="currentColor" stroke-width="3" stroke-linejoin="miter"
+                            stroke-linecap="butt"/></svg><span class="rad__over">64</span></span> =
+                            8</span> is what 64 gives back when two of its three factors come off, so it
+                            settles nothing about the 4. <span class="sf" role="math" aria-label="the
+                            cube root of 64 equals 4"><span class="rad rad--order"><span class="caret"
+                            aria-hidden="true">&sup3;&radic;</span><span class="rad__index"
+                            data-order="3" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0
+                            24 40" aria-hidden="true" focusable="false"> <path d="M.5 24H5l5.5 13.5L22
+                            1.5H24" fill="none" stroke="currentColor" stroke-width="3"
+                            stroke-linejoin="miter" stroke-linecap="butt" /> </svg><span
+                            class="rad__over">64</span></span> = 4</span> does.</span></li>
+                    <li><b>Working it out again instead of checking it</b>
+                    <span>Running the same steps in the same order reproduces the same exchange slip,
+                            so 447 comes back a second time and looks confirmed. A different calculation
+                            is what tests it: <span class="sf" role="math" aria-label="447 plus 247
+                            equals 694, which is not 600">447 + 247 = 694</span>, which is not 600.</span></li>
                 </ul>
             </section>
 

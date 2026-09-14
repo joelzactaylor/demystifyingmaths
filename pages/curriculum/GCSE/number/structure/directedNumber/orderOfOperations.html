@@ -410,62 +410,32 @@
             <section>
                 <h1 id="common-mistakes">Common mistakes</h1>
                 <ul class="slips">
-                    <li>
-                        <b>Wrong idea: <span class="sf" role="math" aria-label="2 plus 6 times 3 equals 24">2 + 6
-                            &times; 3 = 24</span></b>
-                        <span><b class="slips__label">Why it is wrong.</b> This works from the left and adds 2 and 6
-                            first. By convention the 6 &times; 3 is worked before the addition, so the amount added
-                            to 2 is 18.</span>
-                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
-                                aria-label="2 plus 6 times 3 equals 2 plus 18 equals 20">2 + 6 &times; 3 =
-                                2 + 18 = 20</span></span>
-                    </li>
-                    <li>
-                        <b>Wrong idea: <span class="sf" role="math" aria-label="3 times 4 to the power 2 equals 144">3
-                                &times; 4<span class="caret" aria-hidden="true">^</span><sup>2</sup> = 144</span></b>
-                        <span><b class="slips__label">Why it is wrong.</b> This multiplies first and squares 12. The
-                            index sits on the 4 alone, so the 4 is squared and the 3 multiplies the 16.</span>
-                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
-                                aria-label="3 times 4 to the power 2 equals 3 times 16 equals 48">3
-                                &times; 4<span class="caret" aria-hidden="true">^</span><sup>2</sup> = 3 &times; 16 =
-                                48</span></span>
-                    </li>
-                    <li>
-                        <b>Wrong idea: <span class="sf" role="math"
-                                aria-label="the square root of open bracket 9 plus 16 close bracket equals 7"><span
-                                    class="rad"><span class="caret" aria-hidden="true">&radic;(</span><svg
-                                        class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false">
-                                        <path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor"
-                                            stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt" />
-                                    </svg><span class="rad__over">9 + 16</span></span><span class="caret"
-                                    aria-hidden="true">)</span> = 7</span></b>
-                        <span><b class="slips__label">Why it is wrong.</b> This takes the root of the 9 and of the 16
-                            separately and adds 3 and 4. A root does not come apart over a sum: one bar runs over
-                            the whole of it, so the number under it is 25.</span>
-                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
-                                aria-label="the square root of open bracket 9 plus 16 close bracket equals the square root of 25 equals 5"><span
-                                    class="rad"><span class="caret" aria-hidden="true">&radic;(</span><svg
-                                        class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false">
-                                        <path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor"
-                                            stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt" />
-                                    </svg><span class="rad__over">9 + 16</span></span><span class="caret"
-                                    aria-hidden="true">)</span> = <span class="rad"><span class="caret"
-                                        aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40"
-                                        aria-hidden="true" focusable="false">
-                                        <path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor"
-                                            stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt" />
-                                    </svg><span class="rad__over">25</span></span> = 5</span></span>
-                    </li>
-                    <li>
-                        <b>Wrong idea: <span class="sf" role="math" aria-label="20 minus 8 plus 5 equals 7">20 &minus; 8
-                                + 5 = 7</span></b>
-                        <span><b class="slips__label">Why it is wrong.</b> This adds 8 and 5 first and takes 13 from
-                            20. Adding and subtracting have the same strength, so the 20 &minus; 8 on the left is
-                            worked first.</span>
-                        <span class="slips__fix"><b class="slips__label">Correct form.</b> <span class="sf" role="math"
-                                aria-label="20 minus 8 plus 5 equals 12 plus 5 equals 17">20 &minus; 8 + 5
-                                = 12 + 5 = 17</span></span>
-                    </li>
+                    <li><b>Working straight from the left</b>
+                    <span><span class="sf" role="math" aria-label="2 plus 6 times 3">2 + 6 &times;
+                            3</span> is not 24. The 6 &times; 3 is worked before the addition, so the
+                            amount added to 2 is 18: <span class="sf" role="math" aria-label="2 plus 6
+                            times 3 equals 2 plus 18 equals 20">2 + 6 &times; 3 = 2 + 18 = 20</span>.</span></li>
+                    <li><b>Multiplying before the index is applied</b>
+                    <span>In <span class="sf" role="math" aria-label="3 times 4 squared">3 &times;
+                            4<span class="caret" aria-hidden="true">^</span><sup>2</sup></span> the
+                            index sits on the 4 alone, so the 4 is squared and the 3 multiplies the 16:
+                            <span class="sf" role="math" aria-label="equals 3 times 16 equals 48">3
+                            &times; 16 = 48</span>, not 144.</span></li>
+                    <li><b>Rooting a sum term by term</b>
+                    <span>A root does not come apart over a sum. One bar runs over the whole of 9 +
+                            16, so the number under it is 25 and <span class="sf" role="math"
+                            aria-label="the square root of, open bracket, 9 plus 16, close bracket,
+                            equals 5"><span class="rad"><span class="caret"
+                            aria-hidden="true">&radic;(</span><svg class="rad__sign" viewBox="0 0 24 40"
+                            aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24"
+                            fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter"
+                            stroke-linecap="butt"/></svg><span class="rad__over">9 + 16</span></span><span class="caret" aria-hidden="true">)</span> =
+                            5</span>, not 7.</span></li>
+                    <li><b>Adding before subtracting</b>
+                    <span><span class="sf" role="math" aria-label="20 minus 8 plus 5">20 &minus; 8 +
+                            5</span> is not 7. Adding and subtracting have the same strength, so the 20
+                            &minus; 8 on the left is worked first: <span class="sf" role="math"
+                            aria-label="12 plus 5 equals 17">12 + 5 = 17</span>.</span></li>
                 </ul>
             </section>
 

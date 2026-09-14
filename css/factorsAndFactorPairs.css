@@ -1,0 +1,219 @@
+/* Factors and factor pairs.
+
+   Two scroll-led figures and one still one. The first builds a list of factors
+   from both ends at once, because one trial settles two entries. The second
+   re-forms the same counters into every rectangle they make, ending on a
+   square. The still figure is the four rectangles 24 counters make, which is
+   where the pairing comes from in the first place.
+
+   Everything else comes from lesson.css.
+
+   No viewport media queries below: .layout is a fixed 900px panel that
+   shared.css scales with transform under 900px, so nothing here may reflow.
+   The reduced-motion block at the end is the only @media. */
+
+/* THE SCROLL-LED CARD ---------------------------------------------------- */
+
+.factor-scene {
+    position: relative;
+    min-height: min(430px, calc(100vh - 104px));
+    margin: 26px 0 8px;
+    overflow-anchor: none;
+}
+
+.factor-scene.is-ready { height: var(--scene-height); min-height: var(--scene-min-height); }
+
+.factor-scene__sticky {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: grid;
+    height: min(430px, calc(100vh - 104px));
+    min-height: 380px;
+    box-sizing: border-box;
+    /* board, caption, progress */
+    grid-template-rows: minmax(0, 1fr) auto auto;
+    overflow: hidden;
+    border: 2px solid #c9dce8;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #fbfdff 0%, #f2f8fc 100%);
+    box-shadow: 0 12px 30px rgba(20, 57, 78, .14);
+    contain: layout paint;
+    overflow-anchor: none;
+    will-change: transform;
+}
+
+.factor-scene__sticky.is-pinned { position: fixed; right: auto; z-index: 900; transform-origin: top left; }
+
+.factor-board { position: relative; display: grid; min-height: 0; padding: 6px 24px 0; place-items: center; }
+.factor-board__paper { position: relative; display: grid; justify-items: center; width: 100%; }
+
+.factor-scene__caption {
+    display: grid;
+    align-content: center;
+    height: 6.6em;
+    box-sizing: border-box;
+    padding: 14px 28px 6px;
+    text-align: center;
+}
+
+.factor-scene__caption h3 { margin: 0 0 5px; color: #09539d; font-size: 1.1rem; }
+.factor-scene__caption p { margin: 0; color: #243a45; font-size: .97rem; line-height: 1.5; }
+
+.factor-scene__progress { display: flex; gap: 8px; padding: 0 22px 18px; justify-content: center; }
+
+.factor-scene__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: #c6d4dc;
+    transition: width .25s ease, background-color .25s ease;
+}
+
+.factor-scene__dot.is-past { background: #6c9bb0; }
+.factor-scene__dot.is-current { width: 28px; background: #116e93; }
+
+/* PAIRS ON THE NUMBER LINE ----------------------------------------------
+
+   A factor pair is two places on the line whose product is the number, so it
+   is drawn as an arc joining them. The arcs nest as the trials climb, and
+   where they run out is where the trials stop. */
+
+.fline { display: grid; align-content: center; justify-items: center; gap: 20px; width: 100%; }
+
+.fline__svg { display: block; width: 100%; max-width: 744px; overflow: visible; }
+
+/* Nothing is drawn until the scrub asks for it. The groups are opened by the
+   script, but they are built before the first frame is painted, so without a
+   closed starting state every arc flashes on at once as the figure is made. */
+.fline__pair,
+.fline__stop { opacity: 0; }
+
+.fline__axis { stroke: #4a6570; stroke-width: 2; stroke-linecap: round; }
+
+/* Every whole number is ticked, and every tick is the same, so the line reads
+   as a scale without saying in advance which places are about to be joined. */
+.fline__tick { stroke: #c2d3dd; stroke-width: 1.5; }
+
+/* THE ARC — one pair, drawn from one end to the other.
+   The path is one unit long and the script uncovers it as the trial is made,
+   so the arc is written rather than faded up whole.
+
+   Two properties come from the script. --tone runs 0 on the widest arc to 1 on
+   the narrowest, and darkens the stroke along the way, so the nesting reads at
+   a glance instead of having to be traced arc by arc. --fresh is 1 on the arc
+   being written and falls to 0 as the next one takes over, and weights the
+   stroke, so the newest trial is what the eye lands on while the settled ones
+   stay as context. The flat declarations come first, for anything that cannot
+   mix a colour. */
+.fline__arc {
+    fill: none;
+    stroke: #116e93;
+    stroke: color-mix(in oklab, #74aec9, #0a4a68 calc(var(--tone, 0) * 100%));
+    stroke-width: 2.4;
+    stroke-width: calc(2.2px + 1.5px * var(--fresh, 0));
+    stroke-linecap: round;
+    stroke-dasharray: 1;
+    transition: stroke-width .18s ease;
+}
+
+/* The two ends of the pair. The halo is the card's own ground, so a dot stays a
+   dot where it sits on the axis or under an arc that passes over it. */
+.fline__dot {
+    fill: #116e93;
+    fill: color-mix(in oklab, #74aec9, #0a4a68 calc(var(--tone, 0) * 100%));
+    stroke: #f7fbfd;
+    stroke-width: 2;
+}
+
+/* A pair with nothing to cross has no arc to draw, so the place its two ends
+   share is the whole of the mark. It is set in the ochre the page keeps for
+   what stands apart, because what it says is different: not two places joined
+   but one place standing for both. */
+.fline__pair[data-kind="point"] .fline__dot { fill: #b86821; }
+
+.fline__label {
+    fill: #173849;
+    font: 700 14px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    text-anchor: middle;
+    paint-order: stroke;
+    stroke: #f7fbfd;
+    stroke-width: 3;
+}
+
+.fline__cross { stroke: #a3352b; stroke-width: 2.5; stroke-linecap: round; }
+.fline__label--stop { fill: #a3352b; }
+
+.fline__trial {
+    display: inline-grid;
+    margin: 0;
+    justify-items: center;
+    color: #09539d;
+    font: 700 1.36rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.fline__face { grid-area: 1 / 1; white-space: nowrap; }
+.fline__face--from::before { content: attr(data-face); }
+
+/* WHAT 24 COUNTERS MAKE -------------------------------------------------
+
+   A still figure: the four rectangles, stacked so the shrinking width reads
+   straight down the column. Each names a pair, and there is no fifth. */
+
+.rects {
+    margin: 24px 0;
+    padding: 22px 26px;
+    border: 2px solid #d9e2ec;
+    border-radius: 18px;
+    background: #f8fbfd;
+}
+
+.rects__figure { display: grid; gap: 18px; justify-items: center; }
+.rects__one { display: grid; gap: 10px; justify-items: center; }
+
+.rects__grid {
+    display: grid;
+    gap: 3px;
+    grid-auto-rows: 13px;
+}
+
+.rects__cell {
+    box-sizing: border-box;
+    border: 2px solid #5d91b0;
+    border-radius: 3px;
+    background: #dfeaf2;
+}
+
+.rects__label {
+    color: #173849;
+    font: 700 1rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.rects__caption {
+    margin: 16px auto 0;
+    max-width: 34em;
+    color: #243a45;
+    font-size: .95rem;
+    line-height: 1.55;
+    text-align: center;
+}
+
+/* REDUCED MOTION ---------------------------------------------------------
+
+   The card is never pinned and never scrubbed: it draws its finished state and
+   stays where it sits in the page. */
+
+@media (prefers-reduced-motion: reduce) {
+    .factor-scene.is-ready { height: auto; min-height: 0; }
+
+    .factor-scene__sticky {
+        position: relative;
+        height: auto;
+        transform: none !important;
+    }
+
+    .factor-scene__dot { transition: none; }
+}
