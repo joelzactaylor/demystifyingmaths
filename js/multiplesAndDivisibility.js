@@ -55,10 +55,10 @@ document.addEventListener("DOMContentLoaded", () => {
         sixes: [6, 12, 18, 24, 30, 36],
         meets: [12, 24, 36],
         stages: [
-            { title: "The numbers 1 to 36", copy: "Two counts are about to run along this line, one in 4s and one in 6s." },
-            { title: "Counting in 4s", copy: "4, 8, 12, 16, 20, 24, 28, 32, 36 — every place counting in 4s reaches, marked above the line." },
-            { title: "Counting in 6s", copy: "6, 12, 18, 24, 30, 36 — the same line counted in 6s, marked below it." },
-            { title: "Where both counts land", copy: "Three places have a mark above and below: 12, 24 and 36 are the common multiples of 4 and 6." },
+            { title: "The numbers 1 to 36", copy: "Two counts run along this line: one in 4s, one in 6s." },
+            { title: "Counting in 4s", copy: "4, 8, 12, 16, 20, 24, 28, 32, 36: every place a count in 4s reaches." },
+            { title: "Counting in 6s", copy: "6, 12, 18, 24, 30, 36: the same line counted in 6s instead." },
+            { title: "Where both counts land", copy: "Three places are reached by both: 12, 24 and 36 are the common multiples of 4 and 6." },
             { title: "The first meeting", copy: "12 is the lowest common multiple, and 24 and 36 are its multiples in turn." }
         ],
         notes: ["", "4, 8, 12, 16, 20, 24, 28, 32, 36", "6, 12, 18, 24, 30, 36", "12, 24, 36", "12 × 1,  12 × 2,  12 × 3"],
@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ],
         stages: [
             { title: "4,518", copy: "Dividing by 9 would settle this, and the digits settle it without dividing." },
-            { title: "One column for each place", copy: "4,518 is 4 thousands, 5 hundreds, 1 ten and 8 ones." },
+            { title: "Place by place", copy: "4,518 is 4 thousands, 5 hundreds, 1 ten and 8 ones." },
             { title: "Every place is 9s and one more", copy: "1,000 is 999 + 1, 100 is 99 + 1, and 10 is 9 + 1, so each place splits in two." },
             { title: "The part made of 9s", copy: "4 × 999 + 5 × 99 + 1 × 9 = 4,500, which is 9 × 500 and needs no testing." },
             { title: "What each place leaves", copy: "The leftovers are the digits themselves: 4 + 5 + 1 + 8 = 18." },
