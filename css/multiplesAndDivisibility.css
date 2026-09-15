@@ -113,11 +113,17 @@
 
 .cline__label--four { fill: #09539d; }
 .cline__label--six { fill: #9b5f12; }
-.cline__label--floor { fill: #173849; }
 
 /* A meeting is ringed on the line itself, in neither count's colour, because
    what it says belongs to both. */
-.cline__ring { fill: none; stroke: #173849; stroke-width: 2.5; }
+/* --first is positive on the ring the last stage is about and negative on the
+   others, so one is drawn heavier while the rest step back. */
+.cline__ring {
+    fill: none;
+    stroke: #173849;
+    stroke-width: calc(2.5px + 2px * max(var(--first, 0), 0));
+    opacity: calc(1 - .55 * max(calc(-1 * var(--first, 0)), 0));
+}
 
 .cline__note {
     display: inline-grid;
@@ -189,15 +195,27 @@
 
 /* The part that looks after itself is quiet; the part still to be judged is
    the one in the page's ochre, because that is where the reader has to look. */
-/* --doubt rises at the stage where this cut is shown not to work, and the box
-   goes quiet: the house treatment for something that does not hold is grey and
-   empty, never a warning colour. */
+/* The big part starts as a quiet grey box making no claim, turns blue at the
+   stage that shows it is safe, and goes quiet again at the stage that shows it
+   is not. --sure carries both: the script sets it to 0 when the claim has not
+   been made yet and back to 0 when it has been withdrawn. Something that does
+   not hold is grey and empty here, never a warning colour. */
 .cut__box--top {
-    border: 2px solid color-mix(in oklab, #b8cbd7, #d2dade calc(var(--doubt, 0) * 100%));
-    background: color-mix(in oklab, #eef5fb, #f3f6f8 calc(var(--doubt, 0) * 100%));
-    color: color-mix(in oklab, #09539d, #687b84 calc(var(--doubt, 0) * 100%));
+    border: 2px solid color-mix(in oklab, #d2dade, #b8cbd7 calc(var(--sure, 1) * 100%));
+    background: color-mix(in oklab, #f3f6f8, #eef5fb calc(var(--sure, 1) * 100%));
+    color: color-mix(in oklab, #687b84, #09539d calc(var(--sure, 1) * 100%));
 }
-.cut__box--bottom { border: 2px solid #d99a20; background: #fff8df; color: #9b5f12; }
+
+/* and the leftover settles from an open question into a second known multiple */
+.cut__box--bottom {
+    border: 2px solid #d99a20;
+    border-color: color-mix(in oklab, #d99a20, #5d91b0 calc(var(--settled, 0) * 100%));
+    background: #fff8df;
+    background: color-mix(in oklab, #fff8df, #eef5fb calc(var(--settled, 0) * 100%));
+    color: #9b5f12;
+    color: color-mix(in oklab, #9b5f12, #09539d calc(var(--settled, 0) * 100%));
+}
+
 
 .cut__value { font: 700 1.34rem/1.1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
 .cut__role { display: inline-grid; justify-items: center; font-size: .74rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }

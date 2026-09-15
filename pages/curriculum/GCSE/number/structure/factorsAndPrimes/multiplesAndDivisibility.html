@@ -62,10 +62,8 @@
                 <p>Turn 24 round and 6 is one of its <span class="gloss" data-term="factor">factors</span>. The two
                     words name one relationship from either end; the factors stop at 24, and the multiples never
                     stop.</p>
-            </section>
 
-            <section aria-labelledby="where-two-counts-meet">
-                <h1 id="where-two-counts-meet">Where two counts meet</h1>
+                <p>Two counts can be run along one line. Some places are reached by both of them.</p>
 
                 <p>Count in 4s and in 6s along the same line. Some places are reached by both counts.</p>
 
@@ -102,38 +100,20 @@
                 <p>Does 4 divide 4,932? Dividing it out answers that, but it is a long calculation for a yes or a
                     no.</p>
 
-                <p>A shorter route starts from one way of writing any number:</p>
+                <p>A shorter route starts from one way of writing any counting number:</p>
 
                 <div class="rule-card">
-                    <p class="rule-card__statement">Every number is (a multiple of 10) + (its last digit)</p>
+                    <p class="rule-card__statement">Every counting number is (a multiple of 10) + (its last digit)</p>
                     <ol class="rule-card__conditions">
                         <li><span class="sf" role="math"
                                 aria-label="4,932 equals 4,930 plus 2">4,932 = 4,930 + 2</span></li>
-                        <li><span class="sf" role="math"
-                                aria-label="70 equals 70 plus 0">70 = 70 + 0</span></li>
-                        <li><span class="sf" role="math"
-                                aria-label="8 equals 0 plus 8">8 = 0 + 8</span></li>
+                        <li><span class="sf" role="math" aria-label="70 equals 70 plus 0">70 = 70 + 0</span></li>
+                        <li><span class="sf" role="math" aria-label="8 equals 0 plus 8">8 = 0 + 8</span></li>
                     </ol>
                 </div>
 
-                <p>The first part of that split is worth something. 4,930 ends in a 0, so it is a whole number of
-                    tens, and a ten is two 5s and five 2s.</p>
-
-                <p>4,930 divides by 2, by 5 and by 10 exactly. Whatever the answer turns out to be for
-                    4,932, that part of it cannot be the reason.</p>
-
-                <p>Only the 2 is left to decide, and 2 is even. That is the whole of the test for 2: split off the
-                    last digit and look at it.</p>
-            </section>
-
-            <section aria-labelledby="when-one-digit-is-not-enough">
-                <h1 id="when-one-digit-is-not-enough">When one digit is not enough</h1>
-
-                <p>Try the same split for 4, and it breaks down. 4,930 is a whole number of tens, but a ten is not a
-                    whole number of 4s.</p>
-
-                <p>Cutting one place further left fixes it. A hundred is 25 fours, so everything above
-                    the last two digits is settled before the cut is made.</p>
+                <p>The split pays when the big part already divides. Whether it does depends on which number is
+                    being tested for, and one cut does not serve them all.</p>
 
                 <div class="worked">
                     <h2 class="worked__title">Does 4 divide 4,932?</h2>
@@ -146,20 +126,23 @@
 
                             <div class="mult-scene__caption" aria-live="polite">
                                 <h3 data-step-title>One number, cut in two</h3>
-                                <p data-step-copy>The big part looks after itself, and whatever is left over is what decides.</p>
+                                <p data-step-copy>The big part looks after itself, and whatever is left over is what
+                                    decides.</p>
                             </div>
 
                             <div class="mult-scene__progress" data-progress aria-hidden="true"></div>
                         </div>
                     </div>
-
                     <p class="worked__answer"><strong class="sf" role="math"
                             aria-label="4,932 equals 4,900 plus 32, and 32 equals 4 times 8, so 4 divides 4,932">4,932
                             = 4,900 + 32, and 32 = 4 &times; 8</strong></p>
                 </div>
 
-                <p>That gives a second rule, shaped like the first. Every number is (a multiple of 100) + (its
-                    last two digits), and the 4 test reads the second half of it.</p>
+                <p>A second rule comes out of it, one place along. Every counting number is (a multiple of 100) +
+                    (its last two digits), and the 4 test reads that second half.</p>
+
+                <p>A no looks the same. 4,918 splits into 4,900 and 18, and 4 does not divide 18, so 4 does not
+                    divide 4,918 either.</p>
             </section>
 
             <section aria-labelledby="the-nines-test">
@@ -271,7 +254,7 @@
                     <li>The multiples of 6 are 6, 12, 18, 24 and onwards, and 6 is a factor of every one of
                         them.</li>
                     <li>A common multiple of 4 and 6 is reached by both counts, and 12 is the first.</li>
-                    <li>Every test cuts the number into a part that is certainly a multiple of the divisor and a
+                    <li>Every test splits the number into a part that is certainly a multiple of the divisor and a
                         part left over, and only the leftover can decide.</li>
                     <li>A ten is a whole number of 2s, 5s and 10s, so those tests cut after the last digit; a
                         hundred is a whole number of 4s, so that one cuts after the last two.</li>

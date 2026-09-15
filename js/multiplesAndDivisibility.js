@@ -35,6 +35,27 @@ document.addEventListener("DOMContentLoaded", () => {
         if (className) node.setAttribute("class", className);
         return node;
     };
+    /* Marks that sit apart on screen are one run of characters to anything that
+       strips the styling: "4,930" above "looks after itself" comes out as
+       "4,930looks after itself", and two cross-faded panels weld into each
+       other. Walking the finished figure once and parting every pair of
+       text-bearing neighbours costs nothing on screen and keeps the flattened
+       page readable. */
+    const stack = (parent, ...kids) => {
+        kids.forEach((kid) => parent.appendChild(kid));
+        return parent;
+    };
+    const part = (root) => {
+        [root, ...root.querySelectorAll("*")].forEach((node) => {
+            const kids = Array.from(node.children);
+            kids.forEach((kid, i) => {
+                if (!i || !kids[i - 1].textContent.trim() || !kid.textContent.trim()) return;
+                node.insertBefore(document.createTextNode(" "), kid);
+            });
+        });
+        return root;
+    };
+
     const writeCaption = (node, text) => {
         if (node && node.textContent !== text) node.textContent = text;
     };
@@ -139,7 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             line.append(...faces);
             figure.appendChild(line);
-            board.appendChild(figure);
+            board.appendChild(part(figure));
             return { fours, sixes, meets, faces };
         },
 
@@ -153,6 +174,10 @@ document.addEventListener("DOMContentLoaded", () => {
             run(parts.sixes, 2);
             parts.meets.forEach((g, i) => {
                 g.style.opacity = clamp((shown - 2) * 3 - i * 0.55).toFixed(3);
+                /* The last stage is about the first meeting alone, so 12 is
+                   drawn heavier and the two later rings step back. */
+                const first = clamp(shown - 3);
+                g.style.setProperty("--first", (i === 0 ? first : -first).toFixed(3));
             });
             parts.faces.forEach((face, i) => {
                 face.style.opacity = clamp(1 - Math.abs(shown - i) * 1.5).toFixed(3);
@@ -174,8 +199,10 @@ document.addEventListener("DOMContentLoaded", () => {
         digits: ["4", "9", "3", "2"],
         /* `at` is how many digits are left of the cut. */
         panels: [
-            { at: 3, top: "4,930", bottom: "2", doubt: "not a whole number of 4s", doubtAt: 3 },
-            { at: 2, top: "4,900", bottom: "32" }
+            { at: 3, top: "4,930", bottom: "2", sureAt: 2,
+              doubt: "not a whole number of 4s", doubtAt: 3 },
+            { at: 2, top: "4,900", bottom: "32", sureAt: 4,
+              settle: "a multiple of 4 too", settleAt: 5 }
         ],
         stages: [
             { title: "4,932", copy: "Every test splits the number in two, and asks whether the big part can look after itself.", panel: -1, verdict: -1 },
@@ -209,7 +236,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const panels = this.panels.map((p) => {
                 const panel = el("div", "cut__panel");
                 const top = el("div", "cut__box cut__box--top");
-                top.appendChild(el("span", "cut__value", p.top));
+                const topValue = el("span", "cut__value", p.top);
                 /* The big part is only safe for some divisors, so its label is
                    a pair of faces rather than a standing claim: at the stage
                    where the cut fails, the box has to say so. */
@@ -219,10 +246,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 doubted.setAttribute("data-face", p.doubt || "");
                 doubted.setAttribute("aria-hidden", "true");
                 role.append(kept, doubted);
-                top.appendChild(role);
+                stack(top, topValue, role);
                 const bottom = el("div", "cut__box cut__box--bottom");
-                bottom.appendChild(el("span", "cut__value", p.bottom));
-                bottom.appendChild(el("span", "cut__role", "left to decide"));
+                const bottomValue = el("span", "cut__value", p.bottom);
+                /* and the leftover stops being an open question once it has
+                   been tested, which is the last thing this figure does */
+                const open = el("span", "cut__face", "left to decide");
+                const closed = el("span", "cut__face cut__face--from");
+                closed.setAttribute("data-face", p.settle || "");
+                closed.setAttribute("aria-hidden", "true");
+                const bottomRole = el("span", "cut__role");
+                bottomRole.append(open, closed);
+                stack(bottom, bottomValue, bottomRole);
                 panel.append(top, el("span", "cut__plus", "+"), bottom);
                 parts.appendChild(panel);
                 return panel;
@@ -240,7 +275,7 @@ document.addEventListener("DOMContentLoaded", () => {
             line.append(...faces);
             figure.appendChild(line);
 
-            board.appendChild(figure);
+            board.appendChild(part(figure));
             return { rule, panels, faces };
         },
 
@@ -260,13 +295,21 @@ document.addEventListener("DOMContentLoaded", () => {
             parts.panels.forEach((panel, i) => {
                 const wanted = this.stages[stage].panel === i ? 1 : 0;
                 panel.style.opacity = wanted ? clamp((shown - 0.35) * 2).toFixed(3) : "0";
-                /* 1 only at the stage where this cut is shown not to work. */
-                const at = this.panels[i].doubtAt;
-                const doubt = at === undefined ? 0 : clamp(1 - Math.abs(shown - at) * 1.6);
+                const p = this.panels[i];
+                /* The big part makes no claim until the stage that shows it is
+                   safe, and stops making it at the stage that shows it is not. */
+                const sure = p.sureAt === undefined ? 1 : clamp(shown - (p.sureAt - 1));
+                const doubt = p.doubtAt === undefined ? 0 : clamp(1 - Math.abs(shown - p.doubtAt) * 1.6);
+                const settled = p.settleAt === undefined ? 0 : clamp(shown - (p.settleAt - 1));
+                panel.style.setProperty("--sure", (sure * (1 - doubt)).toFixed(3));
                 panel.style.setProperty("--doubt", doubt.toFixed(3));
-                const [kept, doubted] = panel.querySelectorAll(".cut__role .cut__face");
-                kept.style.opacity = (1 - doubt).toFixed(3);
+                panel.style.setProperty("--settled", settled.toFixed(3));
+                const [kept, doubted] = panel.querySelectorAll(".cut__box--top .cut__face");
+                kept.style.opacity = (sure * (1 - doubt)).toFixed(3);
                 doubted.style.opacity = doubt.toFixed(3);
+                const [open, closed] = panel.querySelectorAll(".cut__box--bottom .cut__face");
+                open.style.opacity = (1 - settled).toFixed(3);
+                closed.style.opacity = settled.toFixed(3);
             });
             parts.faces.forEach((face, i) => {
                 face.style.opacity = clamp(1 - Math.abs(shown - (i + 1)) * 1.6).toFixed(3);
@@ -302,10 +345,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const row = el("div", "nines__places");
             const cols = this.places.map((p) => {
-                const col = el("div", "nines__col");
-                col.appendChild(el("span", "nines__value", p.value));
-                col.appendChild(el("span", "nines__made", p.made));
-                col.appendChild(el("span", "nines__left", p.left));
+                const col = stack(el("div", "nines__col"),
+                    el("span", "nines__value", p.value),
+                    el("span", "nines__made", p.made),
+                    el("span", "nines__left", p.left));
                 row.appendChild(col);
                 return col;
             });
@@ -313,16 +356,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const totals = el("div", "nines__totals");
             const total = (kind, sum, caption) => {
-                const box = el("div", `nines__total nines__total--${kind}`);
-                box.appendChild(el("span", "nines__sum", sum));
-                box.appendChild(el("span", "nines__caption", caption));
+                const box = stack(el("div", `nines__total nines__total--${kind}`),
+                    el("span", "nines__sum", sum),
+                    el("span", "nines__caption", caption));
                 totals.appendChild(box);
                 return box;
             };
             const made = total("made", "4,914 = 9 × 546", "already 9s");
             const left = total("left", "4 + 9 + 3 + 2 = 18", "left over");
             figure.appendChild(totals);
-            board.appendChild(figure);
+            board.appendChild(part(figure));
             return { whole, cols, made, left };
         },
 
