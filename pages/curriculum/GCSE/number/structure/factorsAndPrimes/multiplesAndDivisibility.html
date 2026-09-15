@@ -56,12 +56,12 @@
             <section aria-labelledby="counting-in-steps">
                 <h1 id="counting-in-steps">Counting in steps</h1>
 
-                <p>Counting in 6s gives 6, 12, 18, 24. It runs on for as long as anyone keeps counting,
-                    and those are the multiples of 6.</p>
+                <p>Counting in 6s gives 6, 12, 18, 24. It runs on for as long as anyone keeps counting, and those
+                    are the multiples of 6.</p>
 
-                <p>Turn 24 round and 6 is one of its <span class="gloss"
-                    data-term="factor">factors</span>. The two words name one relationship from either
-                    end; the factors stop at 24, and the multiples never stop.</p>
+                <p>Turn 24 round and 6 is one of its <span class="gloss" data-term="factor">factors</span>. The two
+                    words name one relationship from either end; the factors stop at 24, and the multiples never
+                    stop.</p>
             </section>
 
             <section aria-labelledby="where-two-counts-meet">
@@ -92,31 +92,89 @@
                             36</strong></p>
                 </div>
 
-                <p>12 is where the two counts first meet. That makes it the lowest common multiple of 4
-                    and 6, and the later meetings are its multiples.</p>
+                <p>12 is where the two counts first meet. That makes it the lowest common multiple of 4 and 6, and
+                    the later meetings are its multiples.</p>
             </section>
 
-            <section aria-labelledby="why-a-test-works">
-                <h1 id="why-a-test-works">Why a test can work at all</h1>
+            <section aria-labelledby="splitting-a-number">
+                <h1 id="splitting-a-number">Splitting a number in two</h1>
 
-                <p>Dividing 4,518 by 4 answers the question the slow way. A test reads it off the
-                    digits instead.</p>
+                <p>Does 4 divide 4,932? Dividing it out answers that, but it is a long calculation for a yes or a
+                    no.</p>
 
-                <p>Ten is five 2s, two 5s and one 10. So every column above the ones is settled
-                    already, and only the last digit can leave anything over.</p>
+                <p>A shorter route starts from one way of writing any number:</p>
 
-                <p>4 is different. Ten is not a whole number of 4s, but a hundred is twenty-five of
-                    them, so the test reads the last two digits.</p>
+                <div class="rule-card">
+                    <p class="rule-card__statement">Every number is (a multiple of 10) + (its last digit)</p>
+                    <ol class="rule-card__conditions">
+                        <li><span class="sf" role="math"
+                                aria-label="4,932 equals 4,930 plus 2">4,932 = 4,930 + 2</span></li>
+                        <li><span class="sf" role="math"
+                                aria-label="70 equals 70 plus 0">70 = 70 + 0</span></li>
+                        <li><span class="sf" role="math"
+                                aria-label="8 equals 0 plus 8">8 = 0 + 8</span></li>
+                    </ol>
+                </div>
+
+                <p>The first part of that split is worth something. 4,930 ends in a 0, so it is a whole number of
+                    tens, and a ten is two 5s and five 2s.</p>
+
+                <p>4,930 divides by 2, by 5 and by 10 exactly. Whatever the answer turns out to be for
+                    4,932, that part of it cannot be the reason.</p>
+
+                <p>Only the 2 is left to decide, and 2 is even. That is the whole of the test for 2: split off the
+                    last digit and look at it.</p>
+            </section>
+
+            <section aria-labelledby="when-one-digit-is-not-enough">
+                <h1 id="when-one-digit-is-not-enough">When one digit is not enough</h1>
+
+                <p>Try the same split for 4, and it breaks down. 4,930 is a whole number of tens, but a ten is not a
+                    whole number of 4s.</p>
+
+                <p>Cutting one place further left fixes it. A hundred is 25 fours, so everything above
+                    the last two digits is settled before the cut is made.</p>
+
+                <div class="worked">
+                    <h2 class="worked__title">Does 4 divide 4,932?</h2>
+
+                    <div class="mult-scene" data-mult-scene data-figure="cut">
+                        <div class="mult-scene__sticky">
+                            <div class="mult-board">
+                                <div class="mult-board__paper" data-board aria-hidden="true"></div>
+                            </div>
+
+                            <div class="mult-scene__caption" aria-live="polite">
+                                <h3 data-step-title>One number, cut in two</h3>
+                                <p data-step-copy>The big part looks after itself, and whatever is left over is what decides.</p>
+                            </div>
+
+                            <div class="mult-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                    </div>
+
+                    <p class="worked__answer"><strong class="sf" role="math"
+                            aria-label="4,932 equals 4,900 plus 32, and 32 equals 4 times 8, so 4 divides 4,932">4,932
+                            = 4,900 + 32, and 32 = 4 &times; 8</strong></p>
+                </div>
+
+                <p>That gives a second rule, shaped like the first. Every number is (a multiple of 100) + (its
+                    last two digits), and the 4 test reads the second half of it.</p>
             </section>
 
             <section aria-labelledby="the-nines-test">
                 <h1 id="the-nines-test">9 is the awkward one</h1>
 
-                <p>No power of ten is a whole number of 9s. Each is one more than one that is: 10 is 9
-                    + 1, 100 is 99 + 1, and 1,000 is 999 + 1.</p>
+                <p>No cut anywhere in 4,932 helps. Ten is not a whole number of 9s, a hundred is not, and neither is
+                    a thousand.</p>
+
+                <p>Each of them misses by exactly 1, though. Ten is 9 + 1, a hundred is 99 + 1, and a
+                    thousand is 999 + 1, and that turns out to be enough.</p>
+
+                <p>So take 4,932 apart place by place. Each place then splits the same way.</p>
 
                 <div class="worked">
-                    <h2 class="worked__title">Does 9 divide 4,518?</h2>
+                    <h2 class="worked__title">Does 9 divide 4,932?</h2>
 
                     <div class="mult-scene" data-mult-scene data-figure="nines">
                         <div class="mult-scene__sticky">
@@ -125,7 +183,7 @@
                             </div>
 
                             <div class="mult-scene__caption" aria-live="polite">
-                                <h3 data-step-title>4,518, taken apart by place</h3>
+                                <h3 data-step-title>4,932, taken apart by place</h3>
                                 <p data-step-copy>Every place splits into a part made of 9s and a single digit left over.</p>
                             </div>
 
@@ -134,12 +192,15 @@
                     </div>
 
                     <p class="worked__answer"><strong class="sf" role="math"
-                            aria-label="4 plus 5 plus 1 plus 8 equals 18, a multiple of 9, so 4,518 equals 9 times 502">4
-                            + 5 + 1 + 8 = 18, so 4,518 = 9 &times; 502</strong></p>
+                            aria-label="4 plus 9 plus 3 plus 2 equals 18, a multiple of 9, so 4,932 equals 9 times 548">4
+                            + 9 + 3 + 2 = 18, so 4,932 = 9 &times; 548</strong></p>
                 </div>
 
-                <p>999, 99 and 9 are multiples of 3 as well. The same sum settles both questions, and
-                    18 puts 4,518 in both lists.</p>
+                <p>That is why adding the digits works. Each digit is exactly what its own place leaves behind, so
+                    the sum of them is what the whole number leaves behind.</p>
+
+                <p>999, 99 and 9 are multiples of 3 as well. The same sum settles both questions, and 18 puts 4,932
+                    in both lists.</p>
             </section>
 
             <section aria-labelledby="the-six-tests">
@@ -180,9 +241,9 @@
                     </ol>
                 </div>
 
-                <p>A digit sum can be added again. 18 gives <span class="sf" role="math" aria-label="1
-                    plus 8 equals 9">1 + 8 = 9</span>, and each round leaves a smaller number in the
-                    same list.</p>
+                <p>A digit sum can be added again. 18 gives <span class="sf" role="math"
+                        aria-label="1 plus 8 equals 9">1 + 8 = 9</span>, and each round leaves a smaller number in
+                    the same list.</p>
             </section>
 
             <section aria-labelledby="common-mistakes">
@@ -195,8 +256,9 @@
                     <span>The digits of 4,527 add to 18, which is a multiple of 9, and 4,527 is odd. Adding the
                             digits tests 3 and 9; the 2 test reads the last digit alone.</span></li>
                     <li><b>Testing 4 on the last digit alone</b>
-                    <span>518 ends in 8, and 8 is a multiple of 4, but 518 &divide; 4 = 129.5. Both of the last two
-                            digits count: 18 is no good, while 516 works because 16 is.</span></li>
+                    <span>518 ends in 8, and 8 is a multiple of 4, but 518 &divide; 4 = 129.5. A ten is not a whole
+                            number of 4s, so the tens digit still counts: 18 is no good, while 516 works because 16
+                            is.</span></li>
                     <li><b>Taking any common multiple for the lowest one</b>
                     <span>24 is reached by counting in 4s and by counting in 6s, but the two counts have already met
                             at 12. The lowest common multiple is the first meeting, not any of them.</span></li>
@@ -206,13 +268,15 @@
             <section aria-labelledby="remember">
                 <h1 id="remember">Remember</h1>
                 <ol class="recap">
-                    <li>The multiples of 6 are 6, 12, 18, 24 and onwards, and 6 is a factor of every one of them.</li>
+                    <li>The multiples of 6 are 6, 12, 18, 24 and onwards, and 6 is a factor of every one of
+                        them.</li>
                     <li>A common multiple of 4 and 6 is reached by both counts, and 12 is the first.</li>
-                    <li>The 2, 5 and 10 tests read the last digit, because every ten is a whole number of each; the 4
-                        test reads the last two.</li>
-                    <li>9, 99 and 999 are multiples of both 3 and 9, which is why adding the digits answers both:
-                        <span class="sf" role="math" aria-label="4 plus 5 plus 1 plus 8 equals 18">4 + 5 + 1 + 8 =
-                            18</span>.</li>
+                    <li>Every test cuts the number into a part that is certainly a multiple of the divisor and a
+                        part left over, and only the leftover can decide.</li>
+                    <li>A ten is a whole number of 2s, 5s and 10s, so those tests cut after the last digit; a
+                        hundred is a whole number of 4s, so that one cuts after the last two.</li>
+                    <li>No power of ten is a whole number of 9s, but each is 1 more than one, so every place leaves
+                        its own digit behind and the digits are added instead.</li>
                 </ol>
             </section>
 

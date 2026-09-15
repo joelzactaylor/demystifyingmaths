@@ -7,7 +7,7 @@
    visible as a place both counts reach, rather than a number that turns up in
    two written lists.
 
-   The second takes 4,518 apart by place and splits each place into the part of
+   The third takes 4,932 apart by place and splits each place into the part of
    it that is already a whole number of 9s and the single digit that is left.
    Gathering those leftovers is the digit sum, and seeing them gathered is the
    reason the test works.
@@ -160,30 +160,144 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    /* ------------------------------------------ 4,518, taken apart by place */
+
+    /* ------------------------------------------------- where to cut a number
+
+       One idea, tried three times. Every number splits into a part that is
+       certainly a whole number of what is being tested for, and a small part
+       left over; only the leftover can decide. The middle stage is the one
+       that teaches: the cut that worked for 2, 5 and 10 is tried for 4 and
+       fails, which is why that test needs a second digit. A rule that is only
+       asserted is a rule the reader has to take on trust. */
+
+    const cut = {
+        digits: ["4", "9", "3", "2"],
+        /* `at` is how many digits are left of the cut. */
+        panels: [
+            { at: 3, top: "4,930", bottom: "2", doubt: "not a whole number of 4s", doubtAt: 3 },
+            { at: 2, top: "4,900", bottom: "32" }
+        ],
+        stages: [
+            { title: "4,932", copy: "Every test splits the number in two, and asks whether the big part can look after itself.", panel: -1, verdict: -1 },
+            { title: "Cut after the tens", copy: "4,932 is 4,930 and 2. Whatever the rest of the number is, it ends in a 0.", panel: 0, verdict: 0 },
+            { title: "The big part is safe for 2, 5 and 10", copy: "10 is two 5s and five 2s, so 4,930 is a whole number of each. Only the 2 is left to decide, and 2 is even.", panel: 0, verdict: 1 },
+            { title: "The same cut fails for 4", copy: "4,930 ÷ 4 = 1,232 with 2 over, so the big part is not a whole number of 4s and this cut settles nothing.", panel: 0, verdict: 2 },
+            { title: "Cut one place further left", copy: "4,932 is 4,900 and 32. 4,900 is 49 hundreds, and 100 = 4 × 25.", panel: 1, verdict: 3 },
+            { title: "So 32 decides", copy: "4,900 is a whole number of 4s, which leaves 32, and 32 = 4 × 8. So 4,932 is a multiple of 4.", panel: 1, verdict: 4 }
+        ],
+        verdicts: [
+            "4,930 = 493 × 10",
+            "10 = 2 × 5,  so 4,930 is 2,465 twos and 986 fives",
+            "4,930 ÷ 4 = 1,232 r 2",
+            "4,900 = 49 × 100  and  100 = 4 × 25",
+            "32 = 4 × 8,  so 4,932 = 4 × 1,233"
+        ],
+
+        build(board) {
+            board.replaceChildren();
+            const figure = el("div", "cut");
+
+            const row = el("div", "cut__row");
+            const rule = el("span", "cut__rule");
+            row.appendChild(rule);
+            this.digits.forEach((d) => row.appendChild(el("span", "cut__digit", d)));
+            figure.appendChild(row);
+
+            /* Both splits are built and cross-faded, so the board never reflows
+               as the cut moves. */
+            const parts = el("div", "cut__parts");
+            const panels = this.panels.map((p) => {
+                const panel = el("div", "cut__panel");
+                const top = el("div", "cut__box cut__box--top");
+                top.appendChild(el("span", "cut__value", p.top));
+                /* The big part is only safe for some divisors, so its label is
+                   a pair of faces rather than a standing claim: at the stage
+                   where the cut fails, the box has to say so. */
+                const role = el("span", "cut__role");
+                const kept = el("span", "cut__face", "looks after itself");
+                const doubted = el("span", "cut__face cut__face--from");
+                doubted.setAttribute("data-face", p.doubt || "");
+                doubted.setAttribute("aria-hidden", "true");
+                role.append(kept, doubted);
+                top.appendChild(role);
+                const bottom = el("div", "cut__box cut__box--bottom");
+                bottom.appendChild(el("span", "cut__value", p.bottom));
+                bottom.appendChild(el("span", "cut__role", "left to decide"));
+                panel.append(top, el("span", "cut__plus", "+"), bottom);
+                parts.appendChild(panel);
+                return panel;
+            });
+            figure.appendChild(parts);
+
+            const line = el("p", "cut__verdict");
+            const faces = this.verdicts.map((text, i) => {
+                if (i === this.verdicts.length - 1) return el("span", "cut__face", text);
+                const face = el("span", "cut__face cut__face--from");
+                face.setAttribute("data-face", text);
+                face.setAttribute("aria-hidden", "true");
+                return face;
+            });
+            line.append(...faces);
+            figure.appendChild(line);
+
+            board.appendChild(figure);
+            return { rule, panels, faces };
+        },
+
+        place(parts, shown) {
+            const stage = Math.max(0, Math.min(this.stages.length - 1, Math.round(shown)));
+            /* The cut travels between the places it rests at, rather than
+               jumping from one digit boundary to the next. */
+            const cutAt = (i) => {
+                const p = this.stages[Math.max(0, Math.min(this.stages.length - 1, i))].panel;
+                return p < 0 ? this.digits.length : this.panels[p].at;
+            };
+            const lo = Math.floor(shown), t = clamp(shown - lo);
+            const at = cutAt(lo) + (cutAt(lo + 1) - cutAt(lo)) * ease(t);
+            parts.rule.style.setProperty("--at", at.toFixed(3));
+            parts.rule.style.opacity = clamp(shown * 1.6).toFixed(3);
+
+            parts.panels.forEach((panel, i) => {
+                const wanted = this.stages[stage].panel === i ? 1 : 0;
+                panel.style.opacity = wanted ? clamp((shown - 0.35) * 2).toFixed(3) : "0";
+                /* 1 only at the stage where this cut is shown not to work. */
+                const at = this.panels[i].doubtAt;
+                const doubt = at === undefined ? 0 : clamp(1 - Math.abs(shown - at) * 1.6);
+                panel.style.setProperty("--doubt", doubt.toFixed(3));
+                const [kept, doubted] = panel.querySelectorAll(".cut__role .cut__face");
+                kept.style.opacity = (1 - doubt).toFixed(3);
+                doubted.style.opacity = doubt.toFixed(3);
+            });
+            parts.faces.forEach((face, i) => {
+                face.style.opacity = clamp(1 - Math.abs(shown - (i + 1)) * 1.6).toFixed(3);
+            });
+        }
+    };
+
+    /* ------------------------------------------ 4,932, taken apart by place */
 
     const nines = {
         /* value: what the place is worth; made: the part of it that is already
            a whole number of 9s; left: the digit that survives. */
         places: [
-            { digit: 4, value: "4,000", made: "4 × 999", left: "+ 4" },
-            { digit: 5, value: "500", made: "5 × 99", left: "+ 5" },
-            { digit: 1, value: "10", made: "1 × 9", left: "+ 1" },
-            { digit: 8, value: "8", made: "—", left: "+ 8" }
+            { value: "4,000", made: "4 × 999", left: "+ 4" },
+            { value: "900", made: "9 × 99", left: "+ 9" },
+            { value: "30", made: "3 × 9", left: "+ 3" },
+            { value: "2", made: "—", left: "+ 2" }
         ],
         stages: [
-            { title: "4,518", copy: "Dividing by 9 would settle this, and the digits settle it without dividing." },
-            { title: "Place by place", copy: "4,518 is 4 thousands, 5 hundreds, 1 ten and 8 ones." },
+            { title: "4,932", copy: "No cut anywhere in this number leaves a big part that is a whole number of 9s." },
+            { title: "Place by place", copy: "4,932 is 4 thousands, 9 hundreds, 3 tens and 2 ones." },
             { title: "Every place is 9s and one more", copy: "1,000 is 999 + 1, 100 is 99 + 1, and 10 is 9 + 1, so each place splits in two." },
-            { title: "The part made of 9s", copy: "4 × 999 + 5 × 99 + 1 × 9 = 4,500, which is 9 × 500 and needs no testing." },
-            { title: "What each place leaves", copy: "The leftovers are the digits themselves: 4 + 5 + 1 + 8 = 18." },
-            { title: "18 decides it", copy: "4,500 is a multiple of 9 whatever happens, so 4,518 is one exactly when 18 is." }
+            { title: "The part made of 9s", copy: "4 × 999 + 9 × 99 + 3 × 9 = 4,914, which is 9 × 546 and needs no testing." },
+            { title: "What each place leaves", copy: "Each place leaves its own digit behind: 4 + 9 + 3 + 2 = 18." },
+            { title: "18 decides it", copy: "4,914 is a multiple of 9 whatever happens, so 4,932 is one exactly when 18 is." }
         ],
 
         build(board) {
             board.replaceChildren();
             const figure = el("div", "nines");
-            const whole = el("div", "nines__whole", "4,518");
+            const whole = el("div", "nines__whole", "4,932");
             figure.appendChild(whole);
 
             const row = el("div", "nines__places");
@@ -205,8 +319,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 totals.appendChild(box);
                 return box;
             };
-            const made = total("made", "4,500 = 9 × 500", "already 9s");
-            const left = total("left", "4 + 5 + 1 + 8 = 18", "left over");
+            const made = total("made", "4,914 = 9 × 546", "already 9s");
+            const left = total("left", "4 + 9 + 3 + 2 = 18", "left over");
             figure.appendChild(totals);
             board.appendChild(figure);
             return { whole, cols, made, left };
@@ -228,7 +342,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    const FIGURES = { common, nines };
+    const FIGURES = { common, cut, nines };
 
     const painter = {
         read: (scene) => FIGURES[scene.dataset.figure] || null,

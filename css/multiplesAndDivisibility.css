@@ -3,7 +3,7 @@
    Two scroll-led figures and one still one. The first counts in 4s and in 6s
    along a single line, so a common multiple is visibly a place both counts
    reach rather than an entry in two lists that happen to agree. The second
-   takes 4,518 apart by place and splits each place into a part made of 9s and
+   takes 4,932 apart by place and splits each place into a part made of 9s and
    a single digit left over, which is the whole of why the digit sum answers
    the question. The still figure is the four last-digit tests set against the
    reason each one works.
@@ -131,7 +131,95 @@
 .cline__face { grid-area: 1 / 1; white-space: nowrap; }
 .cline__face--from::before { content: attr(data-face); }
 
-/* 4,518 TAKEN APART BY PLACE --------------------------------------------
+/* WHERE TO CUT THE NUMBER -----------------------------------------------
+
+   Every test splits the number into a part that is certainly a whole number of
+   the divisor and a small part left over, and only the leftover can decide.
+   The cut is a gold rule that travels between the places it rests at, so the
+   reader sees one idea being tried in two places rather than two unrelated
+   rules. --at is how many digits lie to its left. */
+
+.cut { display: grid; align-content: center; justify-items: center; gap: 20px; width: 100%; }
+
+.cut__row {
+    position: relative;
+    display: grid;
+    grid-auto-flow: column;
+    color: #173849;
+    font: 700 2.5rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.cut__digit { width: 1.15em; text-align: center; }
+
+/* The rule is drawn behind the digits and reaches past them top and bottom, so
+   it reads as a cut through the number rather than a character in it. */
+.cut__rule {
+    position: absolute;
+    top: -12px;
+    bottom: -12px;
+    left: calc(var(--at, 4) * 1.15em);
+    z-index: 0;
+    width: 3px;
+    margin-left: -1.5px;
+    border-radius: 2px;
+    background: #d99a20;
+}
+
+.cut__digit { position: relative; z-index: 1; }
+
+.cut__parts { display: grid; }
+
+.cut__panel {
+    display: grid;
+    grid-area: 1 / 1;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 14px;
+}
+
+.cut__box {
+    display: grid;
+    gap: 4px;
+    justify-items: center;
+    padding: 10px 20px;
+    border-radius: 14px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* The part that looks after itself is quiet; the part still to be judged is
+   the one in the page's ochre, because that is where the reader has to look. */
+/* --doubt rises at the stage where this cut is shown not to work, and the box
+   goes quiet: the house treatment for something that does not hold is grey and
+   empty, never a warning colour. */
+.cut__box--top {
+    border: 2px solid color-mix(in oklab, #b8cbd7, #d2dade calc(var(--doubt, 0) * 100%));
+    background: color-mix(in oklab, #eef5fb, #f3f6f8 calc(var(--doubt, 0) * 100%));
+    color: color-mix(in oklab, #09539d, #687b84 calc(var(--doubt, 0) * 100%));
+}
+.cut__box--bottom { border: 2px solid #d99a20; background: #fff8df; color: #9b5f12; }
+
+.cut__value { font: 700 1.34rem/1.1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+.cut__role { display: inline-grid; justify-items: center; font-size: .74rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; }
+
+.cut__plus { color: #52666f; font: 700 1.3rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+
+.cut__verdict {
+    display: inline-grid;
+    margin: 0;
+    justify-items: center;
+    color: #09539d;
+    font: 700 1.14rem/1.3 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.cut__face { grid-area: 1 / 1; white-space: nowrap; }
+.cut__face--from::before { content: attr(data-face); }
+
+.cut__panel,
+.cut__rule { opacity: 0; }
+
+/* 4,932 TAKEN APART BY PLACE --------------------------------------------
 
    One column per place. The top row is what the place is worth, the middle row
    the part of it made of 9s, and the bottom row the single digit that is left.
