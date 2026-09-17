@@ -2,7 +2,7 @@
 
 Use this prompt from the repository root. Replace `<TARGET>` only when a specific page is required; otherwise select the unwritten practice page paired with the most recently completed teaching page.
 
-Quick invocation for a new Codex turn:
+Quick invocation, in any agent (Claude Code, Codex, Copilot agent mode, Cursor — `AGENTS.md` at the repository root points here; in VS Code Copilot chat, `/build-practice` does the same):
 
 > Read and execute `docs/master-practice-page-prompt.md` for the next unwritten practice page. Treat the prompt as the complete brief and continue until every review and validation gate passes.
 

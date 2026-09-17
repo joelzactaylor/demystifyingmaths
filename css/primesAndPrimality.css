@@ -1,0 +1,610 @@
+/* Primes and testing for primality.
+
+   Four scroll-led figures, one still one, and a live tester. The still
+   figure is the three rectangles 12 counters make. The scenes are 13
+   counters failing to make any rectangle but a single row; the sieve, with
+   the multiples of 2, 3, 5 and 7 crossed out of 1 to 50 in turn; and the
+   primes counted along a line towards 97 and towards 91, so a remainder is a
+   visible gap and an exact division is a count that lands. The tester runs
+   every prime in turn on a number of the reader's own.
+
+   Everything else comes from lesson.css.
+
+   No viewport media queries below: .layout is a fixed 900px panel that
+   shared.css scales with transform under 900px, so nothing here may reflow.
+   The reduced-motion block at the end is the only @media. */
+
+/* THE SCROLL-LED CARD ---------------------------------------------------- */
+
+.prime-scene {
+    position: relative;
+    min-height: min(430px, calc(100vh - 104px));
+    margin: 26px 0 8px;
+    overflow-anchor: none;
+}
+
+.prime-scene.is-ready {
+    height: var(--scene-height);
+    min-height: var(--scene-min-height);
+}
+
+.prime-scene__sticky {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: grid;
+    height: min(430px, calc(100vh - 104px));
+    min-height: 380px;
+    box-sizing: border-box;
+    /* board, caption, progress */
+    grid-template-rows: minmax(0, 1fr) auto auto;
+    overflow: hidden;
+    border: 2px solid #c9dce8;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #fbfdff 0%, #f2f8fc 100%);
+    box-shadow: 0 12px 30px rgba(20, 57, 78, .14);
+    contain: layout paint;
+    overflow-anchor: none;
+    will-change: transform;
+}
+
+.prime-scene__sticky.is-pinned {
+    position: fixed;
+    right: auto;
+    z-index: 900;
+    transform-origin: top left;
+}
+
+.prime-board {
+    position: relative;
+    display: grid;
+    min-height: 0;
+    padding: 6px 24px 0;
+    place-items: center;
+}
+
+.prime-board__paper {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    width: 100%;
+}
+
+.prime-scene__caption {
+    display: grid;
+    align-content: center;
+    height: 6.6em;
+    box-sizing: border-box;
+    padding: 14px 28px 6px;
+    text-align: center;
+}
+
+.prime-scene__caption h3 {
+    margin: 0 0 5px;
+    color: #09539d;
+    font-size: 1.1rem;
+}
+
+.prime-scene__caption p {
+    margin: 0;
+    color: #243a45;
+    font-size: .97rem;
+    line-height: 1.5;
+}
+
+.prime-scene__progress {
+    display: flex;
+    gap: 8px;
+    padding: 0 22px 18px;
+    justify-content: center;
+}
+
+.prime-scene__dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: #c6d4dc;
+    transition: width .25s ease, background-color .25s ease;
+}
+
+.prime-scene__dot.is-past {
+    background: #6c9bb0;
+}
+
+.prime-scene__dot.is-current {
+    width: 28px;
+    background: #116e93;
+}
+
+/* WHAT EVERY FIGURE SHARES ----------------------------------------------
+
+   A drawing and, under it, the line the current stage has just settled. The
+   last line is written into the element and the rest come from data-face, so
+   a stripped page reads one true statement rather than every stage at once. */
+
+.rows,
+.sieve,
+.tline {
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    gap: 16px;
+    width: 100%;
+}
+
+.rows__svg,
+.sieve__svg,
+.tline__svg {
+    display: block;
+    width: 100%;
+    max-width: 744px;
+    overflow: visible;
+}
+
+.scene-note {
+    display: inline-grid;
+    margin: 0;
+    justify-items: center;
+    color: #09539d;
+    font: 700 1.2rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.scene-note__face {
+    grid-area: 1 / 1;
+    white-space: nowrap;
+}
+
+.scene-note__face--from::before {
+    content: attr(data-face);
+}
+
+/* Nothing is drawn until the scrub asks for it. The marks are built before the
+   first frame is painted, so without a closed starting state the whole figure
+   would flash on at once as it is made. */
+.rows__counter,
+.rows__frame,
+.rows__dims,
+.sieve__grid,
+.sieve__cross,
+.sieve__ring,
+.tline__axis,
+.tline__prime,
+.tline__dot,
+.tline__end,
+.tline__finish,
+.scene-note__face {
+    opacity: 0;
+}
+
+/* 13 COUNTERS IN ROWS ---------------------------------------------------
+
+   The counter with no row to join is coloured apart, and --over runs from 0
+   to 1 as it becomes that counter, so the colour travels with it rather than
+   snapping between layouts. The flat declaration comes first, for anything
+   that cannot mix a colour. */
+
+.rows__counter {
+    fill: #116e93;
+    fill: color-mix(in oklab, #116e93, #b86821 calc(var(--over, 0) * 100%));
+    stroke: #f7fbfd;
+    stroke-width: 2;
+}
+
+/* The 4 × 4 frame the counters cannot fill, and the three cells they leave
+   empty. */
+.rows__outline {
+    fill: none;
+    stroke: #6c9bb0;
+    stroke-width: 2;
+    stroke-dasharray: 6 5;
+}
+
+.rows__empty {
+    fill: none;
+    stroke: #b8cbd7;
+    stroke-width: 2;
+    stroke-dasharray: 3 3;
+}
+
+.rows__brace {
+    fill: none;
+    stroke: #526b76;
+    stroke-width: 1.5;
+}
+
+.rows__dim {
+    fill: #173849;
+    font: 700 15px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+/* THE SIEVE ------------------------------------------------------------- */
+
+.sieve__num {
+    fill: #173849;
+    font: 700 16px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+/* 1 is set aside before any crossing starts, so it is the one number drawn
+   in the grid's own grey. */
+.sieve__num--one {
+    fill: #9aa9b1;
+}
+
+/* --fresh is 1 on the crosses the current prime is making and falls to 0 as
+   the next prime takes over, so the newest crosses are heavier and darker and
+   the settled ones step back. The flat declarations come first, for anything
+   that cannot mix a colour. */
+.sieve__stroke {
+    stroke: #b86821;
+    stroke: color-mix(in oklab, #d9a97e, #9b5f12 calc(var(--fresh, 0) * 100%));
+    stroke-width: 2;
+    stroke-width: calc(1.8px + 1.2px * var(--fresh, 0));
+    stroke-linecap: round;
+}
+
+.sieve__halo {
+    fill: none;
+    stroke: #09539d;
+    stroke-width: 2.5;
+}
+
+/* PRIMES COUNTED ALONG A LINE ------------------------------------------- */
+
+.tline__rule {
+    stroke: #4a6570;
+    stroke-width: 2;
+    stroke-linecap: round;
+}
+
+.tline__tick {
+    stroke: #c2d3dd;
+    stroke-width: 1.5;
+}
+
+.tline__scale {
+    fill: #52666f;
+    font: 700 11px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+/* The number under test stands as a post the counts are measured against. */
+.tline__post {
+    stroke: #b86821;
+    stroke-width: 2;
+    stroke-dasharray: 4 4;
+}
+
+.tline__n {
+    fill: #9b5f12;
+    font: 700 15px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+.tline__prime {
+    fill: #09539d;
+    font: 700 14px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+.tline__dot {
+    fill: #116e93;
+}
+
+/* A count that falls short leaves a gap before the post, drawn in the second
+   colour, with the remainder it measures written beside it. */
+.tline__gap {
+    stroke: #b86821;
+    stroke-width: 4;
+    stroke-linecap: round;
+}
+
+.tline__r {
+    fill: #9b5f12;
+    font: 700 13px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+/* A count that lands on the post is ringed in the page's gold. */
+.tline__hit {
+    fill: #fff2c9;
+    fill-opacity: .7;
+    stroke: #d99a20;
+    stroke-width: 2.5;
+}
+
+.tline__square {
+    fill: #fff8df;
+    stroke: #d99a20;
+    stroke-width: 2;
+}
+
+.tline__brace {
+    fill: none;
+    stroke: #526b76;
+    stroke-width: 1.5;
+}
+
+.tline__label {
+    fill: #173849;
+    font: 700 13px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+/* TWELVE COUNTERS, THREE WAYS --------------------------------------------
+
+   The still figure: every rectangle 12 counters make, side by side. */
+
+.tiles {
+    margin: 22px 0 8px;
+    padding: 18px 20px 14px;
+    border: 2px solid #d9e2ec;
+    border-radius: 18px;
+    background: #f8fbfd;
+}
+
+.tiles__svg {
+    display: block;
+    width: 100%;
+    max-width: 588px;
+    margin: 0 auto;
+    overflow: visible;
+}
+
+.tiles__one circle {
+    fill: #116e93;
+    stroke: #f8fbfd;
+    stroke-width: 2;
+}
+
+.tiles__label {
+    fill: #173849;
+    font: 700 14px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    text-anchor: middle;
+}
+
+.tiles__caption {
+    margin: 12px 0 0;
+    color: #41535c;
+    font-size: .95rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* THE LIST OF PRIMES ------------------------------------------------------
+
+   Fifteen numerals in one statement. At the rule card's size they run past
+   the panel's edge, so they are set a step smaller and allowed to wrap. */
+
+.rule-card--list .rule-card__statement {
+    font-size: 1.35rem;
+    line-height: 1.5;
+}
+
+.rule-card--list .sf {
+    white-space: normal;
+}
+
+/* A HEADING INSIDE A SECTION ---------------------------------------------
+
+   Nothing sitewide styles an h2 below a section's h1, so one that groups a
+   part of the section takes the worked-example title's blue and size. */
+
+.sub {
+    margin: 30px 0 8px;
+    color: #09539d;
+    font-size: 1.2rem;
+}
+
+/* EVERY PRIME IN TURN ----------------------------------------------------
+
+   A number of the reader's own, and the primes tried on it one after another.
+   The chips are built once and rewritten in place, and there is one for
+   every prime the box can need, so the panel is the same size whatever the
+   number. A refused number hides the chips with visibility so the panel
+   keeps its size, and a dashed panel says what is needed instead — the
+   house's quiet invalid state, not a warning. */
+
+.trier {
+    margin: 22px 0 8px;
+    border: 2px solid #c9dce8;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #fbfdff 0%, #f2f8fc 100%);
+    box-shadow: 0 12px 30px rgba(20, 57, 78, .14);
+}
+
+.trier__head {
+    display: flex;
+    justify-content: center;
+    padding: 18px 24px 8px;
+}
+
+.trier__field {
+    display: grid;
+    gap: 5px;
+    justify-items: center;
+}
+
+.trier__field > span {
+    color: #41535c;
+    font-size: .76rem;
+    font-weight: 700;
+    letter-spacing: .035em;
+}
+
+.trier__field input {
+    width: 150px;
+    box-sizing: border-box;
+    padding: 10px 14px;
+    border: 2px solid #b8cbd7;
+    border-radius: 12px;
+    outline: none;
+    background: #fff;
+    color: #173849;
+    font: 700 1.18rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+    transition: border-color .18s ease, box-shadow .18s ease;
+}
+
+.trier__field input:focus {
+    border-color: #116e93;
+    box-shadow: 0 0 0 4px rgba(17, 110, 147, .12);
+}
+
+.trier__hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+}
+
+/* The chips and the refusal share one cell, so the panel never changes height
+   between a number and no number. */
+.trier__body {
+    position: relative;
+    display: grid;
+    padding: 6px 24px 20px;
+}
+
+.trier__list {
+    grid-area: 1 / 1;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(6, 1fr);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.trier__chip {
+    display: grid;
+    box-sizing: border-box;
+    min-height: 64px;
+    padding: 8px 6px 7px;
+    justify-items: center;
+    align-content: center;
+    gap: 3px;
+    border: 2px solid #d9e2ec;
+    border-top: 5px solid #b8cbd7;
+    border-radius: 14px;
+    background: #fff;
+    transition: border-color .18s ease, background-color .18s ease;
+}
+
+.trier__prime {
+    color: #09539d;
+    font: 700 1.12rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+/* The note is generated from data-note rather than written into the element,
+   so a page stripped of its styling reads the full statement beside it and
+   not this shorthand as well. */
+.trier__note::before {
+    content: attr(data-note);
+}
+
+.trier__note {
+    min-height: 1.2em;
+    color: #52666f;
+    font: 700 .82rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+/* The four states are told apart by the note itself and by the weight and
+   colour of the top edge, not by colour alone. A prime that leaves a
+   remainder keeps the blue; the one that divides takes the gold the page
+   keeps for a count that lands; the one whose square is past the number is
+   the stop, in the second colour; anything after that is not needed. */
+.trier__chip.is-miss {
+    border-top-color: #5d91b0;
+}
+
+.trier__chip.is-hit {
+    border-top-color: #d99a20;
+    background: #fff8df;
+}
+
+.trier__chip.is-hit .trier__note {
+    color: #7a540a;
+}
+
+.trier__chip.is-stop {
+    border-top-color: #b86821;
+}
+
+.trier__chip.is-stop .trier__note {
+    color: #9b5f12;
+}
+
+.trier__chip.is-idle {
+    border-top-color: #e2eaf0;
+    border-color: #e2eaf0;
+    background: #f8fbfd;
+}
+
+.trier__chip.is-idle .trier__prime {
+    color: #b8cbd7;
+}
+
+/* Two lines are reserved, which is what the longest verdict takes, so the
+   panel is the same height for every number. */
+.trier__summary {
+    grid-area: 2 / 1;
+    min-height: 3em;
+    margin: 14px 0 0;
+    color: #243a45;
+    font-size: .97rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.trier__list.is-hidden,
+.trier__summary.is-hidden {
+    visibility: hidden;
+}
+
+/* display: grid on the refusal would otherwise beat the hidden attribute. */
+.trier__empty[hidden] {
+    display: none;
+}
+
+.trier__empty {
+    grid-area: 1 / 1;
+    display: grid;
+    place-items: center;
+    margin: 0;
+    padding: 24px;
+    border: 2px dashed #b8cbd7;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, .86);
+    color: #687b84;
+    font-size: .97rem;
+    text-align: center;
+}
+
+/* REDUCED MOTION ---------------------------------------------------------
+
+   The card is never pinned and never scrubbed: it draws its finished state and
+   stays where it sits in the page. */
+
+@media (prefers-reduced-motion: reduce) {
+    .prime-scene.is-ready {
+        height: auto;
+        min-height: 0;
+    }
+
+    .prime-scene__sticky {
+        position: relative;
+        height: auto;
+        transform: none !important;
+    }
+
+    .prime-scene__dot,
+    .trier__chip,
+    .trier__field input {
+        transition: none;
+    }
+}

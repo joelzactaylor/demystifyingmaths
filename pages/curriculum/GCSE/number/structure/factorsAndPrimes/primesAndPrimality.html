@@ -6,16 +6,19 @@
     <title>Demystifying Maths | GCSE Primes and testing for primality</title>
     <meta name="description" content="What makes a number prime, why 1 is not, and trial division up to the root.">
     <meta property="og:title" content="Demystifying Maths">
-    <meta property="og:description" content="What makes a number prime, why 1 is not, and trial division up to the root.">
+    <meta property="og:description"
+        content="What makes a number prime, why 1 is not, and trial division up to the root.">
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/primesAndPrimality.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/primesAndPrimality.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -30,12 +33,18 @@
             <h1>Demystifying - Primes and testing for primality</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
-                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and calculation</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/">Factors and primes</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span>
+                    </li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and
+                            calculation</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/">Factors
+                            and primes</a><span aria-hidden="true">&rsaquo;</span></li>
                     <li>
                         <p>Primes and testing for primality</p>
                     </li>
@@ -46,25 +55,418 @@
         <aside id="page-nav-container"></aside>
 
         <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>The definition of prime, why 1 is excluded, identifying primes to 50, and testing numbers like 91, 97 and 117 by trial division by primes up to the square root. Prime factorisation lives on the next page; infinitude-of-primes proofs are A level. Both tiers. (N4)</p>
+            <p class="prereq"><b>Before this page:</b> <span>be able to list the <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/factorsAndFactorPairs.html">factors
+                        of a number in pairs</a> and know where the trials stop, read the tests for 2, 3 and 5
+                    from <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/multiplesAndDivisibility.html">multiples
+                        and divisibility tests</a>, and divide with <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/shortDivision.html">short
+                        division</a>.</span></p>
+
+            <section aria-labelledby="one-rectangle-only">
+                <h1 id="one-rectangle-only">Numbers that make one rectangle</h1>
+
+                <p>12 counters make three rectangles: <span class="sf" role="math" aria-label="1 times 12">1 &times;
+                        12</span>, <span class="sf" role="math" aria-label="2 times 6">2 &times; 6</span> and <span
+                        class="sf" role="math" aria-label="3 times 4">3 &times; 4</span>. The length of each side is a <span class="gloss" data-term="factor">factor</span> of 12, so 12 has
+                    six factors: 1, 2, 3, 4, 6 and 12.
+                </p>
+
+                <figure class="tiles">
+                    <svg class="tiles__svg" viewBox="0 0 588 112" aria-hidden="true" focusable="false">
+                        <g class="tiles__one">
+                            <circle cx="19" cy="45" r="8" />
+                            <circle cx="41" cy="45" r="8" />
+                            <circle cx="63" cy="45" r="8" />
+                            <circle cx="85" cy="45" r="8" />
+                            <circle cx="107" cy="45" r="8" />
+                            <circle cx="129" cy="45" r="8" />
+                            <circle cx="151" cy="45" r="8" />
+                            <circle cx="173" cy="45" r="8" />
+                            <circle cx="195" cy="45" r="8" />
+                            <circle cx="217" cy="45" r="8" />
+                            <circle cx="239" cy="45" r="8" />
+                            <circle cx="261" cy="45" r="8" /><text class="tiles__label" x="140" y="102">1 &times;
+                                12</text>
+                        </g>
+                        <g class="tiles__one">
+                            <circle cx="327" cy="34" r="8" />
+                            <circle cx="349" cy="34" r="8" />
+                            <circle cx="371" cy="34" r="8" />
+                            <circle cx="393" cy="34" r="8" />
+                            <circle cx="415" cy="34" r="8" />
+                            <circle cx="437" cy="34" r="8" />
+                            <circle cx="327" cy="56" r="8" />
+                            <circle cx="349" cy="56" r="8" />
+                            <circle cx="371" cy="56" r="8" />
+                            <circle cx="393" cy="56" r="8" />
+                            <circle cx="415" cy="56" r="8" />
+                            <circle cx="437" cy="56" r="8" /><text class="tiles__label" x="382" y="102">2 &times;
+                                6</text>
+                        </g>
+                        <g class="tiles__one">
+                            <circle cx="503" cy="23" r="8" />
+                            <circle cx="525" cy="23" r="8" />
+                            <circle cx="547" cy="23" r="8" />
+                            <circle cx="569" cy="23" r="8" />
+                            <circle cx="503" cy="45" r="8" />
+                            <circle cx="525" cy="45" r="8" />
+                            <circle cx="547" cy="45" r="8" />
+                            <circle cx="569" cy="45" r="8" />
+                            <circle cx="503" cy="67" r="8" />
+                            <circle cx="525" cy="67" r="8" />
+                            <circle cx="547" cy="67" r="8" />
+                            <circle cx="569" cy="67" r="8" /><text class="tiles__label" x="536" y="102">3 &times;
+                                4</text>
+                        </g>
+                    </svg>
+                    <figcaption class="tiles__caption"><span class="sf" role="math" aria-label="4 times 3">4 &times;
+                            3</span> is <span class="sf" role="math" aria-label="3 times 4">3 &times; 4</span> stood
+                        on end, so past <span class="sf" role="math" aria-label="3 times 4">3 &times; 4</span>
+                        nothing new appears.</figcaption>
+                </figure>
+
+                <p>13 counters make one.</p>
+
+                <div class="worked">
+                    <h2 class="worked__title">Rows from 13 counters</h2>
+
+                    <div class="prime-scene" data-prime-scene data-figure="rows">
+                        <div class="prime-scene__sticky">
+                            <div class="prime-board">
+                                <div class="prime-board__paper" data-board aria-hidden="true"></div>
+                            </div>
+
+                            <div class="prime-scene__caption" aria-live="polite">
+                                <h3 data-step-title>13 counters in a row</h3>
+                                <p data-step-copy>1 &times; 13: one row of 13, the widest rectangle there is.</p>
+                            </div>
+
+                            <div class="prime-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                    </div>
+
+                    <noscript>
+                        <p class="worked__fallback"><strong>13 has two factors, 1 and 13</strong></p>
+                    </noscript>
+                </div>
+
+
+                <div class="rule-card">
+                    <h2 class="rule-card__statement">A prime has exactly two factors: 1 and itself</h2>
+                    <ol class="rule-card__conditions">
+                        <li>13 is prime. Its factors are 1 and 13: one pair, and one rectangle.</li>
+                        <li>12 is not. Its factors are 1, 2, 3, 4, 6 and 12: three pairs, and three rectangles.</li>
+                    </ol>
+                </div>
+
+                <h2 class="sub" id="why-1-is-not-prime">Why 1 is left out</h2>
+
+                <p>1 has one factor. A single counter is the rectangle <span class="sf" role="math"
+                        aria-label="1 times 1">1 &times; 1</span>, both of whose sides are 1, so its factor list is 1
+                    alone; a prime needs two, so 1 is not prime.</p>
+
+                <p>2 has exactly two, 1 and 2, so 2 is prime. Every larger even number has 2 as a third factor beside
+                    1 and itself, so 2 is the only even prime.</p>
             </section>
 
-            <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+            <section aria-labelledby="the-primes-up-to-50">
+                <h1 id="the-primes-up-to-50">The primes up to 50</h1>
+
+                <p>Fifty numbers tested one at a time is fifty factor lists. Crossing out <span class="gloss"
+                        data-term="multiple">multiples</span> finds the same primes with no lists at all: every
+                    multiple of 2 past 2 itself has 2 as a third factor, and one factor too many rules it out; the
+                    same goes for 3, 5 and 7.</p>
+
+                <div class="worked">
+                    <h2 class="worked__title">Cross out the multiples from 1 to 50</h2>
+
+                    <div class="prime-scene" data-prime-scene data-figure="sieve">
+                        <div class="prime-scene__sticky">
+                            <div class="prime-board">
+                                <div class="prime-board__paper" data-board aria-hidden="true"></div>
+                            </div>
+
+                            <div class="prime-scene__caption" aria-live="polite">
+                                <h3 data-step-title>The numbers 1 to 50</h3>
+                                <p data-step-copy>1 has one factor, so it is set aside before any crossing starts.
+                                </p>
+                            </div>
+
+                            <div class="prime-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                    </div>
+
+                    <noscript>
+                        <p class="worked__fallback"><strong class="sf" role="math"
+                                aria-label="2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47">2, 3, 5, 7, 11,
+                                13, 17, 19, 23, 29, 31, 37, 41, 43, 47</strong></p>
+                    </noscript>
+                </div>
+
+                <p>The crossing-out is the sieve of Eratosthenes, named for the Greek mathematician who set it down in
+                    the third century BC. Each of 2, 3, 5 and 7 makes its first new cross at its own square, because every smaller multiple
+                    has a smaller factor: <span class="sf" role="math" aria-label="3 times 2 equals 6">3 &times; 2 =
+                        6</span> went with the 2s, and <span class="sf" role="math" aria-label="5 times 2">5 &times;
+                        2</span>, <span class="sf" role="math" aria-label="5 times 3">5 &times; 3</span> and <span
+                        class="sf" role="math" aria-label="5 times 4">5 &times; 4</span> went with the 2s and 3s. The
+                    next square, <span class="sf" role="math" aria-label="11 times 11 equals 121">11 &times; 11 =
+                        121</span>, is past 50, so the crossing is complete at 7.</p>
+
+                <div class="rule-card rule-card--list">
+                    <h2 class="rule-card__statement"><span class="sf" role="math"
+                            aria-label="2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47">2, 3, 5, 7, 11,
+                            13, 17, 19, 23, 29, 31, 37, 41, 43, 47</span></h2>
+                    <ol class="rule-card__conditions">
+                        <li>The fifteen primes up to 50, and 2 the only even one among them.</li>
+                        <li>Every number from 2 to 50 not on the list is a multiple of 2, 3, 5 or 7.</li>
+                    </ol>
+                </div>
+            </section>
+
+            <section aria-labelledby="testing-one-number">
+                <h1 id="testing-one-number">Testing one number</h1>
+
+                <p>97 is past the end of the sieve. The primes 2, 3, 5 and 7 are tried as candidate factors of 97, one at a time: <span class="sf" role="math"
+                        aria-label="97 divided by 2">97 &divide; 2</span>, <span class="sf" role="math"
+                        aria-label="97 divided by 3">97 &divide; 3</span>, <span class="sf" role="math"
+                        aria-label="97 divided by 5">97 &divide; 5</span> and <span class="sf" role="math"
+                        aria-label="97 divided by 7">97 &divide; 7</span>. A division with nothing over has found
+                    a factor, and the number under test is not prime; a <span class="gloss"
+                        data-term="remainder">remainder</span> rules that candidate out, and the next candidate
+                    factor is tried.
+                </p>
+
+                <div class="rule-card">
+                    <h2 class="rule-card__statement">Try the primes 2, 3, 5, 7, 11, &hellip; as candidate factors in
+                        turn, and stop once a candidate's square is past the number under test</h2>
+                    <ol class="rule-card__conditions">
+                        <li>An exact division finds a factor pair, so the number under test is not prime and the
+                            trials stop there.</li>
+                        <li>A remainder from every candidate factor before the stop means the number under test is
+                            prime.</li>
+                        <li>Only primes are candidates: a whole number of 4s is a whole number of 2s, so 4 divides only
+                            what 2 divides, and 6, 8 and 9 divide only what 2 or 3 divides.</li>
+                    </ol>
+                </div>
+
+
+                <div class="important-box" aria-labelledby="why-the-square">
+                    <div class="important-box__head">
+                        <h2 class="important-box__title" id="why-the-square">Why a candidate's square is where the
+                            trials stop</h2>
+                    </div>
+                    <p>In any factor pair, the smaller factor multiplied by itself is at most the number under test. For
+                        97, <span class="sf" role="math" aria-label="11 times 11 equals 121">11 &times; 11 =
+                            121</span> is past 97, so the smaller factor of any pair for 97 is below 11. Every number
+                        from 2 to 10 is a multiple of 2, 3, 5 or 7. Once those four candidates leave remainders, no
+                        number from 2 to 10 divides 97, and 97 has no pair but <span class="sf" role="math"
+                            aria-label="1 times 97">1 &times; 97</span>.</p>
+                </div>
+
+                <p>Stopping at the square is stopping at the <span class="gloss" data-term="square root">square
+                        root</span>: <span class="sf" role="math" aria-label="the square root of 97"><span
+                            class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign"
+                                viewBox="0 0 24 40" aria-hidden="true" focusable="false">
+                                <path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3"
+                                    stroke-linejoin="miter" stroke-linecap="butt" />
+                            </svg><span class="rad__over">97</span></span></span> lies between 9 and 10, since
+                    <span class="sf" role="math" aria-label="9 times 9 equals 81">9 &times; 9 = 81</span> and <span
+                        class="sf" role="math" aria-label="10 times 10 equals 100">10 &times; 10 = 100</span>, and no candidate factor above it needs trying.
+                </p>
+
+                <div class="worked">
+                    <h2 class="worked__title">Test 97</h2>
+
+                    <div class="prime-scene" data-prime-scene data-figure="trial-97">
+                        <div class="prime-scene__sticky">
+                            <div class="prime-board">
+                                <div class="prime-board__paper" data-board aria-hidden="true"></div>
+                            </div>
+
+                            <div class="prime-scene__caption" aria-live="polite">
+                                <h3 data-step-title>97 on the line</h3>
+                                <p data-step-copy>The candidate factors 2, 3, 5 and 7 are counted along the line in turn,
+                                    and each count either lands on 97 or falls short of it.</p>
+                            </div>
+
+                            <div class="prime-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                    </div>
+
+                    <noscript>
+                        <p class="worked__fallback"><strong>97 is prime</strong></p>
+                    </noscript>
+                </div>
+
+                <p>91 is not prime, and none of the tests for 2, 3 and 5 says so.</p>
+
+                <div class="worked">
+                    <h2 class="worked__title">Test 91</h2>
+
+                    <div class="prime-scene" data-prime-scene data-figure="trial-91">
+                        <div class="prime-scene__sticky">
+                            <div class="prime-board">
+                                <div class="prime-board__paper" data-board aria-hidden="true"></div>
+                            </div>
+
+                            <div class="prime-scene__caption" aria-live="polite">
+                                <h3 data-step-title>91 on the line</h3>
+                                <p data-step-copy>91 is odd, its digits add to 10 and it ends in 1, so the digit tests
+                                    rule out the candidates 2, 3 and 5 before any count begins.</p>
+                            </div>
+
+                            <div class="prime-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                    </div>
+
+                    <noscript>
+                        <p class="worked__fallback"><strong class="sf" role="math"
+                                aria-label="91 equals 7 times 13, so 91 is not prime">91 = 7 &times; 13, so 91 is
+                                not prime</strong></p>
+                    </noscript>
+                </div>
+
+                <div class="wex">
+                    <h2 class="wex__title">Example: test 117</h2>
+                    <p class="wex__task">Try the candidate factors in turn, and stop at the first exact division.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math"
+                                    aria-label="117 divided by 2 equals 58 remainder 1">117 &divide; 2 = 58 r
+                                    1</span></span>
+                            <span class="wex__why">117 ends in 7, so it is odd and the candidate 2 leaves a
+                                remainder.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math" aria-label="1 plus 1 plus 7 equals 9">1 +
+                                    1 + 7 = 9</span></span>
+                            <span class="wex__why">The <span class="gloss" data-term="digit">digits</span> add to a multiple of 3, so the candidate 3 divides 117 exactly.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf" role="math" aria-label="117 equals 3 times 39">117 =
+                                    3 &times; 39</span></span>
+                            <span class="wex__why">3 and 39 are a factor pair of 117, so 117 is not prime, and no further
+                                candidate needs trying.</span>
+                        </li>
+                    </ol>
+                </div>
+
+                <h2 class="sub" id="every-candidate-in-turn">Every candidate factor in turn</h2>
+
+                <p>The candidate factors 2 to 31 settle any <span class="gloss" data-term="whole number">whole
+                        number</span> up to 999. <span class="sf" role="math" aria-label="31 times 31 equals 961">31 &times; 31 = 961</span>
+                    is under 999 and <span class="sf" role="math" aria-label="37 times 37 equals 1,369">37 &times;
+                        37 = 1,369</span> is past it.</p>
+
+                <div class="trier" data-trier>
+                    <div class="trier__head">
+                        <label class="trier__field"><span>Number</span><input type="text" inputmode="numeric" value="97"
+                                maxlength="3" autocomplete="off" spellcheck="false" aria-describedby="trier-scope"
+                                data-trier-input></label>
+                        <span id="trier-scope" class="trier__hidden">A whole number from 1 to 999.</span>
+                    </div>
+                    <div class="trier__body">
+                        <ol class="trier__list" data-trier-list>
+                            <li class="trier__chip is-miss" data-prime="2"><b class="trier__prime">2</b><span
+                                    class="trier__note" data-note="r 1" aria-hidden="true"></span><span
+                                    class="trier__hidden" data-say>97 ÷ 2 = 48 r 1</span></li>
+                            <li class="trier__chip is-miss" data-prime="3"><b class="trier__prime">3</b><span
+                                    class="trier__note" data-note="r 1" aria-hidden="true"></span><span
+                                    class="trier__hidden" data-say>97 ÷ 3 = 32 r 1</span></li>
+                            <li class="trier__chip is-miss" data-prime="5"><b class="trier__prime">5</b><span
+                                    class="trier__note" data-note="r 2" aria-hidden="true"></span><span
+                                    class="trier__hidden" data-say>97 ÷ 5 = 19 r 2</span></li>
+                            <li class="trier__chip is-miss" data-prime="7"><b class="trier__prime">7</b><span
+                                    class="trier__note" data-note="r 6" aria-hidden="true"></span><span
+                                    class="trier__hidden" data-say>97 ÷ 7 = 13 r 6</span></li>
+                            <li class="trier__chip is-stop" data-prime="11"><b class="trier__prime">11</b><span
+                                    class="trier__note" data-note="121 &gt; 97" aria-hidden="true"></span><span
+                                    class="trier__hidden" data-say>11 × 11 = 121 is past 97</span></li>
+                            <li class="trier__chip is-idle" data-prime="13"><b class="trier__prime">13</b><span
+                                    class="trier__note" data-note="" aria-hidden="true"></span><span
+                                    class="trier__hidden" data-say></span></li>
+                            <li class="trier__chip is-idle" data-prime="17"><b class="trier__prime">17</b><span
+                                    class="trier__note" data-note="" aria-hidden="true"></span><span
+                                    class="trier__hidden" data-say></span></li>
+                            <li class="trier__chip is-idle" data-prime="19"><b class="trier__prime">19</b><span
+                                    class="trier__note" data-note="" aria-hidden="true"></span><span
+                                    class="trier__hidden" data-say></span></li>
+                            <li class="trier__chip is-idle" data-prime="23"><b class="trier__prime">23</b><span
+                                    class="trier__note" data-note="" aria-hidden="true"></span><span
+                                    class="trier__hidden" data-say></span></li>
+                            <li class="trier__chip is-idle" data-prime="29"><b class="trier__prime">29</b><span
+                                    class="trier__note" data-note="" aria-hidden="true"></span><span
+                                    class="trier__hidden" data-say></span></li>
+                            <li class="trier__chip is-idle" data-prime="31"><b class="trier__prime">31</b><span
+                                    class="trier__note" data-note="" aria-hidden="true"></span><span
+                                    class="trier__hidden" data-say></span></li>
+                            <li class="trier__chip is-idle" data-prime="37"><b class="trier__prime">37</b><span
+                                    class="trier__note" data-note="" aria-hidden="true"></span><span
+                                    class="trier__hidden" data-say></span></li>
+                        </ol>
+                        <p class="trier__summary" aria-live="polite" data-trier-summary>97 is prime: the candidates 2, 3,
+                            5 and 7 each leave a remainder, and 11 &times; 11 = 121 is past 97.</p>
+                        <p class="trier__empty" data-trier-empty hidden>A whole number from 1 to 999 is needed.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section aria-labelledby="common-mistakes">
+                <h1 id="common-mistakes">Common mistakes</h1>
+                <ul class="slips">
+                    <li><b>Counting 1 as a prime</b>
+                        <span>1 has one factor, not two, so the primes below 10 are 2, 3, 5 and 7. A list that
+                            starts 1, 2, 3, 5, 7 has one number too many.</span>
+                    </li>
+                    <li><b>Ruling 2 out for being even</b>
+                        <span>2 has exactly two factors, 1 and 2, so it is prime. 4, 6, 8 and every even number
+                            after them have 2 as a third factor; 2 itself does not.</span>
+                    </li>
+                    <li><b>Calling 91 prime because it is odd</b>
+                        <span>Odd rules out the candidate 2 and nothing else. 91 &divide; 7 = 13 exactly, so 91 = 7 &times; 13;
+                            51 = 3 &times; 17 and 57 = 3 &times; 19 are caught the same way, their digit <span
+                                class="gloss" data-term="sum">sums</span> 6 and
+                            12 giving them away.</span>
+                    </li>
+                    <li><b>Stopping before the square</b>
+                        <span>For 49, 7 &times; 7 = 49 is not past 49, so the candidate 7 is still tried, and it
+                            divides: 49 = 7 &times; 7. Trying only 2, 3 and 5 calls 49 prime.</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="remember">
+                <h1 id="remember">Remember</h1>
+                <ol class="recap">
+                    <li>A prime has exactly two factors, 1 and itself: 13 is prime, and 12, with six factors, is
+                        not.</li>
+                    <li>1 has one factor, so it is not prime; 2 has two, so it is, and it is the only even prime.
+                    </li>
+                    <li>The fifteen primes up to 50 are <span class="sf" role="math"
+                            aria-label="2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47">2, 3, 5, 7, 11, 13,
+                            17, 19, 23, 29, 31, 37, 41, 43, 47</span>.</li>
+                    <li>To test a number, try the primes 2, 3, 5, 7, 11 and on as candidate factors, and stop once a
+                        candidate's square is past the number under test.</li>
+                    <li>91 = 7 &times; 13 and 117 = 3 &times; 39 are not prime; 97 leaves a remainder with the candidates 2, 3, 5 and 7, and 11 &times; 11 = 121 is past it, so
+                        97 is prime.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
                 <h2 id="practice-heading">Practice and continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practicePrimesAndPrimality.html" style="background-image: none">
+                    <a class="topic-card topic-card--practice"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practicePrimesAndPrimality.html"
+                        style="background-image: none">
                         <span class="practice-card__kicker">Practice</span>
                         <h3>Primes and testing for primality</h3>
                         <p>What makes a number prime, why 1 is not, and trial division up to the root.</p>
                     </a>
-                    <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/primeFactorisation.html" style="background-image: none">
+                    <a class="topic-card topic-card--next"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/primeFactorisation.html"
+                        style="background-image: none">
                         <span class="topic-card__kicker">Next lesson</span>
                         <h3>Prime factorisation</h3>
                         <p>Factor trees and repeated division, index form, and why the primes are unique.</p>

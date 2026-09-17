@@ -234,7 +234,7 @@
                     "title": "Primes and testing for primality",
                     "description": "What makes a number prime, why 1 is not, and trial division up to the root.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "The definition of prime, why 1 is excluded, identifying primes to 50, and testing numbers like 91, 97 and 117 by trial division by primes up to the square root. Prime factorisation lives on the next page; infinitude-of-primes proofs are A level. Both tiers. (N4)"
                 },
                 {
