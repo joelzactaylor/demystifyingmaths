@@ -245,11 +245,16 @@ Fails: Think of the carried digit as a little passenger travelling to the next c
 
 ## Checking it
 
-`plain.mjs` tests the shapes that can be tested mechanically — clefts that delay
-the verb without marking a contrast, circumlocution, padding before the point,
-and length that comes from clauses stacked on clauses rather than from content.
-Most of the rules above need a reader. Run the audit described in
-`lesson-page-cycle.md` and judge them by hand.
+`scripts/voice-check.mjs` tests the shapes that can be tested mechanically —
+the banned phrases, a `?` or `!` in running prose, second person governing a
+mental verb, a sentence past thirty words with nothing to split it, and an
+opening clause too long to be a claim. It prints lines to look at and does not
+judge them: "above" is a pointer in one sentence and a mark's place in a
+calculation in the next, and a question that opens a section and is answered
+by it is this site's own practice. Run it on one page —
+`node scripts/voice-check.mjs pages/.../lesson.html` — and read every line it
+prints against the rules above. Most of the rules need a reader. Run the audit
+described in `lesson-page-cycle.md` and judge them by hand.
 
 A cleft is not automatically a fault. *"What changes, from one section to the
 next, is how much of the working is written down"* fronts a real contrast and

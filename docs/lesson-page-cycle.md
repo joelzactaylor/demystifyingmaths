@@ -48,7 +48,9 @@ carrying every figure, a run of pure reference, prose totals that swing by 3×.
 pages by reading them, not by impression. Judge each sentence against it. The
 faults cluster in the introduction, the hinge between sections, and any sentence
 beside a widget — so read those hardest, and do not copy an opener from a
-reference page without testing it first.
+reference page without testing it first. `node scripts/voice-check.mjs <page>`
+lists the sentences a script can suspect — banned phrases, questions, second
+person, length — as lines to read, not verdicts; the pass is reading them.
 
 ## 3. Contrivance pass — is it honest?
 
@@ -130,7 +132,8 @@ parse the rendered DOM and need jsdom, so making them permanent means taking on
 a dependency the repository has so far done without. Until that is decided they
 are written per session and thrown away, which is why the same faults have to be
 found twice. The dependency-free ones — the raw markup scanner, the dead-CSS
-scan, the viewport check — could move into `scripts/` today.
+scan, the viewport check — could move into `scripts/` today; the voice scan
+already has, as `scripts/voice-check.mjs`.
 
 Two rules learned the hard way:
 
