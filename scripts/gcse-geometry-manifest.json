@@ -534,7 +534,7 @@
                     "description": "Deciding which flat arrangements fold into a given solid, and tracking which edges and corners meet.",
                     "tier": "both",
                     "written": false,
-                    "coverNote": "Decide which flat arrangements fold into cubes, cuboids, prisms and pyramids, tracking which edges and corners meet, and sketch nets of given solids. Nets are KS2-KS3 carry-over — no G clause names them — but boards still set them, and Mensuration's surface-area pages lean on them. Both tiers. (G12, G13)"
+                    "coverNote": "Decide which flat arrangements fold into cubes, cuboids, prisms and pyramids, tracking which edges and corners meet, and sketch nets of given solids. Both tiers. (G12, G13)"
                 },
                 {
                     "slug": "plans-and-elevations",
@@ -764,7 +764,7 @@
                     "description": "Area as the squares a shape covers, counted first and then found faster as length times width.",
                     "tier": "both",
                     "written": false,
-                    "coverNote": "Area as squares covered, counted on grids then computed as length times width, the square as special case, and a missing side recovered from a given area. Rectangle area is KS2 carry-over that the G16 formula list assumes. Compound rectilinear shapes wait for the composite page. Both tiers. (G16, G17)"
+                    "coverNote": "Area as squares covered, counted on grids then computed as length times width, the square as special case, and a missing side recovered from a given area. Compound rectilinear shapes wait for the composite page. Both tiers. (G16, G17)"
                 },
                 {
                     "slug": "area-of-a-triangle",
@@ -2111,7 +2111,7 @@
                 "properties/nets-of-solids"
             ],
             "tier": "both",
-            "scope": "Decide which flat arrangements fold into cubes, cuboids, prisms and pyramids, tracking which edges and corners meet, and sketch nets of given solids. Nets are KS2-KS3 carry-over — no G clause names them — but boards still set them, and Mensuration's surface-area pages lean on them. Both tiers. (G12, G13)",
+            "scope": "Decide which flat arrangements fold into cubes, cuboids, prisms and pyramids, tracking which edges and corners meet, and sketch nets of given solids. Both tiers. (G12, G13)",
             "sections": [
                 "Fluency — direct questions on nets of solids, limited to this lesson's stated scope (4 questions).",
                 "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",
@@ -2221,7 +2221,7 @@
                 "mensuration/area-of-a-rectangle"
             ],
             "tier": "both",
-            "scope": "Area as squares covered, counted on grids then computed as length times width, the square as special case, and a missing side recovered from a given area. Rectangle area is KS2 carry-over that the G16 formula list assumes. Compound rectilinear shapes wait for the composite page. Both tiers. (G16, G17)",
+            "scope": "Area as squares covered, counted on grids then computed as length times width, the square as special case, and a missing side recovered from a given area. Compound rectilinear shapes wait for the composite page. Both tiers. (G16, G17)",
             "sections": [
                 "Fluency — direct questions on area of a rectangle, limited to this lesson's stated scope (4 questions).",
                 "Application — use the same skill in unfamiliar or contextual questions without introducing a later method (4 questions).",

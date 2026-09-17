@@ -46,7 +46,7 @@
 
             <section>
                 <h1>Divide, subtract, then continue</h1>
-                <p>Long division is used here when the <span class="gloss" data-term="divisor">divisor</span> has two digits. Each subtraction is written down, and the <span class="gloss" data-term="remainder">remainder</span> it leaves is the starting amount for the
+                <p>Long division is used when the <span class="gloss" data-term="divisor">divisor</span> has two digits. Each subtraction is written down, and the <span class="gloss" data-term="remainder">remainder</span> it leaves is the starting amount for the
                     next stage.</p>
                 <aside class="important-box" aria-labelledby="layout-title">
                     <h2 class="important-box__title" id="layout-title">Read the layout as 1,794 divided by 23</h2>
@@ -84,7 +84,6 @@
                         </div>
                         <noscript><p><strong>1,794 &divide; 23 = 78</strong></p></noscript>
                     </div>
-                    <p class="worked__answer"><strong>1,794 &divide; 23 = 78</strong></p>
                 </div>
             </section>
 
@@ -120,7 +119,9 @@
                         <li><strong>Bring down 5:</strong> 45 &divide; 15 = 3, so write 3 above the 5.</li>
                     </ol>
                 </div>
-                <p class="worked__answer"><strong>3,045 &divide; 15 = 203</strong></p>
+                    <noscript>
+                        <p class="worked__fallback"><strong>3,045 &divide; 15 = 203</strong></p>
+                    </noscript>
             </section>
 
             <section>
@@ -146,7 +147,6 @@
                         </div>
                         <noscript><p><strong>68.4 &divide; 24 = 2.85</strong></p></noscript>
                     </div>
-                    <p class="worked__answer"><strong>68.4 &divide; 24 = 2.85</strong></p>
                 </div>
                 <p>Whether a remainder is sufficient can depend on the question's context, as explained on <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/interpretingRemainders.html">interpreting a remainder</a>.</p>
             </section>
@@ -212,7 +212,7 @@
                             reads 23 instead of 203.</span></li>
                     <li><b>Misplacing the decimal point</b>
                     <span>Write the quotient&rsquo;s point directly above the dividend&rsquo;s
-                            point. Every divisor here is a whole number, so only the dividend
+                            point. The divisor is a whole number, so only the dividend
                             carries a point: 68.4 &divide; 24 = 2.85, not 28.5.</span></li>
                 </ul>
             </section>

@@ -13,7 +13,7 @@ const MANIFESTS = readdirSync(SCRIPTS)
     .map((file) => join(SCRIPTS, file));
 const WRITE = process.argv.includes("--write");
 
-const ACRO = { gcse: "GCSE", ks1: "KS1", ks2: "KS2", ks3: "KS3", alevel: "ALevel", fdp: "FDP", hcf: "HCF", lcm: "LCM", suvat: "SUVAT" };
+const ACRO = { gcse: "GCSE", alevel: "ALevel", fdp: "FDP", hcf: "HCF", lcm: "LCM", suvat: "SUVAT" };
 const camel = (kebab) => kebab.split("-").map((word, index) =>
     ACRO[word] ?? (index === 0 ? word : word[0].toUpperCase() + word.slice(1))).join("");
 const upperFirst = (value) => value[0].toUpperCase() + value.slice(1);

@@ -49,7 +49,14 @@ const server = createServer((req, res) => {
         return send(res, 404, `404: ${url} not found`);
     }
 
-    res.writeHead(200, { "Content-Type": TYPES[extname(file).toLowerCase()] ?? "application/octet-stream" });
+    /* No validators go out with a response, so a browser is free to apply its own
+       heuristic and hold a page for minutes after it has been edited — which looks
+       exactly like the edit never happened. This server exists to show the working
+       tree, so nothing it sends may be cached. */
+    res.writeHead(200, {
+        "Content-Type": TYPES[extname(file).toLowerCase()] ?? "application/octet-stream",
+        "Cache-Control": "no-store, must-revalidate",
+    });
     createReadStream(file).pipe(res);
 });
 

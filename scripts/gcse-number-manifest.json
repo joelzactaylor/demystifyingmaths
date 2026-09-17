@@ -2062,7 +2062,7 @@
             "generate": false
         },
         {
-            "file": "practiceCounting.html",
+            "file": "practiceFactorsAndFactorPairs.html",
             "title": "Factors and factor pairs",
             "description": "Listing every factor of a number in pairs, so none is missed or repeated.",
             "skill": "Listing every factor of a number in pairs, so none is missed or repeated.",
@@ -2084,7 +2084,7 @@
             "generate": true
         },
         {
-            "file": "practicePrimeFactors.html",
+            "file": "practiceMultiplesAndDivisibility.html",
             "title": "Multiples and divisibility tests",
             "description": "The multiples of a number, and the tests for divisibility by 2, 3, 4, 5 and 9.",
             "skill": "The multiples of a number, and the tests for divisibility by 2, 3, 4, 5 and 9.",
@@ -2976,7 +2976,7 @@
         {
             "file": "practiceWrittenMethodsReview.html",
             "title": "Written methods review",
-            "description": "Column addition, subtraction and long multiplication with decimals throughout — past the KS2 integer drills.",
+            "description": "Column addition, subtraction and long multiplication with decimals throughout.",
             "skill": "Adding, subtracting and multiplying decimals by written column methods, exchanging across zeros included.",
             "topic": "structure",
             "groups": [
@@ -2984,7 +2984,7 @@
             ],
             "tier": "both",
             "sections": [
-                "Fluency — column addition and subtraction of decimals of different lengths, including exchanging across zeros like 4.03 − 1.276; decimal operands keep every question past the KS2 drill (4 questions).",
+                "Fluency — column addition and subtraction of decimals of different lengths, including exchanging across zeros like 4.03 − 1.276 (4 questions).",
                 "Long multiplication — decimal pairs via the integer product, placing the point by counting decimal places and checking against an estimate (4 questions).",
                 "Application — worded money and measure problems with the unit fixed in the prompt and a bare number demanded (money always pounds to two decimal places), ending with a subtraction like 12 − 3.475 that catches unpadded columns (4 questions)."
             ],
@@ -3010,7 +3010,7 @@
             ],
             "tier": "both",
             "sections": [
-                "Fluency — short and long division continued past the point into exact decimal answers, two-digit divisors included; the decimal continuation keeps it past the KS2 integer-remainder drill (4 questions).",
+                "Fluency — short and long division continued past the point into exact decimal answers, two-digit divisors included (4 questions).",
                 "Decimal divisors — rewriting divisions like 55.2 ÷ 0.46 as integer equivalents before dividing (4 questions).",
                 "Remainders in context — worded problems needing long division by a two-digit divisor first, then the round-up, round-down or state-the-leftover decision; the choice is the catch (4 questions)."
             ],
@@ -3053,7 +3053,7 @@
         {
             "file": "practiceNegativesReview.html",
             "title": "Negatives review",
-            "description": "Directed-number arithmetic with decimals and powers of negatives — a step up from KS3.",
+            "description": "Directed-number arithmetic with decimals and powers of negatives.",
             "skill": "Adding, subtracting, multiplying and dividing negative numbers, including decimals and powers of negatives.",
             "topic": "structure",
             "groups": [
@@ -3102,7 +3102,7 @@
             "file": "practicePrimeFactorsReview.html",
             "title": "Prime factorisation review",
             "description": "Divisibility, spotting primes, and reading squares, cubes and factor counts from prime factorisations.",
-            "skill": "Writing a number as a product of prime factors in index form, and reading its structure from the indices — three-digit numbers and beyond, past the KS3 drill.",
+            "skill": "Writing a number as a product of prime factors in index form, and reading its structure from the indices — three-digit numbers and beyond.",
             "topic": "structure",
             "groups": [
                 "factors-and-primes"
@@ -3128,14 +3128,14 @@
             "file": "practiceHCFLCMReview.html",
             "title": "HCF and LCM review",
             "description": "HCF and LCM from prime factors, including three numbers and worded decisions.",
-            "skill": "Finding the HCF and LCM of two or three numbers from prime factors, and choosing which a problem needs — past the two-number KS3 drill.",
+            "skill": "Finding the HCF and LCM of two or three numbers from prime factors, and choosing which a problem needs.",
             "topic": "structure",
             "groups": [
                 "factors-and-primes"
             ],
             "tier": "both",
             "sections": [
-                "Fluency — HCF and LCM from given index-form factorisations of numbers past 100, with shared and separate prime factors presented as text lists (the structure the Venn diagram shows, without generated graphics); larger numbers than the KS3 drill (4 questions).",
+                "Fluency — HCF and LCM from given index-form factorisations of numbers past 100, with shared and separate prime factors presented as text lists (the structure the Venn diagram shows, without generated graphics) (4 questions).",
                 "Harder cases — three numbers, and the smallest possible number with both its HCF and LCM with another stated, pinned so the generated answer is unique (4 questions).",
                 "Worded — bus, tile and gear problems where deciding between HCF and LCM is the mark (4 questions)."
             ],
@@ -3176,14 +3176,14 @@
             "file": "practiceSimplifyingPowersReview.html",
             "title": "Simplifying powers review",
             "description": "The multiply, divide and power-of-a-power laws with number bases, plus index equations.",
-            "skill": "Simplifying powers with the multiply, divide and power-of-a-power laws, and solving equations in the index — combined laws and larger indices, past the KS3 one-law drill; negative and fractional indices stay in the existing Index laws drill.",
+            "skill": "Simplifying powers with the multiply, divide and power-of-a-power laws, and solving equations in the index — combined laws and larger indices; negative and fractional indices stay in the existing Index laws drill.",
             "topic": "structure",
             "groups": [
                 "index-laws"
             ],
             "tier": "both",
             "sections": [
-                "Warm-up — one law at a time with indices larger than the KS3 drill uses, plus the zero index (3 questions).",
+                "Warm-up — one law at a time with larger indices, plus the zero index (3 questions).",
                 "Combined — several laws in one simplification, powers of products and quotients included, answered as single choices between index-form expressions since the engine cannot read a typed expression (5 questions).",
                 "Index equations — typed numeric answers solving for the index, ending with mixed bases like 2ˣ × 4 = 2⁷ that catch 'just add the indices' (4 questions)."
             ],

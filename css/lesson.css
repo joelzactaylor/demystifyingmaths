@@ -235,7 +235,10 @@
 .worked { margin: 34px 0 30px; }
 .worked:last-child { margin-bottom: 0; }
 .worked__title { margin: 0 0 4px; color: #09539d; font-size: 1.2rem; }
-.worked__answer { margin: 14px 0 0; color: #173849; font-size: 1.06rem; text-align: center; }
+/* A scene's conclusion, for a reader whose scripts did not run. It is inside
+   <noscript>, so nobody else ever sees it: a bold line repeating under a figure
+   what the figure has just finished saying is noise. */
+.worked__fallback { margin: 14px 0 0; color: #173849; font-size: 1.06rem; text-align: center; }
 
 /* WHERE MARKS ARE LOST — the named misconceptions, each with its correction.
    Red is a warning here, not a page type, so it stays on the teaching pages. */

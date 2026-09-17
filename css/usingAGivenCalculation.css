@@ -79,7 +79,7 @@
 .deduction-example { margin: 28px 0 40px; }
 .deduction-example:last-child { margin-bottom: 0; }
 .deduction-example > h2 { margin: 0 0 6px; color: #09539d; font-size: 1.18rem; }
-.deduction-example > p:not(.worked__answer) { margin: 0 0 14px; color: #41535c; }
+.deduction-example > p:not(.worked__fallback) { margin: 0 0 14px; color: #41535c; }
 .deduction-scene { position: relative; min-height: 530px; margin: 18px 0 8px; overflow-anchor: none; }
 .deduction-scene.is-ready { height: var(--scene-height); min-height: var(--scene-min-height); }
 .deduction-scene__sticky { position: absolute; inset: 0 0 auto; display: grid; height: min(650px, calc(100vh - 76px)); min-height: 530px; box-sizing: border-box; grid-template-rows: auto minmax(0, 1fr) auto auto; overflow: hidden; border: 2px solid #c9dce8; border-radius: 22px; background: linear-gradient(180deg, #fbfdff, #f2f8fc); box-shadow: 0 12px 30px rgba(20, 57, 78, .14); contain: layout paint; overflow-anchor: none; will-change: transform; }

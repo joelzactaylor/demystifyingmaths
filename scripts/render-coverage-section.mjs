@@ -7,7 +7,7 @@ import { readFileSync } from "node:fs";
 // "sections"). The output matches the hand-written GCSE Number blocks'
 // format exactly, so the doc can be kept in lock-step with the manifests.
 
-const ACRO = { gcse: "GCSE", ks1: "KS1", ks2: "KS2", ks3: "KS3", alevel: "ALevel", fdp: "FDP", hcf: "HCF", lcm: "LCM", suvat: "SUVAT" };
+const ACRO = { gcse: "GCSE", alevel: "ALevel", fdp: "FDP", hcf: "HCF", lcm: "LCM", suvat: "SUVAT" };
 const camel = (kebab) => kebab.split("-").map((w, i) =>
     ACRO[w] ?? (i === 0 ? w : w[0].toUpperCase() + w.slice(1))).join("");
 
