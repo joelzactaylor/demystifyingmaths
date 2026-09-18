@@ -4,75 +4,277 @@
 <head>
     <meta charset="UTF-8">
     <title>Demystifying Maths | GCSE Prime factorisation</title>
-    <meta name="description" content="Factor trees and repeated division, index form, and why the primes are unique.">
-    <meta property="og:title" content="Demystifying Maths">
-    <meta property="og:description" content="Factor trees and repeated division, index form, and why the primes are unique.">
+    <meta name="description"
+        content="Write a number as its unique product of prime factors using a factor tree or repeated division.">
+    <meta property="og:title" content="Demystifying Maths | Prime factorisation">
+    <meta property="og:description"
+        content="Write a number as its unique product of prime factors using a factor tree or repeated division.">
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/primeFactorisation.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/primeFactorisation.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&amp;display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="layout">
         <div id="top-ribbon-placeholder"></div>
         <script>fetch("/demystifyingmaths/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
-
         <header>
             <h1>Demystifying - Prime factorisation</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
-                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and calculation</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/">Factors and primes</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span>
+                    </li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and
+                            calculation</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/">Factors
+                            and primes</a><span aria-hidden="true">&rsaquo;</span></li>
                     <li>
                         <p>Prime factorisation</p>
                     </li>
                 </ol>
             </nav>
         </header>
-
         <aside id="page-nav-container"></aside>
-
         <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>Writing numbers up to four digits as products of primes by factor tree or repeated division, answered in index form; N4 names product notation and the unique factorisation theorem, so state uniqueness. HCF, LCM and square-making applications live on their own pages. Both tiers. (N4)</p>
+            <p class="prereq"><b>Before this page:</b> <span>recognise <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/primesAndPrimality.html">prime
+                        numbers</a>, find <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/factorsAndFactorPairs.html">factor
+                        pairs</a>, and read repeated multiplication in <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/indexNotation.html">index
+                        notation</a>.</span></p>
+
+            <section aria-labelledby="break-composites">
+                <h1 id="break-composites">Break every factor until only primes remain</h1>
+                <p>Every whole number greater than 1 is either <span class="gloss" data-term="prime">prime</span> or composite.
+                    A composite number has a <span class="gloss" data-term="factor">factor</span> other than 1 and
+                    itself: in <span class="sf" role="math" aria-label="84 equals 12 times 7">84 = 12 &times; 7</span>,
+                    7 is prime, but 12 splits again.</p>
+                <p>The splitting stops only when every branch ends at a <span class="gloss"
+                        data-term="prime factor">prime factor</span>. For 84, the branch ends are 2, 2, 3 and 7, so the
+                    <span class="gloss" data-term="product">product</span> is <span class="sf" role="math"
+                        aria-label="84 equals 2 times 2 times 3 times 7">84 = 2 &times; 2 &times; 3 &times; 7</span>.
+                </p>
+                <div class="worked">
+                    <h2 class="worked__title">A factor tree for 84</h2>
+                    <div class="factor-scene" data-factor-scene data-kind="tree">
+                        <div class="factor-scene__sticky">
+                            <div class="factor-board" data-board role="img"
+                                aria-label="A factor tree splits 84 into 12 and 7, then 12 into 3 and 4, then 4 into 2 and 2. The prime leaves are 2, 2, 3 and 7.">
+                            </div>
+                            <div class="factor-scene__caption" aria-live="polite" aria-atomic="true">
+                                <h3 data-step-title>Start with 84</h3>
+                                <p data-step-copy>84 is composite, so it has a factor pair other than 1 and 84.</p>
+                            </div>
+                            <div class="factor-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript>
+                            <p class="worked__fallback"><strong class="sf" role="math"
+                                    aria-label="84 equals 2 squared times 3 times 7">84 = 2<span class="caret"
+                                        aria-hidden="true">^</span><sup>2</sup> &times; 3 &times; 7</strong></p>
+                        </noscript>
+                    </div>
+                </div>
+                <div class="rule-card">
+                    <h2 class="rule-card__statement">A prime factorisation is a product containing prime factors only
+                    </h2>
+                    <ol class="rule-card__conditions">
+                        <li><span class="sf" role="math" aria-label="84 equals 12 times 7">84 = 12 &times; 7</span> is a
+                            factor pair, but 12 is composite, so the factorisation is unfinished.</li>
+                        <li><span class="sf" role="math" aria-label="84 equals 2 times 2 times 3 times 7">84 = 2 &times;
+                                2 &times; 3 &times; 7</span> contains primes only, so it is complete.</li>
+                    </ol>
+                </div>
             </section>
 
-            <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+            <section aria-labelledby="tree-shape">
+                <h1 id="tree-shape">Different trees finish with the same primes</h1>
+                <p>84 can begin as <span class="sf">12 &times; 7</span>, <span class="sf">6 &times; 14</span> or <span
+                        class="sf">4 &times; 21</span>. Each start rearranges the branches, but every complete tree ends
+                    with two 2s, one 3 and one 7.</p>
+                <div class="route-comparison" role="img"
+                    aria-label="Three factorisations of 84 all ending 2 times 2 times 3 times 7">
+                    <div><span>12 &times; 7</span> <i aria-hidden="true">&rarr;</i> <strong>2 &times; 2 &times; 3
+                            &times; 7</strong></div>
+                    <div><span>6 &times; 14</span> <i aria-hidden="true">&rarr;</i> <strong>2 &times; 2 &times; 3
+                            &times; 7</strong></div>
+                    <div><span>4 &times; 21</span> <i aria-hidden="true">&rarr;</i> <strong>2 &times; 2 &times; 3
+                            &times; 7</strong></div>
+                </div>
+                <aside class="important-box" aria-labelledby="unique-title">
+                    <h2 class="important-box__title" id="unique-title">The prime factorisation is unique</h2>
+                    <p>Every whole number greater than 1 has exactly one prime factorisation, apart from the order of its
+                        factors. <span class="sf">2 &times; 2 &times; 3 &times; 7</span> and <span class="sf">7 &times;
+                            3 &times; 2 &times; 2</span> are the same factorisation of 84, written in two orders.</p>
+                </aside>
+            </section>
+
+            <section aria-labelledby="repeated-division">
+                <h1 id="repeated-division">Repeated division collects the same factors</h1>
+                <p>Repeated division starts with the smallest prime that divides exactly, and tests that prime again
+                    before moving to a larger one. For 756 the divisors are 2, 2, 3, 3, 3 and 7, and the last quotient
+                    is 1.</p>
+                <div class="worked">
+                    <h2 class="worked__title">Repeated division of 756</h2>
+                    <div class="factor-scene" data-factor-scene data-kind="ladder">
+                        <div class="factor-scene__sticky">
+                            <div class="factor-board" data-board role="img"
+                                aria-label="Repeated division: 756 divided by 2 is 378, divided by 2 is 189, divided by 3 is 63, divided by 3 is 21, divided by 3 is 7, and divided by 7 is 1.">
+                            </div>
+                            <div class="factor-scene__caption" aria-live="polite" aria-atomic="true">
+                                <h3 data-step-title>Begin with the smallest prime factor</h3>
+                                <p data-step-copy>756 is even, so 2 is the first prime factor.</p>
+                            </div>
+                            <div class="factor-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript>
+                            <p class="worked__fallback"><strong class="sf" role="math"
+                                    aria-label="756 equals 2 squared times 3 cubed times 7">756 = 2<span class="caret"
+                                        aria-hidden="true">^</span><sup>2</sup> &times; 3<span class="caret"
+                                        aria-hidden="true">^</span><sup>3</sup> &times; 7</strong></p>
+                        </noscript>
+                    </div>
+                </div>
+                <ol class="method-steps">
+                    <li><b>Divide</b><span>by the smallest prime factor that divides exactly.</span></li>
+                    <li><b>Repeat</b><span>with the quotient, testing the same prime again before moving to the
+                            next.</span></li>
+                    <li><b>Stop</b><span>when the quotient is 1; the divisors down the side are all the prime
+                            factors.</span></li>
+                </ol>
+            </section>
+
+            <section aria-labelledby="index-form">
+                <h1 id="index-form">Collect repeated primes in index form</h1>
+                <p>The repeated factors in <span class="sf">756 = 2 &times; 2 &times; 3 &times; 3 &times; 3 &times;
+                        7</span> are collected as powers. Two factors of 2 make <span class="sf"
+                        aria-label="2 squared">2<span class="caret" aria-hidden="true">^</span><sup>2</sup></span>;
+                    three factors of 3 make <span class="sf" aria-label="3 cubed">3<span class="caret"
+                            aria-hidden="true">^</span><sup>3</sup></span>.</p>
+                <div class="index-build" role="img"
+                    aria-label="756 equals 2 times 2 times 3 times 3 times 3 times 7, which equals 2 squared times 3 cubed times 7">
+                    <div><span>756</span> <i>=</i> <span class="index-build__repeat">2 &times; 2</span> <i>&times;</i>
+                        <span class="index-build__repeat index-build__repeat--ochre">3 &times; 3 &times; 3</span>
+                        <i>&times;</i> <span>7</span></div>
+                    <b aria-hidden="true">&darr;</b> <strong>756 = 2<span class="caret"
+                            aria-hidden="true">^</span><sup>2</sup> &times; 3<span class="caret"
+                            aria-hidden="true">^</span><sup>3</sup> &times; 7</strong>
+                </div>
+                <p>An index of 1 is not written: the final 7 occurs once, so the answer ends in <span class="sf">&times;
+                        7</span>, not <span class="sf" aria-label="times 7 to the first power">&times; 7<span
+                            class="caret" aria-hidden="true">^</span><sup>1</sup></span>. The completed answer is in
+                    <span class="gloss" data-term="index form">index form</span>, with its prime bases in ascending order so
+                    that two factorisations can be compared prime by prime.</p>
+                <aside class="important-box" aria-labelledby="multiply-check">
+                    <h2 class="important-box__title" id="multiply-check">Multiply the prime powers to check</h2>
+                    <p><span class="sf"
+                            aria-label="2 squared times 3 cubed times 7 equals 4 times 27 times 7 equals 756">2<span
+                                class="caret" aria-hidden="true">^</span><sup>2</sup> &times; 3<span class="caret"
+                                aria-hidden="true">^</span><sup>3</sup> &times; 7 = 4 &times; 27 &times; 7 = 756</span>.
+                        Recovering the starting number checks that no branch or division has been lost.</p>
+                </aside>
+            </section>
+
+            <section aria-labelledby="factorise-a-number">
+                <h1 id="factorise-a-number">Factorise a chosen number</h1>
+                <!-- Deliberate exception to the no-mechanics-copy rule (docs/lesson-prose-voice.md, rules 3 and 22):
+                     the factoriser has no visible controls, so this one paragraph says what the discs do. Leave it. -->
+                <p>Drag the factors out of the starting number to build a factor tree. Factors can be transferred
+                    between discs, allowing you to try out different versions of the tree.</p>
+                <div class="factoriser" data-factoriser>
+                    <label class="factoriser__field" for="factor-number"><span>Whole number from 2 to 9,999</span><input
+                            id="factor-number" type="text" inputmode="numeric" maxlength="4" value="360"
+                            autocomplete="off" spellcheck="false" data-factor-input></label>
+                    <span class="factoriser__hidden" id="factor-ring-help">Pull one coloured sector away from any
+                        composite leaf to split off that prime factor. Move a sector onto any other disc to transfer it
+                        there; a disc that has already been split passes the factor down to its left-hand leaf, and
+                        every number above is recalculated. Pull a centre back to its parent to collapse that branch. A
+                        click or the Enter key splits off one sector; with a sector focused, the arrow keys choose a
+                        disc to receive it, Enter moves it, and Escape keeps it in place.</span><span
+                        class="factoriser__hidden" data-factor-status aria-live="polite"></span>
+                    <div class="factoriser__body">
+                        <div class="factoriser__tree" data-factor-tree role="group" aria-describedby="factor-ring-help"
+                            aria-label="Interactive factor tree for 360"></div><button class="factoriser__tidy"
+                            type="button" aria-label="Tidy up the factor tree" data-factor-tidy>Tidy up</button>
+                        <p class="factoriser__empty" data-factor-empty hidden>Enter a whole number from 2 to 9,999.</p>
+                    </div>
+                    <p class="factoriser__answer" data-factor-answer aria-live="polite">360 has prime factors still to
+                        collect.</p>
+                    <noscript>
+                        <p class="worked__fallback"><strong class="sf">360 = 2<span class="caret"
+                                    aria-hidden="true">^</span><sup>3</sup> &times; 3<span class="caret"
+                                    aria-hidden="true">^</span><sup>2</sup> &times; 5</strong></p>
+                    </noscript>
+                </div>
+            </section>
+
+            <section aria-labelledby="unfinished-factorisations">
+                <h1 id="unfinished-factorisations">Finish at primes, then count every copy</h1>
+                <ul class="slips">
+                    <li><b>Stopping at a composite factor</b><span>Writing <span class="sf">84 = 12 &times; 7</span>
+                            leaves 12 unsplit, so it is a factor pair rather than a prime factorisation.</span></li>
+                    <li><b>Losing a repeated factor</b><span>Writing <span class="sf"
+                                aria-label="72 equals 2 squared times 3 squared">72 = 2<span class="caret"
+                                    aria-hidden="true">^</span><sup>2</sup> &times; 3<span class="caret"
+                                    aria-hidden="true">^</span><sup>2</sup></span> gives 36; the complete factorisation
+                            is <span class="sf" aria-label="2 cubed times 3 squared">2<span class="caret"
+                                    aria-hidden="true">^</span><sup>3</sup> &times; 3<span class="caret"
+                                    aria-hidden="true">^</span><sup>2</sup></span>.</span></li>
+                    <li><b>Using a composite base</b><span>Writing <span class="sf"
+                                aria-label="72 equals 8 times 3 squared">72 = 8 &times; 3<span class="caret"
+                                    aria-hidden="true">^</span><sup>2</sup></span> multiplies the three 2s out to 8,
+                            which is composite; the index form keeps them as <span class="sf"
+                                aria-label="2 cubed">2<span class="caret"
+                                    aria-hidden="true">^</span><sup>3</sup></span>.</span></li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="summary">
+                <h1 id="summary">Summary</h1>
+                <ol class="recap">
+                    <li>Split a composite number into factor pairs, or divide it repeatedly by primes.</li>
+                    <li>Continue until every remaining factor is prime, or the repeated-division quotient is 1.</li>
+                    <li>Keep every repeated copy of a prime factor.</li>
+                    <li>Write equal prime factors as powers, with prime bases in ascending order.</li>
+                    <li>Multiply the prime powers to recover the starting number and check the factorisation.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
                 <h2 id="practice-heading">Practice and continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practicePrimeFactorisation.html" style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
+                    <a class="topic-card topic-card--practice"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practicePrimeFactorisation.html"
+                        style="background-image: none"><span class="practice-card__kicker">Practice</span>
                         <h3>Prime factorisation</h3>
                         <p>Factor trees and repeated division, index form, and why the primes are unique.</p>
                     </a>
-                    <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/HCFFromPrimeFactors.html" style="background-image: none">
-                        <span class="topic-card__kicker">Next lesson</span>
+                    <a class="topic-card topic-card--next"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/HCFFromPrimeFactors.html"
+                        style="background-image: none"><span class="topic-card__kicker">Next lesson</span>
                         <h3>Highest common factor</h3>
-                        <p>Taking each shared prime to the lower index, and what the HCF means.</p>
+                        <p>Take each shared prime to the lower index, and interpret what the HCF means.</p>
                     </a>
                 </div>
             </section>
         </main>
-
         <footer>
             <div class="footer-content">
                 <div class="footer-section">

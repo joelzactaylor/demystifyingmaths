@@ -242,7 +242,7 @@
                     "title": "Prime factorisation",
                     "description": "Factor trees and repeated division, index form, and why the primes are unique.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Writing numbers up to four digits as products of primes by factor tree or repeated division, answered in index form; N4 names product notation and the unique factorisation theorem, so state uniqueness. HCF, LCM and square-making applications live on their own pages. Both tiers. (N4)"
                 },
                 {

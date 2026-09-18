@@ -243,6 +243,16 @@ Fails: Think of the carried digit as a little passenger travelling to the next c
 - rhetorical questions of any kind, and exclamation marks of any kind
 - great! / well done / now you know how to / you should now be able to
 
+## Recorded exceptions
+
+A rule is broken on purpose only where it is written down, in an HTML comment
+beside the sentence and here, so that an audit does not "fix" it.
+
+- `pages/curriculum/GCSE/number/structure/factorsAndPrimes/primeFactorisation.html`,
+  the paragraph opening "Factorise a chosen number": mechanics copy in second
+  person (rules 3 and 22). The factoriser has no visible controls, so the one
+  paragraph before it says what the discs do.
+
 ## Checking it
 
 `scripts/voice-check.mjs` tests the shapes that can be tested mechanically —
