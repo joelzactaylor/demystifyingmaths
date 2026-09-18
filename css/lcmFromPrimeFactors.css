@@ -1,0 +1,275 @@
+/* Lowest common multiple needs two multiple lists laid side by side, three
+   scroll-led scenes — a ring that grows, a comparison of two index forms, and
+   a product ring that sheds its doubled primes — and a live LCM finder beyond
+   the structural lesson components in lesson.css. */
+
+.multiple-lists {
+    display: grid;
+    gap: 12px;
+    margin: 24px 0;
+    padding: 20px 22px;
+    border: 2px solid #d9e4eb;
+    border-radius: 16px;
+    background: #fff;
+}
+
+.multiple-lists > div { display: grid; gap: 8px; grid-template-columns: 118px 1fr; align-items: center; }
+/* Room for a label that names two numbers. */
+.multiple-lists--wide > div { grid-template-columns: 178px 1fr; }
+.multiple-lists__label { color: #52666f; font-size: .82rem; font-weight: 700; letter-spacing: .03em; }
+
+.multiple-lists ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    color: #52666f;
+    font: 700 1rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.multiple-lists li { min-width: 40px; padding: 8px 10px; border-radius: 9px; background: #f1f7fb; text-align: center; }
+.multiple-lists li.is-common { background: #eaf3f8; box-shadow: inset 0 0 0 2px #5d91b0; color: #173849; }
+.multiple-lists li.is-lowest { background: #fff8df; box-shadow: inset 0 0 0 2px #d99a20; color: #80540f; }
+/* The lists run on: the last entry is an ellipsis, not a multiple. */
+.multiple-lists li.is-more { min-width: 0; background: none; color: #7a8b93; }
+.multiple-lists__result {
+    margin: 6px 0 0;
+    color: #09539d;
+    font: 700 1.12rem/1.3 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    text-align: center;
+}
+
+.method-steps {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 24px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.method-steps li {
+    display: grid;
+    gap: 7px;
+    padding: 17px 18px;
+    border: 2px solid #d9e4eb;
+    border-top: 5px solid #5d91b0;
+    border-radius: 14px;
+    background: #fff;
+}
+
+.method-steps b { color: #09539d; }
+.method-steps span { color: #41535c; font-size: .9rem; line-height: 1.45; }
+
+.reading-pair { display: grid; gap: 18px; grid-template-columns: 1fr 1fr; margin: 24px 0; }
+.reading-pair article { padding: 18px 20px; border: 2px solid #d9e4eb; border-left: 5px solid #5d91b0; border-radius: 14px; background: #fff; }
+.reading-pair article:nth-child(2) { border-left-color: #d99a20; }
+.reading-pair h2 { margin: 0 0 8px; color: #173849; font-size: 1.06rem; }
+.reading-pair p { margin: 0; color: #41535c; font-size: .91rem; line-height: 1.5; }
+
+.quotient-check {
+    display: grid;
+    gap: 10px;
+    margin: 24px 0;
+}
+
+.quotient-check > div {
+    display: grid;
+    grid-template-columns: 1.2fr 30px .7fr 30px 1fr;
+    padding: 12px 18px;
+    align-items: center;
+    border: 2px solid #d9e4eb;
+    border-radius: 14px;
+    background: #fff;
+    color: #173849;
+    font: 700 1rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+}
+
+.quotient-check i { color: #b86821; font-style: normal; }
+.quotient-check strong { color: #09539d; font-size: 1.15rem; }
+
+.aligned-forms {
+    display: grid;
+    gap: 8px;
+    margin: 24px 0;
+    padding: 18px 22px;
+    justify-items: center;
+    border: 2px solid #d9e4eb;
+    border-radius: 16px;
+    background: #f1f7fb;
+    color: #173849;
+    font: 700 1.12rem/1.35 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.aligned-forms > div { display: grid; grid-template-columns: 52px 28px repeat(4, 44px 28px); align-items: baseline; }
+.aligned-forms > div > span:first-child { color: #52666f; text-align: right; }
+.aligned-forms i { color: #b86821; font-style: normal; text-align: center; }
+.aligned-forms span, .aligned-forms b { text-align: center; }
+.aligned-forms b { color: #80540f; }
+.aligned-forms sup { font-size: .72em; }
+
+/* Scroll-led scenes --------------------------------------------------- */
+
+.lcm-scene {
+    position: relative;
+    min-height: 520px;
+    margin: 22px 0 8px;
+    overflow-anchor: none;
+}
+
+.lcm-scene.is-ready { height: var(--scene-height); min-height: var(--scene-min-height); }
+
+.lcm-scene__sticky {
+    position: absolute;
+    inset: 0 0 auto;
+    display: grid;
+    height: min(650px, calc(100vh - 84px));
+    min-height: 520px;
+    box-sizing: border-box;
+    grid-template-rows: minmax(0, 1fr) auto auto;
+    overflow: hidden;
+    border: 2px solid #c9dce8;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #fbfdff 0%, #f2f8fc 100%);
+    box-shadow: 0 12px 30px rgba(20, 57, 78, .14);
+    contain: layout paint;
+    overflow-anchor: none;
+    will-change: transform;
+}
+
+.lcm-scene__sticky.is-pinned {
+    position: fixed;
+    right: auto;
+    z-index: 900;
+    transform-origin: top left;
+}
+
+.lcm-board {
+    display: grid;
+    min-height: 0;
+    padding: 20px 30px 12px;
+    place-items: center;
+    overflow: hidden;
+    background: linear-gradient(rgba(93,145,176,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(93,145,176,.07) 1px, transparent 1px), #eaf3f8;
+    background-size: 26px 26px;
+}
+
+.lcm-board svg { display: block; width: 100%; max-width: 690px; overflow: visible; }
+
+.lcm-scene__caption {
+    display: grid;
+    height: 6.6em;
+    box-sizing: border-box;
+    padding: 14px 28px 6px;
+    align-content: center;
+    text-align: center;
+}
+
+.lcm-scene__caption h3 { margin: 0 0 5px; color: #09539d; font-size: 1.1rem; }
+.lcm-scene__caption p { max-width: 680px; margin: 0 auto; color: #243a45; font-size: .97rem; line-height: 1.5; }
+.lcm-scene__progress { display: flex; gap: 8px; padding: 0 22px 18px; justify-content: center; }
+.lcm-scene__dot { width: 9px; height: 9px; border-radius: 50%; background: #c6d4dc; transition: width .25s ease, background-color .25s ease; }
+.lcm-scene__dot.is-past { background: #6c9bb0; }
+.lcm-scene__dot.is-current { width: 28px; border-radius: 999px; background: #116e93; }
+
+.scene-label, .scene-power, .scene-equation, .scene-step {
+    fill: #173849;
+    font: 700 24px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+.scene-label { fill: #52666f; }
+.scene-power tspan.index { font-size: 15px; }
+/* Kept in the text so a copy of the drawing reads 2^3, but given no size and no ink. */
+.scene-power tspan.caret { font-size: .01px; fill: transparent; }
+.scene-cell { fill: #fff; stroke: #d9e4eb; stroke-width: 2.5; }
+.scene-cell.is-chosen { fill: #fff8df; stroke: #d99a20; stroke-width: 3.5; }
+.scene-cell.is-zero { fill: #f6f9fb; stroke-dasharray: 7 6; }
+.scene-power.is-lcm { fill: #80540f; }
+.scene-drop { fill: none; stroke: #d99a20; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 6 8; }
+.scene-equation { fill: #09539d; font-size: 26px; }
+.scene-step { fill: #173849; font-size: 22px; }
+
+/* Factor rings, styled as on the prime factorisation page. */
+.factor-ring__disc { filter: drop-shadow(0 4px 5px rgba(23,56,73,.13)); }
+.factor-ring__base { fill: #fff; }
+.factor-ring__sector { stroke: #fff; stroke-width: 1.7; stroke-linejoin: round; }
+.factor-ring__outline { fill: none; stroke: #fff; stroke-width: 2.2; }
+.factor-ring__centre { fill: #173849; stroke: #fff; stroke-width: 1.8; }
+.factor-ring__value { fill: #fff; font: 700 15px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-variant-numeric: tabular-nums; pointer-events: none; }
+/* A gold outline over a sector while it is being matched or moved. */
+.factor-ring__glow { fill: none; stroke: #d99a20; stroke-width: 4; stroke-linejoin: round; pointer-events: none; }
+.scene-cell, .scene-power, .scene-label, .scene-drop, .scene-equation, .scene-step, .scene-times { opacity: 0; }
+.scene-times { fill: #b86821; font: 700 22px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
+
+/* Live LCM finder ----------------------------------------------------- */
+
+.lcm-finder {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+    padding: 22px 24px;
+    border: 2px solid #c9dce8;
+    border-radius: 18px;
+    background: linear-gradient(180deg, #fbfdff 0%, #f2f8fc 100%);
+    box-shadow: 0 8px 22px rgba(23, 56, 73, .11);
+}
+
+.lcm-finder__inputs { display: flex; gap: 28px; justify-content: center; }
+.lcm-finder__field { display: grid; gap: 6px; justify-items: center; }
+.lcm-finder__field > span { color: #52666f; font-size: .76rem; font-weight: 700; letter-spacing: .035em; }
+.lcm-finder__field input {
+    width: 170px;
+    box-sizing: border-box;
+    padding: 10px 14px;
+    border: 2px solid #b8cbd7;
+    border-radius: 12px;
+    outline: none;
+    background: #fff;
+    color: #173849;
+    font: 700 1.18rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+    transition: border-color .18s ease, box-shadow .18s ease;
+}
+.lcm-finder__field input:focus { border-color: #116e93; box-shadow: 0 0 0 4px rgba(17, 110, 147, .12); }
+
+.lcm-finder__table { display: grid; gap: 10px; min-height: 182px; box-sizing: border-box; padding: 16px 18px; border: 2px solid #d9e4eb; border-radius: 16px; background: linear-gradient(rgba(93,145,176,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(93,145,176,.07) 1px, transparent 1px), #eaf3f8; background-size: 26px 26px; }
+.lcm-finder__row {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 96px repeat(var(--columns), minmax(58px, 1fr));
+    align-items: center;
+    color: #173849;
+    font: 700 1.05rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+.lcm-finder__row > b { color: #52666f; font-size: .95rem; text-align: right; }
+
+/* The cells draw the same marks as the scene: a plain cell for an index that is
+   not used, gold for the higher index, dashed for an index of 0, and a dashed gold
+   line from each chosen cell down into the LCM row. */
+.lcm-finder__row > span { position: relative; z-index: 1; display: flex; height: 54px; box-sizing: border-box; align-items: center; justify-content: center; padding: 6px 8px; border: 2.5px solid #d9e4eb; border-radius: 12px; background: #fff; }
+.lcm-finder__row > span.is-chosen { border-color: #d99a20; border-width: 3px; background: #fff8df; color: #80540f; }
+.lcm-finder__row > span.is-zero { border-style: dashed; background: #f6f9fb; color: #7a8b93; }
+.lcm-finder__row--lcm > span.is-chosen { color: #80540f; }
+.lcm-finder__row > span.is-chosen::after { content: ""; position: absolute; z-index: 0; top: 100%; left: 50%; width: 0; height: 10px; border-left: 3px dashed #d99a20; transform: translateX(-50%); }
+.lcm-finder__row:first-child > span.is-chosen::after { height: 74px; }
+.lcm-finder__row--lcm > span.is-chosen::after { content: none; }
+.lcm-finder__row sup { position: relative; top: -.4em; font-size: .72em; line-height: 0; }
+.lcm-finder__empty { display: grid; min-height: 100%; box-sizing: border-box; margin: 0; padding: 20px; place-items: center; border: 2px dashed #b8cbd7; border-radius: 14px; background: rgba(255,255,255,.86); color: #687b84; }
+
+.lcm-finder__result { display: grid; gap: 4px; min-height: 3.2em; }
+.lcm-finder__answer { margin: 0; color: #09539d; font: 700 1.1rem/1.4 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; text-align: center; }
+.lcm-finder__note { margin: 0; color: #52666f; font-size: .9rem; line-height: 1.45; text-align: center; }
+
+@media (prefers-reduced-motion: reduce) {
+    .lcm-scene.is-ready { height: auto; min-height: 0; }
+    .lcm-scene__sticky { position: relative; height: auto; transform: none !important; }
+    .lcm-scene__dot, .lcm-finder__field input { transition: none; }
+}

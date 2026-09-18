@@ -10,12 +10,14 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lcmFromPrimeFactors.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/lcmFromPrimeFactors.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -30,12 +32,18 @@
             <h1>Demystifying - Lowest common multiple</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
-                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and calculation</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/">Factors and primes</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span>
+                    </li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and
+                            calculation</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/">Factors
+                            and primes</a><span aria-hidden="true">&rsaquo;</span></li>
                     <li>
                         <p>Lowest common multiple</p>
                     </li>
@@ -46,26 +54,368 @@
         <aside id="page-nav-container"></aside>
 
         <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>LCM from prime factorisations, taking every prime to its higher index; why the LCM is at most the product and equals it only for coprime numbers; listing multiples as backup. Worded HCF-or-LCM decisions live on choosing-hcf-or-lcm. Both tiers. (N4)</p>
+            <p class="prereq"><b>Before this page:</b> <span>list the <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/multiplesAndDivisibility.html">multiples</a>
+                    of a number, write a number as a product of primes using <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/primeFactorisation.html">prime
+                        factorisation</a>, and compare two index forms to find the <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/HCFFromPrimeFactors.html">highest
+                        common factor</a>.</span></p>
+
+            <section aria-labelledby="lowest-common-multiple">
+                <h1 id="lowest-common-multiple">The first number both counts reach</h1>
+                <p>A <span class="gloss" data-term="common multiple">common multiple</span> of two numbers is a <span
+                        class="gloss" data-term="multiple">multiple</span> of each of them. Counting in 8s reaches 8,
+                    16, 24, 32, 40 and 48; counting in 12s reaches 12, 24, 36 and 48. Both counts reach 24 and 48, and
+                    24 is the first: the lowest common multiple, written LCM.</p>
+                <div class="multiple-lists" role="img"
+                    aria-label="The multiples of 8 are 8, 16, 24, 32, 40 and 48. The multiples of 12 are 12, 24, 36 and 48. The common multiples are 24 and 48, and the lowest is 24.">
+                    <div><span class="multiple-lists__label">Multiples of 8</span>
+                        <ol>
+                            <li>8</li>
+                            <li>16</li>
+                            <li class="is-common is-lowest">24</li>
+                            <li>32</li>
+                            <li>40</li>
+                            <li class="is-common">48</li>
+                            <li class="is-more">&hellip;</li>
+                        </ol>
+                    </div>
+                    <div><span class="multiple-lists__label">Multiples of 12</span>
+                        <ol>
+                            <li>12</li>
+                            <li class="is-common is-lowest">24</li>
+                            <li>36</li>
+                            <li class="is-common">48</li>
+                            <li class="is-more">&hellip;</li>
+                        </ol>
+                    </div>
+                    <p class="multiple-lists__result">LCM of 8 and 12 = 24</p>
+                </div>
+                <div class="rule-card">
+                    <h2 class="rule-card__statement">The LCM is the smallest number both counts reach</h2>
+                    <ol class="rule-card__conditions">
+                        <li>24 is a multiple of both: <span class="sf">24 = 3 &times; 8</span> and <span class="sf">24 =
+                                2 &times; 12</span>.</li>
+                        <li>No smaller number is a multiple of both: 8 and 16 are not multiples of 12, and 12 is not a
+                            multiple of 8.</li>
+                    </ol>
+                </div>
+                <p>The lists stay short while the numbers are small. For 120 and 252 the multiples of 120 reach 2,520
+                    at the 21st entry and the multiples of 252 at the 10th: 31 entries written before the first number
+                    both lists hold.</p>
             </section>
 
-            <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+            <section aria-labelledby="build-common-multiple">
+                <h1 id="build-common-multiple">Build a multiple of both from prime factors</h1>
+                <p><span class="sf">120 = 2 &times; 2 &times; 2 &times; 3 &times; 5</span> and <span class="sf">252 =
+                        2 &times; 2 &times; 3 &times; 3 &times; 7</span>. Every multiple of 252 contains every <span
+                        class="gloss" data-term="prime factor">prime factor</span> of 252: two 2s, two 3s and a 7. 120
+                    already contains the two 2s and one of the 3s, so a multiple of 120 becomes a multiple of 252 once
+                    the missing 3 and the missing 7 are multiplied in: <span class="sf">120 &times; 3 &times; 7 =
+                        2,520</span>. Nothing else was multiplied in, so 2,520 is the smallest multiple of 120 that is also a
+                    multiple of 252.</p>
+                <div class="worked">
+                    <h2 class="worked__title">Adding to 120 what 252 needs</h2>
+                    <div class="lcm-scene" data-lcm-scene data-kind="build">
+                        <div class="lcm-scene__sticky">
+                            <div class="lcm-board" data-board role="img"
+                                aria-label="120 and 252 are drawn as rings, with one coloured sector for each prime factor: 2, 2, 2, 3, 5 and 2, 2, 3, 3, 7. The two 2s of 252 are matched against two of the three 2s in 120. One 3 of 252 is matched against the 3 in 120; the other 3 has no match, so a copy of it joins the first ring, which becomes 360. The 7 of 252 has no match either, so a copy joins the ring, which becomes 2,520. Every sector of 252 is now accounted for, and the ring reads 2,520 equals 2 times 2 times 2 times 3 times 3 times 5 times 7.">
+                            </div>
+                            <div class="lcm-scene__caption" aria-live="polite" aria-atomic="true">
+                                <h3 data-step-title>Both numbers as rings of prime factors</h3>
+                                <p data-step-copy>120 = 2 × 2 × 2 × 3 × 5 and 252 = 2 × 2 × 3 × 3 × 7, with one
+                                    sector for each prime factor.</p>
+                            </div>
+                            <div class="lcm-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript>
+                            <p class="worked__fallback"><strong class="sf">120 &times; 3 &times; 7 = 2,520, and 2,520
+                                    &divide; 252 = 10</strong></p>
+                        </noscript>
+                    </div>
+                </div>
+            </section>
+
+            <section aria-labelledby="compare-primes">
+                <h1 id="compare-primes">Compare the prime factorisations</h1>
+                <p>Written in <span class="gloss" data-term="index form">index form</span>, <span class="sf"
+                        role="math" aria-label="120 equals 2 cubed times 3 times 5">120 = 2<span class="caret"
+                            aria-hidden="true">^</span><sup>3</sup> &times; 3 &times; 5</span> and <span class="sf"
+                        role="math" aria-label="252 equals 2 squared times 3 squared times 7">252 = 2<span
+                            class="caret" aria-hidden="true">^</span><sup>2</sup> &times; 3<span class="caret"
+                            aria-hidden="true">^</span><sup>2</sup> &times; 7</span>. Each <span class="gloss"
+                        data-term="index">index</span> counts the factors of one prime, and the two counts of each
+                    prime are compared side by side: a common multiple needs the larger count of each.</p>
+                <div class="worked">
+                    <h2 class="worked__title">The LCM of 120 and 252</h2>
+                    <div class="lcm-scene" data-lcm-scene data-kind="compare">
+                        <div class="lcm-scene__sticky">
+                            <div class="lcm-board" data-board role="img"
+                                aria-label="120 equals 2 cubed times 3 times 5, and 252 equals 2 squared times 3 squared times 7, written one above the other with equal primes aligned. A prime written without an index has index 1, so 3 in 120 is 3 to the 1. The missing primes are written with index 0: 7 to the 0 in 120 and 5 to the 0 in 252. For each prime the higher index is chosen, because a multiple of both must contain at least as many copies of that prime as either number: 2 cubed, 3 squared, 5 to the 1 and 7 to the 1. The LCM is 2 cubed times 3 squared times 5 times 7, which is 2,520.">
+                            </div>
+                            <div class="lcm-scene__caption" aria-live="polite" aria-atomic="true">
+                                <h3 data-step-title>Write both numbers in index form</h3>
+                                <p data-step-copy>120 = 2³ × 3 × 5 and 252 = 2² × 3² × 7, with equal primes in the
+                                    same column.</p>
+                            </div>
+                            <div class="lcm-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript>
+                            <p class="worked__fallback"><strong class="sf" role="math"
+                                    aria-label="LCM of 120 and 252 equals 2 cubed times 3 squared times 5 times 7 equals 2,520">LCM
+                                    of 120 and 252 = 2<span class="caret" aria-hidden="true">^</span><sup>3</sup>
+                                    &times; 3<span class="caret" aria-hidden="true">^</span><sup>2</sup> &times; 5
+                                    &times; 7 = 2,520</strong></p>
+                        </noscript>
+                    </div>
+                </div>
+                <ol class="method-steps">
+                    <li><b>Factorise</b>
+                        <span>both numbers into index form, with prime bases in ascending order.</span>
+                    </li>
+                    <li><b>Compare</b>
+                        <span>the two indices of each prime, counting a missing prime as index 0, and take the
+                            higher.</span>
+                    </li>
+                    <li><b>Multiply</b>
+                        <span>the chosen prime powers. Every prime in either number is in the product.</span>
+                    </li>
+                </ol>
+            </section>
+
+            <section aria-labelledby="higher-index">
+                <h1 id="higher-index">Take every prime to its higher index</h1>
+                <p>A multiple of 120 contains at least three 2s, a 3 and a 5. <span
+                        class="sf" role="math" aria-label="120 times 7 equals 840 equals 2 cubed times 3 times 5 times 7">120
+                        &times; 7 = 840 = 2<span class="caret" aria-hidden="true">^</span><sup>3</sup> &times; 3
+                        &times; 5 &times; 7</span> still contains three factors of 2, and <span class="sf" role="math"
+                        aria-label="2 squared times 3 times 5 equals 60">2<span class="caret"
+                            aria-hidden="true">^</span><sup>2</sup> &times; 3 &times; 5 = 60</span> is not a multiple
+                    of 120, because it contains only two.</p>
+                <p>A common multiple of 120 and 252 contains every prime factor of each number. For each prime, it
+                    contains at least as many factors of that prime as the number with more. 120 has three factors of 2 and 252 has two, so
+                    a common multiple has at least three: the higher index. The smallest common multiple has exactly
+                    that many, and the same holds for every <span class="gloss" data-term="prime">prime</span>. The lower index fails the test: <span class="sf"
+                        role="math" aria-label="2 squared times 3 squared times 5 times 7 equals 1,260">2<span
+                            class="caret" aria-hidden="true">^</span><sup>2</sup> &times; 3<span class="caret"
+                            aria-hidden="true">^</span><sup>2</sup> &times; 5 &times; 7 = 1,260</span> is not a
+                    multiple of 120, because <span class="sf">1,260 &divide; 120 = 10.5</span>.</p>
+                <p>252 contains no factor of 5, so <span class="sf" aria-label="5 to the 0">5<span
+                            class="caret" aria-hidden="true">^</span><sup>0</sup></span> is written in 252. The higher of 1 and 0 is 1, so
+                    the LCM contains one 5.</p>
+                <div class="aligned-forms" role="img"
+                    aria-label="120 equals 2 cubed times 3 to the 1 times 5 to the 1 times 7 to the 0. 252 equals 2 squared times 3 squared times 5 to the 0 times 7 to the 1. The higher index in each column is 3, 2, 1 and 1.">
+                    <div><span>120 </span><i>=</i> <span>2<span class="caret" aria-hidden="true">^</span><sup>3</sup> </span><i>&times;</i> <span>3<span class="caret" aria-hidden="true">^</span><sup>1</sup> </span><i>&times;</i> <span>5<span class="caret" aria-hidden="true">^</span><sup>1</sup> </span><i>&times;</i> <span>7<span class="caret" aria-hidden="true">^</span><sup>0</sup></span></div>
+                    <div><span>252 </span><i>=</i> <span>2<span class="caret" aria-hidden="true">^</span><sup>2</sup> </span><i>&times;</i> <span>3<span class="caret" aria-hidden="true">^</span><sup>2</sup> </span><i>&times;</i> <span>5<span class="caret" aria-hidden="true">^</span><sup>0</sup> </span><i>&times;</i> <span>7<span class="caret" aria-hidden="true">^</span><sup>1</sup></span></div>
+                    <div><span>LCM </span><i>=</i> <b>2<span class="caret" aria-hidden="true">^</span><sup>3</sup></b> <i>&times;</i> <b>3<span class="caret" aria-hidden="true">^</span><sup>2</sup></b> <i>&times;</i> <b>5<span class="caret" aria-hidden="true">^</span><sup>1</sup></b> <i>&times;</i> <b>7<span class="caret" aria-hidden="true">^</span><sup>1</sup></b></div>
+                </div>
+                <div class="rule-card">
+                    <h2 class="rule-card__statement">LCM = the product of every prime to its higher index</h2>
+                    <ol class="rule-card__conditions">
+                        <li>A prime missing from one number has index 0 there, so the other index is the higher: 5 and
+                            7 both divide 2,520.</li>
+                        <li>A prime with the same index in both keeps that index: 108 and 540 both contain <span
+                                class="sf" aria-label="3 cubed">3<span class="caret"
+                                    aria-hidden="true">^</span><sup>3</sup></span>, so their LCM does too.</li>
+                    </ol>
+                </div>
+                <div class="reading-pair">
+                    <article>
+                        <h2>No shared prime</h2>
+                        <p><span class="sf" role="math" aria-label="125 equals 5 cubed">125 = 5<span class="caret"
+                                    aria-hidden="true">^</span><sup>3</sup></span> and <span class="sf" role="math"
+                                aria-label="144 equals 2 to the power 4 times 3 squared">144 = 2<span class="caret"
+                                    aria-hidden="true">^</span><sup>4</sup> &times; 3<span class="caret"
+                                    aria-hidden="true">^</span><sup>2</sup></span> have no prime in common: they are coprime.
+                            Every prime power of each is in the LCM, so <strong>LCM = 125 &times; 144 =
+                                18,000</strong>: the product of the two numbers.</p>
+                    </article>
+                    <article>
+                        <h2>One number is a factor of the other</h2>
+                        <p><span class="sf" role="math" aria-label="108 equals 2 squared times 3 cubed">108 = 2<span
+                                    class="caret" aria-hidden="true">^</span><sup>2</sup> &times; 3<span class="caret"
+                                    aria-hidden="true">^</span><sup>3</sup></span> and <span class="sf" role="math"
+                                aria-label="540 equals 2 squared times 3 cubed times 5">540 = 2<span class="caret"
+                                    aria-hidden="true">^</span><sup>2</sup> &times; 3<span class="caret"
+                                    aria-hidden="true">^</span><sup>3</sup> &times; 5</span>. Every prime power in 108
+                            is also in 540, so <strong>LCM = 540</strong>: the larger number itself.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section aria-labelledby="at-most-the-product">
+                <h1 id="at-most-the-product">The LCM is never more than the product</h1>
+                <p><span class="sf">120 &times; 252 = 30,240</span> is a multiple of 120 and of 252, so the LCM is at
+                    most 30,240. In prime factors, <span class="sf" role="math"
+                        aria-label="30,240 equals 2 to the power 5 times 3 cubed times 5 times 7">30,240 = 2<span
+                            class="caret" aria-hidden="true">^</span><sup>5</sup> &times; 3<span class="caret"
+                            aria-hidden="true">^</span><sup>3</sup> &times; 5 &times; 7</span>: every prime factor of
+                    120 and every prime factor of 252, all together. The two 2s and the 3 that both numbers contain
+                    are in the product twice, once from each number, and a common multiple needs only one copy of each: three 2s where
+                    the product has five, two 3s where it has three.</p>
+                <div class="worked">
+                    <h2 class="worked__title">What the product holds twice</h2>
+                    <div class="lcm-scene" data-lcm-scene data-kind="product">
+                        <div class="lcm-scene__sticky">
+                            <div class="lcm-board" data-board role="img"
+                                aria-label="120 and 252 are drawn as rings of prime factors, 2, 2, 2, 3, 5 and 2, 2, 3, 3, 7. A copy of every sector from both rings gathers into one ring of ten sectors, 120 times 252 equals 30,240. The two 2s and the 3 that both numbers contain are there twice, once from each number. One 2, another 2 and a 3 leave the ring as three discs, and 30,240 divided by 2, by 2 and by 3 is 2,520, which is still a multiple of both numbers.">
+                            </div>
+                            <div class="lcm-scene__caption" aria-live="polite" aria-atomic="true">
+                                <h3 data-step-title>Both numbers as rings of prime factors</h3>
+                                <p data-step-copy>120 has five prime factors and 252 has five, with one sector for
+                                    each: ten sectors in all.</p>
+                            </div>
+                            <div class="lcm-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript>
+                            <p class="worked__fallback"><strong class="sf">120 &times; 252 = 30,240, and 30,240
+                                    &divide; 2 &divide; 2 &divide; 3 = 2,520</strong></p>
+                        </noscript>
+                    </div>
+                </div>
+                <p>The surplus is one copy of each prime the two numbers share: <span class="sf">2 &times; 2 &times; 3
+                        = 12</span>, and <span class="sf">30,240 &divide; 12 = 2,520</span>. Any shared prime makes
+                    the LCM smaller than the product; only coprime numbers, with no prime in common, have nothing
+                    surplus and an LCM equal to their product.</p>
+            </section>
+
+            <section aria-labelledby="lcm-meaning">
+                <h1 id="lcm-meaning">Every common multiple is a multiple of the LCM</h1>
+                <p>The common multiples of 120 and 252 are exactly the multiples of 2,520. A common multiple contains
+                    at least three 2s, two 3s, a 5 and a 7, so it contains <span class="sf" role="math"
+                        aria-label="2 cubed times 3 squared times 5 times 7">2<span class="caret"
+                            aria-hidden="true">^</span><sup>3</sup> &times; 3<span class="caret"
+                            aria-hidden="true">^</span><sup>2</sup> &times; 5 &times; 7</span> as a <span
+                        class="gloss" data-term="factor">factor</span>: 2,520 divides every one of them.</p>
+                <div class="multiple-lists multiple-lists--wide" role="img"
+                    aria-label="The common multiples of 120 and 252 are 2,520, 5,040, 7,560, 10,080 and onwards. The multiples of 2,520 are 2,520, 5,040, 7,560, 10,080 and onwards. The two lists are the same.">
+                    <div><span class="multiple-lists__label">Common multiples of 120 and 252</span>
+                        <ol>
+                            <li class="is-common is-lowest">2,520</li>
+                            <li class="is-common">5,040</li>
+                            <li class="is-common">7,560</li>
+                            <li class="is-common">10,080</li>
+                            <li class="is-more">&hellip;</li>
+                        </ol>
+                    </div>
+                    <div><span class="multiple-lists__label">Multiples of 2,520</span>
+                        <ol>
+                            <li class="is-common is-lowest">2,520</li>
+                            <li class="is-common">5,040</li>
+                            <li class="is-common">7,560</li>
+                            <li class="is-common">10,080</li>
+                            <li class="is-more">&hellip;</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <aside class="important-box" aria-labelledby="divide-check">
+                    <h2 class="important-box__title" id="divide-check">Divide the LCM by both numbers to check</h2>
+                    <div class="quotient-check" role="img"
+                        aria-label="2,520 divided by 120 equals 21, which is 3 times 7. 2,520 divided by 252 equals 10, which is 2 times 5. The quotients 21 and 10 share no prime.">
+                        <div><span>2,520 &divide; 120</span> <i aria-hidden="true">=</i> <strong>21</strong> <i
+                                aria-hidden="true">=</i>
+                            <span>3 &times; 7</span>
+                        </div>
+                        <div><span>2,520 &divide; 252</span> <i aria-hidden="true">=</i> <strong>10</strong> <i
+                                aria-hidden="true">=</i>
+                            <span>2 &times; 5</span>
+                        </div>
+                    </div>
+                    <p>Both divisions are exact, so 2,520 is a common multiple; the <span class="gloss"
+                            data-term="quotient">quotients</span> share no prime, so it is the lowest. A prime common
+                        to both quotients shows that the multiple found is too large: divided by that prime, it is
+                        still a multiple of both numbers. <span class="sf">30,240 &divide; 120 = 252</span> and <span
+                            class="sf">30,240 &divide; 252 = 120</span> share the primes 2 and 3, which is how the
+                        product fails.</p>
+                </aside>
+            </section>
+
+            <section aria-labelledby="find-lcm">
+                <h1 id="find-lcm">Find the LCM of two chosen numbers</h1>
+                <p>600 and 252 share the primes 2 and 3; 125 and 144 share none; 108 and 540 share every prime of 108.
+                    In each case the LCM takes every prime to the higher of its two indices. A prime with index 0 on
+                    one side keeps the index it has on the other.</p>
+                <div class="lcm-finder" data-lcm-finder>
+                    <div class="lcm-finder__inputs">
+                        <label class="lcm-finder__field" for="lcm-first"><span>First number</span><input
+                                id="lcm-first" type="text" inputmode="numeric" maxlength="4" value="600"
+                                autocomplete="off" spellcheck="false" data-lcm-input></label>
+                        <label class="lcm-finder__field" for="lcm-second"><span>Second number</span><input
+                                id="lcm-second" type="text" inputmode="numeric" maxlength="4" value="252"
+                                autocomplete="off" spellcheck="false" data-lcm-input></label>
+                    </div>
+                    <div class="lcm-finder__table" data-lcm-table></div>
+                    <div class="lcm-finder__result" aria-live="polite" aria-atomic="true">
+                        <p class="lcm-finder__answer" data-lcm-answer>LCM of 600 and 252 = 2³ × 3² × 5² × 7 = 12,600</p>
+                        <p class="lcm-finder__note" data-lcm-note>600 × 252 = 151,200, which is 12 times the LCM: one
+                            copy of each shared prime is surplus.</p>
+                    </div>
+                    <noscript>
+                        <p class="worked__fallback"><strong class="sf" role="math"
+                                aria-label="LCM of 600 and 252 equals 12,600">LCM of 600 and 252 = 12,600</strong></p>
+                    </noscript>
+                </div>
+            </section>
+
+            <section aria-labelledby="lcm-slips">
+                <h1 id="lcm-slips">Take the higher index, for every prime</h1>
+                <ul class="slips">
+                    <li><b>Taking the lower index</b>
+                        <span>Choosing <span class="sf" aria-label="2 squared times 3">2<span class="caret"
+                                    aria-hidden="true">^</span><sup>2</sup> &times; 3</span> for 120 and 252 gives 12,
+                            which is smaller than both numbers and a multiple of neither. The lower index belongs to
+                            the <span class="gloss" data-term="highest common factor">highest common factor</span>, not
+                            the LCM.</span>
+                    </li>
+                    <li><b>Keeping only the primes both numbers have</b>
+                        <span>Taking 2 and 3 to their higher indices and leaving out the 5 and the 7 gives <span
+                                class="sf" aria-label="2 cubed times 3 squared">2<span class="caret"
+                                    aria-hidden="true">^</span><sup>3</sup> &times; 3<span class="caret"
+                                    aria-hidden="true">^</span><sup>2</sup> = 72</span>. 5 does not divide 72, so 120
+                            does not either.</span>
+                    </li>
+                    <li><b>Multiplying the two numbers</b>
+                        <span><span class="sf">120 &times; 252 = 30,240</span> is a common multiple, and it is 12
+                            times the lowest one. The product is the LCM only when the two numbers share no
+                            prime.</span>
+                    </li>
+                    <li><b>Writing the larger number</b>
+                        <span>252 is the LCM of 120 and 252 only if 120 divides it, and <span class="sf">252 = 2
+                                &times; 120 + 12</span>. The larger number is the LCM when the smaller is a factor of
+                            it, as 108 is of 540.</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="summary">
+                <h1 id="summary">Summary</h1>
+                <ol class="recap">
+                    <li>A common multiple is a multiple of both numbers; the LCM is the smallest common multiple.</li>
+                    <li>For small numbers, list the multiples of each and pick the first that appears in both lists.
+                    </li>
+                    <li>For larger numbers, write both in index form; the LCM is every prime in either number, each
+                        to its higher index.</li>
+                    <li>The product of the two numbers is a common multiple, so the LCM is at most the product; the two
+                        are equal only when no prime is shared.</li>
+                    <li>Divide the LCM by both numbers: both divisions are exact, and the quotients share no prime.
+                    </li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
                 <h2 id="practice-heading">Practice and continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practiceLCMFromPrimeFactors.html" style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
+                    <a class="topic-card topic-card--practice"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practiceLCMFromPrimeFactors.html"
+                        style="background-image: none"><span class="practice-card__kicker">Practice</span>
                         <h3>Lowest common multiple</h3>
                         <p>Every prime to the higher index, and why the LCM is not always the product.</p>
                     </a>
-                    <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/HCFLCMVenn.html" style="background-image: none">
-                        <span class="topic-card__kicker">Next lesson</span>
+                    <a class="topic-card topic-card--next"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/HCFLCMVenn.html"
+                        style="background-image: none"><span class="topic-card__kicker">Next lesson</span>
                         <h3>HCF and LCM from a Venn diagram</h3>
                         <p>The Venn method for two or three numbers, and HCF times LCM as the product.</p>
                     </a>
