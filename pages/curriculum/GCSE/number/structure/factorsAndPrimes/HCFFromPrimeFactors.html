@@ -10,12 +10,14 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/hcfFromPrimeFactors.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/hcfFromPrimeFactors.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -30,12 +32,18 @@
             <h1>Demystifying - Highest common factor</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
-                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and calculation</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/">Factors and primes</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span>
+                    </li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and
+                            calculation</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/">Factors
+                            and primes</a><span aria-hidden="true">&rsaquo;</span></li>
                     <li>
                         <p>Highest common factor</p>
                     </li>
@@ -46,26 +54,337 @@
         <aside id="page-nav-container"></aside>
 
         <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>HCF of two numbers beyond 100 from index-form prime factorisations, taking each shared prime to its lower index; what HCF means; listing method as backup for small numbers. LCM is the sibling page; three numbers and Venn diagrams live on hcf-lcm-venn. Both tiers. (N4)</p>
+            <p class="prereq"><b>Before this page:</b> <span>write a number as a product of primes using <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/primeFactorisation.html">prime
+                        factorisation</a>, list <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/factorsAndFactorPairs.html">factor
+                        pairs</a>, and read powers in <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/indexNotation.html">index
+                        notation</a>.</span></p>
+
+            <section aria-labelledby="common-factors">
+                <h1 id="common-factors">A common factor divides both numbers exactly</h1>
+                <p>A <span class="gloss" data-term="common factor">common factor</span> of two numbers is a <span
+                        class="gloss" data-term="factor">factor</span> of each of them. 1 is a factor of every whole
+                    number, so any two numbers have at least one common factor. The largest of them is the <span
+                        class="gloss" data-term="highest common factor">highest common factor</span>, written HCF. The same number is also called the greatest common divisor, GCD: a divisor of a number is a factor of it, so the two names describe one thing.</p>
+                <p>Listing every factor of each number finds the HCF. The lists are short enough to write out while
+                    the numbers are small. 24 has eight factors and 36 has nine; the two lists share 1, 2, 3,
+                    4, 6 and 12, and 12 is the largest.</p>
+                <div class="factor-lists" role="img"
+                    aria-label="The factors of 24 are 1, 2, 3, 4, 6, 8, 12 and 24. The factors of 36 are 1, 2, 3, 4, 6, 9, 12, 18 and 36. The common factors are 1, 2, 3, 4, 6 and 12, and the highest is 12.">
+                    <div><span class="factor-lists__label">Factors of 24</span>
+                        <ol>
+                            <li class="is-common">1</li>
+                            <li class="is-common">2</li>
+                            <li class="is-common">3</li>
+                            <li class="is-common">4</li>
+                            <li class="is-common">6</li>
+                            <li>8</li>
+                            <li class="is-common is-highest">12</li>
+                            <li>24</li>
+                        </ol>
+                    </div>
+                    <div><span class="factor-lists__label">Factors of 36</span>
+                        <ol>
+                            <li class="is-common">1</li>
+                            <li class="is-common">2</li>
+                            <li class="is-common">3</li>
+                            <li class="is-common">4</li>
+                            <li class="is-common">6</li>
+                            <li>9</li>
+                            <li class="is-common is-highest">12</li>
+                            <li>18</li>
+                            <li>36</li>
+                        </ol>
+                    </div>
+                    <p class="factor-lists__result">HCF of 24 and 36 = 12</p>
+                </div>
+                <div class="rule-card">
+                    <h2 class="rule-card__statement">The HCF is the largest number that is a factor of both</h2>
+                    <ol class="rule-card__conditions">
+                        <li>12 is a factor of both: <span class="sf">24 = 2 &times; 12</span> and <span class="sf">36 =
+                                3 &times; 12</span>.</li>
+                        <li>No larger number is a factor of both: 18 divides 36 but not 24, and 24 divides 24 but not
+                            36.</li>
+                    </ol>
+                </div>
             </section>
 
-            <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+            <section aria-labelledby="shared-primes">
+                <h1 id="shared-primes">The HCF is everything the two numbers share</h1>
+                <p><span class="sf">360 = 2 &times; 2 &times; 2 &times; 3 &times; 3 &times; 5</span> and <span class="sf">756 =
+                        2 &times; 2 &times; 3 &times; 3 &times; 3 &times; 7</span>. Each prime the two products share
+                    divides both numbers. Taking one shared 2 out of each leaves 180 and 378, which are still both even;
+                    taking out the second 2, then a 3, then the other 3, leaves 10 and 21, which share no prime. The
+                    four primes taken out multiply to 36, the HCF.</p>
+                <div class="worked">
+                    <h2 class="worked__title">Taking the shared primes out of 360 and 756</h2>
+                    <div class="hcf-scene" data-hcf-scene data-kind="rings">
+                        <div class="hcf-scene__sticky">
+                            <div class="hcf-board" data-board role="img"
+                                aria-label="360 and 756 are drawn as rings, with one coloured sector for each prime factor: 2, 2, 2, 3, 3, 5 and 2, 2, 3, 3, 3, 7. A shared 2 is taken out of both rings and becomes a disc below, leaving 180 and 378; a second 2 leaves 90 and 189; a 3 leaves 30 and 63; another 3 leaves 10 and 21. The rings 2 times 5 and 3 times 7 have no sector in common, and the discs below read 2 times 2 times 3 times 3 equals 36.">
+                            </div>
+                            <div class="hcf-scene__caption" aria-live="polite" aria-atomic="true">
+                                <h3 data-step-title>Both numbers as rings of prime factors</h3>
+                                <p data-step-copy>360 = 2 × 2 × 2 × 3 × 3 × 5 and 756 = 2 × 2 × 3 × 3 × 3 × 7, with one
+                                    sector for each prime factor.</p>
+                            </div>
+                            <div class="hcf-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript>
+                            <p class="worked__fallback"><strong class="sf">360 &divide; 36 = 10 and 756 &divide; 36 = 21,
+                                    which share no prime</strong></p>
+                        </noscript>
+                    </div>
+                </div>
+            </section>
+
+            <section aria-labelledby="compare-primes">
+                <h1 id="compare-primes">Compare the prime factorisations</h1>
+                <p>360 and 756 each have 24 factors. The two lists run to 48 numbers before the common ones can be
+                    compared.
+                    Written in <span class="gloss" data-term="index form">index form</span>, <span class="sf"
+                        role="math" aria-label="360 equals 2 cubed times 3 squared times 5">360 = 2<span class="caret"
+                            aria-hidden="true">^</span><sup>3</sup> &times; 3<span class="caret"
+                            aria-hidden="true">^</span><sup>2</sup> &times; 5</span> and <span class="sf" role="math"
+                        aria-label="756 equals 2 squared times 3 cubed times 7">756 = 2<span class="caret"
+                            aria-hidden="true">^</span><sup>2</sup> &times; 3<span class="caret"
+                            aria-hidden="true">^</span><sup>3</sup> &times; 7</span>, and the two factorisations can be
+                    compared one <span class="gloss" data-term="prime factor">prime factor</span> at a time.</p>
+                <div class="worked">
+                    <h2 class="worked__title">The HCF of 360 and 756</h2>
+                    <div class="hcf-scene" data-hcf-scene data-kind="compare">
+                        <div class="hcf-scene__sticky">
+                            <div class="hcf-board" data-board role="img"
+                                aria-label="360 equals 2 cubed times 3 squared times 5, and 756 equals 2 squared times 3 cubed times 7, written one above the other with equal primes aligned. A prime written without an index has index 1, so 5 is 5 to the 1 and 7 is 7 to the 1. The missing primes are written with index 0: 7 to the 0 in 360 and 5 to the 0 in 756. For each prime the lower index is chosen, because a factor of both can contain no more copies of that prime than either number: 2 squared, 3 squared, 5 to the 0 and 7 to the 0. The HCF is 2 squared times 3 squared, which is 36.">
+                            </div>
+                            <div class="hcf-scene__caption" aria-live="polite" aria-atomic="true">
+                                <h3 data-step-title>Write both numbers in index form</h3>
+                                <p data-step-copy>360 = 2³ × 3² × 5 and 756 = 2² × 3³ × 7, with equal primes in the same
+                                    column.</p>
+                            </div>
+                            <div class="hcf-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript>
+                            <p class="worked__fallback"><strong class="sf" role="math"
+                                    aria-label="HCF of 360 and 756 equals 2 squared times 3 squared equals 36">HCF of
+                                    360
+                                    and 756 = 2<span class="caret" aria-hidden="true">^</span><sup>2</sup> &times;
+                                    3<span class="caret" aria-hidden="true">^</span><sup>2</sup> = 36</strong></p>
+                        </noscript>
+                    </div>
+                </div>
+                <ol class="method-steps">
+                    <li><b>Factorise</b>
+                        <span>both numbers into index form, with prime bases in ascending order.</span>
+                    </li>
+                    <li><b>Compare</b>
+                        <span>the two indices of each prime, counting a missing prime as index 0, and take the
+                            lower.</span>
+                    </li>
+                    <li><b>Multiply</b>
+                        <span>the chosen prime powers. A prime whose lower index is 0 contributes no factor.</span>
+                    </li>
+                </ol>
+            </section>
+
+            <section aria-labelledby="lower-index">
+                <h1 id="lower-index">Take each shared prime to its lower index</h1>
+                <p>A factor of 360 is built from the <span class="gloss" data-term="prime">primes</span> of 360. It
+                    contains no more factors of each prime than 360
+                    does: <span class="sf" role="math" aria-label="2 squared times 5 equals 20">2<span class="caret"
+                            aria-hidden="true">^</span><sup>2</sup> &times; 5 = 20</span> is a factor of 360, but
+                    <span class="sf" aria-label="2 to the power 4">2<span class="caret"
+                            aria-hidden="true">^</span><sup>4</sup></span> is not, because 360 contains only three
+                    factors of 2.
+                </p>
+                <p>A common factor of 360 and 756 has to fit inside both numbers. For each prime, it contains no more
+                    factors of that prime than the number with fewer. 360 has three factors of 2 and 756 has two, so a
+                    common factor has at most two: the lower <span class="gloss" data-term="index">index</span>. The
+                    largest common factor has exactly that many, and the same holds for every prime. The higher index
+                    fails the test: <span class="sf" role="math" aria-label="2 cubed times 3 cubed equals 216">2<span
+                            class="caret" aria-hidden="true">^</span><sup>3</sup> &times; 3<span class="caret"
+                            aria-hidden="true">^</span><sup>3</sup> = 216</span> is not a factor of 756.</p>
+                <p>An index counts the factors of a prime. <span class="sf" aria-label="3 squared">3<span class="caret"
+                            aria-hidden="true">^</span><sup>2</sup></span> is two factors of 3, so <span class="sf"
+                        aria-label="7 to the 0">7<span class="caret" aria-hidden="true">^</span><sup>0</sup></span> is
+                    no factor of 7, and writing each missing prime with an index of 0 lets the comparison cover every
+                    prime.</p>
+                <div class="aligned-forms" role="img"
+                    aria-label="360 equals 2 cubed times 3 squared times 5 to the 1 times 7 to the 0. 756 equals 2 squared times 3 cubed times 5 to the 0 times 7 to the 1. The lower index in each column is 2, 2, 0 and 0.">
+                    <div><span>360 </span><i>=</i> <span>2<span class="caret" aria-hidden="true">^</span><sup>3</sup> </span><i>&times;</i> <span>3<span class="caret" aria-hidden="true">^</span><sup>2</sup> </span><i>&times;</i> <span>5<span class="caret" aria-hidden="true">^</span><sup>1</sup> </span><i>&times;</i> <span>7<span class="caret" aria-hidden="true">^</span><sup>0</sup></span></div>
+                    <div><span>756 </span><i>=</i> <span>2<span class="caret" aria-hidden="true">^</span><sup>2</sup> </span><i>&times;</i> <span>3<span class="caret" aria-hidden="true">^</span><sup>3</sup> </span><i>&times;</i> <span>5<span class="caret" aria-hidden="true">^</span><sup>0</sup> </span><i>&times;</i> <span>7<span class="caret" aria-hidden="true">^</span><sup>1</sup></span></div>
+                    <div><span>HCF </span><i>=</i> <b>2<span class="caret" aria-hidden="true">^</span><sup>2</sup></b> <i>&times;</i> <b>3<span class="caret" aria-hidden="true">^</span><sup>2</sup></b> <i>&times;</i> <b>5<span class="caret" aria-hidden="true">^</span><sup>0</sup></b> <i>&times;</i> <b>7<span class="caret" aria-hidden="true">^</span><sup>0</sup></b></div>
+                </div>
+                <p>The lower index of both 5 and 7 is 0, so neither prime is in the HCF. A power
+                    with an index of 0 is 1, which is why writing <span class="sf" aria-label="7 to the 0">7<span
+                            class="caret" aria-hidden="true">^</span><sup>0</sup></span> leaves 360 unchanged; the
+                    reason is on <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/indexLaws/zeroIndex.html">the
+                        zero index</a>.</p>
+                <div class="rule-card">
+                    <h2 class="rule-card__statement">HCF = the product of each prime to its lower index</h2>
+                    <ol class="rule-card__conditions">
+                        <li>A prime missing from either number has index 0 there, so its lower index is 0 and it
+                            contributes no factor.</li>
+                        <li>A shared prime with the same index in both keeps that index: 108 and 540 both contain
+                            <span class="sf" aria-label="2 squared">2<span class="caret"
+                                    aria-hidden="true">^</span><sup>2</sup></span>, so their HCF does too.
+                        </li>
+                    </ol>
+                </div>
+                <div class="reading-pair">
+                    <article>
+                        <h2>No shared prime</h2>
+                        <p><span class="sf" role="math" aria-label="125 equals 5 cubed">125 = 5<span class="caret"
+                                    aria-hidden="true">^</span><sup>3</sup></span> and <span class="sf" role="math"
+                                aria-label="144 equals 2 to the power 4 times 3 squared">144 = 2<span class="caret"
+                                    aria-hidden="true">^</span><sup>4</sup> &times; 3<span class="caret"
+                                    aria-hidden="true">^</span><sup>2</sup></span> have no prime in common. Their only
+                            common factor is 1, so <strong>HCF = 1</strong>.</p>
+                    </article>
+                    <article>
+                        <h2>One number is a factor of the other</h2>
+                        <p><span class="sf" role="math" aria-label="108 equals 2 squared times 3 cubed">108 = 2<span
+                                    class="caret" aria-hidden="true">^</span><sup>2</sup> &times; 3<span class="caret"
+                                    aria-hidden="true">^</span><sup>3</sup></span> and <span class="sf" role="math"
+                                aria-label="540 equals 2 squared times 3 cubed times 5">540 = 2<span class="caret"
+                                    aria-hidden="true">^</span><sup>2</sup> &times; 3<span class="caret"
+                                    aria-hidden="true">^</span><sup>3</sup> &times; 5</span>. Every prime power in 108
+                            is also in 540, so <strong>HCF = 108</strong>: the smaller number itself.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section aria-labelledby="hcf-meaning">
+                <h1 id="hcf-meaning">Every common factor is a factor of the HCF</h1>
+                <p>The common factors of 360 and 756 are exactly the factors of 36. The HCF is not only the largest common factor: every other common factor divides it, because
+                    each is built from the same primes 2 and 3 with
+                    indices no higher than 2.</p>
+                <div class="factor-lists" role="img"
+                    aria-label="The common factors of 360 and 756 are 1, 2, 3, 4, 6, 9, 12, 18 and 36. The factors of 36 are 1, 2, 3, 4, 6, 9, 12, 18 and 36. The two lists are the same.">
+                    <div><span class="factor-lists__label">Common factors of 360 and 756</span>
+                        <ol>
+                            <li class="is-common">1</li>
+                            <li class="is-common">2</li>
+                            <li class="is-common">3</li>
+                            <li class="is-common">4</li>
+                            <li class="is-common">6</li>
+                            <li class="is-common">9</li>
+                            <li class="is-common">12</li>
+                            <li class="is-common">18</li>
+                            <li class="is-common is-highest">36</li>
+                        </ol>
+                    </div>
+                    <div><span class="factor-lists__label">Factors of 36</span>
+                        <ol>
+                            <li class="is-common">1</li>
+                            <li class="is-common">2</li>
+                            <li class="is-common">3</li>
+                            <li class="is-common">4</li>
+                            <li class="is-common">6</li>
+                            <li class="is-common">9</li>
+                            <li class="is-common">12</li>
+                            <li class="is-common">18</li>
+                            <li class="is-common is-highest">36</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <aside class="important-box" aria-labelledby="divide-check">
+                    <h2 class="important-box__title" id="divide-check">Divide both numbers by the HCF to check</h2>
+                    <div class="quotient-check" role="img"
+                        aria-label="360 divided by 36 equals 10, which is 2 times 5. 756 divided by 36 equals 21, which is 3 times 7. The quotients 10 and 21 share no prime.">
+                        <div><span>360 &divide; 36</span> <i aria-hidden="true">=</i> <strong>10</strong> <i
+                                aria-hidden="true">=</i>
+                            <span>2 &times; 5</span>
+                        </div>
+                        <div><span>756 &divide; 36</span> <i aria-hidden="true">=</i> <strong>21</strong> <i
+                                aria-hidden="true">=</i>
+                            <span>3 &times; 7</span>
+                        </div>
+                    </div>
+                    <p>Dividing by the HCF leaves <span class="gloss" data-term="quotient">quotients</span> that share
+                        no prime, so their only common factor is 1. A
+                        prime
+                        common to both quotients shows that the HCF found is too small: multiplied by that prime, it
+                        still divides both numbers.</p>
+                </aside>
+            </section>
+
+            <section aria-labelledby="find-hcf">
+                <h1 id="find-hcf">Find the HCF of two chosen numbers</h1>
+                <p>600 and 252 share the primes 2 and 3; 125 and 144 share none; 108 and 540 share every prime of 108.
+                    In each case the HCF takes every prime to the lower of its two indices, and a prime with index 0
+                    on either side is left out.</p>
+                <div class="hcf-finder" data-hcf-finder>
+                    <div class="hcf-finder__inputs">
+                        <label class="hcf-finder__field" for="hcf-first"><span>First number</span><input
+                                id="hcf-first" type="text" inputmode="numeric" maxlength="4" value="600"
+                                autocomplete="off" spellcheck="false" data-hcf-input></label>
+                        <label class="hcf-finder__field" for="hcf-second"><span>Second number</span><input
+                                id="hcf-second" type="text" inputmode="numeric" maxlength="4" value="252"
+                                autocomplete="off" spellcheck="false" data-hcf-input></label>
+                    </div>
+                    <div class="hcf-finder__table" data-hcf-table></div>
+                    <p class="hcf-finder__answer" data-hcf-answer aria-live="polite">HCF of 600 and 252 = 2² × 3 = 12</p>
+                    <noscript>
+                        <p class="worked__fallback"><strong class="sf" role="math"
+                                aria-label="HCF of 600 and 252 equals 12">HCF of 600 and 252 = 12</strong></p>
+                    </noscript>
+                </div>
+            </section>
+
+            <section aria-labelledby="hcf-slips">
+                <h1 id="hcf-slips">Take the lower index, for every prime</h1>
+                <ul class="slips">
+                    <li><b>Taking the higher index</b>
+                        <span>Choosing <span class="sf" aria-label="2 cubed times 3 cubed">2<span class="caret"
+                                    aria-hidden="true">^</span><sup>3</sup> &times; 3<span class="caret"
+                                    aria-hidden="true">^</span><sup>3</sup></span> for 360 and 756 gives 216, which does
+                            not divide 756: <span class="sf">756 = 3 &times; 216 + 108</span>. The higher index belongs
+                            to the lowest common multiple, not the HCF.</span>
+                    </li>
+                    <li><b>Keeping a prime that only one number has</b>
+                        <span>Including the 5 and the 7 gives <span class="sf"
+                                aria-label="2 squared times 3 squared times 5 times 7">2<span class="caret"
+                                    aria-hidden="true">^</span><sup>2</sup> &times; 3<span class="caret"
+                                    aria-hidden="true">^</span><sup>2</sup> &times; 5 &times; 7 = 1,260</span>. That
+                            is larger than both 360 and 756, so it cannot be a factor of either.</span>
+                    </li>
+                    <li><b>Stopping at the first common factor found</b>
+                        <span>6 divides both 24 and 36, but so does 12, the largest number in both lists. The HCF is
+                            12, twice the 6 that was written down.</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="summary">
+                <h1 id="summary">Summary</h1>
+                <ol class="recap">
+                    <li>A common factor divides both numbers exactly; the HCF is the largest common factor.</li>
+                    <li>For small numbers, list the factors of each and pick the largest that appears in both lists.
+                    </li>
+                    <li>For larger numbers, write both in index form; the HCF is every shared prime, each to its lower index.</li>
+                    <li>Leave out any prime that appears in only one of the numbers; with no shared prime, the HCF is 1.
+                    </li>
+                    <li>Divide both numbers by the HCF: the quotients share no prime.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
                 <h2 id="practice-heading">Practice and continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practiceHCFLCM.html" style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
+                    <a class="topic-card topic-card--practice"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practiceHCFLCM.html"
+                        style="background-image: none"><span class="practice-card__kicker">Practice</span>
                         <h3>Highest common factor</h3>
                         <p>Taking each shared prime to the lower index, and what the HCF means.</p>
                     </a>
-                    <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/LCMFromPrimeFactors.html" style="background-image: none">
-                        <span class="topic-card__kicker">Next lesson</span>
+                    <a class="topic-card topic-card--next"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/LCMFromPrimeFactors.html"
+                        style="background-image: none"><span class="topic-card__kicker">Next lesson</span>
                         <h3>Lowest common multiple</h3>
                         <p>Every prime to the higher index, and why the LCM is not always the product.</p>
                     </a>

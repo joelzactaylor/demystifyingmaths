@@ -111,7 +111,7 @@ Fails: Two things to settle before any subtracting starts.
 
 ### 12. No pointing at page furniture. 'Below', 'above', 'the first of these', 'as shown', 'the diagram', 'the board', 'watch' never appear. ('Above' is allowed only for a mark's position in the written calculation itself.)
 
-*Test:* Does the sentence rely on the reader's eye moving somewhere to resolve a referent? If yes, it fails.
+*Test:* Does the sentence rely on the reader's eye moving somewhere to resolve a referent? If yes, it fails. A row or column of the *written* layout — "equal primes in the same column" — is a mark's position in the calculation, like 'above', and passes.
 
 > If the tens column holds 8 and 6 with a regrouped 1 above it, the column totals 15:
 
@@ -135,7 +135,7 @@ Fails: That is the counting rule again, this time as a picture.
 
 ### 15. A paragraph opens with a short declarative — twelve words or fewer — that is a claim about numbers, a named calculation frame ('In 984 ÷ 4', 'For 179'), or a condition. Never a discourse marker, never a scene-setter.
 
-*Test:* Read the opening sentence alone. Does it state a fact or fix a frame, or does it clear its throat? Throat-clearing fails.
+*Test:* Read the opening sentence alone. Does it state a fact or fix a frame, or does it clear its throat? Throat-clearing fails. (The six reference pages open seven paragraphs in ten at twelve words or fewer and one in six past sixteen; `voice-check.mjs` lists the ones past sixteen, and a named frame that runs long — two full factorisations — is read, not cut.)
 
 > Two marks record the swap.
 
@@ -213,6 +213,15 @@ Fails: So where does the decimal point go?
 
 Fails: Think of the carried digit as a little passenger travelling to the next column.
 
+## Captions are prose
+
+A scene's captions are read under every rule here. They may name what the
+drawing shows — a ring, a sector, a disc, a column — because on those pages
+the drawing *is* the calculation, and "one 2 leaves each ring: 360 ÷ 2 = 180"
+is a sentence about numbers. "The sectors animate out" is not, and fails
+rule 3. The caption that opens a scene is seeded into the HTML as well as the
+script, and the two are kept identical.
+
 ## Phrases the voice never uses
 
 - simply / just / really / actually / basically / essentially — every filler adverb, with no exception ('the excess is simply worth more than the column can express')
@@ -258,7 +267,9 @@ beside the sentence and here, so that an audit does not "fix" it.
 `scripts/voice-check.mjs` tests the shapes that can be tested mechanically —
 the banned phrases, a `?` or `!` in running prose, second person governing a
 mental verb, a sentence past thirty words with nothing to split it, and an
-opening clause too long to be a claim. It prints lines to look at and does not
+opening clause past sixteen words. It judges each paragraph on its own: block
+ends and figure cells are breaks, and a slip's or a method step's `<b>` name
+is not counted as its opening clause. It prints lines to look at and does not
 judge them: "above" is a pointer in one sentence and a mark's place in a
 calculation in the next, and a question that opens a section and is answered
 by it is this site's own practice. Run it on one page —

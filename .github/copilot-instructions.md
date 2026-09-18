@@ -55,6 +55,7 @@ node scripts/practice-pairing-check.mjs
 node scripts/panel-check.mjs
 node scripts/notation-check.mjs
 node scripts/glossary-check.mjs
+node scripts/structure-check.mjs
 node scripts/voice-check.mjs <page>
 git diff --check
 ```

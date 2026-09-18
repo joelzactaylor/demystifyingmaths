@@ -156,13 +156,18 @@ for (const page of pages) {
     }
 
     /* A raised index needs the clipped caret in front of it, or the flattened
-       text reads 2^5 as twenty-five. */
+       text reads 2^5 as twenty-five — and exactly one: a scripted edit that
+       adds carets to every <sup> doubles the ones already there, and "2^^5"
+       is not a power anyone wrote. */
     for (const m of html.matchAll(/<sup\b[^>]*>/g)) {
         raised += 1;
-        const before = html.slice(Math.max(0, m.index - 90), m.index);
-        if (!/<span\s+class="caret"\s+aria-hidden="true">\^<\/span>\s*$/.test(before)) {
+        const before = html.slice(Math.max(0, m.index - 180), m.index);
+        const caret = /<span\s+class="caret"\s+aria-hidden="true">\^<\/span>\s*$/;
+        if (!caret.test(before)) {
             const where = html.slice(Math.max(0, m.index - 60), m.index + 30).replace(/\s+/g, " ");
             problems.push(`${name}: <sup> with no clipped caret — …${where.slice(-70)}`);
+        } else if (caret.test(before.replace(caret, ""))) {
+            problems.push(`${name}: <sup> with two clipped carets in front of it`);
         }
     }
 }

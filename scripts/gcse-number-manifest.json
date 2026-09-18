@@ -250,7 +250,7 @@
                     "title": "Highest common factor",
                     "description": "Taking each shared prime to the lower index, and what the HCF means.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "HCF of two numbers beyond 100 from index-form prime factorisations, taking each shared prime to its lower index; what HCF means; listing method as backup for small numbers. LCM is the sibling page; three numbers and Venn diagrams live on hcf-lcm-venn. Both tiers. (N4)"
                 },
                 {

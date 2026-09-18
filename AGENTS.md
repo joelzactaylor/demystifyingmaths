@@ -52,7 +52,9 @@ A new page must be indistinguishable from those.
   −9" is true. Scope the claim, don't break it.
 - **Prose describes mathematics, never the page.** No "drag to rotate", no "the
   slider below", no "this section will show". If an interaction needs a
-  sentence of instruction, the interaction is wrong.
+  sentence of instruction, the interaction is wrong. A scene caption may name
+  what is drawn — a ring, a sector, a column — when the sentence states the
+  mathematics ("one 2 leaves each ring: 360 ÷ 2 = 180").
 - **Roots are drawn with `.rad`, never `<msqrt>` and never a bare `&radic;`
   over a radicand.** Powers use `<sup>` with its clipped marker so that `2^5`
   never flattens to `25` when styles are stripped.
@@ -74,6 +76,7 @@ node scripts/practice-pairing-check.mjs
 node scripts/panel-check.mjs
 node scripts/notation-check.mjs
 node scripts/glossary-check.mjs
+node scripts/structure-check.mjs
 node scripts/voice-check.mjs pages/curriculum/…/<page>.html   # lines to read, not verdicts
 git diff --check
 ```
@@ -81,7 +84,10 @@ git diff --check
 Then the review passes in `docs/lesson-page-cycle.md` — teacher, voice,
 contrivance, figure, fallback, interaction, repository — fixing each finding
 in the pass that finds it. Recompute every number on the page from the claim,
-in a script; do not read the page's numbers back and agree with them.
+in a script; do not read the page's numbers back and agree with them. Render
+the page in headless Chrome and look at it (`docs/local-development.md`,
+"Rendering a page without a browser window"): the figure faults are the ones
+no script finds.
 
 Done means: every check green, every finding fixed, and one full pass that
 looked and found nothing.
@@ -92,5 +98,6 @@ looked and found nothing.
 node scripts/serve.mjs      # http://localhost:8000/demystifyingmaths/pages/home.html
 ```
 
+Leave it running once it is up — the person reviewing the page is using it.
 Not `python3 -m http.server`, not Live Server on this folder: they serve at `/`
 and every prefixed asset 404s. See `docs/local-development.md`.

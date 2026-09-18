@@ -8,7 +8,9 @@ node scripts/serve.mjs 8080     # or pick a port
 ```
 
 Leave it running in its own terminal; stop it with Ctrl-C. It needs no
-dependencies — just Node.
+dependencies — just Node. An agent that starts it for a check leaves it up
+afterwards: the person reviewing the page in a browser is looking at the same
+server, and killing it after a screenshot takes their page down.
 
 Run it from a terminal you own. Started from inside another tool's session it
 gets reaped when that session ends, and the site then dies with
@@ -56,7 +58,17 @@ node scripts/practice-pairing-check.mjs # lessons and drills line up with the ma
 node scripts/panel-check.mjs            # nothing in the fixed 900px panel reflows on the viewport
 node scripts/notation-check.mjs         # roots are drawn, and stripped notation still reads true
 node scripts/glossary-check.mjs         # glossary terms, definitions, and the marks in the pages
+node scripts/structure-check.mjs        # tags balance, headings step by one, ids and ARIA targets exist, inline text does not run together
+node scripts/voice-check.mjs <page>     # the sentences a script can suspect — lines to read, not verdicts
 ```
+
+`structure-check.mjs` reads the source raw rather than through a DOM parser,
+because a parser repairs a stray `</section>` before any check can see it. It
+fails a closer that closes the wrong element, a heading level that skips one, a
+duplicate `id`, an `aria-labelledby` or `aria-describedby` pointing nowhere, and
+inline text that runs together once styles are gone — a slip's `<b>` label
+butting its `<span>` body reads "indexChoosing" to a screen reader. Block
+boundaries are not joins: `</h3><p>` breaks the line whatever the styles say.
 
 `linkcheck.mjs` fails a link that is root-absolute but *missing* the prefix, which
 is the regression that breaks the deployed site while looking fine locally.
@@ -116,6 +128,35 @@ is meant to be read and edited. It skips headings, links, bold, notation,
 controls and any region a page's own script repaints, and it will not mark a
 term the page's own heading names — but it cannot tell which sense of a word a
 sentence is using, so its output is a draft.
+
+## Rendering a page without a browser window
+
+Nothing visual is asserted by the scripts, and the rendered pass is the one
+that finds the figure faults — a line through a cell, a sign floating in an
+empty column, an index wrapped to a second line. Headless Chrome renders the
+served page from the command line, with the server running:
+
+```sh
+CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+URL="http://localhost:8000/demystifyingmaths/pages/curriculum/…/page.html"
+"$CHROME" --headless=new --disable-gpu --hide-scrollbars \
+  --force-prefers-reduced-motion --window-size=1000,6000 \
+  --virtual-time-budget=3000 --screenshot=page.png "$URL"
+```
+
+`--force-prefers-reduced-motion` matters: it docks every scroll-led scene at
+its final stage, so one tall capture shows every static state. Without it a
+scene's travel is measured in viewport heights, and a 6000px window turns each
+one into a blank stretch of page. Crop the capture with `sips -c <h> <w>
+--cropOffset <y> <x>` and look at the crops one by one.
+
+To see a scene at a given stage, make a throwaway copy of the page's script
+whose reduced-motion branch paints a fraction from the query string instead of
+`1` — `paint(Number(new URLSearchParams(location.search).get("f") || 1))` and
+`model.paint(parts, shown)` in place of the `reduceMotion.matches ? last :
+shown` choice — point a throwaway copy of the page at it, and capture
+`?f=0.13`, `?f=0.27`, … one per stage. Delete both copies before the
+repository pass; `git status` should not know they existed.
 
 ## Generated pages
 

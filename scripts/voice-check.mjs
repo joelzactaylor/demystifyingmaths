@@ -59,7 +59,10 @@ const BANNED = [
 const MENTAL = /\byou (see|notice|remember|recall|understand|know|learn|find|need|want|think|realise|realize|feel|expect|forget|might|may|can see|will)\b/;
 
 const LONG_SENTENCE = 30;
-const LONG_OPENER = 24;
+/* Rule 15 asks for twelve words or fewer. The six reference pages open seven
+   paragraphs in ten at twelve or fewer and one in six past sixteen, so sixteen
+   is where a named calculation frame ends and throat-clearing begins. */
+const LONG_OPENER = 16;
 
 /* A word has a letter or a digit in it; "+", "×" and "=" are not words, so an
    expression counts its numbers and not its operators. */
@@ -100,7 +103,9 @@ const paragraphs = (html) => {
     if (cards > 0) main = main.slice(0, cards);
     main = main.replace(/<(script|style|noscript)[^>]*>[\s\S]*?<\/\1>/g, "");
     main = main.replace(/\s+/g, " ");
-    main = main.replace(/<\/(p|li|h[1-6]|dd|dt|figcaption|summary|td|th)>/g, "\n");
+    main = main.replace(/<\/(p|li|h[1-6]|dd|dt|figcaption|summary|td|th|div)>/g, "\n");
+    /* A slip's or a method step's <b> is its name, not its opening clause. */
+    main = main.replace(/(<li>\s*<b>[^<]*<\/b>)/g, "$1\n");
     return unescape(main.replace(/<[^>]+>/g, "")).split("\n").map((s) => s.replace(/\s+/g, " ").trim()).filter(Boolean);
 };
 

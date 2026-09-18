@@ -41,6 +41,22 @@ carrying every figure, a run of pure reference, prose totals that swing by 3×.
   and link where the rest is answered.
 - **Check the scope boundary** against the manifest `coverNote`: nothing a later
   page owns, and nothing the previous page was supposed to have taught.
+- **A threshold names what it limits.** "For numbers up to about 100, listing
+  every factor finds the HCF" is true and reads as a property of numbers: it is
+  the *lists* that get long, and the sentence has to say so. Wherever a number
+  bounds a method — up to 100, beyond four digits, two-digit divisors — ask
+  what the bound is really a limit on, and write that.
+- **Each step arrives with its reason.** Read the scene captions in order and
+  ask whether a pupil could have predicted the next one. "Take 3 to its lower
+  index" landing straight after the 2s, with no sentence on why a common factor
+  can carry no more 3s than either number has, is a step that arrived without
+  its reason; split it, or put the reason in the caption before it.
+- **A slip is a reminder, not a first appearance.** Every entry in `.slips`
+  names a mistake the page has already shown the evidence against. "Taking the
+  higher index gives 216, which does not divide 756" belongs in the list only
+  because the lower-index section already said why 2² is the most a common
+  factor can hold. A slip with no earlier evidence is a paragraph in the wrong
+  place: move the evidence up.
 
 ## 2b. Voice pass — does every sentence do mathematical work?
 
@@ -76,7 +92,14 @@ figure, table and example, ask what decided it:
 
 ## 4. Figure pass — does it move, and does it say something new?
 
-Drive every scene through every stage and print every caption. Look for:
+Drive every scene through every stage — in a harness for the arithmetic, and
+**rendered** for everything else: headless Chrome under reduced motion gives
+every static state in one capture, and a throwaway preview copy that paints a
+stage from the query string gives one capture per stage (the recipe is in
+`docs/local-development.md`). On the HCF page the rendered pass found more
+faults than every script together: a drop line crossing a cell, a sign floating
+in an empty column, text coloured before its highlight arrived, an index
+wrapping to a second line. Print every caption, and look for:
 
 - **stages that draw nothing the stage before drew** — the reader scrolls and
   only the words change, which is a paragraph pretending to be an animation.
@@ -116,24 +139,31 @@ the last good answer standing, and must not rebuild the card under the cursor.
 
 ## 7. Repository pass
 
-Markup well-formedness with a **raw tag scanner, not a DOM parser** — jsdom
-silently repairs a stray `</section>` and every DOM-based check will pass over
-it. Then links, practice pairing, breadcrumbs, dead CSS, `git diff --check`.
+`node scripts/structure-check.mjs` — a **raw tag scanner, not a DOM parser**
+(jsdom silently repairs a stray `</section>` and every DOM-based check then
+passes over it), heading levels, duplicate ids, ARIA targets, and inline text
+that runs together with styles off. Then the rest of the list in `AGENTS.md`:
+links, practice pairing, breadcrumbs, panel, notation, glossary, voice, and
+`git diff --check`. Dead CSS is a per-session grep, because page scripts compose
+class names at run time and a text search cannot tell an unused class from a
+composed one.
 
 ## Writing the checks
 
 Every pass above is a script, re-run after every change, because a check that is
 not automated is a check that stops happening.
 
-**Where they live is unresolved.** This repository has no `package.json` and no
-`node_modules`: every script in `scripts/` runs on Node's built-ins alone, and
-that looks deliberate for a static site with no build step. Most of these checks
-parse the rendered DOM and need jsdom, so making them permanent means taking on
-a dependency the repository has so far done without. Until that is decided they
-are written per session and thrown away, which is why the same faults have to be
-found twice. The dependency-free ones — the raw markup scanner, the dead-CSS
-scan, the viewport check — could move into `scripts/` today; the voice scan
-already has, as `scripts/voice-check.mjs`.
+**Where they live.** The repository has no `package.json` and no `node_modules`,
+and stays that way: every check runs on Node's built-ins. The ones that read
+source live in `scripts/` — `structure-check.mjs` for markup, `notation-check.mjs`
+for roots and indices, `voice-check.mjs` for the sentences a script can suspect.
+The ones that read *this page's* mathematics are written per page, in the
+scratchpad, and thrown away: a teacher script that recomputes every number from
+the claim, and a harness that loads the page's own JS under a forty-line DOM
+shim (`createElementNS`, `append`, `setAttribute`, `dataset`, `style`, `classList`
+and nothing else) and drives each scene and sandbox through every state. The
+shim is cheaper to write than a dependency is to carry, and it runs the real
+code rather than a copy of it.
 
 Two rules learned the hard way:
 
