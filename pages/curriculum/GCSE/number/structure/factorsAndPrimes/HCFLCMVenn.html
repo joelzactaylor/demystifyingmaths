@@ -4,18 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Demystifying Maths | GCSE HCF and LCM from a Venn diagram</title>
-    <meta name="description" content="The Venn method for two or three numbers, and HCF times LCM as the product.">
+    <meta name="description" content="The Venn method for two or three numbers, and the two-number HCF and LCM product identity.">
     <meta property="og:title" content="Demystifying Maths">
-    <meta property="og:description" content="The Venn method for two or three numbers, and HCF times LCM as the product.">
+    <meta property="og:description" content="The Venn method for two or three numbers, and the two-number HCF and LCM product identity.">
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/hcflcmVenn.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/hcflcmVenn.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -46,14 +48,121 @@
         <aside id="page-nav-container"></aside>
 
         <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>The Venn-diagram method for HCF and LCM of two or three numbers, and HCF x LCM = product for two numbers, including finding a missing number from the other three values. Assumes both prime-factor pages; formal set notation lives in Probability, not here. Both tiers. (N4)</p>
+            <p class="prereq"><b>Before this page:</b> <span>write a number as a product of primes using <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/primeFactorisation.html">prime
+                        factorisation</a>, and find the <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/HCFFromPrimeFactors.html">highest
+                        common factor</a> and the <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/LCMFromPrimeFactors.html">lowest
+                        common multiple</a> from index-form factorisations.</span></p>
+
+            <section aria-labelledby="two-circle-venn">
+                <h1 id="two-circle-venn">Sort two numbers' prime factors into two circles</h1>
+                <p>84 and 90 each get a circle, and each number's
+                    <span class="gloss" data-term="prime factor">prime factors</span> are crossed off its list one at a
+                    time. The overlap lies inside both circles, so a prime both numbers contain is written there once and
+                    counts for each.</p>
+
+                <p>Shared primes are placed first, a pair at a time, until one list has none of that prime left:</p>
+                <div class="worked">
+                    <h2 class="worked__title">Sorting 84 and 90 into a Venn diagram</h2>
+                    <div class="venn-scene" data-venn-scene data-kind="two">
+                        <div class="venn-scene__sticky">
+                            <div class="venn-board" data-board role="img"
+                                aria-label="84 and 90 are drawn as two overlapping circles, with each number's prime factors listed on a scrap of paper beside them and crossed off as they are placed. A shared 2 and a shared 3 sit in the overlap. 84's own circle also holds an extra 2 and a 7; 90's own circle holds an extra 3 and a 5. The overlap, 2 times 3, is the HCF, 6. Every region together, 2 times 3 times 2 times 7 times 3 times 5, is the LCM, 1,260.">
+                            </div>
+                            <div class="venn-scene__caption" aria-live="polite" aria-atomic="true">
+                                <h3 data-step-title>84 and 90 as circles</h3>
+                                <p data-step-copy>84 = 2 × 2 × 3 × 7 and 90 = 2 × 3 × 3 × 5, each listed beside a circle
+                                    of its own.</p>
+                            </div>
+                            <div class="venn-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript>
+                            <p class="worked__fallback"><strong>HCF of 84 and 90 = 6, LCM of 84 and 90 =
+                                    1,260</strong></p>
+                        </noscript>
+                    </div>
+                </div>
             </section>
 
-            <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+            <section aria-labelledby="product-identity">
+                <h1 id="product-identity">Any one of HCF, LCM and the two numbers follows from the other three</h1>
+                <p>84 × 90 = 7,560 counts every region once and the overlap twice: once inside 84 and once inside
+                    90. HCF × LCM = 6 × 1,260 = 7,560 counts the same regions the same way — the
+                    overlap once as the HCF and again inside the LCM, and each number's own primes once.</p>
+                <p>18 = 2 × 3 × 3 and 24 = 2 × 2 × 2 × 3: HCF = 2 × 3 = 6 and LCM = 2 × 2 × 2 × 3 × 3 = 72.</p>
+
+                <p>Given 18, the HCF and the LCM, the other number is 6 × 72 ÷ 18 = 24; given both numbers and the HCF,
+                    LCM = 18 × 24 ÷ 6 = 72.</p>
+                <div class="rule-card">
+                    <h2 class="rule-card__statement">HCF × LCM = the product of the two numbers</h2>
+                </div>
+            </section>
+
+            <section aria-labelledby="three-circle-venn">
+                <h1 id="three-circle-venn">A third number adds a third circle</h1>
+                <p>For 24, 60 and 90 the centre lies inside all three circles, so a prime all three numbers contain is
+                    written there once and counts for each.</p>
+
+                <div class="worked">
+                    <h2 class="worked__title">Sorting 24, 60 and 90 into a Venn diagram</h2>
+                    <div class="venn-scene" data-venn-scene data-kind="three">
+                        <div class="venn-scene__sticky">
+                            <div class="venn-board" data-board role="img"
+                                aria-label="24, 60 and 90 are drawn as three overlapping circles, with each number's prime factors listed on a scrap of paper beside them and crossed off as they are placed. A shared 2 and a shared 3 sit at the centre, where all three overlap. 24 and 60 share a further 2; 60 and 90 share a further 5. 24 and 90 share nothing beyond the centre, and 60 has nothing left over, so both those regions are empty. 24's own region holds one more 2, and 90's own region holds one more 3. The centre, 2 times 3, is the HCF, 6. Every region together, 2 times 2 times 2 times 3 times 3 times 5, is the LCM, 360.">
+                            </div>
+                            <div class="venn-scene__caption" aria-live="polite" aria-atomic="true">
+                                <h3 data-step-title>24, 60 and 90 as circles</h3>
+                                <p data-step-copy>24 = 2 × 2 × 2 × 3, 60 = 2 × 2 × 3 × 5 and 90 = 2 × 3 × 3 × 5, each
+                                    listed beside a circle of its own.</p>
+                            </div>
+                            <div class="venn-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript>
+                            <p class="worked__fallback"><strong>HCF of 24, 60 and 90 = 6, LCM of 24, 60 and 90 =
+                                    360</strong></p>
+                        </noscript>
+                    </div>
+                </div>
+                <aside class="important-box" aria-labelledby="not-the-product">
+                    <h2 class="important-box__title" id="not-the-product">The same product identity does not hold in general for three numbers</h2>
+                    <p>HCF(24, 60, 90) × LCM(24, 60, 90) = 6 × 360 = 2,160, but 24 × 60 × 90 = 129,600. The product
+                        counts the centre's 2 and 3 three times, once in each number; HCF × LCM counts them twice.</p>
+
+                    <p>The 2 shared by only 24 and 60, and the 5 shared by only 60 and 90, are counted twice in the
+                        product and once in the LCM.</p>
+                </aside>
+            </section>
+
+            <section aria-labelledby="venn-slips">
+                <h1 id="venn-slips">Common mistakes</h1>
+                <ul class="slips">
+                    <li><b>Keeping a shared prime in its own region as well as the overlap</b>
+                        <span>For 12 = 2 × 2 × 3 and 18 = 2 × 3 × 3, 12's own region keeps one 2 once the other has gone to
+                            the overlap. Leaving both 2s in 12's own region as well gives 2 × 3 × 2 × 2 × 3 = 72 for the
+                            LCM, twice the correct 36: a prime crossed off both lists is written once.</span>
+                    </li>
+                    <li><b>Reading the overlap as the LCM</b>
+                        <span>6 is smaller than both 12 and 18, and a multiple of neither. The overlap is the HCF;
+                            the LCM, 36, needs every region.</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="summary">
+                <h1 id="summary">Summary</h1>
+                <ol class="recap">
+                    <li>One circle per number: a prime on both lists is crossed off both and written once, in the
+                        overlap; a prime on one list stays in that number's own region.</li>
+                    <li>The overlap multiplies to the HCF; every region together multiplies to the LCM.</li>
+                    <li>For two numbers, HCF × LCM equals their product. Any one of the four values follows from the
+                        other three.</li>
+                    <li>A third number adds a third circle: the centre gives the HCF, and every region together still
+                        gives the LCM.</li>
+                    <li>For three numbers there is no corresponding product identity: factors can be counted a
+                        different number of times in the three numbers' product and in HCF × LCM.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
@@ -62,7 +171,7 @@
                     <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practiceHCFLCMVenn.html" style="background-image: none">
                         <span class="practice-card__kicker">Practice</span>
                         <h3>HCF and LCM from a Venn diagram</h3>
-                        <p>The Venn method for two or three numbers, and HCF times LCM as the product.</p>
+                        <p>The Venn method for two or three numbers, and the two-number HCF and LCM product identity.</p>
                     </a>
                     <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/choosingHCFOrLCM.html" style="background-image: none">
                         <span class="topic-card__kicker">Next lesson</span>

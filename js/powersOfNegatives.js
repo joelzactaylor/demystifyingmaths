@@ -140,18 +140,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 "The index stands against the 3",
                 "So the 3 is multiplied by itself",
                 "And the minus is still in front",
-                "The bracket is what the index meets",
-                "So the whole of −3 is multiplied by itself",
+                "The index stands against the bracket",
+                "So −3 is multiplied by itself",
                 "Two negatives make a positive"
             ];
             const copy = [
-                `${MINUS}3² on the left and (${MINUS}3)² on the right, written with the same digits.`,
-                "Nothing gathers the minus in with the 3, so the squaring reaches the 3 alone.",
-                `3 ${TIMES} 3 is 9, and the minus has taken no part in it.`,
+                `${MINUS}3² and (${MINUS}3)² differ only by the bracket.`,
+                "No bracket joins the minus to the 3, so the square applies to the 3 alone.",
+                `3 ${TIMES} 3 = 9, and the minus has not been used yet.`,
                 `${MINUS}3² = ${MINUS}9.`,
                 `The bracket makes ${MINUS}3 one amount, and the index applies to all of it.`,
                 `Both factors carry the minus, so there are two negatives in the product.`,
-                `(${MINUS}3)² = 9, which is where the two readings part.`
+                `(${MINUS}3)² = 9, while ${MINUS}3² = ${MINUS}9.`
             ];
             return { title: titles[index], copy: copy[index] };
         },
@@ -222,25 +222,24 @@ document.addEventListener("DOMContentLoaded", () => {
             figure.append(row);
 
             const value = el("p", "pairs__value");
-            const note = el("p", "pairs__note");
-            figure.append(value, note);
+            figure.append(value);
             board.append(figure);
-            return { figure, row, factors, ties, value, note };
+            return { figure, row, factors, ties, value };
         },
 
         caption(model, index) {
             const titles = [
                 "Five negative factors",
-                "The first two cancel",
+                "The first two make a positive",
                 "And the next two",
                 "One is left over",
                 "The size, and then the sign"
             ];
             const copy = [
-                `The index counts how many copies of ${MINUS}2 are multiplied together.`,
+                `(${MINUS}2)⁵ is five copies of ${MINUS}2 multiplied together.`,
                 `(${MINUS}2) ${TIMES} (${MINUS}2) is 4, so a tied pair is a positive amount.`,
-                "Four of the five are now accounted for, and both pairs are positive.",
-                "Nothing remains to pair the fifth with, so its minus survives.",
+                "Four of the five are paired, and both pairs are positive: 4 × 4 = 16.",
+                `The fifth ${MINUS}2 has nothing to pair with, so its minus stays.`,
                 `2⁵ = 32, and the unpaired negative makes it ${MINUS}32.`
             ];
             return { title: titles[index], copy: copy[index] };
@@ -248,7 +247,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         paint(parts, model, index, within) {
             const at = index + within;
-            const { figure, factors, ties, value, note } = parts;
+            const { figure, factors, ties, value } = parts;
 
             factors.forEach((factor, i) => {
                 factor.style.opacity = String(ease(clamp((at - i * 0.12) / 0.6)));
@@ -280,10 +279,6 @@ document.addEventListener("DOMContentLoaded", () => {
             value.textContent = showValue ? `${MINUS}32` : "";
             value.classList.toggle("pairs__value--negative", showValue);
 
-            note.style.opacity = String(ease(clamp(at - 3)));
-            note.textContent = at >= 3
-                ? `Two pairs and one negative left over: 2⁵ = 32, so (${MINUS}2)⁵ = ${MINUS}32.`
-                : "";
         }
     };
 

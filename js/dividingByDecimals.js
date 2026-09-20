@@ -89,12 +89,12 @@
         });
 
         const stages = [
-            { title: "Identify the decimal divisor", copy: "The divisor 0.46 is decimal, so the calculation is not ready for short or long division." },
+            { title: "The divisor 0.46 has two decimal places", copy: "One multiplication by 10 is not enough to make 0.46 an integer." },
             { title: "Multiply both numbers by 10", copy: "55.2 becomes 552 and 0.46 becomes 4.6. The quotient is unchanged, but 4.6 is still decimal." },
             { title: "Multiply both numbers by 10 again", copy: "552 becomes 5,520 and 4.6 becomes 46. The divisor is now an integer." },
-            { title: "Stop when the divisor is whole", copy: "Two equal steps of ×10 are equivalent to multiplying both original numbers by 100." },
-            { title: "Use long division on 5,520 ÷ 46", copy: "The transformed calculation has an integer divisor, and its quotient is 120." },
-            { title: "Check against the original division", copy: "120 × 0.46 = 55.2, confirming that 55.2 ÷ 0.46 = 120." }
+            { title: "Stop when the divisor is an integer", copy: "Two multiplications by 10 are one multiplication by 100: 55.2 × 100 = 5,520 and 0.46 × 100 = 46." },
+            { title: "Use long division on 5,520 ÷ 46", copy: "46 × 12 = 552, so 46 × 120 = 5,520 and 5,520 ÷ 46 = 120." },
+            { title: "Check against the original division", copy: "120 × 0.46 = 55.2: the quotient of 5,520 ÷ 46 is the quotient of 55.2 ÷ 0.46 as well." }
         ];
         const dots = stages.map(() => make("span", "decimal-division-scene__dot"));
         progress.replaceChildren(...dots);
@@ -327,6 +327,7 @@
         const point = cleaned.indexOf(".");
         const singlePoint = point < 0 ? cleaned : `${cleaned.slice(0, point + 1)}${cleaned.slice(point + 1).replace(/\./g, "")}`;
         let [whole, fraction] = singlePoint.split(".");
+        if (whole.length > 1) whole = whole.replace(/^0+(?=\d)/, "");
         whole = whole.slice(0, wholeLimit);
         const after = fraction === undefined ? whole : `${whole}.${fraction.slice(0, fractionLimit)}`;
         if (after !== before) {
@@ -375,10 +376,8 @@
             originalOutput.textContent = original;
             equivalentOutput.textContent = equivalent;
             answerOutput.textContent = `${original} = ${answer}`;
-            const ending = answer.endsWith("…")
-                ? `The quotient begins ${answer}; the decimal continues.`
-                : `The quotient is ${answer}.`;
-            status.textContent = `Multiplying both numbers by ${comma(String(factor))} gives ${formatDecimal(scaledDividend)} divided by ${formatDecimal(scaledDivisor)}. ${ending}`;
+            const ending = answer.endsWith("…") ? " The decimal continues." : "";
+            status.textContent = `${formatDecimal(divisor)} has ${places === 1 ? "one decimal place" : `${places === 2 ? "two" : "three"} decimal places`}, so both numbers are multiplied by ${comma(String(factor))}.${ending}`;
             working.setAttribute("aria-label", status.textContent);
         };
         [dividendInput, divisorInput].forEach((input) => input.addEventListener("input", update));

@@ -34,14 +34,18 @@
             <h1>Demystifying - Multiplying and dividing by powers of ten</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
-                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and calculation</a><span
+                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span>
+                    </li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span
                             aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/">Written methods</a><span
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span
                             aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/">Number</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/">Structure and
+                            calculation</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/">Written
+                            methods</a><span aria-hidden="true">&rsaquo;</span></li>
                     <li>
                         <p>Multiplying and dividing by powers of ten</p>
                     </li>
@@ -53,32 +57,54 @@
 
         <main class="lesson-main">
             <p class="prereq"><b>Before this page:</b> <span>know the
-                    <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/placeValue.html">place-value columns</a> on
-                    either side of the <span class="gloss" data-term="decimal point">decimal point</span>, and that each is worth ten times the column to its
+                    <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/placeValue.html">place-value
+                        columns</a> on
+                    either side of the <span class="gloss" data-term="decimal point">decimal point</span>, and that each
+                    is worth ten times the column to its
                     right.</span></p>
 
             <section>
-                <h1>Each move changes a digit&rsquo;s value tenfold</h1>
+                <h1>Moving a digit one place changes its value tenfold</h1>
 
                 <p>In <strong>52 &times; 10 = 520</strong>, the 5 moves from tens to hundreds and the 2 moves from ones
                     to tens. In <strong>5.2 &times; 10 = 52</strong>, the same movement carries the 5 from ones to tens
                     and the 2 from <span class="gloss" data-term="tenth">tenths</span> to ones.</p>
 
-                <p>The digits keep their identity and order; their places determine their new values.</p>
+                <p>The decimal point does not move at all &mdash; the digits move past it.</p>
+                <div class="rule-card power-rule">
+                    <div class="power-rule__directions">
+                        <div class="power-rule__direction power-rule__direction--left">
+                            <span class="power-rule__arrow" aria-hidden="true">&larr;</span>
+                            <strong>Multiplication</strong>
+                            <span>moves digits left</span>
+                            <small>each place is worth ten times as much</small>
+                        </div>
+                        <div class="power-rule__decimal" aria-hidden="true">.</div>
+                        <div class="power-rule__direction power-rule__direction--right">
+                            <span class="power-rule__arrow" aria-hidden="true">&rarr;</span>
+                            <strong>Division</strong>
+                            <span>moves digits right</span>
+                            <small>each place is worth a tenth as much</small>
+                        </div>
+                    </div>
+                </div>
 
-                <p>Multiplying by 10 moves every digit one place
-                    to the left, so each becomes worth ten times as much. Multiplying by 100 does it twice, and by
-                    1,000 three times.</p>
+                <div class="factor-map" aria-label="Powers of ten and their place-value shifts">
+                    <article><strong>10</strong><span class="factor-map__steps"><i></i></span>
+                        <p>one place</p>
+                    </article>
+                    <article><strong>100</strong><span class="factor-map__steps"><i></i><i></i></span>
+                        <p>two places</p>
+                    </article>
+                    <article><strong>1,000</strong><span class="factor-map__steps"><i></i><i></i><i></i></span>
+                        <p>three places</p>
+                    </article>
+                </div>
 
-                <p>Dividing moves them the same way to the right. The decimal point does not
-                    move at all &mdash; the digits move past it.</p>
-                <p>For example, when 52.8 is multiplied by 100, the 5 moves from tens to thousands, the 2 moves from
-                    ones to hundreds, and the 8 moves from tenths to tens. The digits keep their order, but each one
-                    becomes worth one hundred times as much.</p>
 
                 <div class="power-machine" data-power-machine>
                     <div class="power-machine__controls">
-                        <label for="power-machine-number">Choose a number</label>
+                        <label for="power-machine-number">Number</label>
                         <input id="power-machine-number" data-machine-input type="text" inputmode="decimal" value="52.8"
                             maxlength="8" autocomplete="off" spellcheck="false">
                     </div>
@@ -100,6 +126,8 @@
                             data-factor="1,000" aria-pressed="false">&times; 1,000</button>
                     </div>
 
+                    <p class="power-machine__note" data-machine-note hidden>A number with up to three digits on either side
+                        of the point</p>
                     <p class="power-machine__equation" aria-live="polite">
                         <span data-machine-source>52.8</span>
                         <span data-machine-operation-label>&times; 100</span>
@@ -133,162 +161,118 @@
                     </svg>
 
                     <div class="power-machine__reading">
-                        <h2>Follow the calculation</h2>
+                        <h2>The calculation step by step</h2>
                         <ol>
-                            <li data-machine-step="operation">The <span class="gloss" data-term="multiplier">multiplier</span> 100 contains two <span class="gloss" data-term="factor">factors</span> of 10, so each
-                                non-zero digit must move two places to the left.</li>
+                            <li data-machine-step="operation">The <span class="gloss"
+                                    data-term="multiplier">multiplier</span> 100 contains two <span class="gloss"
+                                    data-term="factor">factors</span> of 10, so every
+                                digit moves two places to the left.</li>
                             <li data-machine-step="digits">The 5 moves from the tens place to the thousands place; the
                                 2 moves from the ones place to the hundreds place; and the 8 moves from the tenths place
                                 to the tens place.</li>
-                            <li data-machine-step="zeros">The ones place is now empty, so a <span class="gloss" data-term="zero">zero</span> holds it. Reading the
-                                completed number gives 5,280.</li>
+                            <li data-machine-step="zeros">The ones place is empty, so a <span class="gloss"
+                                    data-term="zero">zero</span> holds it. The number is 5,280.</li>
                         </ol>
                     </div>
                 </div>
-                <p>Every digit changes place at the same time. The <span class="gloss" data-term="place value">place-value</span> columns display the movement directly,
-                    and a zero appears only when a new place is empty.</p>
             </section>
 
             <section>
-                <h1>The place-value rule</h1>
-                <p>Each step from one place-value <span class="gloss" data-term="column">column</span> to the next represents a factor of 10. A digit in the
-                    hundreds place is worth ten times as much as the same digit in the tens place. In the tenths
-                    place, it is worth one tenth of its value in the ones place.</p>
-                <p>This pattern continues seamlessly across the decimal point, so <span class="gloss" data-term="whole number">whole numbers</span> and <span class="gloss" data-term="decimal">decimals</span> follow
-                    the same rule.</p>
-                <div class="rule-card power-rule">
-                    <div class="power-rule__directions">
-                        <div class="power-rule__direction power-rule__direction--left">
-                            <span class="power-rule__arrow" aria-hidden="true">&larr;</span>
-                            <strong>Multiplication</strong>
-                            <span>moves digits left</span>
-                            <small>the magnitude becomes larger</small>
-                        </div>
-                        <div class="power-rule__decimal" aria-hidden="true">.</div>
-                        <div class="power-rule__direction power-rule__direction--right">
-                            <span class="power-rule__arrow" aria-hidden="true">&rarr;</span>
-                            <strong>Division</strong>
-                            <span>moves digits right</span>
-                            <small>the magnitude becomes smaller</small>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="factor-map" aria-label="Powers of ten and their place-value shifts">
-                    <article><strong>10</strong><span class="factor-map__steps"><i></i></span>
-                        <p>one place</p>
-                    </article>
-                    <article><strong>100</strong><span class="factor-map__steps"><i></i><i></i></span>
-                        <p>two places</p>
-                    </article>
-                    <article><strong>1,000</strong><span class="factor-map__steps"><i></i><i></i><i></i></span>
-                        <p>three places</p>
-                    </article>
-                </div>
-
-                <p>The number of zeros in 10, 100 or 1,000 tells you how many factors of 10 are present—and therefore
-                    how many places the digits must move.</p>
-
-                <aside class="important-box" aria-labelledby="zero-rule-title">
-                    <h2 class="important-box__title" id="zero-rule-title">Zeros hold empty places</h2>
-                    <p>When the movement leaves a place empty, a zero must hold that position. In
-                        <strong>4 &divide; 100 = 0.04</strong>, the zero in the tenths place keeps the 4 in the
-                        <span class="gloss" data-term="hundredth">hundredths</span> place.</p>
-                </aside>
-            </section>
-
-            <section>
-                <h1>Multiplying by 10, 100 and 1,000</h1>
-                <p>Begin by counting the zeros in the multiplier. This gives the number of places that every digit
-                    must move to the left.</p>
-                <p>The size of the result is worth predicting first. Multiplication by 100 should make the <span class="gloss" data-term="magnitude">magnitude</span>
-                    one hundred times as large. If an answer remains close to the starting value, the digits have
-                    not moved far enough.</p>
+                <h1>Multiplying by 10, 100 or 1,000 moves every digit left, one place for each zero</h1>
+                <p>Multiplying by 100 makes the <span class="gloss" data-term="magnitude">magnitude</span> a hundred times as
+                    large, so 6.47 &times; 100 is in the hundreds: 647, not 64.7. The two zeros of 100 are its two
+                    factors of 10, one place each.</p>
 
                 <article class="wex">
                     <h2 class="wex__title">Example 1: calculate 6.47 &times; 100</h2>
                     <ol class="wex__steps">
                         <li><span class="wex__do"><strong>6.47</strong></span>
-                        <span class="wex__why">Start with 6 ones,
-                                4 tenths and 7 hundredths.</span></li>
+                            <span class="wex__why">Start with 6 ones,
+                                4 tenths and 7 hundredths.</span>
+                        </li>
                         <li><span class="wex__do">Move every digit two places left.</span>
-                        <span class="wex__why">Ones
-                                become hundreds, tenths become tens and hundredths become ones.</span></li>
+                            <span class="wex__why">Ones
+                                become hundreds, tenths become tens and hundredths become ones.</span>
+                        </li>
                         <li><span class="wex__do"><strong>6.47 &times; 100 = 647</strong></span>
-                        <span
-                                class="wex__why">The value is one hundred times as large.</span></li>
+                            <span class="wex__why">Six hundreds, four tens and seven ones.</span>
+                        </li>
                     </ol>
                 </article>
 
                 <article class="wex">
-                    <h3 class="wex__title">Example 2: calculate 0.39 &times; 1,000</h3>
+                    <h2 class="wex__title">Example 2: calculate 0.39 &times; 1,000</h2>
                     <ol class="wex__steps">
                         <li><span class="wex__do">3 tenths &rarr; 3 hundreds</span>
-                        <span class="wex__why">The 3 moves
-                                from the tenths place to the hundreds place.</span></li>
+                            <span class="wex__why">Three places to the left, past the ones.</span>
+                        </li>
                         <li><span class="wex__do">9 hundredths &rarr; 9 tens</span>
-                        <span class="wex__why">At the same
-                                time, the 9 moves three places from hundredths to tens.</span></li>
+                            <span class="wex__why">The same three places.</span>
+                        </li>
                         <li><span class="wex__do"><strong>0.39 &times; 1,000 = 390</strong></span>
-                        <span
-                                class="wex__why">A zero holds the empty ones place.</span></li>
+                            <span class="wex__why">A zero holds the empty ones place.</span>
+                        </li>
                     </ol>
                 </article>
             </section>
 
             <section>
-                <h1>Dividing by 10, 100 and 1,000</h1>
-                <p>Division reverses the direction of movement. Count the zeros in the <span class="gloss" data-term="divisor">divisor</span>, then move every digit
-                    that many places to the right.</p>
-                <p>A whole number can therefore produce a decimal result. This is not a special case: the ones,
-                    tenths and hundredths places all belong to one continuous place-value system.</p>
+                <h1>Dividing by 10, 100 or 1,000 moves every digit right, one place for each zero</h1>
+                <p>Dividing a whole number can give a decimal, because the places carry on past the point: the <span class="gloss" data-term="divisor">divisor</span> 10
+                    moves every digit of 725 one place to the right, and 725 &divide; 10 = 72.5.</p>
 
                 <article class="wex">
                     <h2 class="wex__title">Example 3: calculate 725 &divide; 10</h2>
                     <ol class="wex__steps">
                         <li><span class="wex__do">7 hundreds &rarr; 7 tens</span>
-                        <span class="wex__why">The new place
-                                is worth one tenth of the original place.</span></li>
+                            <span class="wex__why">The new place
+                                is worth one tenth of the original place.</span>
+                        </li>
                         <li><span class="wex__do">2 tens &rarr; 2 ones</span>
-                        <span class="wex__why">The decimal point
-                                remains between the ones and tenths places.</span></li>
+                            <span class="wex__why">One tenth of the original place again.</span>
+                        </li>
+                        <li><span class="wex__do">5 ones &rarr; 5 tenths</span>
+                            <span class="wex__why">The 5 crosses the point, which stays between ones and tenths.</span>
+                        </li>
                         <li><span class="wex__do"><strong>725 &divide; 10 = 72.5</strong></span>
-                        <span
-                                class="wex__why">The result has one tenth of the original magnitude.</span></li>
+                            <span class="wex__why">Seven tens, two ones and five tenths.</span>
+                        </li>
                     </ol>
                 </article>
 
                 <article class="wex">
-                    <h3 class="wex__title">Example 4: calculate 4 &divide; 100</h3>
+                    <h2 class="wex__title">Example 4: calculate 4 &divide; 100</h2>
                     <ol class="wex__steps">
                         <li><span class="wex__do">4 ones &rarr; 4 hundredths</span>
-                        <span class="wex__why">Two factors of
-                                10 make the place value one hundred times smaller.</span></li>
+                            <span class="wex__why">Two factors of
+                                10 make the place value one hundred times smaller.</span>
+                        </li>
                         <li><span class="wex__do">Write zeros in the empty places.</span>
-                        <span class="wex__why">Both
-                                the ones and tenths places must be held by zeros.</span></li>
+                            <span class="wex__why">Both
+                                the ones and tenths places must be held by zeros.</span>
+                        </li>
                         <li><span class="wex__do"><strong>4 &divide; 100 = 0.04</strong></span>
-                        <span
-                                class="wex__why">The <span class="gloss" data-term="placeholder">placeholder</span> zero prevents 4 being read as 4 tenths.</span></li>
+                            <span class="wex__why">The <span class="gloss" data-term="placeholder">placeholder</span>
+                                zero in the tenths place prevents 4 being read as 4 tenths.</span>
+                        </li>
                     </ol>
                 </article>
+                <p>A <span class="gloss" data-term="negative">negative</span> number keeps its sign, and its digits move as
+                    before: &minus;3.6 &times; 100 = &minus;360 and &minus;48 &divide; 1,000 = &minus;0.048.</p>
             </section>
 
             <section>
-                <h1>Using 0.1 and 0.01</h1>
+                <h1>Multiplying by 0.1 divides by 10, and dividing by 0.1 multiplies by 10</h1>
                 <p>The numbers 0.1 and 0.01 are powers of ten smaller than 1.</p>
 
-
-
                 <h2>Multiplying finds a fraction of the starting value</h2>
-                <p>Multiplying by 0.1 means finding one tenth of the starting number, which is <span class="gloss" data-term="equivalent">equivalent</span> to dividing
-                    by 10. Similarly, multiplying by 0.01 finds one hundredth, so it is equivalent to dividing by 100.</p>
+                <p>0.1 is one tenth, so multiplying by 0.1 is <span class="gloss" data-term="equivalent">equivalent</span> to dividing by 10; multiplying by
+                    0.01 is dividing by 100:</p>
 
                 <div class="decimal-walkthroughs">
                     <article>
                         <h3>Calculate 6 &times; 0.1</h3>
                         <ol>
-                            <li><strong>0.1 means one tenth.</strong></li>
                             <li>One tenth of 6 is <strong>6 &divide; 10</strong>.</li>
                             <li>So <strong>6 &times; 0.1 = 0.6</strong>.</li>
                         </ol>
@@ -296,7 +280,6 @@
                     <article>
                         <h3>Calculate 6 &times; 0.01</h3>
                         <ol>
-                            <li><strong>0.01 means one hundredth.</strong></li>
                             <li>One hundredth of 6 is <strong>6 &divide; 100</strong>.</li>
                             <li>So <strong>6 &times; 0.01 = 0.06</strong>.</li>
                         </ol>
@@ -304,8 +287,7 @@
                 </div>
 
                 <h2>Division counts how many fractional pieces fit</h2>
-                <p>The <span class="gloss" data-term="calculation">calculation</span> <strong>3 &divide; 0.1</strong> asks a precise question: how many tenths are
-                    contained in 3?</p>
+                <p>The <span class="gloss" data-term="calculation">calculation</span> <strong>3 &divide; 0.1</strong> asks how many tenths are in 3:</p>
 
                 <div class="tenths-model">
                     <div class="tenths-model__question"><span>3</span><strong>&divide; 0.1</strong><span>= ?</span>
@@ -340,78 +322,43 @@
                     </ol>
                 </div>
 
-                <p>Dividing by 0.01 uses the same reasoning, but now the pieces are hundredths. Since one whole
-                    contains 100 hundredths, <strong>3 &divide; 0.01 = 300</strong>.</p>
-
-                <p>These four relationships summarise the pattern:</p>
-                <div class="decimal-equivalences">
-                    <article>
-                        <p><strong>&times; 0.1</strong><span>=</span><strong>&divide; 10</strong></p><small>find one
-                            tenth</small>
-                    </article>
-                    <article>
-                        <p><strong>&times; 0.01</strong><span>=</span><strong>&divide; 100</strong></p><small>find one
-                            hundredth</small>
-                    </article>
-                    <article>
-                        <p><strong>&divide; 0.1</strong><span>=</span><strong>&times; 10</strong></p><small>count the
-                            tenths</small>
-                    </article>
-                    <article>
-                        <p><strong>&divide; 0.01</strong><span>=</span><strong>&times; 100</strong></p><small>count the
-                            hundredths</small>
-                    </article>
-                </div>
-
-                <aside class="important-box" aria-labelledby="division-decimal-title">
-                    <h2 class="important-box__title" id="division-decimal-title">Division does not always make a number
-                        smaller</h2>
-                    <p>When the divisor is smaller than 1, the calculation counts pieces smaller than one whole. Many
-                        of these pieces fit into the starting value, which is why <strong>8 &divide; 0.1 = 80</strong>.</p>
-                </aside>
+                <p>Dividing by 0.01 counts hundredths: one whole contains 100 hundredths, so <strong>3 &divide; 0.01 =
+                        300</strong>.</p>
             </section>
 
-            <section>
-                <h1>Negative numbers</h1>
-                <p><span class="gloss" data-term="negative">Negative</span> numbers follow exactly the same place-value movement. Keep the negative sign, then move
-                    the digits in the usual direction:</p>
-                <div class="negative-examples">
-                    <p><strong>&minus;3.6 &times; 100 = &minus;360</strong></p>
-                    <p><strong>&minus;48 &divide; 1,000 = &minus;0.048</strong></p>
-                </div>
-            </section>
 
             <section>
-                <h1>Keep every digit in its new place</h1>
+                <h1>Common mistakes</h1>
                 <ul class="slips power-slips">
-                    <li><b>Moving only the decimal point</b>
-                    <span>The decimal point is the fixed boundary between the
-                            ones and tenths places. Move the digits between place-value columns instead.</span></li>
+                    <li><b>Moving the digits the wrong way</b>
+                        <span>3.4 &times; 10 = 34: multiplying moves every digit one place to the left. Moved to the
+                            right instead, the digits give 0.34, a hundred times too small.</span>
+                    </li>
                     <li><b>Always adding zeros</b>
-                    <span>Zeros are not attached automatically:
-                            <strong>3.4 &times; 10 = 34</strong>, not 3.40. Add a zero only when it must hold an empty
-                            place.</span></li>
+                        <span><strong>3.4 &times; 10 = 34</strong>, not 3.40: 3.40 is 3.4 again, ten times too small. A zero is
+                            written only where a moved digit leaves a place empty.</span>
+                    </li>
                     <li><b>Forgetting placeholder zeros</b>
-                    <span><strong>7 &divide; 100 = 0.07</strong>. Writing 0.7 puts the 7 one column too far left.</span></li>
-                    <li><b>Assuming division always makes a number smaller</b>
-                    <span>Dividing by a positive number greater
-                            than 1 reduces the magnitude, but dividing by a positive number between 0 and 1 increases
-                            it. For example, dividing by 0.1 is equivalent to multiplying by 10.</span></li>
+                        <span><strong>7 &divide; 100 = 0.07</strong>. Writing 0.7 puts the 7 one place too far
+                            left, ten times too big.</span>
+                    </li>
+                    <li><b>Expecting 8 &divide; 0.1 to be smaller than 8</b>
+                        <span>Each whole holds ten tenths, so 8 &divide; 0.1 = 80, larger than 8; 0.8 is 8 &divide; 10.</span>
+                    </li>
                 </ul>
             </section>
 
             <section>
-                <h1 id="remember">Remember</h1>
+                <h1 id="remember">Summary</h1>
                 <ol class="recap">
                     <li>Multiplying by 10 moves every digit one place to the left and dividing by 10 moves every digit
                         one place to the right. The decimal point stays where it is; the digits move past it.</li>
                     <li>The number of zeros in 10, 100 or 1,000 is the number of places every digit moves.</li>
                     <li>A zero is written only where the movement leaves a place empty, so <span class="sf">7 &divide;
-                            100 = 0.07</span> while <span class="sf">3.4 &times; 10 = 34</span> and not 34.0.</li>
-                    <li>Multiplying by 0.1 finds one tenth of a number, which is what dividing by 10 does, and
-                        multiplying by 0.01 is the same as dividing by 100.</li>
+                            100 = 0.07</span> while <span class="sf">3.4 &times; 10 = 34</span>, not 3.40.</li>
+                    <li>Multiplying by 0.1 is dividing by 10, and multiplying by 0.01 is dividing by 100.</li>
                     <li>Dividing by 0.1 counts how many tenths fit inside a number, so <span class="sf">8 &divide; 0.1
-                            = 80</span> and dividing by a value between 0 and 1 makes a number larger.</li>
+                            = 80</span>: dividing a positive number by a value between 0 and 1 makes it larger.</li>
                 </ol>
             </section>
 

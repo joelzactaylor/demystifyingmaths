@@ -11,6 +11,7 @@ import { createServer } from "node:http";
 import { createReadStream, statSync } from "node:fs";
 import { join, normalize, extname } from "node:path";
 import { BASE } from "./site-base.mjs";
+import { inject, route } from "./inline-edit.mjs";   // temporary: in-page text editing
 
 const ROOT = new URL("..", import.meta.url).pathname.replace(/\/$/, "");
 const PORT = Number(process.argv[2]) || 8000;
@@ -27,8 +28,10 @@ const TYPES = {
 const send = (res, code, body, type = "text/html; charset=utf-8") =>
     res.writeHead(code, { "Content-Type": type }).end(body);
 
-const server = createServer((req, res) => {
+const server = createServer(async (req, res) => {
     const url = decodeURIComponent(new URL(req.url, "http://localhost").pathname);
+
+    if (await route(req, res, url)) return;   // temporary: in-page text editing
 
     // Match production: the bare root redirects into the prefixed site.
     if (url === "/" || !url.startsWith(BASE + "/") && url !== BASE)
@@ -57,6 +60,8 @@ const server = createServer((req, res) => {
         "Content-Type": TYPES[extname(file).toLowerCase()] ?? "application/octet-stream",
         "Cache-Control": "no-store, must-revalidate",
     });
+    const page = inject(file);   // temporary: a lesson goes out with the editor's script tag
+    if (page !== null) return res.end(page);
     createReadStream(file).pipe(res);
 });
 

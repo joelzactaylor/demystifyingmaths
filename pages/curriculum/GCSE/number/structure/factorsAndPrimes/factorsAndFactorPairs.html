@@ -67,7 +67,8 @@
                 <h1 id="every-factor-has-a-partner">Every factor has a partner</h1>
 
                 <p>A <span class="gloss" data-term="factor">factor</span> divides a number exactly, leaving nothing
-                    over. Divide 24 by 3 and it hands back 8, so one trial has found two factors at once.</p>
+                    over. 24 &divide; 3 = 8, so one trial finds two factors at once. A factor is also called a divisor: 3
+                    is a divisor of 24.</p>
 
                 <figure class="rects">
                     <div class="rects__figure" aria-hidden="true">
@@ -140,14 +141,9 @@
                         pair; past <span class="sf" role="math" aria-label="4 times 6">4 &times; 6</span> the same four
                         come back stood on end.</figcaption>
                 </figure>
-            </section>
 
-            <section aria-labelledby="pairs-on-the-line">
-                <h1 id="pairs-on-the-line">Pairs on the number line</h1>
-
-                <p>A pair is two places on the line whose product is 24. Working up from 1 joins them one arc at a
-                    time, and each new arc sits inside the last, because both ends have moved inward. A trial that
-                    leaves a remainder joins nothing, so no arc is drawn from it.</p>
+                <p>A pair is two numbers whose product is 24, and a trial that leaves a remainder joins no
+                    pair.</p>
 
                 <div class="worked">
                     <h2 class="worked__title">List every factor of 24</h2>
@@ -159,8 +155,8 @@
                             </div>
 
                             <div class="factor-scene__caption" aria-live="polite">
-                                <h3 data-step-title>Pairs that multiply to 24</h3>
-                                <p data-step-copy>Each trial that divides 24 exactly joins two places on the line.</p>
+                                <h3 data-step-title>The numbers 1 to 24</h3>
+                                <p data-step-copy>Trials start at 1.</p>
                             </div>
 
                             <div class="factor-scene__progress" data-progress aria-hidden="true"></div>
@@ -177,22 +173,21 @@
             </section>
 
             <section aria-labelledby="where-to-stop">
-                <h1 id="where-to-stop">Where to stop</h1>
+                <h1 id="where-to-stop">Stop when the two ends of the pairs meet</h1>
 
-                <p>The arcs run out once the two ends meet. Anything above that point is the larger half of a pair
-                    whose smaller half has already been tried, so it can add nothing new.</p>
+                <p>For 24 the arcs run out after 4 and 6. Every number above 5 is either not a factor or the larger end
+                    of a pair whose smaller end has already been tried, so it adds nothing new.</p>
 
                 <div class="important-box" aria-labelledby="the-stopping-tip">
                     <div class="important-box__head">
-                        <h2 class="important-box__title" id="the-stopping-tip">Knowing where to stop</h2>
+                        <h2 class="important-box__title" id="the-stopping-tip">Stop below the root of the next square above the number</h2>
                         <span class="important-box__tag">Tip</span>
                     </div>
-                    <p>Find the next square number and take its root. Nothing above that root needs trying. For 24
-                        the next square is 25, whose root is 5, so the trials are 1, 2, 3 and 4.</p>
+                    <p>For 24 the next square above it is 25, whose root is 5, so the trials are 1, 2, 3 and 4.</p>
                 </div>
 
                 <div class="wex">
-                    <h2 class="wex__title">Example: list every factor of <span class="sf" role="math"
+                    <h2 class="wex__title">Example: write down all the factors of <span class="sf" role="math"
                             aria-label="45">45</span></h2>
                     <p class="wex__task">Work up from 1, writing both ends of each pair.</p>
                     <ol class="wex__steps">
@@ -205,8 +200,7 @@
                         <li>
                             <span class="wex__do"><span class="sf" role="math" aria-label="1 times 45 equals 45">1
                                     &times; 45 = 45</span></span>
-                            <span class="wex__why">The first trial always divides, and it hands back the number
-                                itself.</span>
+                            <span class="wex__why">1 divides every number, and its partner is the number itself.</span>
                         </li>
                         <li>
                             <span class="wex__do"><span class="sf" role="math" aria-label="3 times 15 equals 45">3
@@ -230,9 +224,8 @@
             <section aria-labelledby="its-own-partner">
                 <h1 id="its-own-partner">When a factor is its own partner</h1>
 
-                <p>36 is a <span class="gloss" data-term="square number">square number</span>. One trial there hands
-                    back
-                    the number it started from, so the arc for that pair has nowhere to travel.</p>
+                <p>36 is a <span class="gloss" data-term="square number">square number</span>, so one factor is its own partner:
+                    36 &divide; 6 = 6.</p>
 
                 <div class="worked">
                     <h2 class="worked__title">List every factor of 36</h2>
@@ -244,9 +237,8 @@
                             </div>
 
                             <div class="factor-scene__caption" aria-live="polite">
-                                <h3 data-step-title>Pairs that multiply to 36</h3>
-                                <p data-step-copy>The arcs nest as before, until one of them closes on a single
-                                    point.</p>
+                                <h3 data-step-title>The numbers 1 to 36</h3>
+                                <p data-step-copy>Trials start at 1.</p>
                             </div>
 
                             <div class="factor-scene__progress" data-progress aria-hidden="true"></div>
@@ -261,7 +253,7 @@
                     </noscript>
                 </div>
 
-                <p>36 has nine factors, not ten. 6 is written once rather than twice, and every square number counts an
+                <p>36 has nine factors, not ten. 6 is written once rather than twice, and every square number has an
                     odd number of factors for the same reason.</p>
             </section>
 
@@ -269,33 +261,31 @@
                 <h1 id="common-mistakes">Common mistakes</h1>
                 <ul class="slips">
                     <li><b>Losing the partner of a number already tried</b>
-                        <span>Trying numbers in no particular order drops one end of a pair. 3 was tried,
-                            so 8 belonged in the list beside it: 24 has eight factors, <span class="sf" role="math"
-                                aria-label="1, 2, 3, 4, 6, 8, 12, 24">1, 2, 3, 4, 6, 8, 12,
-                                24</span>.</span>
+                        <span>Trying numbers in no order drops one end of a pair: 5 is tried but 40 &divide; 5 = 8 is never
+                            written, and <span class="sf" role="math" aria-label="1, 2, 4, 5, 10, 20, 40">1, 2, 4, 5, 10, 20,
+                                40</span> is seven factors where 40 has eight.</span>
                     </li>
                     <li><b>Leaving out the widest pair</b>
-                        <span>1 divides every number, and every number divides itself, so 1 and 24 are on
-                            the list before any trial is made.</span>
+                        <span>45 listed as 3, 5, 9, 15 has four factors, not six: 1 divides every number and every number
+                            divides itself, so 1 &times; 45 is the first pair.</span>
                     </li>
                     <li><b>Counting a square number&rsquo;s own partner twice</b>
-                        <span>36 has nine factors, not ten. One place on the line stands for both ends of
-                            <span class="sf" role="math" aria-label="6 times 6">6 &times; 6</span>, so
-                            the 6 is written once: <span class="sf" role="math" aria-label="1, 2, 3, 4,
-                            6, 9, 12, 18, 36">1, 2, 3, 4, 6, 9, 12, 18, 36</span>.</span>
+                        <span>49 has three factors, not four. One place on the line stands for both ends of
+                            <span class="sf" role="math" aria-label="7 times 7">7 &times; 7</span>, so
+                            the 7 is written once: <span class="sf" role="math" aria-label="1, 7, 49">1, 7, 49</span>.</span>
                     </li>
                 </ul>
             </section>
 
             <section aria-labelledby="remember">
-                <h1 id="remember">Remember</h1>
+                <h1 id="remember">Summary</h1>
                 <ol class="recap">
-                    <li>A factor divides a number exactly, and the division hands back its partner.</li>
+                    <li>A factor divides a number exactly, and the division gives its partner.</li>
                     <li>Working up from 1 fills the list from both ends, so nothing is missed or written twice.</li>
-                    <li>To know where to stop, find the next square number: nothing above its root needs trying.</li>
+                    <li>To know where to stop, find the next square above the number: the trials stop below its root.</li>
                     <li>24 has eight factors: <span class="sf" role="math" aria-label="1, 2, 3, 4, 6, 8, 12, 24">1, 2,
                             3, 4, 6, 8, 12, 24</span>.</li>
-                    <li>A square number has one factor that is its own partner, so it counts an odd number of
+                    <li>A square number has one factor that is its own partner, so it has an odd number of
                         factors.</li>
                 </ol>
             </section>

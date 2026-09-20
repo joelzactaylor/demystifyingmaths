@@ -332,7 +332,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (stage === 1) {
                 return {
                     title: `Split ${readable(calc.b)} the same way`,
-                    copy: `${readable(calc.b)} is ${calc.bParts.map((part) => readable(part.value)).join(" + ")}, so the side splits the way the top did, and the rectangle fills with ${readable(calc.lines.length)} boxes.`
+                    copy: `${readable(calc.b)} is ${calc.bParts.map((part) => readable(part.value)).join(" + ")}. ${capital(spell(calc.bParts.length))} parts down the side against ${spell(calc.aParts.length)} along the top is ${calc.bParts.length} × ${calc.aParts.length} = ${calc.lines.length} boxes, one for each product.`
                 };
             }
             const index = stage - 2;
@@ -356,7 +356,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             return {
                 title: `${readable(calc.a)} × ${readable(calc.b)} = ${readable(calc.product)}`,
-                copy: `${calc.rows.map((row) => readable(fromDigits(row.digits))).reverse().join(" + ")} = ${readable(calc.product)}. Every part of one number has met every part of the other exactly once.`
+                copy: `${calc.rows.map((row) => readable(fromDigits(row.digits))).reverse().join(" + ")} = ${readable(calc.product)}. Every part of ${readable(calc.a)} has been multiplied by every part of ${readable(calc.b)} exactly once.`
             };
         };
 
@@ -456,8 +456,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (stage === 0) {
                 return {
-                    title: "The same products, written downwards",
-                    copy: `The boxes hold ${plural(calc.lines.length, "product")}. Written in columns instead, each one becomes a line of its own, placed so that its digits sit under the places they are worth.`
+                    title: "Six boxes, six lines",
+                    copy: `Each of the ${plural(calc.lines.length, "product")} becomes a line in columns, its digits under the places they are worth.`
                 };
             }
             if (index < calc.lines.length) {
@@ -470,13 +470,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 return {
                     title: `${readable(line.bPart.value)} × ${readable(line.aPart.value)} = ${readable(line.value)}`,
                     copy: zeros
-                        ? `The lit box and the lit line are the same product. ${line.bPart.digit} × ${line.aPart.digit} = ${small}, and the ${zeros === 1 ? "zero" : plural(zeros, "zero")} in ${readable(line.bPart.value)} × ${readable(line.aPart.value)} ${zeros === 1 ? "lifts" : "lift"} it as far as the ${reach}.`
-                        : `The lit box and the lit line are the same product. ${line.bPart.digit} × ${line.aPart.digit} = ${small}, which reaches only as far as the ${reach}.`
+                        ? `${line.bPart.digit} × ${line.aPart.digit} = ${small}, and the ${zeros === 1 ? "zero" : plural(zeros, "zero")} in ${readable(line.bPart.value)} × ${readable(line.aPart.value)} ${zeros === 1 ? "moves" : "move"} it ${zeros === 1 ? "one place" : `${spell(zeros)} places`} left, so ${readable(line.value)} reaches the ${reach}.`
+                        : `${line.bPart.digit} × ${line.aPart.digit} = ${small}, which reaches only the ${reach}.`
                 };
             }
             return {
                 title: `${capital(plural(calc.lines.length, "line"))}, added: ${readable(calc.product)}`,
-                copy: `Nothing here is different from the grid. The boxes have simply been placed where their place value puts them, which turns the last step into one ordinary column addition.`
+                copy: `${calc.lines.map((line) => readable(line.value)).join(" + ")} = ${readable(calc.product)}. The ${plural(calc.lines.length, "line")} are the ${spell(calc.lines.length)} boxes, and adding them is one column addition.`
             };
         };
 
@@ -553,7 +553,12 @@ document.addEventListener("DOMContentLoaded", () => {
             if (stage === 0) {
                 return {
                     title: `${capital(plural(calc.lines.length, "line"))}, ${spell(calc.aParts.length)} of them for each digit`,
-                    copy: `Each digit of ${readable(calc.b)} produced ${plural(calc.aParts.length, "line")}. The lines belonging to one digit can be added on their own before anything else happens.`
+                    copy: (() => {
+                        const parts = [...calc.bParts].reverse();
+                        const each = spell(calc.aParts.length);
+                        const rest = parts.slice(1).map((part) => `the ${each} from the ${readable(part.value)}`);
+                        return `The ${each} lines from the ${readable(parts[0].value)} can be added on their own${rest.length ? `, and so can ${rest.join(" and ")}` : ""}.`;
+                    })()
                 };
             }
             const index = stage - 1;
@@ -587,7 +592,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const width = calc.width;
             const reveals = [];
             paper.replaceChildren();
-            paper.className = "multiplication-board__paper";
+            paper.className = `multiplication-board__paper${width >= 7 ? " multiplication-board__paper--wide" : ""}`;
 
             const labels = buildRow(width, "labels");
             const labelCells = fillRow(labels, width, (index) => placeLabels.get(width - 1 - index) || "", "multiplication-board__cell--label");
@@ -807,9 +812,17 @@ document.addEventListener("DOMContentLoaded", () => {
             });
 
             if (stage === 0) {
+                // "26 is 2 tens and 6 ones": the multiplier read place by place,
+                // one row of working for each of those digits.
+                const digits = String(calc.b).split("").map(Number);
+                const parts = digits.map((digit, index) => {
+                    const name = placeNames.get(digits.length - index - 1);
+                    return `${digit} ${digit === 1 ? name.replace(/s$/, "") : name}`;
+                });
+                const reading = parts.length > 1 ? `${parts.slice(0, -1).join(", ")} and ${parts[parts.length - 1]}` : parts[0];
                 return {
                     title: "Set the two numbers out",
-                    copy: `Equal place values go in the same column, as in any written method. Every digit of ${readable(calc.a)} will be multiplied by every digit of ${readable(calc.b)}, one digit of ${readable(calc.b)} at a time, starting with its ones.`
+                    copy: `${readable(calc.b)} is ${reading}: one row of working for each.`
                 };
             }
 
@@ -831,7 +844,9 @@ document.addEventListener("DOMContentLoaded", () => {
             if (active && active.kind === "empty") {
                 return {
                     title: "Multiplying by nothing",
-                    copy: `Every digit of ${readable(calc.a)} multiplied by 0 is 0, so this row is nothing but zeros. It is still written, because the row below it starts one place further left than this one.`
+                    copy: active.row < calc.rows.length - 1
+                        ? `Every digit of ${readable(calc.a)} multiplied by 0 is 0, so this row is nothing but zeros. It is still written, because the row below it starts one place further left than this one.`
+                        : `Every digit of ${readable(calc.a)} multiplied by 0 is 0, so this row is nothing but zeros.`
                 };
             }
 
@@ -843,7 +858,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     : `${active.multiplier} × ${active.digit} = ${active.product}`;
                 const title = `Multiply the ${source} by ${active.multiplier}`;
                 if (active.last && active.carryOut) {
-                    return { title, copy: `${running}. There is nothing further to the left to multiply, so the whole of ${active.total} is written down.` };
+                    return { title, copy: `${running}. There is nothing further to the left to multiply, so both digits of ${active.total} are written.` };
                 }
                 if (active.carryOut) {
                     return { title, copy: `${running}. Only the ${active.writes} fits in the ${column} column, so ${active.carryOut} is carried to the column on its left and added there.` };
@@ -1060,6 +1075,10 @@ document.addEventListener("DOMContentLoaded", () => {
             const selection = active && typeof active.selectionStart === "number"
                 ? [active.selectionStart, active.selectionEnd]
                 : null;
+            /* A field with no number in it shows no calculation: the last
+               working is hidden rather than left standing, the card keeps its
+               size, and the board says what it is waiting for. */
+            scene.classList.toggle("is-invalid", !a || !b);
             if (!a || !b) return;
 
             calculation = buildCalculation(a, b);

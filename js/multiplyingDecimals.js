@@ -332,23 +332,21 @@ document.addEventListener("DOMContentLoaded", () => {
                     const other = a.places ? a : b;
                     return {
                         title,
-                        copy: `${whole.display} is whole already, so only ${other.display} has to be moved.
-                            Underneath, the multiplication is the ordinary one: ${pair}.`.replace(/\s+/g, " ")
+                        copy: `${whole.display} is whole already, so only ${other.display} has to be moved; the
+                            multiplication is then ${pair.replace(" and ", " × ")}.`.replace(/\s+/g, " ")
                     };
                 }
                 if (a.small && b.small) {
                     return {
                         title,
-                        copy: `Both numbers are below 1, so the answer will come out smaller than either of them.
-                            The digits are an ordinary multiplication all the same: ${pair}. Only their places are
-                            in the way.`.replace(/\s+/g, " ")
+                        copy: `Both numbers are below 1, so the answer comes out smaller than either; the digits
+                            still multiply as whole numbers, ${pair.replace(" and ", " × ")}.`.replace(/\s+/g, " ")
                     };
                 }
                 return {
                     title,
-                    copy: `Neither number is whole, and the columns are set out for whole numbers. The digits,
-                        though, are the digits of an ordinary multiplication: ${pair}. Only their places are in
-                        the way.`.replace(/\s+/g, " ")
+                    copy: `The digits are those of ${pair.replace(" and ", " × ")}, an ordinary multiplication; the points are
+                        the only difference.`.replace(/\s+/g, " ")
                 };
             }
 
@@ -369,8 +367,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     title: `The calculation is now ${scaleWords.get(calc.places)} times too big`,
                     copy: both
                         ? `${readable(10 ** a.places)} × ${readable(10 ** b.places)} =
-                           ${readable(10 ** calc.places)}, which is what the board now owes.`.replace(/\s+/g, " ")
-                        : `Only one number had to move, so the board owes
+                           ${readable(10 ** calc.places)}, so the answer will have to be divided by ${readable(10 ** calc.places)}.`.replace(/\s+/g, " ")
+                        : `Only one number moved, so the answer will be divided by
                            ${readable(10 ** calc.places)}.`.replace(/\s+/g, " ")
                 };
             }
@@ -379,13 +377,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (calc.zero) {
                     return {
                         title: `${readable(a.integer)} × ${readable(b.integer)} = 0`,
-                        copy: "One of the numbers is zero, so the product is zero. There are no digits to move back."
+                        copy: "One of the numbers is zero, so the product is zero."
                     };
                 }
                 return {
                     title: `${readable(a.integer)} × ${readable(b.integer)} = ${readable(calc.answerDigits)}`,
-                    copy: `Two whole numbers, multiplied in columns like any others. Every digit of the answer is
+                    copy: calc.places
+                        ? `Two whole numbers, multiplied like any others. Every digit of the answer is
                         now known; what is left is deciding what each one is worth.`.replace(/\s+/g, " ")
+                        : `Two whole numbers, multiplied like any others. The question has no decimal
+                        places, so ${readable(calc.answerDigits)} is the answer.`.replace(/\s+/g, " ")
                 };
             }
 
@@ -399,8 +400,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return {
                     title: `${before} ÷ 10 = ${after}`,
                     copy: `The ${entry.term === "a" ? "first" : "second"} row takes a place back and reads
-                        ${rowNow}, ten times smaller than it was, so the answer comes down by ten as well. What the
-                        board says is still true: ${aNow} × ${bNow} = ${after}.`.replace(/\s+/g, " ")
+                        ${rowNow}, ten times smaller than it was, so the answer comes down by ten as well: ${aNow} × ${bNow} = ${after}.`.replace(/\s+/g, " ")
                 };
             }
 
@@ -410,14 +410,17 @@ document.addEventListener("DOMContentLoaded", () => {
             if (entry.kind === "answer") {
                 return {
                     title: `${a.display} × ${b.display} = 0`,
-                    copy: "Zero lots of anything is nothing, whatever the other number looks like."
+                    copy: `${a.display} × ${b.display} = 0: there are no digits to move back.`
                 };
             }
 
             return {
                 title: `${calc.product} is ${calc.tidied}`,
-                copy: `That last zero was needed while the places were counted back. Nothing sits past it, so it
-                    goes.`.replace(/\s+/g, " ")
+                copy: (calc.trailing === 1
+                    ? `That last zero was needed while the places were counted back. Nothing sits past it, so it
+                    goes.`
+                    : `Those last ${spell(calc.trailing)} zeros were needed while the places were counted back. Nothing
+                    sits past them, so they go.`).replace(/\s+/g, " ")
             };
         };
 
@@ -529,8 +532,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const copy = [
                 {
                     title: "One whole square",
-                    copy: `The square is 1 along the top and 1 down the side, so its area is 1 × 1 = 1. Everything
-                        that follows is a part of it.`
+                    copy: `The square is 1 along the top and 1 down the side, so its area is 1 × 1 = 1.`
                 },
                 {
                     title: "Ten strips across",
@@ -539,8 +541,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
                 {
                     title: "A hundred small squares",
-                    copy: `Cutting the height into ten as well leaves a hundred equal squares, and they fill the
-                        whole square between them.`
+                    copy: `Cutting the height into ten as well leaves a hundred equal squares.`
                 },
                 {
                     title: "Each small square is 0.01",
@@ -555,20 +556,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 {
                     title: `${calc.b.display} down`,
                     copy: `${capital(spell(down))} rows out of the ten make ${calc.b.display} of the height. The
-                        rectangle where the two bands cross is ${calc.a.display} by ${calc.b.display}, which is the
-                        multiplication that was asked for.`
+                        rectangle where the two bands cross is ${calc.a.display} by ${calc.b.display}, so its area is
+                        ${calc.a.display} × ${calc.b.display}.`
                 },
                 {
                     title: "Count where they cross",
                     copy: `${capital(plural(across, "column"))} and ${plural(down, "row")} meet in
-                        ${across} × ${down} = ${squares} small squares. That small product is the only
-                        multiplication anywhere in the picture.`
+                        ${across} × ${down} = ${squares} small squares.`
                 },
                 {
                     title: `${capital(plural(squares, "hundredth"))} is ${calc.product}`,
                     copy: `${capital(spell(squares))} squares at 0.01 each come to ${calc.product}. Not
-                        ${display(calc.answerDigits, 1)} — you can count how many there are, and you can see how
-                        little each one is.`
+                        ${display(calc.answerDigits, 1)}: the rectangle sits inside a square whose whole area is 1.`
                 }
             ][Math.max(0, Math.min(stages - 1, stage))];
 
@@ -778,6 +777,10 @@ document.addEventListener("DOMContentLoaded", () => {
             const selection = active && typeof active.selectionStart === "number"
                 ? [active.selectionStart, active.selectionEnd]
                 : null;
+            /* A field with no number in it shows no calculation: the last
+               working is hidden rather than left standing, the card keeps its
+               size, and the board says what it is waiting for. */
+            scene.classList.toggle("is-invalid", !a || !b);
             if (!a || !b) return;
 
             calculation = buildCalculation(a, b);

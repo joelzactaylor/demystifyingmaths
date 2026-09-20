@@ -253,7 +253,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return [
                 {
                     title: `An area of ${value}`,
-                    copy: `${value} unit squares fill a square exactly, with none left over and none short.`
+                    copy: `${value} unit squares fill a square exactly.`
                 },
                 {
                     title: `${side} across`,
@@ -261,7 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
                 {
                     title: `${side} down as well`,
-                    copy: `${side} span the side too, and equal edges are what make the shape a square.`
+                    copy: `${side} unit squares run down the side too, so both edges are ${side}.`
                 },
                 {
                     title: `${side} rows of ${side}`,
@@ -377,7 +377,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
                 {
                     title: "The squares of 1 to 15",
-                    copy: "Each row carries a number and the square that number makes."
+                    copy: "From 1 × 1 = 1 up to 15 × 15 = 225."
                 },
                 {
                     title: `${target} is the square of ${exact.root}`,
@@ -385,7 +385,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
                 {
                     title: `The root is ${exact.root}`,
-                    copy: [rootPart(target, exact.root), ", the number that was squared."]
+                    copy: [rootPart(target, exact.root), "."]
                 },
                 {
                     title: "The check",
@@ -470,7 +470,7 @@ document.addEventListener("DOMContentLoaded", () => {
         caption(model, index) {
             return [
                 {
-                    title: "A square of side 1",
+                    title: "Area 1",
                     copy: "Every edge is 1, so the area is 1 × 1 = 1."
                 },
                 {
@@ -479,7 +479,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
                 {
                     title: "A square of side 0.5",
-                    copy: "The corner piece has edges of 0.5, half the edge of the square around it."
+                    copy: "The corner piece is a square: every edge is 0.5."
                 },
                 {
                     title: "Its area is 0.25",
@@ -547,7 +547,12 @@ document.addEventListener("DOMContentLoaded", () => {
             const equals = el("span", "root-dec__equals", "=");
             const rootChars = Array.from(model.root).map((character) =>
                 el("span", "root-dec__char root-dec__answer", character));
-            line.append(drawRoot("", ...radChars).wrap, equals, ...rootChars);
+            /* The answer's characters sit in one span, so the flex gap that
+               spaces the radical from the sign does not spread the digits of
+               0.04 apart. */
+            const answer = el("span", "root-dec__result");
+            answer.append(...rootChars);
+            line.append(drawRoot("", ...radChars).wrap, equals, answer);
 
             const ticks = el("div", "root-dec__ticks");
             const radTicks = Array.from({ length: model.places }, (unused, at) => {
@@ -604,7 +609,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
                 {
                     title: `${model.places} decimal places`,
-                    copy: `${model.text} carries ${model.places} figures after the point, and that count is what a root halves.`
+                    copy: `${model.text} is ${model.figures} written ${model.places} places after the point.`
                 },
                 {
                     title: "The figures alone",
@@ -612,7 +617,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
                 {
                     title: "Half as many places",
-                    copy: `Squaring doubles a decimal count, so ${model.rootFigures} is written ${model.rootPlaces} places after the point: ${model.root}.`
+                    copy: `A root halves the ${model.places} decimal places to ${model.rootPlaces}, so ${model.rootFigures} is written ${model.rootPlaces} places after the point: ${model.root}.`
                 },
                 {
                     title: "The check",

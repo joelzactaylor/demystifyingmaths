@@ -1,0 +1,110 @@
+/* HCF and LCM from a Venn diagram needs two scroll-led scenes — a two-circle
+   diagram and a three-circle diagram — each with its numbers' prime factors
+   listed on scraps of paper beside the circles and crossed off one at a time
+   as they are placed, beyond the structural lesson components in lesson.css. */
+
+/* Scroll-led scenes --------------------------------------------------- */
+
+.venn-scene {
+    position: relative;
+    min-height: 520px;
+    margin: 22px 0 8px;
+    overflow-anchor: none;
+}
+
+.venn-scene.is-ready { height: var(--scene-height); min-height: var(--scene-min-height); }
+
+.venn-scene__sticky {
+    position: absolute;
+    inset: 0 0 auto;
+    display: grid;
+    height: min(650px, calc(100vh - 84px));
+    min-height: 520px;
+    box-sizing: border-box;
+    grid-template-rows: minmax(0, 1fr) auto auto;
+    overflow: hidden;
+    border: 2px solid #c9dce8;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #fbfdff 0%, #f2f8fc 100%);
+    box-shadow: 0 12px 30px rgba(20, 57, 78, .14);
+    contain: layout paint;
+    overflow-anchor: none;
+    will-change: transform;
+}
+
+.venn-scene__sticky.is-pinned {
+    position: fixed;
+    right: auto;
+    z-index: 900;
+    transform-origin: top left;
+}
+
+.venn-board {
+    display: grid;
+    min-height: 0;
+    padding: 18px 26px 10px;
+    place-items: center;
+    overflow: hidden;
+    background: linear-gradient(rgba(93,145,176,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(93,145,176,.07) 1px, transparent 1px), #eaf3f8;
+    background-size: 26px 26px;
+}
+
+.venn-board svg { display: block; width: 100%; max-width: 720px; max-height: 100%; overflow: visible; }
+
+.venn-scene__caption {
+    display: grid;
+    height: 6.6em;
+    box-sizing: border-box;
+    padding: 14px 28px 6px;
+    align-content: center;
+    text-align: center;
+}
+
+.venn-scene__caption h3 { margin: 0 0 5px; color: #09539d; font-size: 1.1rem; }
+.venn-scene__caption p { max-width: 680px; margin: 0 auto; color: #243a45; font-size: .97rem; line-height: 1.5; }
+.venn-scene__progress { display: flex; gap: 8px; padding: 0 22px 18px; justify-content: center; }
+.venn-scene__dot { width: 9px; height: 9px; border-radius: 50%; background: #c6d4dc; transition: width .25s ease, background-color .25s ease; }
+.venn-scene__dot.is-past { background: #6c9bb0; }
+.venn-scene__dot.is-current { width: 28px; border-radius: 999px; background: #116e93; }
+
+.scene-ring { fill: none; stroke: #5d91b0; stroke-width: 2.5; }
+.scene-ring.is-hcf { stroke: #d99a20; stroke-width: 3.5; fill: #fff2c9; fill-opacity: .55; }
+.scene-chip-bg { fill: #fff; stroke: #d9e4eb; stroke-width: 2; }
+.scene-chip-bg.is-shared { stroke: #d99a20; stroke-width: 2.6; fill: #fff8df; }
+.scene-chip {
+    fill: #173849;
+    font: 700 20px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+.scene-chip.is-shared { fill: #80540f; }
+.scene-label, .scene-equation {
+    fill: #52666f;
+    font: 700 22px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+.scene-equation { fill: #09539d; }
+.scene-ring, .scene-chip-bg, .scene-chip, .scene-label, .scene-equation { opacity: 0; }
+
+/* The paper scraps: a cream sheet with torn edges, faint rules, the number
+   as a heading and its prime factors listed one per line. A factor is
+   crossed off by a stroke drawn through it; the numeral stays, greyed. */
+.scene-paper__sheet { fill: #fbf8ee; stroke: #e2dbc5; stroke-width: 1; }
+.scene-paper__rule { stroke: rgba(93, 145, 176, .26); stroke-width: 1; }
+.scene-paper__rule.is-heading { stroke: rgba(82, 102, 111, .5); stroke-width: 1.4; }
+.scene-paper__heading {
+    fill: #52666f;
+    font: 700 22px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+.scene-paper__entry {
+    fill: #173849;
+    font: 700 30px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+.scene-paper__strike { fill: none; stroke: #173849; stroke-width: 3; stroke-linecap: round; }
+
+@media (prefers-reduced-motion: reduce) {
+    .venn-scene.is-ready { height: auto; min-height: 0; }
+    .venn-scene__sticky { position: relative; height: auto; transform: none !important; }
+    .venn-scene__dot { transition: none; }
+}

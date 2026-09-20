@@ -31,7 +31,7 @@
 }
 
 .mult-static__op { color: #b86821; }
-.mult-static__cell--label { min-height: 26px; color: #52666f; font: 700 .64rem/1.1 Aleo, serif; }
+.mult-static__cell--label { min-height: 26px; color: #52666f; font: 700 .82rem/1.1 Aleo, serif; }
 .mult-static__cell--term { background: rgba(238, 245, 251, .82); }
 .mult-static__cell--holder { color: #9b5f12; background: #fff8df; }
 .mult-static__cell--answer { padding-top: 6px; color: #09539d; font-size: 1.58rem; }
@@ -94,7 +94,7 @@
 
 .mult-rule ol { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 0; padding: 0; list-style: none; }
 .mult-rule li { padding: 13px; border-radius: 12px; background: #eef5fb; }
-.mult-rule li > span { display: grid; width: 28px; height: 28px; margin-bottom: 9px; place-items: center; border-radius: 50%; background: #116e93; color: #fff; font-size: .82rem; font-weight: 700; }
+.mult-rule li > span { display: grid; width: 28px; height: 28px; margin-bottom: 9px; place-items: center; border-radius: 50%; background: #116e93; color: #fff; font-size: .88rem; font-weight: 700; }
 .mult-rule p { margin: 0; color: #41535c; font-size: .88rem; line-height: 1.45; }
 
 /* THE GRID — every part of one number against every part of the other, each
@@ -144,7 +144,7 @@
 
 .grid-table__head { background: #eaf2fb; color: #09539d; }
 .grid-table__head--side { background: #fff8df; color: #9b5f12; }
-.grid-table__head--total { background: none; color: #52666f; font: 700 .68rem/1.2 Aleo, serif; }
+.grid-table__head--total { background: none; color: #52666f; font: 700 .82rem/1.2 Aleo, serif; }
 .grid-table__corner { color: #b86821; font-size: 1.28rem; }
 .grid-table__box { background: #fff; box-shadow: inset 0 0 0 2px #dbe7f0; }
 .grid-table__total { background: #f2f8fc; color: #09539d; box-shadow: inset 0 0 0 2px #dbe7f0; }
@@ -168,7 +168,7 @@
     padding-left: 13px;
     place-items: center start;
     color: #52666f;
-    font: 700 .8rem/1.15 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font: 700 .88rem/1.15 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
     opacity: 0;
 }
 
@@ -224,7 +224,7 @@
 
 .multiplication-scene__inputs { display: flex; gap: 16px; padding: 20px 24px 14px; align-items: center; justify-content: center; }
 .multiplication-scene__inputs label { display: grid; gap: 6px; }
-.multiplication-scene__inputs label span { color: #41535c; font-size: .78rem; font-weight: 700; letter-spacing: .04em; }
+.multiplication-scene__inputs label span { color: #41535c; font-size: .88rem; font-weight: 700; letter-spacing: .04em; }
 
 .multiplication-scene__inputs input {
     width: 175px;
@@ -248,7 +248,13 @@
    page while it is being read. */
 .multiplication-scene__heading { margin: 0; padding: 20px 24px 2px; color: #173849; font: 700 1.42rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; text-align: center; }
 
-.multiplication-board { display: grid; min-height: 0; padding: 14px 24px; overflow: hidden; align-items: center; background: #eaf3f8; }
+.multiplication-board { position: relative; display: grid; min-height: 0; padding: 14px 24px; overflow: hidden; align-items: center; background: #eaf3f8; }
+
+/* The quiet refused state: the working and its caption are hidden but keep
+   their space, and the board says what it is waiting for. */
+.multiplication-scene.is-invalid .multiplication-board__paper,
+.multiplication-scene.is-invalid .multiplication-scene__caption { visibility: hidden; }
+.multiplication-scene.is-invalid .multiplication-board::after { position: absolute; top: 50%; left: 50%; padding: 14px 18px; border: 2px dashed #b8cbd7; border-radius: 13px; background: rgba(255, 255, 255, .86); color: #687b84; content: "Enter two whole numbers to multiply"; font-weight: 700; transform: translate(-50%, -50%); }
 .multiplication-board__paper { position: relative; width: max-content; margin: 0 auto; padding: 16px 24px 20px; border-radius: 18px; background-color: #fff; background-image: linear-gradient(rgba(53, 104, 184, .075) 1px, transparent 1px), linear-gradient(90deg, rgba(53, 104, 184, .075) 1px, transparent 1px); background-size: 22px 22px; box-shadow: 0 8px 24px rgba(23, 56, 73, .12); }
 
 .multiplication-board__paper--plain,
@@ -274,7 +280,11 @@
     font-variant-numeric: tabular-nums;
 }
 
-.multiplication-board__cell--label { min-height: 26px; color: #52666f; font: 700 .6rem/1.1 Aleo, serif; text-align: center; }
+.multiplication-board__cell--label { min-height: 26px; color: #52666f; font: 700 .82rem/1.1 Aleo, serif; text-align: center; }
+
+/* A seven-column product reaches the millions, and "1,000,000s" needs a wider
+   column than the six-column labels do. */
+.multiplication-board__paper--wide { --multiplication-cell: 66px; }
 .multiplication-board__row--term .multiplication-board__cell:not(:empty) { background: rgba(238, 245, 251, .82); }
 .multiplication-board__row--ruled { padding-bottom: 7px; border-bottom: 4px solid #173849; }
 .multiplication-board__row--carry,

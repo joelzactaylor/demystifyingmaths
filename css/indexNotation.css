@@ -36,14 +36,14 @@
     border-radius: 0 10px 10px 0;
     background: #f7fbfd;
     color: #41535c;
-    font-size: .92rem;
+    font-size: 1rem;
     line-height: 1.55;
 }
 
 .note > b {
     margin-right: 8px;
     color: #52666f;
-    font-size: .74rem;
+    font-size: .82rem;
     letter-spacing: .05em;
     text-transform: uppercase;
 }
@@ -147,11 +147,11 @@
 .lesson-main sup {
     position: relative;
     /* .52 of the base's size — but `top` is measured in the index's own em, so
-       the figure written here is that share divided by .62. Reading it as .52
+       the figure written here is that share divided by .75. Reading it as .52
        of the base is what leaves an index sitting beside its base instead of
        above it. */
-    top: -.84em;
-    font-size: .62em;
+    top: -.69em;
+    font-size: max(.75em, 12px);
     line-height: 0;
     vertical-align: baseline;
 }
@@ -282,17 +282,20 @@
     table-layout: fixed;
 }
 
+/* The table's name for screen readers; the heading above it is the caption a reader sees. */
 .growth caption {
-    margin-bottom: 8px;
-    color: #52666f;
-    font-size: .88rem;
-    text-align: left;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
 }
 
 .growth thead th {
     padding: 0 16px 2px;
     color: #7b8b93;
-    font-size: .74rem;
+    font-size: .82rem;
     font-weight: 700;
     letter-spacing: .05em;
     text-align: left;
@@ -370,7 +373,7 @@
 .power-picker legend {
     padding: 0 0 7px;
     color: #52666f;
-    font-size: .74rem;
+    font-size: .82rem;
     font-weight: 700;
     letter-spacing: .07em;
     text-transform: uppercase;
@@ -485,7 +488,7 @@
     position: absolute;
     left: 50%;
     font-family: Aleo, serif;
-    font-size: .7rem;
+    font-size: .82rem;
     font-style: normal;
     font-weight: 700;
     letter-spacing: .07em;
@@ -721,8 +724,8 @@
    powers rather than the row that carry the change. */
 .gather-board__powers > * { opacity: 0; will-change: opacity, transform; }
 
-.gather-board__powers sup { top: -.9em; font-size: .58em; }
-.gather-board__value sup { top: -.9em; font-size: .58em; }
+.gather-board__powers sup { top: -.84em; font-size: .62em; }
+.gather-board__value sup { top: -.84em; font-size: .62em; }
 .gather-board__powers .is-first { color: #09539d; }
 .gather-board__powers .is-second { color: #9b5f12; }
 .gather-board__powers i { color: #b86821; font-size: 1.3rem; font-style: normal; }

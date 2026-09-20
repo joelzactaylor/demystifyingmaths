@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 {
                     order: [0, 1, 4, 3, 2], frame: null, face: -1,
                     title: "17 and 25 change places",
-                    copy: "Multiplying gives the same product either way round, so the two may be written in either order."
+                    copy: `17 ${TIMES} 25 = 25 ${TIMES} 17, so the two can change places.`
                 },
                 {
                     order: [0, 1, 4, 3, 2], frame: [0, 2], face: 1,
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 {
                     order: [0, 1, 2], frame: null, face: -1,
                     title: "The calculation as written",
-                    copy: `38 ${MINUS} 17 + 62 adds 38, takes 17 away and adds 62.`
+                    copy: `38 ${MINUS} 17 + 62 starts at 38, takes 17 away and adds 62.`
                 },
                 {
                     order: [0, 1, 2], frame: [1, 1], face: -1,
@@ -132,12 +132,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 {
                     order: [0, 2, 1], frame: [0, 1], face: 0,
                     title: "38 + 62 = 100",
-                    copy: "The two numbers being added are now side by side, and they reach a round number."
+                    copy: "38 and 62 are the pair that makes 100, so they are taken first."
                 },
                 {
                     order: [0, 2, 1], frame: null, face: 1,
                     title: "100 − 17 = 83",
-                    copy: `Taking the 17 at the end gives 83, which is what 38 ${MINUS} 17 + 62 came to in the first place.`
+                    copy: `Worked from the left instead, 38 ${MINUS} 17 = 21 and 21 + 62 = 83: the same answer.`
                 }
             ]
         }

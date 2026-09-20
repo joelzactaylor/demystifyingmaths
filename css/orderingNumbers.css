@@ -105,3 +105,87 @@
    shared.css scales with a transform below 900px, so a viewport breakpoint
    reflows the content inside a panel that is only being made smaller. A phone
    reports a 980px viewport and never fires one at all. */
+
+/* THE DECIMALS IN COLUMNS — the classic chart, drawn the way the place-value
+   page draws its own: a white card, big monospace digits in tinted bands, Aleo
+   place names, and the decimal point in a narrow column of its own. Blue for
+   the whole place, ochre for the decimal side. Each row is one number, its
+   digits under the places they occupy, zeros padding the shorter numbers so
+   the order is read down each place in turn. */
+.decimal-chart {
+    width: 440px;
+    margin: 14px auto 18px;
+    padding: 14px 10px 16px;
+    border-collapse: separate;
+    border-spacing: 0 4px;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(23, 56, 73, .12);
+    table-layout: fixed;
+}
+
+/* The table's name for screen readers; the heading above it is the caption a reader sees. */
+.decimal-chart caption {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.decimal-chart th,
+.decimal-chart td { box-sizing: border-box; padding: 0 4px; text-align: center; }
+
+.decimal-chart thead th {
+    padding-bottom: 6px;
+    color: #52666f;
+    font: 400 .82rem/1.15 Aleo, serif;
+    vertical-align: bottom;
+}
+
+/* Each place column is as wide as its name needs, so the words are set at a
+   readable size and stay whole. */
+.decimal-chart thead th:first-child { width: 84px; }
+.decimal-chart thead th:nth-child(2) { width: 58px; }
+.decimal-chart thead th:nth-child(4) { width: 60px; }
+.decimal-chart thead th:nth-child(5) { width: 84px; }
+.decimal-chart thead th:nth-child(6) { width: 90px; }
+
+/* The first column names the row: the number written across the chart. */
+.decimal-chart tbody th {
+    padding-right: 12px;
+    color: #173849;
+    font: 700 .9rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.decimal-chart tbody td {
+    height: 44px;
+    color: #09539d;
+    font: 700 1.35rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+.decimal-chart td:nth-child(2) { border-radius: 10px; background: #eef5fb; }
+.decimal-chart td:nth-child(n+4) { background: #fff8df; color: #9b5f12; }
+.decimal-chart thead th:nth-child(n+4) { color: #9b5f12; }
+.decimal-chart td:nth-child(4) { border-radius: 10px 0 0 10px; }
+.decimal-chart td:last-child { border-radius: 0 10px 10px 0; }
+
+.decimal-chart__point { width: 20px; background: none !important; }
+.decimal-chart__point span[aria-hidden] {
+    color: #b86821;
+    font: 700 1.7rem/1 Aleo, serif;
+}
+
+.decimal-chart__vh {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}

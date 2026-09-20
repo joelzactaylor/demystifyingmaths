@@ -16,10 +16,17 @@ document.addEventListener("DOMContentLoaded", () => {
         return element;
     };
 
+    /* Numbers on the line are written as the prose writes them: a minus sign
+       rather than a hyphen, and thousands marked off with a comma. */
+    const formatNumber = (value) => {
+        const size = Math.abs(value);
+        const text = Number.isInteger(size) && size >= 1000 ? size.toLocaleString("en-GB") : String(size);
+        return `${value < 0 ? "\u2212" : ""}${text}`;
+    };
+
     const formatTick = (value, step) => {
         const decimals = Math.max(0, (String(step).split(".")[1] || "").length);
-        const rounded = Number(value.toFixed(decimals));
-        return String(rounded).replace("-", "\u2212");
+        return formatNumber(Number(value.toFixed(decimals)));
     };
 
     const createScene = (scene) => {
@@ -187,7 +194,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (slide !== currentSlide) {
                 currentSlide = slide;
                 if (slide === 0) {
-                    caption.textContent = "Scroll to place the numbers on the line.";
+                    caption.textContent = `${labels.length > 1 ? `${labels.slice(0, -1).join(", ")} and ${labels[labels.length - 1]}` : labels[0]} all lie between ${formatNumber(min)} and ${formatNumber(max)}.`;
                 } else if (slide <= captions.length) {
                     caption.textContent = captions[slide - 1];
                 } else {

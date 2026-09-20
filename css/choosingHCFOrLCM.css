@@ -1,0 +1,305 @@
+/* Choosing HCF or LCM in context needs a pair of question cards on the same
+   two numbers, two scroll-led scenes — bus departures on a timeline that first
+   coincide at the LCM, and a card cut into squares whose side is the HCF — a
+   table of the page's questions, and a live lab drawing both answers for two
+   chosen numbers, beyond the structural lesson components in lesson.css.
+
+   No viewport media query here on purpose: .layout is a fixed 900px panel that
+   shared.css scales with a transform below 900px, so a viewport breakpoint
+   reflows the content inside a panel that is only being made smaller. */
+
+/* THE TWO QUESTIONS — the same numbers, blue for the one that repeats and
+   ochre for the one that shares out, the way the scenes below colour them. */
+.question-pair { display: grid; gap: 18px; grid-template-columns: 1fr 1fr; margin: 24px 0; }
+
+.question-pair article {
+    padding: 18px 20px 16px;
+    border: 2px solid #d9e2ec;
+    border-top: 5px solid #5d91b0;
+    border-radius: 17px;
+    background: #fff;
+}
+
+.question-pair article:last-child { border-top-color: #d99a20; }
+.question-pair h2 { margin: 0 0 8px; color: #09539d; font-size: 1.02rem; }
+.question-pair article:last-child h2 { color: #9b5f12; }
+.question-pair p { margin: 0; color: #41535c; font-size: .95rem; line-height: 1.55; }
+
+.question-pair__answer {
+    margin-top: 12px !important;
+    color: #173849;
+    font: 700 1.05rem/1.4 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Scroll-led scenes --------------------------------------------------- */
+
+.choice-scene {
+    position: relative;
+    min-height: 470px;
+    margin: 22px 0 8px;
+    overflow-anchor: none;
+}
+
+.choice-scene.is-ready { height: var(--scene-height); min-height: var(--scene-min-height); }
+
+.choice-scene__sticky {
+    position: absolute;
+    inset: 0 0 auto;
+    display: grid;
+    height: min(600px, calc(100vh - 84px));
+    min-height: 470px;
+    box-sizing: border-box;
+    grid-template-rows: minmax(0, 1fr) auto auto;
+    overflow: hidden;
+    border: 2px solid #c9dce8;
+    border-radius: 22px;
+    background: linear-gradient(180deg, #fbfdff 0%, #f2f8fc 100%);
+    box-shadow: 0 12px 30px rgba(20, 57, 78, .14);
+    contain: layout paint;
+    overflow-anchor: none;
+    will-change: transform;
+}
+
+.choice-scene__sticky.is-pinned {
+    position: fixed;
+    right: auto;
+    z-index: 900;
+    transform-origin: top left;
+}
+
+.choice-board {
+    display: grid;
+    min-height: 0;
+    padding: 18px 26px 10px;
+    place-items: center;
+    overflow: hidden;
+    background: linear-gradient(rgba(93, 145, 176, .07) 1px, transparent 1px), linear-gradient(90deg, rgba(93, 145, 176, .07) 1px, transparent 1px), #eaf3f8;
+    background-size: 26px 26px;
+}
+
+.choice-board svg { display: block; width: 100%; max-width: 720px; max-height: 100%; overflow: visible; }
+
+.choice-scene__caption {
+    display: grid;
+    height: 6.6em;
+    box-sizing: border-box;
+    padding: 14px 28px 6px;
+    align-content: center;
+    text-align: center;
+}
+
+.choice-scene__caption h3 { margin: 0 0 5px; color: #09539d; font-size: 1.1rem; }
+.choice-scene__caption p { max-width: 680px; margin: 0 auto; color: #243a45; font-size: .97rem; line-height: 1.5; }
+.choice-scene__progress { display: flex; gap: 8px; padding: 0 22px 18px; justify-content: center; }
+.choice-scene__dot { width: 9px; height: 9px; border-radius: 50%; background: #c6d4dc; transition: width .25s ease, background-color .25s ease; }
+.choice-scene__dot.is-past { background: #6c9bb0; }
+.choice-scene__dot.is-current { width: 28px; border-radius: 999px; background: #116e93; }
+
+/* The marks the scenes draw. Every mark starts unseen; the script eases each
+   one in at its step. Text is 16 to 22 units in a 780-unit drawing shown at
+   720px, so nothing on a board renders below 14px. */
+.scene-axis { fill: none; stroke: #41535c; stroke-width: 3; stroke-linecap: round; }
+.scene-tick { fill: none; stroke: #9db8c8; stroke-width: 2; }
+.scene-tick.is-major { stroke: #52666f; }
+.scene-lane { fill: none; stroke: #c6d4dc; stroke-width: 2; stroke-dasharray: 4 6; }
+.scene-lane-label {
+    fill: #52666f;
+    font: 700 17px/1 Aleo, serif;
+}
+.scene-lane-label.is-b { fill: #9b5f12; }
+.scene-time {
+    fill: #52666f;
+    font: 700 16px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-anchor: middle;
+}
+.scene-time.is-shared { fill: #80540f; }
+.scene-stop { fill: #09539d; stroke: #fff; stroke-width: 3; }
+.scene-stop.is-b { fill: #b86821; }
+.scene-frame { fill: #fff2c9; stroke: #d99a20; stroke-width: 3; }
+.scene-equation {
+    fill: #09539d;
+    font: 700 22px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-anchor: middle;
+}
+.scene-equation.is-hcf { fill: #9b5f12; }
+
+.scene-card { fill: #fff; stroke: #173849; stroke-width: 3; }
+.scene-dim {
+    fill: #173849;
+    font: 700 18px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-anchor: middle;
+}
+.scene-dim--end { text-anchor: end; }
+.scene-dim-line { fill: none; stroke: #52666f; stroke-width: 2; }
+.scene-square { fill: #eef5fb; stroke: #5d91b0; stroke-width: 2; }
+.scene-square.is-fit { fill: #fff8df; stroke: #b86821; }
+/* The strip a square that does not divide the side leaves over. */
+.scene-offcut { fill: url(#choice-offcut-hatch); stroke: #a3352b; stroke-width: 2; stroke-dasharray: 6 5; }
+.scene-offcut-label {
+    fill: #a3352b;
+    font: 700 16px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-anchor: middle;
+}
+.scene-try {
+    fill: #52666f;
+    font: 700 18px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-anchor: middle;
+}
+.scene-try.is-fit { fill: #80540f; }
+
+.scene-axis, .scene-tick, .scene-lane, .scene-lane-label, .scene-time, .scene-stop, .scene-frame, .scene-equation,
+.scene-card, .scene-dim, .scene-dim-line, .scene-square, .scene-offcut, .scene-offcut-label, .scene-try { opacity: 0; }
+
+/* THE QUESTIONS IN ONE TABLE — each row a question, tinted blue where it
+   needed the LCM and ochre where it needed the HCF. */
+.route-table {
+    width: 100%;
+    margin: 20px 0 8px;
+    border-collapse: separate;
+    border-spacing: 0 6px;
+}
+
+/* The table's name for screen readers; the heading above it is the caption a reader sees. */
+.route-table__caption {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.route-table th {
+    padding: 0 12px 4px;
+    color: #7b8b93;
+    font-size: .82rem;
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.route-table th:nth-child(1) { width: 31%; }
+.route-table th:nth-child(2),
+.route-table th:nth-child(3),
+.route-table th:nth-child(4) { width: 11%; }
+
+.route-table td {
+    padding: 10px 12px;
+    background: #f1f7fb;
+    color: #41535c;
+    font-size: .95rem;
+    line-height: 1.45;
+    vertical-align: baseline;
+}
+
+.route-table td:first-child { border-radius: 12px 0 0 12px; color: #173849; }
+.route-table td:last-child { border-radius: 0 12px 12px 0; color: #173849; font-weight: 700; }
+.route-table__needs,
+.route-table__value {
+    font: 700 1rem/1.45 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+.route-table tr.is-lcm .route-table__needs,
+.route-table tr.is-lcm .route-table__value { color: #09539d; }
+.route-table tr.is-hcf td { background: #fff8df; }
+.route-table tr.is-hcf .route-table__needs,
+.route-table tr.is-hcf .route-table__value { color: #9b5f12; }
+
+/* THE PAIR LAB — two numbers typed in, and both of their answers drawn: the
+   steps meeting on a line at the LCM, and the amounts split into pieces of the
+   HCF. */
+.pair-lab {
+    margin: 24px 0 8px;
+    padding: 22px 24px 20px;
+    border: 2px solid #c9dce8;
+    border-radius: 20px;
+    background: linear-gradient(180deg, #fbfdff 0%, #f2f8fc 100%);
+    box-shadow: 0 12px 30px rgba(20, 57, 78, .14);
+}
+
+.pair-lab__inputs { display: flex; gap: 18px; align-items: end; justify-content: center; }
+.pair-lab__inputs label { display: grid; gap: 6px; }
+.pair-lab__inputs label span { color: #41535c; font-size: .88rem; font-weight: 700; letter-spacing: .04em; }
+
+.pair-lab__inputs input {
+    width: 150px;
+    box-sizing: border-box;
+    padding: 10px 14px;
+    border: 2px solid #b8cbd7;
+    border-radius: 12px;
+    outline: none;
+    background: #fff;
+    color: #173849;
+    font: 700 1.18rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+    transition: border-color .18s ease, box-shadow .18s ease;
+}
+
+.pair-lab__inputs input:focus { border-color: #116e93; box-shadow: 0 0 0 4px rgba(17, 110, 147, .12); }
+
+.pair-lab__panels { display: grid; gap: 16px; margin-top: 20px; }
+
+.pair-lab__panel {
+    padding: 16px 20px 14px;
+    border: 2px solid #d9e4eb;
+    border-radius: 14px;
+    background: #fff;
+}
+
+.pair-lab__panel h2 { margin: 0 0 10px; color: #09539d; font-size: 1.02rem; }
+.pair-lab__panel--hcf h2 { color: #9b5f12; }
+.pair-lab__panel svg { display: block; width: 100%; height: auto; overflow: visible; }
+
+.pair-lab__line {
+    margin: 10px 0 0;
+    color: #173849;
+    font: 700 1rem/1.5 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+/* The lab's drawings share the scenes' colours: blue for the first number,
+   ochre for the second, gold where the two agree. */
+.lab-axis { fill: none; stroke: #41535c; stroke-width: 3; stroke-linecap: round; }
+.lab-step { fill: none; stroke: #5d91b0; stroke-width: 2.5; stroke-linecap: round; }
+.lab-step.is-b { stroke: #b86821; }
+.lab-dot { fill: #09539d; }
+.lab-dot.is-b { fill: #b86821; }
+.lab-meet { fill: #fff2c9; stroke: #d99a20; stroke-width: 3; }
+.lab-text {
+    fill: #52666f;
+    font: 700 16px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-anchor: middle;
+}
+.lab-text--start { text-anchor: end; }
+.lab-text.is-a { fill: #09539d; }
+.lab-text.is-b { fill: #9b5f12; }
+.lab-text.is-meet { fill: #80540f; }
+.lab-bar { fill: #eef5fb; stroke: #5d91b0; stroke-width: 2; }
+.lab-bar.is-b { fill: #fff8df; stroke: #b86821; }
+.lab-cut { fill: none; stroke: #fff; stroke-width: 3; }
+.lab-bar-label {
+    fill: #173849;
+    font: 700 16px/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+/* The quiet invalid state: the working is hidden, the card keeps its size,
+   and one line says what is needed. */
+.pair-lab__status { min-height: 1.5em; margin: 14px 0 0; color: #687b84; font-size: .95rem; text-align: center; }
+.pair-lab.is-invalid .pair-lab__panels { visibility: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+    .choice-scene.is-ready { height: auto; min-height: 0; }
+    .choice-scene__sticky { position: relative; height: auto; transform: none !important; }
+    .choice-scene__dot,
+    .pair-lab__inputs input { transition: none; }
+}

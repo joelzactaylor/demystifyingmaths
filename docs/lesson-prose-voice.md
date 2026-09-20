@@ -199,7 +199,11 @@ Fails: You will remember that the points have to line up.
 
 ### 23. No rhetorical questions and no exclamation marks. A point another writer would raise as a question to the reader is stated flat as a fact.
 
-*Test:* Look for ? or !. Either one fails.
+*Test:* Look for ? or !. Either one fails — with one shape excepted: a question
+that opens a section and is answered in that section's next paragraph ("Does
+3 + 4 × 5 come to 23 or to 35?") states the disagreement a rule settles, is
+not addressed to the reader, and is the site's own practice (`lesson-page-cycle.md`,
+shape pass). A question anywhere else fails.
 
 > Exam questions rarely say multiply.
 
@@ -212,6 +216,70 @@ Fails: So where does the decimal point go?
 > Swapping a £10 note for ten £1 coins does not change how much money you have.
 
 Fails: Think of the carried digit as a little passenger travelling to the next column.
+
+## Paragraph and page rules
+
+The twenty-four rules judge a sentence. These judge the paragraph and the page
+around it, and they are what a reader with no maths actually trips on. They
+were taken from the same audit that produced the shape pass in
+`lesson-page-cycle.md`, and they are testable in the same way.
+
+### 25. A paragraph carries one idea and at most four sentences, and a paragraph past sixty words is two paragraphs.
+
+*Test:* Count the sentences and the words. Five sentences, or more than sixty words, fails; find the sentence where the subject changes and break there.
+
+> 120 already contains the two 2s and one of the 3s, so a multiple of 120 becomes a multiple of 252 once the missing 3 and the missing 7 are multiplied in: 120 × 3 × 7 = 2,520.
+
+Fails: the 99-word paragraph that sentence used to sit in the middle of, which also stated what a multiple of 252 must contain and why nothing else was multiplied in.
+
+### 26. A fact is stated once in the body. The summary may restate it; nothing else may.
+
+*Test:* For each claim in the paragraph, search the page for it in other words — including the captions of the figure that follows. A second body statement fails, and the later one is usually the one to cut — unless the later one carries the number and the earlier one does not. A paragraph that says what the figure under it is about to show fails too: the figure shows it, and the paragraph says why.
+
+> The count of digits settles nothing for negative numbers: −10 is smaller than −9.
+
+Fails: the same page's decimal box, slip and summary all saying "more digits does not mean larger" again with 0.8 and 0.75.
+
+### 27. The reason stands beside the step it explains — in the same paragraph, or the caption of the same stage — never a section away.
+
+*Test:* For every instruction ("write a zero", "take the lower index"), find its "because". If it is in another section, move one of them.
+
+> The ones place is now empty, so a zero holds it.
+
+Fails: a scene stage that says "take 3 to its lower index" while the sentence on why a common factor can hold no more 3s than either number sits two sections later.
+
+### 28. The first sentence under a heading gives the number the section is about.
+
+*Test:* Does the section's first sentence contain a numeral from the section's own example? If the numbers do not appear until paragraph two, it fails.
+
+> In 52 × 10 = 520, the 5 moves from tens to hundreds and the 2 moves from ones to tens.
+
+Fails: Each step from one place-value column to the next represents a factor of 10.
+
+### 29. A slip is a wrong answer with its cause, never advice.
+
+*Test:* Does the entry contain a wrong number and say what produced it? "Check that…", "keep the digits in their columns", "say whether it is left over" all fail, however true.
+
+> For 179, 6 × 23 = 138 leaves 179 − 138 = 41, and 41 still holds a 23.
+
+Fails: Keep digits in their columns and check that each remainder is smaller than the divisor.
+
+### 30. A page uses the exam's words for the thing it teaches, once.
+
+*Test:* Find the phrase an exam paper uses for this skill — "as a product of its prime factors", "highest common factor", "work out", "give your answer in index form". If the page never uses it, a reader who has learned the page will not recognise the question; if it uses it in a heading or more than once, it is padding.
+
+> “Write 756 as a product of its prime factors” asks for this form.
+
+Fails: a page on prime factorisation that says "factorisation", "index form" and "prime powers" throughout and never the phrase the paper prints.
+
+## Controls are named, not narrated
+
+A control's `<label>`, `<legend>` or button text is outside the sentence
+rules: it names the control, as the reference pages do — "Number to divide",
+"Divide by", "Answer as", "Number" — and a name is a noun. "Enter a number" is
+an instruction where a name would do, and `voice-check.mjs` lists it. The
+imperative a control genuinely needs belongs in a visually hidden span, never
+in the prose beside it (rule 3).
 
 ## Captions are prose
 
@@ -258,9 +326,13 @@ A rule is broken on purpose only where it is written down, in an HTML comment
 beside the sentence and here, so that an audit does not "fix" it.
 
 - `pages/curriculum/GCSE/number/structure/factorsAndPrimes/primeFactorisation.html`,
-  the paragraph opening "Factorise a chosen number": mechanics copy in second
-  person (rules 3 and 22). The factoriser has no visible controls, so the one
-  paragraph before it says what the discs do.
+  the paragraph opening "Factorise a chosen number": mechanics copy (rules 3
+  and 22), now in the third person. The factoriser has no visible controls, so
+  the one paragraph before it says what the discs do.
+- `pages/curriculum/GCSE/number/structure/powersAndRoots/indexNotation.html`,
+  the `solid__hint` line under the optional dimensions figures: mechanics copy
+  (rule 22). The turning shapes have no visible controls, and the line is also
+  the figures' accessible description.
 
 ## Checking it
 

@@ -13,7 +13,7 @@
 }
 
 .factor-lists > div { display: grid; gap: 8px; grid-template-columns: 118px 1fr; align-items: center; }
-.factor-lists__label { color: #52666f; font-size: .82rem; font-weight: 700; letter-spacing: .03em; }
+.factor-lists__label { color: #52666f; font-size: .88rem; font-weight: 700; letter-spacing: .03em; }
 
 .factor-lists ol {
     display: flex;
@@ -107,7 +107,7 @@
 .aligned-forms i { color: #b86821; font-style: normal; text-align: center; }
 .aligned-forms span, .aligned-forms b { text-align: center; }
 .aligned-forms b { color: #80540f; }
-.aligned-forms sup { font-size: .72em; }
+.aligned-forms sup { font-size: .78em; }
 
 /* Scroll-led scene ---------------------------------------------------- */
 
@@ -215,7 +215,7 @@
 
 .hcf-finder__inputs { display: flex; gap: 28px; justify-content: center; }
 .hcf-finder__field { display: grid; gap: 6px; justify-items: center; }
-.hcf-finder__field > span { color: #52666f; font-size: .76rem; font-weight: 700; letter-spacing: .035em; }
+.hcf-finder__field > span { color: #52666f; font-size: .88rem; font-weight: 700; letter-spacing: .035em; }
 .hcf-finder__field input {
     width: 170px;
     box-sizing: border-box;
@@ -256,7 +256,7 @@
 .hcf-finder__row > span.is-chosen::after { content: ""; position: absolute; z-index: 0; top: 100%; left: 50%; width: 0; height: 10px; border-left: 3px dashed #d99a20; transform: translateX(-50%); }
 .hcf-finder__row:first-child > span.is-chosen::after { height: 74px; }
 .hcf-finder__row--hcf > span.is-chosen::after, .hcf-finder__row > span.is-zero::after { content: none; }
-.hcf-finder__row sup { position: relative; top: -.4em; font-size: .72em; line-height: 0; }
+.hcf-finder__row sup { position: relative; top: -.4em; font-size: .78em; line-height: 0; }
 .hcf-finder__empty { display: grid; min-height: 100%; box-sizing: border-box; margin: 0; padding: 20px; place-items: center; border: 2px dashed #b8cbd7; border-radius: 14px; background: rgba(255,255,255,.86); color: #687b84; }
 
 .hcf-finder__answer { min-height: 1.5em; margin: 0; color: #09539d; font: 700 1.1rem/1.4 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; text-align: center; }

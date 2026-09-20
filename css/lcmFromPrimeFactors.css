@@ -16,7 +16,7 @@
 .multiple-lists > div { display: grid; gap: 8px; grid-template-columns: 118px 1fr; align-items: center; }
 /* Room for a label that names two numbers. */
 .multiple-lists--wide > div { grid-template-columns: 178px 1fr; }
-.multiple-lists__label { color: #52666f; font-size: .82rem; font-weight: 700; letter-spacing: .03em; }
+.multiple-lists__label { color: #52666f; font-size: .88rem; font-weight: 700; letter-spacing: .03em; }
 
 .multiple-lists ol {
     display: flex;
@@ -112,7 +112,7 @@
 .aligned-forms i { color: #b86821; font-style: normal; text-align: center; }
 .aligned-forms span, .aligned-forms b { text-align: center; }
 .aligned-forms b { color: #80540f; }
-.aligned-forms sup { font-size: .72em; }
+.aligned-forms sup { font-size: .78em; }
 
 /* Scroll-led scenes --------------------------------------------------- */
 
@@ -222,7 +222,7 @@
 
 .lcm-finder__inputs { display: flex; gap: 28px; justify-content: center; }
 .lcm-finder__field { display: grid; gap: 6px; justify-items: center; }
-.lcm-finder__field > span { color: #52666f; font-size: .76rem; font-weight: 700; letter-spacing: .035em; }
+.lcm-finder__field > span { color: #52666f; font-size: .88rem; font-weight: 700; letter-spacing: .035em; }
 .lcm-finder__field input {
     width: 170px;
     box-sizing: border-box;
@@ -261,7 +261,7 @@
 .lcm-finder__row > span.is-chosen::after { content: ""; position: absolute; z-index: 0; top: 100%; left: 50%; width: 0; height: 10px; border-left: 3px dashed #d99a20; transform: translateX(-50%); }
 .lcm-finder__row:first-child > span.is-chosen::after { height: 74px; }
 .lcm-finder__row--lcm > span.is-chosen::after { content: none; }
-.lcm-finder__row sup { position: relative; top: -.4em; font-size: .72em; line-height: 0; }
+.lcm-finder__row sup { position: relative; top: -.4em; font-size: .78em; line-height: 0; }
 .lcm-finder__empty { display: grid; min-height: 100%; box-sizing: border-box; margin: 0; padding: 20px; place-items: center; border: 2px dashed #b8cbd7; border-radius: 14px; background: rgba(255,255,255,.86); color: #687b84; }
 
 .lcm-finder__result { display: grid; gap: 4px; min-height: 3.2em; }

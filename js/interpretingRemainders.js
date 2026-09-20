@@ -14,11 +14,11 @@
         const copy = scene.querySelector("[data-step-copy]");
         const progress = scene.querySelector("[data-progress]");
         const stages = [
-            ["Start with the division", "29 ÷ 4 gives 7 remainder 1. The context will decide what that result means.", null],
+            ["Start with the division", "What the 29 counts decides what the 7 and the 1 mean.", null],
             ["State what is left", "When 29 counters are shared between four pupils, each receives 7 and 1 counter remains.", "left"],
-            ["Share the remainder exactly", "When the amount can be split, share the remaining 1 between four groups: 7¼, or 7.25, each.", "exact"],
-            ["Count only complete groups", "Seven bouquets are filled and a single flower is left over, too few to make an eighth.", "down"],
-            ["Make room for every item", "Seven cars hold only 28 passengers. The remaining passenger makes an eighth car necessary.", "up"]
+            ["Share the remainder exactly", "29 litres into four tanks can be split exactly: the remaining 1 litre is a quarter each, 7¼ or 7.25 litres.", "exact"],
+            ["Count only complete groups", "7 bouquets of 4 are filled and 1 flower is left over, not enough for an eighth.", "down"],
+            ["Make room for every item", "7 cars hold only 28 passengers, so the 29th needs an eighth car.", "up"]
         ];
         const make = (tag, className, text) => {
             const node = document.createElement(tag);
@@ -77,7 +77,7 @@
         looseFlower.dataset.drawPart = "";
         const singleFlower = dot();
         singleFlower.classList.add("scenario-flower");
-        looseFlower.append(singleFlower, make("b", "", "Not another bouquet"));
+        looseFlower.append(singleFlower, make("b", "", "Not a bouquet"));
         downDrawing.append(looseFlower);
         const upDrawing = layer("up", "groups-needed");
         const neededHeading = make("div", "groups-needed__heading", "Every passenger needs a seat");
@@ -183,7 +183,7 @@
                 });
                 cards.forEach((card) => card.classList.remove("is-current"));
                 title.textContent = "Four interpretations of the same remainder";
-                copy.textContent = "Use the wording and the unit to choose the answer that fits the situation.";
+                copy.textContent = "29 ÷ 4 = 7 r 1 is 7 each with 1 left, 7¼ each, 7 complete groups or 8 groups needed.";
                 dots.forEach((stageDot) => {
                     stageDot.classList.remove("is-current");
                     stageDot.classList.add("is-past");
@@ -257,7 +257,9 @@
     const decimalText = (total, divisor) => {
         const value = total / divisor;
         const rounded = Number(value.toFixed(6));
-        return Number.isInteger(value) ? String(value) : `${rounded}${Math.abs(value - rounded) > 1e-10 ? "…" : ""}`;
+        const [whole, fraction] = String(rounded).split(".");
+        const text = `${Number(whole).toLocaleString("en-GB")}${fraction ? `.${fraction}` : ""}`;
+        return Number.isInteger(value) ? text : `${text}${Math.abs(value - rounded) > 1e-10 ? "…" : ""}`;
     };
     const updateLab = () => {
         const totalText = clean(totalInput, 4);
@@ -277,19 +279,29 @@
         }
         const quotient = Math.floor(total / divisor);
         const remainder = total % divisor;
-        fact.textContent = `${total.toLocaleString("en-GB")} ÷ ${divisor} = ${quotient} remainder ${remainder}`;
-        remainderAnswer.textContent = `${quotient} remainder ${remainder}`;
-        downAnswer.textContent = String(quotient);
-        upAnswer.textContent = String(Math.ceil(total / divisor));
+        const shown = quotient.toLocaleString("en-GB");
+        fact.textContent = `${total.toLocaleString("en-GB")} ÷ ${divisor} = ${shown} remainder ${remainder}`;
+        remainderAnswer.textContent = `${shown} remainder ${remainder}`;
+        downAnswer.textContent = shown;
+        upAnswer.textContent = Math.ceil(total / divisor).toLocaleString("en-GB");
         if (remainder === 0) {
-            exactAnswer.textContent = String(quotient);
+            exactAnswer.textContent = shown;
             note.textContent = "There is no remainder, so every interpretation gives the same whole-number result.";
             return;
         }
         const factor = gcd(remainder, divisor);
-        const fraction = `${remainder / factor}/${divisor / factor}`;
-        exactAnswer.textContent = `${quotient ? `${quotient} ` : ""}${fraction} = ${decimalText(total, divisor)}`;
-        note.textContent = "The remainder is non-zero, so the complete-groups and groups-needed answers differ by one.";
+        const mathTag = (tag, text) => {
+            const node = document.createElementNS("http://www.w3.org/1998/Math/MathML", tag);
+            if (text !== undefined) node.textContent = text;
+            return node;
+        };
+        const math = mathTag("math");
+        const mfrac = mathTag("mfrac");
+        mfrac.append(mathTag("mn", String(remainder / factor)), mathTag("mn", String(divisor / factor)));
+        math.append(mfrac);
+        exactAnswer.replaceChildren(quotient ? `${shown} ` : "", math, ` = ${decimalText(total, divisor)}`);
+        const them = remainder === 1 ? "it" : "them";
+        note.textContent = `${remainder} left over: ${shown} complete ${quotient === 1 ? "group leaves" : "groups leave"} ${them} out, and ${(quotient + 1).toLocaleString("en-GB")} ${quotient + 1 === 1 ? "group fits" : "groups fit"} ${them} in.`;
     };
     totalInput.addEventListener("input", updateLab);
     divisorInput.addEventListener("input", updateLab);

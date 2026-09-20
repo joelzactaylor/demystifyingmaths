@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const lerp = (from, to, amount) => from + (to - from) * amount;
 
     const placeNames = new Map([
-        [5, "hundred-thousands"], [4, "ten-thousands"], [3, "thousands"],
+        [5, "hundred thousands"], [4, "ten thousands"], [3, "thousands"],
         [2, "hundreds"], [1, "tens"], [0, "ones"], [-1, "tenths"],
         [-2, "hundredths"], [-3, "thousandths"]
     ]);
@@ -322,12 +322,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (stage === 0) {
                 stepTitle.textContent = "Align equal place values";
+                // "6.9 written as 6.90 so the hundredths column has a 0": the
+                // padded number, and the columns the padding gives a digit to.
                 const padded = [];
-                if (calc.a.decimal.length < calc.decimalPlaces) padded.push(`${readable(calc.a.whole, calc.a.decimal)} as ${readable(calc.a.whole, calc.a.decimal.padEnd(calc.decimalPlaces, "0"))}`);
-                if (calc.b.decimal.length < calc.decimalPlaces) padded.push(`${readable(calc.b.whole, calc.b.decimal)} as ${readable(calc.b.whole, calc.b.decimal.padEnd(calc.decimalPlaces, "0"))}`);
+                const list = (names) => names.length > 1 ? `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}` : names[0];
+                [calc.a, calc.b].forEach((number) => {
+                    if (number.decimal.length >= calc.decimalPlaces) return;
+                    const columns = [];
+                    for (let place = number.decimal.length + 1; place <= calc.decimalPlaces; place += 1) columns.push(placeNames.get(-place));
+                    padded.push(`${readable(number.whole, number.decimal)} written as ${readable(number.whole, number.decimal.padEnd(calc.decimalPlaces, "0"))} so the ${list(columns)} ${columns.length > 1 ? "columns each have" : "column has"} a 0`);
+                });
                 stepCopy.textContent = padded.length
-                    ? `Begin with the decimal points directly beneath one another. Write ${padded.join(" and ")} so every occupied place is visible.`
-                    : "Begin with equal place values directly beneath one another. The ones sit under the ones, the tens under the tens, and so on.";
+                    ? `Points beneath points; ${padded.join(", and ")}.`
+                    : calc.decimalPlaces
+                        ? "Points beneath points."
+                        : "Ones under ones, tens under tens, hundreds under hundreds.";
                 return;
             }
 
@@ -343,15 +352,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 stepTitle.textContent = `Add the ${name} column`;
                 stepCopy.textContent = operation.carryOut
                     ? `${parts.join(" + ")} = ${operation.total}. Write ${operation.resultDigit} in the ${name} column and regroup ${operation.carryOut} into the ${leftName} column.`
-                    : `${parts.join(" + ")} = ${operation.total}. Write ${operation.resultDigit} in the ${name} column. There is no need to regroup.`;
+                    : `${parts.join(" + ")} = ${operation.total}. Write ${operation.resultDigit} in the ${name} column. Nothing to regroup.`;
                 return;
             }
 
             const answer = formatDigits(calc.result, calc.decimalPlaces);
             stepTitle.textContent = `The sum is ${answer}`;
-            stepCopy.textContent = calc.decimalPlaces
-                ? "Read the result from left to right. The decimal point has stayed in its own column, directly beneath the decimal points above it."
-                : "Read the result from left to right. Every column has been added, including the final regrouped amount.";
+            stepCopy.textContent = `Check: ${answer} − ${formatDigits(calc.bDigits, calc.decimalPlaces)} = ${formatDigits(calc.aDigits, calc.decimalPlaces)}.`;
         };
 
         const paintDots = () => {
@@ -476,6 +483,10 @@ document.addEventListener("DOMContentLoaded", () => {
             const selection = active && typeof active.selectionStart === "number"
                 ? [active.selectionStart, active.selectionEnd]
                 : null;
+            /* A field with no number in it shows no calculation: the last
+               working is hidden rather than left standing, the card keeps its
+               size, and the board says what it is waiting for. */
+            scene.classList.toggle("is-invalid", !a || !b);
             if (!a || !b) return;
 
             calculation = buildCalculation(a, b);

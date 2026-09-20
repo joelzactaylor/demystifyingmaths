@@ -20,11 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const treeModel = {
         captions: [
-            ["Start with 84", "84 is composite, so it has a factor pair other than 1 and 84."],
+            ["Start with 84", "84 is composite, so it splits into a factor pair."],
             ["Split 84", "12 × 7 = 84. The 7 is prime and its branch is finished; 12 is composite."],
-            ["Split 12", "3 × 4 = 12. The 3 is prime, while 4 still has factors other than 1 and itself."],
+            ["Split 12", "3 × 4 = 12. The 3 is prime; 4 is composite and splits again."],
             ["Split 4", "2 × 2 = 4. Every branch now ends at a prime."],
-            ["Read the branch ends", "The leaves give 84 = 2 × 2 × 3 × 7 = 2² × 3 × 7."]
+            ["Read the branch ends", "The branch ends give 84 = 2 × 2 × 3 × 7."]
         ],
         build(root) {
             root.replaceChildren();
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 return group;
             });
             const equation = svg("text", { class: "scene-equation", x: 350, y: 338, "text-anchor": "middle", "data-stage": 4 });
-            equation.textContent = "84 = 2² × 3 × 7";
+            equation.textContent = "84 = 2 × 2 × 3 × 7";
             drawing.appendChild(equation);
             root.appendChild(drawing);
             return { marks: [...links, ...nodes, equation] };
@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ["Move to 3", "189 is not even, but its digits total 18, so 189 ÷ 3 = 63."],
             ["Keep dividing by 3", "63 ÷ 3 = 21 and 21 ÷ 3 = 7, so the factor 3 occurs three times."],
             ["Finish with 7", "7 ÷ 7 = 1. Reaching 1 shows that every prime factor has been collected."],
-            ["Collect equal factors", "756 = 2 × 2 × 3 × 3 × 3 × 7 = 2² × 3³ × 7."]
+            ["Read the divisors", "One prime factor for each division down the side."]
         ],
         build(root) {
             root.replaceChildren();
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
             const equation = svg("text", { class: "scene-equation", x: 350, y: 324, "text-anchor": "middle", "data-stage": 5 });
-            equation.textContent = "756 = 2² × 3³ × 7";
+            equation.textContent = "756 = 2 × 2 × 3 × 3 × 3 × 7";
             drawing.appendChild(equation);
             marks.push(equation);
             root.appendChild(drawing);
@@ -259,6 +259,9 @@ document.addEventListener("DOMContentLoaded", () => {
             parent.appendChild(node);
             return node;
         };
+        /* A value is set as large as its disc's centre allows, between 12px for
+           a four-digit number and 14px for anything shorter. */
+        const valueSize = (radius, value) => Math.min(14, Math.max(12, Math.max(5, radius * .58) * 1.9 / (.6 * String(value).length)));
         const polar = (radius, angle) => ({ x: Math.cos(angle) * radius, y: Math.sin(angle) * radius });
         const fullRing = (outerRadius, innerRadius) => {
             const outer = `M ${outerRadius} 0 A ${outerRadius} ${outerRadius} 0 1 1 ${-outerRadius} 0 A ${outerRadius} ${outerRadius} 0 1 1 ${outerRadius} 0 Z`;
@@ -328,7 +331,7 @@ document.addEventListener("DOMContentLoaded", () => {
             group.appendChild(svg("circle", { class: "factor-ring__outline", r: radius }));
             const centre = svg("circle", { class: "factor-ring__centre", r: Math.max(5, radius * .58) });
             group.appendChild(centre);
-            drawText(group, "factor-ring__value", 0, Math.max(2.5, radius * .17), value, Math.max(6, radius * .48));
+            drawText(group, "factor-ring__value", 0, Math.max(2.5, radius * .17), value, valueSize(radius, value));
             drawing.appendChild(group);
             return { group, sectors, centre, halo: group.querySelector(".factor-ring__halo") };
         };
@@ -357,8 +360,8 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             group.appendChild(svg("circle", { class: "factor-ring__outline", r: radius }));
             group.appendChild(svg("circle", { class: "factor-ring__centre", r: Math.max(5, radius * .58) }));
-            const oldValue = drawText(group, "factor-ring__value", 0, Math.max(2.5, radius * .17), fromValue, Math.max(6, radius * .48));
-            const newValue = drawText(group, "factor-ring__value", 0, Math.max(2.5, radius * .17), toValue, Math.max(6, radius * .48));
+            const oldValue = drawText(group, "factor-ring__value", 0, Math.max(2.5, radius * .17), fromValue, valueSize(radius, fromValue));
+            const newValue = drawText(group, "factor-ring__value", 0, Math.max(2.5, radius * .17), toValue, valueSize(radius, toValue));
             newValue.setAttribute("transform", "scale(0)");
             group.style.visibility = "hidden";
             drawing.appendChild(group);
@@ -925,7 +928,9 @@ document.addEventListener("DOMContentLoaded", () => {
             tree.classList.toggle("is-hidden", !valid);
             if (tidyButton) tidyButton.hidden = !valid;
             answer.classList.toggle("is-invalid", !valid);
-            if (!valid) { answer.textContent = "A whole number from 2 to 9,999 is needed."; return; }
+            /* The dashed panel says what is needed; the answer line is cleared
+               rather than left holding the last factorisation. */
+            if (!valid) { answer.textContent = ""; return; }
             original = n;
             if (zoomFrame) cancelAnimationFrame(zoomFrame);
             zoomFrame = 0;

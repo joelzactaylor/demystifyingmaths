@@ -25,6 +25,71 @@ Two consecutive table-only sections between two with figures is a fault the
 prose will never confess to. Look for: a section with no way in, a section
 carrying every figure, a run of pure reference, prose totals that swing by 3×.
 
+## 1b. Shape pass — is it built the way a reader learns?
+
+The measure above finds what is missing; this pass finds what is in the wrong
+place or said too often. The standard is the one the best-known resources
+converge on — Rosenshine's principles (small steps, a worked example before
+independent work, checking understanding), the cognitive-load research behind
+Mayer's multimedia principles (coherence, signalling, no redundancy between
+words and picture), the NCETM/White Rose "small steps" sequencing with one
+thing varied at a time, and the exam boards' own command words. A page that
+meets it reads, to a parent with no maths, as one idea after another. Judge
+each section against these, and fix in place:
+
+- **The rule arrives by the second paragraph of its section.** A section may
+  open with the question the rule answers ("Does 3 + 4 × 5 come to 23 or to
+  35?") and one paragraph of the disagreement, and then it states the rule.
+  Motivation that runs to a fourth paragraph before the rule is a sequencing
+  fault: `orderOfOperations` reached "multiplying and dividing are done first"
+  in paragraph five, across two sections, and was cut to one.
+- **One idea per section, and a section is 60–350 words of prose.** Under 60
+  words is a fragment — fold it into its neighbour (`dividingByDecimals` had a
+  29-word "confirm the quotient" section and a 62-word sandbox section between
+  the size rule and its check). Over 350 is two ideas — split it at the
+  heading the prose already implies (`multiplesAndDivisibility` had 2,100
+  words under one heading with four `h2`s inside; they became sections).
+- **A fact is delivered once in the body and once in the summary.** Every
+  further statement of it is cut, wherever it stands — an important box, a
+  scene caption, a slip, a paragraph before a figure that the figure's first
+  caption repeats. `powersOfTen` stated the digit-movement rule five times;
+  `orderingNumbers` said "more digits does not mean larger" four times. Two
+  statements with the same content in different words are not variation.
+- **A worked example varies one thing from the one before it.** Example 2
+  after 6.47 × 100 is 0.39 × 1,000: a different power, a zero to hold. An
+  example that varies nothing is a repeat; one that varies everything teaches
+  nothing about which change caused which effect.
+- **The core path carries no digression.** History, a name's origin, a
+  convention's dispute, a fourth dimension: each lives in an "Extra info" box
+  or a section after the core, never between a rule and its example. The
+  implied-multiplication dispute sat inside the powers section of
+  `orderOfOperations`; it is now a section of its own after the bars.
+- **Headings state the claim, not the topic.** "The place-value rule" names a
+  topic; "Each move changes a digit's value tenfold" is the claim, and a
+  reader who reads only the headings gets the page. (Signalling: the heading
+  is the reader's map.)
+- **The exam's own words appear once, where the form is taught.** "Write 756
+  as a product of its prime factors", "find the highest common factor of 360
+  and 756", "give your answer in index form": a reader who has met the phrase
+  recognises the question. Once, in the sentence that produces the answer or
+  in the summary; never as a heading.
+- **The figure and the prose divide the work.** Prose states what the figure
+  cannot draw — the reason, the rule, the exception; the figure draws what the
+  prose cannot say — the movement, the arrangement, the growth. A paragraph
+  that describes the figure's first stage is redundancy (Mayer): the caption
+  already says it. Never say a thing and then say it again when you show it:
+  the paragraph before a scene states the claim, the scene's captions carry the
+  numbers and the steps, and neither repeats the other — `HCFFromPrimeFactors`
+  narrated "one 2 leaves each ring… 36, the HCF" in a paragraph and then in
+  five captions, and the paragraph went. A sandbox, lab or tester starts on a
+  number the page has not already worked, or its first state is a repeat of
+  the example above it. A figure whose stages only change their text is a
+  paragraph in a box: pull the text out and delete the stage.
+- **Read it aloud to someone who is not a mathematician.** Every paragraph
+  they stop on is a finding. The stops cluster where a sentence carries two
+  ideas, where a fact returns, and where the reason for a step is a paragraph
+  away from the step.
+
 ## 2. Teacher pass — is it true?
 
 - **Recompute every number on the page**, in a script, from the claim rather
@@ -60,13 +125,53 @@ carrying every figure, a run of pure reference, prose totals that swing by 3×.
 
 ## 2b. Voice pass — does every sentence do mathematical work?
 
-`lesson-prose-voice.md` holds twenty-four rules taken from the written-methods
-pages by reading them, not by impression. Judge each sentence against it. The
+`lesson-prose-voice.md` holds thirty rules — twenty-four on the sentence, taken
+from the written-methods pages by reading them, and six on the paragraph and
+the page. Judge each sentence and each paragraph against it. The
 faults cluster in the introduction, the hinge between sections, and any sentence
 beside a widget — so read those hardest, and do not copy an opener from a
 reference page without testing it first. `node scripts/voice-check.mjs <page>`
 lists the sentences a script can suspect — banned phrases, questions, second
 person, length — as lines to read, not verdicts; the pass is reading them.
+
+## 2c. Sense pass — would a teacher say it?
+
+The teacher pass asks whether a sentence is true and the voice pass whether it
+is written in the house voice. A sentence can pass both and still be one that
+no teacher would say aloud, and a reader who is not a mathematician hears
+those at once. Read the page word by word, every sentence in turn, with fresh
+eyes — a reviewer who did not write the page, in a fresh context — and ask
+of each:
+
+- **Is the reasoning real?** In a sentence with *because*, *so*, *which is
+  why*, *that is why*, is the second half a consequence of the first, or the
+  first half again? "Commas group whole-number digits in threes, which is why a
+  million is written 1,000,000" explains nothing: the "which is why" joins a
+  fact to itself.
+- **Is it new?** Does it say anything the heading, the previous sentence, the
+  rule card or the figure beside it has not already given? A caption that
+  inventories its figure — "the places from millions to thousandths, what each
+  is worth, and five numbers written into them" — says what the eye already has.
+- **Would a teacher say it, in these words, to a 14-year-old?** Flourish
+  ("settles it", "hands back", "is what the arithmetic gives"), lists of three
+  written for rhythm, a sentence that ends on a moral, a hedge, throat-clearing:
+  all of these read as written to impress rather than to teach.
+- **Is it the plainest way to say it?** Try to say the sentence more clearly
+  in about the same number of words; if that is possible, the sentence fails
+  and the plainer version is the fix. "The mirror is the ones place rather than
+  the point" is true, unrepeated and unadorned, and still has to be read twice,
+  because its subject is a metaphor the reader was never given. "The place
+  names mirror about the ones place, not about the point" is the same length
+  and read once. The usual causes: an abstraction as the subject where the
+  concrete thing could be; the point of the sentence arriving as an aside; a
+  passive hiding who does what; a noun ("the placement of") where a verb
+  would do.
+- **Is every word working?** A word that can go without loss goes.
+
+There is no quota. A page with nothing wrong reports nothing, and a finding
+that would not persuade a sceptical reader is noise. Fix what is found in the
+page and in the script's captions, then have a second fresh reader make the
+same pass and find nothing.
 
 ## 3. Contrivance pass — is it honest?
 
@@ -118,6 +223,18 @@ wrapping to a second line. Print every caption, and look for:
   underneath are still legible, not a gold rectangle where they used to be.
 - **prose that could be shown**: anything with a shape, a growth, a movement or
   a rearrangement.
+- **type below the floor, and a label wider than its cell.** Measure; do not
+  squint at a screenshot. `node scripts/text-check.mjs <page>` renders the
+  docked page and reports every visible text run under 14px as the reader
+  sees it — an SVG label at its viewBox scale, a board at its transform —
+  and every run that crosses the edge of the box around it. Under 12px fails;
+  12–14px is a list to read (a place name over a column the mathematics has
+  fixed at 60px may be 13px; a caption, a unit, a status line or the text
+  beside an input may not). Then drive the states the docked render cannot
+  show — a sandbox at its widest input, a drawing hidden until its stage
+  arrives, a seven-column product — and look at those too. Thirty-one of
+  thirty-two lessons carried 8–11px labels, copied board to board from the
+  reference page, until the check was written.
 
 ## 5. Fallback pass — what survives being stripped?
 
@@ -143,8 +260,8 @@ the last good answer standing, and must not rebuild the card under the cursor.
 (jsdom silently repairs a stray `</section>` and every DOM-based check then
 passes over it), heading levels, duplicate ids, ARIA targets, and inline text
 that runs together with styles off. Then the rest of the list in `AGENTS.md`:
-links, practice pairing, breadcrumbs, panel, notation, glossary, voice, and
-`git diff --check`. Dead CSS is a per-session grep, because page scripts compose
+links, practice pairing, breadcrumbs, panel, notation, glossary, voice, the
+rendered type check, and `git diff --check`. Dead CSS is a per-session grep, because page scripts compose
 class names at run time and a text search cannot tell an unused class from a
 composed one.
 
@@ -156,7 +273,9 @@ not automated is a check that stops happening.
 **Where they live.** The repository has no `package.json` and no `node_modules`,
 and stays that way: every check runs on Node's built-ins. The ones that read
 source live in `scripts/` — `structure-check.mjs` for markup, `notation-check.mjs`
-for roots and indices, `voice-check.mjs` for the sentences a script can suspect.
+for roots and indices, `voice-check.mjs` for the sentences a script can suspect —
+and so does the one that renders, `text-check.mjs`, which drives the same
+headless Chrome the render recipe uses and measures type as the reader sees it.
 The ones that read *this page's* mathematics are written per page, in the
 scratchpad, and thrown away: a teacher script that recomputes every number from
 the claim, and a harness that loads the page's own JS under a forty-line DOM
@@ -180,3 +299,5 @@ Two rules learned the hard way:
 
 Every check green, every finding from every pass fixed, and one full pass that
 finds nothing. Not "no known problems" — a pass that looked and came back empty.
+The last pass is the read-aloud: a page is finished when a listener with no
+maths follows it from the first heading to the summary without stopping.

@@ -447,7 +447,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return [
                 {
                     title: `${Cap(COUNT[Math.abs(model.total)])} units to the left`,
-                    copy: `${signed(model.total)} is one arrow running from zero to ${COUNT[Math.abs(model.total)]} below it.`
+                    copy: `${signed(model.total)} is one arrow, ${COUNT[Math.abs(model.total)]} units long, running left from zero.`
                 },
                 {
                     title: "Two cuts, three equal parts",
@@ -455,15 +455,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
                 {
                     title: `Each part is ${signed(each)}`,
-                    copy: `The cut arrow comes apart into ${COUNT[model.by]} separate arrows, and each of them runs ${COUNT[Math.abs(each)]} units to the left.`
+                    copy: `Each of the ${COUNT[model.by]} parts runs ${COUNT[Math.abs(each)]} units to the left, so ${signed(model.total)} ÷ ${model.by} = ${signed(each)}.`
                 },
                 {
                     title: `The same amount, divided by ${signed(model.unit)}`,
-                    copy: `The parts of ${signed(each)} give way to arrows of ${signed(model.unit)}, laid tip to tail along the same ${COUNT[Math.abs(model.total)]} units.`
+                    copy: `Arrows of ${signed(model.unit)} laid tip to tail cover the same ${COUNT[Math.abs(model.total)]} units that the ${COUNT[model.by]} parts of ${signed(each)} did.`
                 },
                 {
                     title: `${Cap(COUNT[fills])} of them fit`,
-                    copy: `Asking how many arrows of ${signed(model.unit)} reach ${signed(model.total)} is asking for a count, so the answer is ${fills}.`
+                    copy: `${Cap(COUNT[fills])} arrows of ${signed(model.unit)} reach ${signed(model.total)}, and a count of arrows has no sign: ${signed(model.total)} ÷ (${signed(model.unit)}) = ${fills}.`
                 }
             ][clamp(index, 0, 4)];
         },

@@ -69,8 +69,8 @@
             <section aria-labelledby="what-the-index-covers">
                 <h1 id="what-the-index-covers">Is &minus;3&sup2; equal to &minus;9 or to 9?</h1>
 
-                <p>BIDMAS works indices before adding and subtracting, and that settles this one too: the squaring
-                    is done first, and the minus is applied to whatever it produces.</p>
+                <p>BIDMAS works indices before adding and subtracting, and the minus in front of 3<span class="caret" aria-hidden="true">^</span><sup>2</sup> counts as a
+                    subtraction, so it waits until the square is done.</p>
 
                 <div class="worked">
                     <div class="pow-scene" data-pow-scene data-scene="covers">
@@ -86,8 +86,7 @@
 
                             <div class="pow-scene__caption">
                                 <h2 data-step-title>Two ways to read three symbols</h2>
-                                <p data-step-copy>The index is written against the 3 on the left and against the
-                                    bracket on the right.</p>
+                                <p data-step-copy>&minus;3<span class="caret" aria-hidden="true">^</span><sup>2</sup> and (&minus;3)<span class="caret" aria-hidden="true">^</span><sup>2</sup> differ only by the bracket.</p>
                             </div>
 
                             <div class="pow-scene__progress" data-progress aria-hidden="true"></div>
@@ -101,45 +100,19 @@
                     </noscript>
                 </div>
 
-                <p>A bracket is the only thing that puts the minus inside the squaring. Nothing else changes: the
-                    same <span class="gloss" data-term="order of operations">order of operations</span> gives <span
+                <p>Only a bracket puts the minus inside the squaring. The minus of a subtraction waits the same way: <span
                         class="sf" role="math"
                         aria-label="5 minus 3 to the power 2 equals 5 minus 9 equals negative 4">5 &minus; 3<span
                             class="caret" aria-hidden="true">^</span><sup>2</sup> = 5 &minus; 9 = &minus;4</span>.</p>
 
-                <div class="wex">
-                    <h2 class="wex__title">Example: work out &minus;5&sup2; and (&minus;5)&sup2;</h2>
-                    <p class="wex__task">Work out each of the two readings.</p>
-                    <ol class="wex__steps">
-                        <li>
-                            <span class="wex__do"><span class="sf" role="math"
-                                    aria-label="5 to the power 2 equals 25">5<span class="caret"
-                                        aria-hidden="true">^</span><sup>2</sup> = 25</span></span>
-                            <span class="wex__why">The index stands against the 5 in both.</span>
-                        </li>
-                        <li>
-                            <span class="wex__do"><span class="sf" role="math"
-                                    aria-label="negative 5 to the power 2 equals negative 25">&minus;5<span
-                                        class="caret" aria-hidden="true">^</span><sup>2</sup> = &minus;25</span></span>
-                            <span class="wex__why">No bracket, so the minus stays outside the squaring.</span>
-                        </li>
-                        <li>
-                            <span class="wex__do"><span class="sf" role="math"
-                                    aria-label="open bracket negative 5 close bracket to the power 2 equals 25">(&minus;5)<span
-                                        class="caret" aria-hidden="true">^</span><sup>2</sup> = 25</span></span>
-                            <span class="wex__why">The bracket puts the minus inside, and two negatives make a
-                                positive.</span>
-                        </li>
-                    </ol>
-                </div>
             </section>
 
             <section aria-labelledby="the-index-counts">
                 <h1 id="the-index-counts">The index says how many negatives are multiplied</h1>
 
-                <p>Once a bracket has put the minus inside, the index counts the <span class="gloss"
-                        data-term="factor">factors</span>, and every one of them is negative. So the index alone
-                    decides the sign, without any of them being written out.</p>
+                <p>In (&minus;2)<span class="caret" aria-hidden="true">^</span><sup>5</sup> the bracket puts the
+                    minus inside, so every <span class="gloss" data-term="factor">factor</span> the index counts is
+                    negative.</p>
 
                 <p>Two negatives multiplied together make a positive, so the factors pair off into positive <span
                         class="gloss" data-term="product">products</span>. An odd index leaves one with nothing to
@@ -158,8 +131,7 @@
 
                             <div class="pow-scene__caption">
                                 <h2 data-step-title>Five negative factors</h2>
-                                <p data-step-copy>The index counts how many copies of &minus;2 are multiplied
-                                    together.</p>
+                                <p data-step-copy>(&minus;2)<span class="caret" aria-hidden="true">^</span><sup>5</sup> is five copies of &minus;2 multiplied together.</p>
                             </div>
 
                             <div class="pow-scene__progress" data-progress aria-hidden="true"></div>
@@ -171,12 +143,6 @@
                         aria-label="open bracket negative 2 close bracket to the power 5 equals negative 32">(&minus;2)<span class="caret" aria-hidden="true">^</span><sup>5</sup> = &minus;32</p>
                     </noscript>
                 </div>
-
-                <p>The size never depends on the sign: <span class="sf" role="math"
-                        aria-label="2 to the power 5 equals 32">2<span class="caret"
-                            aria-hidden="true">^</span><sup>5</sup> = 32</span> gives the 32 in <span class="sf"
-                        role="math" aria-label="open bracket negative 2 close bracket to the power 5">(&minus;2)<span
-                            class="caret" aria-hidden="true">^</span><sup>5</sup></span> as well.</p>
 
                 <div class="rule-card">
                     <h2 class="rule-card__statement">A power of a negative number</h2>
@@ -214,31 +180,31 @@
                 <h1 id="common-mistakes">Common mistakes</h1>
                 <ul class="slips">
                     <li><b>Squaring the minus along with the number</b>
-                    <span><span class="sf" role="math" aria-label="negative 3 squared">&minus;3<span
-                            class="caret" aria-hidden="true">^</span><sup>2</sup></span> is not 9. The
-                            index stands against the 3 alone, so the squaring gives 9 and the minus is
-                            still in front of it: <span class="sf" role="math" aria-label="negative 3
-                            squared equals negative 9, while, open bracket, negative 3, close bracket,
-                            squared equals 9">&minus;3<span class="caret"
-                            aria-hidden="true">^</span><sup>2</sup> = &minus;9, while (&minus;3)<span
-                            class="caret" aria-hidden="true">^</span><sup>2</sup> = 9</span>.</span></li>
+                    <span><span class="sf" role="math" aria-label="negative 4 squared">&minus;4<span
+                            class="caret" aria-hidden="true">^</span><sup>2</sup></span> is not 16. The
+                            index stands against the 4 alone, so the squaring gives 16 and the minus is
+                            still in front of it: <span class="sf" role="math" aria-label="negative 4
+                            squared equals negative 16, while, open bracket, negative 4, close bracket,
+                            squared equals 16">&minus;4<span class="caret"
+                            aria-hidden="true">^</span><sup>2</sup> = &minus;16, while (&minus;4)<span
+                            class="caret" aria-hidden="true">^</span><sup>2</sup> = 16</span>.</span></li>
                     <li><b>Keeping a minus because the base was negative</b>
-                    <span><span class="sf" role="math" aria-label="open bracket, negative 2, close
-                            bracket, to the power of 4">(&minus;2)<span class="caret"
-                            aria-hidden="true">^</span><sup>4</sup></span> is not &minus;16. Four
+                    <span><span class="sf" role="math" aria-label="open bracket, negative 3, close
+                            bracket, to the power of 4">(&minus;3)<span class="caret"
+                            aria-hidden="true">^</span><sup>4</sup></span> is not &minus;81. Four
                             negatives make two pairs, and each pair is positive, so nothing is left to
-                            carry a minus: the answer is 16.</span></li>
+                            carry a minus: the answer is 81.</span></li>
                     <li><b>Taking every power of a negative number to be positive</b>
                     <span>That holds for squares, because two negatives pair off. Three negatives
                             leave one unpaired, so <span class="sf" role="math" aria-label="open
-                            bracket, negative 2, close bracket, cubed equals negative 8">(&minus;2)<span
-                            class="caret" aria-hidden="true">^</span><sup>3</sup> = &minus;8</span>, not
-                            8.</span></li>
+                            bracket, negative 3, close bracket, cubed equals negative 27">(&minus;3)<span
+                            class="caret" aria-hidden="true">^</span><sup>3</sup> = &minus;27</span>, not
+                            27.</span></li>
                 </ul>
             </section>
 
             <section aria-labelledby="remember">
-                <h1 id="remember">Remember</h1>
+                <h1 id="remember">Summary</h1>
                 <ol class="recap">
                     <li>BIDMAS works the index before the minus, so <span class="sf" role="math"
                             aria-label="negative 3 to the power 2 equals negative 9">&minus;3<span class="caret"

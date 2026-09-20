@@ -17,6 +17,7 @@
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/recognisingPowers.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -53,8 +54,8 @@
                 <h1 id="reading-a-power-backwards">Reading a power backwards</h1>
 
                 <p>Evaluating <span class="sf" role="math" aria-label="3 to the power of 4">3<span class="caret"
-                            aria-hidden="true">^</span><sup>4</sup></span> gives 81. Recognising a power reverses that
-                    <span class="gloss" data-term="calculation">calculation</span>: starting with 81, supply an equal power.</p>
+                            aria-hidden="true">^</span><sup>4</sup></span> gives 81. Recognising a power runs that
+                    <span class="gloss" data-term="calculation">calculation</span> backwards: starting from 81, name the power that makes it, 3<span class="caret" aria-hidden="true">^</span><sup>4</sup>.</p>
 
                 <div class="recognition">
                     <p><span>evaluate</span><strong role="math" aria-label="3 to the power of 4 equals 81">3<span
@@ -64,13 +65,12 @@
                             &longrightarrow; 3<span class="caret" aria-hidden="true">^</span><sup>4</sup></strong></p>
                 </div>
 
-                <p>The final numeral does not reveal its equal <span class="gloss" data-term="factor">factors</span>. Recognition depends on knowing the power facts
-                    that produce it.</p>
+                <p>81 does not show its four <span class="gloss" data-term="factor">factors</span> of 3; recognising it means knowing the fact 3<span class="caret" aria-hidden="true">^</span><sup>4</sup> = 81. Swapped, the base and index name a different number: <span class="sf" role="math" aria-label="4 cubed equals 64">4<span class="caret" aria-hidden="true">^</span><sup>3</sup> = 64</span>.</p>
             </section>
 
             <section>
                 <h1 id="squares-and-cubes">Squares and cubes</h1>
-                <p>A square has two equal factors.</p>
+                <p>A square is a product of two equal factors: <span class="sf">49 = 7 &times; 7</span>.</p>
 
                 <ol class="fact-list fact-list--squares" aria-label="Square numbers from 1 squared to 15 squared">
                     <li><span>1<span class="caret" aria-hidden="true">^</span><sup>2</sup></span><b>1</b></li>
@@ -90,7 +90,7 @@
                     <li><span>15<span class="caret" aria-hidden="true">^</span><sup>2</sup></span><b>225</b></li>
                 </ol>
 
-                <p>A cube has three equal factors. The cubes to know are:</p>
+                <p>A cube is a product of three equal factors: <span class="sf">64 = 4 &times; 4 &times; 4</span>.</p>
 
                 <ol class="fact-list fact-list--cubes" aria-label="Cube numbers from 1 cubed to 5 cubed, and 10 cubed">
                     <li><span>1<span class="caret" aria-hidden="true">^</span><sup>3</sup></span><b>1</b></li>
@@ -109,8 +109,8 @@
                             aria-hidden="true">^</span><sup>2</sup> = 1<span class="caret"
                             aria-hidden="true">^</span><sup>3</sup> = 1</span>.</p>
 
-                <p>Known powers give both matches and bounds. An exact match recognises a power; a value strictly
-                    between <span class="gloss" data-term="consecutive">consecutive</span> powers is ruled out.</p>
+                <p>A number in the list of squares is a square; a whole number between two <span class="gloss" data-term="consecutive">consecutive</span> squares is not, and
+                    the same holds for cubes.</p>
 
                 <div class="example-strip">
                     <p><b>50 is not a square</b> <span>It lies between consecutive squares.</span><strong
@@ -126,7 +126,7 @@
 
             <section>
                 <h1 id="powers-of-2-3-4-and-5">Powers of 2, 3, 4 and 5</h1>
-                <p>Each row begins with its <span class="gloss" data-term="base">base</span> and repeatedly multiplies by that same base.</p>
+                <p>Each row starts at its <span class="gloss" data-term="base">base</span> and keeps multiplying by it, so a number&rsquo;s place in its row is its index.</p>
 
                 <dl class="power-chains">
                     <div>
@@ -168,34 +168,47 @@
                         aria-hidden="true">^</span><sup>2</sup>
                 </p>
 
-                <p>Changing the base changes the <span class="gloss" data-term="index">index</span>. Swapping them is not valid: <span class="sf"
-                        role="math" aria-label="4 cubed equals 64">4<span class="caret"
-                            aria-hidden="true">^</span><sup>3</sup> = 64</span>, while <span class="sf" role="math"
-                        aria-label="3 to the power of 4 equals 81">3<span class="caret"
-                            aria-hidden="true">^</span><sup>4</sup> = 81</span>.</p>
+                <p>In these three names for 64, the larger base carries the smaller <span class="gloss" data-term="index">index</span>. &ldquo;Write 64 as a power of 4&rdquo; asks for the one with base 4.</p>
+            </section>
+
+            <section>
+                <h1 id="name-a-power">Name a chosen number as a power</h1>
+                <div class="power-names" data-power-names>
+                    <label class="power-names__field"><span>Number</span><input type="text" inputmode="numeric"
+                            value="729" maxlength="4" autocomplete="off" spellcheck="false" data-power-input></label>
+                    <div class="power-names__working">
+                        <p class="power-names__equation" data-power-equation aria-live="polite"></p>
+                        <ul class="power-names__places">
+                            <li data-power-square></li>
+                            <li data-power-cube></li>
+                        </ul>
+                    </div>
+                    <p class="power-names__note" data-power-note hidden>A whole number from 2 to 9,999</p>
+                    <noscript>
+                        <p>729 = 3<span class="caret" aria-hidden="true">^</span><sup>6</sup> = 9<span class="caret"
+                                aria-hidden="true">^</span><sup>3</sup> = 27<span class="caret"
+                                aria-hidden="true">^</span><sup>2</sup>: a square, a cube and a sixth power.</p>
+                    </noscript>
+                </div>
             </section>
 
             <section>
                 <h1 id="common-mistakes">Common mistakes</h1>
                 <ul class="slips">
                     <li><b>Reading the base and the index the wrong way round</b>
-                    <span>81 is <span class="sf" role="math" aria-label="3 to the power of 4">3<span
-                            class="caret" aria-hidden="true">^</span><sup>4</sup></span>. Three factors
-                            of 4 come to 64, so <span class="sf" role="math" aria-label="4 cubed equals
-                            64">4<span class="caret" aria-hidden="true">^</span><sup>3</sup> =
-                            64</span>.</span></li>
-                    <li><b>Missing a power in a number already met</b>
-                    <span>The six factors of 2 in 64 group into three factors of 4, and into two
-                            factors of 8: <span class="sf" role="math" aria-label="64 equals 2 to the
-                            power of 6 equals 4 cubed equals 8 squared">64 = 2<span class="caret"
-                            aria-hidden="true">^</span><sup>6</sup> = 4<span class="caret"
-                            aria-hidden="true">^</span><sup>3</sup> = 8<span class="caret"
+                    <span>125 is <span class="sf" role="math" aria-label="5 cubed">5<span
+                            class="caret" aria-hidden="true">^</span><sup>3</sup></span>, not <span class="sf" role="math" aria-label="3 to the power of 5">3<span class="caret" aria-hidden="true">^</span><sup>5</sup></span>: five factors
+                            of 3 multiply to 243.</span></li>
+                    <li><b>Answering with a base the question did not ask for</b>
+                    <span>Asked for 81 as a power of 9, <span class="sf" role="math" aria-label="3 to the power of 4">3<span class="caret"
+                            aria-hidden="true">^</span><sup>4</sup></span> is a true name with the wrong base: the four factors of 3 group
+                            into two factors of 9, so <span class="sf" role="math" aria-label="81 equals 9 squared">81 = 9<span class="caret"
                             aria-hidden="true">^</span><sup>2</sup></span>.</span></li>
                 </ul>
             </section>
 
             <section>
-                <h1 id="remember">Remember</h1>
+                <h1 id="remember">Summary</h1>
                 <ol class="recap">
                     <li>Recognising a power reverses evaluating one: 81 is <span class="sf" role="math"
                             aria-label="3 to the power of 4">3<span class="caret"
@@ -206,8 +219,8 @@
                     <li>The cubes worth recalling are 1, 8, 27, 64 and 125, together with <span class="sf" role="math"
                             aria-label="10 cubed equals 1,000">10<span class="caret"
                                 aria-hidden="true">^</span><sup>3</sup> = 1,000</span>.</li>
-                    <li>A value between two consecutive powers is not itself a power, so 49 &lt; 50 &lt; 64 rules 50
-                        out as a square number.</li>
+                    <li>A whole number between two consecutive squares is not a square, and one between two consecutive
+                        powers of 2 is not a power of 2: 49 &lt; 50 &lt; 64 rules 50 out.</li>
                     <li>One number can carry several power names, since <span class="sf" role="math"
                             aria-label="64 equals 2 to the power of 6 equals 4 cubed equals 8 squared">64 = 2<span
                                 class="caret" aria-hidden="true">^</span><sup>6</sup> = 4<span class="caret"

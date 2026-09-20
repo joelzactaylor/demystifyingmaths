@@ -150,16 +150,22 @@ document.addEventListener("DOMContentLoaded", () => {
             const entry = document.createElement("li");
             if (item.digit) {
                 entry.innerHTML = `The <b>${item.digit}</b> in the ${placeNames.get(item.exponent)} place is
-                    ${item.digit} lot${item.digit === 1 ? "" : "s"} of ${unitLabels.get(item.exponent)},
+                    ${item.digit} &times; ${unitLabels.get(item.exponent)},
                     which is <strong>${valueLabel(item.digit, item.exponent)}</strong> &mdash; ${digitWorth(item.digit, item.exponent)}.`;
             } else if (item.exponent < 0 && !decimal.slice(-item.exponent).replace(/0/g, "")) {
                 entry.className = "place-lab__holder";
-                entry.innerHTML = `The <b>0</b> in the ${placeNames.get(item.exponent)} place adds no value. As a
-                    trailing decimal zero it can record precision, but removing it would not change the number.`;
+                entry.innerHTML = `No non-zero digit stands to the right of the <b>0</b> in the ${placeNames.get(item.exponent)}
+                    place, so the number is the same without it.`;
+            } else if (item.exponent === 0 && whole === "0") {
+                entry.className = "place-lab__holder";
+                entry.innerHTML = decimal
+                    ? `The <b>0</b> in the ones place counts nothing: the number has no whole-number part, and the 0
+                        marks that before the point.`
+                    : `The <b>0</b> in the ones place counts nothing: the number is zero.`;
             } else {
                 entry.className = "place-lab__holder";
                 entry.innerHTML = `The <b>0</b> in the ${placeNames.get(item.exponent)} place counts nothing. It holds
-                    the place so that every other digit keeps its own.`;
+                    the place so the other digits keep their values.`;
             }
             link(entry, item.exponent);
             parts.append(entry);
@@ -173,9 +179,15 @@ document.addEventListener("DOMContentLoaded", () => {
             : [wholeWords(whole), spoken].filter(Boolean).join(", and ");
     };
 
+    /* An empty field shows no reading: the last number's working goes, the
+       tray keeps its size, and one line says what the field takes. */
+    const note = lab.querySelector("[data-place-note]");
     const accept = () => {
         const cleaned = limitValue();
-        if (!/^(?:\d+(?:\.\d*)?|\.\d+)$/.test(cleaned)) return;
+        const valid = /^(?:\d+(?:\.\d*)?|\.\d+)$/.test(cleaned);
+        lab.classList.toggle("is-empty", !valid);
+        if (note) note.hidden = valid;
+        if (!valid) return;
         render(cleaned);
     };
 

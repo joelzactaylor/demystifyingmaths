@@ -14,14 +14,16 @@ header { display: block; height: 5vh; margin: 0; padding: 20px; background-image
 .home-start { padding: 1rem 2rem; border-radius: 50px; background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; font-weight: 700; text-decoration: none; opacity: 0; box-shadow: 0 4px 15px rgba(102, 126, 234, .3); animation: subtitle-fade 1s ease-out 1.4s forwards; }
 .home-start:hover { transform: translateY(-3px); }
 .scroll-cue { margin-top: 1.5rem; color: #718096; font-size: .85rem; opacity: 0; animation: subtitle-fade 1s ease-out 1.8s forwards; }
-.poly-block, .route-block { position: relative; display: flex; min-height: 420px; padding: 3rem 2rem; align-items: center; justify-content: center; overflow: hidden; }
-.poly-block { padding-bottom: 4rem; align-items: flex-end; }
-.poly-canvas-wrapper { position: absolute; inset: 0; display: flex; z-index: 0; align-items: flex-end; justify-content: center; pointer-events: none; }
-#poly-canvas { display: block; width: 120%; max-width: none; height: auto; aspect-ratio: 16 / 9; background: transparent; }
-.poly-text, #reset-opacity-wrapper { position: relative; z-index: 1; width: 100%; max-width: 800px; }
-.poly-text h1, #reset-opacity-wrapper h1 { font-size: 50px; }
+.route-block { position: relative; display: flex; min-height: 420px; padding: 3rem 2rem; align-items: center; justify-content: center; overflow: hidden; }
+#reset-opacity-wrapper { position: relative; z-index: 1; width: 100%; max-width: 800px; }
+#reset-opacity-wrapper h1 { font-size: 50px; }
 .home-links { display: flex; gap: 16px; flex-wrap: wrap; margin: 25px 0; }
 .home-links a { display: inline-block; padding: 13px 18px; border: 2px solid #116e93; border-radius: 8px; background: rgba(255,255,255,.65); font-weight: 700; text-decoration: none; }
+
+@media (prefers-reduced-motion: reduce) {
+   #main-title .char, #title-section h2, .home-start, .scroll-cue { opacity: 1; transform: none; animation: none; }
+   #title-section::after { animation: none; }
+}
 
 /* No width media query here on purpose: .layout is a fixed 900px panel that
    shared.css scales with a transform below 900px, so a viewport breakpoint

@@ -45,23 +45,18 @@
             <p class="prereq"><b>Before this page:</b> <span>know how to <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/powersOfTen.html">multiply by powers of ten</a>, then divide with <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/shortDivision.html">short division</a> or <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/longDivision.html">long division</a>.</span></p>
 
             <section>
-                <h1>Make the divisor whole without changing the quotient</h1>
+                <h1>Make the divisor an integer without changing the quotient</h1>
                 <p>Standard written division needs an <span class="gloss" data-term="integer">integer</span> <span class="gloss" data-term="divisor">divisor</span>. A decimal divisor can be made into an integer by multiplying it by 10, 100 or 1,000—but the dividend must be multiplied by exactly the same number.</p>
-                <p>Scaling both numbers equally changes their sizes but not their <span class="gloss" data-term="ratio">ratio</span>, so it does not change the <span class="gloss" data-term="quotient">quotient</span>.</p>
                 <div class="rule-card decimal-division-rule">
-                    <p class="rule-card__statement"><span><i>a</i> &divide; <i>b</i></span><strong>=</strong><span>(<i>a</i> &times; <i>k</i>) &divide; (<i>b</i> &times; <i>k</i>)</span></p>
-                    <p>Use the same positive <span class="gloss" data-term="scale factor">scale factor</span> <i>k</i> on both numbers.</p>
+                    <p class="rule-card__statement"><span><i>a</i> &divide; <i>b</i></span> <strong>=</strong> <span>(<i>a</i> &times; <i>k</i>) &divide; (<i>b</i> &times; <i>k</i>)</span></p>
                 </div>
-            </section>
-
-            <section>
-                <h1>Scale both numbers together</h1>
-                <p>The divisor 0.46 has two <span class="gloss" data-term="decimal place">decimal places</span>. One multiplication by 10 is not enough; multiply both numbers by 10 again, then stop because the divisor is an integer.</p>
+                <p>The <span class="gloss" data-term="quotient">quotient</span> counts how many divisor-sized groups make the <span class="gloss" data-term="dividend">dividend</span>. Multiplying both by the same <span class="gloss" data-term="scale factor">scale factor</span>, 100, makes every group 100 times larger and the total 100 times larger, so the number of groups does not change.</p>
+                <p>In 55.2 &divide; 0.46, 120 groups of 0.46 make 55.2. After both numbers are multiplied by 100, the same 120 groups of 46 make 5,520.</p>
                 <div class="decimal-division-scene" data-decimal-division-scene>
                     <div class="decimal-division-scene__sticky">
                         <p class="decimal-division-scene__heading">55.2 &divide; 0.46</p>
                         <div class="decimal-division-stage" data-scale-paper aria-label="Scaling 55.2 divided by 0.46 into an equivalent division with an integer divisor"></div>
-                        <div class="decimal-division-scene__caption" aria-live="polite" aria-atomic="true"><h2 data-scale-title></h2><p data-scale-copy></p></div>
+                        <div class="decimal-division-scene__caption" aria-live="polite" aria-atomic="true"><h2 data-scale-title>The divisor 0.46 has two decimal places</h2><p data-scale-copy>One multiplication by 10 is not enough to make 0.46 an integer.</p></div>
                         <div class="decimal-division-scene__progress" data-scale-progress aria-hidden="true"></div>
                     </div>
                 <noscript>
@@ -71,35 +66,28 @@
             </section>
 
             <section>
-                <h1>Why equal scaling preserves the answer</h1>
-                <p>The quotient counts how many divisor-sized groups make the <span class="gloss" data-term="dividend">dividend</span>. Scaling both numbers makes every group larger and makes the total larger by the same <span class="gloss" data-term="factor">factor</span>, so the number of groups does not change.</p>
-                <p>In 55.2 &divide; 0.46, 120 groups of 0.46 make 55.2. After both numbers are multiplied by 100, the same 120 groups of 46 make 5,520.</p>
-                <div class="equivalence-strip" aria-label="Three equivalent divisions, all with quotient 120">
-                    <article><span>55.2 &divide; 0.46</span><strong>120</strong></article><i aria-hidden="true">=</i>
-                    <article><span>552 &divide; 4.6</span><strong>120</strong></article><i aria-hidden="true">=</i>
-                    <article><span>5,520 &divide; 46</span><strong>120</strong></article>
-                </div>
-                <aside class="important-box" aria-labelledby="both-numbers-title">
-                    <h2 class="important-box__title" id="both-numbers-title">Scale both numbers, not the divisor alone</h2>
-                    <p><strong>55.2 &divide; 0.46</strong> and <strong>55.2 &divide; 46</strong> are different calculations. If the divisor is multiplied by 100, the dividend must also be multiplied by 100.</p>
-                </aside>
-            </section>
-
-            <section>
                 <h1>Choose the smallest sufficient power of ten</h1>
-                <p>Count the divisor's decimal places after ignoring trailing zeroes. Use the first <span class="gloss" data-term="power">power</span> of ten that makes that divisor an integer.</p>
+                <p>Count the divisor's <span class="gloss" data-term="decimal place">decimal places</span>, ignoring trailing zeros, and multiply both numbers by 10 once for each place: one place needs &times;10, two need &times;100. The divisor is then an integer, and the <span class="gloss" data-term="equivalent">equivalent</span> division is ready for short or long division.</p>
                 <div class="scale-cases">
                     <article><span class="scale-cases__factor">both &times; 10</span><h2>One decimal place</h2><p><strong>7.2 &divide; 0.3 = 72 &divide; 3 = 24</strong></p></article>
                     <article><span class="scale-cases__factor">both &times; 100</span><h2>Two decimal places</h2><p><strong>1.8 &divide; 0.04 = 180 &divide; 4 = 45</strong></p></article>
                     <article><span class="scale-cases__factor">both &times; 10</span><h2>The dividend may stay decimal</h2><p><strong>8.75 &divide; 2.5 = 87.5 &divide; 25 = 3.5</strong></p></article>
-                    <article><span class="scale-cases__factor">both &times; 10</span><h2>Ignore a trailing zero</h2><p><strong>6.4 &divide; 0.20 = 64 &divide; 2 = 32</strong></p><small>0.20 has the same value as 0.2, so one multiplication by 10 is sufficient.</small></article>
+                    <article><span class="scale-cases__factor">both &times; 10</span><h2>Ignore a trailing zero</h2><p><strong>6.4 &divide; 0.20 = 64 &divide; 2 = 32</strong></p><small>0.20 is 0.2, so one multiplication by 10 is enough.</small></article>
                 </div>
-                <p>Only the divisor needs to become an integer. In <strong>8.75 &divide; 2.5</strong>, 87.5 is a valid dividend for written division, so multiplying both numbers by another 10 would add unnecessary work.</p>
             </section>
 
             <section>
+                <h1>The quotient can be larger than the dividend</h1>
+                <div class="piece-model">
+                    <div class="piece-model__measure" aria-hidden="true"><span>55.2 m total</span><div></div><small>120 equal lengths, each 0.46 m</small></div>
+                    <div><h2>55.2 metres cut into 0.46 metre lengths</h2><p>Each <span class="gloss" data-term="length">length</span> is under half a metre, so more than two fit into each metre, and exactly <strong>120</strong> fit into 55.2 m.</p></div>
+                </div>
+                <p>For positive numbers, dividing by a positive number below 1 makes the quotient larger than the
+                    dividend: 55.2 &divide; 0.46 = 120. Multiplying by a positive number below 1 has the opposite effect,
+                    explained on <a href="/demystifyingmaths/pages/curriculum/GCSE/number/fractions/powersRootsAndSize/numbersBelowOne.html">numbers below one</a>.</p>
+            </section>
+            <section>
                 <h1>Scale a chosen division</h1>
-                <p>A positive decimal divisor determines the smallest sufficient power of ten. Applying that scale to both numbers produces an <span class="gloss" data-term="equivalent">equivalent</span> division with an integer divisor.</p>
                 <div class="decimal-division-sandbox" data-decimal-division-sandbox>
                     <div class="decimal-division-sandbox__inputs">
                         <label for="decimal-dividend"><span>Dividend</span><input id="decimal-dividend" type="text" inputmode="decimal" value="12.6" maxlength="7" autocomplete="off" spellcheck="false" aria-describedby="decimal-division-status" data-dividend-input></label>
@@ -111,43 +99,24 @@
                         <div class="decimal-division-sandbox__equation" aria-hidden="true"><span data-sandbox-original>12.6 &divide; 0.35</span><i>&rarr;</i><strong data-sandbox-equivalent>1,260 &divide; 35</strong></div>
                         <p class="decimal-division-sandbox__answer" data-sandbox-answer>12.6 &divide; 0.35 = 36</p>
                     </div>
-                    <p class="decimal-division-sandbox__status" id="decimal-division-status" data-sandbox-status aria-live="polite">Multiplying both numbers by 100 gives 1,260 divided by 35, so the quotient is 36.</p>
+                    <p class="decimal-division-sandbox__status" id="decimal-division-status" data-sandbox-status aria-live="polite">0.35 has two decimal places, so both numbers are multiplied by 100.</p>
                 </div>
             </section>
 
             <section>
-                <h1>Why the quotient can exceed the dividend</h1>
-                <p>Division can ask how many equal pieces of a given size fit into an amount. If each piece is smaller than 1 <span class="gloss" data-term="unit">unit</span>, more than one piece fits into each whole unit.</p>
-                <div class="piece-model">
-                    <div class="piece-model__measure" aria-hidden="true"><span>55.2 m total</span><div></div><small>120 equal lengths, each 0.46 m</small></div>
-                    <div><h2>55.2 metres cut into 0.46 metre lengths</h2><p>Each <span class="gloss" data-term="length">length</span> is less than 1 metre, so more than one length fits into each metre. Exactly <strong>120 lengths</strong> can be cut.</p></div>
-                </div>
-                <p>This size effect is explored further on <a href="/demystifyingmaths/pages/curriculum/GCSE/number/fractions/powersRootsAndSize/numbersBelowOne.html">multiplying and dividing by numbers below one</a>.</p>
-            </section>
-
-            <section>
-                <h1>Confirm the quotient in two ways</h1>
-                <div class="reading-pair">
-                    <article><h2>Check with multiplication</h2><p><strong>120 &times; 0.46 = 55.2</strong>, so 55.2 &divide; 0.46 = 120.</p></article>
-                    <article><h2>Check the size</h2><p>Because 0.46 is below 1, the quotient should exceed 55.2. The answer 120 has the expected size.</p></article>
-                </div>
-            </section>
-
-            <section>
-                <h1>Keep the quotient unchanged</h1>
+                <h1>Common mistakes</h1>
                 <ul class="slips">
                     <li><b>Scaling only the divisor</b>
-                    <span>Multiplying 0.35 by 100 and leaving the 12.6 alone gives 12.6
-                            &divide; 35 = 0.36. Scaling one number scales the answer with it, so
-                            apply the same factor to both: 1,260 &divide; 35 = 36.</span></li>
+                    <span>Multiplying 0.24 by 100 and leaving the 9.6 alone gives 9.6
+                            &divide; 24 = 0.4, a hundred times too small, because only the divisor took the &times;100;
+                            with both numbers scaled, 960 &divide; 24 = 40.</span></li>
                     <li><b>Stopping while the divisor is still decimal</b>
-                    <span>One move takes 55.2 &divide; 0.46 to 552 &divide; 4.6, and dividing
-                            that as though it were 552 &divide; 46 gives 12. Another equal
-                            multiplication by 10 is still required: 5,520 &divide; 46 = 120.</span></li>
+                    <span>One multiplication by 10 takes 3.75 &divide; 0.15 to 37.5 &divide; 1.5, and dividing that as
+                            though it were 37.5 &divide; 15 gives 2.5, ten times too small. A second &times;10 on both
+                            numbers gives 375 &divide; 15 = 25.</span></li>
                     <li><b>Expecting the answer to be smaller</b>
-                    <span>Dividing asks how many of the divisor fit inside. 0.35 is small, so
-                            a great many fit into 12.6, and the quotient is larger than the
-                            number divided: 12.6 &divide; 0.35 = 36.</span></li>
+                    <span>Eight 0.12s make only 0.96, so more than eight fit into each 1, and 4.8 &divide; 0.12 = 40 is
+                            larger than 4.8.</span></li>
                 </ul>
             </section>
 
@@ -158,7 +127,8 @@
                     <li>Multiply the dividend and divisor by exactly the same power of ten.</li>
                     <li>Stop once the divisor is an integer; the dividend may still be decimal.</li>
                     <li>Use short or long division on the equivalent calculation.</li>
-                    <li>Check with multiplication and predict the answer's size from the original divisor.</li>
+                    <li>Check by multiplying the quotient by the original divisor: 120 &times; 0.46 = 55.2.</li>
+                    <li>For positive numbers, a divisor below 1 gives a quotient larger than the dividend: 55.2 &divide; 0.46 = 120.</li>
                 </ol>
             </section>
 

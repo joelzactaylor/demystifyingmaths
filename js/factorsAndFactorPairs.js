@@ -81,12 +81,12 @@ document.addEventListener("DOMContentLoaded", () => {
                is the stage each is written at. */
             crossed: [{ at: 5, from: 5 }],
             stages: [
-                { title: "The numbers 1 to 24", copy: "A factor pair is two places on this line whose product is 24." },
-                { title: "1 and 24", copy: "1 × 24 = 24, so the widest arc on the line joins the first factor to the last." },
+                { title: "The numbers 1 to 24", copy: "Trials start at 1." },
+                { title: "1 and 24", copy: "1 × 24 = 24, so the widest arc joins 1 to 24, the two ends of the line." },
                 { title: "2 and 12", copy: "2 × 12 = 24. The next arc sits inside the first, because both ends have moved inward." },
                 { title: "3 and 8", copy: "3 × 8 = 24, and the arcs keep nesting as the trials climb." },
-                { title: "4 and 6", copy: "4 × 6 = 24 is the narrowest arc there is. The two ends have almost met." },
-                { title: "5 has nowhere to go", copy: "24 ÷ 5 leaves 4 over, so 5 joins nothing, and 5 × 5 = 25 is already past 24, so no trial above it can either." }
+                { title: "4 and 6", copy: "4 × 6 = 24. The two ends have almost met." },
+                { title: "5 joins nothing", copy: "24 ÷ 5 leaves 4 over, so 5 joins nothing." }
             ]
         },
         "thirty-six": {
@@ -97,12 +97,12 @@ document.addEventListener("DOMContentLoaded", () => {
                has to say so where the reader meets it. */
             crossed: [{ at: 5, from: 4 }],
             stages: [
-                { title: "The numbers 1 to 36", copy: "36 is a square number, and that changes how this line ends." },
+                { title: "The numbers 1 to 36", copy: "Trials start at 1." },
                 { title: "1 and 36", copy: "1 × 36 = 36, the widest arc on the line." },
                 { title: "2 and 18", copy: "2 × 18 = 36, nesting inside the first." },
                 { title: "3 and 12", copy: "3 × 12 = 36, nesting inside again as both ends move inward." },
-                { title: "4 and 9, then nothing at 5", copy: "4 × 9 = 36. But 36 ÷ 5 leaves 1 over, so 5 has no whole number to pair with and no arc to draw." },
-                { title: "6 is its own partner", copy: "6 × 6 = 36, so the last arc has nowhere to travel and closes on a single point." }
+                { title: "4 and 9, then nothing at 5", copy: "4 × 9 = 36. 36 ÷ 5 leaves 1 over, so 5 joins nothing." },
+                { title: "6 is its own partner", copy: "6 × 6 = 36: both ends of the pair are the same place, so there is no arc, only a point." }
             ]
         }
     };

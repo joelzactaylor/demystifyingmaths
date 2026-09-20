@@ -52,35 +52,26 @@
         <main class="lesson-main">
             <p class="prereq"><b>Before this page:</b> <span>be able to put numbers in
                     <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/orderingNumbers.html">order</a>, decimals and
-                    <span class="gloss" data-term="negative">negatives</span> included. Every symbol below is a statement about which of two <span class="gloss" data-term="quantity">quantities</span> is the
-                    larger.</span></p>
+                    <span class="gloss" data-term="negative">negatives</span> included.</span></p>
 
             <section>
                 <h1>Six symbols describe how two values compare</h1>
 
-                <p>An equals sign records that two quantities match. Five related symbols record that they differ or
-                    that one forms a boundary for the other.</p>
+                <p>An equals sign records that two values match. The other five record that they differ, which is the
+                    larger, or the most or least a value may be.</p>
 
-                <p>A speed limit, a pass mark and a temperature range each compare a value with a boundary.
-                    Inequality symbols turn those comparisons into compact mathematical statements.</p>
-                <div class="inequality-cloud" data-inequality-cloud>
-                    <div class="inequality-cloud__sticky"></div>
-                    <ol class="inequality-cloud__script">
-                        <li></li>
-                        <li></li>
-                    </ol>
-                    <noscript>
-                        <p class="inequality-cloud__fallback"><strong>= &nbsp; &ne; &nbsp; &lt; &nbsp; &gt;
-                                &nbsp; &le; &nbsp; &ge;</strong></p>
-                    </noscript>
-                </div>
+                <ul class="symbol-grid" aria-label="The six comparison symbols">
+                    <li><span class="symbol-grid__sign">&lt;</span><span class="symbol-grid__name">less than</span></li>
+                    <li><span class="symbol-grid__sign">=</span><span class="symbol-grid__name">equal to</span></li>
+                    <li><span class="symbol-grid__sign">&gt;</span><span class="symbol-grid__name">greater than</span></li>
+                    <li><span class="symbol-grid__sign">&le;</span><span class="symbol-grid__name">less than or equal
+                            to</span></li>
+                    <li><span class="symbol-grid__sign">&ne;</span><span class="symbol-grid__name">not equal to</span></li>
+                    <li><span class="symbol-grid__sign">&ge;</span><span class="symbol-grid__name">greater than or equal
+                            to</span></li>
+                </ul>
 
-                <p>The first says that two values match. Each of the other five says how they differ, and every one
-                    is read the same way: the value on the left is described against the value on the right.</p>
-            </section>
-
-            <section>
-                <h1 id="equal-and-not-equal">Equal and not equal</h1>
+                <p>Every one is read left to right: how the value on the left compares with the value on the right.</p>
                 <div class="equality-pair">
                     <article class="equality-card">
                         <p class="equality-card__statement">0.6 = 0.60</p>
@@ -89,15 +80,15 @@
                     </article>
                     <article class="equality-card equality-card--not-equal">
                         <p class="equality-card__statement">6 &ne; &minus;6</p>
-                        <h3>Not equal to</h3>
+                        <h2>Not equal to</h2>
                         <p>Six and negative six are different values, so the equals sign is crossed out.</p>
                     </article>
                 </div>
-                <p>These two symbols settle only whether two values match, never which of them is the larger.</p>
+                <p>= and &ne; say only whether two values match, not which is the larger.</p>
             </section>
 
             <section>
-                <h1>Less than and greater than</h1>
+                <h1>The point of &lt; and &gt; faces the smaller value</h1>
                 <p>When two values are different, <strong>&lt;</strong> and <strong>&gt;</strong> show which is
                     smaller. The point faces the smaller value, while the wide opening faces the larger value.</p>
 
@@ -161,20 +152,18 @@
                     </g>
                 </svg>
 
-                <p> The comparison can be read in either
-                    direction: for example, <strong>4 &lt; 9</strong> means “4 is less than 9”, and also “9 is greater
-                    than 4”.</p>
-
+                <p><strong>4 &lt; 9</strong> and <strong>9 &gt; 4</strong> record the same comparison: 4 is less than 9, and 9 is
+                    greater than 4.</p>
 
                 <div class="comparator" data-comparator>
                     <div class="comparator__stage">
                         <label class="comparator__name" for="comparator-left">Left value</label>
                         <input class="comparator__input" id="comparator-left" type="text" inputmode="decimal"
-                            value="0.72" maxlength="17" data-comparator-left autocomplete="off">
+                            value="5.06" maxlength="17" data-comparator-left autocomplete="off">
                         <output class="comparator__sign" data-comparator-sign aria-live="polite">&lt;</output>
                         <label class="comparator__name" for="comparator-right">Right value</label>
                         <input class="comparator__input" id="comparator-right" type="text" inputmode="decimal"
-                            value="0.8" maxlength="17" data-comparator-right autocomplete="off">
+                            value="5.6" maxlength="17" data-comparator-right autocomplete="off">
                     </div>
                 </div>
 
@@ -182,10 +171,10 @@
                     <article>
                         <h2>Decimals</h2>
                         <p class="worked-comparisons__statement">0.72 &lt; 0.8</p>
-                        <p>Write 0.8 as 0.80. Both whole-number parts are <span class="gloss" data-term="zero">zero</span>, then 7 <span class="gloss" data-term="tenth">tenths</span> is less than 8 tenths.</p>
+                        <p>Write 0.8 as 0.80. Both whole-number parts are <span class="gloss" data-term="zero">zero</span>, and 72 hundredths is less than 80 hundredths, as 7 <span class="gloss" data-term="tenth">tenths</span> is less than 8.</p>
                     </article>
                     <article>
-                        <h3>Negative numbers</h3>
+                        <h2>Negative numbers</h2>
                         <p class="worked-comparisons__statement">&minus;3 &gt; &minus;8</p>
                         <p>&minus;3 is closer to zero, so it lies further right on the <span class="gloss" data-term="number line">number line</span> and is the larger
                             value.</p>
@@ -194,51 +183,14 @@
             </section>
 
             <section>
-                <h1 id="adding-or-equal-to">Adding “or equal to”</h1>
-                <p>A short line underneath <strong>&lt;</strong> or <strong>&gt;</strong> adds “or equal to”. This means
-                    that the value at the limit is now allowed.</p>
-
-                <aside class="important-box" aria-labelledby="inclusive-symbols-title">
-                    <h2 class="important-box__title" id="inclusive-symbols-title">The boundary changes</h2>
-                    <p><math class="inline-inequality" aria-label="n is less than 12">
-                            <mi>n</mi>
-                            <mo>&lt;</mo>
-                            <mn>12</mn>
-                        </math>
-                        leaves out 12, whereas
-                        <math class="inline-inequality" aria-label="n is less than or equal to 12">
-                            <mi>n</mi>
-                            <mo>&le;</mo>
-                            <mn>12</mn>
-                        </math>
-                        includes it.
-                    </p>
-                    <p>Likewise,
-                        <math class="inline-inequality" aria-label="t is greater than negative 4">
-                            <mi>t</mi>
-                            <mo>&gt;</mo>
-                            <mrow>
-                                <mo>&minus;</mo>
-                                <mn>4</mn>
-                            </mrow>
-                        </math>
-                        leaves out &minus;4, whereas
-                        <math class="inline-inequality" aria-label="t is greater than or equal to negative 4">
-                            <mi>t</mi>
-                            <mo>&ge;</mo>
-                            <mrow>
-                                <mo>&minus;</mo>
-                                <mn>4</mn>
-                            </mrow>
-                        </math>
-                        includes it.
-                    </p>
-                </aside>
+                <h1 id="adding-or-equal-to">A line under the symbol lets the boundary value in</h1>
+                <p>A short line underneath <strong>&lt;</strong> or <strong>&gt;</strong> adds “or equal to”, so the
+                    value at the boundary is allowed.</p>
 
                 <div class="boundary-pair">
                     <article class="boundary-card">
                         <div class="boundary-card__statement"><i>n</i> &le; 12</div>
-                        <h3><i>n</i> is at most 12</h3>
+                        <h2><i>n</i> is at most 12</h2>
                         <p><i>n</i> &le; 12 includes 12 and every value below it.</p>
                         <div class="boundary-card__values" aria-label="Examples: ten, eleven and twelve are included">
                             <span>10</span><span>11</span><span class="is-boundary">12</span>
@@ -246,7 +198,7 @@
                     </article>
                     <article class="boundary-card boundary-card--greater">
                         <div class="boundary-card__statement"><i>t</i> &ge; &minus;4</div>
-                        <h3><i>t</i> is at least &minus;4</h3>
+                        <h2><i>t</i> is at least &minus;4</h2>
                         <p><i>t</i> &ge; &minus;4 includes &minus;4 and every value above it.</p>
                         <div class="boundary-card__values"
                             aria-label="Examples: negative four, negative three and negative two are included">
@@ -254,6 +206,8 @@
                         </div>
                     </article>
                 </div>
+
+                <p>A speed limit of 30 is such a boundary: every allowed speed is 30 or less, and speed &le; 30 says so.</p>
 
                 <p>Other phrases with the same meanings are:</p>
                 <ul>
@@ -271,8 +225,8 @@
             </section>
 
             <section>
-                <h1 id="values-between-two-boundaries">Values between two boundaries</h1>
-                <p>Two inequalities can be joined to show that a value lies between two boundaries.</p>
+                <h1 id="values-between-two-boundaries">Two inequalities joined hold a value between two boundaries</h1>
+                <p>&minus;2 &lt; <i>n</i> &le; 3 joins two inequalities: <i>n</i> is greater than &minus;2 and at most 3.</p>
 
                 <div class="integer-example">
                     <h2>List the integers that satisfy <span data-boundary-question>&minus;2 &lt; <i>n</i> &le; 3</span>
@@ -359,44 +313,36 @@
 
                     <ol class="integer-example__steps">
                         <li>
-                            <p>The open left boundary is not included.</p>
+                            <p>The left symbol, &lt;, has no line under it, so the left boundary is not included.</p>
                         </li>
                         <li>
-                            <p>The closed right boundary is included.</p>
+                            <p>The right symbol, &le;, has the line, so the right boundary is included.</p>
                         </li>
                         <li>
-                            <p>Read the <span class="gloss" data-term="integer">integer</span> points between the boundaries.</p>
+                            <p>The <span class="gloss" data-term="integer">integers</span> between them are the solutions.</p>
                         </li>
                     </ol>
                     <p class="integer-example__answer"><strong data-boundary-answer><i>n</i> = &minus;1, 0, 1, 2 or
                             3</strong></p>
                 </div>
+                <p>That list answers &ldquo;write down all the integer values of <i>n</i> that satisfy
+                    &minus;2 &lt; <i>n</i> &le; 3&rdquo;, the form the question takes on a paper.</p>
 
-                <aside class="important-box" aria-labelledby="variable-position-title">
-                    <h2 class="important-box__title" id="variable-position-title">Read from the variable</h2>
-                    <p>In <strong>&minus;2 &lt; <i>n</i></strong>, the point of the symbol faces &minus;2. Reading from
-                        <i>n</i> gives “<i>n</i> is greater than &minus;2”.
-                    </p>
-                </aside>
             </section>
 
             <section>
-                <h1>Keep the comparison direction</h1>
+                <h1>Common mistakes</h1>
                 <ul class="slips">
-                    <li><b>Reversing &lt; and &gt;</b> <span>The point faces the smaller value and the wide
-                            opening faces the larger one. Turned round, 0.7 &lt; 0.65 says the opposite of what it
-                            means to.</span></li>
-                    <li><b>Forgetting negative order</b> <span>&minus;2 &gt; &minus;7 because &minus;2 lies closer to
-                            zero.</span></li>
-                    <li><b>Missing the equality line</b> <span><i>x</i> &le; 5 includes 5, but <i>x</i> &lt; 5 does
-                            not.</span></li>
-                    <li><b>Reading only left to right</b> <span>3 &lt; <i>n</i> means that <i>n</i> is greater than
-                            3.</span></li>
+                    <li><b>Reversing &lt; and &gt;</b>
+                    <span>0.7 &lt; 0.65 is the wrong way round: the point must face 0.65, the smaller value.</span></li>
+                    <li><b>Forgetting negative order</b> <span>&minus;2 &lt; &minus;7 is wrong: &minus;2 is closer to zero, so &minus;2 &gt; &minus;7.</span></li>
+                    <li><b>Missing the equality line</b> <span><i>x</i> = 5 does not satisfy <i>x</i> &lt; 5; it does satisfy <i>x</i> &le; 5, whose line under the symbol lets the boundary in.</span></li>
+                    <li><b>Reading right to left</b> <span>3 &lt; <i>n</i> does not say <i>n</i> is less than 3: the point faces 3, so <i>n</i> is greater than 3, and <i>n</i> = 2 fails.</span></li>
                 </ul>
             </section>
 
             <section>
-                <h1 id="remember">Remember</h1>
+                <h1 id="remember">Summary</h1>
                 <ol class="recap">
                     <li>The six symbols are <span class="sf">=</span>, <span class="sf">&ne;</span>, <span
                             class="sf">&lt;</span>, <span class="sf">&gt;</span>, <span class="sf">&le;</span> and

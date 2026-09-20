@@ -49,59 +49,47 @@
                 <p>Long division is used when the <span class="gloss" data-term="divisor">divisor</span> has two digits. Each subtraction is written down, and the <span class="gloss" data-term="remainder">remainder</span> it leaves is the starting amount for the
                     next stage.</p>
                 <aside class="important-box" aria-labelledby="layout-title">
-                    <h2 class="important-box__title" id="layout-title">Read the layout as 1,794 divided by 23</h2>
+                    <h2 class="important-box__title" id="layout-title">Setting out 1,794 &divide; 23</h2>
                     <p>Write <strong>23</strong> outside the bracket, <strong>1,794</strong> inside and the <span class="gloss" data-term="quotient">quotient</span> above. A decimal divisor is made an <span class="gloss" data-term="integer">integer</span> first, using <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/dividingByDecimals.html">dividing by a decimal</a>.</p>
                 </aside>
-            </section>
-
-            <section>
-                <h1>List the multiples first</h1>
-                <p>At each stage, choose the greatest <span class="gloss" data-term="multiple">multiple</span> of the divisor that does not exceed the current amount. Listing the first nine multiples makes that choice exact.</p>
+                <p>At each stage, choose the greatest <span class="gloss" data-term="multiple">multiple</span> of the divisor that does not exceed the current amount. With the first nine multiples listed, the choice is a matter of looking.</p>
                 <div class="multiples-example" aria-label="The first nine multiples of 23">
                     <div><span>1 &times; 23</span><strong>23</strong></div><div><span>2 &times; 23</span><strong>46</strong></div><div><span>3 &times; 23</span><strong>69</strong></div>
                     <div><span>4 &times; 23</span><strong>92</strong></div><div><span>5 &times; 23</span><strong>115</strong></div><div><span>6 &times; 23</span><strong>138</strong></div>
                     <div><span>7 &times; 23</span><strong>161</strong></div><div><span>8 &times; 23</span><strong>184</strong></div><div><span>9 &times; 23</span><strong>207</strong></div>
                 </div>
-                <p>For a current amount of 179, choose <strong>161 = 7 &times; 23</strong>. The next multiple, 184, is too large. This proves that the next quotient digit is 7.</p>
+                <p>For 179, <strong>7 &times; 23 = 161</strong> fits and 8 &times; 23 = 184 does not, so the quotient digit is 7.</p>
             </section>
 
             <section>
-                <h1>A whole-number quotient</h1>
+                <h1>Each cycle gives one quotient digit</h1>
                 <aside class="important-box" aria-labelledby="leading-block-title">
-                    <h2 class="important-box__title" id="leading-block-title">Begin with the shortest leading block that is large enough</h2>
+                    <h2 class="important-box__title" id="leading-block-title">Begin with 179, the fewest leading digits that reach 23</h2>
                     <div class="leading-choice" role="img" aria-label="1 is less than 23; 17 is less than 23; 179 is at least 23, so begin with 179">
                         <span>1 &lt; 23</span><i aria-hidden="true">&rarr;</i><span>17 &lt; 23</span><i aria-hidden="true">&rarr;</i><strong>179 &ge; 23</strong>
                     </div>
-                    <p>Begin with 179, the shortest leading block containing a whole group of 23. This block ends in the tens <span class="gloss" data-term="column">column</span>, so write the 7 above the 9: it represents 7 tens, or 70, in the quotient. In full <span class="gloss" data-term="place value">place value</span>, <strong>70 &times; 23 = 1,610</strong>.</p>
+                    <p>179 ends in the tens <span class="gloss" data-term="column">column</span>, so the quotient digit 7 is written above the 9: it stands for 7 tens, and in full <span class="gloss" data-term="place value">place value</span> <strong>70 &times; 23 = 1,610</strong>.</p>
                 </aside>
                 <div class="worked">
                     <div class="long-scene" data-long-scene data-dividend="1794" data-divisor="23">
                         <div class="long-scene__sticky">
                             <p class="long-scene__heading" data-expression>1,794 &divide; 23</p>
                             <div class="long-stage" data-paper aria-label="Long division working for 1794 divided by 23"></div>
-                            <div class="long-scene__caption" aria-live="polite" aria-atomic="true"><h2 data-step-title>Set out the calculation</h2><p data-step-copy>Write 23 outside the bracket and 1,794 inside.</p></div>
+                            <div class="long-scene__caption" aria-live="polite" aria-atomic="true"><h2 data-step-title>Start with 1,794 &divide; 23</h2><p data-step-copy>1,794 is 1 thousand, 7 hundreds, 9 tens and 4 ones.</p></div>
                             <div class="long-scene__progress" data-progress aria-hidden="true"></div>
                         </div>
                         <noscript><p><strong>1,794 &divide; 23 = 78</strong></p></noscript>
                     </div>
                 </div>
-            </section>
-
-            <section id="the-long-division-cycle">
-                <h1>The long-division cycle</h1>
-                <div class="rule-card long-rule">
-                    <h2 class="rule-card__statement">Choose, multiply, subtract, bring down</h2>
+                <div class="rule-card long-rule" id="the-long-division-cycle">
+                    <h2 class="rule-card__statement">Choose, write, subtract, bring down</h2>
                     <ol>
                         <li><span>1</span><p><strong>Choose</strong> the greatest listed multiple not exceeding the current amount.</p></li>
                         <li><span>2</span><p><strong>Write</strong> its <span class="gloss" data-term="multiplier">multiplier</span> in the quotient and its value underneath.</p></li>
                         <li><span>3</span><p><strong>Subtract</strong> to find the remainder. It must be smaller than the divisor.</p></li>
-                        <li><span>4</span><p><strong>Bring down</strong> the next written digit and repeat until every digit currently in the <span class="gloss" data-term="dividend">dividend</span> has been used.</p></li>
+                        <li><span>4</span><p><strong>Bring down</strong> the next digit and repeat until every digit of the <span class="gloss" data-term="dividend">dividend</span> has been used.</p></li>
                     </ol>
                 </div>
-                <aside class="important-box" aria-labelledby="estimate-title">
-                    <h2 class="important-box__title" id="estimate-title">The multiples list sets both boundaries</h2>
-                    <p>For 179, <strong>7 &times; 23 = 161</strong> is small enough and <strong>8 &times; 23 = 184</strong> is too large. Checking both prevents a quotient digit that is one too high or one too low.</p>
-                </aside>
             </section>
 
             <section>
@@ -115,52 +103,46 @@
                     </div>
                     <ol>
                         <li><strong>Start with 30:</strong> 2 &times; 15 = 30, so write 2 above the 0.</li>
-                        <li><strong>Bring down 4:</strong> 4 is smaller than 15, so write 0 above the 4. There are no groups of 15 in this place.</li>
+                        <li><strong>Bring down 4:</strong> 4 is smaller than 15, so write 0 above the 4.</li>
                         <li><strong>Bring down 5:</strong> 45 &divide; 15 = 3, so write 3 above the 5.</li>
                     </ol>
                 </div>
-                    <noscript>
-                        <p class="worked__fallback"><strong>3,045 &divide; 15 = 203</strong></p>
-                    </noscript>
             </section>
 
             <section>
                 <h1>Choose the form of the answer</h1>
-                <p>Once every original digit has been used, a non-zero remainder creates a choice. Stop if the answer is required as a whole-number quotient with a remainder; append a decimal point and zeroes only if the answer should continue as a decimal.</p>
+                <p>Once every original digit has been used, stop if the answer is required as a whole-number quotient with a remainder; append a decimal point and zeros only if the answer should continue as a decimal.</p>
                 <div class="reading-pair">
-                    <article><h2>Stop with a remainder</h2><p><strong>1,456 &divide; 32 = 45 remainder 16.</strong> After the 6 has been used, 16 remains. It is smaller than 32, so this is a complete remainder answer.</p></article>
+                    <article><h2>Stop with a remainder</h2><p><strong>1,456 &divide; 32 = 45 remainder 16.</strong> After the 6 has been used, 16 remains. It is smaller than 32, so the answer is complete; what a worded question does with the 16 is explained on <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/interpretingRemainders.html">interpreting a remainder</a>.</p></article>
                     <article><h2>Continue as a decimal</h2><p><strong>1,456 &divide; 32 = 45.5.</strong> Write 1,456 as 1,456.0, then bring down the appended zero: 160 &divide; 32 = 5.</p></article>
                 </div>
             </section>
 
             <section id="through-the-decimal-point">
                 <h1>Continue through the decimal point</h1>
-                <p>Use every digit already written in the dividend first. Place the quotient's <span class="gloss" data-term="decimal point">decimal point</span> directly above the dividend's point. If a non-zero remainder remains after the final written digit and an exact decimal is required, append a zero and continue.</p>
+                <p>In 68.4 &divide; 24 the 4 tenths are brought down like any other digit, and the quotient's <span class="gloss" data-term="decimal point">decimal point</span> goes directly above the dividend's point:</p>
                 <div class="worked">
                     <h2 class="worked__title">Example: calculate 68.4 &divide; 24 exactly</h2>
                     <div class="long-scene" data-long-scene data-dividend="68.4" data-divisor="24">
                         <div class="long-scene__sticky">
                             <p class="long-scene__heading" data-expression>68.4 &divide; 24</p>
                             <div class="long-stage" data-paper aria-label="Long division working for 68.4 divided by 24"></div>
-                            <div class="long-scene__caption" aria-live="polite" aria-atomic="true"><h2 data-step-title>Set out the calculation</h2><p data-step-copy>Keep the decimal point on the same place-value boundary in the dividend and quotient.</p></div>
+                            <div class="long-scene__caption" aria-live="polite" aria-atomic="true"><h2 data-step-title>Start with 68.4 &divide; 24</h2><p data-step-copy>68.4 is 6 tens, 8 ones and 4 tenths.</p></div>
                             <div class="long-scene__progress" data-progress aria-hidden="true"></div>
                         </div>
                         <noscript><p><strong>68.4 &divide; 24 = 2.85</strong></p></noscript>
                     </div>
                 </div>
-                <p>Whether a remainder is sufficient can depend on the question's context, as explained on <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/interpretingRemainders.html">interpreting a remainder</a>.</p>
             </section>
 
             <section>
                 <h1>Divide two chosen numbers</h1>
-                <p>A two-digit divisor is what makes the listed multiples worth writing: nine of them cover every
-                    digit the quotient can take.</p>
-                <div class="long-scene long-scene--sandbox" data-long-scene data-dividend="1456" data-divisor="32">
+                <div class="long-scene long-scene--sandbox" data-long-scene data-dividend="2231" data-divisor="46">
                     <div class="long-scene__sticky">
                         <div class="long-scene__inputs">
-                            <label class="long-scene__number-field"><span>Number to divide</span><input type="text" inputmode="decimal" value="1456" maxlength="8" autocomplete="off" spellcheck="false" data-dividend-input></label>
+                            <label class="long-scene__number-field"><span>Number to divide</span><input type="text" inputmode="decimal" value="2231" maxlength="8" autocomplete="off" spellcheck="false" data-dividend-input></label>
                             <span aria-hidden="true">&divide;</span>
-                            <label class="long-scene__number-field"><span>Divide by</span><input type="text" inputmode="numeric" value="32" maxlength="2" autocomplete="off" spellcheck="false" data-divisor-input></label>
+                            <label class="long-scene__number-field"><span>Divide by</span><input type="text" inputmode="numeric" value="46" maxlength="2" autocomplete="off" spellcheck="false" data-divisor-input></label>
                             <fieldset class="long-scene__answer-mode">
                                 <legend>Answer as</legend>
                                 <div>
@@ -170,10 +152,10 @@
                             </fieldset>
                         </div>
                         <div class="long-stage" data-paper aria-label="Long division working for a chosen calculation"></div>
-                        <div class="long-scene__caption" aria-live="polite" aria-atomic="true"><h2 data-step-title>Set out 1,456 &divide; 32</h2><p data-step-copy>Use the listed multiples to choose each quotient digit.</p></div>
+                        <div class="long-scene__caption" aria-live="polite" aria-atomic="true"><h2 data-step-title>Start with 2,231 &divide; 46</h2><p data-step-copy>2,231 is 2 thousands, 2 hundreds, 3 tens and 1 one.</p></div>
                         <div class="long-scene__progress" data-progress aria-hidden="true"></div>
                     </div>
-                    <noscript><p><strong>1,456 &divide; 32 = 45.5</strong></p></noscript>
+                    <noscript><p><strong>2,231 &divide; 46 = 48.5</strong></p></noscript>
                 </div>
             </section>
 
@@ -183,11 +165,14 @@
                     <article><h2>Whole-number result</h2><p><strong>78 &times; 23 = 1,794</strong>, so 1,794 &divide; 23 = 78.</p></article>
                     <article><h2>Decimal result</h2><p><strong>2.85 &times; 24 = 68.4</strong>, so 68.4 &divide; 24 = 2.85.</p></article>
                 </div>
-                <p>With a final remainder, multiply the whole-number quotient by the divisor and add the remainder. Recovering the dividend confirms every chosen multiple, subtraction and quotient place.</p>
+                <p>With a final remainder, multiply the quotient by the divisor and add the remainder: 45 &times; 32 + 16 = 1,456, the dividend back again.</p>
             </section>
 
             <section id="long-division-in-context">
-                <h1>Long division in context</h1>
+                <h1>Sharing equally and cutting into equal parts both lead to division</h1>
+                <p>Worded questions do not always say divide. A total shared equally into groups, or cut into equal
+                    parts, is a division: the divisor is the number of groups or parts, and the quotient is the size
+                    of each, in the unit the total came in.</p>
                 <div class="reading-pair">
                     <article><h2>Equal packing</h2><p>A supplier places 1,794 bolts equally into 23 crates. Each crate contains <strong>78 bolts</strong>.</p></article>
                     <article><h2>Equal lengths</h2><p>A 68.4 m cable is cut into 24 equal <span class="gloss" data-term="length">lengths</span>. Each length is <strong>2.85 m</strong>.</p></article>
@@ -195,25 +180,21 @@
             </section>
 
             <section>
-                <h1>Keep each quotient digit in place</h1>
+                <h1>Common mistakes</h1>
                 <ul class="slips">
                     <li><b>Choosing a multiple that is too large</b>
-                    <span>Check the chosen multiple and the next one. The chosen value must
-                            not exceed the current amount: for 179, 8 &times; 23 = 184 lands
-                            nearest but overshoots, and 7 &times; 23 = 161 is the one that fits.</span></li>
-                    <li><b>Subtracting inaccurately</b>
-                    <span>Keep digits in their columns and check that each remainder is
-                            smaller than the divisor. A remainder of 25 in a division by 23
-                            means the multiple chosen was one too small.</span></li>
+                    <span>For 250, 7 &times; 37 = 259 is more than 250, so subtracting it goes below zero; 6 &times; 37 = 222
+                            leaves 250 &minus; 222 = 28.</span></li>
+                    <li><b>Choosing a multiple that is too small</b>
+                    <span>For 250, 5 &times; 37 = 185 leaves 250 &minus; 185 = 65, and 65 still holds a 37. A
+                            remainder larger than the divisor means the next multiple up was the one to take:
+                            6 &times; 37 = 222, remainder 28.</span></li>
                     <li><b>Omitting a zero in the quotient</b>
-                    <span>If the current amount is smaller than the divisor, write 0 in that
-                            quotient place before bringing down the next digit. In 3,045 &divide; 15 the
-                            4 tens make no whole 15, so that place takes a 0: skip it and the quotient
-                            reads 23 instead of 203.</span></li>
+                    <span>In 6,342 &divide; 21, after 63 &minus; 63 = 0 the brought-down 4 is smaller than 21, so that place
+                            takes a 0: skip it and the quotient reads 32 instead of 302.</span></li>
                     <li><b>Misplacing the decimal point</b>
-                    <span>Write the quotient&rsquo;s point directly above the dividend&rsquo;s
-                            point. The divisor is a whole number, so only the dividend
-                            carries a point: 68.4 &divide; 24 = 2.85, not 28.5.</span></li>
+                    <span>In 91.8 &divide; 27 the divisor is a whole number, so only the dividend carries a point, and the
+                            quotient&rsquo;s point sits above it: 3.4, not 34.</span></li>
                 </ul>
             </section>
 
@@ -223,7 +204,7 @@
                     <li>List the first nine multiples of the two-digit divisor.</li>
                     <li>Begin with enough leading dividend digits to make an amount at least as large as the divisor.</li>
                     <li>Choose a multiple, write the quotient digit—including 0 when no positive multiple fits—subtract and bring down the next digit.</li>
-                    <li>Keep decimal points on the same boundary and append zeroes only when a decimal continuation is required.</li>
+                    <li>Keep decimal points on the same boundary and append zeros only when a decimal continuation is required.</li>
                     <li>Check by multiplying the quotient by the divisor, then adding any final remainder.</li>
                 </ol>
             </section>

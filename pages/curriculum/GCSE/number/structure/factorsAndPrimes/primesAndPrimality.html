@@ -152,32 +152,25 @@
                     </noscript>
                 </div>
 
-
                 <div class="rule-card">
                     <h2 class="rule-card__statement">A prime has exactly two factors: 1 and itself</h2>
-                    <ol class="rule-card__conditions">
-                        <li>13 is prime. Its factors are 1 and 13: one pair, and one rectangle.</li>
-                        <li>12 is not. Its factors are 1, 2, 3, 4, 6 and 12: three pairs, and three rectangles.</li>
-                    </ol>
                 </div>
 
-                <h2 class="sub" id="why-1-is-not-prime">Why 1 is left out</h2>
+                <h2 class="sub" id="why-1-is-not-prime">Why 1 is out and 2 is in</h2>
 
-                <p>1 has one factor. A single counter is the rectangle <span class="sf" role="math"
-                        aria-label="1 times 1">1 &times; 1</span>, both of whose sides are 1, so its factor list is 1
-                    alone; a prime needs two, so 1 is not prime.</p>
+                <p>A single counter is the rectangle <span class="sf" role="math" aria-label="1 times 1">1 &times; 1</span>,
+                    and both sides are 1, so 1 has one factor; a prime needs two, so 1 is not prime.</p>
 
                 <p>2 has exactly two, 1 and 2, so 2 is prime. Every larger even number has 2 as a third factor beside
                     1 and itself, so 2 is the only even prime.</p>
             </section>
 
             <section aria-labelledby="the-primes-up-to-50">
-                <h1 id="the-primes-up-to-50">The primes up to 50</h1>
+                <h1 id="the-primes-up-to-50">Crossing out multiples leaves the primes</h1>
 
                 <p>Fifty numbers tested one at a time is fifty factor lists. Crossing out <span class="gloss"
                         data-term="multiple">multiples</span> finds the same primes with no lists at all: every
-                    multiple of 2 past 2 itself has 2 as a third factor, and one factor too many rules it out; the
-                    same goes for 3, 5 and 7.</p>
+                    multiple of 2 beyond 2 itself has 2 as a third factor, and the same goes for 3, 5 and 7.</p>
 
                 <div class="worked">
                     <h2 class="worked__title">Cross out the multiples from 1 to 50</h2>
@@ -190,8 +183,7 @@
 
                             <div class="prime-scene__caption" aria-live="polite">
                                 <h3 data-step-title>The numbers 1 to 50</h3>
-                                <p data-step-copy>1 has one factor, so it is set aside before any crossing starts.
-                                </p>
+                                <p data-step-copy>1 is set aside, and the crossing starts at 2.</p>
                             </div>
 
                             <div class="prime-scene__progress" data-progress aria-hidden="true"></div>
@@ -205,38 +197,28 @@
                     </noscript>
                 </div>
 
-                <p>The crossing-out is the sieve of Eratosthenes, named for the Greek mathematician who set it down in
-                    the third century BC. Each of 2, 3, 5 and 7 makes its first new cross at its own square, because every smaller multiple
-                    has a smaller factor: <span class="sf" role="math" aria-label="3 times 2 equals 6">3 &times; 2 =
-                        6</span> went with the 2s, and <span class="sf" role="math" aria-label="5 times 2">5 &times;
-                        2</span>, <span class="sf" role="math" aria-label="5 times 3">5 &times; 3</span> and <span
-                        class="sf" role="math" aria-label="5 times 4">5 &times; 4</span> went with the 2s and 3s. The
-                    next square, <span class="sf" role="math" aria-label="11 times 11 equals 121">11 &times; 11 =
-                        121</span>, is past 50, so the crossing is complete at 7.</p>
+                <p>Each of 2, 3, 5 and 7 makes its first new cross at its own square: every smaller multiple of 5 is
+                    <span class="sf" role="math" aria-label="5 times 2">5 &times; 2</span>, <span class="sf" role="math"
+                        aria-label="5 times 3">5 &times; 3</span> or <span class="sf" role="math" aria-label="5 times 4">5
+                        &times; 4</span>, and the smaller factor crossed it first.</p>
+
 
                 <div class="rule-card rule-card--list">
                     <h2 class="rule-card__statement"><span class="sf" role="math"
                             aria-label="2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47">2, 3, 5, 7, 11,
                             13, 17, 19, 23, 29, 31, 37, 41, 43, 47</span></h2>
                     <ol class="rule-card__conditions">
-                        <li>The fifteen primes up to 50, and 2 the only even one among them.</li>
                         <li>Every number from 2 to 50 not on the list is a multiple of 2, 3, 5 or 7.</li>
+                        <li>The list runs on to 100 with 53, 59, 61, 67, 71, 73, 79, 83, 89 and 97: twenty-five primes
+                            in all, sieved by the same four.</li>
                     </ol>
                 </div>
             </section>
 
             <section aria-labelledby="testing-one-number">
-                <h1 id="testing-one-number">Testing one number</h1>
+                <h1 id="testing-one-number">Try the primes in turn, and stop once a square passes the number</h1>
 
-                <p>97 is past the end of the sieve. The primes 2, 3, 5 and 7 are tried as candidate factors of 97, one at a time: <span class="sf" role="math"
-                        aria-label="97 divided by 2">97 &divide; 2</span>, <span class="sf" role="math"
-                        aria-label="97 divided by 3">97 &divide; 3</span>, <span class="sf" role="math"
-                        aria-label="97 divided by 5">97 &divide; 5</span> and <span class="sf" role="math"
-                        aria-label="97 divided by 7">97 &divide; 7</span>. A division with nothing over has found
-                    a factor, and the number under test is not prime; a <span class="gloss"
-                        data-term="remainder">remainder</span> rules that candidate out, and the next candidate
-                    factor is tried.
-                </p>
+                <p>97 is tested on its own, with no sieve:</p>
 
                 <div class="rule-card">
                     <h2 class="rule-card__statement">Try the primes 2, 3, 5, 7, 11, &hellip; as candidate factors in
@@ -244,13 +226,12 @@
                     <ol class="rule-card__conditions">
                         <li>An exact division finds a factor pair, so the number under test is not prime and the
                             trials stop there.</li>
-                        <li>A remainder from every candidate factor before the stop means the number under test is
+                        <li>A <span class="gloss" data-term="remainder">remainder</span> from every candidate factor before the stop means the number under test is
                             prime.</li>
-                        <li>Only primes are candidates: a whole number of 4s is a whole number of 2s, so 4 divides only
-                            what 2 divides, and 6, 8 and 9 divide only what 2 or 3 divides.</li>
+                        <li>Only primes are candidates: every 4 is two 2s, so anything 4 divides, 2 divides already, and 6,
+                            8 and 9 divide only what 2 or 3 divides.</li>
                     </ol>
                 </div>
-
 
                 <div class="important-box" aria-labelledby="why-the-square">
                     <div class="important-box__head">
@@ -259,22 +240,13 @@
                     </div>
                     <p>In any factor pair, the smaller factor multiplied by itself is at most the number under test. For
                         97, <span class="sf" role="math" aria-label="11 times 11 equals 121">11 &times; 11 =
-                            121</span> is past 97, so the smaller factor of any pair for 97 is below 11. Every number
+                            121</span> is past 97, so the smaller factor of any pair for 97 is below 11.</p>
+
+                    <p>Every number
                         from 2 to 10 is a multiple of 2, 3, 5 or 7. Once those four candidates leave remainders, no
                         number from 2 to 10 divides 97, and 97 has no pair but <span class="sf" role="math"
                             aria-label="1 times 97">1 &times; 97</span>.</p>
                 </div>
-
-                <p>Stopping at the square is stopping at the <span class="gloss" data-term="square root">square
-                        root</span>: <span class="sf" role="math" aria-label="the square root of 97"><span
-                            class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign"
-                                viewBox="0 0 24 40" aria-hidden="true" focusable="false">
-                                <path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3"
-                                    stroke-linejoin="miter" stroke-linecap="butt" />
-                            </svg><span class="rad__over">97</span></span></span> lies between 9 and 10, since
-                    <span class="sf" role="math" aria-label="9 times 9 equals 81">9 &times; 9 = 81</span> and <span
-                        class="sf" role="math" aria-label="10 times 10 equals 100">10 &times; 10 = 100</span>, and no candidate factor above it needs trying.
-                </p>
 
                 <div class="worked">
                     <h2 class="worked__title">Test 97</h2>
@@ -287,8 +259,8 @@
 
                             <div class="prime-scene__caption" aria-live="polite">
                                 <h3 data-step-title>97 on the line</h3>
-                                <p data-step-copy>The candidate factors 2, 3, 5 and 7 are counted along the line in turn,
-                                    and each count either lands on 97 or falls short of it.</p>
+                                <p data-step-copy>Counting in 2s, 3s, 5s and 7s from zero: a count that lands on 97 is an exact division,
+                                    and one that falls short leaves its gap as the remainder.</p>
                             </div>
 
                             <div class="prime-scene__progress" data-progress aria-hidden="true"></div>
@@ -328,6 +300,11 @@
                     </noscript>
                 </div>
 
+            </section>
+
+            <section aria-labelledby="exact-division-stops">
+                <h1 id="exact-division-stops">An exact division ends the test</h1>
+
                 <div class="wex">
                     <h2 class="wex__title">Example: test 117</h2>
                     <p class="wex__task">Try the candidate factors in turn, and stop at the first exact division.</p>
@@ -353,16 +330,19 @@
                     </ol>
                 </div>
 
-                <h2 class="sub" id="every-candidate-in-turn">Every candidate factor in turn</h2>
+            </section>
 
-                <p>The candidate factors 2 to 31 settle any <span class="gloss" data-term="whole number">whole
-                        number</span> up to 999. <span class="sf" role="math" aria-label="31 times 31 equals 961">31 &times; 31 = 961</span>
+            <section aria-labelledby="every-candidate-in-turn">
+                <h1 id="every-candidate-in-turn">Three-digit numbers need no candidate past 31</h1>
+
+                <p>Any <span class="gloss" data-term="whole number">whole number</span> up to 999 needs only the candidate factors 2 to 31:
+                    <span class="sf" role="math" aria-label="31 times 31 equals 961">31 &times; 31 = 961</span>
                     is under 999 and <span class="sf" role="math" aria-label="37 times 37 equals 1,369">37 &times;
                         37 = 1,369</span> is past it.</p>
 
                 <div class="trier" data-trier>
                     <div class="trier__head">
-                        <label class="trier__field"><span>Number</span><input type="text" inputmode="numeric" value="97"
+                        <label class="trier__field"><span>Number</span><input type="text" inputmode="numeric" value="211"
                                 maxlength="3" autocomplete="off" spellcheck="false" aria-describedby="trier-scope"
                                 data-trier-input></label>
                         <span id="trier-scope" class="trier__hidden">A whole number from 1 to 999.</span>
@@ -371,25 +351,25 @@
                         <ol class="trier__list" data-trier-list>
                             <li class="trier__chip is-miss" data-prime="2"><b class="trier__prime">2</b><span
                                     class="trier__note" data-note="r 1" aria-hidden="true"></span><span
-                                    class="trier__hidden" data-say>97 ÷ 2 = 48 r 1</span></li>
+                                    class="trier__hidden" data-say>211 ÷ 2 = 105 r 1</span></li>
                             <li class="trier__chip is-miss" data-prime="3"><b class="trier__prime">3</b><span
                                     class="trier__note" data-note="r 1" aria-hidden="true"></span><span
-                                    class="trier__hidden" data-say>97 ÷ 3 = 32 r 1</span></li>
+                                    class="trier__hidden" data-say>211 ÷ 3 = 70 r 1</span></li>
                             <li class="trier__chip is-miss" data-prime="5"><b class="trier__prime">5</b><span
-                                    class="trier__note" data-note="r 2" aria-hidden="true"></span><span
-                                    class="trier__hidden" data-say>97 ÷ 5 = 19 r 2</span></li>
+                                    class="trier__note" data-note="r 1" aria-hidden="true"></span><span
+                                    class="trier__hidden" data-say>211 ÷ 5 = 42 r 1</span></li>
                             <li class="trier__chip is-miss" data-prime="7"><b class="trier__prime">7</b><span
-                                    class="trier__note" data-note="r 6" aria-hidden="true"></span><span
-                                    class="trier__hidden" data-say>97 ÷ 7 = 13 r 6</span></li>
-                            <li class="trier__chip is-stop" data-prime="11"><b class="trier__prime">11</b><span
-                                    class="trier__note" data-note="121 &gt; 97" aria-hidden="true"></span><span
-                                    class="trier__hidden" data-say>11 × 11 = 121 is past 97</span></li>
-                            <li class="trier__chip is-idle" data-prime="13"><b class="trier__prime">13</b><span
-                                    class="trier__note" data-note="" aria-hidden="true"></span><span
-                                    class="trier__hidden" data-say></span></li>
-                            <li class="trier__chip is-idle" data-prime="17"><b class="trier__prime">17</b><span
-                                    class="trier__note" data-note="" aria-hidden="true"></span><span
-                                    class="trier__hidden" data-say></span></li>
+                                    class="trier__note" data-note="r 1" aria-hidden="true"></span><span
+                                    class="trier__hidden" data-say>211 ÷ 7 = 30 r 1</span></li>
+                            <li class="trier__chip is-miss" data-prime="11"><b class="trier__prime">11</b><span
+                                    class="trier__note" data-note="r 2" aria-hidden="true"></span><span
+                                    class="trier__hidden" data-say>211 ÷ 11 = 19 r 2</span></li>
+                            <li class="trier__chip is-miss" data-prime="13"><b class="trier__prime">13</b><span
+                                    class="trier__note" data-note="r 3" aria-hidden="true"></span><span
+                                    class="trier__hidden" data-say>211 ÷ 13 = 16 r 3</span></li>
+                            <li class="trier__chip is-stop" data-prime="17"><b class="trier__prime">17</b><span
+                                    class="trier__note" data-note="289 &gt; 211" aria-hidden="true"></span><span
+                                    class="trier__hidden" data-say>17 × 17 = 289 is past 211</span></li>
                             <li class="trier__chip is-idle" data-prime="19"><b class="trier__prime">19</b><span
                                     class="trier__note" data-note="" aria-hidden="true"></span><span
                                     class="trier__hidden" data-say></span></li>
@@ -406,8 +386,8 @@
                                     class="trier__note" data-note="" aria-hidden="true"></span><span
                                     class="trier__hidden" data-say></span></li>
                         </ol>
-                        <p class="trier__summary" aria-live="polite" data-trier-summary>97 is prime: the candidates 2, 3,
-                            5 and 7 each leave a remainder, and 11 &times; 11 = 121 is past 97.</p>
+                        <p class="trier__summary" aria-live="polite" data-trier-summary>211 is prime: the candidates 2, 3, 5, 7, 11 and 13 each leave a remainder, and
+                            17 &times; 17 = 289 is past 211.</p>
                         <p class="trier__empty" data-trier-empty hidden>A whole number from 1 to 999 is needed.</p>
                     </div>
                 </div>
@@ -416,19 +396,9 @@
             <section aria-labelledby="common-mistakes">
                 <h1 id="common-mistakes">Common mistakes</h1>
                 <ul class="slips">
-                    <li><b>Counting 1 as a prime</b>
-                        <span>1 has one factor, not two, so the primes below 10 are 2, 3, 5 and 7. A list that
-                            starts 1, 2, 3, 5, 7 has one number too many.</span>
-                    </li>
-                    <li><b>Ruling 2 out for being even</b>
-                        <span>2 has exactly two factors, 1 and 2, so it is prime. 4, 6, 8 and every even number
-                            after them have 2 as a third factor; 2 itself does not.</span>
-                    </li>
-                    <li><b>Calling 91 prime because it is odd</b>
-                        <span>Odd rules out the candidate 2 and nothing else. 91 &divide; 7 = 13 exactly, so 91 = 7 &times; 13;
-                            51 = 3 &times; 17 and 57 = 3 &times; 19 are caught the same way, their digit <span
-                                class="gloss" data-term="sum">sums</span> 6 and
-                            12 giving them away.</span>
+                    <li><b>Calling 51 prime because it is odd</b>
+                        <span>Odd rules out the candidate 2 and nothing else. 51 = 3 &times; 17 and 57 = 3 &times; 19: the digit
+                            <span class="gloss" data-term="sum">sums</span> 6 and 12 are multiples of 3.</span>
                     </li>
                     <li><b>Stopping before the square</b>
                         <span>For 49, 7 &times; 7 = 49 is not past 49, so the candidate 7 is still tried, and it
@@ -438,7 +408,7 @@
             </section>
 
             <section aria-labelledby="remember">
-                <h1 id="remember">Remember</h1>
+                <h1 id="remember">Summary</h1>
                 <ol class="recap">
                     <li>A prime has exactly two factors, 1 and itself: 13 is prime, and 12, with six factors, is
                         not.</li>

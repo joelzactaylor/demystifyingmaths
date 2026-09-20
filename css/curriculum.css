@@ -143,7 +143,9 @@ a.topic-card--next:hover { border-left-color: #09539d; background-color: #eef7fc
     white-space: nowrap;
 }
 
-.sf sup { font-size: .75em; }
+/* Never below 12px: an index in a slip's smaller type would otherwise drop
+   to 11px. */
+.sf sup { font-size: max(.75em, 12px); }
 
 /* ONWARD LINKS — block links, so they reset the centred shrink-to-fit `section a`
    rule in shared.css the same way the topic cards above do. */

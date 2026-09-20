@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return holder;
     };
 
-    let count = clamp(parseInt(scale.getAttribute("aria-valuenow") || "3", 10), MIN, MAX);
+    let count = clamp(parseInt(scale.getAttribute("aria-valuenow") || "5", 10), MIN, MAX);
 
     const show = (next) => {
         count = clamp(Math.round(next), MIN, MAX);
@@ -124,14 +124,14 @@ document.addEventListener("DOMContentLoaded", () => {
         reading.replaceChildren();
         if (odd) {
             reading.append(
-                `With an odd number of them the product stays negative, so `,
+                `An odd number of them multiplies to a negative, so `,
                 rootStatement(count, signed(value), `${MINUS}3`,
                     `the ${ORDINAL[count]} root of ${spoken(value)} equals negative 3`),
                 ".");
         } else {
             reading.append(
-                `With an even number the product turns positive, so nothing on the line has a `
-                + `${ORDINAL[count]} power of ${signed(-value)}.`);
+                `An even number of them multiplies to a positive, so nothing on the line has ${signed(-value)} as its `
+                + `${count === 2 ? "square" : `${ORDINAL[count]} power`}.`);
         }
     };
 

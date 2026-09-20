@@ -46,7 +46,7 @@
     font: 700 1.42rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 }
 
-.count-figure__num i { color: #52666f; font: 700 .68rem/1.1 Aleo, serif; font-style: normal; }
+.count-figure__num i { color: #52666f; font: 700 .88rem/1.1 Aleo, serif; font-style: normal; }
 .count-figure__num--answer { background: #fff8df; color: #9b5f12; }
 .count-figure__num--answer i { color: #9b5f12; }
 .count-figure figcaption { margin-top: 16px; color: #41535c; font-size: .92rem; line-height: 1.55; text-align: center; }
@@ -70,7 +70,7 @@
 
 .dec-rule ol { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 0; padding: 0; list-style: none; }
 .dec-rule li { padding: 13px; border-radius: 12px; background: #eef5fb; }
-.dec-rule li > span { display: grid; width: 28px; height: 28px; margin-bottom: 9px; place-items: center; border-radius: 50%; background: #116e93; color: #fff; font-size: .82rem; font-weight: 700; }
+.dec-rule li > span { display: grid; width: 28px; height: 28px; margin-bottom: 9px; place-items: center; border-radius: 50%; background: #116e93; color: #fff; font-size: .88rem; font-weight: 700; }
 .dec-rule p { margin: 0; color: #41535c; font-size: .88rem; line-height: 1.45; }
 
 /* THE SQUARE — the calculation as an area. The whole square is 1, so every
@@ -83,7 +83,7 @@
     display: grid;
     place-items: center;
     color: #52666f;
-    font: 700 .82rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font: 700 .9rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
 }
 
 .area-bracket::before,
@@ -172,7 +172,7 @@
 .dec-row__slot--decimal { background: rgba(255, 248, 223, .85); }
 .dec-row--head .dec-row__slot { display: none; }
 
-.dec-row__label { position: absolute; top: 0; display: grid; height: 100%; place-items: center; color: #52666f; font: 700 .66rem/1.1 Aleo, serif; }
+.dec-row__label { position: absolute; top: 0; display: grid; height: 100%; place-items: center; color: #52666f; font: 700 .82rem/1.1 Aleo, serif; }
 
 .dec-row__digit {
     position: absolute;
@@ -226,7 +226,7 @@
     height: 100%;
     place-items: center start;
     color: #52666f;
-    font: 700 .86rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font: 700 .9rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
     white-space: nowrap;
     opacity: 0;
 }
@@ -239,7 +239,7 @@
 .dec-balance { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 16px; justify-content: center; }
 .dec-balance__chip { display: grid; gap: 3px; min-width: 132px; padding: 9px 14px; justify-items: center; border-radius: 12px; opacity: 0; }
 .dec-balance__chip b { font: 700 1.05rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
-.dec-balance__chip i { font: 700 .68rem/1.2 Aleo, serif; font-style: normal; }
+.dec-balance__chip i { font: 700 .88rem/1.2 Aleo, serif; font-style: normal; }
 .dec-balance__chip--up { background: #eaf2fb; color: #09539d; }
 .dec-balance__chip--down { background: #fff8df; color: #9b5f12; }
 
@@ -272,7 +272,7 @@
 
 .dec-scene__inputs { display: flex; gap: 16px; padding: 20px 24px 14px; align-items: center; justify-content: center; }
 .dec-scene__inputs label { display: grid; gap: 6px; }
-.dec-scene__inputs label span { color: #41535c; font-size: .78rem; font-weight: 700; letter-spacing: .04em; }
+.dec-scene__inputs label span { color: #41535c; font-size: .88rem; font-weight: 700; letter-spacing: .04em; }
 
 .dec-scene__inputs input {
     width: 175px;
@@ -296,7 +296,13 @@
    page while it is being read. */
 .dec-scene__heading { margin: 0; padding: 20px 24px 2px; color: #173849; font: 700 1.42rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; text-align: center; }
 
-.dec-stage { display: grid; min-height: 0; padding: 14px 24px; overflow: hidden; align-items: center; background: #eaf3f8; }
+.dec-stage { position: relative; display: grid; min-height: 0; padding: 14px 24px; overflow: hidden; align-items: center; background: #eaf3f8; }
+
+/* The quiet refused state: the working and its caption are hidden but keep
+   their space, and the board says what it is waiting for. */
+.dec-scene.is-invalid .dec-paper,
+.dec-scene.is-invalid .dec-scene__caption { visibility: hidden; }
+.dec-scene.is-invalid .dec-stage::after { position: absolute; top: 50%; left: 50%; padding: 14px 18px; border: 2px dashed #b8cbd7; border-radius: 13px; background: rgba(255, 255, 255, .86); color: #687b84; content: "Enter two numbers to multiply"; font-weight: 700; transform: translate(-50%, -50%); }
 .dec-paper { position: relative; width: max-content; margin: 0 auto; padding: 18px 24px 22px; border-radius: 18px; background: #fff; box-shadow: 0 8px 24px rgba(23, 56, 73, .12); }
 
 .dec-scene__caption { display: grid; align-content: center; height: 7.4em; box-sizing: border-box; padding: 14px 28px 6px; text-align: center; }

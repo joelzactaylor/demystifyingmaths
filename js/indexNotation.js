@@ -589,14 +589,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const ordinals = ["", "first", "second", "third", "fourth", "fifth", "sixth"];
 
-    const spokenIndex = (index) => {
-        if (index === 2) return "squared";
-        if (index === 3) return "cubed";
-        return `to the power of ${index}`;
-    };
-
-    const spokenPower = (base, index) => `${base} ${spokenIndex(index)}`;
-
     /* Powers are written with a real raised digit in captions and headings, so
        a caption reads the way the page around it is written. */
     const supText = (index) => String(index)
@@ -681,7 +673,7 @@ document.addEventListener("DOMContentLoaded", () => {
            board that is being replaced has to take its loop with it. */
         release: (parts) => { if (parts.solid) parts.solid.stop(); },
 
-        heading: (model) => `${model.base}${supText(model.index)}, read as ${spokenPower(model.base, model.index)}`,
+        heading: (model) => `${model.base}${supText(model.index)}`,
 
         build(board, model) {
             board.replaceChildren();
@@ -956,7 +948,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return [
                 {
                     title: "The square",
-                    copy: "Every edge is the same length, which is what makes it a square rather than any other rectangle."
+                    copy: `Every edge is ${side} long.`
                 },
                 {
                     title: `${side} across`,
@@ -1257,15 +1249,15 @@ document.addEventListener("DOMContentLoaded", () => {
             return [
                 {
                     title: "The cube",
-                    copy: "Every edge is the same length, which is what makes it a cube rather than any other box."
+                    copy: `Every edge is ${side} long.`
                 },
                 {
                     title: `${side} across`,
-                    copy: `The width is ruled into ${side} equal parts, exactly as the square's was.`
+                    copy: `The width is ruled into ${side} equal parts, each of them 1 wide.`
                 },
                 {
                     title: `${side} down as well`,
-                    copy: `Ruling the height the same way marks each face into a ${side} by ${side} grid.`
+                    copy: `Ruling the height the same way marks the front face into a ${side} by ${side} grid.`
                 },
                 {
                     title: `${side} through as well`,
@@ -1273,11 +1265,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
                 {
                     title: "Count them",
-                    copy: `Each layer is ${side} × ${side} = ${layer} unit cubes, and counting every one of them gives ${readable(value)}.`
+                    copy: `Each layer is ${side} × ${side} = ${layer} unit cubes, and ${side} layers make ${readable(value)}.`
                 },
                 {
                     title: "The volume",
-                    copy: `Multiplying the three directions together gives the same ${readable(value)} in one step.`
+                    copy: `Multiplying the three edge lengths gives the same ${readable(value)} in one step.`
                 }
             ][clamp(index, 0, 5)];
         },
@@ -1399,24 +1391,24 @@ document.addEventListener("DOMContentLoaded", () => {
             if (index === 0) {
                 return {
                     title: "Start from the product",
-                    copy: `This product uses two different numbers: ${first.base} and ${second.base}. Sorting the equal factors into groups is the first move.`
+                    copy: `Two different numbers are multiplied, ${first.base} and ${second.base}, so the product becomes two powers.`
                 };
             }
             if (index === 1) {
                 return {
                     title: `The ${first.base}s`,
-                    copy: `There ${first.count === 1 ? "is" : "are"} ${first.count} factor${first.count === 1 ? "" : "s"} of ${first.base}, so that group becomes ${first.base} to the power of ${first.count}.`
+                    copy: `The group holds ${first.count} factor${first.count === 1 ? "" : "s"} of ${first.base}, so it becomes ${first.base}${supText(first.count)}.`
                 };
             }
             if (index === 2) {
                 return {
                     title: `The ${second.base}s`,
-                    copy: `There ${second.count === 1 ? "is" : "are"} ${second.count} factor${second.count === 1 ? "" : "s"} of ${second.base}, so that group becomes ${second.base} to the power of ${second.count}.`
+                    copy: `The group holds ${second.count} factor${second.count === 1 ? "" : "s"} of ${second.base}, so it becomes ${second.base}${supText(second.count)}.`
                 };
             }
             return {
                 title: "The product in index form",
-                copy: `${first.count} factor${first.count === 1 ? "" : "s"} of ${first.base} and ${second.count} of ${second.base}, written as ${first.base}${supText(first.count)} × ${second.base}${supText(second.count)}. The same five numbers are still being multiplied; only the way of writing them has changed.`
+                copy: `The same ${first.count + second.count} factors are still multiplied; ${first.base}${supText(first.count)} × ${second.base}${supText(second.count)} only writes them differently.`
             };
         },
 

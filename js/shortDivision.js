@@ -1,6 +1,6 @@
 /* Scroll-led short division. Each scene supplies the scroll distance while its
    inner card stays in view. Quotient digits are written, remainders move into
-   the next column, and appended decimal zeroes appear continuously with the
+   the next column, and appended decimal zeros appear continuously with the
    reader's scroll position. */
 
 (() => {
@@ -69,9 +69,12 @@
 
     const limitDivisor = (raw) => raw.replace(/[^2-9]/g, "").slice(0, 1);
 
-    const buildCalculation = (dividendText, divisor) => {
+    const buildCalculation = (dividendText, divisor, resultMode = "decimal") => {
         const dividend = tidyInput(dividendText);
         if (!dividend || !Number.isInteger(divisor) || divisor < 2 || divisor > 9) return null;
+        /* A remainder is a count of whole ones left over, so the remainder
+           route is offered for whole-number dividends only. */
+        if (resultMode === "remainder" && dividend.includes(".")) return null;
 
         const [whole, fraction = ""] = dividend.split(".");
         const originalDigits = `${whole}${fraction}`.split("").map(Number);
@@ -91,13 +94,13 @@
         originalDigits.forEach((digit) => useDigit(digit, false));
 
         let appended = 0;
-        while (remainder !== 0 && appended < 6) {
+        while (resultMode === "decimal" && remainder !== 0 && appended < 6) {
             digits.push(0);
             useDigit(0, true);
             appended += 1;
         }
 
-        const recurring = remainder !== 0;
+        const recurring = resultMode === "decimal" && remainder !== 0;
         const quotientDigits = operations.map((operation) => operation.quotient);
         const integerQuotient = quotientDigits.slice(0, integerPlaces).join("").replace(/^0+(?=\d)/, "") || "0";
         const fractionQuotient = quotientDigits.slice(integerPlaces).join("");
@@ -109,37 +112,56 @@
         const nonZero = beforePoint.findIndex((digit) => digit !== 0);
         const firstWritten = nonZero === -1 ? integerPlaces - 1 : nonZero;
 
+        const answer = resultMode === "remainder" && remainder
+            ? `${formatNumber(quotient)} remainder ${remainder}`
+            : formatNumber(quotient);
+
         return {
             dividend, divisor, digits, operations, quotient, quotientDigits,
             integerPlaces, originalLength: originalDigits.length, firstWritten,
-            appended, recurring, finalRemainder: remainder
+            appended, recurring, resultMode, answer, finalRemainder: remainder
         };
     };
 
     const placeFor = (calculation, index) => calculation.integerPlaces - index - 1;
     const placeLabel = (calculation, index) => placeNames.get(placeFor(calculation, index));
 
+    // "9 hundreds, 8 tens and 4 ones": the dividend read place by place, which
+    // is what the working then takes apart.
+    const placeReading = (calculation) => {
+        const parts = calculation.digits.slice(0, calculation.originalLength).map((digit, index) => {
+            const name = placeLabel(calculation, index);
+            return `${digit} ${digit === 1 ? name.replace(/s$/, "") : name}`;
+        });
+        return parts.length > 1 ? `${parts.slice(0, -1).join(", ")} and ${parts[parts.length - 1]}` : parts[0];
+    };
+
     const describe = (calculation, stage) => {
         const shownDividend = formatNumber(calculation.dividend);
         if (stage === 0) {
             return {
                 title: `Set out ${shownDividend} ÷ ${calculation.divisor}`,
-                copy: calculation.dividend.includes(".")
-                    ? "Write the divisor outside and the dividend inside. Put the decimal point in the answer directly above the one in the dividend."
-                    : "Write the divisor outside and the dividend inside. The answer will be written above the line."
+                copy: `${shownDividend} is ${placeReading(calculation)}.`
             };
         }
 
         if (stage > calculation.operations.length) {
-            return calculation.recurring
-                ? {
-                    title: `${shownDividend} ÷ ${calculation.divisor} begins ${calculation.quotient}`,
-                    copy: "The remainder has not reached zero, so the decimal continues. Recurring decimals are covered on their own page."
-                }
-                : {
-                    title: `${shownDividend} ÷ ${calculation.divisor} = ${calculation.quotient}`,
-                    copy: "The remainder is zero, so the division is exact."
+            if (calculation.recurring) {
+                return {
+                    title: `${shownDividend} ÷ ${calculation.divisor} begins ${formatNumber(calculation.quotient)}`,
+                    copy: "The remainder never reaches zero, so the decimal goes on without end: it recurs."
                 };
+            }
+            if (calculation.finalRemainder) {
+                return {
+                    title: `${shownDividend} ÷ ${calculation.divisor} = ${calculation.answer}`,
+                    copy: `Every digit of ${shownDividend} has been used and ${calculation.finalRemainder} is left, smaller than ${calculation.divisor}, so the answer stops here.`
+                };
+            }
+            return {
+                title: `${shownDividend} ÷ ${calculation.divisor} = ${calculation.answer}`,
+                copy: "The remainder is zero, so the division is exact."
+            };
         }
 
         const index = stage - 1;
@@ -166,33 +188,30 @@
             ? `Add a zero: ${operation.amount} ÷ ${calculation.divisor} = ${operation.quotient}${remainderText}`
             : `${operation.amount} ÷ ${calculation.divisor} = ${operation.quotient}${remainderText}`;
 
-        const beginsWithTwoDigits = index === calculation.firstWritten && calculation.firstWritten > 0;
-        const opening = operation.appended
-            ? `Adding a zero after the decimal point does not change ${shownDividend}. `
-            : beginsWithTwoDigits
-                ? `The first two digits form ${operation.amount}. `
-            : operation.before
-                ? `The carried ${operation.before} and the next digit ${operation.digit} form ${operation.amount}. `
-                : "";
-        const written = `Write ${operation.quotient} above the ${operation.digit}.`;
+        const written = operation.quotient === 0
+            ? `${operation.amount} holds no whole ${calculation.divisor}, so 0 is written above the ${operation.digit} to keep the ${placeLabel(calculation, index)} place.`
+            : `Write ${operation.quotient} above the ${operation.digit}.`;
 
         if (operation.remainder && hasNext) {
             return {
                 title,
-                copy: `${opening}${written} Carry the remainder ${operation.remainder} in front of the next digit ${nextDigit}, making ${operation.remainder * 10 + nextDigit}.`
+                copy: `${written} Carry the remainder ${operation.remainder} in front of ${calculation.operations[index + 1].appended ? "an added 0" : `the next digit ${nextDigit}`}, making ${operation.remainder * 10 + nextDigit}.`
             };
         }
 
+        const left = calculation.resultMode === "remainder"
+            ? ` ${operation.remainder} is left and there is no next digit to carry it into: it is the remainder.`
+            : " The decimal continues.";
         return {
             title,
-            copy: `${opening}${written} ${operation.remainder ? "The decimal continues." : "There is nothing to carry."}`
+            copy: `${written}${operation.remainder ? left : ""}`
         };
     };
 
     const createRenderer = (calculation, paper, showPointGuide) => {
         const cell = calculation.digits.length > 10 ? 42
             : calculation.digits.length > 8 ? 48
-                : calculation.digits.length > 6 ? 56 : 66;
+                : calculation.digits.length > 6 ? 56 : 80;
         const board = make("div", "division-board");
         board.setAttribute("aria-hidden", "true");
         board.style.setProperty("--digits", calculation.digits.length);
@@ -237,6 +256,15 @@
         const cursor = make("span", "division-board__cursor");
 
         board.append(places, quotientRow, divisor, bracket, dividendRow);
+
+        /* On the remainder route the answer ends "r 1" on the quotient line,
+           where it is written on paper, so the finished board carries it. */
+        let remainderMark = null;
+        if (calculation.resultMode === "remainder" && calculation.finalRemainder) {
+            remainderMark = make("span", "division-board__remainder", `r ${calculation.finalRemainder}`);
+            remainderMark.style.gridColumn = String(calculation.digits.length + 2);
+            board.append(remainderMark);
+        }
 
         let points = null;
         if (calculation.dividend.includes(".") || calculation.appended) {
@@ -289,6 +317,12 @@
                 carry.style.transform = `translate(${(1 - reveal) * -34}px, ${(1 - reveal) * -24}px)`;
             });
 
+            if (remainderMark) {
+                const reveal = ease((t - calculation.operations.length - .55) / .45);
+                remainderMark.style.opacity = reveal;
+                remainderMark.style.transform = `translateX(${(1 - reveal) * -10}px)`;
+            }
+
             if (points) {
                 const reveal = points.appended
                     ? ease((t - calculation.originalLength - .72) / .5)
@@ -321,6 +355,7 @@
         const progressBar = scene.querySelector("[data-progress]");
         const dividendInput = scene.querySelector("[data-dividend-input]");
         const divisorInput = scene.querySelector("[data-divisor-input]");
+        const modeInputs = Array.from(scene.querySelectorAll("[data-result-mode]"));
         const fixed = !dividendInput || !divisorInput;
 
         let calculation = null;
@@ -485,7 +520,17 @@
             const selection = active && typeof active.selectionStart === "number"
                 ? [active.selectionStart, active.selectionEnd]
                 : null;
-            const nextCalculation = buildCalculation(dividend, Number(divisorText));
+            const chosenMode = modeInputs.find((input) => input.checked)?.value;
+            const resultMode = fixed ? (scene.dataset.resultMode || "decimal") : (chosenMode || "decimal");
+            const nextCalculation = buildCalculation(dividend, Number(divisorText), resultMode);
+            /* No number, or a divisor outside 2 to 9, shows no calculation: the
+               last working is hidden rather than left standing, the card keeps
+               its size, and the board says what it is waiting for. A decimal
+               dividend on the remainder route is refused the same way, with
+               its own message. */
+            scene.classList.toggle("is-invalid", !nextCalculation);
+            scene.classList.toggle("is-remainder-of-decimal",
+                !nextCalculation && resultMode === "remainder" && Boolean(tidyInput(dividend)) && dividend.includes("."));
             if (!nextCalculation) return;
 
             calculation = nextCalculation;
@@ -547,6 +592,7 @@
                     if (!sticky.contains(document.activeElement)) reset();
                 }));
             });
+            modeInputs.forEach((input) => input.addEventListener("change", accept));
         }
 
         accept();

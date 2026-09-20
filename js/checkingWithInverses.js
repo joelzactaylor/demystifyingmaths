@@ -126,7 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
             kind: "power", a: "4", index: "3", c: "64",
             settled: {
                 title: "A power, with no sign between the ends",
-                copy: "Nothing stands between 4 and 64 to turn. The index 3 is the operation."
+                copy: "4³ = 64 has no sign between its ends to turn into an inverse: the index 3 is the operation."
             },
             moved: {
                 title: "The index becomes a root",

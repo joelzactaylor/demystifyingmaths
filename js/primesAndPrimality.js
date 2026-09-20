@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
             { title: "13 counters in a row", copy: "1 × 13: one row of 13, the widest rectangle there is." },
             { title: "Rows of 2", copy: "13 ÷ 2 = 6 r 1. Six rows of 2 use 12 counters, and the thirteenth has no row to join." },
             { title: "Rows of 3", copy: "13 ÷ 3 = 4 r 1. Four rows of 3 use 12, and again one counter is over." },
-            { title: "Rows of 4, and the stop", copy: "4 × 4 = 16 is past 13, so a rectangle 4 or more wide is fewer than 4 tall, and 1, 2 and 3 tall have all been tried." },
+            { title: "Rows of 4, and the stop", copy: "4 × 4 = 16 is past 13, so a rectangle 4 or more wide has at most 3 rows, and rows of 2 and 3 have already failed." },
             { title: "One rectangle", copy: "1 × 13 is the only rectangle, so 13 has two factors: 1 and 13." }
         ],
         notes: ["1 × 13", "13 ÷ 2 = 6 r 1", "13 ÷ 3 = 4 r 1", "4 × 4 = 16", "1 × 13: the factors are 1 and 13"],
@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", () => {
         primes: [2, 3, 5, 7],
         rest: [11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47],
         stages: [
-            { title: "The numbers 1 to 50", copy: "1 has one factor, so it is set aside before any crossing starts." },
+            { title: "The numbers 1 to 50", copy: "1 is set aside, and the crossing starts at 2." },
             { title: "Ring 2, cross its multiples", copy: "2 stays: its factors are 1 and 2. Every second number after it, 4, 6, 8 and on to 50, has 2 as a third factor." },
             { title: "Ring 3, cross its multiples", copy: "6, 12 and every even multiple of 3 went with the 2s. The first number 3 crosses on its own is 3 × 3 = 9, then 15, 21, 27, 33, 39 and 45." },
             { title: "Ring 5", copy: "10, 15 and 20 are crossed already, so 5 starts at 5 × 5 = 25 and adds 35." },
@@ -404,12 +404,12 @@ document.addEventListener("DOMContentLoaded", () => {
         lanes: [[2], [3], [5], [7]],
         ending: { kind: "stop", next: 11, from: 2, to: 10 },
         stages: [
-            { title: "97 on the line", copy: "The candidate factors 2, 3, 5 and 7 are counted along the line in turn, and each count either lands on 97 or falls short of it." },
+            { title: "97 on the line", copy: "Counting in 2s, 3s, 5s and 7s from zero: a count that lands on 97 is an exact division, and one that falls short leaves its gap as the remainder." },
             { title: "Counting in 2s", copy: "48 twos reach 96 and the next is 98, so 97 ÷ 2 = 48 r 1." },
             { title: "Counting in 3s", copy: "32 threes reach 96, so 97 ÷ 3 = 32 r 1. The digits agree: 9 + 7 = 16 is not a multiple of 3." },
             { title: "Counting in 5s", copy: "19 fives reach 95, so 97 ÷ 5 = 19 r 2, as a last digit of 7 says." },
             { title: "Counting in 7s", copy: "13 sevens reach 91 and 14 reach 98, so 97 ÷ 7 = 13 r 6." },
-            { title: "The stop, and the verdict", copy: "11 × 11 = 121 is past 97, so the smaller factor of any pair for 97 lies from 2 to 10, and each of those has been tried or is a multiple of 2 or 3. 97 is prime." }
+            { title: "The stop, and the verdict", copy: "11 × 11 = 121 is past 97, so no candidate past 7 is needed: 97 is prime." }
         ],
         notes: ["", "97 ÷ 2 = 48 r 1", "97 ÷ 3 = 32 r 1", "97 ÷ 5 = 19 r 2", "97 ÷ 7 = 13 r 6", "97 is prime"]
     });
@@ -421,7 +421,7 @@ document.addEventListener("DOMContentLoaded", () => {
         stages: [
             { title: "91 on the line", copy: "91 is odd, its digits add to 10 and it ends in 1, so the digit tests rule out the candidates 2, 3 and 5 before any count begins." },
             { title: "2, 3 and 5 fall short", copy: "45 twos, 30 threes and 18 fives all reach 90, one short of 91." },
-            { title: "Counting in 7s", copy: "13 sevens land on 91 exactly: 91 ÷ 7 = 13, with nothing over." },
+            { title: "Counting in 7s", copy: "13 sevens land on 91: 91 ÷ 7 = 13 exactly." },
             { title: "A factor pair", copy: "7 × 13 = 91, so 7 and 13 are factors of 91 beside 1 and 91. Four factors are two too many, and 91 is not prime." }
         ],
         notes: ["", "45 × 2 = 90,  30 × 3 = 90,  18 × 5 = 90", "91 ÷ 7 = 13", "91 = 7 × 13"]
@@ -542,7 +542,7 @@ document.addEventListener("DOMContentLoaded", () => {
     /* --------------------------------------------------------------- tester
 
        Every prime in turn, run on a number of the reader's own. The chips are
-       built in the markup with 97 already answered, so a page without scripts
+       built in the markup with 211 already answered, so a page without scripts
        shows one true state; the script rewrites the text in place and never
        rebuilds the list under the cursor. The short note on a chip is drawn by
        the stylesheet from data-note, and the full statement sits beside it

@@ -266,7 +266,7 @@
                     "title": "HCF and LCM from a Venn diagram",
                     "description": "The Venn method for two or three numbers, and HCF times LCM as the product.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "The Venn-diagram method for HCF and LCM of two or three numbers, and HCF x LCM = product for two numbers, including finding a missing number from the other three values. Assumes both prime-factor pages; formal set notation lives in Probability, not here. Both tiers. (N4)"
                 },
                 {
@@ -274,7 +274,7 @@
                     "title": "Choosing HCF or LCM in context",
                     "description": "Deciding which a worded problem needs: coinciding events or equal shares.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Worded problems deciding between HCF and LCM: buses coinciding, largest equal tiles or shares, gear teeth, packs matching; extracting the numbers and naming the decision. Calculation methods assumed from the earlier pages; pure computation questions stay there. Both tiers. (N4)"
                 },
                 {

@@ -31,7 +31,7 @@
 }
 
 .sum-board__op { color: #b86821; }
-.sum-board__cell--label { min-height: 28px; color: #52666f; font: 700 .68rem/1.1 Aleo, serif; }
+.sum-board__cell--label { min-height: 28px; color: #52666f; font: 700 .82rem/1.1 Aleo, serif; }
 .sum-board__cell--point { color: #b86821; font-family: Aleo, serif; }
 .sum-board__cell--placeholder { color: #a8b5bf; font-weight: 400; }
 .sum-board__cell--term { background: rgba(238, 245, 251, .82); }
@@ -126,9 +126,9 @@
 
 .number-line { position: relative; height: 62px; margin: 18px 0 10px; border-bottom: 3px solid #173849; }
 .number-line__span { position: absolute; top: 12px; height: 20px; border: 2px solid #d99a20; border-bottom: 0; border-radius: 9px 9px 0 0; background: rgba(255, 244, 214, .75); }
-.number-line__span b { position: absolute; top: -21px; left: 50%; color: #9b5f12; font-size: .84rem; transform: translateX(-50%); white-space: nowrap; }
+.number-line__span b { position: absolute; top: -22px; left: 50%; color: #9b5f12; font-size: .88rem; transform: translateX(-50%); white-space: nowrap; }
 .number-line__mark { position: absolute; bottom: -3px; width: 3px; height: 14px; background: #173849; }
-.number-line__mark span { position: absolute; top: 15px; left: 50%; color: #41535c; font-size: .82rem; font-weight: 700; transform: translateX(-50%); white-space: nowrap; }
+.number-line__mark span { position: absolute; top: 15px; left: 50%; color: #41535c; font-size: .88rem; font-weight: 700; transform: translateX(-50%); white-space: nowrap; }
 
 /* The scroll-led calculation. */
 .subtraction-scene {
@@ -170,7 +170,7 @@
 
 .subtraction-scene__inputs { display: flex; gap: 16px; padding: 20px 24px 6px; align-items: center; justify-content: center; }
 .subtraction-scene__inputs label { display: grid; gap: 6px; }
-.subtraction-scene__inputs label span { color: #41535c; font-size: .78rem; font-weight: 700; letter-spacing: .04em; }
+.subtraction-scene__inputs label span { color: #41535c; font-size: .88rem; font-weight: 700; letter-spacing: .04em; }
 
 .subtraction-scene__inputs input {
     width: 190px;
@@ -192,16 +192,24 @@
 
 /* Shown only while the second number is the larger one, when the difference
    would fall below zero and this method no longer applies. */
-.subtraction-scene__notice { margin: 0 24px; padding: 7px 14px 9px; border-radius: 10px; background: #fdf1ef; color: #923027; font-size: .84rem; line-height: 1.45; text-align: center; }
+/* The quiet house treatment for a refused entry, not a warning. */
+.subtraction-scene__notice { margin: 0 24px; padding: 9px 14px; border: 2px dashed #b8cbd7; border-radius: 10px; background: rgba(255, 255, 255, .86); color: #687b84; font-size: .92rem; font-weight: 700; line-height: 1.45; text-align: center; }
 .subtraction-scene__notice[hidden] { display: none; }
-.subtraction-scene__notice a { color: #923027; }
+.subtraction-scene__notice a { width: auto; margin: 0; color: #116e93; font-size: inherit; text-shadow: none; }
 
 /* A worked example names itself inside the card, because the card leaves the
    page while it is being read. */
 .subtraction-scene[data-a] .subtraction-scene__sticky { height: auto; min-height: 0; }
 .subtraction-scene__heading { margin: 0; padding: 20px 24px 2px; color: #173849; font: 700 1.42rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; text-align: center; }
 
-.subtraction-board { display: grid; min-height: 0; margin-top: 10px; padding: 16px 24px; overflow: hidden; align-items: center; background: #eaf3f8; }
+.subtraction-board { position: relative; display: grid; min-height: 0; margin-top: 10px; padding: 16px 24px; overflow: hidden; align-items: center; background: #eaf3f8; }
+
+/* The quiet refused state: the working and its caption are hidden but keep
+   their space; an empty field is named on the board, and a second number
+   larger than the first keeps its own notice. */
+.subtraction-scene.is-invalid .subtraction-board__paper,
+.subtraction-scene.is-invalid .subtraction-scene__caption { visibility: hidden; }
+.subtraction-scene.is-empty .subtraction-board::after { position: absolute; top: 50%; left: 50%; padding: 14px 18px; border: 2px dashed #b8cbd7; border-radius: 13px; background: rgba(255, 255, 255, .86); color: #687b84; content: "Enter two numbers to subtract"; font-weight: 700; transform: translate(-50%, -50%); }
 .subtraction-board__paper { position: relative; width: max-content; margin: 0 auto; padding: 18px 26px 22px; border-radius: 18px; background-color: #fff; background-image: linear-gradient(rgba(53, 104, 184, .075) 1px, transparent 1px), linear-gradient(90deg, rgba(53, 104, 184, .075) 1px, transparent 1px); background-size: 22px 22px; box-shadow: 0 8px 24px rgba(23, 56, 73, .12); }
 
 .subtraction-board__row { display: flex; align-items: stretch; width: max-content; margin-left: auto; }
@@ -225,7 +233,7 @@
     transition: color .2s ease, text-decoration-color .2s ease;
 }
 
-.subtraction-board__cell--label { min-height: 30px; color: #52666f; font: 700 .68rem/1.1 Aleo, serif; text-align: center; }
+.subtraction-board__cell--label { min-height: 30px; color: #52666f; font: 700 .82rem/1.1 Aleo, serif; text-align: center; }
 .subtraction-board__cell--point { width: 18px; min-width: 18px; color: #b86821; font-family: Aleo, serif; }
 .subtraction-board__cell--placeholder { color: #a8b5bf; font-weight: 400; }
 .subtraction-board__row--term .subtraction-board__cell:not(.subtraction-board__cell--point) { background: rgba(238, 245, 251, .82); }

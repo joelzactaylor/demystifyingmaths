@@ -65,9 +65,9 @@
             <section aria-labelledby="is-the-answer-845">
                 <h1 id="is-the-answer-845">Does 802 &minus; 47 come to 845?</h1>
 
-                <p>Working it out again runs the same steps in the same order, so a slip made the first time is made
-                    again and the two attempts agree. Undoing it tests the answer instead, and a wrong answer carried
-                    backwards has no reason to land where it started.</p>
+                <p>Working 802 &minus; 47 out again runs the same steps in the same order, so a slip in the exchanging
+                    is made again and the two attempts agree. Adding the 47 back to 845 tests the answer instead: a wrong
+                    answer carried backwards does not land on 802.</p>
 
                 <div class="wex">
                     <h2 class="wex__title">Example: <span class="sf" role="math"
@@ -95,16 +95,16 @@
                 </div>
 
                 <p>The check does more than disagree: the gap is the size of the slip. 892 overshoots 802 by 90,
-                    and 845 stands the same 90 above the true answer. Ninety is nine tens and
-                    no units, so the units digit is sound and the slip is in the tens column. The subtraction comes
-                    to 755, and <span class="sf" role="math" aria-label="755 plus 47 equals 802">755 + 47 =
+                    so 845 is 90 above the true answer.</p>
+
+                <p>Ninety is nine tens and no ones, so the ones digit 5 is right and the slip is further left:
+                    845 &minus; 90 = 755, and <span class="sf" role="math" aria-label="755 plus 47 equals 802">755 + 47 =
                         802</span> confirms it.</p>
             </section>
 
             <section aria-labelledby="which-statement">
                 <h1 id="which-statement">Which statement undoes the calculation</h1>
 
-                <p>The shape of the calculation decides which statement tests it.</p>
 
                 <ul class="undoes">
                     <li>
@@ -149,9 +149,8 @@
                     </li>
                 </ul>
 
-                <p>Every one of those pairings is the same move. The two end numbers change places, and the
-                    operation between them turns into its inverse: a subtraction into an addition, a division into a
-                    multiplication, a power into a root.</p>
+                <p>Every one of those pairings is the same move: the two end numbers change places, and the
+                    operation turns into its inverse:</p>
 
                 <div class="worked">
                     <div class="inv-scene" data-inv-scene data-scene="rearrange">
@@ -161,9 +160,8 @@
                             </div>
 
                             <div class="inv-scene__caption" aria-live="polite">
-                                <h2 data-step-title>The ends change places</h2>
-                                <p data-step-copy>Swapping them and inverting the operation between them writes
-                                    the check.</p>
+                                <h2 data-step-title>A finished subtraction</h2>
+                                <p data-step-copy>47 has been taken from 802, and 755 is the answer to test.</p>
                             </div>
 
                             <div class="inv-scene__progress" data-progress aria-hidden="true"></div>
@@ -189,35 +187,26 @@
                     </noscript>
                 </div>
 
-                <div class="rule-card">
-                    <h2 class="rule-card__statement">Writing the check</h2>
-                    <ol class="rule-card__conditions">
-                        <li>Start from the answer, not from the numbers that made it.</li>
-                        <li>Apply the opposite operation, using one of the numbers that made it.</li>
-                        <li>The other one comes back if the answer is right.</li>
-                    </ol>
-                </div>
 
-                <p>That statement always tests the answer, and it is not the only one that does: <span class="sf"
+                <p>The inverse statement is not the only one that tests the answer: <span class="sf"
                         role="math" aria-label="94 minus 56 equals 38">94 &minus; 56 = 38</span> is confirmed by <span
                         class="sf" role="math" aria-label="38 plus 56 equals 94">38 + 56 = 94</span> and equally
-                    by <span class="sf" role="math" aria-label="94 minus 38 equals 56">94 &minus; 38 = 56</span>. What
-                    never works is rearranging the three numbers into an unrelated calculation — one that is not tied to
-                    the original question.</p>
+                    by <span class="sf" role="math" aria-label="94 minus 38 equals 56">94 &minus; 38 = 56</span>. 56 &minus; 38 = 18
+                    uses two of the same numbers and makes a fourth, so it tests nothing.</p>
 
                 <div class="wex">
                     <h2 class="wex__title">Example: <span class="sf" role="math"
-                            aria-label="is 17 times 23 equal to 391">17 &times; 23 &#8799; 391</span></h2>
+                            aria-label="is 19 times 24 equal to 456">19 &times; 24 &#8799; 456</span></h2>
                     <p class="wex__task">Undo the multiplication with a division.</p>
                     <ol class="wex__steps">
                         <li>
-                            <span class="wex__do"><span class="sf" role="math" aria-label="391 divided by 23">391
-                                    &divide; 23</span></span>
+                            <span class="wex__do"><span class="sf" role="math" aria-label="456 divided by 24">456
+                                    &divide; 24</span></span>
                             <span class="wex__why">Start from the answer and divide by one of the numbers.</span>
                         </li>
                         <li>
                             <span class="wex__do"><span class="sf" role="math"
-                                    aria-label="391 divided by 23 equals 17">391 &divide; 23 = 17</span></span>
+                                    aria-label="456 divided by 24 equals 19">456 &divide; 24 = 19</span></span>
                             <span class="wex__why">The other number comes back, so the multiplication holds.</span>
                         </li>
                     </ol>
@@ -228,8 +217,8 @@
             <section aria-labelledby="one-statement-not-enough">
                 <h1 id="one-statement-not-enough">When one inverse statement is not enough</h1>
 
-                <p>A division that leaves a remainder has two pieces of answer, and both have to go back in. The whole
-                    groups are multiplied and the remainder is added on afterwards.</p>
+                <p>47 &divide; 6 = 7 r 5 has two parts to its answer, the 7 whole groups and the 5 left over, and a
+                    check has to put both back.</p>
 
                 <figure class="grid">
                     <div class="grid__figure" aria-hidden="true">
@@ -315,18 +304,8 @@
             <section aria-labelledby="what-a-root-leaves">
                 <h1 id="what-a-root-leaves">What a root check leaves unsettled</h1>
 
-                <p>A root undoes a power, but a square root hands back only the size of the number that was
-                    squared. Two numbers square to 49, and the root sign names one of them: <span class="sf" role="math"
-                        aria-label="the square root of 49 equals 7"><span class="rad"><span class="caret"
-                                aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40"
-                                aria-hidden="true" focusable="false">
-                                <path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3"
-                                    stroke-linejoin="miter" stroke-linecap="butt" />
-                            </svg><span class="rad__over">49</span></span> = 7</span>, while <span class="sf"
-                        role="math"
-                        aria-label="open bracket negative 7 close bracket to the power 2 equals 49">(&minus;7)<span
-                            class="caret" aria-hidden="true">^</span><sup>2</sup> = 49</span> as well. So the check
-                    settles the size and says nothing about which of the two signs was meant.</p>
+                <p>A square root undoes a squaring only as far as size: <span class="sf" role="math" aria-label="the square root of 49 equals 7"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">49</span></span> = 7</span> says nothing about whether 7 or
+                    &minus;7 was squared:</p>
 
                 <div class="wex">
                     <h2 class="wex__title">Example: <span class="sf" role="math"
@@ -342,19 +321,18 @@
                                             <path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor"
                                                 stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt" />
                                         </svg><span class="rad__over">49</span></span> = 7</span></span>
-                            <span class="wex__why">Undoing the squaring gives the size of the number that was
-                                squared.</span>
+                            <span class="wex__why">Both 7&sup2; and (&minus;7)&sup2; are 49, and the root sign names the positive one.</span>
                         </li>
                         <li>
                             <span class="wex__do"><span class="sf" role="math"
                                     aria-label="7 is not equal to negative 7">7 &ne; &minus;7</span></span>
-                            <span class="wex__why">Not a disagreement. &minus;7 is the same size as 7, and the root
-                                sign can only hand back one of the two.</span>
+                            <span class="wex__why">Not a disagreement: &minus;7 is the same size as 7, and size is all the root
+                                tests.</span>
                         </li>
                         <li>
                             <span class="wex__do">The index 2 is even.</span>
-                            <span class="wex__why">What the root cannot settle, the index does: an even index makes
-                                the answer positive whichever sign went in, so 49 is right.</span>
+                            <span class="wex__why">An even index makes the answer positive whichever sign went in, so
+                                (&minus;7)&sup2; = 49 is right.</span>
                         </li>
                     </ol>
                 </div>
@@ -370,7 +348,7 @@
                         class="sf" role="math"
                         aria-label="open bracket negative 4 close bracket to the power 3 equals negative 64">(&minus;4)<span
                             class="caret" aria-hidden="true">^</span><sup>3</sup> = &minus;64</span> by itself. Only an
-                    even index hands back two numbers of the same size, and choosing between them is settled on <a
+                    even index gives the same result for a number and its negative; choosing between them is on <a
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/positiveAndNegativeRoots.html">positive
                         and negative square roots</a>.
                 </p>
@@ -381,43 +359,41 @@
                 <h1 id="common-mistakes">Common mistakes</h1>
                 <ul class="slips">
                     <li><b>Leaving the remainder out of the check</b>
-                    <span><span class="sf" role="math" aria-label="7 times 6 equals 42">7 &times; 6 =
-                            42</span> multiplies the whole groups back and stops, so it lands on 42 and
-                            not on the 47 it started from. The remainder is part of the answer and has
-                            to go back in: <span class="sf" role="math" aria-label="7 times 6 plus 5
-                            equals 47">7 &times; 6 + 5 = 47</span>.</span></li>
+                    <span>For 38 &divide; 5 = 7 r 3, <span class="sf" role="math" aria-label="7 times 5 equals 35">7 &times; 5 =
+                            35</span> multiplies the whole groups back and stops, so it lands on 35 and
+                            not on the 38 it started from; with the remainder back in, <span class="sf" role="math" aria-label="7 times 5 plus 3
+                            equals 38">7 &times; 5 + 3 = 38</span>.</span></li>
                     <li><b>Undoing with the wrong root</b>
                     <span>A square root undoes a squaring, and <span class="sf" role="math"
-                            aria-label="4 cubed equals 64">4<span class="caret"
-                            aria-hidden="true">^</span><sup>3</sup> = 64</span> was a cubing. <span
-                            class="sf" role="math" aria-label="the square root of 64 equals 8"><span
+                            aria-label="3 to the power of 4 equals 81">3<span class="caret"
+                            aria-hidden="true">^</span><sup>4</sup> = 81</span> was a fourth power. <span
+                            class="sf" role="math" aria-label="the square root of 81 equals 9"><span
                             class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg
                             class="rad__sign" viewBox="0 0 24 40" aria-hidden="true"
                             focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none"
                             stroke="currentColor" stroke-width="3" stroke-linejoin="miter"
-                            stroke-linecap="butt"/></svg><span class="rad__over">64</span></span> =
-                            8</span> is what 64 gives back when two of its three factors come off, so it
-                            settles nothing about the 4. <span class="sf" role="math" aria-label="the
-                            cube root of 64 equals 4"><span class="rad rad--order"><span class="caret"
-                            aria-hidden="true">&sup3;&radic;</span><span class="rad__index"
-                            data-order="3" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0
+                            stroke-linecap="butt"/></svg><span class="rad__over">81</span></span> =
+                            9</span> is 3 &times; 3, two of the four 3s in 81, so it does not return the 3 that
+                            was raised. <span class="sf" role="math" aria-label="the
+                            fourth root of 81 equals 3"><span class="rad rad--order"><span class="caret"
+                            aria-hidden="true">&#8308;&radic;</span><span class="rad__index"
+                            data-order="4" aria-hidden="true"></span><svg class="rad__sign" viewBox="0 0
                             24 40" aria-hidden="true" focusable="false"> <path d="M.5 24H5l5.5 13.5L22
                             1.5H24" fill="none" stroke="currentColor" stroke-width="3"
                             stroke-linejoin="miter" stroke-linecap="butt" /> </svg><span
-                            class="rad__over">64</span></span> = 4</span> does.</span></li>
+                            class="rad__over">81</span></span> = 3</span> does.</span></li>
                     <li><b>Working it out again instead of checking it</b>
-                    <span>Running the same steps in the same order reproduces the same exchange slip,
-                            so 447 comes back a second time and looks confirmed. A different calculation
-                            is what tests it: <span class="sf" role="math" aria-label="447 plus 247
+                    <span>Redoing 600 &minus; 247 repeats the exchange slip, so 447 comes back a second time and looks
+                            confirmed; <span class="sf" role="math" aria-label="447 plus 247
                             equals 694, which is not 600">447 + 247 = 694</span>, which is not 600.</span></li>
                 </ul>
             </section>
 
             <section aria-labelledby="remember">
-                <h1 id="remember">Remember</h1>
+                <h1 id="remember">Summary</h1>
                 <ol class="recap">
-                    <li>Redoing a calculation repeats its slips; undoing it does not.</li>
-                    <li>A check starts from the answer and applies the opposite operation.</li>
+                    <li>Redoing a calculation repeats a slip in its method; undoing it does not.</li>
+                    <li>A check starts from the answer and applies the inverse operation.</li>
                     <li>The gap between the check and the original number is the size of the slip.</li>
                     <li>A remainder is part of the answer, so <span class="sf" role="math"
                             aria-label="7 times 6 plus 5 equals 47">7 &times; 6 + 5 = 47</span> and not <span class="sf"

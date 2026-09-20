@@ -184,8 +184,8 @@ document.addEventListener("DOMContentLoaded", () => {
             return shape;
         });
         group.appendChild(svg("circle", { class: "factor-ring__centre", r: inner }));
-        const value = drawText(group, "factor-ring__value", 0, Math.max(2.5, radius * .17), "", Math.max(6, radius * .48));
-        const next = drawText(group, "factor-ring__value", 0, Math.max(2.5, radius * .17), "", Math.max(6, radius * .48));
+        const value = drawText(group, "factor-ring__value", 0, Math.max(2.5, radius * .17), "", Math.max(14, radius * .48));
+        const next = drawText(group, "factor-ring__value", 0, Math.max(2.5, radius * .17), "", Math.max(14, radius * .48));
         parent.appendChild(group);
         return { group, sectors, glows, inner, radius, value, next, x, y };
     };
@@ -213,7 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
        2,520 takes a smaller face than a three-character 120. */
     const fitValue = (disc, node, value) => {
         node.textContent = value;
-        const size = Math.min(disc.radius * .48, disc.inner * 1.6 / (.62 * String(value).length));
+        const size = Math.max(14, Math.min(disc.radius * .48, disc.inner * 1.6 / (.62 * String(value).length)));
         node.style.fontSize = `${size.toFixed(1)}px`;
         node.setAttribute("y", (Math.max(2.5, size * .36)).toFixed(1));
     };
@@ -315,9 +315,9 @@ document.addEventListener("DOMContentLoaded", () => {
         motion: .7,
         captions: [
             ["Both numbers as rings of prime factors", "120 has five prime factors and 252 has five, with one sector for each: ten sectors in all."],
-            ["Multiply the two numbers", "Every prime factor of both numbers goes into 120 × 252 = 30,240, so 120 and 252 both divide it. The lowest common multiple is at most 30,240."],
+            ["Multiply the two numbers", "A copy of every sector from both rings: 120 × 252 = 30,240, which 120 and 252 both divide."],
             ["The shared primes arrive twice", "2, 2 and 3 are in both numbers, so 30,240 holds one copy of each from 120 and another from 252: five 2s where a multiple of both needs three, three 3s where it needs two."],
-            ["One copy of each shared prime is surplus", "A 2, another 2 and a 3 leave: 30,240 ÷ 2 ÷ 2 ÷ 3 = 2,520. Both numbers still divide what is left: 2,520 ÷ 120 = 21 and 2,520 ÷ 252 = 10."]
+            ["The repeated shared factors are surplus", "A 2, another 2 and a 3 leave: 30,240 ÷ 2 ÷ 2 ÷ 3 = 2,520. Both numbers still divide what is left: 2,520 ÷ 120 = 21 and 2,520 ÷ 252 = 10."]
         ],
         build(root) {
             root.replaceChildren();
@@ -540,7 +540,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 table.replaceChildren();
                 const empty = document.createElement("p");
                 empty.className = "lcm-finder__empty";
-                empty.textContent = "Enter two whole numbers from 2 to 9,999.";
+                empty.textContent = "Two whole numbers from 2 to 9,999 are needed.";
                 table.appendChild(empty);
                 answer.textContent = "";
                 note.textContent = "";
@@ -590,7 +590,7 @@ document.addEventListener("DOMContentLoaded", () => {
             } else if (shared.length === 0) {
                 note.textContent = `${format(a)} × ${format(b)} = ${format(product)}: no prime is shared, so the LCM is the product.`;
             } else {
-                note.textContent = `${format(a)} × ${format(b)} = ${format(product)}, which is ${format(product / value)} times the LCM: one copy of each shared prime is surplus.`;
+                note.textContent = `${format(a)} × ${format(b)} = ${format(product)}, which is ${format(product / value)} times the LCM: the product counts the shared prime factors twice.`;
             }
         };
 

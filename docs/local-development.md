@@ -24,6 +24,52 @@ node scripts/serve.mjs 8001
 lsof -nP -iTCP:8000 -sTCP:LISTEN   # what is holding the port
 ```
 
+## Editing the page in the page (temporary)
+
+While it is served by `scripts/serve.mjs`, every teaching page — the lessons
+under `pages/curriculum/` that are not `practice*.html` or a menu, and the
+extracurricular pages — carries an editor. A small panel at the right of the
+window holds its switch (remembered across pages). While it is on, hover any
+text and a pencil appears at the right edge of its block; click it, or
+Alt+click the text, and the block is editable where it stands. Enter or a
+click elsewhere saves, Escape cancels, and the notice a save leaves offers an
+undo. An SVG or MathML label opens a small box over itself instead.
+
+The panel shows the page's elements as a tree, opened on demand like the
+Elements panel in devtools: a row names the element and shows a glance of its
+own text, greyed when a script drew it; clicking a row selects the element on
+the page, double-clicking edits it, hovering outlines it. Selecting a block on
+the page opens the tree to it. Below the tree are **Delete** for the selected
+element and **Insert** of a paragraph, heading, list item, list, section,
+important box or any markup you type, before or after the selected element or
+inside it at the end. A new block is written with the indentation
+and blank lines its neighbours use, and opens for editing with its placeholder
+text selected.
+
+A save writes the source file as the smallest change that gives the new text —
+a changed word is a changed word in the file, with the entities, tags and line
+breaks around it left as they were — so the edit shows up in `git diff` like
+one made in an editor. Typed `—`, `×`, `÷`, `−` and the like are written as
+the named entities the pages use. Text is looked for in the page's HTML, then
+in the embeds it fetched (the ribbon), then in the scripts it loads: a caption
+a scene draws is a string literal in `js/<page>.js`, and is written there, as
+is the static placeholder in the page when it says the same thing. In a
+template literal the fixed parts can be edited and the `${…}` parts cannot.
+After an edit to a script the page's running copy still holds the old text
+until it reloads; the notice says so and offers the reload.
+
+A pencil appears only on text a file actually holds. Text a script computes —
+a digit in a scene, a total — gets none. The server refuses a save if the file
+has changed since the page was loaded, so reload after editing a file in VS
+Code.
+
+Nothing is in the pages: the tag is injected by the server as a page goes out,
+so a deployed page never sees it. It lives in `scripts/inline-edit.mjs` (the
+route and the injection) and `scripts/inline-edit-client.js` (the page side).
+To remove it, delete those two files and the lines in `serve.mjs` that import
+and call `inject` and `route`, then delete this section. The server must be
+restarted to pick the editor up.
+
 ## Why not `python3 -m http.server` or Live Server?
 
 The site is deployed to GitHub Pages as a **project site**, so it is served from
@@ -60,6 +106,7 @@ node scripts/notation-check.mjs         # roots are drawn, and stripped notation
 node scripts/glossary-check.mjs         # glossary terms, definitions, and the marks in the pages
 node scripts/structure-check.mjs        # tags balance, headings step by one, ids and ARIA targets exist, inline text does not run together
 node scripts/voice-check.mjs <page>     # the sentences a script can suspect — lines to read, not verdicts
+node scripts/text-check.mjs <page>      # rendered type sizes and text that crosses a box edge — needs the server and Chrome
 ```
 
 `structure-check.mjs` reads the source raw rather than through a DOM parser,
@@ -128,6 +175,22 @@ is meant to be read and edited. It skips headings, links, bold, notation,
 controls and any region a page's own script repaints, and it will not mark a
 term the page's own heading names — but it cannot tell which sense of a word a
 sentence is using, so its output is a draft.
+
+`text-check.mjs` is the one check that renders: it launches Chrome headless,
+loads the served page at the 900px canvas under reduced motion, and measures
+every visible text run inside `.layout` as the reader sees it — computed size
+times any CSS transform, or times the viewBox scale for SVG text — so a
+10-unit label in a 920-unit drawing shown at 800px reports as 8.7px, which is
+what it is. It fails text under 12px and text that crosses the edge of a
+clipping, bordered or filled ancestor, an SVG viewport or the rect drawn as
+its cell; it lists 12–14px text to be read against the floor in
+`master-lesson-page-prompt.md` ("Type has a floor"). It sees only the docked
+state: drive a sandbox to its widest input or a drawing to a hidden stage by
+hand (below) and look. It leaves alone, on purpose, the fixed ribbon, visually
+hidden text, the body of a closed `<details>`, text painted transparent, and
+three shared marks whose size is a decision recorded in the script's header.
+Set `CHROME` if Chrome is not at its usual path and `SITE_ORIGIN` if the
+server is not on port 8000.
 
 ## Rendering a page without a browser window
 

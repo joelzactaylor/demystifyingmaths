@@ -4,18 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Demystifying Maths | GCSE Choosing HCF or LCM in context</title>
-    <meta name="description" content="Deciding which a worded problem needs: coinciding events or equal shares.">
-    <meta property="og:title" content="Demystifying Maths">
-    <meta property="og:description" content="Deciding which a worded problem needs: coinciding events or equal shares.">
+    <meta name="description" content="Deciding whether a worded problem needs the lowest common multiple or the highest common factor: steps that line up, or amounts split into equal pieces.">
+    <meta property="og:title" content="Demystifying Maths | Choosing HCF or LCM in context">
+    <meta property="og:description" content="Deciding whether a worded problem needs the lowest common multiple or the highest common factor: steps that line up, or amounts split into equal pieces.">
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/choosingHCFOrLCM.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/choosingHCFOrLCM.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -46,14 +48,326 @@
         <aside id="page-nav-container"></aside>
 
         <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>Worded problems deciding between HCF and LCM: buses coinciding, largest equal tiles or shares, gear teeth, packs matching; extracting the numbers and naming the decision. Calculation methods assumed from the earlier pages; pure computation questions stay there. Both tiers. (N4)</p>
+            <p class="prereq"><b>Before this page:</b> <span>find the <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/HCFFromPrimeFactors.html">highest
+                        common factor</a> and the <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/LCMFromPrimeFactors.html">lowest
+                        common multiple</a> of two numbers from their prime factorisations, or from a <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/HCFLCMVenn.html">Venn
+                        diagram</a>.</span></p>
+
+            <section aria-labelledby="steps-or-amounts">
+                <h1 id="steps-or-amounts">The same two numbers can ask for a multiple or for a factor</h1>
+
+                <div class="question-pair">
+                    <article>
+                        <h2>Buses</h2>
+                        <p>Two buses leave a station together at 9:00. One leaves every 12 minutes and the other every
+                            18 minutes. Work out when they next leave together.</p>
+                        <p class="question-pair__answer">36 minutes later, at 9:36</p>
+                    </article>
+                    <article>
+                        <h2>Ribbons</h2>
+                        <p>Two ribbons are 12 cm and 18 cm long. Both are cut into pieces of the same length, as long
+                            as possible, with nothing left over. Work out the length of a piece.</p>
+                        <p class="question-pair__answer">6 cm</p>
+                    </article>
+                </div>
+
+                <p>Both questions give 12 and 18. In the bus question the numbers are steps, every 12 minutes and every
+                    18. The buses leave at the <span class="gloss" data-term="multiple">multiples</span> of 12 and of 18,
+                    so they are together again at a <span class="gloss"
+                        data-term="common multiple">common multiple</span>, and the first is the <span class="gloss"
+                        data-term="lowest common multiple">lowest common multiple</span>, 36.</p>
+
+                <p>In the ribbon question the numbers are whole amounts. A piece that leaves nothing over is a <span
+                        class="gloss" data-term="factor">factor</span> of 12 and of 18, so the longest piece is the <span
+                        class="gloss" data-term="highest common factor">highest common factor</span>, 6.</p>
+
+                <div class="rule-card">
+                    <h2 class="rule-card__statement">Steps that line up need the LCM; amounts split into equal pieces
+                        need the HCF</h2>
+                    <ol class="rule-card__conditions">
+                        <li>The numbers are steps: every 12 minutes, packs of 8, the teeth on a gear. The answer is a
+                            multiple of both, so it is at least as large as the larger number.</li>
+                        <li>The numbers are whole amounts: 18 cm of ribbon, 30 pens. The answer is a factor of both,
+                            so it is no larger than the smaller number.</li>
+                    </ol>
+                </div>
+
+                <p>The size of the answer tests the choice: 6 minutes would come before either bus had left again, and
+                    a 36 cm piece would be longer than either ribbon.</p>
             </section>
 
-            <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+            <section aria-labelledby="repeating-events">
+                <h1 id="repeating-events">Repeating events are together again at the lowest common multiple</h1>
+                <p>Buses every 12 minutes and every 18 leave together at every common multiple of 12 and 18: the first
+                    is the LCM, and the later ones are its multiples.</p>
+
+                <div class="worked">
+                    <h2 class="worked__title">Buses every 12 minutes and every 18 minutes</h2>
+                    <div class="choice-scene" data-choice-scene data-kind="buses">
+                        <div class="choice-scene__sticky">
+                            <div class="choice-board" data-board role="img"
+                                aria-label="A timeline from 9:00 to 10:12 with two rows of departures. The first row, a bus every 12 minutes, is marked at 12, 24, 36, 48, 60 and 72 minutes past nine. The second row, a bus every 18 minutes, is marked at 18, 36, 54 and 72. The two rows share a departure at 36 minutes, 9:36, which is framed in gold, and again at 72 minutes, 10:12. LCM of 12 and 18 is 36.">
+                            </div>
+                            <div class="choice-scene__caption" aria-live="polite" aria-atomic="true">
+                                <h3 data-step-title>Both buses leave at 9:00</h3>
+                                <p data-step-copy>One bus leaves every 12 minutes and the other every 18: each row of
+                                    the timetable is a count in one step.</p>
+                            </div>
+                            <div class="choice-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript>
+                            <p class="worked__fallback"><strong>LCM of 12 and 18 = 36: the buses next leave together at
+                                    9:36</strong></p>
+                        </noscript>
+                    </div>
+                </div>
+
+                <div class="wex">
+                    <h2 class="wex__title">Example: two gears</h2>
+                    <p class="wex__task">A gear with 20 teeth drives a gear with 12 teeth. One tooth on each gear is
+                        marked, and the two marks are touching. Work out how many turns the 20-tooth gear makes before
+                        the marks touch again.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do">The numbers are steps: a turn of the large gear passes 20 teeth, and
+                                a turn of the small gear passes 12.</span>
+                            <span class="wex__why">The marks meet when the same number of teeth has passed on both
+                                gears, a multiple of 20 and of 12; the first such number is the LCM.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf">LCM(20, 12) = 60</span></span>
+                            <span class="wex__why"><span class="sf">20 = 2<span class="caret"
+                                        aria-hidden="true">^</span><sup>2</sup> &times; 5</span> and <span
+                                    class="sf">12 = 2<span class="caret" aria-hidden="true">^</span><sup>2</sup>
+                                    &times; 3</span>; every prime to its higher index gives <span class="sf">2<span
+                                        class="caret" aria-hidden="true">^</span><sup>2</sup> &times; 3 &times; 5 =
+                                    60</span>.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf">60 &divide; 20 = 3</span> turns</span>
+                            <span class="wex__why">60 teeth pass the meeting point, and the large gear has 20, so it
+                                turns 3 times; the small gear turns <span class="sf">60 &divide; 12 = 5</span>
+                                times.</span>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="wex">
+                    <h2 class="wex__title">Example: packs that match</h2>
+                    <p class="wex__task">Hot dogs come in packs of 10 and rolls in packs of 8. Work out the smallest
+                        number of each pack that gives the same number of hot dogs as rolls.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do">The numbers are steps: 10 hot dogs a pack and 8 rolls a pack.</span>
+                            <span class="wex__why">Only whole packs are bought, so the number of hot dogs is a multiple
+                                of 10 and the number of rolls a multiple of 8; the smallest number that is both is the
+                                LCM.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf">LCM(10, 8) = 40</span></span>
+                            <span class="wex__why"><span class="sf">10 = 2 &times; 5</span> and <span class="sf">8 =
+                                    2<span class="caret" aria-hidden="true">^</span><sup>3</sup></span>; <span
+                                    class="sf">2<span class="caret" aria-hidden="true">^</span><sup>3</sup> &times; 5 =
+                                    40</span>.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf">40 &divide; 10 = 4</span> packs of hot dogs and
+                                <span class="sf">40 &divide; 8 = 5</span> packs of rolls</span>
+                            <span class="wex__why">40 is the number of hot dogs and of rolls; the packs are how many
+                                10s and how many 8s make 40.</span>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <section aria-labelledby="equal-pieces">
+                <h1 id="equal-pieces">Equal pieces with nothing left over come from the highest common factor</h1>
+                <p>A 60 cm by 36 cm card is cut into equal squares with nothing over. Squares fill the 60 cm across
+                    only if their side divides 60, and fill the 36 cm down only if it divides 36: the side is a <span
+                        class="gloss" data-term="common factor">common factor</span> of the two lengths. The largest
+                    square has the largest common factor as its side.</p>
+
+                <div class="worked">
+                    <h2 class="worked__title">Cutting a 60 cm by 36 cm card into equal squares</h2>
+                    <div class="choice-scene" data-choice-scene data-kind="card">
+                        <div class="choice-scene__sticky">
+                            <div class="choice-board" data-board role="img"
+                                aria-label="A rectangle 60 cm wide and 36 cm tall. Squares of side 9 cm fit four down but leave a 6 cm strip along the right. Squares of side 20 cm fit three across but leave a 16 cm strip along the bottom. Squares of side 12 cm fit five across and three down with nothing left over: 15 squares. HCF of 60 and 36 is 12.">
+                            </div>
+                            <div class="choice-scene__caption" aria-live="polite" aria-atomic="true">
+                                <h3 data-step-title>A 60 cm by 36 cm card</h3>
+                                <p data-step-copy>60 cm across and 36 cm down, to be cut into squares of one size with
+                                    nothing left over.</p>
+                            </div>
+                            <div class="choice-scene__progress" data-progress aria-hidden="true"></div>
+                        </div>
+                        <noscript>
+                            <p class="worked__fallback"><strong>HCF of 60 and 36 = 12: 12 cm squares, 5 &times; 3 = 15
+                                    of them</strong></p>
+                        </noscript>
+                    </div>
+                </div>
+
+                <div class="wex">
+                    <h2 class="wex__title">Example: identical packs</h2>
+                    <p class="wex__task">30 pens and 42 pencils are put into packs, every pack the same, with nothing
+                        left over. Work out the greatest number of packs and what each pack holds.</p>
+                    <ol class="wex__steps">
+                        <li>
+                            <span class="wex__do">The numbers are whole amounts: 30 pens and 42 pencils are shared
+                                out.</span>
+                            <span class="wex__why">Every pack holds the same number of pens, so the number of packs
+                                divides 30, and it divides 42 the same way; the greatest number dividing both is the
+                                HCF.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do"><span class="sf">HCF(30, 42) = 6</span></span>
+                            <span class="wex__why"><span class="sf">30 = 2 &times; 3 &times; 5</span> and <span
+                                    class="sf">42 = 2 &times; 3 &times; 7</span>; the shared primes give <span
+                                    class="sf">2 &times; 3 = 6</span>.</span>
+                        </li>
+                        <li>
+                            <span class="wex__do">6 packs, each holding <span class="sf">30 &divide; 6 = 5</span> pens
+                                and <span class="sf">42 &divide; 6 = 7</span> pencils</span>
+                            <span class="wex__why">5 and 7 share no prime, so the 6 packs cannot be split into
+                                more.</span>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <section aria-labelledby="the-answer-asked-for">
+                <h1 id="the-answer-asked-for">The LCM or HCF is one step from the answer the question asks for</h1>
+                <p>The LCM or HCF is a fact about the two numbers; the question is about buses, gears, packs or a card,
+                    and one more step turns the value into the answer asked for.</p>
+
+                <table class="route-table">
+                    <caption class="route-table__caption">Each question, the value it needs and the answer it asks
+                        for</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">The question</th>
+                            <th scope="col">The numbers</th>
+                            <th scope="col">Needs</th>
+                            <th scope="col">Value</th>
+                            <th scope="col">The answer asked for</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="is-lcm">
+                            <td>Buses every 12 and 18 minutes</td>
+                            <td>steps</td>
+                            <td class="route-table__needs">LCM</td>
+                            <td class="route-table__value">36</td>
+                            <td>9:36</td>
+                        </tr>
+                        <tr class="is-lcm">
+                            <td>Gears with 20 and 12 teeth</td>
+                            <td>steps</td>
+                            <td class="route-table__needs">LCM</td>
+                            <td class="route-table__value">60</td>
+                            <td>60 &divide; 20 = 3 turns</td>
+                        </tr>
+                        <tr class="is-lcm">
+                            <td>Packs of 10 and packs of 8</td>
+                            <td>steps</td>
+                            <td class="route-table__needs">LCM</td>
+                            <td class="route-table__value">40</td>
+                            <td>4 packs and 5 packs</td>
+                        </tr>
+                        <tr class="is-hcf">
+                            <td>A 60 cm by 36 cm card</td>
+                            <td>amounts</td>
+                            <td class="route-table__needs">HCF</td>
+                            <td class="route-table__value">12</td>
+                            <td>12 cm squares, 5 &times; 3 = 15 of them</td>
+                        </tr>
+                        <tr class="is-hcf">
+                            <td>30 pens and 42 pencils</td>
+                            <td>amounts</td>
+                            <td class="route-table__needs">HCF</td>
+                            <td class="route-table__value">6</td>
+                            <td>6 packs of 5 pens and 7 pencils</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section aria-labelledby="both-answers">
+                <h1 id="both-answers">Two numbers have both answers, and the question chooses between them</h1>
+                <p>When one number is a multiple of the other, as with 12 and 36, both answers are among the numbers
+                    given. Buses every 12 and every 36 minutes are together every 36 minutes, <span class="sf">LCM(12,
+                        36) = 36</span>; ribbons of 12 cm and 36 cm cut into 12 cm pieces, <span class="sf">HCF(12, 36)
+                        = 12</span>.</p>
+
+                <div class="pair-lab" data-pair-lab>
+                    <div class="pair-lab__inputs">
+                        <label><span>First number</span><input type="text" inputmode="numeric" value="15" maxlength="2"
+                                autocomplete="off" spellcheck="false" data-pair-a></label>
+                        <label><span>Second number</span><input type="text" inputmode="numeric" value="20" maxlength="2"
+                                autocomplete="off" spellcheck="false" data-pair-b></label>
+                    </div>
+                    <div class="pair-lab__panels">
+                        <div class="pair-lab__panel pair-lab__panel--lcm">
+                            <h2>Steps of 15 and steps of 20</h2>
+                            <div data-pair-line></div>
+                            <p class="pair-lab__line" data-pair-lcm></p>
+                        </div>
+                        <div class="pair-lab__panel pair-lab__panel--hcf">
+                            <h2>15 and 20 split into equal pieces</h2>
+                            <div data-pair-bars></div>
+                            <p class="pair-lab__line" data-pair-hcf></p>
+                        </div>
+                    </div>
+                    <p class="pair-lab__status" aria-live="polite" data-pair-status></p>
+                    <noscript>
+                        <p>Steps of 15 and steps of 20 first agree at 60, and 15 and 20 split into pieces of 5 at most:
+                            LCM(15, 20) = 60 and HCF(15, 20) = 5.</p>
+                    </noscript>
+                </div>
+            </section>
+
+            <section aria-labelledby="choice-slips">
+                <h1 id="choice-slips">Common mistakes</h1>
+                <ul class="slips">
+                    <li><b>Multiplying the two numbers in a bus question</b>
+                        <span>12 &times; 18 = 216 minutes is a time both buses leave, but 36 comes first. 12 and 18
+                            share the factor 6, so their product is a common multiple and not the lowest; the product
+                            is the LCM only when the two numbers share no prime.</span>
+                    </li>
+                    <li><b>Answering the card question with the LCM</b>
+                        <span>LCM(60, 36) = 180, and a 180 cm square does not fit on a 60 cm by 36 cm card. A piece cut
+                            from an amount is never larger than the amount: the side is a factor of both lengths,
+                            12.</span>
+                    </li>
+                    <li><b>Stopping at the LCM when the question asks for packs</b>
+                        <span>40 is the number of hot dogs and the number of rolls, not a number of packs. The packs are
+                            40 &divide; 10 = 4 and 40 &divide; 8 = 5.</span>
+                    </li>
+                    <li><b>Giving the HCF as the number of squares</b>
+                        <span>Answering 12 squares gives the side of one square as the count. 12 cm is the side, and the
+                            count is (60 &divide; 12) &times; (36 &divide; 12) = 5 &times; 3 = 15.</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="summary">
+                <h1 id="summary">Summary</h1>
+                <ol class="recap">
+                    <li>Numbers that are steps, like every 12 minutes or packs of 8, line up at a common multiple;
+                        the first time is the LCM.</li>
+                    <li>Numbers that are whole amounts split into equal pieces with nothing left over need a common
+                        factor, and the largest piece is the HCF.</li>
+                    <li>An LCM is at least as large as the larger number and an HCF no larger than the smaller: an
+                        answer of the wrong size is the wrong choice.</li>
+                    <li>Any two numbers have both an LCM and an HCF, and the question chooses between them; when one
+                        number is a multiple of the other, both are among the numbers given.</li>
+                    <li>The LCM or HCF is then turned into what the question asked for: a clock time, a number of
+                        turns, a number of packs or pieces, or what each pack holds.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">

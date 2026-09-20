@@ -1,7 +1,7 @@
 /* Multiples and the divisibility tests: the live tester.
 
    The six syllabus tests run on a number of the reader's own. Every row is
-   built in the markup with 4,932 already answered, so a page without scripts
+   built in the markup with 2,835 already answered, so a page without scripts
    shows one true state; the script only rewrites the text in place, and never
    rebuilds the list under the cursor. */
 

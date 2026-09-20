@@ -21,99 +21,97 @@ math {
     font-variant-numeric: tabular-nums;
 }
 
-/* ONE DIGIT, SIX VALUES — set as a table, because the claim is that three
-   things vary together across six rows. */
-
-.digit-scale {
-    width: 100%;
-    margin: 18px 0 6px;
-    border-collapse: separate;
-    border-spacing: 0 6px;
-    table-layout: fixed;
-}
-
-.digit-scale caption {
-    margin-bottom: 8px;
-    color: #52666f;
-    font-size: .88rem;
-    text-align: left;
-}
-
-.digit-scale thead th {
-    padding: 0 16px 2px;
-    color: #52666f;
-    font-size: .74rem;
-    font-weight: 700;
-    letter-spacing: .05em;
-    text-align: left;
-    text-transform: uppercase;
-}
-
-.digit-scale thead th:first-child { width: 120px; }
-
-.digit-scale tbody th,
-.digit-scale tbody td {
-    padding: 11px 16px;
-    background: #f8fbfd;
-    text-align: left;
-}
-
-.digit-scale tbody th { border-radius: 12px 0 0 12px; color: #09539d; font-size: 1.05rem; }
-.digit-scale tbody td { color: #52666f; font-size: .93rem; }
-.digit-scale tbody td:last-child { border-radius: 0 12px 12px 0; color: #173849; font-weight: 700; }
-
-/* THE PLACES — one column per place, so the row reads left to right the way a
-   number is written. The decimal point is a column of its own rather than a
-   border, so the chart says where it stands rather than implying it. */
+/* THE PLACES — the chart, drawn the way the page's other figures are: a white
+   card, big monospace digits in tinted columns, Aleo labels, and the decimal
+   point in a narrow column of its own so the chart says where it stands. Each
+   row is one number, its digits under the places they occupy. */
 
 .place-chart {
     width: 100%;
     margin: 20px 0 8px;
-    border-collapse: collapse;
+    padding: 14px 10px 16px;
+    border-collapse: separate;
+    border-spacing: 0 4px;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(23, 56, 73, .12);
     table-layout: fixed;
 }
 
+/* The table's name for screen readers; the heading above it is the caption a reader sees. */
 .place-chart caption {
-    margin-bottom: 10px;
-    color: #52666f;
-    font-size: .88rem;
-    text-align: left;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
 }
 
 .place-chart th,
-.place-chart td { padding: 8px 4px; text-align: center; }
+.place-chart td { box-sizing: border-box; padding: 0 4px; text-align: center; }
 
 .place-chart thead th {
-    border-bottom: 2px solid #c9dce8;
+    padding-bottom: 6px;
     color: #52666f;
-    font-size: .68rem;
-    font-weight: 700;
-    line-height: 1.25;
+    font: 400 .82rem/1.15 Aleo, serif;
     vertical-align: bottom;
 }
 
+/* Each place column is as wide as its name and the value beneath it need, so
+   the words are set at a readable size and stay whole: "thousandths" is the
+   widest name and "1,000,000" the widest value. Tens and ones, which carry the
+   shortest words, share what is left. */
+.place-chart thead th:nth-child(2) { width: 80px; }
+.place-chart thead th:nth-child(3),
+.place-chart thead th:nth-child(4),
+.place-chart thead th:nth-child(5) { width: 70px; }
+.place-chart thead th:nth-child(6) { width: 65px; }
+.place-chart thead th:nth-child(10) { width: 46px; }
+.place-chart thead th:nth-child(11) { width: 77px; }
+.place-chart thead th:nth-child(12) { width: 82px; }
+
 .place-chart tbody td {
+    min-height: 44px;
+    height: 44px;
     color: #09539d;
-    font: 700 .82rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font: 700 1.35rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
     font-variant-numeric: tabular-nums;
 }
 
-/* The decimal side takes the page's ochre, and is also the side of the point
-   the header row names, so the tint is a second cue rather than the only one. */
-.place-chart th:nth-child(n+9),
-.place-chart td:nth-child(n+9) { background: #fff8df; color: #9b5f12; }
-.place-chart thead th:nth-child(n+9) { border-bottom-color: #d99a20; }
-.place-chart th:nth-child(-n+7),
-.place-chart td:nth-child(-n+7) { background: #eef5fb; }
+/* The first column names the row: the number written across the chart, or
+   what each place is worth. */
+.place-chart__label { width: 120px; }
 
-.place-chart__point { width: 22px; background: none !important; }
+.place-chart tbody th {
+    padding-right: 12px;
+    color: #173849;
+    font: 700 .9rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.place-chart tbody .place-chart__values th { color: #52666f; font: italic 400 .88rem/1 Aleo, serif; }
+.place-chart tbody .place-chart__values td { height: 30px; color: #52666f; font-size: .82rem; }
+
+/* Whole places take the page's blue and the decimal side its ochre, as the
+   lab's cells do, so the tint is a second cue and the point column the first. */
+.place-chart td:nth-child(n+2):nth-child(-n+8) { background: #eef5fb; }
+.place-chart td:nth-child(n+10) { background: #fff8df; color: #9b5f12; }
+.place-chart thead th:nth-child(n+10) { color: #9b5f12; }
+.place-chart tbody .place-chart__values td:nth-child(n+10) { color: #9b5f12; }
+.place-chart td:nth-child(2) { border-radius: 10px 0 0 10px; }
+.place-chart td:nth-child(8) { border-radius: 0 10px 10px 0; }
+.place-chart td:nth-child(10) { border-radius: 10px 0 0 10px; }
+.place-chart td:nth-child(12) { border-radius: 0 10px 10px 0; }
+
+.place-chart__point { width: 20px; background: none !important; }
 
 .place-chart__point span[aria-hidden] {
     color: #b86821;
-    font: 700 1.5rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font: 700 1.7rem/1 Aleo, serif;
 }
-
-.place-chart thead .place-chart__point { border-bottom: 0; }
 
 /* Named for assistive technology, which would otherwise meet a column headed
    with a full stop. */
@@ -176,7 +174,7 @@ math {
 
 .fraction-bridge {
     display: grid;
-    gap: 10px;
+    gap: 14px;
     margin: 22px 0;
     padding: 20px 24px 18px;
     justify-items: center;
@@ -198,7 +196,12 @@ math {
     font-weight: 700;
 }
 
-.fraction-bridge__note { margin: 0; color: #9b5f12; font-size: .84rem; font-weight: 700; text-align: center; }
+/* Set in display style, so the numerators and denominators keep the line's
+   size instead of dropping to script size; and without the margin shared.css
+   gives a `math` standing on its own. */
+.fraction-bridge__line math { margin: 0; math-style: normal; }
+
+.fraction-bridge__note { margin: 0; color: #9b5f12; font-size: .95rem; font-weight: 700; text-align: center; }
 .fraction-bridge__note span { display: block; font-size: 1.1rem; line-height: 1; }
 .fraction-bridge__total { padding: 2px 8px; border-radius: 10px; background: #fff2c9; }
 
@@ -207,7 +210,7 @@ math {
 
 .place-lab {
     margin: 24px 0 8px;
-    padding: 22px 24px 24px;
+    padding: 22px 20px 24px;
     border: 2px solid #c9dce8;
     border-radius: 20px;
     background: linear-gradient(180deg, #fbfdff 0%, #f2f8fc 100%);
@@ -215,7 +218,7 @@ math {
 }
 
 .place-lab__field { display: flex; gap: 14px; align-items: center; }
-.place-lab__field span { color: #52666f; font-size: .74rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.place-lab__field span { color: #52666f; font-size: .82rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
 
 .place-lab__field input {
     width: 190px;
@@ -236,16 +239,22 @@ math {
 
 .place-lab__strip {
     display: flex;
-    gap: 4px;
+    gap: 3px;
     margin: 20px 0 4px;
     align-items: end;
     justify-content: center;
 }
 
+/* A cell is as wide as its place name needs — "thousandths" wider than
+   "tens" — so the names are set at a readable size and stay whole. The widest
+   number the field accepts, seven whole digits and three decimals, still fits
+   the tray in one row. */
 .place-lab__cell {
     display: grid;
-    width: 72px;
-    padding: 8px 4px 9px;
+    flex: none;
+    box-sizing: border-box;
+    min-width: 52px;
+    padding: 8px 5px 9px;
     gap: 6px;
     border: 2px solid transparent;
     border-radius: 12px;
@@ -258,13 +267,14 @@ math {
 .place-lab__cell.is-active { border-color: #116e93; background: #fff; }
 .place-lab__cell.is-empty .place-lab__digit { color: #b8cbd7; }
 
-.place-lab__place { min-height: 2.2em; color: #52666f; font: 700 .62rem/1.1 Aleo, serif; text-align: center; }
+/* Set to its widest word, so a two-word name breaks between its words. */
+.place-lab__place { width: min-content; min-height: 2.3em; color: #52666f; font: 400 .82rem/1.15 Aleo, serif; text-align: center; }
 .place-lab__digit { color: #09539d; font: 700 1.7rem/1 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
-.place-lab__unit { color: #52666f; font: 700 .6rem/1 Aleo, serif; }
+.place-lab__unit { color: #52666f; font: 700 .8rem/1 Aleo, serif; }
 .place-lab__cell--decimal .place-lab__place,
 .place-lab__cell--decimal .place-lab__unit { color: #9b5f12; }
 .place-lab__cell--decimal .place-lab__digit { color: #9b5f12; }
-.place-lab__cell--point { width: 22px; padding-right: 0; padding-left: 0; background: none; }
+.place-lab__cell--point { width: 22px; min-width: 0; padding-right: 0; padding-left: 0; background: none; }
 .place-lab__cell--point .place-lab__digit { color: #b86821; font-family: Aleo, serif; font-size: 2rem; }
 
 .place-lab__parts { display: grid; gap: 2px; margin: 16px 0 0; padding: 0; list-style: none; }
@@ -296,6 +306,13 @@ math {
 }
 
 .place-lab__words strong { color: #09539d; }
+
+/* The quiet empty state: the working is hidden and keeps its space. */
+.place-lab.is-empty .place-lab__strip,
+.place-lab.is-empty .place-lab__parts,
+.place-lab.is-empty .place-lab__words { visibility: hidden; }
+.place-lab__note { display: none; margin: 14px 0 0; color: #687b84; font-size: .95rem; text-align: center; }
+.place-lab.is-empty .place-lab__note { display: block; }
 
 @media (prefers-reduced-motion: reduce) {
     .place-lab__cell,

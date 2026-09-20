@@ -175,8 +175,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         group.appendChild(svg("circle", { class: "factor-ring__outline", r: radius }));
         group.appendChild(svg("circle", { class: "factor-ring__centre", r: inner }));
-        const value = drawText(group, "factor-ring__value", 0, Math.max(2.5, radius * .17), "", Math.max(6, radius * .48));
-        const next = drawText(group, "factor-ring__value", 0, Math.max(2.5, radius * .17), "", Math.max(6, radius * .48));
+        const value = drawText(group, "factor-ring__value", 0, Math.max(2.5, radius * .17), "", Math.max(14, radius * .48));
+        const next = drawText(group, "factor-ring__value", 0, Math.max(2.5, radius * .17), "", Math.max(14, radius * .48));
         parent.appendChild(group);
         return { group, sectors, inner, radius, value, next };
     };
@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
             ["Take another 2 out of both", "180 and 378 are both even, so a second 2 leaves each ring: 180 ÷ 2 = 90 and 378 ÷ 2 = 189."],
             ["Take a 3 out of both", "90 and 189 both have a factor of 3, so a 3 leaves each ring: 90 ÷ 3 = 30 and 189 ÷ 3 = 63."],
             ["Take another 3 out of both", "30 and 63 share one more 3: 30 ÷ 3 = 10 and 63 ÷ 3 = 21. The rings 2 × 5 and 3 × 7 have no sector in common."],
-            ["Multiply what came out", "The primes taken out of both rings make 2 × 2 × 3 × 3 = 36, the HCF. 10 and 21 share no factor other than 1."]
+            ["Multiply what came out", "The primes taken out of both rings make 2 × 2 × 3 × 3 = 36, the HCF."]
         ],
         build(root) {
             root.replaceChildren();
@@ -406,7 +406,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 table.replaceChildren();
                 const empty = document.createElement("p");
                 empty.className = "hcf-finder__empty";
-                empty.textContent = "Enter two whole numbers from 2 to 9,999.";
+                empty.textContent = "Two whole numbers from 2 to 9,999 are needed.";
                 table.appendChild(empty);
                 answer.textContent = "";
                 return;

@@ -31,8 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
         [-5, "hundred-thousandths"], [-6, "millionths"]
     ]);
     const exponents = [...placeNames.keys()];
-    const startX = 68;
-    const cellWidth = 72;
+    const startX = 71;
+    const cellWidth = 78;
     const cellTop = 72;
     const cellHeight = 128;
     const digitY = 151;
@@ -60,7 +60,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 rx: 8,
                 class: `power-machine__column power-machine__column--${exponent >= 0 ? "whole" : "decimal"}${exponent === 0 ? " power-machine__column--ones" : ""}`
             });
-            const label = makeSVG("text", { x, y: 51, class: "power-machine__column-label" });
+            // Twelve names do not fit one row at a readable size, so they
+            // alternate between two rows above the columns.
+            const label = makeSVG("text", { x, y: index % 2 ? 56 : 32, class: "power-machine__column-label" });
             label.textContent = placeNames.get(exponent);
             columnsLayer.append(rect, label);
         });
@@ -175,10 +177,13 @@ document.addEventListener("DOMContentLoaded", () => {
         node.setAttribute("transform", `translate(${xForExponent(exponent) - 23} ${digitY - 27})`);
     };
 
+    /* Clauses split on semicolons keep one before the "and"; a plain list of
+       names does not take a comma there. */
     const joinPhrases = (phrases, separator = "; ") => {
         if (phrases.length === 1) return phrases[0];
         if (phrases.length === 2) return `${phrases[0]} and ${phrases[1]}`;
-        return `${phrases.slice(0, -1).join(separator)}${separator}and ${phrases.at(-1)}`;
+        const last = separator === "; " ? "; and " : " and ";
+        return `${phrases.slice(0, -1).join(separator)}${last}${phrases.at(-1)}`;
     };
 
     /* New digits are built where the chosen operation leaves them. A changed
@@ -240,10 +245,10 @@ document.addEventListener("DOMContentLoaded", () => {
         sourceOutput.textContent = source;
         operationOutput.textContent = `${active.dataset.symbol} ${active.dataset.factor}`;
         resultOutput.textContent = shownResult;
-        movement.textContent = shift === 0 ? "the digits stay in their places" : `${places} ${places === 1 ? "place" : "places"} ${direction}`;
+        movement.textContent = shift === 0 ? "the digits stay in their places" : `${["", "one", "two", "three"][places] || places} ${places === 1 ? "place" : "places"} ${direction}`;
         description.textContent = shift === 0
             ? `${source} is unchanged when multiplied by one.`
-            : `Each non-zero digit in ${source} moves ${places} ${places === 1 ? "place" : "places"} ${direction}, producing ${shownResult}.`;
+            : `Every digit in ${source} moves ${places} ${places === 1 ? "place" : "places"} ${direction}, producing ${shownResult}.`;
 
         if (shift === 0) {
             shiftGroup.style.display = "none";
@@ -261,30 +266,36 @@ document.addEventListener("DOMContentLoaded", () => {
             operationStep.textContent = "Multiplying by 1 leaves every digit in its original place, so the value is unchanged.";
         } else {
             const role = active.dataset.symbol === "×" ? "multiplier" : "divisor";
-            operationStep.textContent = `The ${role} ${active.dataset.factor} contains ${places === 1 ? "one factor" : `${places} factors`} of 10, so each non-zero digit must move ${places === 1 ? "one place" : `${places} places`} to the ${direction}.`;
+            const count = ["", "one", "two", "three"][places] || String(places);
+            operationStep.textContent = `The ${role} ${active.dataset.factor} contains ${count} ${places === 1 ? "factor" : "factors"} of 10, so every digit moves ${count} ${places === 1 ? "place" : "places"} to the ${direction}.`;
         }
 
         if (current.isZero) {
-            digitsStep.textContent = "There are no non-zero digits to move: zero remains zero under every operation shown here.";
+            digitsStep.textContent = "Every digit is 0, so the value is 0 wherever they move.";
         } else if (shift === 0) {
-            digitsStep.textContent = "Each non-zero digit remains in the place it already occupies.";
+            digitsStep.textContent = "Nothing moves.";
         } else {
             const movements = digitNodes.map((item, index) => `${index === 0 ? "The" : "the"} ${item.digit} moves from the ${placeWords.get(item.exponent)} place to the ${placeWords.get(item.exponent + shift)} place`);
             digitsStep.textContent = `${joinPhrases(movements)}.`;
         }
 
         if (current.isZero) {
-            zerosStep.textContent = "The result is shown as a single zero in the ones place.";
+            zerosStep.textContent = "The result is a single zero in the ones place.";
         } else if (placeholders.length) {
             const names = placeholders.map((item) => placeWords.get(item.exponent));
-            zerosStep.textContent = `The ${joinPhrases(names, ", ")} ${names.length === 1 ? "place is" : "places are"} empty, so ${names.length === 1 ? "a zero holds it" : "zeros hold them"}. Reading the completed number gives ${shownResult}.`;
+            zerosStep.textContent = `The ${joinPhrases(names, ", ")} ${names.length === 1 ? "place is" : "places are"} empty, so ${names.length === 1 ? "a zero holds it" : "zeros hold them"}. The number is ${shownResult}.`;
         } else {
-            zerosStep.textContent = `Every required place is already occupied, so no placeholder zeros are needed. Reading the digits in their new places gives ${shownResult}.`;
+            zerosStep.textContent = `No place is left empty, so no zero is needed: ${shownResult}.`;
         }
     };
 
+    /* An empty field shows no calculation: the last number's working goes,
+       the card keeps its size, and one line says what the field takes. */
+    const note = machine.querySelector("[data-machine-note]");
     const acceptInput = () => {
         const parsed = parseNumber(limitInput());
+        machine.classList.toggle("is-empty", !parsed);
+        if (note) note.hidden = Boolean(parsed);
         if (!parsed) return;
 
         current = parsed;

@@ -24,7 +24,8 @@ Teaching pages are `pages/curriculum/**/<name>.html`; practice pages are the
 `practice*.html` files beside them. The reference implementation of the
 teaching-page style is `pages/curriculum/GCSE/number/structure/writtenMethods/`
 (`columnAddition.html`, `longDivision.html` and their CSS in `css/`, JS in `js/`).
-A new page must be indistinguishable from those.
+A new page must be indistinguishable from those in style — and where a
+reference page and the docs disagree, the docs carry the corrected value.
 
 ## Hard rules (the ones that break the site)
 
@@ -63,6 +64,11 @@ A new page must be indistinguishable from those.
   page loads `js/glossary.js`.
 - **Only real mistakes go in `.slips`.** Each entry names an error a pupil
   actually makes and the wrong answer it produces. No straw men, no quota.
+- **Type has a floor.** Nothing visible under 12px; anything the reader must
+  read — digits, labels, units, captions, the text beside an input — at 14px,
+  or 13px for a column header whose width the mathematics fixes. Size the
+  column to its label, not the label to the column; measure as rendered with
+  `scripts/text-check.mjs`, because an SVG label shrinks with its viewBox.
 
 ## Before you say a page is done
 
@@ -78,10 +84,11 @@ node scripts/notation-check.mjs
 node scripts/glossary-check.mjs
 node scripts/structure-check.mjs
 node scripts/voice-check.mjs pages/curriculum/…/<page>.html   # lines to read, not verdicts
+node scripts/text-check.mjs pages/curriculum/…/<page>.html    # rendered; needs the server and Chrome
 git diff --check
 ```
 
-Then the review passes in `docs/lesson-page-cycle.md` — teacher, voice,
+Then the review passes in `docs/lesson-page-cycle.md` — teacher, voice, sense,
 contrivance, figure, fallback, interaction, repository — fixing each finding
 in the pass that finds it. Recompute every number on the page from the claim,
 in a script; do not read the page's numbers back and agree with them. Render

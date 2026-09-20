@@ -72,7 +72,7 @@
         const active = workStart < 0 ? [] : operations.slice(workStart);
         const wholeAnswer = quotientDigits.slice(0, integerPlaces).join("").replace(/^0+(?=\d)/, "") || "0";
         const decimalAnswer = quotientDigits.slice(integerPlaces).join("");
-        const quotient = decimalAnswer ? `${wholeAnswer}.${decimalAnswer}${recurring ? "…" : ""}` : wholeAnswer;
+        const quotient = format(decimalAnswer ? `${wholeAnswer}.${decimalAnswer}${recurring ? "…" : ""}` : wholeAnswer);
         const answer = resultMode === "remainder" && remainder ? `${quotient} remainder ${remainder}` : quotient;
         return { dividend, divisor, digits, operations, active, originalLength, integerPlaces, quotientStart, quotient, answer, resultMode, recurring, finalRemainder: remainder };
     };
@@ -354,11 +354,22 @@
                 continuationMark.style.transform = `translateX(${(1 - continuationAmount) * -6}px)`;
             }
         };
+        // "1 thousand, 7 hundreds, 9 tens and 4 ones": the dividend read place by
+        // place, which is what the working then takes apart.
+        const PLACES = ["ones", "tens", "hundreds", "thousands", "ten thousands", "hundred thousands", "millions"];
+        const placeReading = () => {
+            const parts = calc.digits.slice(0, calc.originalLength).map((digit, index) => {
+                const place = calc.integerPlaces - index - 1;
+                const name = place >= 0 ? PLACES[place] : ["tenths", "hundredths", "thousandths"][-place - 1];
+                return `${digit} ${digit === 1 ? name.replace(/s$/, "") : name}`;
+            });
+            return parts.length > 1 ? `${parts.slice(0, -1).join(", ")} and ${parts[parts.length - 1]}` : parts[0];
+        };
         const describe = (stageIndex) => {
             const stage = stages[stageIndex];
             const shown = format(calc.dividend);
-            if (stage.kind === "blank") return { title: `Start with ${shown} ÷ ${calc.divisor}`, copy: "The working area begins empty. Set out the dividend, divisor and multiples before choosing a quotient digit." };
-            if (stage.kind === "setup") return { title: "Set out the calculation and multiples", copy: `Write ${calc.divisor} outside the bracket and ${shown} inside. List the first nine multiples of ${calc.divisor}.` };
+            if (stage.kind === "blank") return { title: `Start with ${shown} ÷ ${calc.divisor}`, copy: `${shown} is ${placeReading()}.` };
+            if (stage.kind === "setup") return { title: "Set out the calculation and multiples", copy: `The listed multiples of ${calc.divisor} decide every quotient digit.` };
             if (stage.kind === "start") {
                 const { operation } = stage.row;
                 if (operation.index >= calc.integerPlaces) {
@@ -367,13 +378,13 @@
                 const candidates = [];
                 for (let end = 0; end <= operation.index; end += 1) candidates.push(Number(calc.digits.slice(0, end + 1).join("")));
                 const rejected = candidates.slice(0, -1).map((value) => `${value} < ${calc.divisor}`).join(" and ");
-                return { title: `Begin with ${operation.amount}`, copy: `${rejected ? `${rejected}, but ` : ""}${operation.amount} ≥ ${calc.divisor}. It is the shortest leading block large enough to make a whole group.` };
+                return { title: `Begin with ${operation.amount}`, copy: `${rejected ? `${rejected}, but ` : ""}${operation.amount} ≥ ${calc.divisor}.` };
             }
             if (stage.kind === "choose") {
                 const { operation } = stage.row;
                 if (operation.quotient === 0) return { title: `${operation.amount} is smaller than ${calc.divisor}`, copy: `No positive multiple of ${calc.divisor} can be subtracted, so write 0 in this quotient place and continue.` };
                 const next = (operation.quotient + 1) * calc.divisor;
-                return { title: `Choose ${operation.quotient} × ${calc.divisor} = ${operation.product}`, copy: `${operation.product} fits inside ${operation.amount}${operation.quotient < 9 ? ` and ${next} does not` : ""}, so the quotient digit is ${operation.quotient}.` };
+                return { title: `Choose ${operation.quotient} × ${calc.divisor} = ${operation.product}`, copy: operation.product === operation.amount ? `${operation.amount} is exactly ${operation.quotient} × ${calc.divisor}, so the quotient digit is ${operation.quotient}.` : `${operation.product} fits inside ${operation.amount}${operation.quotient < 9 ? ` and ${next} does not` : ""}, so the quotient digit is ${operation.quotient}.` };
             }
             if (stage.kind === "subtract") {
                 const { operation } = stage.row;
@@ -381,7 +392,7 @@
                     return { title: `Subtract: ${operation.amount} − ${operation.product} = ${operation.remainder}`, copy: `Every digit in the dividend has now been used. The remainder ${operation.remainder} is smaller than ${calc.divisor}, so stop and write ${shown} ÷ ${calc.divisor} = ${calc.answer}.` };
                 }
                 if (calc.recurring && stage.row === rows[rows.length - 1]) {
-                    return { title: `Subtract: ${operation.amount} − ${operation.product} = ${operation.remainder}`, copy: `The remainder ${operation.remainder} is valid but still non-zero. The division has not finished: ${shown} ÷ ${calc.divisor} begins ${calc.answer}. Append another zero to find the next decimal digit.` };
+                    return { title: `Subtract: ${operation.amount} − ${operation.product} = ${operation.remainder}`, copy: `The remainder ${operation.remainder} is smaller than ${calc.divisor} but not zero, so the division has not finished: ${shown} ÷ ${calc.divisor} begins ${calc.answer}. Another zero is appended to find the next decimal digit.` };
                 }
                 if (operation.remainder === 0 && stage.row === rows[rows.length - 1]) {
                     return { title: `Subtract: ${operation.amount} − ${operation.product} = 0`, copy: "Nothing remains after this subtraction, so the division is complete." };
@@ -391,17 +402,17 @@
             if (stage.kind === "bring") {
                 const nextIndex = stage.row.operation.index + 1;
                 const appended = nextIndex >= calc.originalLength;
-                return { title: appended ? "Append and bring down a zero" : `Bring down the next digit, ${calc.digits[nextIndex]}`, copy: appended ? `A decimal answer is required, so append a zero without changing the dividend's value. The next current amount is ${stage.next.amount}.` : `Place it beside the remainder to make the next current amount, ${stage.next.amount}.` };
+                return { title: appended ? "Append and bring down a zero" : `Bring down the next digit, ${calc.digits[nextIndex]}`, copy: appended ? `${shown} is ${shown.includes(".") ? `${shown}0` : `${shown}.0`}, so a zero is appended without changing it. The next current amount is ${stage.next.amount}.` : `Place it beside the remainder to make the next current amount, ${stage.next.amount}.` };
             }
             if (calc.resultMode === "remainder" && calc.finalRemainder) {
                 return { title: `${shown} ÷ ${calc.divisor} = ${calc.answer}`, copy: `Check: ${calc.quotient} × ${calc.divisor} + ${calc.finalRemainder} = ${shown}.` };
             }
             if (calc.resultMode === "remainder") {
-                return { title: `${shown} ÷ ${calc.divisor} = ${calc.answer}`, copy: "Nothing is left over, so no remainder needs to be written." };
+                return { title: `${shown} ÷ ${calc.divisor} = ${calc.answer}`, copy: "The remainder is 0, so nothing is written after the quotient." };
             }
             return calc.recurring
-                ? { title: `${shown} ÷ ${calc.divisor} begins ${calc.answer}`, copy: `The remainder ${calc.finalRemainder} is still non-zero, so the decimal continues.` }
-                : { title: `${shown} ÷ ${calc.divisor} = ${calc.answer}`, copy: "The division is exact: nothing is left to bring down." };
+                ? { title: `${shown} ÷ ${calc.divisor} begins ${calc.answer}`, copy: "More appended zeros would give more decimal digits." }
+                : { title: `${shown} ÷ ${calc.divisor} = ${calc.answer}`, copy: `Check: ${calc.answer} × ${calc.divisor} = ${shown}.` };
         };
         return { stages, paint, describe };
     };

@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
        tip on the answer; subtracting puts the tip on the running total and the
        tail on the answer. Either way the arrow grows away from the total it was
        laid against, which is what the drawing animates. */
-    const layOut = (terms, fromZero) => {
+    const layOut = (terms) => {
         let total = 0;
         return terms.map((term, index) => {
             const before = total;
@@ -86,10 +86,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 tipAtAnchor: term.op === MINUS,
                 rightward: term.value > 0,
                 /* An arrow is labelled the way its term is written in the line
-                   underneath: the sandbox starts from a written zero, so every
-                   arrow there carries an operation, while a worked calculation
-                   opens on the number itself. */
-                label: (!fromZero && index === 0 && term.op === "+")
+                   underneath: a first arrow that is added is the number itself,
+                   and every other arrow carries its operation. */
+                label: (index === 0 && term.op === "+")
                     ? signed(term.value)
                     : `${term.op} ${bracketed(term.value)}`
             };
@@ -99,11 +98,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const totalOf = (terms) => terms.reduce(
         (running, term) => (term.op === MINUS ? running - term.value : running + term.value), 0);
 
-    /* The sandbox writes "0 + 3 − (−2) = 5": the leading zero is where its
-       first arrow starts, and the reader may well start by subtracting, so it
-       is written rather than assumed. A worked calculation is written the way
-       it is written in the prose — "−4 + 6 − 5 = −3" — because there the first
-       arrow simply is the starting number. */
     /* The first arrow is written as the number it is, never as a move away from
        a zero nobody wrote: "3 − (−2)", not "0 + 3 − (−2)". A first arrow laid
        by subtracting keeps its sign in front of it, so "−(−2)" says what was
@@ -114,8 +108,11 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!terms.length) return "";
         const parts = terms.slice(1).map((t) => `${t.op} ${bracketed(t.value)}`);
         const head = [opening(terms[0])].concat(parts).join(" ");
-        /* One arrow is its own value, and writing it out twice says nothing. */
-        return terms.length < 2 ? head : `${head} = ${signed(totalOf(terms))}`;
+        /* One added arrow is its own value, and writing it out twice says
+           nothing; one subtracted negative, "−(−2)", is not, and its value is
+           written. */
+        const bare = terms.length < 2 && !(terms[0].op === MINUS && terms[0].value < 0);
+        return bare ? head : `${head} = ${signed(totalOf(terms))}`;
     };
 
     /* The same, with the answer left off. A card heading names the calculation
@@ -204,7 +201,7 @@ document.addEventListener("DOMContentLoaded", () => {
             track.style.height = `${trackHeight(model.terms.length)}px`;
             const { place, setup } = buildLine(track, model.min, model.max, 2);
 
-            const specs = layOut(model.terms, false);
+            const specs = layOut(model.terms);
             const rows = specs.map((unused, index) => buildRow(track, index));
             const marker = el("i", "chain__marker");
             track.append(marker);
@@ -215,7 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
         },
 
         caption(model, index) {
-            const specs = layOut(model.terms, false);
+            const specs = layOut(model.terms);
             return [
                 {
                     title: "The first arrow",
@@ -227,7 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
                 {
                     title: "Subtracting lays it tip to tip",
-                    copy: `The arrow for ${specs[2].value} is laid tip first, its tip on ${signed(specs[1].far)}, so its tail reaches back to ${signed(specs[2].far)}.`
+                    copy: `Subtracting ${specs[2].value} asks where adding ${specs[2].value} would have started: the arrow for ${specs[2].value} is laid with its tip on ${signed(specs[1].far)}, and its tail, at ${signed(specs[2].far)}, is the answer.`
                 }
             ][clamp(index, 0, 2)];
         },
@@ -309,7 +306,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const working = el("div", "line-gap__working");
             const total = el("p", "line-statement",
-                `${signed(model.warm)} ${MINUS} (${signed(model.cold)}) = ${model.warm} + ${Math.abs(model.cold)} = ${model.warm - model.cold}`);
+                `${Math.abs(model.cold)} + ${model.warm} = ${model.warm - model.cold}`);
             working.append(total);
 
             figure.append(column, working);
@@ -327,7 +324,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
                 {
                     title: "The warmer reading",
-                    copy: `${signed(model.warm)}°C stands ${COUNT[model.warm]} degrees above it.`
+                    copy: `${signed(model.warm)}°C stands ${COUNT[model.warm]} degrees above zero.`
                 },
                 {
                     title: "Up to zero",
@@ -339,7 +336,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
                 {
                     title: `${Count(model.warm - model.cold)} degrees in all`,
-                    copy: "The two parts together measure the whole rise."
+                    copy: `${COUNT[Math.abs(model.cold)].charAt(0).toUpperCase()}${COUNT[Math.abs(model.cold)].slice(1)} degrees up to zero and ${COUNT[model.warm]} beyond it: the two readings are ${model.warm - model.cold} degrees apart.`
                 }
             ][clamp(index, 0, 4)];
         },
@@ -624,7 +621,7 @@ document.addEventListener("DOMContentLoaded", () => {
         function render() {
             rows.forEach((row) => [row.link, row.shaft, row.head, row.term].forEach((n) => n.remove()));
             rows = terms.map((unused, index) => buildRow(track, index));
-            layOut(terms, true).forEach((spec, index) => {
+            layOut(terms).forEach((spec, index) => {
                 drawRow(rows[index], spec, place, 1);
                 [rows[index].link, rows[index].shaft, rows[index].head, rows[index].term]
                     .forEach((n) => fade(n, 1));

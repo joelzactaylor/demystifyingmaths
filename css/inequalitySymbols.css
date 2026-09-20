@@ -1,134 +1,43 @@
-/* The opening cloud uses the same native-scroll pinning model as the ordering
-   lesson: the scene supplies distance while the panel is temporarily fixed in
-   the viewport. Wheel and touch input remain entirely browser-controlled. */
+/* Beyond the shared lesson styles this page needs: the six symbols set out as
+   named cards, two draggable number lines, and the comparator's pair of inputs
+   with the sign between them. The number lines pin nothing and scroll nothing;
+   they answer to the pointer and the keyboard only. */
 
-.symbol-reassurance {
-    margin: 18px 0 22px;
-    padding: 17px 22px;
-    border: 2px solid #d99a20;
+.symbol-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px 22px;
+    margin: 24px 0 30px;
+    padding: 0;
+    list-style: none;
+}
+
+.symbol-grid li {
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    gap: 6px;
+    min-height: 104px;
+    padding: 12px 10px;
+    border: 2px solid #5d91b0;
     border-radius: 17px;
     background: #fff;
-    box-shadow: 0 6px 15px rgba(122, 84, 10, .1);
+    box-shadow: 0 8px 22px rgba(23, 56, 73, .11);
 }
 
-.symbol-reassurance p { margin: 0; color: #384d56; font-size: 1.02rem; line-height: 1.55; }
-.symbol-reassurance strong { color: #6d4905; }
-
-.inequality-cloud {
-    position: relative;
-    margin: 24px 0 34px;
-    overflow-anchor: none;
-}
-
-.inequality-cloud.is-ready {
-    height: var(--cloud-scene-height);
-    min-height: var(--cloud-scene-min-height);
-}
-
-.inequality-cloud__sticky {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    display: grid;
-    height: min(590px, calc(100vh - 112px));
-    min-height: 440px;
-    box-sizing: border-box;
-    grid-template-rows: minmax(0, 1fr) auto;
-    overflow: hidden;
-    border: 2px solid #c8d9e7;
-    border-radius: 22px;
-    background: #fff;
-    box-shadow: 0 12px 30px rgba(20, 57, 78, .14);
-    contain: layout paint;
-    overflow-anchor: none;
-    will-change: transform;
-}
-
-.inequality-cloud__sticky.is-pinned {
-    position: fixed;
-    right: auto;
-    z-index: 900;
-    transform-origin: top left;
-}
-
-.inequality-cloud__graphic {
-    display: block;
-    width: 100%;
-    height: 100%;
-    min-height: 0;
-}
-
-.inequality-cloud__caption {
-    display: flex;
-    height: 3.7em;
-    box-sizing: border-box;
-    margin: 0;
-    padding: 8px 30px 12px;
-    align-items: center;
-    justify-content: center;
-    color: #243a45;
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 1.45;
-    text-align: center;
-}
-
-.inequality-cloud__script {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-}
-
-.inequality-cloud__fallback {
-    padding: 50px 20px;
-    border: 2px solid #c8d9e7;
-    border-radius: 20px;
+.symbol-grid__sign {
     color: #09539d;
+    font-family: Aleo, serif;
     font-size: 2.6rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.symbol-grid__name {
+    color: #3d5662;
+    font-size: .9rem;
+    font-weight: 700;
     text-align: center;
-}
-
-.inequality-cloud__ring {
-    fill: none;
-    stroke: #c9dbe7;
-    stroke-width: 1.5;
-    stroke-dasharray: 3 10;
-}
-
-.inequality-cloud__discard {
-    fill: #607986;
-    font-family: Aleo, serif;
-    font-weight: 700;
-    text-anchor: middle;
-    dominant-baseline: middle;
-    will-change: transform, opacity;
-}
-
-.inequality-cloud__keeper-symbol {
-    fill: #09539d;
-    font-family: Aleo, serif;
-    font-size: 49px;
-    font-weight: 700;
-    text-anchor: middle;
-    dominant-baseline: middle;
-}
-
-.inequality-cloud__keeper-card {
-    fill: #fff;
-    stroke: #5d91b0;
-    stroke-width: 2;
-}
-
-.inequality-cloud__keeper-label {
-    fill: #3d5662;
-    font-family: Aleo, serif;
-    font-size: 14px;
-    font-weight: 700;
-    text-anchor: middle;
 }
 
 /* Introductory number-line explanation. */
@@ -334,7 +243,7 @@
 .boundary-card--greater { border-color: #e5c499; background: #fffaf2; }
 .boundary-card__statement { margin-bottom: 12px; color: #09539d; font-size: 2.25rem; font-weight: 700; text-align: center; }
 .boundary-card--greater .boundary-card__statement { color: #8b4a12; }
-.boundary-card h3 { margin: 0 0 8px; color: #25434f; font-size: 1.08rem; text-align: center; }
+.boundary-card h2 { margin: 0 0 8px; color: #25434f; font-size: 1.08rem; text-align: center; }
 .boundary-card p { margin: 0; font-size: .94rem; line-height: 1.55; }
 
 .boundary-card__values { display: flex; gap: 8px; justify-content: center; margin-top: 18px; }
@@ -387,7 +296,7 @@
     user-select: none;
 }
 .integer-line__boundary-chip rect { stroke-width: 2; }
-.integer-line__boundary-chip text { font-size: 14px; font-weight: 700; text-anchor: middle; }
+.integer-line__boundary-chip text { font-size: 16px; font-weight: 700; text-anchor: middle; }
 .integer-line__boundary-chip--open rect { fill: #eef5fb; stroke: #5d91b0; }
 .integer-line__boundary-chip--open text { fill: #09539d; }
 .integer-line__boundary-chip--closed rect { fill: #fff8df; stroke: #b86821; }
@@ -404,8 +313,6 @@
 .integer-example__answer { margin: 18px 0 0; color: #09539d; font-size: 1.15rem; text-align: center; }
 
 @media (prefers-reduced-motion: reduce) {
-    .inequality-cloud.is-ready { height: auto; min-height: 0; }
-    .inequality-cloud__sticky { position: relative; height: 560px; transform: none !important; }
     .comparator__sign { transition: none; }
 }
 

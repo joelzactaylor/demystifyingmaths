@@ -527,7 +527,7 @@ footer p {
 #page-nav-container {
     position: fixed;
     top: 140px;
-    right: 24px;
+    left: 24px;
     width: 240px;
     z-index: 100;
 }
@@ -607,7 +607,7 @@ nav ol.breadcrumb--deep {
 nav ol.breadcrumb--deep li { gap: 0.34rem; }
 
 /* The page nav is fixed to the viewport beside a 900px layout that is itself
-   centred, so the space available to its left shrinks twice as fast as the
+   centred, so the space between it and the panel shrinks twice as fast as the
    viewport does. Below roughly 1428px there is no longer room for it and it was
    drawing on top of the content (74px of overlap on a 1280px laptop). Hide it
    rather than let it cover the text; every heading it lists is still reachable

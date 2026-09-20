@@ -58,7 +58,7 @@
         const combined = make("div", "related-board__combined");
         combined.append(
             make("span", "", "Combined change:"),
-            make("strong", "", "1/10 × 1/10 = 1/100")
+            make("strong", "", "÷ 10 then ÷ 10 = ÷ 100")
         );
         const cursor = make("span", "related-board__cursor");
         board.append(labels, rows[0].row, lanes[0].lane, rows[1].row, lanes[1].lane, rows[2].row, combined, cursor);
@@ -115,10 +115,10 @@
         };
 
         const stages = [
-            { title: "Begin with the stated fact", copy: "43 × 26 = 1,118 is already known. It is the source for every number that follows." },
-            { title: "Make the first factor one tenth as large", copy: "43 becomes 4.3, while 26 is unchanged. Copy the structure of the given fact; do not multiply again." },
+            { title: "Begin with the given calculation", copy: "Every related fact is 43 × 26 = 1,118 with one or both factors scaled by a power of ten." },
+            { title: "Make the first factor one tenth as large", copy: "43 becomes 4.3, while 26 is unchanged." },
             { title: "Apply the same change to the product", copy: "One factor was divided by 10, so 1,118 is divided by 10 too. The related product is 111.8." },
-            { title: "Now make the second factor one tenth as large", copy: "26 becomes 2.6. The first factor remains 4.3." },
+            { title: "Make the second factor one tenth as large", copy: "26 becomes 2.6. The first factor remains 4.3." },
             { title: "Scale the product a second time", copy: "The second division by 10 changes 111.8 to 11.18." },
             { title: "Combine the two changes", copy: "Dividing each factor by 10 divides the product by 100 overall: 4.3 × 2.6 = 11.18." }
         ];
@@ -178,10 +178,13 @@
             combined.style.opacity = combinedAmount;
             combined.style.transform = `translateY(${(1 - combinedAmount) * -10}px)`;
 
+            /* The frame travels at the start of a stage and lands as the
+               value it lights fades in, so it never stands round an empty
+               slot waiting for the next stage's number. */
             const stageIndex = Math.min(stages.length - 1, Math.floor(t));
-            const nextIndex = Math.min(stages.length - 1, stageIndex + 1);
-            const movement = ease((t - stageIndex - .62) / .38);
-            const target = interpolate(cursorTargets[stageIndex], cursorTargets[nextIndex], movement);
+            const previousIndex = Math.max(0, stageIndex - 1);
+            const movement = ease((t - stageIndex - .2) / .5);
+            const target = interpolate(cursorTargets[previousIndex], cursorTargets[stageIndex], movement);
             setCursor(target, opening);
         };
 
@@ -295,23 +298,6 @@
     };
 
     const deductionConfigs = {
-        factor: {
-            rows: [
-                { tokens: ["?", "×", "2.6", "=", "111.8"] },
-                { tokens: ["?", "=", "111.8", "÷", "2.6"], sources: [0, 3, 4, 1, 2] },
-                { tokens: ["?", "=", "(1,118 ÷ 10)", "÷", "(26 ÷ 10)"], sources: [0, 1, 2, 3, 4] },
-                { tokens: ["?", "=", "1,118", "÷", "26"], sources: [0, 1, 2, 3, 4] },
-                { tokens: ["?", "=", "43"], sources: [0, 1, null] }
-            ],
-            transitions: ["rearrange with the inverse", "substitute related values", "cancel equal ÷10 changes", "use the given fact"],
-            stages: [
-                { title: "Identify the missing factor", copy: "The product is 111.8 and the known factor is 2.6." },
-                { title: "Rearrange using division", copy: "A missing factor equals the product divided by the known factor: ? = 111.8 ÷ 2.6." },
-                { title: "Substitute values from the given fact", copy: "111.8 is 1,118 ÷ 10, while 2.6 is 26 ÷ 10." },
-                { title: "Cancel the equal scale changes", copy: "Dividing both the dividend and divisor by 10 leaves the quotient unchanged, so ? = 1,118 ÷ 26." },
-                { title: "Read the given fact backwards", copy: "Because 43 × 26 = 1,118, it follows that 1,118 ÷ 26 = 43. The missing factor is 43." }
-            ]
-        },
         dividend: {
             rows: [
                 { tokens: ["?", "÷", "4.3", "=", "260"] },
@@ -320,13 +306,13 @@
                 { tokens: ["?", "=", "43", "×", "26"], sources: [0, 1, 2, 3, 4] },
                 { tokens: ["?", "=", "1,118"], sources: [0, 1, null] }
             ],
-            transitions: ["rearrange with the inverse", "substitute related values", "cancel opposite scale changes", "use the given fact"],
+            transitions: ["rearrange with the inverse", "substitute related values", "cancel opposite scale changes", "use the given calculation"],
             stages: [
                 { title: "Identify the missing dividend", copy: "The divisor is 4.3 and the quotient is 260." },
                 { title: "Rearrange using multiplication", copy: "A missing dividend equals the divisor multiplied by the quotient: ? = 4.3 × 260." },
-                { title: "Substitute values from the given fact", copy: "4.3 is 43 ÷ 10, while 260 is 26 × 10." },
+                { title: "Substitute values from the given calculation", copy: "4.3 is 43 ÷ 10, while 260 is 26 × 10." },
                 { title: "Cancel the opposite scale changes", copy: "One factor is divided by 10 and the other is multiplied by 10, so their product is unchanged: ? = 43 × 26." },
-                { title: "Use the stated product", copy: "The given fact says 43 × 26 = 1,118. The missing dividend is 1,118." }
+                { title: "Use the given product", copy: "The given calculation says 43 × 26 = 1,118. The missing dividend is 1,118." }
             ]
         },
         "scaled-factor": {
@@ -337,12 +323,12 @@
                 { tokens: ["?", "=", "(1,118 ÷ 26)", "÷", "10"], sources: [0, 1, 2, 3, 4] },
                 { tokens: ["?", "=", "4.3"], sources: [0, 1, null] }
             ],
-            transitions: ["rearrange with the inverse", "substitute related values", "combine the scale changes", "use the given fact"],
+            transitions: ["rearrange with the inverse", "substitute related values", "combine the scale changes", "use the given calculation"],
             stages: [
                 { title: "Identify the missing factor", copy: "The product is 11.18 and the known factor is 2.6." },
                 { title: "Rearrange using division", copy: "A missing factor equals the product divided by the known factor: ? = 11.18 ÷ 2.6." },
-                { title: "Substitute values from the given fact", copy: "11.18 is 1,118 ÷ 100, while 2.6 is 26 ÷ 10." },
-                { title: "Combine the scale changes", copy: "Dividing the dividend by 100 and the divisor by 10 divides the quotient by 10: ? = (1,118 ÷ 26) ÷ 10." },
+                { title: "Substitute values from the given calculation", copy: "11.18 is 1,118 ÷ 100, while 2.6 is 26 ÷ 10." },
+                { title: "Combine the scale changes", copy: "The dividend is ÷ 100 but the divisor only ÷ 10, so the quotient is ÷ 10: ? = (1,118 ÷ 26) ÷ 10." },
                 { title: "Use the given quotient", copy: "Because 1,118 ÷ 26 = 43, the missing factor is 43 ÷ 10 = 4.3." }
             ]
         }
@@ -438,9 +424,11 @@
                 transitions[index - 1].style.transform = `translateY(${(1 - transitionAmount) * -6}px)`;
                 revealRow(index, ease((t - index - .2) / .5));
             }
+            /* The frame travels with the row it lights: both arrive together,
+               so the frame never stands round an empty slot. */
             const stageIndex = Math.min(config.stages.length - 1, Math.floor(t));
-            const nextIndex = Math.min(config.stages.length - 1, stageIndex + 1);
-            const target = interpolate(cursorTargets[stageIndex], cursorTargets[nextIndex], ease((t - stageIndex - .62) / .38));
+            const previousIndex = Math.max(0, stageIndex - 1);
+            const target = interpolate(cursorTargets[previousIndex], cursorTargets[stageIndex], ease((t - stageIndex - .2) / .5));
             cursor.style.left = `${target.left}px`;
             cursor.style.top = `${target.top}px`;
             cursor.style.width = `${target.width}px`;
@@ -573,11 +561,6 @@
         if (!power) return `${subject} is unchanged`;
         return `${subject} is ${power > 0 ? "multiplied" : "divided"} by ${comma(String(factorNumber(power)))}`;
     };
-    const spokenEquation = (form, first, second, product) => {
-        if (form === "divide-first") return `${product} divided by ${first} equals ${second}`;
-        if (form === "divide-second") return `${product} divided by ${second} equals ${first}`;
-        return `${first} times ${second} equals ${product}`;
-    };
 
     const createFactExplorer = (explorer) => {
         const firstSelect = explorer.querySelector("[data-first-scale]");
@@ -652,7 +635,7 @@
             const resultName = result === "product" ? "product" : result === "first" ? "first factor" : "second factor";
             const inputNames = result === "product" ? ["first factor", "second factor"] : result === "first" ? ["product", "second factor"] : ["product", "first factor"];
             const inputPowers = result === "product" ? [firstPower, secondPower] : result === "first" ? [productPower, secondPower] : [productPower, firstPower];
-            status.textContent = `${spokenChange(`The ${inputNames[0]}`, inputPowers[0])} and ${spokenChange(`the ${inputNames[1]}`, inputPowers[1])}. The calculated scale for the ${resultName} is ${shortChange(powers[result])}. The related fact is ${spokenEquation(form, first, second, product)}.`;
+            status.textContent = `${spokenChange(`The ${inputNames[0]}`, inputPowers[0])} and ${spokenChange(`the ${inputNames[1]}`, inputPowers[1])}, so ${spokenChange(`the ${resultName}`, powers[result])}.`;
         };
 
         [firstSelect, secondSelect, productSelect, ...resultChoices].forEach((control) => control.addEventListener("change", update));

@@ -400,7 +400,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
                 {
                     title: "The 3 is three squares",
-                    copy: `Added on its own, the 3 adds three squares and nothing more, so the count is ${block + model.other}.`
+                    copy: `Without brackets the 3 is three squares added to the ${block}, and the count is ${block + model.other}.`
                 },
                 {
                     title: "The brackets make one side",
@@ -408,7 +408,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
                 {
                     title: `${tall} by ${model.across}`,
-                    copy: `Every one of those ${tall} rows runs the full five, and the rectangle holds ${tall * model.across}.`
+                    copy: `Each of the ${tall} rows is ${model.across} squares long: ${tall} × ${model.across} = ${tall * model.across}.`
                 }
             ][clamp(index, 0, 3)];
         },
@@ -464,18 +464,17 @@ document.addEventListener("DOMContentLoaded", () => {
         caption(model, index) {
             const lines = workThrough(model.atoms);
             const reasons = [
-                "4 × 4 = 16, and by convention nothing else can be worked until it is.",
-                "Multiplying and dividing are the same strength, so the leftmost of them goes first.",
-                "48 shared between 8 is 6.",
-                "One term is added to the other, and the calculation is finished."
+                "4 × 4 = 16 is worked before the × and the ÷ either side of it.",
+                "× and ÷ are one strength, so the one on the left goes first: 3 × 16 = 48.",
+                "48 ÷ 8 = 6.",
+                "2 + 6 = 8."
             ];
             const titles = ["The power first", "Then the leftmost product", "Then the division",
                 "And the two terms added"];
             if (index >= lines.length - 1) {
                 /* A caption is plain text, so it says what the working did
                    rather than trying to write a power out in it. */
-                return { title: `The whole line is ${lines[lines.length - 1].atoms[0].value}`,
-                    copy: `Every part has been worked in turn, and ${lines.length - 1} operations have come down to one number.` };
+                return { title: `The whole line is ${lines[lines.length - 1].atoms[0].value}`, copy: "" };
             }
             return { title: titles[index], copy: reasons[index] };
         },

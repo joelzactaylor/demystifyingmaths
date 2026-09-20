@@ -44,7 +44,7 @@
     display: block;
     margin-bottom: 6px;
     color: #52666f;
-    font-size: .7rem;
+    font-size: .82rem;
     font-weight: 700;
     letter-spacing: .07em;
     text-transform: uppercase;
@@ -76,7 +76,7 @@
 .parity__cell b {
     color: #52666f;
     font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-    font-size: .72rem;
+    font-size: .86rem;
     font-variant-numeric: tabular-nums;
 }
 

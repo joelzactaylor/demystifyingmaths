@@ -23,14 +23,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const lerp = (from, to, amount) => from + (to - from) * amount;
 
     const placeNames = new Map([
-        [5, "hundred-thousands"], [4, "ten-thousands"], [3, "thousands"],
+        [5, "hundred thousands"], [4, "ten thousands"], [3, "thousands"],
         [2, "hundreds"], [1, "tens"], [0, "ones"], [-1, "tenths"],
         [-2, "hundredths"], [-3, "thousandths"]
-    ]);
-    const singularNames = new Map([
-        [5, "hundred thousand"], [4, "ten thousand"], [3, "thousand"],
-        [2, "hundred"], [1, "ten"], [0, "unit"], [-1, "tenth"],
-        [-2, "hundredth"], [-3, "thousandth"]
     ]);
     const placeLabels = new Map([
         [5, "100,000s"], [4, "10,000s"], [3, "1,000s"], [2, "100s"],
@@ -396,12 +391,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (stage === 0) {
                 stepTitle.textContent = "Align equal place values";
+                // "4.03 written as 4.030 so the thousandths column has a 0": the
+                // padded number, and the columns the padding gives a digit to.
                 const padded = [];
-                if (calc.a.decimal.length < calc.decimalPlaces) padded.push(`${readable(calc.a.whole, calc.a.decimal)} as ${readable(calc.a.whole, calc.a.decimal.padEnd(calc.decimalPlaces, "0"))}`);
-                if (calc.b.decimal.length < calc.decimalPlaces) padded.push(`${readable(calc.b.whole, calc.b.decimal)} as ${readable(calc.b.whole, calc.b.decimal.padEnd(calc.decimalPlaces, "0"))}`);
+                const list = (names) => names.length > 1 ? `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}` : names[0];
+                [calc.a, calc.b].forEach((number) => {
+                    if (number.decimal.length >= calc.decimalPlaces) return;
+                    const columns = [];
+                    for (let place = number.decimal.length + 1; place <= calc.decimalPlaces; place += 1) columns.push(placeNames.get(-place));
+                    padded.push(`${readable(number.whole, number.decimal)} written as ${readable(number.whole, number.decimal.padEnd(calc.decimalPlaces, "0"))} so the ${list(columns)} ${columns.length > 1 ? "columns each have" : "column has"} a 0`);
+                });
                 stepCopy.textContent = padded.length
-                    ? `Begin with the decimal points directly beneath one another. Write ${padded.join(" and ")} so every occupied place has a digit to work with.`
-                    : "Begin with equal place values directly beneath one another. The ones sit under the ones, the tens under the tens, and so on.";
+                    ? `Points beneath points; ${padded.join(", and ")}.`
+                    : calc.decimalPlaces
+                        ? "Points beneath points."
+                        : "Ones under ones, tens under tens, hundreds under hundreds.";
                 return;
             }
 
@@ -414,30 +418,33 @@ document.addEventListener("DOMContentLoaded", () => {
                    longer holds the digit written on the page, so the sentence
                    says what is actually there. */
                 const holding = operation.alreadyReduced
-                    ? `The ${name} were lowered to ${operation.standing}, which cannot pay ${operation.bottom}`
+                    ? `The ${name} now hold ${operation.standing}, and ${operation.standing} is smaller than ${operation.bottom}`
                     : `${operation.standing} is smaller than ${operation.bottom}`;
 
                 if (operation.donor === null) {
-                    stepCopy.textContent = operation.alreadyReduced
-                        ? `The ${name} were lowered to ${operation.standing}, and ${operation.standing} − ${operation.bottom} = ${operation.resultDigit}. Nothing needs to be exchanged.`
-                        : `${operation.top} − ${operation.bottom} = ${operation.resultDigit}. Write ${operation.resultDigit} in the ${name} column. Nothing needs to be exchanged.`;
+                    /* A column emptied by an earlier exchange, with nothing written
+                       beneath it, has no digit in the answer. */
+                    const bottomIsPadding = operation.index < calc.wholePlaces - calc.b.whole.length;
+                    stepCopy.textContent = operation.alreadyReduced && operation.standing === 0 && bottomIsPadding
+                        ? `The ${name} gave one away and now hold 0, with nothing beneath, so the answer has no ${name} digit.`
+                        : operation.alreadyReduced
+                            ? `The ${name} now hold ${operation.standing}, and ${operation.standing} is still enough to take ${operation.bottom}: ${operation.standing} − ${operation.bottom} = ${operation.resultDigit}.`
+                            : `${operation.top} is enough to take ${operation.bottom}: ${operation.top} − ${operation.bottom} = ${operation.resultDigit}.`;
                     return;
                 }
 
                 const donorName = placeNames.get(exponentFor(calc, operation.donor)) || "column to the left";
-                const donorUnit = singularNames.get(exponentFor(calc, operation.donor)) || "unit";
-                const passed = operation.passed.length
-                    ? " The columns in between hold nothing to give, so each becomes 9 as the exchange passes through."
+                const passedNames = operation.passed.map((column) => placeNames.get(exponentFor(calc, column)));
+                const passed = passedNames.length
+                    ? ` The ${passedNames.length > 1 ? `${passedNames.slice(0, -1).join(", ")} and ${passedNames[passedNames.length - 1]}` : passedNames[0]} hold nothing to give, so ${passedNames.length > 1 ? "each becomes" : "they become"} 9 as the exchange passes through.`
                     : "";
-                stepCopy.textContent = `${holding}, so one ${donorUnit} is exchanged from the ${donorName} column.${passed} The ${name} become ${operation.top}, and ${operation.top} − ${operation.bottom} = ${operation.resultDigit}.`;
+                stepCopy.textContent = `${holding}, so the ${donorName} column gives one away.${passed} The ${name} become ${operation.top}, and ${operation.top} − ${operation.bottom} = ${operation.resultDigit}.`;
                 return;
             }
 
             const answer = formatDigits(calc.result, calc.decimalPlaces);
             stepTitle.textContent = `The difference is ${answer}`;
-            stepCopy.textContent = calc.decimalPlaces
-                ? "Read the result from left to right. The decimal point has stayed in its own column, directly beneath the decimal points above it."
-                : `Read the result from left to right. Adding ${answer} to ${readable(calc.b.whole, calc.b.decimal)} returns ${readable(calc.a.whole, calc.a.decimal)}, which is the check worth making.`;
+            stepCopy.textContent = `Check: ${answer} + ${readable(calc.b.whole, calc.b.decimal.padEnd(calc.decimalPlaces, "0"))} = ${readable(calc.a.whole, calc.a.decimal.padEnd(calc.decimalPlaces, "0"))}.`;
         };
 
         const paintDots = () => {
@@ -562,14 +569,21 @@ document.addEventListener("DOMContentLoaded", () => {
             const selection = active && typeof active.selectionStart === "number"
                 ? [active.selectionStart, active.selectionEnd]
                 : null;
-            if (!a || !b) return;
-
-            const shape = padPair(a, b);
-            if (isSmaller(shape.aDigits, shape.bDigits)) {
-                if (notice) notice.hidden = false;
+            /* A field with no number, or a second number larger than the
+               first, shows no calculation: the last working is hidden rather
+               than left standing, and the card keeps its size. */
+            const empty = !a || !b;
+            scene.classList.toggle("is-empty", empty);
+            if (empty) {
+                scene.classList.add("is-invalid");
+                if (notice) notice.hidden = true;
                 return;
             }
-            if (notice) notice.hidden = true;
+            const shape = padPair(a, b);
+            const reversed = isSmaller(shape.aDigits, shape.bDigits);
+            scene.classList.toggle("is-invalid", reversed);
+            if (notice) notice.hidden = !reversed;
+            if (reversed) return;
 
             calculation = buildCalculation(a, b, shape);
             const stages = calculation.operations.length + 2;

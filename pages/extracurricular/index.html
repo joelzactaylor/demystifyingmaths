@@ -4,9 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Demystifying Maths | Extracurricular</title>
-    <meta name="description" content="Long-form pages on mathematical ideas beyond the school syllabus.">
+    <meta name="description" content="Mathematical ideas for every age, explored beyond the school syllabus.">
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/pages.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/extracurricular.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
@@ -22,20 +23,71 @@
         <script>fetch("/demystifyingmaths/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
         <header>
             <h1>Demystifying - Extracurricular</h1>
-            <nav aria-label="Breadcrumb"><ol class="breadcrumb"><li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">›</span></li><li><p>Extracurricular</p></li></ol></nav>
+            <nav aria-label="Breadcrumb">
+                <ol class="breadcrumb">
+                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">›</span></li>
+                    <li>
+                        <p>Extracurricular</p>
+                    </li>
+                </ol>
+            </nav>
         </header>
-        <main>
-            <section class="pages-section">
-                <h1>Extracurricular maths</h1>
+        <main class="extra-main">
+
+
+            <section class="poly-block" aria-labelledby="why-maths">
+                <div class="poly-canvas-wrapper" aria-hidden="true">
+                    <canvas id="poly-canvas"></canvas>
+                </div>
+                <div class="poly-text">
+                    <h1 id="why-maths">Why maths?</h1>
+                    <p>A great many people dislike mathematics, and often with good reason. <strong>Taught poorly, it
+                            becomes an endless list of rules to be memorised</strong>, with little connection to the
+                        real world or to a learner's own intuition.</p>
+                    <p>Yet mathematics is unusual among subjects in being <strong>infinitely
+                            comprehensible</strong>. However abstract an idea may appear, there is always a path leading
+                        back to something that can be seen to be true—not a rule held in the memory, but a principle
+                        that is genuinely understood. My goal with these articles is to lay out those paths.</p>
+                </div>
+            </section>
+
+            <section class="pages-section" id="articles">
                 <div class="pages-section-inner">
-                    <p>These are the longer articles: subjects treated at greater length and for their own interest,
-                        independent of any syllabus. Each begins from first principles and builds from there.</p>
+                    <div class="pages-section__intro">
+                        <h1>Ideas to explore</h1>
+                        <p>Long-form articles that begin from first principles and follow an idea beyond the school
+                            syllabus.</p>
+                    </div>
                     <ul id="pages-list"></ul>
                 </div>
             </section>
         </main>
         <script>fetch("/demystifyingmaths/embed/page-list.html").then(r => r.text()).then(html => document.getElementById("pages-list").innerHTML = html);</script>
-        <footer><div class="footer-content"><div class="footer-section"><h2>Explore</h2><ul><li><a href="/demystifyingmaths/pages/home.html">Home</a></li><li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a></li><li><a href="/demystifyingmaths/pages/about.html">About</a></li><li><a href="/demystifyingmaths/pages/contact.html">Contact</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 demystifyingmaths · joelzactaylor</p></div></footer>
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h2>Explore</h2>
+                    <ul>
+                        <li><a href="/demystifyingmaths/pages/home.html">Home</a></li>
+                        <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a></li>
+                        <li><a href="/demystifyingmaths/pages/about.html">About</a></li>
+                        <li><a href="/demystifyingmaths/pages/contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 demystifyingmaths · joelzactaylor</p>
+            </div>
+        </footer>
     </div>
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.164.0/build/three.module.js"
+      }
+    }
+    </script>
+    <script type="module" src="/demystifyingmaths/js/extracurricular.js"></script>
 </body>
+
 </html>

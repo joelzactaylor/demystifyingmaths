@@ -40,7 +40,7 @@
     display: block;
     margin-bottom: 4px;
     color: #52666f;
-    font-size: .7rem;
+    font-size: .82rem;
     font-weight: 700;
     letter-spacing: .07em;
     text-transform: uppercase;
@@ -81,7 +81,7 @@
     top: calc(50% + 14px);
     color: #09539d;
     font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-    font-size: .74rem;
+    font-size: .88rem;
     font-variant-numeric: tabular-nums;
     font-weight: 700;
     transform: translateX(-50%);
@@ -132,7 +132,7 @@
     border-radius: 8px;
     background: #b86821;
     color: #fff;
-    font: 700 .78rem/1.4 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font: 700 .88rem/1.4 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
     transform: translateX(-50%);

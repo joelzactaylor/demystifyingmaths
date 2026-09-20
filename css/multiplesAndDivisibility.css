@@ -10,17 +10,6 @@
    No viewport media queries: .layout is a fixed 900px panel that shared.css
    scales with transform under 900px, so nothing here may reflow. */
 
-/* A HEADING INSIDE A SECTION ---------------------------------------------
-
-   Nothing sitewide styles an h2 below a section's h1, so one that groups the
-   cards takes the worked-example title's blue and size. */
-
-.sub {
-    margin: 30px 0 8px;
-    color: #09539d;
-    font-size: 1.2rem;
-}
-
 /* SIX TESTS ON ONE NUMBER -----------------------------------------------
 
    A number of the reader's own, and the six syllabus tests run on it. Rows are
@@ -50,7 +39,7 @@
 
 .tester__field > span {
     color: #41535c;
-    font-size: .76rem;
+    font-size: .88rem;
     font-weight: 700;
     letter-spacing: .035em;
 }
@@ -260,7 +249,7 @@
     width: fit-content;
     color: #5b4a86;
     cursor: pointer;
-    font-size: .82rem;
+    font-size: .86rem;
     font-weight: 700;
     letter-spacing: .05em;
     list-style: none;
