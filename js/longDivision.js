@@ -25,21 +25,14 @@
     };
     const tidyDividend = (raw) => {
         const value = String(raw).trim();
-        if (!/^\d+(?:\.\d+)?$/.test(value)) return null;
+        if (!/^\d{1,5}(?:\.\d{1,2})?$/.test(value)) return null;
         let [whole, fraction = ""] = value.split(".");
         whole = whole.replace(/^0+(?=\d)/, "");
-        if (Number(`${whole}.${fraction}`) <= 0) return null;
         return fraction ? `${whole}.${fraction}` : whole;
     };
-    const limitDividend = (raw) => {
-        let cleaned = raw.replace(/[^\d.]/g, "");
-        const point = cleaned.indexOf(".");
-        if (point >= 0) cleaned = `${cleaned.slice(0, point + 1)}${cleaned.slice(point + 1).replace(/\./g, "")}`;
-        let [whole, fraction] = cleaned.split(".");
-        whole = whole.slice(0, 5).replace(/^0+(?=\d)/, "");
-        return fraction === undefined ? whole : `${whole}.${fraction.slice(0, 2)}`;
-    };
-    const limitDivisor = (raw) => raw.replace(/\D/g, "").slice(0, 2).replace(/^0+(?=\d)/, "");
+    // Preserve invalid entries instead of silently changing the calculation.
+    const limitDividend = raw => raw.trim();
+    const limitDivisor = raw => raw.trim();
 
     const calculate = (dividendText, divisor, resultMode = "decimal") => {
         const dividend = tidyDividend(dividendText);
@@ -405,14 +398,14 @@
                 return { title: appended ? "Append and bring down a zero" : `Bring down the next digit, ${calc.digits[nextIndex]}`, copy: appended ? `${shown} is ${shown.includes(".") ? `${shown}0` : `${shown}.0`}, so a zero is appended without changing it. The next current amount is ${stage.next.amount}.` : `Place it beside the remainder to make the next current amount, ${stage.next.amount}.` };
             }
             if (calc.resultMode === "remainder" && calc.finalRemainder) {
-                return { title: `${shown} ÷ ${calc.divisor} = ${calc.answer}`, copy: `Check: ${calc.quotient} × ${calc.divisor} + ${calc.finalRemainder} = ${shown}.` };
+                return { title: `${shown} ÷ ${calc.divisor} = ${calc.answer}`, copy: `${calc.finalRemainder} remains after ${calc.quotient} whole groups of ${calc.divisor}.` };
             }
             if (calc.resultMode === "remainder") {
                 return { title: `${shown} ÷ ${calc.divisor} = ${calc.answer}`, copy: "The remainder is 0, so nothing is written after the quotient." };
             }
             return calc.recurring
                 ? { title: `${shown} ÷ ${calc.divisor} begins ${calc.answer}`, copy: "More appended zeros would give more decimal digits." }
-                : { title: `${shown} ÷ ${calc.divisor} = ${calc.answer}`, copy: `Check: ${calc.answer} × ${calc.divisor} = ${shown}.` };
+                : { title: `${shown} ÷ ${calc.divisor} = ${calc.answer}`, copy: "The remainder is zero, so this answer is exact." };
         };
         return { stages, paint, describe };
     };
@@ -446,34 +439,24 @@
             }
             return after;
         };
-        /* Pinning takes the card out of the page and puts it on the body, and
-           moving a node drops focus and the caret from whatever is inside it.
-           Both are put back, so the card can go on being positioned however the
-           reader is using it. */
-        const moveCard = (move) => {
-            const active = sticky.contains(document.activeElement) ? document.activeElement : null;
-            const caret = active && typeof active.selectionStart === "number"
-                ? [active.selectionStart, active.selectionEnd]
-                : null;
-            move();
-            if (!active || document.activeElement === active) return;
-            active.focus({ preventScroll: true });
-            if (caret) active.setSelectionRange(caret[0], caret[1]);
-        };
 
         const dock = (offset = 0, preserve = false) => {
-            if (sticky.parentNode !== scene) moveCard(() => scene.insertBefore(sticky, scene.firstChild));
             sticky.classList.remove("is-pinned");
             sticky.style.removeProperty("left");
             sticky.style.removeProperty("transform");
-            sticky.style.top = `${offset}px`;
+            const scale = scene.offsetWidth ? scene.getBoundingClientRect().width / scene.offsetWidth : 1;
+            sticky.style.top = reduceMotion.matches ? "0px" : `${Math.max(16, (window.innerHeight - cardHeight * scale) / 2) / (scale || 1)}px`;
             if (preserve) { sticky.style.width = `${scene.offsetWidth}px`; sticky.style.height = `${cardHeight}px`; }
             else { sticky.style.removeProperty("width"); sticky.style.removeProperty("height"); }
         };
+        // Native sticky positioning owns the card’s movement. JavaScript only
+        // sets its viewport inset and advances the mathematical drawing.
         const pin = (left, top, width, scale) => {
-            if (sticky.parentNode !== document.body) moveCard(() => document.body.append(sticky));
             sticky.classList.add("is-pinned");
-            sticky.style.left = `${left}px`; sticky.style.top = `${top}px`; sticky.style.width = `${width}px`; sticky.style.height = `${cardHeight}px`; sticky.style.transform = `scale(${scale})`;
+            sticky.style.left = "0px";
+            sticky.style.top = `${top / scale}px`;
+            sticky.style.width = `${width}px`;
+            sticky.style.height = `${cardHeight}px`;
         };
         const paintAt = (ratio) => {
             if (!renderer) return;
@@ -531,14 +514,14 @@
             if (!fixed) {
                 const dividendInvalid = !tidyDividend(dividendText) || (resultMode === "remainder" && dividendText.includes("."));
                 dividendInput.setAttribute("aria-invalid", String(dividendInvalid));
-                divisorInput.setAttribute("aria-invalid", String(Number(divisorText) < 10 || Number(divisorText) > 99));
+                divisorInput.setAttribute("aria-invalid", String(!/^\d{2}$/.test(divisorText) || Number(divisorText) < 10 || Number(divisorText) > 99));
             }
             if (!next) {
                 renderer = null; paper.replaceChildren(); paper.classList.add("is-invalid"); progress.replaceChildren();
                 title.textContent = "Enter a valid calculation";
                 copy.textContent = resultMode === "remainder" && dividendText.includes(".")
                     ? "Use a whole-number dividend when the answer is written with a remainder."
-                    : "Use a positive dividend and a two-digit divisor from 10 to 99.";
+                    : "Use a non-negative dividend and a two-digit divisor from 10 to 99.";
                 return;
             }
             calc = next; renderer = buildRenderer(calc, paper);
@@ -583,6 +566,7 @@
     const reset = () => controllers.forEach((controller) => controller.reset());
     window.addEventListener("scroll", nudge, { passive: true });
     window.addEventListener("resize", reset);
+    document.addEventListener("lessonlayoutchange", reset);
     if (reduceMotion.addEventListener) reduceMotion.addEventListener("change", reset);
     else reduceMotion.addListener(reset);
 })();

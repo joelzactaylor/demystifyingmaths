@@ -34,6 +34,172 @@
     box-shadow: 0 8px 22px rgba(23, 56, 73, .11);
 }
 
+/* A focused prototype: comfortable reading width, open diagrams, and colour
+   attached to the two signs rather than to enclosing panels. */
+.roots-lesson header {
+    background: #fff;
+    border-bottom: 2px solid #e6e8ef;
+    padding: 26px 40px 12px;
+    margin-bottom: 32px;
+}
+.roots-lesson header h1 {
+    color: #243445;
+    text-shadow: none;
+    font-size: 34px;
+    padding: 20px 0;
+}
+.roots-lesson header nav { top: 0; }
+.roots-lesson .lesson-main { max-width: 760px; margin: 0 auto; padding: 0 48px 64px; }
+.roots-lesson .lesson-main > section {
+    margin: 0;
+    padding: 32px 0;
+}
+.roots-lesson .lesson-main > section::after,
+.roots-lesson .lesson-main > section > h1::before,
+.roots-lesson .lesson-main > section > h2::before { display: none; }
+.roots-lesson .lesson-flowbar { background: transparent; border: 0; padding: 12px 0; }
+.roots-lesson .lesson-flowbar { display: flex; justify-content: flex-end; }
+.roots-lesson .lesson-flowbar__status,
+.roots-lesson .lesson-flowbar__track { display: none; }
+.roots-lesson .lesson-flowbar[hidden] { display: none; }
+.roots-lesson .page-nav { display: flex; flex-direction: column; }
+.roots-lesson .page-nav .lesson-flowbar__toggle {
+    align-self: flex-start;
+    margin: 24px 12px 0;
+    padding: 6px 0;
+    color: #fff;
+}
+.roots-lesson .roots-revealed { animation: roots-reveal .45s ease-out both; }
+.roots-lesson .page-nav .roots-reset { margin-top: 8px; }
+.roots-reading-step[hidden], .roots-continue[hidden] { display: none; }
+.roots-reading-step > p { margin: 18px 0; font-size: 1.04rem; line-height: 1.75; }
+.roots-reading-step > .roots-instruction { margin-top: 32px; }
+.roots-continue {
+    display: block;
+    margin: 28px auto 0;
+    padding: 10px 24px;
+    border: 0;
+    border-radius: 22px;
+    background: #7048c8;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    font-family: inherit;
+    cursor: pointer;
+}
+.roots-continue:focus-visible { outline: 3px solid #7048c8; outline-offset: 4px; }
+.roots-revisit { margin: 24px 0; }
+.roots-revisit summary { color: #5531a9; cursor: pointer; font-size: 15px; line-height: 1.6; }
+.roots-revisit > p { margin: 12px 0; font-size: 16px; line-height: 1.7; }
+.roots-question-reminder { margin: 10px 0 0; }
+.roots-revisit[hidden] { display: none; }
+.roots-lesson .lesson-check__turn[hidden] { display: none; }
+.roots-key-points { margin: 32px 0 0; padding-top: 24px; border-top: 2px solid #e3e8ed; }
+.roots-key-points h2 { margin: 0 0 16px; color: #243445; font-size: 21px; }
+.roots-key-points ul { margin: 0; padding-left: 22px; }
+.roots-key-points li { padding-left: 6px; font-size: 1.04rem; line-height: 1.75; }
+.roots-key-points li + li { margin-top: 12px; }
+.roots-key-points li::marker { color: #009b8c; }
+@keyframes roots-reveal {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.roots-lesson .lesson-main > section > h1 { font-size: 28px; margin: 0 0 24px; }
+.roots-lesson .lesson-main > section > p { max-width: none; margin: 0 0 18px; line-height: 1.75; }
+.roots-lesson .lesson-main > section > :last-child { margin-bottom: 0; }
+.roots-lesson .lesson-main > .prereq { margin: 0 0 12px; background: #f5f7fa; border: 0; }
+.roots-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin: 28px 0; }
+.roots-pair p { margin: 0; padding: 12px 0; border: 0; background: transparent; text-align: center; }
+.roots-pair p + p { border: 0; background: transparent; }
+.roots-pair strong { display: block; color: #006f65; font: 700 20px/1.5 ui-monospace, monospace; }
+.roots-pair p + p strong { color: #5531a9; }
+.roots-pair span { display: block; margin-top: 8px; font-size: 14px; color: #465966; }
+.roots-lesson .mirror { box-shadow: none; border: 0; border-radius: 8px; background: #f7f8fc; margin: 24px 0 32px; padding: 32px 44px; }
+.roots-lesson .mirror__cap { font-size: 14px; }
+.roots-lesson .roots-instruction { color: #536873; font-size: 15px; }
+.roots-lesson .rule-card { border: 0; border-radius: 0; background: transparent; box-shadow: none; margin: 28px 0; padding: 8px 24px; }
+.roots-lesson .rule-card__statement { text-align: left; font-size: 22px; color: #243445; }
+.roots-lesson .rule-card__conditions li { border: 0; background: transparent; padding: 0; }
+.roots-lesson .wex { background: #f3faf8; border: 0; border-radius: 6px; box-shadow: none; margin: 28px 0; padding: 28px 32px; }
+.roots-lesson .wex__steps li { grid-template-columns: 24px 150px minmax(0, 1fr); gap: 16px; padding-top: 14px; padding-bottom: 14px; }
+.roots-lesson .cases { border: 0; border-radius: 8px; background: #f7f8fc; margin: 28px 0; padding: 28px; }
+.roots-lesson .cases__case { grid-template-columns: 116px 1fr 190px; min-height: 54px; }
+.roots-lesson .lesson-check { max-width: none; margin: 18px 0; }
+.roots-lesson .lesson-check__body { gap: 18px; }
+.roots-lesson .lesson-check__turn + .lesson-check__turn { padding-top: 0; }
+.roots-lesson .lesson-main > section > .lesson-check + p { margin-top: 18px; }
+.roots-lesson .lesson-main > section > .roots-instruction { margin-top: 32px; margin-bottom: 0; }
+.roots-lesson .lesson-check__entry input {
+    width: 3.2em; min-width: 0; min-height: 0; padding: 1px 5px;
+    box-sizing: border-box; height: 1.65em; font-family: inherit; font-size: 1em; font-weight: 700; line-height: 1.4;
+    border: 0; border-bottom: 2px solid #7048c8; border-radius: 4px 4px 0 0; background: #f2edff;
+}
+.roots-lesson .lesson-check__check { display: none; }
+.roots-lesson .lesson-check__prompt { display: block; max-width: none; line-height: 1.75; font-size: 1.04rem; }
+.roots-lesson .lesson-check__response { display: inline; margin: 0; vertical-align: baseline; }
+.roots-inline-equation { display: inline-block; white-space: nowrap; vertical-align: baseline; }
+.roots-lesson .roots-inline-equation .lesson-check__expression {
+    font-family: inherit;
+    font-size: 1em;
+    line-height: inherit;
+    letter-spacing: normal;
+}
+.roots-lesson .roots-inline-equation .lesson-check__response { margin-left: .3em; }
+.roots-lesson .lesson-check__answer,
+.roots-lesson .lesson-check__entry { display: inline; font-size: inherit; vertical-align: baseline; }
+.roots-lesson .lesson-check__entry input { vertical-align: baseline; }
+.roots-lesson .lesson-check__entry input.roots-answer-retry {
+    color: #a3293d;
+    background: #fff0f2;
+    border-bottom: 2px dashed #bb354c;
+    box-shadow: none;
+    animation: roots-retry .24s ease-in-out;
+}
+.roots-answer-notice {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+@keyframes roots-retry {
+    25%, 75% { transform: translateX(-2px); }
+    50% { transform: translateX(2px); }
+}
+.roots-lesson .lesson-check__entry input::placeholder { color: #7048c8; opacity: 1; }
+.roots-lesson .lesson-check__entry input[hidden] { display: none; }
+.roots-lesson .roots-accepted-answer {
+    color: #0f6d40;
+    font-weight: 700;
+    background: none;
+    border: 0;
+    padding: 0;
+}
+.roots-lesson .roots-accepted-answer:focus {
+    outline: none;
+    box-shadow: none;
+}
+.roots-lesson .lesson-check__turn.is-correct .lesson-check__entry input {
+    background: #e9f8ef; border-color: #15985b; color: #0f6d40; box-shadow: none;
+}
+.roots-lesson .lesson-check__turn.is-correct .lesson-check__entry input:focus {
+    border-color: #15985b; outline: 2px solid #b9dfc8;
+}
+.roots-lesson .lesson-check__help { margin-top: 8px; }
+.roots-lesson .lesson-check__feedback { max-width: 700px; font-weight: 400; }
+.roots-lesson .lesson-check__turn.is-correct .lesson-check__check {
+    display: none;
+}
+.roots-lesson .lesson-check__turn.is-correct .lesson-check__response::after {
+    content: none;
+}
+.roots-lesson .lesson-check__feedback,
+.roots-lesson .lesson-check__help,
+.roots-lesson .lesson-check__support,
+.roots-lesson .lesson-check__complete { display: none; }
+
 .mirror__row + .mirror__row { margin-top: 34px; }
 
 .mirror__cap {
@@ -42,15 +208,15 @@
     color: #52666f;
     font-size: .82rem;
     font-weight: 700;
-    letter-spacing: .07em;
-    text-transform: uppercase;
+    letter-spacing: 0;
+    text-transform: none;
 }
 
 /* Tall enough to take hold of on a touch screen without the line itself moving:
    the height is the target, and the rule through the middle is the axis. */
 .mirror__axis {
     position: relative;
-    height: 74px;
+    height: 88px;
     outline: none;
     cursor: ew-resize;
     touch-action: none;
@@ -64,7 +230,7 @@
     right: 0;
     left: 0;
     height: 2px;
-    background: #5d91b0;
+    background: #a2aabd;
 }
 
 .mirror__tick {
@@ -79,7 +245,7 @@
 .mirror__mark {
     position: absolute;
     top: calc(50% + 14px);
-    color: #09539d;
+    color: #536273;
     font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
     font-size: .88rem;
     font-variant-numeric: tabular-nums;
@@ -87,7 +253,7 @@
     transform: translateX(-50%);
 }
 
-.mirror__row--square .mirror__mark { color: #9b5f12; }
+.mirror__row--square .mirror__mark { color: #536273; }
 
 /* Eased between steps, so a key press moves a marker rather than teleporting
    it. While a finger is down the easing comes off, or the marker would trail
@@ -102,48 +268,51 @@
     top: calc(50% - 15px);
     width: 2px;
     height: 30px;
-    background: #b86821;
+    color: #009b8c;
+    background: transparent;
     transform: translateX(-50%);
 }
 
 .mirror__marker::after {
     position: absolute;
-    top: calc(50% - 9px);
-    left: -8px;
-    width: 18px;
-    height: 18px;
+    top: calc(50% - 11px);
+    left: -10px;
+    width: 22px;
+    height: 22px;
     box-sizing: border-box;
-    border: 3px solid #b86821;
+    border: 3px solid currentColor;
     border-radius: 50%;
-    background: #fff8df;
+    background: currentColor;
+    box-shadow: 0 0 0 4px #f7f8fc;
     content: "";
 }
 
 /* The second number of the pair, held by nothing: it is not what the reader is
    moving, and it is not drawn as though it were. */
-.mirror__marker--mirror { background: #c6a06a; }
-.mirror__marker--mirror::after { border-style: dashed; background: #fff; }
+.mirror__marker--mirror::after { background: #fff; }
+.mirror__marker.is-negative { color: #7048c8; }
+.mirror__row--square .mirror__marker { color: #2678c8; }
+.mirror__axis:hover .mirror__marker::after { box-shadow: 0 0 0 6px #e2e6f0; }
 
 /* The value rides above its own marker, so each line is readable on its own. */
 .mirror__value {
     position: absolute;
     top: calc(50% - 42px);
-    padding: 2px 8px;
-    border-radius: 8px;
-    background: #b86821;
-    color: #fff;
-    font: 700 .88rem/1.4 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    padding: 0 4px;
+    border-radius: 0;
+    background: #f7f8fc;
+    color: #007b70;
+    font: 700 16px/1.4 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
-    transform: translateX(-50%);
+    transform: translateX(4px);
 }
 
 .mirror__value--mirror {
-    border: 2px dashed #b86821;
-    background: #fff;
-    color: #9b5f12;
-    padding: 0 6px;
+    border: 0;
 }
+.mirror__value.is-negative { color: #7048c8; transform: translateX(calc(-100% - 4px)); }
+.mirror__row--square .mirror__value { color: #2678c8; transform: translateX(-50%); }
 
 /* At 0 the two markers stand in the same place, so the second one is taken off
    rather than left stacked under the first. */
@@ -157,6 +326,26 @@
     font-size: 1rem;
     text-align: center;
 }
+.mirror__equation { display: block; font-size: 22px; line-height: 1.8; }
+.roots-lesson sup { font-size: 14px; }
+.mirror__negative { color: #7048c8; }
+.mirror__positive { color: #007b70; }
+.mirror__result { color: #2678c8; }
+.mirror__conclusion { display: block; margin-top: 8px; color: #536273; font-size: 15px; line-height: 1.6; }
+.mirror__controls { display: flex; justify-content: center; gap: 12px; margin-top: 24px; }
+.mirror__action {
+    border: 1px solid #d4c9ec;
+    border-radius: 20px;
+    background: #fff;
+    color: #5531a9;
+    padding: 7px 16px;
+    font: inherit;
+    font-size: 14px;
+    cursor: pointer;
+}
+.mirror__action:hover:not(:disabled) { background: #eee8fa; border-color: #7048c8; }
+.mirror__action:focus-visible { outline: 2px solid #7048c8; outline-offset: 3px; }
+.mirror__action:disabled { color: #697383; border-color: #dce0e7; cursor: default; }
 
 /* HOW MANY NUMBERS REACH A GIVEN SQUARE
 
@@ -190,7 +379,7 @@
     right: 0;
     left: 0;
     height: 2px;
-    background: #5d91b0;
+    background: #a2aabd;
 }
 
 .cases__zero {
@@ -209,11 +398,13 @@
     width: 14px;
     height: 14px;
     box-sizing: border-box;
-    border: 3px solid #b86821;
+    border: 3px solid #7048c8;
     border-radius: 50%;
-    background: #fff8df;
+    background: #7048c8;
     transform: translateX(-50%);
 }
+.cases__dot + .cases__dot { border-color: #009b8c; background: #009b8c; }
+.cases__case:nth-child(2) .cases__dot { border-color: #2678c8; background: #2678c8; }
 
 .cases__count { color: #41535c; font-size: .92rem; }
 
@@ -223,6 +414,8 @@
    own. The easing between keyboard steps is the one exception, and it goes when
    the reader has asked for no motion. */
 @media (prefers-reduced-motion: reduce) {
+    .roots-lesson .lesson-check__entry input.roots-answer-retry { animation: none; }
+    .roots-lesson .roots-revealed { animation: none; }
     .mirror__marker,
     .mirror__value { transition: none; }
 }

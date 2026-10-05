@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/primesAndPrimality.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
@@ -18,6 +20,8 @@
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/integrated-lesson-banks.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <script src="/demystifyingmaths/js/primesAndPrimality.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,7 +58,8 @@
 
         <aside id="page-nav-container"></aside>
 
-        <main class="lesson-main">
+        <main class="lesson-main" data-integrated-bank="primes" data-lesson-check-api="IntegratedLessonBank"
+            data-lesson-check-anchors="one-rectangle-only,testing-one-number,exact-division-stops">
             <p class="prereq"><b>Before this page:</b> <span>be able to list the <a
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/factorsAndFactorPairs.html">factors
                         of a number in pairs</a> and know where the trials stop, read the tests for 2, 3 and 5
@@ -425,15 +430,8 @@
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice"
-                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practicePrimesAndPrimality.html"
-                        style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
-                        <h3>Primes and testing for primality</h3>
-                        <p>What makes a number prime, why 1 is not, and trial division up to the root.</p>
-                    </a>
                     <a class="topic-card topic-card--next"
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/primeFactorisation.html"
                         style="background-image: none">

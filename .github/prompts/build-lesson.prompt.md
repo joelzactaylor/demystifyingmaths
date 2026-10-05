@@ -1,5 +1,5 @@
 ---
-mode: agent
+agent: agent
 description: Build a Demystifying Maths teaching page from its stub, following the master lesson prompt to completion.
 ---
 
@@ -12,8 +12,9 @@ recently completed one: a teaching page in `pages/curriculum/` that still
 carries the `&mdash;coming soon&mdash;` stub marker, whose manifest entry in
 `scripts/gcse-*-manifest.json` is not `"written": true`.
 
-Treat the prompt as the complete brief. Read the written-methods reference pages
-and their CSS/JS before writing a line. Continue until every review and
+Treat the prompt as the complete brief. Read the positiveAndNegativeRoots
+prototype and its CSS/JS; use written-method references only for relevant
+arithmetic diagrams. Continue until every review and
 validation gate in the prompt passes and every checker in
 [AGENTS.md](../../AGENTS.md) is green. Do not stop at a first draft, and do not
 report findings without fixing them.

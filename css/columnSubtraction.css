@@ -162,8 +162,8 @@
 }
 
 .subtraction-scene__sticky.is-pinned {
-    position: fixed;
-    right: auto;
+    position: absolute;
+    right: 0;
     z-index: 900;
     transform-origin: top left;
 }

@@ -1,5 +1,5 @@
 ---
-mode: agent
+agent: agent
 description: Run the full audit cycle on a lesson page that already works, fixing every finding in the pass that finds it.
 ---
 

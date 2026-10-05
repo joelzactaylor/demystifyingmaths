@@ -2950,6 +2950,7 @@
         },
         {
             "file": "practicePlaceValueReview.html",
+            "showInMenu": false,
             "title": "Place value review",
             "description": "Decimal digit values, ordering with inequality symbols, and scaling by powers of ten.",
             "skill": "Reading decimal place value: digit values, ordering with inequality symbols, and scaling by powers of ten.",
@@ -2975,6 +2976,7 @@
         },
         {
             "file": "practiceWrittenMethodsReview.html",
+            "showInMenu": false,
             "title": "Written methods review",
             "description": "Column addition, subtraction and long multiplication with decimals throughout.",
             "skill": "Adding, subtracting and multiplying decimals by written column methods, exchanging across zeros included.",
@@ -3001,6 +3003,7 @@
         },
         {
             "file": "practiceDivisionReview.html",
+            "showInMenu": false,
             "title": "Division review",
             "description": "Short and long division with decimal answers, decimal divisors, and remainders interpreted in context.",
             "skill": "Dividing by short and long division into exact decimal answers, turning decimal divisors into integer ones, and interpreting remainders in context.",
@@ -3026,6 +3029,7 @@
         },
         {
             "file": "practicePowersRootsReview.html",
+            "showInMenu": false,
             "title": "Powers and roots review",
             "description": "Evaluating powers and roots without a calculator, cube roots of negatives, and every solution a squared equation has.",
             "skill": "Evaluating powers and roots without a calculator, and giving every solution a squared equation has.",
@@ -3198,6 +3202,49 @@
                 "structure/index-equations"
             ],
             "availableAfter": "structure/index-equations"
+        },
+        {
+            "file": "practiceRevisit.html",
+            "title": "Revision and problems",
+            "description": "Short cumulative revision and original multi-step problems in written methods.",
+            "skill": "Recall previously studied written methods and select methods for multi-step problems.",
+            "topic": "structure",
+            "groups": ["written-methods"],
+            "tier": "both",
+            "sections": [
+                "Up to six fixed retrieval prompts per session, selected only from topics the learner has studied; two authored variants per lesson.",
+                "Four original non-calculator problems combining costs, division, remainder interpretation and comparison, with complete worked methods."
+            ],
+            "generate": false,
+            "kind": "review",
+            "learningPages": [
+                "structure/place-value", "structure/ordering-numbers", "structure/inequality-symbols",
+                "structure/powers-of-ten", "structure/column-addition", "structure/column-subtraction",
+                "structure/exchanging-across-zeros", "structure/long-multiplication", "structure/multiplying-decimals",
+                "structure/short-division", "structure/interpreting-remainders", "structure/long-division",
+                "structure/dividing-by-decimals", "structure/using-a-given-calculation"
+            ],
+            "availableAfter": "structure/using-a-given-calculation"
+        },
+        {
+            "file": "practiceRevisit.html",
+            "title": "Revision and problems",
+            "description": "Short cumulative revision and original multi-step problems in powers and roots.",
+            "skill": "Recall previously studied powers and roots and select methods for multi-step problems.",
+            "topic": "structure",
+            "groups": ["powers-and-roots"],
+            "tier": "both",
+            "sections": [
+                "Up to six fixed retrieval prompts per session, selected only from topics the learner has studied; two authored variants per lesson.",
+                "Four original non-calculator problems combining powers, roots and representations, with complete worked methods; no index laws."
+            ],
+            "generate": false,
+            "kind": "review",
+            "learningPages": [
+                "structure/index-notation", "structure/recognising-powers", "structure/square-roots",
+                "structure/positive-and-negative-roots", "structure/cube-and-higher-roots"
+            ],
+            "availableAfter": "structure/cube-and-higher-roots"
         },
         {
             "file": "practiceCalculatorReview.html",

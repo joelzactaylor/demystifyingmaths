@@ -10,26 +10,36 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/orderingNumbers.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
+    <script src="/demystifyingmaths/js/lesson-session.js" defer></script>
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
     <script src="/demystifyingmaths/js/orderingNumbers.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsLessonBank.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/demystifyingmaths/css/powersRootsRecall.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/writtenMethodsLesson.css">
+    <script src="/demystifyingmaths/js/writtenMethodsLesson.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsRecallBank.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsRecall.js" defer></script>
 </head>
 
-<body>
+<body class="roots-lesson written-methods-lesson">
     <div class="layout">
         <div id="top-ribbon-placeholder"></div>
         <script>fetch("/demystifyingmaths/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
 
         <header>
-            <h1>Demystifying - Ordering integers, decimals and negatives</h1>
+            <h1>Ordering integers, decimals and negatives</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
                     <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
@@ -47,20 +57,20 @@
 
         <aside id="page-nav-container"></aside>
 
-        <main class="lesson-main">
+        <main class="lesson-main" data-lesson-check-api="WrittenMethodsLessonBank"
+            data-lesson-check-anchors="ordering-decimal-numbers,ordering-negative-numbers,ordering-a-mixture-of-numbers">
             <p class="prereq"><b>Before this page:</b> <span>know what each <span class="gloss" data-term="digit">digit</span> is worth in
                     <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/placeValue.html">integers and decimals</a>,
                     since every comparison is made one place value at a time.</span></p>
 
             <section>
-                <h1>Place value decides which number is larger</h1>
+                <h1 id="ordering-numbers-idea-1">Putting numbers in order</h1>
 
                 <p>0.8 is greater than 0.75: <strong>0.8 = 0.80</strong>, and 8 tenths is more than 7 tenths, so the
                     <span class="gloss" data-term="hundredth">hundredths</span> <span class="gloss" data-term="column">column</span>
                     is never reached.</p>
 
-                <p>Compare from the greatest <span class="gloss" data-term="place value">place value</span> towards the smallest. The first place where the digits differ decides the
-                    order. On a <span class="gloss" data-term="number line">number line</span>, further right is larger.</p>
+<p>For positive numbers, line up the place values and compare from left to right. The first place where the digits differ decides the order. On a number line, further right is larger.</p>
                 <h2>Ascending and descending</h2>
                 <p>Ordering numbers means arranging them by size:</p>
                 <ul>
@@ -100,7 +110,7 @@
             </section>
 
             <section>
-                <h1>Whole numbers are compared from the greatest place down</h1>
+                <h1 id="ordering-numbers-idea-2">Comparing whole numbers</h1>
 
                 <div class="ordering-example">
                     <h2>Example: put 4,582, 4,528 and 4,805 in ascending order</h2>
@@ -126,13 +136,13 @@
 
                 <aside class="important-box" aria-labelledby="whole-number-important-title">
                     <h2 class="important-box__title" id="whole-number-important-title">More digits means larger, for positive whole numbers only</h2>
-                    <p>Any four-digit number is less than any five-digit number: <strong>9,999 &lt; 10,000</strong>. For
+                    <p>Any positive four-digit number is less than any five-digit positive number: even <strong>9,999 is smaller than 10,000</strong>. For
                         <span class="gloss" data-term="negative">negative</span> numbers more digits does not mean larger: &minus;10 is smaller than &minus;9.</p>
                 </aside>
             </section>
 
             <section>
-                <h1 id="ordering-decimal-numbers">Decimals are compared once their points line up</h1>
+                <h1 id="ordering-decimal-numbers">Comparing decimals</h1>
                 <p>To compare 3.7, 3.17, 3.705 and 3.07, line up the <span class="gloss" data-term="decimal point">decimal points</span> so that digits with the same place value sit underneath each other.</p>
                 <p><span class="gloss" data-term="placeholder">Placeholder</span> <span class="gloss" data-term="zero">zeros</span> added to the end of a decimal change nothing, and they give each
                     decimal the same count of places:</p>
@@ -209,7 +219,7 @@
             </section>
 
             <section>
-                <h1 id="ordering-negative-numbers">A negative number is smaller the further it is from zero</h1>
+                <h1 id="ordering-negative-numbers">Ordering negative numbers</h1>
                 <p>Every negative number is smaller than zero, and so smaller than every positive number.</p>
                 <p>Among negative numbers, the value closer to zero is larger, so a temperature of &minus;3&deg;C is
                     higher than one of &minus;8&deg;C.</p>
@@ -239,7 +249,7 @@
             </section>
 
             <section>
-                <h1 id="ordering-a-mixture-of-numbers">Split into negatives and positives, then compare each group by place value</h1>
+                <h1 id="ordering-a-mixture-of-numbers">Ordering a mixture</h1>
                 <p>In &minus;2.4, 0.6, &minus;2.04, 1 and 0.06, the two negatives are smaller than the three positives, and each group is then put in order by place value.</p>
 
                 <div class="ordering-example">
@@ -267,52 +277,21 @@
                 </div>
             </section>
 
-            <section>
-                <h1>Common mistakes</h1>
-                <ul class="slips">
-                    <li><b>Treating negatives like positives</b>
-                    <span>9 is larger than 4, but &minus;9 is not larger than &minus;4: it lies further left on the number line, so it is smaller.</span></li>
-                    <li><b>Counting decimal digits</b>
-                    <span>0.625 is not larger than 0.7: 0.7 is 0.700, and 7 tenths is more than 6 tenths.</span></li>
-                    <li><b>Adding zeros in the wrong place</b>
-                    <span>Zeros go on the end of a decimal: 2.5 = 2.50. Padded to 2.05 instead, it drops below 2.1, and
-                        2.1 and 2.5 come out in the wrong order, as 2.05, 2.1.</span></li>
-                    <li><b>Answering in the other direction</b>
-                    <span>Ascending is smallest first: &minus;6, &minus;1, 0, 2, 5. Writing 5, 2, 0, &minus;1,
-                            &minus;6 answers the descending question instead.</span></li>
-                </ul>
-            </section>
 
-            <section>
-                <h1 id="remember">Summary</h1>
-                <ol class="recap">
-                    <li>Compare from the greatest place towards the smallest, and the first place where the digits
-                        differ decides the order.</li>
-                    <li>Zeros written on the end of a decimal change nothing, so 3.7, 3.17 and 3.705 compare as 3.700,
-                        3.170 and 3.705.</li>
-                    <li>More digits means larger for positive whole numbers only, 9,999 &lt; 10,000; for decimals and
-                        negatives it does not, since 0.8 &gt; 0.75 and &minus;10 &lt; &minus;9.</li>
-                    <li>Every negative number is smaller than zero and than every positive number, and among negatives
-                        the value closer to zero is the larger, so &minus;2 is greater than &minus;7.</li>
-                    <li>Ascending order runs from smallest to largest and descending order from largest to smallest,
-                        which a number line shows as reading left to right or right to left.</li>
-                </ol>
-            </section>
+
+            <section class="roots-key-points" id="remember"><h1>Key points</h1><ul><li>Compare place values from left to right, starting with the greatest place.</li><li>Padding a decimal with zeros does not change its value: 3.7 = 3.700.</li><li>For negative numbers, the number nearer zero is greater.</li><li>Ascending means smallest to greatest; descending reverses that order.</li></ul></section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <div class="powers-recall" data-written-recall="orderingNumbers" hidden></div>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/practiceOrderingNumbers.html" style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
-                        <h3>Ordering integers, decimals and negatives</h3>
-                        <p>Ordering numbers, including negatives and decimals of different lengths.</p>
-                    </a>
                     <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/inequalitySymbols.html" style="background-image: none">
                         <span class="topic-card__kicker">Next lesson</span>
                         <h3>The inequality symbols</h3>
                         <p>The less-than, greater-than, at-most, at-least and not-equal signs.</p>
                     </a>
                 </div>
+            <a class="lesson-menu-return" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/">Back to Written methods</a>
             </section>
         </main>
 

@@ -11,26 +11,36 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/columnAddition.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
+    <script src="/demystifyingmaths/js/lesson-session.js" defer></script>
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
     <script src="/demystifyingmaths/js/columnAddition.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsLessonBank.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/demystifyingmaths/css/powersRootsRecall.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/writtenMethodsLesson.css">
+    <script src="/demystifyingmaths/js/writtenMethodsLesson.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsRecallBank.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsRecall.js" defer></script>
 </head>
 
-<body>
+<body class="roots-lesson written-methods-lesson">
     <div class="layout">
         <div id="top-ribbon-placeholder"></div>
         <script>fetch("/demystifyingmaths/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
 
         <header>
-            <h1>Demystifying - Column addition</h1>
+            <h1>Column addition</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
                     <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span>
@@ -54,7 +64,8 @@
 
         <aside id="page-nav-container"></aside>
 
-        <main class="lesson-main">
+        <main class="lesson-main" data-lesson-check-api="WrittenMethodsLessonBank"
+            data-lesson-check-anchors="why-the-columns-must-align,regrouping-a-column,adding-in-context">
             <p class="prereq"><b>Before this page:</b> <span>know what each <span class="gloss"
                         data-term="digit">digit</span> is worth in
                     <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/placeValue.html">integers
@@ -62,14 +73,9 @@
                     and be able to add two single digits without writing anything down.</span></p>
 
             <section>
-                <h1>One large addition, split by place value</h1>
+                <h1 id="column-addition-idea-1">Adding in columns</h1>
 
-                <p><span class="gloss" data-term="place value">Place value</span> splits <strong>4,687 + 2,759</strong>
-                    into additions of thousands, hundreds, tens and
-                    ones.</p>
-
-                <p>Seven ones and nine ones make sixteen ones whatever stands to the left of them. Sixteen ones is one
-                    ten and six ones.</p>
+                <p>Adding a long number does not need one long mental calculation. <span class="gloss" data-term="place value">Place value</span> lets us add the ones, tens and hundreds separately, keeping track of each part.</p>
 
                 <p>Column addition gives each place its own column. In 342 + 526 no column reaches ten, so every
                     column total is a single digit:</p>
@@ -119,7 +125,7 @@
             </section>
 
             <section id="why-the-columns-must-align">
-                <h1>Each column adds quantities of one size only</h1>
+                <h1>Lining up the place values</h1>
                 <p>In 12.4 + 3.75 a digit in the tens column counts groups of ten and a digit in the <span class="gloss"
                         data-term="hundredth">hundredths</span> column counts groups of one hundredth: each column holds
                     <span class="gloss" data-term="quantity">quantities</span> of one size.</p>
@@ -153,10 +159,8 @@
             </section>
 
             <section id="regrouping-a-column">
-                <h1>Ten in one column is one in the column to its left</h1>
-                <p>A column has room for one digit, so a total of ten or more will not fit; the ten goes to the column
-                    on the left, where it is one. <span class="gloss" data-term="regroup">Regrouping</span>
-                    renames an amount; it never changes it.</p>
+                <h1>Carrying into the next column</h1>
+<p>When a column totals ten or more, exchange ten units for one in the next column. For example, 14 tens become 1 hundred and 4 tens. The amount stays the same; we have just regrouped it.</p>
 
                 <div class="regroup-model" aria-label="Ten ones are regrouped as one ten">
                     <div class="regroup-model__group">
@@ -217,7 +221,7 @@
             </section>
 
             <section>
-                <h1>Whole numbers: each regrouped 1 joins the next column</h1>
+                <h1 id="column-addition-idea-4">Adding whole numbers</h1>
                 <p>4,687 + 2,759 is four columns, and three of them regroup:</p>
 
                 <div class="worked">
@@ -246,7 +250,7 @@
             </section>
 
             <section>
-                <h1>Decimals: the columns carry on past the point</h1>
+                <h1 id="column-addition-idea-5">Adding decimals</h1>
                 <p>In 18.75 + 6.9 the columns carry on past the point: tenths, then hundredths. The point sits between
                     ones and tenths in every row, so the answer's point goes directly beneath the two above:</p>
 
@@ -277,7 +281,7 @@
             </section>
 
             <section id="adding-in-context">
-                <h1>The context decides what each column counts</h1>
+                <h1>Adding amounts</h1>
                 <p>Pounds, metres or minutes: every quantity is <span class="gloss" data-term="convert">converted</span> to
                     the same <span class="gloss" data-term="unit">unit</span> before the columns are set out, and the
                     unit goes with the answer.</p>
@@ -326,16 +330,12 @@
                     </ol>
                 </div>
 
-                <aside class="important-box" aria-labelledby="addition-check-title">
-                    <h2 class="important-box__title" id="addition-check-title">Check by subtracting</h2>
-                    <p>Subtracting is the <span class="gloss" data-term="inverse">inverse</span> of adding, so taking either number
-                        from the total gives back the other: <strong>25.65 &minus; 6.90 = 18.75</strong>, and the addition
-                        was right.</p>
-                </aside>
+                <div data-lesson-check="2" data-lesson-check-api="WrittenMethodsLessonBank"></div>
+
             </section>
 
             <section>
-                <h1>Add two chosen numbers</h1>
+                <h1 id="column-addition-idea-7">Explore column addition</h1>
                 <div class="addition-scene" data-addition-scene>
                     <div class="addition-scene__sticky">
                         <div class="addition-scene__inputs">
@@ -369,50 +369,14 @@
                 </div>
             </section>
 
-            <section>
-                <h1>Common mistakes</h1>
-                <ul class="slips">
-                    <li><b>Aligning the final digits</b>
-                        <span>18.75 + 6.9 pushed together at the right-hand edges sets 9 tenths
-                            against 5 hundredths and comes to 19.44. Align the decimal points:
-                            written as 6.90, every digit stands under a column of its own size,
-                            and the total is 25.65.</span>
-                    </li>
-                    <li><b>Forgetting a regrouped amount</b>
-                        <span>In 4,687 + 2,759 the tens come to 14, and the 1 hundred has to be
-                            added into the hundreds rather than only written above them. Left
-                            out, the total reads 7,346 instead of 7,446.</span>
-                    </li>
-                    <li><b>Writing two digits in one column</b>
-                        <span>The ones of 4,687 + 2,759 come to 16, the tens and the hundreds to 13 each, and the three
-                            totals written whole give an answer that reads 6131316. The 1 of 16 is one ten, so it joins the tens, 8 + 5 + 1 = 14, and
-                            only the 6 stays.</span>
-                    </li>
-                </ul>
-            </section>
 
-            <section>
-                <h1>Summary</h1>
-                <ol class="recap">
-                    <li>Align equal place values: points beneath points, and 6.9 written as 6.90 so every column has a
-                        digit in every row.</li>
-                    <li>Begin with the furthest occupied column to the right and work left.</li>
-                    <li>Write one result digit in each column and regroup any tens into the column to the left.</li>
-                    <li>Convert quantities to the same unit before adding, and attach that unit to the total.</li>
-                    <li>Check by subtracting either number from the total to recover the other.</li>
-                </ol>
-            </section>
+
+            <section class="roots-key-points" id="remember"><h1>Key points</h1><ul><li>Line up equal place values, including decimal points. Add zeros to empty decimal places if helpful.</li><li>Work from right to left, including every carried amount in the next column.</li><li>Use the same unit for all amounts, and keep the unit with the answer.</li></ul></section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <div class="powers-recall" data-written-recall="columnAddition" hidden></div>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice"
-                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/practiceWrittenMethods.html"
-                        style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
-                        <h3>Column addition</h3>
-                        <p>Add integers and decimals by aligning place values and regrouping.</p>
-                    </a>
                     <a class="topic-card topic-card--next"
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/columnSubtraction.html"
                         style="background-image: none">
@@ -421,6 +385,7 @@
                         <p>Subtract in columns with exchange, lining up decimals of different lengths.</p>
                     </a>
                 </div>
+            <a class="lesson-menu-return" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/">Back to Written methods</a>
             </section>
         </main>
 

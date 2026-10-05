@@ -1,0 +1,9 @@
+/* Practice: mean drill. Keep the goal label and answer field readable at the
+   site's scaled 900px canvas, where the shared practice sizes fall below 14px. */
+.practiceMeanMedianMode-page .practice-goal .skill-strip__label {
+    font-size: .875rem;
+}
+
+.practiceMeanMedianMode-page .practice-answer input {
+    font-size: 1.1rem;
+}

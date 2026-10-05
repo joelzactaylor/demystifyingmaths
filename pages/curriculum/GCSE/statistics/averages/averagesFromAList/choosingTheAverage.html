@@ -6,16 +6,21 @@
     <title>Demystifying Maths | GCSE Choosing which average to use</title>
     <meta name="description" content="Mode for categories, median against extremes, mean when every value counts.">
     <meta property="og:title" content="Demystifying Maths">
-    <meta property="og:description" content="Mode for categories, median against extremes, mean when every value counts.">
+    <meta property="og:description"
+        content="Mode for categories, median against extremes, mean when every value counts.">
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/integrated-lesson-banks.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -30,12 +35,18 @@
             <h1>Demystifying - Choosing which average to use</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
-                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/">Statistics</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/">Averages and spread</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/">From a list</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span>
+                    </li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/">Statistics</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/">Averages and
+                            spread</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/">From a
+                            list</a><span aria-hidden="true">&rsaquo;</span></li>
                     <li>
                         <p>Choosing which average to use</p>
                     </li>
@@ -45,26 +56,130 @@
 
         <aside id="page-nav-container"></aside>
 
-        <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>Justify which average suits a context: mode for categorical data, median when extremes or skew distort, mean when every value should count, with one advantage and drawback of each. Question types: choose and defend in context, or criticise a stated choice. Calculating each average lives on its own sibling page. Both tiers. (S4)</p>
+        <main class="lesson-main" data-integrated-bank="choosingAverage" data-lesson-check-api="IntegratedLessonBank"
+            data-lesson-check-anchors="mode-choice,median-choice,mean-choice,justify-choice">
+            <p class="prereq"><b>Before this page:</b> <span>calculate the <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/theMode.html">mode</a>,
+                    <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/theMedian.html">median</a>
+                    and <a
+                        href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/theMean.html">mean</a>
+                    of a list.</span></p>
+
+            <section aria-labelledby="three-choices">
+                <h1 id="three-choices">The data decides which average is useful</h1>
+                <p>An average represents a typical value, but different averages preserve different information. Choose
+                    the one that answers the question the data raises.</p>
+                <div class="rule-card">
+                    <h2 class="rule-card__statement">Choose mode for categories, median against extremes, and mean for
+                        balanced numerical data</h2>
+                    <ol class="rule-card__conditions">
+                        <li>The mode identifies the most common category, but ignores how the other categories are
+                            distributed.</li>
+                        <li>The median resists an unusually small or large value, but uses only the middle position.</li>
+                        <li>The mean uses every value, but an extreme value can pull it away from the centre.</li>
+                    </ol>
+                </div>
             </section>
 
-            <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+            <section aria-labelledby="mode-choice">
+                <h1 id="mode-choice">Use the mode for categories</h1>
+                <p>Colours, transport types and other names cannot be added, ordered or divided. The mode still
+                    identifies the category with the greatest <span class="gloss" data-term="frequency">frequency</span>.</p>
+                <div class="wex">
+                    <h2 class="wex__title">Most common travel method</h2>
+                    <p class="wex__task">A survey records bus, walk, bus, train, bus and walk.</p>
+                    <ol class="wex__steps">
+                        <li><span class="wex__do"><span class="sf">bus: three; walk: two; train: one.</span></span><span
+                                class="wex__why">Bus has the greatest frequency.</span></li>
+                        <li><span class="wex__do"><span class="sf">Mode = bus.</span></span><span class="wex__why">The
+                                mode gives a meaningful category; a mean or median cannot.</span></li>
+                    </ol>
+                </div>
+            </section>
+
+            <section aria-labelledby="median-choice">
+                <h1 id="median-choice">Use the median when an extreme would distort the centre</h1>
+                <p>The median depends on position, so one value far from the rest can pull the mean towards it while the
+                    median stays near the middle.</p>
+                <div class="wex">
+                    <h2 class="wex__title">Typical house price in thousands</h2>
+                    <p class="wex__task">The prices are 120, 125, 130, 135 and 900.</p>
+                    <ol class="wex__steps">
+                        <li><span class="wex__do"><span class="sf">Median = 130</span></span><span class="wex__why">130
+                                is the middle ordered value.</span></li>
+                        <li><span class="wex__do"><span class="sf">Mean = 1,410 &divide; 5 = 282</span></span><span
+                                class="wex__why">The 900 pulls the mean far from the other four prices.</span></li>
+                    </ol>
+                </div>
+                <p>The median of 130 thousand better describes a typical price in this list because the 900-thousand
+                    property is far from the other four prices.</p>
+            </section>
+
+            <section aria-labelledby="mean-choice">
+                <h1 id="mean-choice">Use the mean when the total and every value matter</h1>
+                <p>The mean includes every value and preserves the total through <span class="sf">mean &times; count</span>.
+                    It represents these five scores well because they are balanced around 74 and have no extreme value.</p>
+                <div class="wex">
+                    <h2 class="wex__title">Mean score for five tests</h2>
+                    <p class="wex__task">The scores are 62, 68, 74, 80 and 86.</p>
+                    <ol class="wex__steps">
+                        <li><span class="wex__do"><span class="sf">62 + 68 + 74 + 80 + 86 = 370</span></span><span
+                                class="wex__why">Every score contributes to the total.</span></li>
+                        <li><span class="wex__do"><span class="sf">370 &divide; 5 = 74</span></span><span
+                                class="wex__why">The mean score is 74.</span></li>
+                    </ol>
+                </div>
+            </section>
+
+            <section aria-labelledby="justify-choice">
+                <h1 id="justify-choice">Justify the choice with the data</h1>
+                <p><q>State which average is most appropriate and justify your answer</q> needs a feature of the data
+                    and the effect it has. Naming an average alone does not justify the choice.</p>
+                <div class="important-box" aria-labelledby="choice-check-title">
+                    <h2 class="important-box__title" id="choice-check-title">A complete justification</h2>
+                    <p>Use the median for house prices because 900 thousand is an extreme value and pulls the mean to
+                        282 thousand, while the median remains 130 thousand.</p>
+                </div>
+                <p>A claim that the mean is always best because it uses every value is incomplete. Using 900 is an
+                    advantage when every pound must count, but a drawback when the aim is to describe a typical house
+                    in this list.</p>
+            </section>
+
+            <section aria-labelledby="common-mistakes">
+                <h1 id="common-mistakes">Common mistakes</h1>
+                <ul class="slips">
+                    <li><b>Calculating a mean for categories</b>
+                        <span>Bus, walk, bus, train, bus and walk has mode bus. Adding category names has no
+                            mathematical meaning.</span>
+                    </li>
+                    <li><b>Choosing the mean beside an extreme value</b>
+                        <span>For 120, 125, 130, 135 and 900, the mean is 282 thousand and the median is 130 thousand.
+                            The extreme price makes the median more representative.</span>
+                    </li>
+                    <li><b>Choosing the mode because it is always easiest</b>
+                        <span>The scores 62, 68, 74, 80 and 86 have no repeated value, but their mean is 74 and uses
+                            every score.</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="summary">
+                <h1 id="summary">Summary</h1>
+                <ol class="recap">
+                    <li>Use the mode for categories or when the most common value matters.</li>
+                    <li>Use the median when an extreme value would distort the mean.</li>
+                    <li>Use the mean for numerical data when every value and the total should affect the result.</li>
+                    <li>Justify an average by connecting its advantage or drawback to the data and the question.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/practiceChoosingTheAverage.html" style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
-                        <h3>Choosing which average to use</h3>
-                        <p>Mode for categories, median against extremes, mean when every value counts.</p>
-                    </a>
-                    <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/workingBackwardsFromTheMean.html" style="background-image: none">
+                    <a class="topic-card topic-card--next"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/workingBackwardsFromTheMean.html"
+                        style="background-image: none">
                         <span class="topic-card__kicker">Next lesson</span>
                         <h3>Working backwards from the mean</h3>
                         <p>Recovering the total from a stated mean to find a missing value.</p>

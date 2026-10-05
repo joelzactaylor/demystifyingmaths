@@ -10,26 +10,36 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/multiplyingDecimals.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
+    <script src="/demystifyingmaths/js/lesson-session.js" defer></script>
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsLessonBank.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <script src="/demystifyingmaths/js/multiplyingDecimals.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/demystifyingmaths/css/powersRootsRecall.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/writtenMethodsLesson.css">
+    <script src="/demystifyingmaths/js/writtenMethodsLesson.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsRecallBank.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsRecall.js" defer></script>
 </head>
 
-<body>
+<body class="roots-lesson written-methods-lesson">
     <div class="layout">
         <div id="top-ribbon-placeholder"></div>
         <script>fetch("/demystifyingmaths/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
 
         <header>
-            <h1>Demystifying - Multiplying decimals</h1>
+            <h1>Multiplying decimals</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
                     <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
@@ -47,7 +57,8 @@
 
         <aside id="page-nav-container"></aside>
 
-        <main class="lesson-main">
+        <main class="lesson-main" data-integrated-bank="multiplyingDecimals" data-lesson-check-api="WrittenMethodsLessonBank"
+            data-lesson-check-anchors="count-decimal-places,product-size,trailing-zero">
             <p class="prereq"><b>Before this page:</b> <span>be able to multiply <span class="gloss" data-term="whole number">whole numbers</span> with
                     <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/longMultiplication.html">long
                         multiplication</a>, know what each <span class="gloss" data-term="digit">digit</span> is worth in
@@ -57,7 +68,7 @@
                         or divided by ten</a>.</span></p>
 
             <section>
-                <h1>The same digits at a different size</h1>
+                <h1 id="multiplying-decimals-idea-1">The same digits, a different value</h1>
 
                 <p>37 &times; 26 = 962, and 3.7 &times; 2.6 = 9.62 &mdash; the same three digits, with a point
                     dropped into them.</p>
@@ -99,7 +110,7 @@
             </section>
 
             <section>
-                <h1>Each decimal place in the question is one place in the answer</h1>
+                <h1 id="count-decimal-places">Placing the decimal point</h1>
                 <p>Each <span class="gloss" data-term="decimal place">decimal place</span> across the two factors contributes one factor of 10 when the numbers are made
                     whole.</p>
 
@@ -123,12 +134,10 @@
                     </ol>
                 </div>
 
-                <p>An estimate checks the count: <a href="/demystifyingmaths/pages/curriculum/GCSE/number/measures/estimationAndChecking/estimatingCalculations.html">rounding</a> 3.7 &times; 2.6 to 4 &times; 3 = 12 shows
-                    that 9.62 is the right size and 96.2 is not.</p>
             </section>
 
             <section>
-                <h1>Points line up for adding, not for multiplying</h1>
+                <h1 id="multiplying-decimals-idea-3">Setting out the multiplication</h1>
                 <p>In an addition, <span class="gloss" data-term="tenth">tenths</span> are added to tenths, so the points have to line up in one <span class="gloss" data-term="column">column</span>. In a multiplication every
                     digit on top meets every digit underneath, so the points are not lined up: 37 and 26 are written as
                     any two whole numbers are, ones under ones.</p>
@@ -164,7 +173,7 @@
             </section>
 
             <section>
-                <h1>The answer can be smaller than both numbers</h1>
+                <h1 id="product-size">Products smaller than one</h1>
                 <p><strong>0.3 &times; 0.4 = 0.12</strong>, and 0.12 is smaller than both factors. Multiplying by 0.4
                     takes four tenths of 0.3, so the product is part of the original amount.</p>
 
@@ -194,12 +203,14 @@
 
                 </div>
 
+                <div data-lesson-check="1" data-lesson-check-api="WrittenMethodsLessonBank"></div>
+
                 <p>For a positive first number, a positive <span class="gloss" data-term="multiplier">multiplier</span>
                     above 1 makes the product larger; a multiplier <a href="/demystifyingmaths/pages/curriculum/GCSE/number/fractions/powersRootsAndSize/numbersBelowOne.html">between 0 and 1</a> makes it smaller.</p>
             </section>
 
             <section>
-                <h1>A trailing zero comes off only after the places are counted</h1>
+                <h1 id="trailing-zero">Removing trailing zeros</h1>
                 <p>0.20 and 0.2 are the same number, so 0.5 &times; 0.4 is written 0.2 &mdash; but only after both
                     places have been counted back:</p>
 
@@ -234,9 +245,10 @@
             </section>
 
             <section>
-                <h1>Where it turns up</h1>
-                <p>Decimals in a question are usually money or measurements, and both come with a <span class="gloss" data-term="unit">unit</span> that the
-                    answer must carry.</p>
+                <h1 id="multiplying-decimals-idea-6">Costs and areas</h1>
+                <p>A price multiplied by a count gives a cost; two lengths multiplied together give an area. The
+                    calculation fixes the number, while the <span class="gloss" data-term="unit">unit</span> fixes what
+                    that number means.</p>
 
                 <div class="reading-pair">
                     <article class="reading-card">
@@ -253,12 +265,11 @@
                     </article>
                 </div>
 
-                <p>The count of places is the same whatever is being measured; the unit decides only whether a trailing
-                    zero is kept: &pound;26.10, but 3.6 m&sup2;.</p>
+<p>The decimal-place calculation is the same in both examples. Write the cost as &pound;26.10 to show the pence, and the area as 3.6 m&sup2;.</p>
             </section>
 
             <section>
-                <h1>Multiply two chosen numbers</h1>
+                <h1 id="multiplying-decimals-idea-7">Explore decimal multiplication</h1>
                 <p>72 &times; 34 = 2,448 gives both 7.2 &times; 3.4 = 24.48 and 0.72 &times; 0.34 = 0.2448: one multiplication,
                     then two places counted back and then four.</p>
 
@@ -296,44 +307,12 @@
                 </div>
             </section>
 
-            <section>
-                <h1>Common mistakes</h1>
-                <ul class="slips">
-                    <li><b>Bringing the point straight down</b>
-                    <span>Set out on their points like an addition, 3.7 &times; 2.6 still multiplies as
-                            37 &times; 26 = 962, and a point copied down under the others lands on 96.2: one
-                            decimal place where the question has two. The count gives 9.62.</span></li>
-                    <li><b>Losing a zero that holds a place</b>
-                    <span>0.2 &times; 0.3 is 6 with two places, which gives 0.06. Writing 0.6
-                            is ten times too big: a zero has to go into the tenths column to
-                            push the 6 out into the hundredths.</span></li>
-                    <li><b>Tidying before counting</b>
-                    <span>0.5 &times; 0.4 gives 20, and both places are counted back before
-                            the zero on the end comes off. Taking the zero off first leaves 2,
-                            and two places on that is 0.02 instead of 0.2.</span></li>
-                    <li><b>Expecting the answer to be larger</b>
-                    <span>6.3 &times; 0.45 = 2.835, under half of 6.3. A point placed to make the answer larger than 6.3, at
-                            28.35, leaves two decimal places where the question has three.</span></li>
-                </ul>
-            </section>
 
-            <section>
-                <h1>Summary</h1>
-                <ol class="recap">
-                    <li>A decimal multiplication is a whole-number multiplication with the point put back
-                        afterwards.</li>
-                    <li>Making both numbers whole multiplies the calculation by a power of ten, and dividing the
-                        answer by the same power puts it back.</li>
-                    <li>The answer has as many decimal places as the question: count them across both numbers,
-                        then place the point.</li>
-                    <li>For positive numbers, multiplying by a positive number below 1 gives less than the first
-                        number, because only part of that number is taken.</li>
-                    <li>Count the places first, then tidy any zero off the end &mdash; never the other way
-                        round.</li>
-                </ol>
-            </section>
+
+            <section class="roots-key-points" id="remember"><h1>Key points</h1><ul><li>Multiply as whole numbers, then give the product as many decimal places as the two factors have altogether.</li><li>Place the decimal point before removing any trailing zeros.</li><li>Multiplying by a positive number below one gives that fraction of the starting amount.</li></ul></section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
+                <div class="powers-recall" data-written-recall="multiplyingDecimals" hidden></div>
                 <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
                     <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/shortDivision.html" style="background-image: none">
@@ -342,6 +321,7 @@
                         <p>Dividing by a one-digit number, carrying each remainder into the next digit.</p>
                     </a>
                 </div>
+            <a class="lesson-menu-return" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/">Back to Written methods</a>
             </section>
         </main>
 

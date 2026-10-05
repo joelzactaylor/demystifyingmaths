@@ -10,26 +10,36 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/inequalitySymbols.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
+    <script src="/demystifyingmaths/js/lesson-session.js" defer></script>
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
     <script src="/demystifyingmaths/js/inequalitySymbols.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsLessonBank.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/demystifyingmaths/css/powersRootsRecall.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/writtenMethodsLesson.css">
+    <script src="/demystifyingmaths/js/writtenMethodsLesson.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsRecallBank.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsRecall.js" defer></script>
 </head>
 
-<body>
+<body class="roots-lesson written-methods-lesson">
     <div class="layout">
         <div id="top-ribbon-placeholder"></div>
         <script>fetch("/demystifyingmaths/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
 
         <header>
-            <h1>Demystifying - The inequality symbols</h1>
+            <h1>The inequality symbols</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
                     <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
@@ -49,16 +59,16 @@
 
         <aside id="page-nav-container"></aside>
 
-        <main class="lesson-main">
+        <main class="lesson-main" data-lesson-check-api="WrittenMethodsLessonBank"
+            data-lesson-check-anchors="equal-and-not-equal,adding-or-equal-to,values-between-two-boundaries">
             <p class="prereq"><b>Before this page:</b> <span>be able to put numbers in
                     <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/orderingNumbers.html">order</a>, decimals and
                     <span class="gloss" data-term="negative">negatives</span> included.</span></p>
 
             <section>
-                <h1>Six symbols describe how two values compare</h1>
+                <h1 id="equal-and-not-equal">Equal and not equal</h1>
 
-                <p>An equals sign records that two values match. The other five record that they differ, which is the
-                    larger, or the most or least a value may be.</p>
+<p>An equals sign tells us that two values are the same. To show that they are different, we use &ne;. Other comparison symbols tell us which value is larger, or where a boundary lies.</p>
 
                 <ul class="symbol-grid" aria-label="The six comparison symbols">
                     <li><span class="symbol-grid__sign">&lt;</span><span class="symbol-grid__name">less than</span></li>
@@ -88,7 +98,7 @@
             </section>
 
             <section>
-                <h1>The point of &lt; and &gt; faces the smaller value</h1>
+                <h1 id="inequality-symbols-idea-2">Less than and greater than</h1>
                 <p>When two values are different, <strong>&lt;</strong> and <strong>&gt;</strong> show which is
                     smaller. The point faces the smaller value, while the wide opening faces the larger value.</p>
 
@@ -183,7 +193,7 @@
             </section>
 
             <section>
-                <h1 id="adding-or-equal-to">A line under the symbol lets the boundary value in</h1>
+                <h1 id="adding-or-equal-to">Including a boundary</h1>
                 <p>A short line underneath <strong>&lt;</strong> or <strong>&gt;</strong> adds “or equal to”, so the
                     value at the boundary is allowed.</p>
 
@@ -207,7 +217,7 @@
                     </article>
                 </div>
 
-                <p>A speed limit of 30 is such a boundary: every allowed speed is 30 or less, and speed &le; 30 says so.</p>
+<p>For a speed limit of 30 miles per hour, the speed in miles per hour must satisfy speed &le; 30. The limit itself is allowed.</p>
 
                 <p>Other phrases with the same meanings are:</p>
                 <ul>
@@ -225,7 +235,7 @@
             </section>
 
             <section>
-                <h1 id="values-between-two-boundaries">Two inequalities joined hold a value between two boundaries</h1>
+                <h1 id="values-between-two-boundaries">Between two boundaries</h1>
                 <p>&minus;2 &lt; <i>n</i> &le; 3 joins two inequalities: <i>n</i> is greater than &minus;2 and at most 3.</p>
 
                 <div class="integer-example">
@@ -330,48 +340,14 @@
 
             </section>
 
-            <section>
-                <h1>Common mistakes</h1>
-                <ul class="slips">
-                    <li><b>Reversing &lt; and &gt;</b>
-                    <span>0.7 &lt; 0.65 is the wrong way round: the point must face 0.65, the smaller value.</span></li>
-                    <li><b>Forgetting negative order</b> <span>&minus;2 &lt; &minus;7 is wrong: &minus;2 is closer to zero, so &minus;2 &gt; &minus;7.</span></li>
-                    <li><b>Missing the equality line</b> <span><i>x</i> = 5 does not satisfy <i>x</i> &lt; 5; it does satisfy <i>x</i> &le; 5, whose line under the symbol lets the boundary in.</span></li>
-                    <li><b>Reading right to left</b> <span>3 &lt; <i>n</i> does not say <i>n</i> is less than 3: the point faces 3, so <i>n</i> is greater than 3, and <i>n</i> = 2 fails.</span></li>
-                </ul>
-            </section>
 
-            <section>
-                <h1 id="remember">Summary</h1>
-                <ol class="recap">
-                    <li>The six symbols are <span class="sf">=</span>, <span class="sf">&ne;</span>, <span
-                            class="sf">&lt;</span>, <span class="sf">&gt;</span>, <span class="sf">&le;</span> and
-                        <span class="sf">&ge;</span>, and each one describes the value on the left against the value on
-                        the right.</li>
-                    <li>The point of <span class="sf">&lt;</span> or <span class="sf">&gt;</span> faces the smaller
-                        value and the wide opening faces the larger, so <span class="sf">4 &lt; 9</span> and <span
-                            class="sf">9 &gt; 4</span> record the same comparison.</li>
-                    <li>The line underneath in <span class="sf">&le;</span> and <span class="sf">&ge;</span> adds
-                        &ldquo;or equal to&rdquo;, so <span class="sf">n &le; 12</span> includes 12 while <span
-                            class="sf">n &lt; 12</span> leaves it out.</li>
-                    <li>&ldquo;No more than 12&rdquo; is <span class="sf">n &le; 12</span> and &ldquo;no less than
-                        4&rdquo; is <span class="sf">n &ge; 4</span>, which are the phrases that name a boundary the
-                        value is allowed to reach.</li>
-                    <li>Two inequalities joined hold a value between boundaries: the integers satisfying <span
-                            class="sf">&minus;2 &lt; n &le; 3</span> are &minus;1, 0, 1, 2 and 3.</li>
-                </ol>
-            </section>
+
+            <section class="roots-key-points" id="remember"><h1>Key points</h1><ul><li>The pointed end of &lt; or &gt; faces the smaller value.</li><li>The symbols ≤ and ≥ allow equality; &lt; and &gt; do not.</li><li>Both parts of a double inequality must hold. Check each boundary separately.</li></ul></section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <div class="powers-recall" data-written-recall="inequalitySymbols" hidden></div>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice"
-                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/practiceInequalitySymbols.html"
-                        style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
-                        <h3>The inequality symbols</h3>
-                        <p>The less-than, greater-than, at-most, at-least and not-equal signs.</p>
-                    </a>
                     <a class="topic-card topic-card--next"
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/powersOfTen.html"
                         style="background-image: none">
@@ -380,6 +356,7 @@
                         <p>The effect on every digit of multiplying or dividing by 10, 100, 0.1 and 0.01.</p>
                     </a>
                 </div>
+            <a class="lesson-menu-return" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/">Back to Written methods</a>
             </section>
         </main>
 

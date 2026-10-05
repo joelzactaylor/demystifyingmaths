@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lcmFromPrimeFactors.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
@@ -17,6 +19,8 @@
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/integrated-lesson-banks.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <script src="/demystifyingmaths/js/lcmFromPrimeFactors.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,7 +57,8 @@
 
         <aside id="page-nav-container"></aside>
 
-        <main class="lesson-main">
+        <main class="lesson-main" data-integrated-bank="lcm" data-lesson-check-api="IntegratedLessonBank"
+            data-lesson-check-anchors="lowest-common-multiple,higher-index,lcm-meaning">
             <p class="prereq"><b>Before this page:</b> <span>list the <a
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/multiplesAndDivisibility.html">multiples</a>
                     of a number, write a number as a product of primes using <a
@@ -104,9 +109,7 @@
 
             <section aria-labelledby="build-common-multiple">
                 <h1 id="build-common-multiple">Build a multiple of both from prime factors</h1>
-                <p>Every multiple of 252 contains every <span class="gloss" data-term="prime factor">prime factor</span>
-                    of 252: two 2s, two 3s and a 7. 120 multiplied by only the primes it lacks is the smallest
-                    multiple of 120 that is also a multiple of 252.</p>
+                <p>Match the prime factors that 120 and 252 share. Keep every factor from 120, then add only the unmatched factors from 252; the result contains both prime factorizations and is the smallest common multiple.</p>
                 <div class="worked">
                     <h2 class="worked__title">Adding to 120 what 252 needs</h2>
                     <div class="lcm-scene" data-lcm-scene data-kind="build">
@@ -368,14 +371,8 @@
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice"
-                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practiceLCMFromPrimeFactors.html"
-                        style="background-image: none"><span class="practice-card__kicker">Practice</span>
-                        <h3>Lowest common multiple</h3>
-                        <p>Every prime to the higher index, and why the LCM is not always the product.</p>
-                    </a>
                     <a class="topic-card topic-card--next"
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/HCFLCMVenn.html"
                         style="background-image: none"><span class="topic-card__kicker">Next lesson</span>

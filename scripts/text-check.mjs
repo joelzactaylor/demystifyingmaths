@@ -41,6 +41,7 @@ import { BASE } from "./site-base.mjs";
 
 const CHROME = process.env.CHROME || "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 const ORIGIN = process.env.SITE_ORIGIN || "http://localhost:8000";
+const VIEW_WIDTH = Number(process.env.TEXT_CHECK_WIDTH || 1000);
 const FLOOR = 12;
 const READ_BELOW = 14;
 const OVERFLOW = 2;
@@ -61,7 +62,7 @@ const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const profile = mkdtempSync(join(tmpdir(), "text-check-"));
 const chrome = spawn(CHROME, [
     "--headless=new", "--disable-gpu", "--hide-scrollbars", "--no-first-run",
-    "--force-prefers-reduced-motion", "--window-size=1000,6000",
+    "--force-prefers-reduced-motion", `--window-size=${VIEW_WIDTH},6000`,
     "--remote-debugging-port=0", `--user-data-dir=${profile}`, "about:blank",
 ], { stdio: "ignore" });
 process.on("exit", () => { try { chrome.kill(); } catch { /* already gone */ } });
@@ -107,7 +108,7 @@ const { targetId } = await send("Target.createTarget", { url: "about:blank" });
 const { sessionId } = await send("Target.attachToTarget", { targetId, flatten: true });
 await send("Page.enable", {}, sessionId);
 await send("Runtime.enable", {}, sessionId);
-await send("Emulation.setDeviceMetricsOverride", { width: 1000, height: 6000, deviceScaleFactor: 1, mobile: false }, sessionId);
+await send("Emulation.setDeviceMetricsOverride", { width: VIEW_WIDTH, height: 6000, deviceScaleFactor: 1, mobile: false }, sessionId);
 await send("Emulation.setEmulatedMedia", { features: [{ name: "prefers-reduced-motion", value: "reduce" }] }, sessionId);
 
 // Runs inside the page. Everything it needs is passed in, because the function
@@ -288,7 +289,7 @@ for (const page of pages) {
     // Fonts first, then a sweep down the page so anything that waits for the
     // reader to reach it has been reached, then back to the top.
     await send("Runtime.evaluate", {
-        expression: `(async () => { await document.fonts.ready; const h = document.documentElement.scrollHeight; for (let y = 0; y < h; y += 800) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 40)); } window.scrollTo(0, 0); await new Promise(r => setTimeout(r, 600)); })()`,
+        expression: `(async () => { await document.fonts.ready; const reveal = document.querySelector(".lesson-flowbar__toggle"); if (reveal && reveal.textContent.includes("Show whole")) reveal.click(); const h = document.documentElement.scrollHeight; for (let y = 0; y < h; y += 800) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 40)); } window.scrollTo(0, 0); await new Promise(r => setTimeout(r, 600)); })()`,
         awaitPromise: true,
     }, sessionId);
     const { result, exceptionDetails } = await send("Runtime.evaluate", {

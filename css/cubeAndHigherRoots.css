@@ -1,109 +1,194 @@
-/* CUBE ROOTS AND HIGHER ROOTS
-
-   One thing this page needs beyond the shared teaching styles: the strip of
-   factors that shows a product's sign turning over as the count of negative
-   factors goes odd, even, odd. That is the whole of why an odd root reaches
-   every number and an even one does not, and it is the one idea here the reader
-   can drive rather than read.
-
-   The root sign and the index in its crook are .rad and .rad__index in
-   lesson.css, so any page can write a cube root.
-
-   The palette and the control styles are the written-methods ones; nothing here
-   invents a near-miss of them.
-
-   No viewport media queries below the reduced-motion block: .layout is a fixed
-   900px panel that shared.css scales with transform under 900px, so nothing here
-   may reflow. */
-
-.parity {
-    margin: 30px 0;
-    padding: 24px 34px 20px;
-    border: 2px solid #c9dce8;
-    border-radius: 16px;
+/* Cube roots: the established reading rhythm, with cube layers and sign patterns. */
+/* A focused prototype: comfortable reading width, open diagrams, and colour
+   attached to the two signs rather than to enclosing panels. */
+.roots-lesson header {
     background: #fff;
-    box-shadow: 0 8px 22px rgba(23, 56, 73, .11);
+    border-bottom: 2px solid #e6e8ef;
+    padding: 26px 40px 12px;
+    margin-bottom: 32px;
 }
-
-/* The product written out in full, which is what grows as the count rises. Its
-   box is fixed so the strip below it does not move when a factor is added. */
-.parity__factors {
-    height: 2.4rem;
-    margin: 0 0 18px;
-    color: #173849;
-    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-    font-size: 1.24rem;
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-    line-height: 2.4rem;
-    text-align: center;
+.roots-lesson header h1 {
+    color: #243445;
+    text-shadow: none;
+    font-size: 34px;
+    padding: 20px 0;
+}
+.roots-lesson header nav { top: 0; }
+.roots-lesson .lesson-main { max-width: 760px; margin: 0 auto; padding: 0 48px 64px; }
+.roots-lesson .lesson-main > section {
+    margin: 0;
+    padding: 32px 0;
+}
+.roots-lesson .lesson-main > section::after,
+.roots-lesson .lesson-main > section > h1::before,
+.roots-lesson .lesson-main > section > h2::before { display: none; }
+.roots-lesson .lesson-flowbar { background: transparent; border: 0; padding: 12px 0; }
+.roots-lesson .lesson-flowbar { display: flex; justify-content: flex-end; }
+.roots-lesson .lesson-flowbar__status,
+.roots-lesson .lesson-flowbar__track { display: none; }
+.roots-lesson .lesson-flowbar[hidden] { display: none; }
+.roots-lesson .page-nav { display: flex; flex-direction: column; }
+.roots-lesson .page-nav .lesson-flowbar__toggle {
+    align-self: flex-start;
+    margin: 24px 12px 0;
+    padding: 6px 0;
+    color: #fff;
+}
+.roots-lesson .roots-revealed { animation: roots-reveal .45s ease-out both; }
+.roots-lesson .page-nav .roots-reset { margin-top: 8px; }
+.roots-reading-step[hidden], .roots-continue[hidden] { display: none; }
+.roots-reading-step > p { margin: 18px 0; font-size: 1.04rem; line-height: 1.75; }
+.roots-reading-step > .roots-instruction { margin-top: 32px; }
+.roots-continue {
+    display: block;
+    margin: 28px auto 0;
+    padding: 10px 24px;
+    border: 0;
+    border-radius: 22px;
+    background: #7048c8;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    font-family: inherit;
+    cursor: pointer;
+}
+.roots-continue:focus-visible { outline: 3px solid #7048c8; outline-offset: 4px; }
+.roots-revisit { margin: 24px 0; }
+.roots-revisit summary { color: #5531a9; cursor: pointer; font-size: 15px; line-height: 1.6; }
+.roots-revisit > p { margin: 12px 0; font-size: 16px; line-height: 1.7; }
+.roots-question-reminder { margin: 10px 0 0; }
+.roots-revisit[hidden] { display: none; }
+.roots-lesson .lesson-check__turn[hidden] { display: none; }
+.roots-key-points { margin: 32px 0 0; padding-top: 24px; border-top: 2px solid #e3e8ed; }
+.roots-key-points h2 { margin: 0 0 16px; color: #243445; font-size: 21px; }
+.roots-key-points ul { margin: 0; padding-left: 22px; }
+.roots-key-points li { padding-left: 6px; font-size: 1.04rem; line-height: 1.75; }
+.roots-key-points li + li { margin-top: 12px; }
+.roots-key-points li::marker { color: #009b8c; }
+@keyframes roots-reveal {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.roots-lesson .lesson-main > section > h1 { font-size: 28px; margin: 0 0 24px; }
+.roots-lesson .lesson-main > section > p { max-width: none; margin: 0 0 18px; line-height: 1.75; }
+.roots-lesson .lesson-main > section > :last-child { margin-bottom: 0; }
+.roots-lesson .lesson-main > .prereq { margin: 0 0 12px; background: #f5f7fa; border: 0; }
+.roots-lesson .roots-instruction { color: #536873; font-size: 15px; }
+.roots-lesson .lesson-check { max-width: none; margin: 18px 0; }
+.roots-lesson .lesson-check__body { gap: 18px; }
+.roots-lesson .lesson-check__turn + .lesson-check__turn { padding-top: 0; }
+.roots-lesson .lesson-main > section > .lesson-check + p { margin-top: 18px; }
+.roots-lesson .lesson-main > section > .roots-instruction { margin-top: 32px; margin-bottom: 0; }
+.roots-lesson .lesson-check__entry input {
+    width: 3.2em; min-width: 0; min-height: 0; padding: 1px 5px;
+    box-sizing: border-box; height: 1.65em; font-family: inherit; font-size: 1em; font-weight: 700; line-height: 1.4;
+    border: 0; border-bottom: 2px solid #7048c8; border-radius: 4px 4px 0 0; background: #f2edff;
+}
+.roots-lesson .lesson-check__check { display: none; }
+.roots-lesson .lesson-check__prompt { display: block; max-width: none; line-height: 1.75; font-size: 1.04rem; }
+.roots-lesson .lesson-check__response { display: inline; margin: 0; vertical-align: baseline; }
+.roots-inline-equation { display: inline-block; white-space: nowrap; vertical-align: baseline; }
+.roots-lesson .roots-inline-equation .lesson-check__expression {
+    font-family: inherit;
+    font-size: 1em;
+    line-height: inherit;
+    letter-spacing: normal;
+}
+.roots-lesson .roots-inline-equation .lesson-check__response { margin-left: .3em; }
+.roots-lesson .lesson-check__answer,
+.roots-lesson .lesson-check__entry { display: inline; font-size: inherit; vertical-align: baseline; }
+.roots-lesson .lesson-check__entry input { vertical-align: baseline; }
+.roots-lesson .lesson-check__entry input.roots-answer-retry {
+    color: #a3293d;
+    background: #fff0f2;
+    border-bottom: 2px dashed #bb354c;
+    box-shadow: none;
+    animation: roots-retry .24s ease-in-out;
+}
+.roots-answer-notice {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
     white-space: nowrap;
 }
-
-.parity__cap {
-    display: block;
-    margin-bottom: 6px;
-    color: #52666f;
-    font-size: .82rem;
-    font-weight: 700;
-    letter-spacing: .07em;
-    text-transform: uppercase;
+@keyframes roots-retry {
+    25%, 75% { transform: translateX(-2px); }
+    50% { transform: translateX(2px); }
 }
-
-.parity__scale {
-    display: grid;
-    gap: 10px;
-    grid-template-columns: repeat(5, 1fr);
+.roots-lesson .lesson-check__entry input::placeholder { color: #7048c8; opacity: 1; }
+.roots-lesson .lesson-check__entry input[hidden] { display: none; }
+.roots-lesson .roots-accepted-answer {
+    color: #0f6d40;
+    font-weight: 700;
+    background: none;
+    border: 0;
+    padding: 0;
+}
+.roots-lesson .roots-accepted-answer:focus {
     outline: none;
-    cursor: pointer;
-    touch-action: none;
+    box-shadow: none;
 }
-
-.parity__scale:focus-visible { border-radius: 14px; box-shadow: 0 0 0 4px rgba(17, 110, 147, .22); }
-
-.parity__cell {
-    display: grid;
-    gap: 3px;
-    padding: 10px 6px 11px;
-    box-sizing: border-box;
-    border: 2px solid #c6d4dc;
-    border-radius: 12px;
-    background: #fff;
-    text-align: center;
-    transition: border-color .18s ease, background-color .18s ease;
+.roots-lesson .lesson-check__turn.is-correct .lesson-check__entry input {
+    background: #e9f8ef; border-color: #15985b; color: #0f6d40; box-shadow: none;
 }
-
-.parity__cell b {
-    color: #52666f;
-    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-    font-size: .86rem;
-    font-variant-numeric: tabular-nums;
+.roots-lesson .lesson-check__turn.is-correct .lesson-check__entry input:focus {
+    border-color: #15985b; outline: 2px solid #b9dfc8;
 }
-
-/* The sign is carried by the minus itself; the colour only repeats it, so a
-   reader who cannot separate the two loses nothing. */
-.parity__cell i {
-    color: #09539d;
-    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-    font-size: 1.02rem;
-    font-style: normal;
-    font-variant-numeric: tabular-nums;
-    font-weight: 700;
+.roots-lesson .lesson-check__help { margin-top: 8px; }
+.roots-lesson .lesson-check__feedback { max-width: 700px; font-weight: 400; }
+.roots-lesson .lesson-check__turn.is-correct .lesson-check__check {
+    display: none;
 }
-
-.parity__cell.is-negative i { color: #9b5f12; }
-.parity__cell.is-current { border-color: #d99a20; background: #fff8df; }
-
-.parity__reading {
-    min-height: 3rem;
-    margin: 20px 0 0;
-    color: #173849;
-    font-size: 1rem;
-    text-align: center;
+.roots-lesson .lesson-check__turn.is-correct .lesson-check__response::after {
+    content: none;
 }
+.roots-lesson .lesson-check__feedback,
+.roots-lesson .lesson-check__help,
+.roots-lesson .lesson-check__support,
+.roots-lesson .lesson-check__complete { display: none; }
 
-/* Nothing here animates on its own: a cell changes because the reader moved to
-   it. The easing on that change is the one exception. */
+
+
+/* A cube can be taken apart without changing its volume or the page height. */
+.cube-inline-maths { white-space: nowrap; }
+.roots-inline-equation { margin-left: .25em; }
+.cube-explorer { display: grid; grid-template-columns: 320px 1fr; gap: 12px 24px; align-items: center; margin: 28px 0; padding: 16px 28px 24px; background: #f3faf8; border-radius: 8px; }
+.cube-drawing { display: block; width: 320px; height: 360px; }
+.cube-stack { transform: translateY(-85px); }
+.cube-face { stroke: #fff; stroke-width: 1.2; stroke-linejoin: round; }
+.cube-face--top { fill: #43bcaf; }
+.cube-face--front { fill: #008579; }
+.cube-face--side { fill: #00665e; }
+.cube-explorer.is-separated .cube-stack { transform: translateY(0); }
+.cube-explorer.is-separated [data-layer="1"] { transform: translateY(-90px); }
+.cube-explorer.is-separated [data-layer="2"] { transform: translateY(-180px); }
+.cube-explorer.is-animated .cube-stack, .cube-explorer.is-animated .cube-layer { transition: transform .5s ease; }
+.cube-explanation p { margin: 0 0 18px; font-size: 17px; line-height: 1.7; }
+.cube-explanation .cube-total { color: #006f65; font-size: 24px; font-weight: 700; }
+.cube-toggle { border: 1px solid #9ecfc5; border-radius: 20px; padding: 8px 16px; font: inherit; font-size: 15px; color: #00665e; background: #fff; cursor: pointer; }
+.cube-toggle:hover { background: #e0f3ee; }
+.cube-toggle:focus-visible, .cube-parity-control input:focus-visible { outline: 2px solid #7048c8; outline-offset: 4px; }
+.cube-toggle[hidden], .cube-parity-control[hidden] { display: none; }
+.cube-explorer figcaption { grid-column: 1 / -1; text-align: center; font-size: 15px; color: #465966; line-height: 1.7; }
+.cube-sign-work { margin: 28px 0; padding: 8px 28px; border-left: 3px solid #7048c8; }
+.cube-sign-work p { margin: 12px 0; font-size: 20px; line-height: 1.6; }
+.cube-sign-work strong { color: #5531a9; }
+.cube-root-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin: 32px 0; }
+.cube-root-pair p { margin: 0; font-size: 23px; text-align: center; color: #006f65; }
+.cube-root-pair p > span:last-child:not(.rad) { display: block; margin-top: 14px; font-size: 15px; line-height: 1.7; color: #465966; }
+.roots-lesson .rad__index { font-size: 14px; top: -.1em; left: -.15em; }
+.roots-lesson sup { font-size: 14px; }
+.cube-parity { margin: 28px 0; padding: 28px 32px; background: #f7f8fc; border-radius: 8px; text-align: center; }
+.cube-factors { margin: 0 0 22px; font-size: 21px; line-height: 1.7; color: #5531a9; min-height: 1.7em; white-space: nowrap; }
+.cube-parity-control { width: 260px; margin: 0 auto 20px; }
+.cube-parity-control label { display: block; margin-bottom: 12px; font-size: 14px; color: #465966; }
+.cube-parity-control input { width: 100%; accent-color: #7048c8; font: inherit; cursor: pointer; }
+.cube-parity figcaption { font-size: 15px; color: #465966; line-height: 1.7; }
 @media (prefers-reduced-motion: reduce) {
-    .parity__cell { transition: none; }
+    .roots-lesson .roots-revealed,
+    .roots-lesson .lesson-check__entry input.roots-answer-retry { animation: none; }
+    .cube-explorer.is-animated .cube-stack, .cube-explorer.is-animated .cube-layer { transition: none; }
 }

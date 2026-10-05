@@ -46,7 +46,7 @@
         const cursor = make("span", "scale-board__cursor");
         const result = make("div", "scale-board__result");
         result.append(make("span", "", "Now divide:"), make("strong", "", "5,520 ÷ 46 = 120"));
-        const check = make("p", "scale-board__check", "Check: 120 × 0.46 = 55.2");
+        const check = make("p", "scale-board__check", "120 groups of 0.46 make 55.2");
         board.append(rows[0].row, arrows[0], rows[1].row, arrows[1], rows[2].row, result, check, cursor);
         board.setAttribute("aria-hidden", "true");
         paper.setAttribute("role", "img");
@@ -161,27 +161,13 @@
         let currentStage = -1;
         let cardHeight = sticky.offsetHeight;
         let ticking = false;
-        /* Pinning takes the card out of the page and puts it on the body, and
-           moving a node drops focus and the caret from whatever is inside it.
-           Both are put back, so the card can go on being positioned however the
-           reader is using it. */
-        const moveCard = (move) => {
-            const active = sticky.contains(document.activeElement) ? document.activeElement : null;
-            const caret = active && typeof active.selectionStart === "number"
-                ? [active.selectionStart, active.selectionEnd]
-                : null;
-            move();
-            if (!active || document.activeElement === active) return;
-            active.focus({ preventScroll: true });
-            if (caret) active.setSelectionRange(caret[0], caret[1]);
-        };
 
         const dock = (offset = 0, preserve = false) => {
-            if (sticky.parentNode !== scene) moveCard(() => scene.insertBefore(sticky, scene.firstChild));
             sticky.classList.remove("is-pinned");
             sticky.style.removeProperty("left");
             sticky.style.removeProperty("transform");
-            sticky.style.top = `${offset}px`;
+            const scale = scene.offsetWidth ? scene.getBoundingClientRect().width / scene.offsetWidth : 1;
+            sticky.style.top = reduceMotion.matches ? "0px" : `${Math.max(16, (window.innerHeight - cardHeight * scale) / 2) / (scale || 1)}px`;
             if (preserve) {
                 sticky.style.width = `${scene.offsetWidth}px`;
                 sticky.style.height = `${cardHeight}px`;
@@ -190,14 +176,14 @@
                 sticky.style.removeProperty("height");
             }
         };
+        // Native sticky positioning owns the card’s movement. JavaScript only
+        // sets its viewport inset and advances the mathematical drawing.
         const pin = (left, top, width, scale) => {
-            if (sticky.parentNode !== document.body) moveCard(() => document.body.append(sticky));
             sticky.classList.add("is-pinned");
-            sticky.style.left = `${left}px`;
-            sticky.style.top = `${top}px`;
+            sticky.style.left = "0px";
+            sticky.style.top = `${top / scale}px`;
             sticky.style.width = `${width}px`;
             sticky.style.height = `${cardHeight}px`;
-            sticky.style.transform = `scale(${scale})`;
         };
         const paintAt = (ratio) => {
             const position = clamp(ratio) * stages.length;
@@ -321,21 +307,9 @@
         return `${comma(String(whole))}${decimals ? `.${decimals}` : ""}${remainder ? "…" : ""}`;
     };
     const limitInput = (input, wholeLimit, fractionLimit) => {
-        const before = input.value;
-        const caret = input.selectionStart ?? before.length;
-        const cleaned = before.replace(/[^\d.]/g, "");
-        const point = cleaned.indexOf(".");
-        const singlePoint = point < 0 ? cleaned : `${cleaned.slice(0, point + 1)}${cleaned.slice(point + 1).replace(/\./g, "")}`;
-        let [whole, fraction] = singlePoint.split(".");
-        if (whole.length > 1) whole = whole.replace(/^0+(?=\d)/, "");
-        whole = whole.slice(0, wholeLimit);
-        const after = fraction === undefined ? whole : `${whole}.${fraction.slice(0, fractionLimit)}`;
-        if (after !== before) {
-            input.value = after;
-            const next = Math.max(0, Math.min(after.length, caret - (before.length - after.length)));
-            input.setSelectionRange(next, next);
-        }
-        return after;
+        const raw = input.value.trim();
+        const pattern = new RegExp(`^\\d{1,${wholeLimit}}(?:\\.\\d{1,${fractionLimit}})?$`);
+        return pattern.test(raw) ? raw : "";
     };
 
     const createSandbox = (sandbox) => {
@@ -391,6 +365,7 @@
     if (controller) {
         window.addEventListener("scroll", controller.requestUpdate, { passive: true });
         window.addEventListener("resize", controller.reset);
+        document.addEventListener("lessonlayoutchange", controller.reset);
         if (reduceMotion.addEventListener) reduceMotion.addEventListener("change", controller.reset);
         else reduceMotion.addListener(controller.reset);
     }

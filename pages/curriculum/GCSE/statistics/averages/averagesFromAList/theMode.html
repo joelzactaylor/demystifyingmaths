@@ -6,16 +6,21 @@
     <title>Demystifying Maths | GCSE The mode</title>
     <meta name="description" content="The most frequent value in a data set, including sets with two modes or none.">
     <meta property="og:title" content="Demystifying Maths">
-    <meta property="og:description" content="The most frequent value in a data set, including sets with two modes or none.">
+    <meta property="og:description"
+        content="The most frequent value in a data set, including sets with two modes or none.">
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/integrated-lesson-banks.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -30,12 +35,18 @@
             <h1>Demystifying - The mode</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
-                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/">Statistics</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/">Averages and spread</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/">From a list</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span>
+                    </li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/">Statistics</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/">Averages and
+                            spread</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/">From a
+                            list</a><span aria-hidden="true">&rsaquo;</span></li>
                     <li>
                         <p>The mode</p>
                     </li>
@@ -45,26 +56,112 @@
 
         <aside id="page-nav-container"></aside>
 
-        <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>Find the mode of ungrouped lists: numerical and categorical data, bimodal sets, and sets with no mode when nothing repeats. Include the mode as the only average available for categorical data. Modes from frequency tables and the modal class of grouped data are separate pages. Both tiers. (S4)</p>
+        <main class="lesson-main" data-integrated-bank="mode" data-lesson-check-api="IntegratedLessonBank"
+            data-lesson-check-anchors="most-frequent,two-modes,no-mode,categories">
+            <p class="prereq"><b>Before this page:</b> <span>read a list of values and count how often each value
+                    appears.</span></p>
+
+            <section aria-labelledby="most-frequent">
+                <h1 id="most-frequent">The mode is the most frequent value</h1>
+                <p>The mode is the value that appears most often in a list. Count each distinct value and compare the
+                    counts; the largest count identifies the mode.</p>
+                <div class="rule-card">
+                    <h2 class="rule-card__statement">The mode has the greatest frequency</h2>
+                    <ol class="rule-card__conditions">
+                        <li>A value must appear more often than every other value to be the only mode.</li>
+                        <li>The mode is a value from the list, not a calculated total or midpoint.</li>
+                    </ol>
+                </div>
+                <div class="wex">
+                    <h2 class="wex__title">Mode of 3, 5, 3, 7, 3 and 5</h2>
+                    <p class="wex__task">Count the appearances of each value.</p>
+                    <ol class="wex__steps">
+                        <li><span class="wex__do"><span class="sf">3: three times; 5: twice; 7: once.</span></span><span
+                                class="wex__why">3 has the greatest frequency.</span></li>
+                        <li><span class="wex__do"><span class="sf">Mode = 3.</span></span><span class="wex__why">The
+                                mode is the value, not the number of appearances.</span></li>
+                    </ol>
+                </div>
+                <p>The mode is 3. Unlike the mean and median, it does not need every value to be used in a calculation.
+                </p>
             </section>
 
-            <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+            <section aria-labelledby="two-modes">
+                <h1 id="two-modes">Two values can share the greatest frequency</h1>
+                <p>If two values tie for the greatest <span class="gloss" data-term="frequency">frequency</span>, both
+                    are modes. The list is then bimodal.</p>
+                <div class="wex">
+                    <h2 class="wex__title">Modes of 2, 4, 4, 6, 8, 8 and 10</h2>
+                    <p class="wex__task">Compare the frequencies of the values.</p>
+                    <ol class="wex__steps">
+                        <li><span class="wex__do"><span class="sf">4: twice; 8: twice.</span></span><span
+                                class="wex__why">Both values have the largest frequency.</span></li>
+                        <li><span class="wex__do"><span class="sf">Modes = 4 and 8.</span></span><span
+                                class="wex__why">Neither tied value can be left out.</span></li>
+                    </ol>
+                </div>
+            </section>
+
+            <section aria-labelledby="no-mode">
+                <h1 id="no-mode">A list can have no mode</h1>
+                <p>When every value appears once, no value has a greater frequency than the others. The list has no
+                    mode.</p>
+                <div class="important-box" aria-labelledby="no-mode-title">
+                    <h2 class="important-box__title" id="no-mode-title">No repeated value</h2>
+                    <p>In <span class="sf">1, 3, 5, 7</span>, each value appears once. There is no mode, not a mode of 1
+                        and not a mode of 4.</p>
+                </div>
+            </section>
+
+            <section aria-labelledby="categories">
+                <h1 id="categories">The mode works for categories</h1>
+                <p>Some <span class="gloss" data-term="data">data</span> is made of names rather than numbers.
+                    Addition, division and ordering do not apply to categories, but counting still does.</p>
+                <div class="wex">
+                    <h2 class="wex__title">Most common colour</h2>
+                    <p class="wex__task">The answers are red, blue, blue, green, blue and red.</p>
+                    <ol class="wex__steps">
+                        <li><span class="wex__do"><span class="sf">blue: three; red: two; green: one.</span></span><span
+                                class="wex__why">Blue appears most often.</span></li>
+                        <li><span class="wex__do"><span class="sf">Mode = blue.</span></span><span class="wex__why">Blue
+                                is the only <span class="gloss" data-term="average">average</span> that applies to these
+                                categories.</span></li>
+                    </ol>
+                </div>
+            </section>
+
+            <section aria-labelledby="common-mistakes">
+                <h1 id="common-mistakes">Common mistakes</h1>
+                <ul class="slips">
+                    <li><b>Choosing the largest value</b>
+                        <span>In 3, 5, 3, 7, 3 and 5, 7 is the largest value but appears once. The mode is 3 because it
+                            appears three times.</span>
+                    </li>
+                    <li><b>Reporting the frequency instead of the value</b>
+                        <span>3 appears three times, but the mode is 3, not 3 times or 3 values.</span>
+                    </li>
+                    <li><b>Leaving out a tied mode</b>
+                        <span>In 2, 4, 4, 6, 8, 8 and 10, both 4 and 8 appear twice. The modes are 4 and 8.</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="summary">
+                <h1 id="summary">Summary</h1>
+                <ol class="recap">
+                    <li>The mode is the value with the greatest frequency.</li>
+                    <li>Two values can be modes when they tie for the greatest frequency.</li>
+                    <li>A list with no repeated value has no mode.</li>
+                    <li>The mode can describe categories, where a mean or median cannot.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/practiceTheMode.html" style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
-                        <h3>The mode</h3>
-                        <p>The most frequent value in a data set, including sets with two modes or none.</p>
-                    </a>
-                    <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/theMedian.html" style="background-image: none">
+                    <a class="topic-card topic-card--next"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/theMedian.html"
+                        style="background-image: none">
                         <span class="topic-card__kicker">Next lesson</span>
                         <h3>The median</h3>
                         <p>The middle value of ordered data, and the halfway pair when the count is even.</p>

@@ -67,6 +67,8 @@ math {
 .place-chart thead th:nth-child(4),
 .place-chart thead th:nth-child(5) { width: 70px; }
 .place-chart thead th:nth-child(6) { width: 65px; }
+.place-chart thead th:nth-child(7),
+.place-chart thead th:nth-child(8) { width: 46px; }
 .place-chart thead th:nth-child(10) { width: 46px; }
 .place-chart thead th:nth-child(11) { width: 77px; }
 .place-chart thead th:nth-child(12) { width: 82px; }

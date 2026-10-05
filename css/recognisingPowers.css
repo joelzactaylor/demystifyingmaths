@@ -1,209 +1,199 @@
-/* RECOGNISING POWERS OF A NUMBER
-
-   The shared lesson styles carry the prose and recap. This page adds compact
-   recall lists, short comparisons, and a lab that names a typed number as
-   every power it is. */
-
-.recognition {
-    display: grid;
-    gap: 10px;
-    width: min(100%, 520px);
-    margin: 24px auto;
-}
-
-.recognition p {
-    display: grid;
-    grid-template-columns: 108px 1fr;
-    margin: 0;
-    align-items: center;
-    border: 2px solid #d9e4eb;
-    border-radius: 14px;
-    background: #f8fbfd;
-    overflow: hidden;
-}
-
-.recognition p > span {
-    padding: 13px 14px;
-    background: #eef5fb;
-    color: #52666f;
-    font-size: .84rem;
-    font-weight: 700;
-    letter-spacing: .05em;
-    text-transform: uppercase;
-}
-
-.recognition strong {
-    padding: 13px 18px;
-    color: #173849;
-    font: 700 1.15rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-    font-variant-numeric: tabular-nums;
-    text-align: center;
-}
-
-.recognition sup,
-.fact-list sup,
-.example-strip sup,
-.power-identity sup {
-    position: relative;
-    top: -.78em;
-    font-size: .75em;
-    line-height: 0;
-    vertical-align: baseline;
-}
-
-.fact-list {
-    display: grid;
-    gap: 7px;
-    margin: 20px 0;
-    padding: 0;
-    list-style: none;
-}
-
-.fact-list--squares { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-.fact-list--cubes { grid-template-columns: repeat(6, minmax(0, 1fr)); }
-
-.fact-list li {
-    display: grid;
-    gap: 2px;
-    padding: 9px 7px;
-    justify-items: center;
-    border-radius: 11px;
-    background: #f1f7fb;
-    color: #52666f;
-    font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-    font-variant-numeric: tabular-nums;
-}
-
-.fact-list li > span { font-size: 1rem; }
-.fact-list b { color: #173849; font-size: 1.03rem; }
-
-.power-chains {
-    display: grid;
-    gap: 8px;
-    margin: 20px 0;
-}
-
-.power-chains div {
-    display: grid;
-    grid-template-columns: 130px 1fr;
-    align-items: baseline;
-    border-radius: 12px;
-    background: #f1f7fb;
-    overflow: hidden;
-}
-
-.power-chains dt {
-    padding: 11px 14px;
-    background: #eaf3f8;
-    color: #09539d;
-    font-weight: 700;
-}
-
-.power-chains dd {
-    margin: 0;
-    padding: 11px 16px;
-    color: #173849;
-    font: 700 .95rem/1.4 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-    font-variant-numeric: tabular-nums;
-}
-
-.example-strip {
-    display: grid;
-    gap: 10px;
-    grid-template-columns: 1fr 1fr;
-    margin: 22px 0 0;
-}
-
-.example-strip p {
-    display: grid;
-    gap: 5px;
-    margin: 0;
-    padding: 15px 18px;
-    border: 2px solid #d9e4eb;
-    border-radius: 14px;
+/* recognisingPowers: reading rhythm, inline questions and purposeful figures. */
+/* A focused prototype: comfortable reading width, open diagrams, and colour
+   attached to the two signs rather than to enclosing panels. */
+.roots-lesson header {
     background: #fff;
+    border-bottom: 2px solid #e6e8ef;
+    padding: 26px 40px 12px;
+    margin-bottom: 32px;
 }
-
-.example-strip b { color: #09539d; font-size: 1.04rem; }
-.example-strip p > span { color: #52666f; font-size: .9rem; }
-.example-strip strong { color: #173849; font: 700 1rem/1.3 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; }
-
-.power-identity {
-    margin: 22px 0;
-    padding: 20px 24px;
-    border: 2px solid #d99a20;
-    border-radius: 16px;
-    background: #fff8df;
-    color: #173849;
-    font: 700 1.5rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-    font-variant-numeric: tabular-nums;
-    text-align: center;
+.roots-lesson header h1 {
+    color: #243445;
+    text-shadow: none;
+    font-size: 34px;
+    padding: 20px 0;
 }
-
-
-/* NAME A NUMBER AS A POWER — one field, and the number written as every
-   power it is, then placed between the squares and the cubes around it. */
-.power-names {
-    margin: 24px 0 8px;
-    padding: 22px 24px 20px;
-    border: 2px solid #c9dce8;
-    border-radius: 20px;
-    background: linear-gradient(180deg, #fbfdff 0%, #f2f8fc 100%);
-    box-shadow: 0 12px 30px rgba(20, 57, 78, .14);
-}
-
-.power-names__field { display: flex; gap: 14px; align-items: center; justify-content: center; }
-.power-names__field span { color: #41535c; font-size: .88rem; font-weight: 700; letter-spacing: .04em; }
-
-.power-names__field input {
-    width: 150px;
-    box-sizing: border-box;
-    padding: 10px 14px;
-    border: 2px solid #b8cbd7;
-    border-radius: 12px;
-    outline: none;
-    background: #fff;
-    color: #173849;
-    font: 700 1.18rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-    font-variant-numeric: tabular-nums;
-    text-align: center;
-    transition: border-color .18s ease, box-shadow .18s ease;
-}
-
-.power-names__field input:focus { border-color: #116e93; box-shadow: 0 0 0 4px rgba(17, 110, 147, .12); }
-
-.power-names__working { display: grid; min-height: 132px; gap: 14px; padding-top: 18px; align-content: center; }
-
-.power-names__equation {
+.roots-lesson header nav { top: 0; }
+.roots-lesson .lesson-main { max-width: 760px; margin: 0 auto; padding: 0 48px 64px; }
+.roots-lesson .lesson-main > section {
     margin: 0;
-    color: #09539d;
-    font: 700 1.5rem/1.3 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-    font-variant-numeric: tabular-nums;
-    text-align: center;
+    padding: 32px 0;
 }
-
-.power-names__equation.is-none { color: #52666f; font-size: 1.05rem; font-family: inherit; }
-.power-names__equation sup { font-size: .62em; }
-
-.power-names__places { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
-
-.power-names__places li {
-    padding: 10px 14px;
-    border-radius: 10px;
-    background: #fff;
-    color: #41535c;
-    font-size: .95rem;
+.roots-lesson .lesson-main > section::after,
+.roots-lesson .lesson-main > section > h1::before,
+.roots-lesson .lesson-main > section > h2::before { display: none; }
+.roots-lesson .lesson-flowbar { background: transparent; border: 0; padding: 12px 0; }
+.roots-lesson .lesson-flowbar { display: flex; justify-content: flex-end; }
+.roots-lesson .lesson-flowbar { gap: 20px; flex-wrap: wrap; }
+.roots-lesson .lesson-flowbar > .lesson-flowbar__toggle { color: #5531a9; background: none; border: 0; border-bottom: 1px solid currentColor; border-radius: 0; padding: 7px 0; font-size: 14px; }
+.roots-lesson .lesson-flowbar > .lesson-flowbar__toggle:focus-visible { outline: 3px solid #7048c8; outline-offset: 4px; }
+.roots-lesson .lesson-flowbar__status,
+.roots-lesson .lesson-flowbar__track { display: none; }
+.roots-lesson .lesson-flowbar[hidden] { display: none; }
+.roots-lesson .page-nav { display: flex; flex-direction: column; }
+.roots-lesson .page-nav .lesson-flowbar__toggle {
+    align-self: flex-start;
+    margin: 24px 12px 0;
+    padding: 6px 0;
+    color: #fff;
+}
+.roots-lesson .roots-revealed { animation: roots-reveal .45s ease-out both; }
+.roots-lesson .page-nav .roots-reset { margin-top: 8px; }
+.roots-reading-step[hidden], .roots-continue[hidden] { display: none; }
+.roots-reading-step > p { margin: 18px 0; font-size: 1.04rem; line-height: 1.75; }
+.roots-reading-step > .roots-instruction { margin-top: 32px; }
+.roots-continue {
+    display: block;
+    margin: 28px auto 0;
+    padding: 10px 24px;
+    border: 0;
+    border-radius: 22px;
+    background: #7048c8;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
     line-height: 1.5;
-    text-align: center;
+    font-family: inherit;
+    cursor: pointer;
 }
+.roots-continue:focus-visible { outline: 3px solid #7048c8; outline-offset: 4px; }
+.roots-revisit { margin: 24px 0; }
+.roots-revisit summary { color: #5531a9; cursor: pointer; font-size: 15px; line-height: 1.6; }
+.roots-revisit > p { margin: 12px 0; font-size: 16px; line-height: 1.7; }
+.roots-question-reminder { margin: 10px 0 0; }
+.roots-revisit[hidden] { display: none; }
+.roots-lesson .lesson-check__turn[hidden] { display: none; }
+.roots-key-points { margin: 32px 0 0; padding-top: 24px; border-top: 2px solid #e3e8ed; }
+.roots-key-points h2 { margin: 0 0 16px; color: #243445; font-size: 21px; }
+.roots-key-points ul { margin: 0; padding-left: 22px; }
+.roots-key-points li { padding-left: 6px; font-size: 1.04rem; line-height: 1.75; }
+.roots-key-points li + li { margin-top: 12px; }
+.roots-key-points li::marker { color: #009b8c; }
+@keyframes roots-reveal {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.roots-lesson .lesson-main > section > h1 { font-size: 28px; margin: 0 0 24px; }
+.roots-lesson .lesson-main > section > p { max-width: none; margin: 0 0 18px; line-height: 1.75; }
+.roots-lesson .lesson-main > section > :last-child { margin-bottom: 0; }
+.roots-lesson .lesson-main > .prereq { margin: 0 0 12px; background: #f5f7fa; border: 0; }
+.roots-lesson .roots-instruction { color: #536873; font-size: 15px; }
+.roots-lesson .lesson-check { max-width: none; margin: 18px 0; }
+.roots-lesson .lesson-check__body { gap: 18px; }
+.roots-lesson .lesson-check__turn + .lesson-check__turn { padding-top: 0; }
+.roots-lesson .lesson-main > section > .lesson-check + p { margin-top: 18px; }
+.roots-lesson .lesson-main > section > .roots-instruction { margin-top: 32px; margin-bottom: 0; }
+.roots-lesson .lesson-check__entry input {
+    width: 3.2em; min-width: 0; min-height: 0; padding: 1px 5px;
+    box-sizing: border-box; height: 1.65em; font-family: inherit; font-size: 1em; font-weight: 700; line-height: 1.4;
+    border: 0; border-bottom: 2px solid #7048c8; border-radius: 4px 4px 0 0; background: #f2edff;
+}
+.roots-lesson .lesson-check__check { display: none; }
+.roots-lesson .lesson-check__prompt { display: block; max-width: none; line-height: 1.75; font-size: 1.04rem; }
+.roots-lesson .lesson-check__response { display: inline; margin: 0; vertical-align: baseline; }
+.roots-inline-equation { display: inline-block; white-space: nowrap; vertical-align: baseline; }
+.roots-lesson .roots-inline-equation .lesson-check__expression {
+    font-family: inherit;
+    font-size: 1em;
+    line-height: inherit;
+    letter-spacing: normal;
+}
+.roots-lesson .roots-inline-equation .lesson-check__response { margin-left: .3em; }
+.roots-lesson .lesson-check__answer,
+.roots-lesson .lesson-check__entry { display: inline; font-size: inherit; vertical-align: baseline; }
+.roots-lesson .lesson-check__entry input { vertical-align: baseline; }
+.roots-lesson .lesson-check__entry input.roots-answer-retry {
+    color: #a3293d;
+    background: #fff0f2;
+    border-bottom: 2px dashed #bb354c;
+    box-shadow: none;
+    animation: roots-retry .24s ease-in-out;
+}
+.roots-answer-notice {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+@keyframes roots-retry {
+    25%, 75% { transform: translateX(-2px); }
+    50% { transform: translateX(2px); }
+}
+.roots-lesson .lesson-check__entry input::placeholder { color: #7048c8; opacity: 1; }
+.roots-lesson .lesson-check__entry input[hidden] { display: none; }
+.roots-lesson .roots-accepted-answer {
+    color: #0f6d40;
+    font-weight: 700;
+    background: none;
+    border: 0;
+    padding: 0;
+}
+.roots-lesson .roots-accepted-answer:focus {
+    outline: none;
+    box-shadow: none;
+}
+.roots-lesson .lesson-check__turn.is-correct .lesson-check__entry input {
+    background: #e9f8ef; border-color: #15985b; color: #0f6d40; box-shadow: none;
+}
+.roots-lesson .lesson-check__turn.is-correct .lesson-check__entry input:focus {
+    border-color: #15985b; outline: 2px solid #b9dfc8;
+}
+.roots-lesson .lesson-check__help { margin-top: 8px; }
+.roots-lesson .lesson-check__feedback { max-width: 700px; font-weight: 400; }
+.roots-lesson .lesson-check__turn.is-correct .lesson-check__check {
+    display: none;
+}
+.roots-lesson .lesson-check__turn.is-correct .lesson-check__response::after {
+    content: none;
+}
+.roots-lesson .lesson-check__feedback,
+.roots-lesson .lesson-check__help,
+.roots-lesson .lesson-check__support,
+.roots-lesson .lesson-check__complete { display: none; }
 
-.power-names__places .sf { color: #173849; }
 
-/* The quiet empty state: the working is hidden and keeps its space. */
-.power-names.is-empty .power-names__working { visibility: hidden; }
-.power-names__note { display: none; margin: 14px 0 0; color: #687b84; font-size: .95rem; text-align: center; }
-.power-names.is-empty .power-names__note { display: block; }
 
+/* The notation stays part of the sentence; figures show factors and dimensions. */
+.roots-lesson sup { font-size: 14px; }
+.notation-example, .power-lab, .power-finder { margin: 28px 0; padding: 26px 30px; background: #f7f8fc; border-radius: 8px; }
+.notation-example { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 30px; }
+.notation-example p { margin: 0; text-align: center; font-size: 17px; line-height: 1.7; }
+.notation-example .notation-equation { grid-column: 1 / -1; color: #5531a9; font-size: 26px; }
+.notation-example p > span { display: block; font-size: 15px; color: #465966; }
+.power-lab-controls { display: flex; align-items: center; gap: 42px; }
+.power-lab-controls[hidden] { display: none; }
+.power-lab-controls label, .power-finder label { font-size: 16px; display: flex; align-items: center; gap: 14px; }
+.power-lab input, .power-finder input { font: inherit; }
+.power-lab input[type="text"], .power-finder input { width: 5em; padding: 8px 10px; border: 1px solid #a69cc6; border-radius: 6px; background: white; color: #243445; }
+.power-lab input[type="range"] { width: 190px; accent-color: #7048c8; }
+.power-lab input:focus-visible, .power-finder input:focus-visible { outline: 3px solid #7048c8; outline-offset: 3px; }
+.power-lab input[aria-invalid="true"], .power-finder input[aria-invalid="true"] { border: 2px dashed #a3293d; }
+.power-lab-equation, .power-finder-result { font-size: 22px; line-height: 1.7; color: #5531a9; min-height: 3.4em; margin: 24px 0 12px; overflow-wrap: anywhere; }
+.power-lab-caption, .power-finder-note { margin: 0; color: #465966; font-size: 15px; line-height: 1.7; }
+.power-dimensions { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 30px; margin: 28px 0; background: #f3faf8; padding: 24px; border-radius: 8px; }
+.power-dimensions figure { margin: 0; text-align: center; }
+.power-square { display: grid; grid-template-columns: repeat(4,32px); grid-auto-rows: 32px; width: 128px; margin: 21px auto; }
+.power-square i { background: #009b8c; border: 1px solid white; }
+.power-dimensions svg { width: 200px; height: 170px; }
+.power-dimensions figcaption { font-size: 15px; line-height: 1.7; color: #465966; margin-top: 14px; }
+.factor-groups, .power-regroup { margin: 28px 0; padding: 12px 28px; border-left: 3px solid #7048c8; }
+.factor-groups p, .power-regroup p { font-size: 21px; line-height: 1.7; margin: 12px 0; }
+.factor-two { color: #006f65; } .factor-five { color: #5531a9; }
+.power-facts { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px 24px; margin: 26px 0; padding: 24px 28px; background: #f7f8fc; border-radius: 8px; }
+.power-facts > span { font-size: 18px; line-height: 1.7; white-space: nowrap; }
+.power-facts strong { color: #5531a9; }
+.power-chains { margin: 28px 0; padding: 8px 28px; background: #f3faf8; border-radius: 8px; }
+.power-chains p { display: grid; grid-template-columns: 110px 1fr; gap: 18px; font-size: 17px; line-height: 1.8; margin: 16px 0; }
+.power-chains strong { color: #006f65; }
+.power-finder label[hidden] { display: none; }
+.roots-lesson .power-facts + p { margin-top: 28px; }
+.power-walk { display: flex; justify-content: space-between; gap: 36px; padding: 0; margin: 30px 0; list-style: none; }
+.power-walk li { position: relative; flex: 1; text-align: center; color: #006f65; }
+.power-walk li > span { display: block; font-size: 17px; margin-bottom: 10px; }
+.power-walk strong { display: block; border-radius: 8px; background: #e4f4ef; padding: 12px 4px; font-size: 20px; }
+.power-walk li + li::before { content: "×3"; position: absolute; right: calc(100% + 6px); top: 49px; width: 24px; font-size: 14px; color: #465966; }
 @media (prefers-reduced-motion: reduce) {
-    .power-names__field input { transition: none; }
+.roots-lesson .roots-revealed, .roots-lesson .lesson-check__entry input.roots-answer-retry { animation: none; }
 }

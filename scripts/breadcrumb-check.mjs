@@ -120,7 +120,8 @@ for (const [rel, p] of pages) {
     // still being written is unreachable on purpose: the index carries it as a
     // coming-soon card, which by design has nothing to click.
     const placeholder = /still under construction/i.test(p.html);
-    if (parent && !placeholder) {
+    const unlisted = /<body\b[^>]*\bdata-menu-unlisted\b/.test(p.html);
+    if (parent && !placeholder && !unlisted) {
         const pp = pages.get(urlToFile(parent.href));
         if (pp && !pp.html.includes(`"${p.url}"`))
             problems.push(`${rel}: parent ${parent.href} contains no link to ${p.url}`);

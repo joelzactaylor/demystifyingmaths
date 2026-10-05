@@ -16,13 +16,40 @@ Create `<TARGET>` from the ground up as a finished Demystifying Maths teaching p
 
 ## Establish the brief before writing
 
+### Keep the work small and concrete
+
+Use the working roots lesson as evidence, not as an excuse to invent a framework.
+Build one complete teaching sequence, render it, type real answers into it, then
+extend it. Reuse existing components; extract new shared machinery only when a
+second real use needs it. Prefer removing an unnecessary control or paragraph to
+adding another state or rule. The final answers should reveal the takeaway and
+next-lesson link together, without an extra completion gate.
+
+Keep each rule in one home: this brief owns lesson construction, the voice guide
+owns prose, and the audit cycle owns verification. IDE instructions should link
+to these rather than maintain competing palettes and workflows. Record a real
+regression with a reproducible test, not another blanket prohibition. Native
+typing, blur and focus matter: assigning input values in a script is not enough.
+
+This is our application of DHH's emphasis on
+[reasoning from working code](https://signalvnoise.com/svn3/on-writing-software-well/)
+and [explicit scope trade-offs](https://signalvnoise.com/svn3/everything-is-possible-but-nothing-is-free/),
+not a claim that he prescribed this site's teaching design.
+
 1. Read the target stub, its manifest `coverNote`, its linked practice specification and its position in the curriculum sequence.
-2. Read the immediately preceding completed lessons and their dedicated assets to learn the site's current visual and interaction language. Treat those pages as patterns, not text to copy.
+2. Read the positiveAndNegativeRoots prototype and its CSS/JS in powersAndRoots for current presentation and inline interactions. Read preceding lessons for prerequisites, not as automatic visual templates. Written-method pages remain references for arithmetic diagrams only.
 3. Identify exactly what the preceding pages have already taught, what this page must teach, and what later pages own. Do not introduce a later technique merely because it is related.
 4. Write down an internal scope boundary and test every proposed section against it. If the specification says one-digit or two-digit operands, integer divisors, a particular tier, or a particular answer form, enforce that in examples and interactive inputs.
 5. Check every calculation independently before using it.
 
 ## Build a coherent teaching narrative
+
+**Voice standard:** follow `lesson-prose-voice.md`, with Mathigon's Circles
+introduction as the reference for conversational teaching. Its guidance takes
+precedence over older restrictions below: “we”, “you”, purposeful questions,
+short transitions and visible instructions are welcome. Teach before testing.
+Evaluate the explanation and interaction together, not by counting forbidden
+words or adding navigation furniture.
 
 - Start with a specific, meaningful heading—not “Introduction”—and a concise prerequisite strip linking to the actual prerequisite lessons.
 - Teach in dependency order. A sentence must not rely on an idea, notation, appended digit, conversion, exception or choice that is only explained later on the page.
@@ -32,16 +59,16 @@ Create `<TARGET>` from the ground up as a finished Demystifying Maths teaching p
 - Include only examples that earn their place: reveal a structural issue, misconception, zero, decimal boundary, contextual decision or check.
 - **Mark the glossary terms by hand, as part of writing the page.** `js/glossary.js` carries the terms the course teaches and the card that shows them; the marks themselves are `<span class="gloss" data-term="quotient">quotient</span>` written into the prose. Marking used to be done by a scanner at load time, and it could not be taught the difference between "the difference of two squares" and "the difference is in what the columns are for", or between an algebraic identity and "the digits keep their identity". Read the page and decide. `node scripts/glossary-mark.mjs --write <page>` will propose a first set of marks; treat what it proposes as a draft to edit, not an answer. Mark a term **once per page**, at the first place a reader who did not know it would be stopped by it — in running prose only, never in a heading, a link, a bold label, a control, or notation, and never on the page whose own heading names that term, because that page is the definition. Be generous: a reader who has forgotten what a divisor is has forgotten it on every page, not only the one that teaches it. To add a term, add it to `js/glossary.js`; a word whose everyday sense is the one these pages use — mean, range, carry, solve — is refused by `scripts/glossary-check.mjs` on purpose.
 - **Never write a false statement because the true one is out of scope.** A page may leave a topic out; it may not say something that is wrong. "x² = −9 has no solution" is false — −9 has two square roots — and a reader who meets them later has been taught something they must unlearn, which is worse than never having been told. Scope the claim instead of breaking it: "no number on the number line squares to −9" is true, needs no vocabulary the page has not got, and stays true for the rest of the reader's life. The same move fixes "you cannot subtract a larger number from a smaller one", "a fraction cannot have a denominator of zero because it would be very large", and every other convenience that a later page has to undo. Where the honest version leaves a question open, name where it is answered and link it — `pages/extracurricular/` exists for exactly this, and a one-clause pointer costs nothing.
-- **Only real mistakes belong in `.slips`.** Every entry names an error a pupil actually makes — a rule misapplied, two procedures confused, a pattern over-generalised, a place-holder dropped — and states the specific wrong answer it produces. Test each one by asking who makes it and why. If the answer is "nobody would ever write that", it is a straw man: it teaches nothing, it pads the list, and it makes the real entries beside it look invented too. `&radic;36 = 1,296` fails the test, because no reader asked for a square root multiplies 36 by itself. A fact the page has already taught is not a mistake, and neither is advice to take care or to check the question: "Ignoring the requested direction — check whether the question asks for ascending or descending" names no wrong answer, where "Writing 5, 2, 0, &minus;1, &minus;6 answers the descending question instead" does. Do not tell the same mistake twice with different numbers. There is no quota: list the mistakes the page's material actually produces and stop. Two real slips beat four with two invented, and a straw man does more damage than an empty slot, because it tells the reader you think they might believe it.
-- **Build the page to the shape a reader learns from, not to the order the material was thought of in.** The shape pass in `lesson-page-cycle.md` is the standard, and it is the one the best-known resources share: each section states its rule by its second paragraph, holds one idea in 60–350 words, and is followed by a worked example that varies one thing from the example before it; a fact is delivered once in the body and once in the summary; digressions — history, a convention's dispute, a fourth dimension — go in an "Extra info" box or a section after the core, never between a rule and its example; headings state the claim; and the exam's own words for the skill appear once, where the form is taught. A page is finished when a listener with no maths follows it read aloud without stopping.
-- Use descriptive section headings, worked examples, an inverse check, common mistakes and a closing summary when those elements suit the topic. The summary restates each claim the body made, one line each, and has as many lines as there were claims. The closing list is headed **Summary** on every page.
-- End with the established practice and next-lesson cards, with exact links and titles from the curriculum sequence.
+- Address genuine mistakes where they arise. Do not add a common-mistakes panel or dropdown by default; finish with a short, visible Key points summary. Optional help must use the learner's actual answer and supply a useful next step without assuming their reasoning.
+- Teach one manageable idea at a time. Word counts and heading formulas are not quotas. Keep examples continuous; explicitly reintroduce an older example rather than referring to its numbers after the questions have moved on.
+- Use natural headings, sufficient worked explanation and a short visible Key points ending. Avoid repeated rule cards, compulsory misconception lists and learning-objectives furniture.
+- End with the next teaching lesson. Lesson-specific retrieval belongs inline; separate mixed reviews are governed by the mixed-review brief.
 - Remove the author note, stub text, TODOs, “coming soon”, AI-facing commentary and unnecessary descriptions of page functionality.
-- Never write copy that explains the page's own controls, and never narrate how a figure was drawn. State the mathematics a figure shows and stop; sentences like “there is nowhere left to put it, so it has to be drawn as a grid inside a grid” describe a rendering decision, not the subject, and no reader wants them. No “drag to rotate, hold shift for…”, no key lists, no notes about what a slider does. If an interaction needs a sentence of instruction, the interaction is wrong: derive the extra freedom from the gesture already in use, or drop the feature. A hint that assistive technology genuinely needs goes in a visually hidden span, never on the page. Mathematical prose about what a figure *shows* is a different thing and still belongs there, and a scene caption may name what is drawn — a ring, a sector, a column, a disc — so long as the sentence states the mathematics: "one 2 leaves each ring, and 360 ÷ 2 = 180" is a caption; "the sectors animate out" is not.
+- Give only the simplest interaction instruction when needed, tied to a mathematical purpose. No keyboard instruction lists or narration of obvious page mechanics in teaching prose; retain keyboard support.
 
 ## Make animations teach rather than decorate
 
-- Use the site's scroll-led, pinned-card pattern. Do not add Next, Back, Build or Play controls.
+- Choose interaction to suit the mathematics. Direct manipulation is often preferable to a pinned scroll card. Use Continue for a natural reading pause, not every paragraph. Retain written-method scroll scenes only where movement teaches a real operation.
 - The drawing area begins with the setup only — the numbers as given, nothing worked — and each mathematical step is drawn as the reader scrolls. (The reference pages do not begin blank: `primeFactorisation` opens on the 84, `longDivision` on the set-out calculation.)
 - Give every step a generous stationary reading interval. Movement happens between stops; a highlight must not glide continuously through the entire calculation.
 - Ease scroll-driven opacity, position, line and highlight changes. Avoid abrupt class swaps that make writing or emphasis snap between frames; preserve a stationary interval after each eased reveal.
@@ -87,41 +114,39 @@ Everything in this section is about column and long-form arithmetic — dividend
 - On division pages, make the starting-position decision prominent: compare successive leading blocks and begin with the shortest one at least as large as the divisor. Do not leave this as a passing sentence or let the animation silently skip to the chosen block.
 - For division sandboxes, include a known non-terminating test such as `1456 ÷ 76`. Verify that the last subtraction, drawn quotient and final caption all say or show that the decimal continues.
 
-## Never declare a viewport
+## Use the desktop lesson canvas
 
-The site has **no `<meta name="viewport">` on any page**, and a new page must not add one. This is what gives every page its fixed-aspect layout: `.layout` in `css/shared.css` is a hard 900px, and a phone with no viewport declaration falls back to a 980px virtual viewport and scales the whole page down uniformly to fit the screen. The layout is therefore identical everywhere, only smaller.
+Lessons are designed for laptop and desktop screens. Keep the site's existing omission of `<meta name="viewport">`; mobile reflow is not an authoring target. `lesson-sections.css` owns the desktop geometry: it preserves a 900px floor for existing diagrams, widens the lesson canvas when space permits, and moves it right on a full desktop so the fixed contents panel occupies a separate left rail. Do not reproduce or override that geometry in a page-specific stylesheet.
 
-Adding `width=device-width` opts the page out of that scaling. The 900px layout is then laid out inside a 390px viewport, the text renders at full size against a screen less than half as wide, and the page appears enormous and clipped. The only exception on the site is `vocab/index.html`, a standalone unlisted tool with its own responsive stylesheet.
+The prose measure stays narrower than the canvas. Figures, worked examples and interactions may use the available width; direct section prose is capped by `lesson-sections.css` so widening the lesson does not produce difficult lines of text.
 
-The same reasoning rules out anything else that would break the uniform scale: no viewport-relative font sizes that would compound with the browser's own scaling, and no `@media (max-width: …)` rule intended to reflow the page for phones. Phone breakpoints below `900px` never fire on a phone, because the viewport is reported as 980px wide. Write one layout at 900px and let the browser shrink it.
+## Match the current lesson prototype
 
-## Match the written-methods house style exactly
+The current design reference is
+`pages/curriculum/GCSE/number/structure/powersAndRoots/positiveAndNegativeRoots.html`
+with its dedicated CSS/JS. This is a prototype, not proof that every other page
+has migrated. Its page-specific integration supplements `lesson-checks.js`;
+copying only the shared files will not reproduce accepted-answer, help or
+restoration behaviour.
 
-The written-methods lessons (`pages/curriculum/GCSE/number/structure/writtenMethods/`) and their dedicated stylesheets are the reference implementation of the teaching-page style. A new lesson must be indistinguishable from them in style. Read at least `columnAddition.html`, `longDivision.html` and their CSS before writing a line, and reuse the values below rather than inventing near-misses. Indistinguishable in style is not a licence to copy a fault: the reference pages have carried some — openers that fail the voice (`lesson-prose-voice.md`), 10px column labels until September 2026 — and where a reference page and this document disagree, this document has the corrected value. A figure another lesson already draws — a place-value chart, a column board, a number line, a factor ring — is drawn the way that page draws it, with that stylesheet's values, not rebuilt from the idea: `orderingNumbers` drew the place-value chart a second way, in collapsed borders with 14px digits, and was brought back to `placeValue`'s. Never import a colour, radius or control style from a practice page: the ochre practice identity and the blue teaching identity are deliberately different, and mixing them is the most visible way a new page looks wrong.
+Keep the existing font. Use a continuous white reading surface, a comfortable
+roughly 760px reading measure at full desktop width, and restrained pale figure
+surfaces. Match questions to surrounding prose in size, baseline and spacing.
+Use smaller gaps within a thought and larger breaks between ideas; the prototype
+uses about 18px between paragraphs and 32px section padding. These are reference
+values, not a demand to stretch every figure. Keep the outer gutters small and
+reserve a separate contents rail. No gradients, decorative progress counters,
+ticks, oversized answer boxes or blanket card borders.
 
-**The palette.** Use these and no other near-equivalents:
+Colour belongs to mathematical meaning: the prototype uses teal `#009b8c`,
+violet `#7048c8`, blue `#2678c8`, ink `#243445`, and dark accepted-answer
+green `#0f6d40`. Preserve contrast and redundant labels/shapes. Existing gold
+written-method highlights may remain where they explain the calculation.
+Inline maths and blanks inherit the sentence font; reserve monospace for
+aligned calculations that benefit from it. Do not let punctuation resemble a
+decimal point or run distinct expressions together.
 
-| Role | Value |
-| --- | --- |
-| Lesson blue — section headings, emphasis, quotient and answer figures | `#09539d` |
-| Dark ink — numerals, set-out digits, figure text | `#173849` |
-| Body copy inside cards | `#41535c`; caption body `#243a45` |
-| Labels, kickers, uppercase captions | `#52666f` |
-| Teal — numbered markers, the current progress dot, input focus | `#116e93` |
-| Ochre emphasis — operators, signs, the second colour in a figure | `#b86821` |
-| Deep ochre text | `#9b5f12`, `#80540f`, `#7a540a` |
-| Gold — highlight frame border, important-box border, carry badges | `#d99a20` |
-| Gold fills — highlight frame `#fff2c9`; important box and badges `#fff8df` |
-| Raised card border | `#c9dce8`; flat panel border `#d9e4eb` or `#d9e2ec` |
-| Pale blue fills | `#eef5fb`, `#eaf3f8`, `#f1f7fb` |
-| Mid blues for strokes and rules | `#5d91b0`, `#6c9bb0`, `#526b76` |
-| Control borders and inactive dots | `#b8cbd7`, `#c6d4dc` |
-| Scene card gradient | `linear-gradient(180deg, #fbfdff 0%, #f2f8fc 100%)` |
-| Warning red — only in `.slips` and only as a border | `#a3352b` |
-
-**Type.** Every numeral, set-out, expression and input uses `ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace` with `font-variant-numeric: tabular-nums`. Prose stays in the inherited Aleo. Notation inside a sentence goes in `<span class="sf">`, which already styles `sup` for powers at `max(.75em, 12px)`; a page does not set a smaller proportion of its own.
-
-**Type has a floor.** Body prose is 18px. Nothing visible is under 12px, and anything the reader must read is 14px — or 13px for a column header whose width the mathematics fixes. The sizes the reference boards settled on, and reuse: a column label over a board `700 .82rem/1.1 Aleo` in `#52666f`; the label beside a sandbox input `.88rem` 700 in `#41535c`; the number in a step disc `.88rem` in a 28px circle; a caption, note or status line `.9rem` or more; an axis mark on a number line `.88rem`. A figure's text is measured as rendered — an SVG label is its `font-size` times the viewBox scale, and a 10-unit label in a 920-unit drawing shown at 800px is 8.7px — so check with `node scripts/text-check.mjs <page>`, not by reading the stylesheet.
+**Type has a floor.** Use the established readable prose size (roughly 17–18px). Nothing visible is under 12px, and anything the reader must read is 14px — or 13px for a column header whose width the mathematics fixes. The sizes the reference boards settled on, and reuse: a column label over a board `700 .82rem/1.1 Aleo` in `#52666f`; the label beside a sandbox input `.88rem` 700 in `#41535c`; the number in a step disc `.88rem` in a 28px circle; a caption, note or status line `.9rem` or more; an axis mark on a number line `.88rem`. A figure's text is measured as rendered — an SVG label is its `font-size` times the viewBox scale, and a 10-unit label in a 920-unit drawing shown at 800px is 8.7px — so check with `node scripts/text-check.mjs <page>`, not by reading the stylesheet.
 
 **Notation HTML cannot draw — never shy away from `<math>`, except for the radical.** Where the mathematics needs a shape no HTML element makes — a fraction bar, a raised index, a stacked coefficient — write MathML and let the browser render it:
 
@@ -161,18 +186,18 @@ Build MathML in JavaScript with `document.createElementNS("http://www.w3.org/199
 
 Stripped of its styling, positional notation loses the very thing that gives it meaning: `<msqrt><mn>49</mn></msqrt>` and `.rad` both flatten to "49", turning &radic;49 = 7 into the false 49 = 7. Put a clipped `<span class="caret" aria-hidden="true">&radic;</span>` inside the radical — the same span that stops `2<sup>5</sup>` flattening to twenty-five — so the flattened text reads once and reads true. Repair only the character that was lost: a clipped copy of the whole statement makes the stripped page read it twice.
 
-**The scroll-led card.** Copy the structure, not an approximation of it: a `.<topic>-scene` wrapper (`position: relative; overflow-anchor: none;`) that takes `height: var(--scene-height); min-height: var(--scene-min-height)` once `is-ready`, holding a `.<topic>-scene__sticky` card that is `position: absolute` until JavaScript pins it. The card is `2px solid #c9dce8`, `border-radius: 22px`, the gradient above, `box-shadow: 0 12px 30px rgba(20, 57, 78, .14)`, `contain: layout paint`, `overflow: hidden`, and a `grid-template-rows` with exactly one `minmax(0, 1fr)` row for the drawing. Give every scene kind the same number of grid children in both its worked and sandbox forms — wrap sandbox controls in one header block rather than adding a row.
+**Optional legacy written-method scroll card.** Use only for a calculation that benefits from this mechanism: a `.<topic>-scene` wrapper (`position: relative; overflow-anchor: none;`) that takes `height: var(--scene-height); min-height: var(--scene-min-height)` once `is-ready`, holding a `.<topic>-scene__sticky` card that is `position: absolute` until JavaScript pins it. The card is `1px solid #dce4e9`, `border-radius: 14px`, a solid white or `#f7fbfd` surface, `box-shadow: 0 5px 16px rgba(24, 44, 56, .09)`, `contain: layout paint`, `overflow: hidden`, and a `grid-template-rows` with exactly one `minmax(0, 1fr)` row for the drawing. Give every scene kind the same number of grid children in both its worked and sandbox forms — wrap sandbox controls in one header block rather than adding a row.
 
-**Card furniture.** Reuse these verbatim, changing only the block name:
+**Legacy scroll-card implementation details (not inline question styling).**
 
 - Caption: `display: grid; align-content: center; height: 6.6em; padding: 14px 28px 6px; text-align: center;` with `h3` at `#09539d`/`1.1rem` and `p` at `#243a45`/`.97rem`/`line-height: 1.5`. Fixing the height is what stops the card resizing between steps.
 - Progress: `display: flex; gap: 8px; padding: 0 22px 18px; justify-content: center;` with 9px round dots at `#c6d4dc`; the current dot becomes `width: 28px; border-radius: 999px; background: #116e93`, and past dots `#6c9bb0`. Use the class names `is-current` and `is-past`.
 - Highlight frame: `2px solid #d99a20`, `border-radius: 13px`, `background: #fff2c9`, positioned absolutely and interpolated between measured targets.
 - Inputs: `width` to suit, `padding: 10px 14px`, `2px solid #b8cbd7`, `border-radius: 12px`, `outline: none`, `background: #fff`, `color: #173849`, `font: 700 1.18rem/1.2` in the monospace stack, `tabular-nums`, `text-align: center`, and `transition: border-color .18s ease, box-shadow .18s ease`. Focus is `border-color: #116e93; box-shadow: 0 0 0 4px rgba(17, 110, 147, .12)` — never a practice-page outline ring. The label above it is `<label><span>Number to divide</span><input …></label>` with the `span` at `.88rem` 700 `#41535c`.
-- Invalid entry: the house treatment is quiet, not alarming. Grey the affected text to `#687b84` and either hide the stale working with `visibility: hidden` so the card keeps its size, or show a `2px dashed #b8cbd7` panel on `rgba(255, 255, 255, .86)` saying what is needed. Never use a red practice-page warning.
+- Invalid sandbox entry (distinct from a wrong answer to an inline question): the treatment is quiet. Grey the affected text to `#687b84` and either hide the stale working with `visibility: hidden` so the card keeps its size, or show a `2px dashed #b8cbd7` panel on `rgba(255, 255, 255, .86)` saying what is needed. Inline answer cues instead follow the retrieval rules below.
 - Reduced motion: end the stylesheet with a `@media (prefers-reduced-motion: reduce)` block that returns `.<topic>-scene.is-ready` to `height: auto; min-height: 0`, makes the card `position: relative; height: auto; transform: none !important`, and removes every transition.
 
-**Structural styles come from `lesson.css`.** Use `.prereq`, `.rule-card`, `.important-box`, `.wex`, `.worked`, `.slips` and `.recap` for the prerequisite strip, definitions, noticed facts, worked examples, animated examples, misconceptions and the summary. Only build a bespoke component when none of those can carry the idea, and when you do, give it the palette, the `14px`–`18px` radii and the `0 8px 22px rgba(23, 56, 73, .11)` shadow the neighbouring pages use.
+**Structural styles come from `lesson.css`; chapter rhythm and final visual treatment come from `lesson-sections.css`.** Every teaching page loads both, in that order. The latter lets a section use the broad lesson canvas while keeping direct prose at a readable measure, and gives each new idea a visible beginning and end. Do not reproduce those surfaces in page-specific CSS. Use `.prereq`, `.rule-card`, `.important-box`, `.wex`, `.worked`, `.slips` and `.recap` for the prerequisite strip, definitions, noticed facts, worked examples, animated examples, misconceptions and the summary. Only build a bespoke component when none of those can carry the idea. Default to a `1px` neutral border, `10px`–`14px` radius and no shadow; elevation is reserved for a sticky or genuinely overlapping object.
 
 **Those components lay themselves out with flex and grid, so each assumes a particular set of element children.** Give them exactly the children they expect, or the layout algorithm will treat every stray inline element as a column of its own:
 
@@ -184,36 +209,64 @@ Stripped of its styling, positional notation loses the very thing that gives it 
 
 None of this is visible without a browser, so assert it — a small structural check over the finished page costs less than a rendering pass you cannot run.
 
-**Write the stylesheet the way the others are written.** One file per page at `css/<pageName>.css`, opening with a comment that says what the page needs beyond the shared styles and why, and carrying no viewport media queries except the reduced-motion block — `.layout` is a fixed 900px panel that `shared.css` scales with a transform below 900px, so nothing in a page stylesheet may reflow.
+**Write the stylesheet the way the others are written.** One file per page at `css/<pageName>.css`, opening with a comment that says what the page needs beyond the shared styles and why. Page-specific CSS carries no viewport-width query: desktop lesson geometry belongs in `lesson-sections.css`, and motion preferences remain the only per-page media query.
 
 ## Audit, reorder and animate before you call it finished
 
 A first draft is a draft. After the page runs, read it once more as a whole and rebuild it around what actually explains the idea best:
 
 - Put capability before vocabulary. A reader should be able to *do* the thing before being taught the names for its special cases, unless a name is needed to read the next sentence.
-- Move every misconception to the point where the reader has just seen the evidence that settles it, not to a list at the end. The end-of-page `.slips` list is a reminder of misconceptions already met, not their first appearance.
+- Address misconceptions where the evidence settles them, or in answer-specific optional help. Do not add an end-of-page mistakes list by default.
 - Cut any section that does not change what the reader can do. If two sections teach the same decision, merge them.
-- Then ask what is still being asserted in prose that could be shown. Every idea on the page that has a shape, a growth, a movement or a rearrangement deserves its own scroll-led scene. Build a separate scene for each genuinely different picture rather than restyling one scene's caption; a page with one movement has one scene, and a scene whose stages only change their words is a paragraph in a box (`lesson-page-cycle.md`, figure pass).
+- Then ask what is still being asserted in prose that could be shown. Use a diagram or interaction when it makes the idea clearer; do not require a scroll-led scene for every idea. Build a separate scene for each genuinely different picture rather than restyling one scene's caption; a page with one movement has one scene, and a scene whose stages only change their words is a paragraph in a box (`lesson-page-cycle.md`, figure pass).
 - Animate the reverse direction as well as the forward one wherever a topic is read both ways.
 - Re-run every check after reordering: heading order, deep-link IDs, practice pairing and the scene harnesses all depend on the structure you have just changed.
 
 ## Accessibility and presentation
 
-- Include page-specific title, description and Open Graph metadata. No viewport meta tag: see "Never declare a viewport" above.
+- Include page-specific title, description and Open Graph metadata. No viewport meta tag: see "Use the desktop lesson canvas" above.
 - Maintain a valid heading hierarchy with no skipped levels.
-- Give every major teaching section a stable, descriptive heading ID when a paired practice page may deep-link to it. Put the ID on the heading itself so the site's heading scroll margin lands the reader at the top of the section rather than inside a sticky or scroll-animated scene.
+- Give every major teaching section a stable, descriptive heading ID. Put the ID on the heading itself so integrated questions can be anchored immediately after the idea they retrieve and deep links land at the top of the section rather than inside a sticky or scroll-animated scene.
 - Use real labels for every input, unique IDs, valid ARIA references and concise live regions.
 - Hide purely visual constructions from assistive technology, but provide the complete mathematical meaning in nearby text, captions or an image label.
 - Never rely on colour alone. Use position, borders, text and shape as well.
-- Keep all diagrams within the 900px design canvas and visually balanced at the site's scaled narrow view.
+- Keep diagrams balanced from the 900px lesson floor through the wider desktop canvas. Do not stretch labels or prose to fill space merely because it is available.
 
-## Practice and onward navigation
+## Integrated retrieval and onward navigation
 
-- Resolve the lesson's closing cards from the subgroup index, not from a vaguely related topic. Link to the current lesson's practice page only when that practice is dedicated to this exact lesson. If the lesson has no dedicated practice page, leave the practice slot empty; never substitute a mixed review or skip to a later drill.
-- Link the next-lesson card only to the teaching page immediately after the current lesson in the subgroup's teaching-page order. If there is no next teaching page, leave that slot empty.
-- Build valid cards with the shared `topic-section`, `topic-grid` and `topic-card` pattern. When both destinations exist, retain the established lesson-page order: the ochre `topic-card--practice` card first, then the blue `topic-card--next` card. When only one exists, show it alone without an empty visual placeholder.
-- Match the section heading to the available actions: “Practice and continue” for both cards, “Practice” for a practice card alone, and “Continue” for a next-lesson card alone.
-- Match the established blue teaching-page system, ochre emphasis, typography, card radius, shadows and spacing. Improve weak details without making this page feel like a different site.
+- Teach before assessing. Place about two short questions where the idea is used,
+  within the explanation rather than in a separate exercise card. The first may
+  scaffold; the next should leave the intended decision to the learner.
+- A diagram should help the learner reach a conclusion before questions assess it.
+  Avoid irrelevant precision and unnecessary controls.
+- Accept correct entries automatically. Replace the blank with plain green text,
+  retaining a natural baseline and operator spacing. No visible “Correct”, tick,
+  congratulation, success explanation or Check button.
+- After a pause on a non-empty wrong entry, give a temporary, non-colour-only cue.
+  The prototype waits 1.2 seconds, clears after 1.8 seconds or immediately on edit,
+  and suppresses shaking under reduced motion. Do not penalise partial typing.
+- Optional help appears after an incorrect attempt and uses that actual answer.
+  Diagnose recognised mistakes; otherwise offer a relevant checking step without
+  claiming to know the learner's reasoning. Clear stale help when the input changes.
+- Reveal small teaching steps. Use Continue where an explanation needs a reading
+  pause; do not automatically scroll on answer acceptance. Keep “Show whole lesson”
+  and “Reset lesson” together directly beneath contents links, without a menu scroll.
+- “Show whole lesson” reveals all questions as well as explanations, without marking
+  anything correct. Returning to guided view restores sequential visibility. Test
+  answering revealed questions out of order; all answers are required for completion.
+- Persist accepted answers and reading progress. Restore silently without replaying
+  animations. Reset only this lesson's state. Test fresh, partial and completed reloads.
+- When replacing a focused input, preserve a logical keyboard position. Provide
+  concise assistive announcements without adding visible success copy or stealing
+  focus when the learner has moved elsewhere.
+- Keep the full authored lesson readable without JavaScript. Deep links reveal the
+  relevant section. Respect reduced motion and test actual focus/keyboard behaviour.
+- End with a brief visible Key points summary, not a common-mistakes dropdown.
+  A final comparison may test the central distinction without introducing new content.
+- Keep lesson-drill manifest entries as coverage briefs, not new destinations.
+  Separate mixed reviews remain appropriate for interleaved recall.
+- The final Continue card links to the next teaching page in curriculum order,
+  or the GCSE menu when the sequence ends.
 
 ## Adversarial review before stopping
 

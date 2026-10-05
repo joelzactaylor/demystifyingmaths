@@ -37,6 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const cellHeight = 128;
     const digitY = 151;
     let shift = 2;
+    const savedShift = window.LessonSession?.diagram("power-shift");
+    if (buttons.some(button => Number(button.dataset.shift) === savedShift)) shift = savedShift;
     let current = null;
     let digitNodes = [];
     const placeholderNodes = new Map();
@@ -79,25 +81,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* The field itself is the limit: anything beyond three digits either side of
        the point, and anything that is not a digit, never reaches the value. */
-    const limitInput = () => {
-        const raw = input.value;
-        const negative = /^\s*[-−]/.test(raw);
-        const digits = raw.replace(/[^\d.]/g, "");
-        const hasPoint = digits.includes(".");
-        const [wholeRaw, ...rest] = digits.split(".");
-        const cleaned = `${negative ? "-" : ""}${wholeRaw.slice(0, 3)}${hasPoint ? `.${rest.join("").slice(0, 3)}` : ""}`;
-
-        if (cleaned !== raw) {
-            const caret = input.selectionStart ?? cleaned.length;
-            const position = Math.max(0, Math.min(cleaned.length, caret - (raw.length - cleaned.length)));
-            input.value = cleaned;
-            input.setSelectionRange(position, position);
-        }
-        return cleaned;
-    };
+    const limitInput = () => input.value.trim().replace(/−/g, "-");
 
     const parseNumber = (cleaned) => {
-        if (!/^-?(?:\d+(?:\.\d*)?|\.\d+)$/.test(cleaned)) return null;
+        if (!/^-?(?:\d{1,3}(?:\.\d{0,3})?|\.\d{1,3})$/.test(cleaned)) return null;
 
         const negative = cleaned.startsWith("-");
         const unsigned = negative ? cleaned.slice(1) : cleaned;
@@ -306,6 +293,7 @@ document.addEventListener("DOMContentLoaded", () => {
     buttons.forEach((button) => {
         button.addEventListener("click", () => {
             shift = Number(button.dataset.shift);
+            window.LessonSession?.saveDiagram("power-shift", shift);
             renderShift();
         });
     });

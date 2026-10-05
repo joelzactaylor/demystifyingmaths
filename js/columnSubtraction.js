@@ -32,15 +32,11 @@ document.addEventListener("DOMContentLoaded", () => {
         [1, "10s"], [0, "1s"], [-1, "0.1s"], [-2, "0.01s"], [-3, "0.001s"]
     ]);
 
-    const limit = (raw) => {
-        const digits = raw.replace(/[^\d.]/g, "");
-        const hasPoint = digits.includes(".");
-        const [wholeRaw, ...rest] = digits.split(".");
-        return `${wholeRaw.slice(0, 5)}${hasPoint ? `.${rest.join("").slice(0, 3)}` : ""}`;
-    };
+    // Preserve invalid entries instead of silently changing the calculation.
+    const limit = raw => raw.trim();
 
     const parseNumber = (value) => {
-        if (!/^(?:\d+(?:\.\d*)?|\.\d+)$/.test(value)) return null;
+        if (!/^(?:\d{1,5}(?:\.\d{0,3})?|\.\d{1,3})$/.test(value)) return null;
         const [wholeRaw, decimal = ""] = value.split(".");
         const whole = (wholeRaw || "0").replace(/^0+(?=\d)/, "");
         return { whole, decimal };
@@ -444,7 +440,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const answer = formatDigits(calc.result, calc.decimalPlaces);
             stepTitle.textContent = `The difference is ${answer}`;
-            stepCopy.textContent = `Check: ${answer} + ${readable(calc.b.whole, calc.b.decimal.padEnd(calc.decimalPlaces, "0"))} = ${readable(calc.a.whole, calc.a.decimal.padEnd(calc.decimalPlaces, "0"))}.`;
+            stepCopy.textContent = `Adding ${readable(calc.b.whole, calc.b.decimal.padEnd(calc.decimalPlaces, "0"))} back to ${answer} gives ${readable(calc.a.whole, calc.a.decimal.padEnd(calc.decimalPlaces, "0"))}, the amount we started with.`;
         };
 
         const paintDots = () => {
@@ -468,39 +464,25 @@ document.addEventListener("DOMContentLoaded", () => {
         scene.classList.add("is-ready");
         let cardHeight = sticky.offsetHeight;
 
-        /* Pinning takes the card out of the page and puts it on the body, and
-           moving a node drops focus and the caret from whatever is inside it.
-           Both are put back, so the card can go on being positioned however the
-           reader is using it. */
-        const moveCard = (move) => {
-            const active = sticky.contains(document.activeElement) ? document.activeElement : null;
-            const caret = active && typeof active.selectionStart === "number"
-                ? [active.selectionStart, active.selectionEnd]
-                : null;
-            move();
-            if (!active || document.activeElement === active) return;
-            active.focus({ preventScroll: true });
-            if (caret) active.setSelectionRange(caret[0], caret[1]);
-        };
 
         const dock = (offset = 0) => {
-            if (sticky.parentNode !== scene) moveCard(() => scene.insertBefore(sticky, scene.firstChild));
             sticky.classList.remove("is-pinned");
             sticky.style.removeProperty("left");
             sticky.style.removeProperty("width");
             sticky.style.removeProperty("height");
             sticky.style.removeProperty("transform");
-            sticky.style.top = `${offset}px`;
+            const scale = scene.offsetWidth ? scene.getBoundingClientRect().width / scene.offsetWidth : 1;
+            sticky.style.top = reduceMotion.matches ? "0px" : `${Math.max(16, (window.innerHeight - cardHeight * scale) / 2) / (scale || 1)}px`;
         };
 
+        // Native sticky positioning owns the card’s movement. JavaScript only
+        // sets its viewport inset and advances the mathematical drawing.
         const pin = (left, top, width, scale) => {
-            if (sticky.parentNode !== document.body) moveCard(() => document.body.append(sticky));
             sticky.classList.add("is-pinned");
-            sticky.style.left = `${left}px`;
-            sticky.style.top = `${top}px`;
+            sticky.style.left = "0px";
+            sticky.style.top = `${top / scale}px`;
             sticky.style.width = `${width}px`;
             sticky.style.height = `${cardHeight}px`;
-            sticky.style.transform = `scale(${scale})`;
         };
 
         const measure = () => {
@@ -650,6 +632,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("scroll", nudge, { passive: true });
     window.addEventListener("resize", resetAll);
+    document.addEventListener("lessonlayoutchange", resetAll);
     if (reduceMotion.addEventListener) reduceMotion.addEventListener("change", resetAll);
     else reduceMotion.addListener(resetAll);
 });

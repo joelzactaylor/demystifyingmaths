@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/orderOfOperations.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
@@ -20,6 +22,9 @@
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
     <script src="/demystifyingmaths/js/orderOfOperations.js" defer></script>
+    <script src="/demystifyingmaths/js/practice-engine.js" defer></script>
+    <script src="/demystifyingmaths/js/practiceOrderOfOperations.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -55,7 +60,7 @@
 
         <aside id="page-nav-container"></aside>
 
-        <main class="lesson-main">
+        <main class="lesson-main" data-lesson-check-anchors="two-answers,brackets,powers-first">
             <p class="prereq"><b>Before this page:</b> <span>be able to read a base and its index from <a
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/indexNotation.html">index
                         notation and powers</a>, and work out a root of a perfect square from <a
@@ -378,54 +383,9 @@
                 </ol>
             </section>
 
-            <section>
-                <h1 id="implied-multiplication">Optional: implied multiplication can be ambiguous</h1>
-                <div class="important-box" aria-labelledby="no-agreed-reading">
-                    <div class="important-box__head">
-                        <h2 class="important-box__title" id="no-agreed-reading">Two readings, so the form needs a bar or a
-                            bracket</h2>
-                        <span class="important-box__tag">Extra info</span>
-                    </div>
-                    <p>A number written against a bracket, as in <span class="sf" role="math"
-                            aria-label="8 open bracket 1 plus 3 close bracket">8(1 + 3)</span>, is a multiplication
-                        with its sign left out. After a &divide; sign, as in <span class="sf" role="math" aria-label="4 divided by 8 open bracket 1 plus 3 close bracket">4 &divide; 8(1 + 3)</span>,
-                        it is read two ways, and no universal convention settles which.</p>
-
-                    <p>Reading &divide; and &times; from
-                        left to right gives <span class="sf" role="math"
-                            aria-label="4 divided by 8 times 4 equals 2">4
-                            &divide; 8 &times; 4 = 2</span>; doing the implied multiplication first gives <span
-                            class="sf" role="math" aria-label="4 divided by 32 equals 0 point 125">4 &divide; 32 =
-                            0.125</span>. Both readings occur in calculators and texts.</p>
-                    <p>A division bar or a bracket round the product leaves one reading only: <span class="sf" role="math"
-                            aria-label="4 over open bracket 8 open bracket 1 plus 3 close bracket close bracket equals 0 point 125"><span
-                                class="frac"><span class="frac__top">4</span><span class="caret"
-                                    aria-hidden="true">/(</span><span class="frac__bot">8(1 + 3)</span></span><span
-                                class="caret" aria-hidden="true">)</span> = 0.125</span>, or <span class="sf"
-                            role="math"
-                            aria-label="open bracket 4 divided by 8 close bracket open bracket 1 plus 3 close bracket equals 2">(4
-                            &divide; 8)(1 + 3) = 2</span>.</p>
-                    <p class="important-box__note">Style guides and ISO 80000-2, the international standard for
-                        mathematical notation, ask for that bracket or bar rather than settling which reading is
-                        right. Dave Peterson works through both conventions and reaches the same conclusion in <a
-                            href="https://www.themathdoctors.org/implied-multiplication-1-not-as-bad-as-you-think/"
-                            target="_blank" rel="noopener noreferrer">Implied Multiplication 1: Not as Bad as You
-                            Think</a> (<a class="archived"
-                            href="https://web.archive.org/web/20260903070341/https://www.themathdoctors.org/implied-multiplication-1-not-as-bad-as-you-think/"
-                            target="_blank" rel="noopener noreferrer">archived</a>).</p>
-                </div>
-            </section>
-
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice"
-                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/practiceOrderOfOperations.html"
-                        style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
-                        <h3>Order of operations</h3>
-                        <p>Brackets, powers and roots first, with the fraction bar as grouping.</p>
-                    </a>
                     <a class="topic-card topic-card--next"
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/powersOfNegatives.html"
                         style="background-image: none">

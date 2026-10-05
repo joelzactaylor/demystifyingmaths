@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/reorderingACalculation.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
@@ -17,6 +19,8 @@
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/integrated-lesson-banks.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <script src="/demystifyingmaths/js/reorderingACalculation.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,7 +57,8 @@
 
         <aside id="page-nav-container"></aside>
 
-        <main class="lesson-main">
+        <main class="lesson-main" data-integrated-bank="reordering" data-lesson-check-api="IntegratedLessonBank"
+            data-lesson-check-anchors="what-can-move,fixed-order,signs-travel">
             <p class="prereq"><b>Before this page:</b> <span>know which operation a calculation does first from <a
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/orderOfOperations.html">order
                         of operations</a>, and be able to add and subtract a negative number from <a

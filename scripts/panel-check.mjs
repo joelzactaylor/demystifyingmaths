@@ -1,4 +1,4 @@
-/* Nothing that sits in the fixed panel may reflow on the viewport.
+/* Nothing that sits in the fixed panel may reflow on a narrow viewport.
 
    `.layout` is a hard 900px panel, and shared.css scales it with a transform
    below 900px. A phone with no <meta name="viewport"> falls back to a 980px
@@ -17,6 +17,8 @@
 
    shared.css is exempt: its width queries govern .top-ribbon, which is
    position:fixed and therefore genuinely lives in the real viewport.
+   lesson-sections.css is also exempt: authored lessons deliberately widen on
+   desktop, but retain the 900px floor used by the existing narrow fallback.
 
    vocab/index.html is the one page outside all of this — a standalone unlisted
    tool with its own responsive stylesheet, no .layout and a viewport of its own.
@@ -27,7 +29,7 @@ import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, join, relative } from "node:path";
 
 const ROOT = dirname(dirname(new URL(import.meta.url).pathname));
-const EXEMPT = new Set(["css/shared.css"]);
+const EXEMPT = new Set(["css/shared.css", "css/lesson-sections.css"]);
 
 const pages = [];
 const walk = (dir) => {

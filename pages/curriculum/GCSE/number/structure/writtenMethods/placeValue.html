@@ -11,26 +11,36 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/placeValue.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
+    <script src="/demystifyingmaths/js/lesson-session.js" defer></script>
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
     <script src="/demystifyingmaths/js/placeValue.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsLessonBank.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/demystifyingmaths/css/powersRootsRecall.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/writtenMethodsLesson.css">
+    <script src="/demystifyingmaths/js/writtenMethodsLesson.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsRecallBank.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsRecall.js" defer></script>
 </head>
 
-<body>
+<body class="roots-lesson written-methods-lesson">
     <div class="layout">
         <div id="top-ribbon-placeholder"></div>
         <script>fetch("/demystifyingmaths/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
 
         <header>
-            <h1>Demystifying - Place value in integers and decimals</h1>
+            <h1>Place value in integers and decimals</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
                     <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span>
@@ -54,13 +64,16 @@
 
         <aside id="page-nav-container"></aside>
 
-        <main class="lesson-main">
+        <main class="lesson-main" data-lesson-check-api="WrittenMethodsLessonBank"
+            data-lesson-check-anchors="digit-values,zeros-that-hold-a-place,figures-from-words">
             <p class="prereq"><b>Before this page:</b> <span>be able to read and write <span class="gloss"
                         data-term="whole number">whole numbers</span> and say which
                     digit is which.</span></p>
 
             <section>
-                <h1 id="digit-values">A digit is worth its face value times its place</h1>
+                <h1 id="digit-values">What a digit is worth</h1>
+
+                <p>The same digit can stand for a few hundredths or several million. Its position tells us which. Reading that position is what lets us compare prices, write measurements and keep a calculation in order.</p>
 
                 <table class="place-chart">
                     <caption>Place value chart</caption>
@@ -177,14 +190,14 @@
                     </ol>
                 </div>
 
-                <p>The 7 of 4,582.307 stands in the thousandths place, so it is worth 7 &times; 0.001 = 0.007;
-                    &ldquo;write down the value of the 7 in 4,582.307&rdquo; asks for 0.007, or 7 thousandths. The 6
-                    in 6,312,047.86 is three places to the left of the 6 in 6,040, so it is worth a thousand times as
-                    much: 6 million rather than 6 thousand.</p>
+                <p>In 4,582.307, the 7 is in the thousandths place. It is worth 7 &times; 0.001 = 0.007, or seven thousandths.</p>
+                <p>Now compare the two numbers beginning with 6. In 6,040 it represents six thousand; in 6,312,047.86 it represents six million. The digit is the same, but its value is a thousand times as large.</p>
 
                 <p>Digits to the left of the point make the whole-number part, and digits to the right make the decimal
                     part. Each step to the left multiplies the place by 10 and each step to the right divides it by
                     10.</p>
+
+                <div data-lesson-check="0" data-lesson-check-api="WrittenMethodsLessonBank"></div>
 
                 <p>The commas mark off the whole-number digits in threes from the right: 6,312,047 is 6 million, 312 thousand
                     and 47.</p>
@@ -229,7 +242,7 @@
             </section>
 
             <section>
-                <h1 id="reading-aloud">The decimal part is read by its last place</h1>
+                <h1 id="reading-aloud">Reading decimals</h1>
                 <p>4,582.307 is 4,000 + 500 + 80 + 2 + 0.3 + 0.007; the 0 in the hundredths place adds nothing:</p>
 
                 <svg viewBox="0 0 920 330" role="img"
@@ -321,56 +334,15 @@
                     no hundredths and seven thousandths are counted in three different places, so each is written in
                     thousandths first:</p>
 
-                <figure class="fraction-bridge">
-                    <p class="fraction-bridge__line"><span class="caret" aria-hidden="true">3/10 + 0/100 +
-                            7/1000</span><math display="block">
-                            <mfrac>
-                                <mn>3</mn>
-                                <mn>10</mn>
-                            </mfrac>
-                            <mo>+</mo>
-                            <mfrac>
-                                <mn>0</mn>
-                                <mn>100</mn>
-                            </mfrac>
-                            <mo>+</mo>
-                            <mfrac>
-                                <mn>7</mn>
-                                <mn>1000</mn>
-                            </mfrac>
-                        </math>
-                    </p>
-                    <p class="fraction-bridge__note"><span aria-hidden="true">&darr;</span> each part rewritten in
-                        thousandths</p>
-                    <p class="fraction-bridge__line"><span class="caret" aria-hidden="true">300/1000 + 0/1000 + 7/1000 =
-                            307/1000</span><math display="block">
-                            <mfrac>
-                                <mn>300</mn>
-                                <mn>1000</mn>
-                            </mfrac>
-                            <mo>+</mo>
-                            <mfrac>
-                                <mn>0</mn>
-                                <mn>1000</mn>
-                            </mfrac>
-                            <mo>+</mo>
-                            <mfrac>
-                                <mn>7</mn>
-                                <mn>1000</mn>
-                            </mfrac>
-                            <mo>=</mo>
-                            <mfrac class="fraction-bridge__total">
-                                <mn>307</mn>
-                                <mn>1000</mn>
-                            </mfrac>
-                        </math>
-                    </p>
+<figure class="fraction-bridge" aria-label="Three tenths and seven thousandths make 307 thousandths">
+                    <p class="fraction-bridge__line">3 tenths = 300 thousandths</p>
+                    <p class="fraction-bridge__line">300 thousandths + 7 thousandths = 307 thousandths</p>
                 </figure>
 
             </section>
 
             <section>
-                <h1 id="figures-from-words">Words become figures group by group</h1>
+                <h1 id="figures-from-words">From words to figures</h1>
 
                 <p class="words-given"><strong>six million, three hundred and twelve thousand and forty-seven, and
                         eighty-six hundredths</strong></p>
@@ -476,16 +448,12 @@
                         text-anchor="middle">decimal places</text>
                 </svg>
 
-                <p>Every group of three has its own hundreds, tens and ones, and the group's name says what <span class="gloss" data-term="quantity">quantity</span> they count: in
-                    the thousands group, 312 is 3 hundreds, 1 ten and 2 ones of thousands. After the point the name
-                    gives the last digit's place: eighty-six hundredths ends in the hundredths place, so the 6 goes
-                    there and the 8 in the tenths, <span class="sf">.86</span>. The number is <span
-                        class="sf">6,312,047.86</span>, and &ldquo;write six million, three hundred and twelve thousand
-                    and forty-seven in figures&rdquo; asks for <span class="sf">6,312,047</span>.</p>
+                <p>Read the whole-number groups separately: 6 million, 312 thousand and 47 give <strong>6,312,047</strong>. A zero keeps the hundreds place in the last group.</p>
+                <p>The decimal part is eighty-six hundredths, or 0.86. Put the two parts together to get <strong>6,312,047.86</strong>.</p>
             </section>
 
             <section>
-                <h1 id="read-any-number">Read any number</h1>
+                <h1 id="read-any-number">Explore place value</h1>
 
                 <div class="place-lab" data-place-lab>
                     <label class="place-lab__field">
@@ -503,51 +471,14 @@
                 </div>
             </section>
 
-            <section>
-                <h1 id="common-mistakes">Common mistakes</h1>
-                <ul class="slips">
-                    <li><b>Leaving out a zero that holds a place</b>
-                        <span>Three thousand and five names no hundreds and no tens, so two zeros hold those places:
-                            3,005. Writing 305 puts the 3 in the hundreds and is 2,700 short.</span></li>
-                    <li><b>Reading a digit by its face value</b>
-                        <span>The 3 in 60.03 stands in the hundredths place, so it counts three hundredths, 0.03,
-                            rather than three ones.</span></li>
-                    <li><b>Counting hundredths as thousandths</b>
-                        <span>Forty-seven hundredths written as 0.047 puts the 7 in the thousandths place, so it is
-                            forty-seven thousandths, a tenth of the amount. Forty-seven hundredths is 0.47.</span></li>
-                </ul>
-            </section>
 
-            <section>
-                <h1 id="remember">Summary</h1>
-                <ol class="recap">
-                    <li>A digit's value is the digit multiplied by its place, so the 5 in <span class="sf">500</span>
-                        is worth <span class="sf">5 &times; 100</span>.</li>
-                    <li>The places run millions, hundred thousands, ten thousands, thousands, hundreds, tens and ones,
-                        then tenths, hundredths and thousandths, each one ten times the place to its right.</li>
-                    <li>Place names pair outward from ones &mdash; tens with tenths, hundreds with hundredths &mdash; so
-                        the first place to the right of the decimal point is tenths.</li>
-                    <li>A zero holds a place open, which is why six thousand and forty is <span class="sf">6,040</span>
-                        and not <span class="sf">640</span>.</li>
-                    <li>A zero after the last decimal digit changes nothing, since <span class="sf">0.860 =
-                            0.86</span>, while a zero after the last whole-number digit multiplies by ten.</li>
-                    <li>The decimal part is read as one number of its last place: <span class="sf">0.307</span> is
-                        three hundred and seven thousandths.</li>
-                    <li>Whole-number digits group in threes from the right, and each group has its own hundreds, tens
-                        and ones: <span class="sf">6,312,047</span> is 6 million, 312 thousand and 47.</li>
-                </ol>
-            </section>
+
+            <section class="roots-key-points" id="remember"><h1>Key points</h1><ul><li>A digit's value depends on its place. Each place is ten times the one to its right.</li><li>Zeros keep other digits in their places: 3,005 is not 305.</li><li>A trailing decimal zero does not change the value: 0.80 = 0.8.</li><li>Read and write large whole numbers in groups of millions, thousands and ones.</li></ul></section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <div class="powers-recall" data-written-recall="placeValue" hidden></div>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice"
-                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/practicePlaceValue.html"
-                        style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
-                        <h3>Place value in integers and decimals</h3>
-                        <p>What each digit is worth in integers and decimals, and zeros as place-holders.</p>
-                    </a>
                     <a class="topic-card topic-card--next"
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/orderingNumbers.html"
                         style="background-image: none">
@@ -556,6 +487,7 @@
                         <p>Ordering numbers, including negatives and decimals of different lengths.</p>
                     </a>
                 </div>
+            <a class="lesson-menu-return" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/">Back to Written methods</a>
             </section>
         </main>
 

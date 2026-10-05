@@ -1,0 +1,428 @@
+/* A lesson reads as one guided path rather than a stack of cards. Colour marks
+   a kind of thinking — rule, example, recall, warning, success — while prose
+   stays on a calm white surface. Saturated accents are flat and deliberate;
+   there are no decorative colour fades. */
+:root {
+    --lesson-canvas: #f2f7fa;
+    --lesson-paper: #ffffff;
+    --lesson-ink: #182c38;
+    --lesson-muted: #536873;
+    --lesson-line: #dce4e9;
+    --lesson-blue: #1769d2;
+    --lesson-blue-dark: #0b4f9c;
+    --lesson-blue-soft: #edf5ff;
+    --lesson-violet: #7048c8;
+    --lesson-violet-dark: #5531a9;
+    --lesson-violet-soft: #f2edff;
+    --lesson-teal: #009b8c;
+    --lesson-teal-dark: #006f65;
+    --lesson-teal-soft: #e8f8f5;
+    --lesson-amber: #efa711;
+    --lesson-amber-dark: #815500;
+    --lesson-amber-soft: #fff4cf;
+    --lesson-coral: #e85068;
+    --lesson-coral-dark: #aa3049;
+    --lesson-coral-soft: #fff0f2;
+    --lesson-green: #15985b;
+    --lesson-green-dark: #0f6d40;
+    --lesson-green-soft: #e9f8ef;
+}
+
+html,
+body { background-color: #e5f3f7; }
+
+.layout {
+    background-color: var(--lesson-paper);
+    box-shadow: 0 0 0 1px rgba(24, 44, 56, .08), 0 12px 32px rgba(24, 44, 56, .16);
+}
+
+.ribbon-links,
+header nav {
+    font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.ribbon-links a { font-size: .94rem; }
+
+header {
+    margin-bottom: 58px;
+    padding: 14px 20px 16px;
+    border-bottom-width: 7px;
+    background-size: 260px 260px;
+}
+
+header h1 {
+    padding: 28px 0 7px;
+    font-size: 44px;
+    line-height: 1.08;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .58);
+}
+
+header nav { top: 37px; }
+
+header nav ol.breadcrumb,
+header nav ol.breadcrumb--deep {
+    padding: 8px 16px;
+    border: 1px solid rgba(255, 255, 255, .16);
+    border-radius: 12px;
+    background: rgba(18, 47, 70, .9);
+    box-shadow: 0 5px 14px rgba(18, 47, 70, .18);
+}
+
+.lesson-main {
+    color: var(--lesson-ink);
+    font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.lesson-main p,
+.lesson-main li { letter-spacing: -.005em; }
+
+.lesson-main a { color: var(--lesson-blue); }
+
+/* Keep the 900px canvas as the mobile scaling reference, but let authored
+   lessons use modern desktop screens. The cyan site gutters remain as a frame
+   rather than taking most of a wide display. */
+@media screen and (min-width: 901px) {
+    .layout {
+        width: calc(100vw - 96px);
+        min-width: 900px;
+        max-width: 1320px;
+    }
+}
+
+/* On a full desktop the contents panel owns the left rail. Shift the lesson
+   canvas right instead of floating that panel over the first lines of a
+   chapter. The right gutter stays deliberately narrow. */
+@media screen and (min-width: 1252px) {
+    .layout {
+        width: calc(100vw - 352px);
+        max-width: none;
+        margin-right: 48px;
+        margin-left: 304px;
+    }
+
+    #page-nav-container {
+        display: block;
+        top: 70px;
+        bottom: 0;
+        left: 0;
+        width: 272px;
+        box-sizing: border-box;
+        overflow-y: auto;
+        padding: 36px 22px 28px;
+        background: #5146bd;
+        box-shadow: 5px 0 18px rgba(29, 28, 79, .2);
+    }
+
+    .page-nav {
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+        font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .page-nav-title {
+        margin: 0 10px 20px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid rgba(255, 255, 255, .28);
+        color: #fff;
+        font-size: 1.05rem;
+    }
+
+    .page-nav-list li + li { margin-top: 5px; }
+
+    .page-nav-link {
+        padding: 10px 12px;
+        border-radius: 8px;
+        color: rgba(255, 255, 255, .88);
+        font-size: .94rem;
+        line-height: 1.32;
+        text-shadow: none;
+    }
+
+    .page-nav-link:hover { background: rgba(255, 255, 255, .12); color: #fff; }
+    .page-nav-link.active {
+        background: #fff;
+        box-shadow: none;
+        color: #3f35a4;
+    }
+
+    .page-nav-link.is-locked {
+        color: rgba(255, 255, 255, .48);
+        cursor: default;
+    }
+
+    .page-nav-link.is-locked::before {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        margin-right: 8px;
+        border: 1px solid currentColor;
+        border-radius: 50%;
+        content: "";
+    }
+
+    .lesson-main > section {
+        --lesson-section-inset: max(84px, calc((100% - 1040px) / 2));
+        padding-right: var(--lesson-section-inset);
+        padding-left: var(--lesson-section-inset);
+    }
+
+    .lesson-main > section::after {
+        left: calc(var(--lesson-section-inset) - 38px);
+    }
+}
+
+/* Mathigon's strongest spatial idea is progressive disclosure: one complete
+   thought is usable now, while the rest of the course remains a visible route
+   rather than a wall of content. */
+.lesson-flowbar {
+    display: grid;
+    grid-template-columns: max-content minmax(160px, 1fr) max-content;
+    gap: 18px;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto 18px;
+    padding: 14px 18px;
+    border: 1px solid #ddd6f6;
+    border-radius: 10px;
+    background: #f6f3ff;
+    color: var(--lesson-violet-dark);
+    font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.lesson-flowbar__status { font-size: .95rem; }
+
+.lesson-flowbar__track {
+    display: flex;
+    gap: 6px;
+}
+
+.lesson-flowbar__marker {
+    flex: 1 1 0;
+    height: 6px;
+    border-radius: 999px;
+    background: #d9d1ed;
+}
+
+.lesson-flowbar__marker.is-complete { background: var(--lesson-green); }
+.lesson-flowbar__marker.is-current { background: var(--lesson-violet); }
+
+.lesson-flowbar__toggle {
+    padding: 5px 0;
+    border: 0;
+    border-bottom: 1px solid currentColor;
+    background: transparent;
+    color: var(--lesson-violet-dark);
+    cursor: pointer;
+    font: 700 .9rem/1.2 Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.lesson-flowbar__toggle:hover { color: var(--lesson-blue-dark); }
+.lesson-flowbar__toggle:focus-visible { outline: 3px solid rgba(112, 72, 200, .22); outline-offset: 4px; }
+
+.lesson-main > section {
+    position: relative;
+    margin: 0 -50px;
+    padding: 68px 48px 74px 84px;
+    border: 0;
+    border-radius: 0;
+    background: var(--lesson-paper);
+    box-shadow: none;
+}
+
+.lesson-main > section:first-of-type { border-top: 0; }
+
+/* A continuous rail makes the order of ideas visible without turning every
+   chapter into a separate coloured container. */
+.lesson-main > section::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 46px;
+    width: 3px;
+    background: #d9e7f5;
+    content: "";
+}
+
+.lesson-main > section > h1:first-child,
+.lesson-main > section > h2:first-child {
+    position: relative;
+    z-index: 1;
+    margin: 0 0 20px;
+    max-width: 880px;
+    color: var(--lesson-ink);
+    font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    font-size: 2rem;
+    font-weight: 750;
+    letter-spacing: -.025em;
+    line-height: 1.15;
+    text-shadow: none;
+    width: auto;
+}
+
+.lesson-main > section > h1:first-child::before,
+.lesson-main > section > h2:first-child::before {
+    position: absolute;
+    top: .12em;
+    left: -51px;
+    width: 17px;
+    height: 17px;
+    border: 5px solid var(--lesson-blue-soft);
+    border-radius: 50%;
+    background: var(--lesson-blue);
+    box-shadow: 0 0 0 2px #fff;
+    content: "";
+}
+
+/* Long prose becomes easier to scan without shrinking the room available to
+   mathematical figures. Components beneath it still inherit the full width. */
+.lesson-main > section > p:not(.lesson-check__feedback) {
+    max-width: 720px;
+    margin-top: 0;
+    margin-bottom: 22px;
+    color: var(--lesson-ink);
+    font-size: 1.04rem;
+    line-height: 1.68;
+}
+
+.lesson-main > section > p:last-child { margin-bottom: 0; }
+
+.lesson-main > section > h3 { margin: 42px 0 14px; }
+.lesson-main > section > h4 { margin: 32px 0 12px; }
+
+/* Diagrams are teaching beats, not illustrations squeezed between sentences.
+   Give direct figures room without changing the carefully sized drawing
+   inside each one. */
+.lesson-main > section > figure {
+    margin-top: 32px;
+    margin-bottom: 34px;
+}
+
+.lesson-main > .prereq {
+    margin: 20px 0 36px;
+    padding: 14px 20px;
+    border: 1px solid #bfe8e1;
+    border-left: 7px solid var(--lesson-teal);
+    border-radius: 8px;
+    background: var(--lesson-teal-soft);
+    box-shadow: none;
+    color: var(--lesson-muted);
+    font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.lesson-main > .prereq b { color: var(--lesson-ink); }
+
+/* Shared teaching components lose the nested-card-on-card effect. Their
+   semantics remain visible through tint and border rather than elevation. */
+.lesson-main .rule-card {
+    margin: 36px 0;
+    padding: 28px 30px;
+    border: 2px solid var(--lesson-violet);
+    border-top-width: 8px;
+    border-radius: 9px;
+    background: #fff;
+    box-shadow: none;
+}
+
+.lesson-main .rule-card__statement { color: var(--lesson-violet-dark); }
+
+.lesson-main .rule-card__conditions { gap: 14px; }
+
+.lesson-main .rule-card__conditions li {
+    border: 1px solid #dfd4f7;
+    background: var(--lesson-violet-soft);
+}
+
+.lesson-main .wex__title,
+.lesson-main .worked__title { color: var(--lesson-teal-dark); }
+
+.lesson-main .wex {
+    margin: 36px 0;
+    padding: 27px 30px;
+    border: 1px solid #a8ddd4;
+    border-left: 7px solid var(--lesson-teal);
+    border-radius: 8px;
+    background: var(--lesson-teal-soft);
+}
+
+.lesson-main .important-box {
+    margin: 36px 0;
+    padding: 23px 27px;
+    border: 1px solid #ebca78;
+    border-left: 7px solid var(--lesson-amber);
+    border-radius: 8px;
+    background: var(--lesson-amber-soft);
+    box-shadow: none;
+}
+
+.lesson-main .important-box__title,
+.lesson-main .important-box__note { color: var(--lesson-amber-dark); }
+
+.lesson-main .important-box__tag {
+    background: #ffe59b;
+    color: var(--lesson-amber-dark);
+}
+
+.lesson-main .important-box__tag,
+.lesson-main .wex__steps li::before {
+    font-size: .875rem;
+}
+
+.lesson-main .slips li,
+.lesson-main .recap li {
+    border-width: 1px;
+    border-radius: 8px;
+    box-shadow: none;
+}
+
+.lesson-main .slips { gap: 18px; }
+
+.lesson-main .slips li {
+    border-color: #efc1c9;
+    border-left: 6px solid var(--lesson-coral);
+    background: var(--lesson-coral-soft);
+}
+
+.lesson-main .slips li > b { color: var(--lesson-coral-dark); }
+
+.lesson-main .recap { display: grid; gap: 14px; }
+
+.lesson-main .recap li {
+    margin-bottom: 0;
+    border-color: #b9dfc8;
+    background: var(--lesson-green-soft);
+}
+
+.lesson-main .recap li::before { background: var(--lesson-green); }
+
+.lesson-main .topic-card,
+.lesson-main .nextlinks a {
+    border-width: 1px;
+    border-radius: 8px;
+    box-shadow: none;
+}
+
+.lesson-main .nextlinks { gap: 20px; }
+
+.lesson-main .nextlinks a {
+    padding: 20px 22px;
+    border-color: #cfc0ef;
+    border-left: 6px solid var(--lesson-violet);
+    background: var(--lesson-violet-soft);
+}
+
+.lesson-main .nextlinks a > b { color: var(--lesson-violet-dark); }
+
+.lesson-main [class*="scene__sticky"] {
+    border-width: 1px;
+    border-color: var(--lesson-line);
+    border-radius: 14px;
+    background: #f7fbfd;
+    box-shadow: 0 5px 16px rgba(24, 44, 56, .09);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .lesson-main > section { scroll-behavior: auto; }
+}

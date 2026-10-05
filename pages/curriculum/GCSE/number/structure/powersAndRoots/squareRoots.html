@@ -12,7 +12,14 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/squareRoots.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/powersAndRootsNavigation.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/powersRootsRecall.css">
+    <script src="/demystifyingmaths/js/lesson-session.js" defer></script>
+    <script src="/demystifyingmaths/js/powersRootsRecallBank.js" defer></script>
+    <script src="/demystifyingmaths/js/powersRootsRecall.js" defer></script>
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
@@ -20,18 +27,19 @@
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
     <script src="/demystifyingmaths/js/squareRoots.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&amp;display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="roots-lesson">
     <div class="layout">
         <div id="top-ribbon-placeholder"></div>
         <script>fetch("/demystifyingmaths/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
 
         <header>
-            <h1>Demystifying - Square roots</h1>
+            <h1>Square roots</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
                     <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span>
@@ -56,347 +64,136 @@
         <aside id="page-nav-container"></aside>
 
         <main class="lesson-main">
-            <p class="prereq"><b>Before this page:</b> <span>be able to square a number using <a
-                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/indexNotation.html">index
-                        notation</a>, and recall the squares to <span class="sf" role="math"
-                        aria-label="15 squared">15<span class="caret" aria-hidden="true">^</span><sup>2</sup></span>
-                    from <a
-                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/recognisingPowers.html">recognising
-                        powers of a number</a>.</span></p>
-            <section>
-                <h1 id="the-side-of-a-square">A square root reverses a squaring</h1>
 
-                <p>Squaring 7 gives 49. The square root of 49 is the number that was squared: 7.</p>
-
-                <div class="worked">
-                    <h2 class="worked__title">49 as an area</h2>
-
-                    <div class="root-scene" data-root-scene data-scene="tiles" data-side="7">
-                        <div class="root-scene__sticky">
-                            <p class="root-scene__heading" data-heading>A square of area 49</p>
-
-                            <div class="root-board">
-                                <div class="root-board__paper" data-board aria-hidden="true"></div>
-                            </div>
-
-                            <div class="root-scene__caption" aria-live="polite">
-                                <h3 data-step-title>An area of 49</h3>
-                                <p data-step-copy>49 unit squares fill a square exactly.</p>
-                            </div>
-
-                            <div class="root-scene__progress" data-progress aria-hidden="true"></div>
-                        </div>
-                    </div>
-
-                    <noscript>
-                        <p class="worked__fallback"><strong role="math"
-                            aria-label="7 times 7 equals 49, and the square root of 49 equals 7">7 &times; 7 = 49, and <span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">49</span></span> = 7</strong></p>
-                    </noscript>
-                </div>
-
-                <p>The sign for a square root is &radic;, written with the number under its bar.</p>
-
-                <div class="rule-card">
-                    <h2 class="rule-card__statement" aria-label="the square root of 49 equals 7"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">49</span></span> = 7</h2>
-                    <ol class="rule-card__conditions">
-                        <li>49 stands under the sign, and it is the <span class="gloss" data-term="area">area</span> of the square.</li>
-                        <li>7 is the value of the root, and it is that square's side.</li>
-                    </ol>
-                </div>
-
-                <p>The symbol <span class="sf" role="math" aria-label="the square root of x"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over"><var>x</var></span></span></span> means the non-negative square root. Both 7 and
-                    &minus;7 square to make 49, and the negative one is taken up on <a
-                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/positiveAndNegativeRoots.html">positive
-                        and negative square roots</a>.</p>
-            </section>
+            <p class="prereq"><b>Before this page:</b> <span>Know how to
+                <a href="indexNotation.html">square a number</a> and recall some
+                <a href="recognisingPowers.html">square numbers</a>.</span></p>
 
             <section>
-                <h1 id="reading-the-squares-backwards">Reading the squares backwards</h1>
-                <p><span class="sf" role="math" aria-label="the square root of 196"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">196</span></span></span> is read backwards out of the squares of 1 to 15.</p>
-
-                <div class="worked">
-                    <h2 class="worked__title" aria-label="Example: work out the square root of 196">Example: work out <span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">196</span></span></h2>
-
-                    <div class="root-scene" data-root-scene data-scene="find" data-target="196">
-                        <div class="root-scene__sticky">
-                            <p class="root-scene__heading" data-heading><span role="math" aria-label="the square root of 196"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">196</span></span></span></p>
-
-                            <div class="root-board">
-                                <div class="root-board__paper" data-board aria-hidden="true"></div>
-                            </div>
-
-                            <div class="root-scene__caption" aria-live="polite">
-                                <h3 data-step-title>196 under the root sign</h3>
-                                <p data-step-copy>The question is which number multiplied by itself gives 196.</p>
-                            </div>
-
-                            <div class="root-scene__progress" data-progress aria-hidden="true"></div>
+                <h1 id="the-side-of-a-square">Finding the side of a square</h1>
+                <p>A square has an area of 49 cm². How long is each side? We need
+                    two equal lengths whose product is 49. Since 7 × 7 = 49,
+                    each side is 7 cm long.</p>
+                <figure class="square-explorer" aria-labelledby="square-caption">
+                    <div class="square-drawing" style="--side: 7" aria-hidden="true">
+                        <div class="square-tiles">
+                            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                        </div>
+                        <span class="square-side">7 cm</span>
+                    </div>
+                    <div class="square-facts">
+                        <p class="square-product">7 × 7 = 49</p>
+                        <p class="square-area">Area: 49 cm²</p>
+                        <div class="square-control" hidden>
+                            <label for="square-side">Side length</label>
+                            <input id="square-side" type="range" min="1" max="15" step="1" value="7">
                         </div>
                     </div>
-
-                    <noscript>
-                        <p class="worked__fallback"><strong role="math"
-                            aria-label="the square root of 196 equals 14, and 14 times 14 equals 196"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">196</span></span> = 14, and 14 &times; 14 = 196</strong></p>
-                    </noscript>
-                </div>
-
-                <div class="wex">
-                    <h2 class="wex__title" aria-label="Example: work out the square root of 225">Example: work out <span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">225</span></span></h2>
-                    <p class="wex__task">Match the number to a square and read off the number that was squared.</p>
-                    <ol class="wex__steps">
-                        <li>
-                            <span class="wex__do"><span class="sf" role="math"
-                                    aria-label="the square root of 225"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">225</span></span></span></span>
-                            <span class="wex__why">225 is a square number, so its root is a whole number.</span>
-                        </li>
-                        <li>
-                            <span class="wex__do"><span class="sf">15 &times; 15 = 225</span></span>
-                            <span class="wex__why">225 is the last of the squares of 1 to 15.</span>
-                        </li>
-                        <li>
-                            <span class="wex__do"><span class="sf" role="math"
-                                    aria-label="the square root of 225 equals 15"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">225</span></span> = 15</span></span>
-                            <span class="wex__why">The number squared to make 225 is 15.</span>
-                        </li>
-                    </ol>
-                </div>
-                <p>50 is not one of the squares, so its root is not a <span class="gloss" data-term="whole number">whole number</span>.</p>
-
-                                <figure class="between">
-                    <div class="between__row">
-                        <span class="between__cap" id="between-number-cap">The number</span>
-                        <div class="between__axis" data-axis="number" role="slider" tabindex="0" aria-valuemin="1"
-                            aria-valuemax="100" aria-valuenow="50"
-                            aria-valuetext="50, between the squares 49 and 64"
-                            aria-labelledby="between-number-cap">
-                            <i class="between__line" aria-hidden="true"></i>
-                            <i class="between__tick" style="left: 0.0000%"></i><span class="between__mark" style="left: 0.0000%">1</span>
-                            <i class="between__tick" style="left: 3.0303%"></i><span class="between__mark" style="left: 3.0303%">4</span>
-                            <i class="between__tick" style="left: 8.0808%"></i><span class="between__mark" style="left: 8.0808%">9</span>
-                            <i class="between__tick" style="left: 15.1515%"></i><span class="between__mark" style="left: 15.1515%">16</span>
-                            <i class="between__tick" style="left: 24.2424%"></i><span class="between__mark" style="left: 24.2424%">25</span>
-                            <i class="between__tick" style="left: 35.3535%"></i><span class="between__mark" style="left: 35.3535%">36</span>
-                            <i class="between__tick" style="left: 48.4848%"></i><span class="between__mark" style="left: 48.4848%">49</span>
-                            <i class="between__tick" style="left: 63.6364%"></i><span class="between__mark" style="left: 63.6364%">64</span>
-                            <i class="between__tick" style="left: 80.8081%"></i><span class="between__mark" style="left: 80.8081%">81</span>
-                            <i class="between__tick" style="left: 100.0000%"></i><span class="between__mark" style="left: 100.0000%">100</span>
-                            <i class="between__marker" data-marker="number" style="left: 49.4949%"
-                                aria-hidden="true"></i>
-                            <span class="between__value" data-value="number" style="left: 49.4949%"
-                                aria-hidden="true">50</span>
-                        </div>
-                    </div>
-
-                    <div class="between__row between__row--root">
-                        <span class="between__cap" id="between-root-cap">Its root</span>
-                        <div class="between__axis" data-axis="root" role="slider" tabindex="0" aria-valuemin="1"
-                            aria-valuemax="100" aria-valuenow="50"
-                            aria-valuetext="the square root of 50, between 7 and 8"
-                            aria-labelledby="between-root-cap">
-                            <i class="between__line" aria-hidden="true"></i>
-                            <i class="between__tick" style="left: 0.0000%"></i><span class="between__mark" style="left: 0.0000%">1</span>
-                            <i class="between__tick" style="left: 11.1111%"></i><span class="between__mark" style="left: 11.1111%">2</span>
-                            <i class="between__tick" style="left: 22.2222%"></i><span class="between__mark" style="left: 22.2222%">3</span>
-                            <i class="between__tick" style="left: 33.3333%"></i><span class="between__mark" style="left: 33.3333%">4</span>
-                            <i class="between__tick" style="left: 44.4444%"></i><span class="between__mark" style="left: 44.4444%">5</span>
-                            <i class="between__tick" style="left: 55.5556%"></i><span class="between__mark" style="left: 55.5556%">6</span>
-                            <i class="between__tick" style="left: 66.6667%"></i><span class="between__mark" style="left: 66.6667%">7</span>
-                            <i class="between__tick" style="left: 77.7778%"></i><span class="between__mark" style="left: 77.7778%">8</span>
-                            <i class="between__tick" style="left: 88.8889%"></i><span class="between__mark" style="left: 88.8889%">9</span>
-                            <i class="between__tick" style="left: 100.0000%"></i><span class="between__mark" style="left: 100.0000%">10</span>
-                            <i class="between__marker" data-marker="root" style="left: 67.4563%"
-                                aria-hidden="true"></i>
-                            <span class="between__value" data-value="root" style="left: 67.4563%"
-                                aria-hidden="true"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">50</span></span></span>
-                        </div>
-                    </div>
-
-                    <figcaption class="between__reading" data-reading><span class="sf">49 &lt; 50 &lt; 64</span>, so
-                        <span class="sf" role="math" aria-label="the square root of 50"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">50</span></span></span> lies between 7 and 8.</figcaption>
+                    <figcaption id="square-caption">Each small square has an area of 1 cm².</figcaption>
                 </figure>
-
+                <p>Finding a <strong>square root</strong> means working backwards from
+                    a square to the number that was multiplied by itself.
+                    We write <span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">49</span></span> = 7, read as “the square root of 49 is 7”.
+                    The root symbol gives the non-negative root: a positive number, or zero.</p>
+                <div data-lesson-check="0" data-lesson-check-api="SquareRootsLessonBank"></div>
+                <p>To check a square root, multiply your answer by itself.
+                    Halving the area won't find the side: the two equal numbers
+                    must <em>multiply</em> to make the area, not add to it.</p>
             </section>
 
             <section>
-                <h1 id="roots-of-decimals">Perfect decimal squares can be read backwards</h1>
-                <p><span class="sf">0.2 &times; 0.2 = 0.04</span>, so <span class="sf" role="math"
-                        aria-label="the square root of 0.04 equals 0.2"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">0.04</span></span> = 0.2</span>. 4 is 2 squared, so the figure of the root is 2; only the point has to be placed.</p>
+                <h1 id="reading-the-squares-backwards">Using the squares you know</h1>
+                <p>Every square fact also gives us a root fact.
+                    Knowing that 12 × 12 = 144 tells us that <span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">144</span></span> = 12.
+                    The operation has changed direction, but the numbers belong together.</p>
+                <div class="square-fact-list" aria-label="Square facts from 1 to 15">
+                    <span>1 × 1 = <strong>1</strong></span>
+                    <span>2 × 2 = <strong>4</strong></span>
+                    <span>3 × 3 = <strong>9</strong></span>
+                    <span>4 × 4 = <strong>16</strong></span>
+                    <span>5 × 5 = <strong>25</strong></span>
+                    <span>6 × 6 = <strong>36</strong></span>
+                    <span>7 × 7 = <strong>49</strong></span>
+                    <span>8 × 8 = <strong>64</strong></span>
+                    <span>9 × 9 = <strong>81</strong></span>
+                    <span>10 × 10 = <strong>100</strong></span>
+                    <span>11 × 11 = <strong>121</strong></span>
+                    <span>12 × 12 = <strong>144</strong></span>
+                    <span>13 × 13 = <strong>169</strong></span>
+                    <span>14 × 14 = <strong>196</strong></span>
+                    <span>15 × 15 = <strong>225</strong></span>
+                </div>
+                <div data-lesson-check="1" data-lesson-check-api="SquareRootsLessonBank"></div>
+                <p id="numbers-between-the-squares">Not every <span class="gloss" data-term="whole number">whole number</span> is a square number.
+                    For example, 50 lies between 49 and 64, so <span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">50</span></span> lies between
+                    7 and 8. It still has a square root; that root just isn't a whole number.</p>
+                <p>Negative numbers can also give positive squares when
+                    multiplied by themselves. We'll separate those two ideas in the next lesson.</p>
+            </section>
 
-                <p>For a terminating decimal written without trailing zeros, its square has twice as many <span class="gloss" data-term="decimal place">decimal places</span>. Reading that perfect square backwards halves the count, using the rule from <a
-                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/multiplyingDecimals.html">multiplying
-                        decimals</a>.</p>
+            <section>
+                <h1 id="roots-of-decimals">Square roots of decimals</h1>
+                <p>The same check works with decimals. Since 0.2 × 0.2 = 0.04,
+                    we have <span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">0.04</span></span> = 0.2.</p>
+                <div class="square-decimals" aria-label="Three squares made from the digits 1 and 2">
+                    <p><span>12 × 12</span> <strong>= 144</strong></p>
+                    <p><span>1.2 × 1.2</span> <strong>= 1.44</strong></p>
+                    <p><span>0.12 × 0.12</span> <strong>= 0.0144</strong></p>
+                </div>
+                <p>Making each factor ten times smaller makes the product a hundred
+                    times smaller. Reading backwards, <span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">1.44</span></span> = 1.2,
+                    not 0.12: squaring 0.12 gives 0.0144 instead.</p>
+                <div data-lesson-check="2" data-lesson-check-api="SquareRootsLessonBank"></div>
+                <p>For the same reason, <span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">0.0016</span></span> = 0.04:
+                    four hundredths multiplied by four hundredths makes
+                    sixteen ten-thousandths. Checking by multiplication keeps
+                    the decimal point in the right place.</p>
+            </section>
 
-
-                <div class="worked">
-                    <h2 class="worked__title" aria-label="Example: work out the square root of 0.0016">Example: work out <span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">0.0016</span></span></h2>
-
-                    <div class="root-scene" data-root-scene data-scene="decimal">
-                        <div class="root-scene__sticky">
-                            <p class="root-scene__heading" data-heading><span role="math" aria-label="the square root of 0.0016"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">0.0016</span></span></span></p>
-
-                            <div class="root-board">
-                                <div class="root-board__paper" data-board aria-hidden="true"></div>
-                            </div>
-
-                            <div class="root-scene__caption" aria-live="polite">
-                                <h3 data-step-title>0.0016 under the root sign</h3>
-                                <p data-step-copy>The question is which number multiplied by itself gives 0.0016.</p>
-                            </div>
-
-                            <div class="root-scene__progress" data-progress aria-hidden="true"></div>
-                        </div>
+            <section>
+                <h1 id="a-root-larger-than-its-number">When the root is larger</h1>
+                <p>We might expect taking a square root to make a number smaller.
+                    But <span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">0.25</span></span> = 0.5, and 0.5 is larger than 0.25.</p>
+                <figure class="square-quarter" aria-labelledby="quarter-caption">
+                    <div class="square-unit" aria-hidden="true">
+                        <div class="square-unit__quarter">0.25</div>
+                        <span class="square-unit__half">0.5</span>
+                        <span class="square-unit__whole">1</span>
                     </div>
-
-                    <noscript>
-                        <p class="worked__fallback"><strong role="math"
-                            aria-label="the square root of 0.0016 equals 0.04, and 0.04 times 0.04 equals 0.0016"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">0.0016</span></span> = 0.04, and 0.04 &times; 0.04 = 0.0016</strong></p>
-                    </noscript>
+                    <figcaption id="quarter-caption">The whole square has side length 1.
+                        Halving both sides leaves a quarter of its area.</figcaption>
+                </figure>
+                <p>Multiplying 0.5 by 0.5 means taking half of 0.5, giving 0.25.
+                    Taking the square root reverses that change, from 0.25 back to 0.5.
+                    This happens for every number between 0 and 1:
+                    its square root is larger than the number itself.</p>
+                <div data-lesson-check="3" data-lesson-check-api="SquareRootsLessonBank"></div>
+                <div class="roots-key-points" id="remember">
+                    <h2>Key points</h2>
+                    <ul>
+                        <li>A square root reverses squaring. Check it by
+                            <strong>multiplying your answer by itself</strong>.</li>
+                        <li>The square-root symbol gives the <strong>non-negative</strong>
+                            root, including when the answer is a decimal.</li>
+                        <li>For a number between 0 and 1, its square root is
+                            <strong>larger</strong>. Zero and 1 are unchanged.</li>
+                    </ul>
                 </div>
-
-                <div class="wex">
-                    <h2 class="wex__title" aria-label="Example: work out the square root of 1.44">Example: work out <span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">1.44</span></span></h2>
-                    <p class="wex__task">Take the figures, find their root, then halve the count of decimal places.</p>
-                    <ol class="wex__steps">
-                        <li>
-                            <span class="wex__do"><span class="sf" role="math"
-                                    aria-label="the square root of 1.44"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">1.44</span></span></span></span>
-                            <span class="wex__why">1.44 has two decimal places, and its figures are 144.</span>
-                        </li>
-                        <li>
-                            <span class="wex__do"><span class="sf">12 &times; 12 = 144</span></span>
-                            <span class="wex__why">144 is the square of 12, so the figures of the root are 12.</span>
-                        </li>
-                        <li>
-                            <span class="wex__do"><span class="sf" role="math"
-                                    aria-label="the square root of 1.44 equals 1.2"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">1.44</span></span> = 1.2</span></span>
-                            <span class="wex__why">Half of two decimal places is one, so 12 is written as 1.2, and 1.2
-                                &times; 1.2 = 1.44.</span>
-                        </li>
-                    </ol>
-                </div>
-
-                <p>An odd count of decimal places cannot be halved into whole <span class="gloss" data-term="column">columns</span>,
-                    so 0.5, with one decimal place, is not the square of any terminating decimal.</p>
-            </section>
-
-            <section>
-                <h1 id="a-root-larger-than-its-number">Between 0 and 1, a root is larger than its number</h1>
-                <p><span class="sf" role="math" aria-label="the square root of 0.0016 equals 0.04"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">0.0016</span></span> = 0.04</span> and <span class="sf" role="math"
-                        aria-label="the square root of 0.04 equals 0.2"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">0.04</span></span> = 0.2</span> both came
-                    out larger than the number under the sign. Squaring a number between 0 and 1 makes it
-                    smaller: <span class="sf">0.5 &times; 0.5 = 0.25</span>.</p>
-
-                <div class="worked">
-                    <h2 class="worked__title">0.25 as an area</h2>
-
-                    <div class="root-scene" data-root-scene data-scene="unit">
-                        <div class="root-scene__sticky">
-                            <p class="root-scene__heading" data-heading>A square of side 1</p>
-
-                            <div class="root-board">
-                                <div class="root-board__paper" data-board aria-hidden="true"></div>
-                            </div>
-
-                            <div class="root-scene__caption" aria-live="polite">
-                                <h3 data-step-title>Area 1</h3>
-                                <p data-step-copy>Every edge is 1, so the area is 1 &times; 1 = 1.</p>
-                            </div>
-
-                            <div class="root-scene__progress" data-progress aria-hidden="true"></div>
-                        </div>
-                    </div>
-
-                    <noscript>
-                        <p class="worked__fallback"><strong role="math"
-                            aria-label="the square root of 0.25 equals 0.5, the side of a square of area 0.25"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">0.25</span></span> = 0.5, the side of a square of area 0.25</strong></p>
-                    </noscript>
-                </div>
-
-            </section>
-
-            <section>
-                <h1 id="common-mistakes">Common mistakes</h1>
-                <ul class="slips">
-                    <li><b>Halving instead of rooting</b>
-                    <span>98 is half of 196, and <span class="sf" role="math" aria-label="98 times 98
-                            equals 9,604">98 &times; 98 = 9,604</span>. Rooting asks which number
-                            multiplies by itself to give 196: <span class="sf" role="math"
-                            aria-label="14 times 14 equals 196, so the square root of 196 equals 14">14
-                            &times; 14 = 196, so <span class="rad"><span class="caret"
-                            aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40"
-                            aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24"
-                            fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter"
-                            stroke-linecap="butt"/></svg><span class="rad__over">196</span></span> =
-                            14</span>.</span></li>
-                    <li><b>Keeping both decimal places in the root</b>
-                    <span><span class="sf" role="math" aria-label="the square root of 0.49 equals 0.07"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">0.49</span></span> = 0.07</span> keeps both decimal places, and <span class="sf" role="math" aria-label="0.07 times 0.07 equals 0.0049">0.07 &times; 0.07 = 0.0049</span>, not 0.49. Between 0 and 1 the square is the smaller number: <span class="sf" role="math" aria-label="0.7 times 0.7 equals 0.49, so the square root of 0.49 equals 0.7">0.7 &times; 0.7 = 0.49, so <span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">0.49</span></span> = 0.7</span>.</span></li>
-                    <li><b>Rooting a sum term by term</b>
-                    <span>The bar covers the whole sum, so <span class="sf" role="math"
-                            aria-label="the square root of, open bracket, 9 plus 16, close bracket,
-                            equals the square root of 25 equals 5"><span class="rad"><span class="caret"
-                            aria-hidden="true">&radic;(</span><svg class="rad__sign" viewBox="0 0 24 40"
-                            aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24"
-                            fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter"
-                            stroke-linecap="butt"/></svg><span class="rad__over">9 +
-                            16</span></span><span class="caret" aria-hidden="true">)</span> = <span
-                            class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg
-                            class="rad__sign" viewBox="0 0 24 40" aria-hidden="true"
-                            focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none"
-                            stroke="currentColor" stroke-width="3" stroke-linejoin="miter"
-                            stroke-linecap="butt"/></svg><span class="rad__over">25</span></span> =
-                            5</span>. Rooting the two terms separately gives <span class="sf"
-                            role="math" aria-label="the square root of 9 plus the square root of 16
-                            equals 3 plus 4 equals 7"><span class="rad"><span class="caret"
-                            aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40"
-                            aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24"
-                            fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter"
-                            stroke-linecap="butt"/></svg><span class="rad__over">9</span></span> + <span
-                            class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg
-                            class="rad__sign" viewBox="0 0 24 40" aria-hidden="true"
-                            focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none"
-                            stroke="currentColor" stroke-width="3" stroke-linejoin="miter"
-                            stroke-linecap="butt"/></svg><span class="rad__over">16</span></span> = 3 +
-                            4 = 7</span>.</span></li>
-                </ul>
-            </section>
-
-            <section>
-                <h1 id="remember">Summary</h1>
-                <ol class="recap">
-                    <li>A square root is the side of a square with that area: <span class="sf" role="math"
-                            aria-label="the square root of 49 equals 7"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">49</span></span> = 7</span>,
-                        because 7 &times; 7 = 49.</li>
-                    <li>Squaring the answer returns the number that stood under the sign, which is the check on
-                        every root.</li>
-                    <li>The root of a <span class="gloss" data-term="square number">square number</span> is read backwards out of the squares of 1 to 15. A number
-                        between two <span class="gloss" data-term="consecutive">consecutive</span> squares, such as 50 between 49 and 64, has no whole-number
-                        root.</li>
-                    <li>For a perfect decimal square written without trailing zeros, the root has half as many decimal
-                        places as the number under the sign: <span class="sf" role="math"
-                            aria-label="the square root of 0.0016 equals 0.04"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">0.0016</span></span> = 0.04</span>.</li>
-                    <li>Between 0 and 1 a root is larger than the number it came from: <span class="sf" role="math"
-                            aria-label="the square root of 0.25 equals 0.5"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">0.25</span></span> = 0.5</span>.</li>
-                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <div class="powers-recall" data-powers-recall="squareRoots" hidden></div>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice"
-                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/practiceSquareRoots.html"
-                        style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
-                        <h3>Square roots</h3>
-                        <p>The square root as the inverse of squaring, found by reversing a known square.</p>
-                    </a>
                     <a class="topic-card topic-card--next"
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/positiveAndNegativeRoots.html"
                         style="background-image: none">
                         <span class="topic-card__kicker">Next lesson</span>
                         <h3>Positive and negative square roots</h3>
-                        <p>Why a squared equation has two solutions while the root sign gives one.</p>
+                        <p>When an equation has two solutions, and why the root symbol gives just one value.</p>
                     </a>
                 </div>
+                <a class="lesson-menu-return" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/"><span aria-hidden="true">← </span>Back to Powers and roots</a>
             </section>
         </main>
 

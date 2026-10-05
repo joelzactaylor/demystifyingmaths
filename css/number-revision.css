@@ -1,0 +1,76 @@
+/* Guided exam questions: one sheet, one next action, no setup screen. */
+.number-revision { --practice-ink: #805116; --practice-line: #dfc79e; --practice-soft: #fff6e5; }
+.number-revision .layout { background: #fff; }
+.number-revision header { border-bottom: 4px solid #b9832c; margin-bottom: 0; padding: 18px 20px; background-color: #976922; background-blend-mode: luminosity; }
+.number-revision header nav { top: 0; }
+.revision-main { padding: 30px 38px 50px; background: white; color: #243b43; font-size: 17px; line-height: 1.65; }
+.revision-cover { position: relative; padding: 0 12px 22px; margin-bottom: 22px; border-bottom: 2px solid #222; color: #111; font-family: "Times New Roman", Times, serif; }
+.revision-main .revision-cover p { margin: 0 0 4px; font-size: 18px; }
+.revision-cover h1 { margin: 0; font-size: 32px; line-height: 1.25; }
+.revision-main .revision-paper-mode { position: absolute; right: 14px; bottom: 22px; margin: 0; }
+.revision-main [hidden] { display: none !important; }
+.revision-main p { margin: 0 0 18px; }
+.revision-main a { color: #805116; text-underline-offset: .2em; text-shadow: none; }
+.revision-main button, .revision-main input, .revision-main textarea { font: inherit; }
+.revision-main button { border: 1px solid #b78d50; background: #fff6e5; color: #704715; border-radius: 7px; padding: 7px 16px; cursor: pointer; line-height: 1.4; }
+.revision-main button:hover { background: #f5e6c9; border-color: #805116; }
+.revision-main :focus-visible { outline: 2px solid #805116; outline-offset: 4px; }
+.revision-announcement, .revision-main .caret { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.revision-main sup { font-size: 14px; line-height: 0; vertical-align: super; }
+.revision-main .rad { position: relative; display: inline-block; padding-left: .79em; line-height: 1; }
+.revision-main .rad__sign { position: absolute; top: 0; left: 0; width: .79em; height: 1.32em; overflow: visible; }
+.revision-main .rad__over { display: block; border-top: .1em solid currentColor; padding: .17em .18em 0 .02em; line-height: 1; }
+.revision-item { margin: 0; scroll-margin-top: 92px; }
+.revision-paper { position: relative; }
+.has-paper .revision-gap { position: absolute; left: var(--answer-left); top: var(--answer-top); width: var(--answer-width); height: var(--answer-height); margin: 0 !important; display: block; font-size: 0; }
+.has-paper .revision-gap label, .has-paper .revision-gap > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.revision-main .has-paper .revision-gap input { display: block; box-sizing: border-box; width: 100%; height: 100%; padding: 0 4px; border: 0; border-radius: 0; background: transparent; font: 19px/26px "Times New Roman", Times, serif; text-align: right; }
+.has-paper .revision-gap input::placeholder { font: 14px "Times New Roman", Times, serif; color: #666; opacity: 1; }
+.has-paper .revision-gap input:hover:not(.is-accepted) { background: rgb(128 81 22 / 4%); }
+.has-paper .revision-gap input:focus-visible { outline: 1px solid #805116; outline-offset: 2px; }
+.has-paper .revision-gap input[aria-invalid="true"] { box-shadow: inset 0 -2px #b23432; }
+.revision-item-body { padding-top: 20px; }
+.revision-paper-image { display: block; width: 100%; height: auto; background: white; mix-blend-mode: normal; }
+.revision-paper-text:not(.revision-announcement) { padding: 24px 43px; background: white; color: #151515; font-family: "Times New Roman", Times, serif; }
+.revision-main .revision-number { margin: 0; font-size: 19px; line-height: 1.7; color: #151515; scroll-margin-top: 100px; }
+.revision-item-body { min-width: 0; }
+.revision-context { font-size: 18px; line-height: 1.7; }
+.revision-gap { display: flex; align-items: baseline; justify-content: flex-end; gap: 8px; margin: 24px 0 !important; font-size: 18px; line-height: 1.5; }
+.revision-gap input { width: 10em; padding: 4px 8px; border: 1px solid #b78d50; border-radius: 4px; background: #fff; color: #151515; line-height: 1.35; font-variant-numeric: tabular-nums; }
+.revision-gap input.is-accepted { color: #137044; border-color: #137044; background: #f0f8f2; }
+.revision-gap input.is-accepted:focus-visible { outline-color: #137044; }
+.revision-gap input[aria-invalid="true"] { border-color: #b23432; background: #fff2ef; }
+.revision-actions { display: flex; align-items: center; gap: 12px; margin-left: auto; }
+.revision-main summary { cursor: pointer; color: #805116; padding: 8px 0; font-size: 15px; }
+.revision-solution > ol { padding: 16px 20px 16px 40px; background: #fff6e5; border-radius: 6px; margin: 12px 0; }
+.revision-solution li { margin: 8px 0; padding-left: 4px; }
+.revision-feedback { color: #943a2c; font-size: 15px; }
+.revision-feedback:empty { display: none; }
+.revision-small { font-size: 14px; }
+.revision-lesson-links { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 14px; }
+.revision-tools { margin-top: 22px; font-size: 14px; }
+.revision-footer { margin-top: 24px; font-size: 15px; }
+.revision-storage { padding: 16px; background: #fff1c9; }
+.revision-task { font-size: 18px; line-height: 1.7; min-height: 54px; }
+.exam-values { display: inline-block; padding-top: 12px; word-spacing: 12px; }
+.revision-gap label { color: #333; font-size: 14px; margin-right: 10px; }
+.revision-question-footer { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 16px; border-top: 1px solid #ece7df; padding-top: 16px; font-family: Aleo, serif; }
+.revision-solution { font-size: 16px; grid-area: 1 / 1 / 2 / 3; min-width: 0; }
+.revision-solution summary { width: fit-content; }
+.revision-question-footer .revision-actions { grid-area: 1 / 2; position: relative; }
+.revision-saved-work { white-space: pre-wrap; }
+.revision-actions button { background: #805116; color: white; padding: 10px 22px; }
+.revision-actions button:hover { background: #653f10; }
+.revision-progress { display: flex; align-items: center; justify-content: space-between; margin: 0 0 18px; gap: 24px; color: #66533a; font-size: 15px; }
+.revision-progress progress { width: 180px; height: 6px; accent-color: #805116; }
+.revision-main .revision-previous, .revision-tools button { background: transparent; border: 0; padding: 8px 0; font-size: 14px; }
+.revision-main .revision-previous { margin-top: 12px; }
+.revision-complete { padding: 32px; background: #fff; border-radius: 10px; }
+.revision-complete h2 { margin: 0 0 12px; font-size: 25px; color: #805116; }
+.revision-number:focus, .revision-complete h2:focus { outline: none; }
+@media print {
+    .number-revision header nav, .revision-actions, .revision-tools, .revision-footer, #top-ribbon-placeholder { display: none !important; }
+    .number-revision .layout { width: auto; min-width: 0; transform: none; margin: 0; }
+    .revision-main { padding: 0; }
+    .revision-item { break-inside: avoid; border: 0; border-bottom: 1px solid #ddd; }
+}

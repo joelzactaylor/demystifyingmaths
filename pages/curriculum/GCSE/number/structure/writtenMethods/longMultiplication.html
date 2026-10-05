@@ -11,26 +11,36 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/longMultiplication.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
+    <script src="/demystifyingmaths/js/lesson-session.js" defer></script>
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
     <script src="/demystifyingmaths/js/longMultiplication.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsLessonBank.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/demystifyingmaths/css/powersRootsRecall.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/writtenMethodsLesson.css">
+    <script src="/demystifyingmaths/js/writtenMethodsLesson.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsRecallBank.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsRecall.js" defer></script>
 </head>
 
-<body>
+<body class="roots-lesson written-methods-lesson">
     <div class="layout">
         <div id="top-ribbon-placeholder"></div>
         <script>fetch("/demystifyingmaths/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
 
         <header>
-            <h1>Demystifying - Long multiplication</h1>
+            <h1>Long multiplication</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
                     <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span>
@@ -54,7 +64,8 @@
 
         <aside id="page-nav-container"></aside>
 
-        <main class="lesson-main">
+        <main class="lesson-main" data-lesson-check-api="WrittenMethodsLessonBank"
+            data-lesson-check-anchors="why-a-row-ends-in-zeros,the-short-form,where-it-turns-up">
             <p class="prereq"><b>Before this page:</b> <span>know the multiplication tables to 12 &times; 12, be able to
                     add in
                     <a
@@ -64,7 +75,7 @@
                         and decimals</a>.</span></p>
 
             <section>
-                <h1>One large product, many small products</h1>
+                <h1 id="long-multiplication-idea-1">Breaking up a product</h1>
 
                 <p><strong>347 &times; 26</strong> is built from table facts such as <strong>6 &times; 7</strong>,
                     <strong>6 &times; 4</strong> and <strong>2 &times; 3</strong>.
@@ -78,7 +89,7 @@
             </section>
 
             <section>
-                <h1>Every part of 347 meets every part of 26</h1>
+                <h1 id="long-multiplication-idea-2">From a grid to columns</h1>
                 <p>A rectangle gives each of the six products a box of its own. 300, 40 and 7 run along the top, 20
                     and 6 down the side, and each box holds the product of its row and its column.</p>
 
@@ -114,7 +125,7 @@
             </section>
 
             <section>
-                <h1>Each box becomes a line in the columns it is worth</h1>
+                <h1 id="long-multiplication-idea-3">Recording the partial products</h1>
 
                 <div class="multiplication-scene" data-multiplication-scene data-mode="pair" data-a="347" data-b="26">
                     <div class="multiplication-scene__sticky">
@@ -137,16 +148,13 @@
                     </noscript>
                 </div>
 
-                <p>Six lines, one for each product, show the expanded calculation behind long multiplication. The written
-                    layout takes the 6 of the <span class="gloss" data-term="multiplier">multiplier</span> before the 20, and within each, 7 then 40 then
-                    300. Within each group of three, every line ends in one more zero than the one before it: 42, 240,
-                    1,800, then 140, 800, 6,000.</p>
+<p>The expanded calculation has six lines. The products from multiplying by 6 are 42, 240 and 1,800. The products from multiplying by 20 are 140, 800 and 6,000. We can combine each set into one row.</p>
 
                 <p>Every line can be checked against its box.</p>
             </section>
 
             <section>
-                <h1>The lines from one digit add to one row</h1>
+                <h1 id="long-multiplication-idea-4">Combining the partial products</h1>
 
                 <div class="multiplication-scene" data-multiplication-scene data-mode="gather" data-a="347" data-b="26">
                     <div class="multiplication-scene__sticky">
@@ -173,7 +181,7 @@
             </section>
 
             <section>
-                <h1 id="why-a-row-ends-in-zeros">The row from the tens digit ends in a zero</h1>
+                <h1 id="why-a-row-ends-in-zeros">Multiplying by tens</h1>
                 <p>The three lines that came from the 20 are 140, 800 and 6,000. Every one of them ends in a zero,
                     because every one of them is 20 times something. Their total, 6,940, is a sum of multiples of 10, so it ends in a zero too.</p>
 
@@ -226,6 +234,8 @@
                     </article>
                 </div>
 
+                <div data-lesson-check="0" data-lesson-check-api="WrittenMethodsLessonBank"></div>
+
                 <p>A third digit in the multiplier is a hundreds digit, so all of its lines end in two zeros and so
                     does its row. The pattern continues for as many digits as the multiplier has: one more zero for each
                     place.</p>
@@ -233,7 +243,7 @@
             </section>
 
             <section>
-                <h1 id="the-short-form">The short form writes each row directly and carries</h1>
+                <h1 id="the-short-form">The compact method</h1>
                 <p>The short form produces those two rows without ever writing the lines that make them. Instead of 42,
                     240 and 1,800 written as lines, 6 &times; 7, 6 &times; 4 and 6 &times; 3 are written straight into one row,
                     digit by digit. Anything too large for one column is carried into the next.</p>
@@ -341,13 +351,13 @@
 
                 </div>
 
-                <p>The six products, the two rows and the answer are unchanged. The six lines are no longer written, so
-                    none of them can be checked against its box.</p>
+                <p>The six products, the two rows and the answer are unchanged. Instead of six separate lines,
+                    the carried amounts keep track of how the smaller products combine.</p>
 
             </section>
 
             <section>
-                <h1>A three-digit multiplier makes three rows</h1>
+                <h1 id="long-multiplication-idea-7">A three-digit multiplier</h1>
                 <p>248 &times; 135 has three digits in the multiplier, so three rows, and the third starts two places
                     further left because the 1 is worth 100. Three parts against three parts is nine products, gathered
                     into three rows.</p>
@@ -379,9 +389,9 @@
             </section>
 
             <section>
-                <h1 id="where-it-turns-up">Where it turns up</h1>
-                <p>Worded questions do not always say which operation to use. Equal groups and rectangular area are
-                    two common structures that lead to multiplication.</p>
+                <h1 id="where-it-turns-up">Equal groups and areas</h1>
+                <p>A fixed price for every seat makes equal groups; a length repeated across a width makes a rectangle.
+                    Both structures lead to multiplication even when the operation is not named.</p>
 
                 <div class="reading-pair">
                     <article class="reading-card">
@@ -404,7 +414,7 @@
             </section>
 
             <section>
-                <h1>Multiply two chosen integers</h1>
+                <h1 id="long-multiplication-idea-9">Explore long multiplication</h1>
                 <div class="multiplication-scene" data-multiplication-scene>
                     <div class="multiplication-scene__sticky">
                         <div class="multiplication-scene__inputs">
@@ -438,58 +448,14 @@
                 </div>
             </section>
 
-            <section>
-                <h1>Common mistakes</h1>
-                <ul class="slips">
-                    <li><b>The missing place-holder zero</b>
-                        <span>A second row without its zero is ten times too small, and a third
-                            row without its two zeros is a hundred times too small. In 347
-                            &times; 26 the second row is 6,940, not 694, and without the zero
-                            the total reads 2,776 instead of 9,022.</span>
-                    </li>
-                    <li><b>Adding the carry before multiplying</b>
-                        <span>In 347 &times; 6 the ones give 42, so 4 is carried. The tens are
-                            then 6 &times; 4 = 24, and the carried 4 joins afterwards to make
-                            28. Taken as (4 + 4) &times; 6 = 48, the row reads 2,282 instead of
-                            2,082.</span>
-                    </li>
-                    <li><b>Carrying between rows</b>
-                        <span>Each row starts with nothing carried into it. In 347 &times; 26 the 4 carried in the ones row still
-                            sits above the tens digit. Adding it again in the tens row turns 4 &times; 2 + 1 = 9 into 13,
-                            the row into 7,340 and the total into 9,422.</span>
-                    </li>
-                    <li><b>Losing one of the products</b>
-                        <span>Three digits over two is six products, and three over three is nine.
-                            Drop 40 &times; 20 = 800 from the grid and the total reads 8,222, from five products instead of
-                            six.</span>
-                    </li>
-                </ul>
-            </section>
 
-            <section>
-                <h1>Summary</h1>
-                <ol class="recap">
-                    <li>347 &times; 26 is six small products: every part of 347 against every part of 26.</li>
-                    <li>A grid gives each product a box. A column layout gives each one a line, placed in the columns
-                        it is worth.</li>
-                    <li>The lines belonging to one digit of the multiplier add together to make one row.</li>
-                    <li>A row made by the tens digit ends in one zero, and one made by the hundreds digit ends in two,
-                        because every line in it did.</li>
-                    <li>The short form writes each row directly, carrying instead of setting the lines out, and then
-                        adds the rows in columns.</li>
-                </ol>
-            </section>
+
+            <section class="roots-key-points" id="remember"><h1>Key points</h1><ul><li>Make one partial-product row for each digit of the multiplier.</li><li>A tens digit represents tens: its row ends in a zero. A hundreds row ends in two zeros.</li><li>Add the partial products in their place-value columns.</li></ul></section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <div class="powers-recall" data-written-recall="longMultiplication" hidden></div>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice"
-                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/practiceLongMultiplication.html"
-                        style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
-                        <h3>Long multiplication</h3>
-                        <p>Multiplying multi-digit integers, and the place-holder zero in the second row.</p>
-                    </a>
                     <a class="topic-card topic-card--next"
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/multiplyingDecimals.html"
                         style="background-image: none">
@@ -498,6 +464,7 @@
                         <p>Multiplying as whole numbers, then counting decimal places to fix the point.</p>
                     </a>
                 </div>
+            <a class="lesson-menu-return" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/">Back to Written methods</a>
             </section>
         </main>
 

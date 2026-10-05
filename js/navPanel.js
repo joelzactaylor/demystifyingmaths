@@ -1,3 +1,10 @@
+// Curriculum progress is independent of whether this page has a contents rail.
+if (location.pathname.includes("/pages/curriculum/") && !document.querySelector('script[data-curriculum-progress]')) {
+    const progress = document.createElement("script");
+    progress.src = "/demystifyingmaths/js/curriculum-progress.js";
+    progress.dataset.curriculumProgress = "";
+    document.head.appendChild(progress);
+}
 document.addEventListener("DOMContentLoaded", () => {
     const container = document.getElementById("page-nav-container");
     if (!container) return;
@@ -68,6 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         link.addEventListener("click", (event) => {
             event.preventDefault();
+            if (heading.closest("section")?.hidden) return;
             const topOffset = 110; // adjust for ribbon / header height
             const y = heading.getBoundingClientRect().top + window.scrollY - topOffset;
 
@@ -88,10 +96,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const links = [...nav.querySelectorAll(".page-nav-link")];
 
+    const syncAvailability = () => {
+        links.forEach((link, index) => {
+            const locked = Boolean(headings[index].closest("section")?.hidden);
+            link.classList.toggle("is-locked", locked);
+            if (locked) link.setAttribute("aria-disabled", "true");
+            else link.removeAttribute("aria-disabled");
+        });
+    };
+
     const setActiveLink = () => {
-        let current = headings[0];
+        let current = headings.find((heading) => !heading.closest("section")?.hidden) || headings[0];
 
         headings.forEach((heading) => {
+            if (heading.closest("section")?.hidden) return;
             const rect = heading.getBoundingClientRect();
             if (rect.top <= 140) {
                 current = heading;
@@ -106,6 +124,11 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     };
 
+    syncAvailability();
     setActiveLink();
     window.addEventListener("scroll", setActiveLink, { passive: true });
+    document.addEventListener("lessonflowchange", () => {
+        syncAvailability();
+        setActiveLink();
+    });
 });

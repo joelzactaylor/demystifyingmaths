@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/hcfFromPrimeFactors.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
@@ -17,6 +19,8 @@
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/integrated-lesson-banks.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <script src="/demystifyingmaths/js/hcfFromPrimeFactors.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,7 +57,8 @@
 
         <aside id="page-nav-container"></aside>
 
-        <main class="lesson-main">
+        <main class="lesson-main" data-integrated-bank="hcf" data-lesson-check-api="IntegratedLessonBank"
+            data-lesson-check-anchors="shared-primes,lower-index,hcf-meaning">
             <p class="prereq"><b>Before this page:</b> <span>write a number as a product of primes using <a
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/primeFactorisation.html">prime
                         factorisation</a>, list <a
@@ -109,7 +114,7 @@
 
             <section aria-labelledby="shared-primes">
                 <h1 id="shared-primes">The HCF is everything the two numbers share</h1>
-                <p>A prime that 360 and 756 share divides both of them, and so does the product of every prime they share.</p>
+                <p>Match equal prime factors in 360 and 756. Each matched pair belongs in a factor of both numbers, so multiplying all the matched primes gives the greatest common factor.</p>
                 <div class="worked">
                     <h2 class="worked__title">Taking the shared primes out of 360 and 756</h2>
                     <div class="hcf-scene" data-hcf-scene data-kind="rings">
@@ -329,14 +334,8 @@
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice"
-                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practiceHCFLCM.html"
-                        style="background-image: none"><span class="practice-card__kicker">Practice</span>
-                        <h3>Highest common factor</h3>
-                        <p>Taking each shared prime to the lower index, and what the HCF means.</p>
-                    </a>
                     <a class="topic-card topic-card--next"
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/LCMFromPrimeFactors.html"
                         style="background-image: none"><span class="topic-card__kicker">Next lesson</span>

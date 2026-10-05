@@ -10,12 +10,16 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/integrated-lesson-banks.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -30,12 +34,18 @@
             <h1>Demystifying - Working backwards from the mean</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
-                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/">Statistics</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/">Averages and spread</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/">From a list</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span>
+                    </li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/">Statistics</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/">Averages and
+                            spread</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/">From a
+                            list</a><span aria-hidden="true">&rsaquo;</span></li>
                     <li>
                         <p>Working backwards from the mean</p>
                     </li>
@@ -45,26 +55,116 @@
 
         <aside id="page-nav-container"></aside>
 
-        <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>Reverse mean problems on ungrouped data: recover the total as mean times count, find a missing value given the mean, and find the new mean after adding or removing one value. Include multi-step worded versions. Combining two groups through their totals is the sibling Combined means page. Both tiers. (S4)</p>
+        <main class="lesson-main" data-integrated-bank="reverseMean" data-lesson-check-api="IntegratedLessonBank"
+            data-lesson-check-anchors="recover-total,missing-value,change-list">
+            <p class="prereq"><b>Before this page:</b> <span>calculate a mean as total &divide; count, and use the
+                    <span class="gloss" data-term="inverse">inverse</span> operation to reverse a division.</span></p>
+
+            <section aria-labelledby="recover-total">
+                <h1 id="recover-total">The total is mean times count</h1>
+                <p>A mean is the total shared across the count. Reverse that sharing by multiplying the mean by the
+                    number of values.</p>
+                <div class="rule-card">
+                    <h2 class="rule-card__statement">Total = mean &times; number of values</h2>
+                    <ol class="rule-card__conditions">
+                        <li>Use the same count that produced the stated mean.</li>
+                        <li>Keep the units of the original values in the total.</li>
+                    </ol>
+                </div>
+                <div class="wex">
+                    <h2 class="wex__title">Four game scores have mean 12</h2>
+                    <p class="wex__task">Recover the player's total score across the four games.</p>
+                    <ol class="wex__steps">
+                        <li><span class="wex__do"><span class="sf">12 &times; 4 = 48</span></span><span
+                                class="wex__why">The player scored 48 points in total.</span></li>
+                        <li><span class="wex__do"><span class="sf">48 &divide; 4 = 12</span></span><span
+                                class="wex__why">The inverse check returns the stated mean.</span></li>
+                    </ol>
+                </div>
             </section>
 
-            <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+            <section aria-labelledby="missing-value">
+                <h1 id="missing-value">Subtract known values to find a missing value</h1>
+                <p>Find the full total from the mean and count, then subtract the values that are already known.</p>
+                <div class="wex">
+                    <h2 class="wex__title">A fifth game score is missing</h2>
+                    <p class="wex__task">A player averages 18 points over five games. Four scores are 12, 17, 21 and
+                        20. Find the fifth score.</p>
+                    <ol class="wex__steps">
+                        <li><span class="wex__do"><span class="sf">18 &times; 5 = 90</span></span><span
+                                class="wex__why">All five scores total 90.</span></li>
+                        <li><span class="wex__do"><span class="sf">12 + 17 + 21 + 20 = 70</span></span><span
+                                class="wex__why">The known scores total 70.</span></li>
+                        <li><span class="wex__do"><span class="sf">90 &minus; 70 = 20</span></span><span
+                                class="wex__why">The missing score is 20.</span></li>
+                    </ol>
+                </div>
+                <p>Checking <span class="sf">(12 + 17 + 21 + 20 + 20) &divide; 5 = 18</span> confirms the missing value.
+                </p>
+            </section>
+
+            <section aria-labelledby="change-list">
+                <h1 id="change-list">Recalculate the total when a value is added or removed</h1>
+                <p>Changing the count changes the <span class="gloss" data-term="divisor">divisor</span>, so find the
+                    new total and the new count before calculating the new mean.</p>
+                <div class="reading-pair">
+                    <article>
+                        <h2>Add a fifth game</h2>
+                        <p>Four games have mean 12, so their total is 48. A score of 20 gives total 68 over five games:
+                            <span class="sf">68 &divide; 5 = 13.6</span>.</p>
+                    </article>
+                    <article>
+                        <h2>Remove one game</h2>
+                        <p>Five games have mean 18, so their total is 90. Removing a score of 20 leaves total 70 over
+                            four games: <span class="sf">70 &divide; 4 = 17.5</span>.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section aria-labelledby="check-answer">
+                <h1 id="check-answer">Check the original mean</h1>
+                <p><span class="gloss" data-term="substitute">Substitute</span> a missing value into the full list, add
+                    all the values, and divide by the original count. The result must equal the stated mean.</p>
+                <div class="important-box" aria-labelledby="answer-check-title">
+                    <h2 class="important-box__title" id="answer-check-title">Check the missing score</h2>
+                    <p><span class="sf">12 + 17 + 21 + 20 + 20 = 90</span>, and <span class="sf">90 &divide; 5 =
+                            18</span>. The missing score gives the required mean.</p>
+                </div>
+            </section>
+
+            <section aria-labelledby="common-mistakes">
+                <h1 id="common-mistakes">Common mistakes</h1>
+                <ul class="slips">
+                    <li><b>Dividing the mean by the count</b>
+                        <span>Four scores with mean 12 have total 12 &times; 4 = 48, not 12 &divide; 4 = 3.</span>
+                    </li>
+                    <li><b>Using the known-value total as the full total</b>
+                        <span>For the scores 12, 17, 21 and 20 with mean 18 over five scores, 70 is the known total. The
+                            full total is 90, so the missing score is 20.</span>
+                    </li>
+                    <li><b>Keeping the old count after adding a value</b>
+                        <span>Adding 20 to four values with total 48 gives 68 across five values, so the new mean is
+                            13.6, not 68 &divide; 4 = 17.</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="summary">
+                <h1 id="summary">Summary</h1>
+                <ol class="recap">
+                    <li>Recover a total by multiplying the mean by the count.</li>
+                    <li>Subtract known values from the full total to find a missing value.</li>
+                    <li>After adding or removing a value, change both the total and the count.</li>
+                    <li>Check a recovered value by recalculating the original mean.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/practiceWorkingBackwardsFromTheMean.html" style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
-                        <h3>Working backwards from the mean</h3>
-                        <p>Recovering the total from a stated mean to find a missing value.</p>
-                    </a>
-                    <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/combinedMeans.html" style="background-image: none">
+                    <a class="topic-card topic-card--next"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/combinedMeans.html"
+                        style="background-image: none">
                         <span class="topic-card__kicker">Next lesson</span>
                         <h3>The mean of a combined group</h3>
                         <p>Combining two groups through their totals, not by averaging the two means.</p>

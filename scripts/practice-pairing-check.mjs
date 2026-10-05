@@ -98,35 +98,35 @@ for (const manifestPath of manifests) {
         } else {
             problems.push(`${label}: ${drill.file} has invalid kind ${drill.kind}`);
         }
-        /* Only a dedicated lesson drill is expected on its teaching page. A
-           review is listed in the group index and reached from the practice
-           page before it, so that following the links walks the index order. */
-        if (displayPage && drill.kind !== "review") {
-            if (!expectedByPage.has(displayPage)) expectedByPage.set(displayPage, []);
-            expectedByPage.get(displayPage).push(url);
-        }
-
-        const practicePath = urlToPath(url);
-        if (!existsSync(practicePath)) problems.push(`${label}: missing drill page ${url}`);
-        else if (drill.generate) {
-            const html = stripBase(readFileSync(practicePath, "utf8"));
-            for (const key of drill.learningPages) {
-                const page = pages.get(key);
-                if (page && !html.includes(`href="${teachingUrl(page)}"`))
-                    problems.push(`${label}: ${url} does not link back to ${key}`);
+        /* Lesson drills are retained as question-authoring briefs, but their
+           retrieval now lives inside the lesson. Only mixed reviews own a
+           separate page and a card on the group menu. */
+        if (drill.kind === "review") {
+            const practicePath = urlToPath(url);
+            if (!existsSync(practicePath)) problems.push(`${label}: missing review page ${url}`);
+            else if (drill.showInMenu === false && !/<body\b[^>]*\bdata-menu-unlisted\b/.test(readFileSync(practicePath, "utf8")))
+                problems.push(`${label}: unlisted review ${url} needs data-menu-unlisted on its body`);
+            else if (drill.generate) {
+                const html = stripBase(readFileSync(practicePath, "utf8"));
+                for (const key of drill.learningPages) {
+                    const page = pages.get(key);
+                    if (page && !html.includes(`href="${teachingUrl(page)}"`))
+                        problems.push(`${label}: ${url} does not link back to ${key}`);
+                }
             }
-        }
 
-        const topic = manifest.topics.find((candidate) => candidate.key === drill.topic);
-        for (const groupSlug of drill.groups) {
-            const group = topic?.groups.find((candidate) => candidate.slug === groupSlug);
-            if (!group) continue;
-            const menuPath = urlToPath(groupUrl(topic, group));
-            if (!existsSync(menuPath)) problems.push(`${label}: missing group menu ${groupUrl(topic, group)}`);
-            else {
-                const menu = stripBase(readFileSync(menuPath, "utf8"));
-                const occurrences = menu.split(`href="${url}"`).length - 1;
-                if (occurrences !== 1) problems.push(`${label}: ${groupUrl(topic, group)} contains ${occurrences} links to ${url}, expected 1`);
+            const topic = manifest.topics.find((candidate) => candidate.key === drill.topic);
+            for (const groupSlug of drill.groups) {
+                const group = topic?.groups.find((candidate) => candidate.slug === groupSlug);
+                if (!group) continue;
+                const menuPath = urlToPath(groupUrl(topic, group));
+                if (!existsSync(menuPath)) problems.push(`${label}: missing group menu ${groupUrl(topic, group)}`);
+                else {
+                    const menu = stripBase(readFileSync(menuPath, "utf8"));
+                    const occurrences = menu.split(`href="${url}"`).length - 1;
+                    const expectedLinks = drill.showInMenu === false ? 0 : 1;
+                    if (occurrences !== expectedLinks) problems.push(`${label}: ${groupUrl(topic, group)} contains ${occurrences} links to ${url}, expected ${expectedLinks}`);
+                }
             }
         }
     }
@@ -145,7 +145,10 @@ for (const manifestPath of manifests) {
         if (html.includes("Drills for this topic")) problems.push(`${label}: ${page.key} still uses the old drill paragraph`);
         const actual = [...html.matchAll(/<a class="topic-card topic-card--practice"[^>]*href="([^"]+)"/g)].map((match) => match[1]).sort();
         const expected = [...(expectedByPage.get(page.key) || [])].sort();
-        if (actual.join("\n") !== expected.join("\n"))
+        /* Authored lessons have completed the integrated-retrieval migration.
+           Generated stubs may retain legacy cards until their strand is next
+           regenerated, so do not turn that harmless transition into a failure. */
+        if (page.st.written && actual.join("\n") !== expected.join("\n"))
             problems.push(`${label}: ${page.key} cards [${actual.join(", ")}] != expected [${expected.join(", ")}]`);
         const nextPage = pageSequence[pageIndex + 1];
         const expectedNext = nextPage ? teachingUrl(nextPage) : "/pages/curriculum/GCSE/";

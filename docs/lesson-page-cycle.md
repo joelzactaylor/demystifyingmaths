@@ -10,6 +10,10 @@ is about to be deleted. **Findings are fixed in the pass that finds them**, not
 collected into a list and declared as output: an audit that reports without
 fixing has done half a job.
 
+Repair defects within the agreed design. Before adding a new feature inspired
+by another learning platform, propose it to the site owner and wait for their
+confirmation; an audit is not permission to introduce it.
+
 ## 1. Measure before reading
 
 Count what each section carries — scenes, tables, static answers, words of prose
@@ -25,70 +29,28 @@ Two consecutive table-only sections between two with figures is a fault the
 prose will never confess to. Look for: a section with no way in, a section
 carrying every figure, a run of pure reference, prose totals that swing by 3×.
 
-## 1b. Shape pass — is it built the way a reader learns?
+## 1b. Learning flow
 
-The measure above finds what is missing; this pass finds what is in the wrong
-place or said too often. The standard is the one the best-known resources
-converge on — Rosenshine's principles (small steps, a worked example before
-independent work, checking understanding), the cognitive-load research behind
-Mayer's multimedia principles (coherence, signalling, no redundancy between
-words and picture), the NCETM/White Rose "small steps" sequencing with one
-thing varied at a time, and the exam boards' own command words. A page that
-meets it reads, to a parent with no maths, as one idea after another. Judge
-each section against these, and fix in place:
+Use the current roots prototype and master lesson brief, not historical quotas.
 
-- **The rule arrives by the second paragraph of its section.** A section may
-  open with the question the rule answers ("Does 3 + 4 × 5 come to 23 or to
-  35?") and one paragraph of the disagreement, and then it states the rule.
-  Motivation that runs to a fourth paragraph before the rule is a sequencing
-  fault: `orderOfOperations` reached "multiplying and dividing are done first"
-  in paragraph five, across two sections, and was cut to one.
-- **One idea per section, and a section is 60–350 words of prose.** Under 60
-  words is a fragment — fold it into its neighbour (`dividingByDecimals` had a
-  29-word "confirm the quotient" section and a 62-word sandbox section between
-  the size rule and its check). Over 350 is two ideas — split it at the
-  heading the prose already implies (`multiplesAndDivisibility` had 2,100
-  words under one heading with four `h2`s inside; they became sections).
-- **A fact is delivered once in the body and once in the summary.** Every
-  further statement of it is cut, wherever it stands — an important box, a
-  scene caption, a slip, a paragraph before a figure that the figure's first
-  caption repeats. `powersOfTen` stated the digit-movement rule five times;
-  `orderingNumbers` said "more digits does not mean larger" four times. Two
-  statements with the same content in different words are not variation.
-- **A worked example varies one thing from the one before it.** Example 2
-  after 6.47 × 100 is 0.39 × 1,000: a different power, a zero to hold. An
-  example that varies nothing is a repeat; one that varies everything teaches
-  nothing about which change caused which effect.
-- **The core path carries no digression.** History, a name's origin, a
-  convention's dispute, a fourth dimension: each lives in an "Extra info" box
-  or a section after the core, never between a rule and its example. The
-  implied-multiplication dispute sat inside the powers section of
-  `orderOfOperations`; it is now a section of its own after the bars.
-- **Headings state the claim, not the topic.** "The place-value rule" names a
-  topic; "Each move changes a digit's value tenfold" is the claim, and a
-  reader who reads only the headings gets the page. (Signalling: the heading
-  is the reader's map.)
-- **The exam's own words appear once, where the form is taught.** "Write 756
-  as a product of its prime factors", "find the highest common factor of 360
-  and 756", "give your answer in index form": a reader who has met the phrase
-  recognises the question. Once, in the sentence that produces the answer or
-  in the summary; never as a heading.
-- **The figure and the prose divide the work.** Prose states what the figure
-  cannot draw — the reason, the rule, the exception; the figure draws what the
-  prose cannot say — the movement, the arrangement, the growth. A paragraph
-  that describes the figure's first stage is redundancy (Mayer): the caption
-  already says it. Never say a thing and then say it again when you show it:
-  the paragraph before a scene states the claim, the scene's captions carry the
-  numbers and the steps, and neither repeats the other — `HCFFromPrimeFactors`
-  narrated "one 2 leaves each ring… 36, the HCF" in a paragraph and then in
-  five captions, and the paragraph went. A sandbox, lab or tester starts on a
-  number the page has not already worked, or its first state is a repeat of
-  the example above it. A figure whose stages only change their text is a
-  paragraph in a box: pull the text out and delete the stage.
-- **Read it aloud to someone who is not a mathematician.** Every paragraph
-  they stop on is a finding. The stops cluster where a sentence carries two
-  ideas, where a fact returns, and where the reason for a step is a paragraph
-  away from the step.
+- Does each new idea have enough teaching before its first question?
+- Do later questions test a decision rather than give it away?
+- Does the diagram help reach a conclusion, rather than illustrate one already tested?
+- Are numbers and examples continuous across explanation, question and feedback?
+- Can a reluctant GCSE student see a purpose without objectives boxes or page narration?
+- Is the ending a compact visible takeaway rather than repeated rules and mistakes?
+- Are optional reminders tailored to actual answers, with stale advice cleared on edit?
+
+No mandatory word counts, claim-shaped headings, repeated rule panels or pinned
+scroll scenes. Retain genuine mathematical precision and useful reinforcement.
+
+Short inline checks establish understanding, not lasting recall. Include a compact
+mixed ending with less prompting, an application and a reasoning decision; revisit
+earlier skills in later lessons. Use deliberately chosen, fixed questions, not
+rotating rounds or a fresh-questions button. A completed lesson does not certify
+mastery. The Powers and roots prototype stores mixed-practice answers separately
+under `dm-powers-recall-fixed-v1:<lesson>`; Reset clears only that lesson's set. Run
+`node scripts/powers-roots-recall-check.mjs` after changing its bank.
 
 ## 2. Teacher pass — is it true?
 
@@ -123,16 +85,12 @@ each section against these, and fix in place:
   factor can hold. A slip with no earlier evidence is a paragraph in the wrong
   place: move the evidence up.
 
-## 2b. Voice pass — does every sentence do mathematical work?
+## 2b. Voice
 
-`lesson-prose-voice.md` holds thirty rules — twenty-four on the sentence, taken
-from the written-methods pages by reading them, and six on the paragraph and
-the page. Judge each sentence and each paragraph against it. The
-faults cluster in the introduction, the hinge between sections, and any sentence
-beside a widget — so read those hardest, and do not copy an opener from a
-reference page without testing it first. `node scripts/voice-check.mjs <page>`
-lists the sentences a script can suspect — banned phrases, questions, second
-person, length — as lines to read, not verdicts; the pass is reading them.
+Read `lesson-prose-voice.md` and run the voice checker. Review its findings in
+context, not as a verdict. Conversational questions, “we”, “you” and a simple
+interaction instruction are welcome. Check example continuity and avoid
+unnecessary page narration, patronising reassurance and automatic success copy.
 
 ## 2c. Sense pass — would a teacher say it?
 
@@ -249,6 +207,13 @@ Flatten the page: no stylesheet, no script, no ARIA. Then check
 - every heading level is one below its parent.
 
 ## 6. Interaction pass — every state, not the happy one
+
+Test automatic acceptance, baseline and operator spacing before/after acceptance,
+wrong-answer delay, answer-specific optional help, clearing stale help, blank input,
+IME composition, focus after an input disappears, live announcements, Continue,
+Show whole lesson, Reset, deep links, partial/completed reloads and reduced motion.
+Restored answers must not replay reveals. Test keyboard order in Chrome; distinguish
+DOM/live-region checks from actual screen-reader listening tests in the handoff.
 
 Exact answers, both ends of the range, one past both ends, empty, letters,
 mixed, a leading zero. A refused input must hide the working rather than leave

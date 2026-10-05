@@ -211,40 +211,26 @@ document.addEventListener("DOMContentLoaded", () => {
         let cardWidth = sticky.offsetWidth;
         let cardHeight = sticky.offsetHeight;
 
-        /* Pinning takes the card out of the page and puts it on the body, and
-           moving a node drops focus and the caret from whatever is inside it.
-           Both are put back, so the card can go on being positioned however the
-           reader is using it. */
-        const moveCard = (move) => {
-            const active = sticky.contains(document.activeElement) ? document.activeElement : null;
-            const caret = active && typeof active.selectionStart === "number"
-                ? [active.selectionStart, active.selectionEnd]
-                : null;
-            move();
-            if (!active || document.activeElement === active) return;
-            active.focus({ preventScroll: true });
-            if (caret) active.setSelectionRange(caret[0], caret[1]);
-        };
 
         const dock = (offset = 0) => {
-            if (sticky.parentNode !== scene) moveCard(() => scene.insertBefore(sticky, scene.firstChild));
             sticky.classList.remove("is-pinned");
             sticky.style.removeProperty("right");
             sticky.style.removeProperty("left");
             sticky.style.removeProperty("width");
             sticky.style.removeProperty("height");
             sticky.style.removeProperty("transform");
-            sticky.style.top = `${offset}px`;
+            const scale = scene.offsetWidth ? scene.getBoundingClientRect().width / scene.offsetWidth : 1;
+            sticky.style.top = reduceMotion.matches ? "0px" : `${Math.max(16, (window.innerHeight - cardHeight * scale) / 2) / (scale || 1)}px`;
         };
 
+        // Native sticky positioning owns the card’s movement. JavaScript only
+        // sets its viewport inset and advances the mathematical drawing.
         const pin = (left, top, scale) => {
-            if (sticky.parentNode !== document.body) moveCard(() => document.body.append(sticky));
             sticky.classList.add("is-pinned");
-            sticky.style.left = `${left}px`;
-            sticky.style.top = `${top}px`;
+            sticky.style.left = "0px";
+            sticky.style.top = `${top / scale}px`;
             sticky.style.width = `${cardWidth}px`;
             sticky.style.height = `${cardHeight}px`;
-            sticky.style.transform = `scale(${scale})`;
         };
 
         const measure = () => {
@@ -310,6 +296,7 @@ document.addEventListener("DOMContentLoaded", () => {
         controllers.forEach((controller) => controller.measure());
         requestUpdate();
     };
+    document.addEventListener("lessonlayoutchange", motionChanged);
     if (reduceMotion.addEventListener) reduceMotion.addEventListener("change", motionChanged);
     else reduceMotion.addListener(motionChanged);
 });

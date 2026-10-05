@@ -24,51 +24,12 @@ node scripts/serve.mjs 8001
 lsof -nP -iTCP:8000 -sTCP:LISTEN   # what is holding the port
 ```
 
-## Editing the page in the page (temporary)
+## Editing pages
 
-While it is served by `scripts/serve.mjs`, every teaching page — the lessons
-under `pages/curriculum/` that are not `practice*.html` or a menu, and the
-extracurricular pages — carries an editor. A small panel at the right of the
-window holds its switch (remembered across pages). While it is on, hover any
-text and a pencil appears at the right edge of its block; click it, or
-Alt+click the text, and the block is editable where it stands. Enter or a
-click elsewhere saves, Escape cancels, and the notice a save leaves offers an
-undo. An SVG or MathML label opens a small box over itself instead.
-
-The panel shows the page's elements as a tree, opened on demand like the
-Elements panel in devtools: a row names the element and shows a glance of its
-own text, greyed when a script drew it; clicking a row selects the element on
-the page, double-clicking edits it, hovering outlines it. Selecting a block on
-the page opens the tree to it. Below the tree are **Delete** for the selected
-element and **Insert** of a paragraph, heading, list item, list, section,
-important box or any markup you type, before or after the selected element or
-inside it at the end. A new block is written with the indentation
-and blank lines its neighbours use, and opens for editing with its placeholder
-text selected.
-
-A save writes the source file as the smallest change that gives the new text —
-a changed word is a changed word in the file, with the entities, tags and line
-breaks around it left as they were — so the edit shows up in `git diff` like
-one made in an editor. Typed `—`, `×`, `÷`, `−` and the like are written as
-the named entities the pages use. Text is looked for in the page's HTML, then
-in the embeds it fetched (the ribbon), then in the scripts it loads: a caption
-a scene draws is a string literal in `js/<page>.js`, and is written there, as
-is the static placeholder in the page when it says the same thing. In a
-template literal the fixed parts can be edited and the `${…}` parts cannot.
-After an edit to a script the page's running copy still holds the old text
-until it reloads; the notice says so and offers the reload.
-
-A pencil appears only on text a file actually holds. Text a script computes —
-a digit in a scene, a total — gets none. The server refuses a save if the file
-has changed since the page was loaded, so reload after editing a file in VS
-Code.
-
-Nothing is in the pages: the tag is injected by the server as a page goes out,
-so a deployed page never sees it. It lives in `scripts/inline-edit.mjs` (the
-route and the injection) and `scripts/inline-edit-client.js` (the page side).
-To remove it, delete those two files and the lines in `serve.mjs` that import
-and call `inject` and `route`, then delete this section. The server must be
-restarted to pick the editor up.
+Edit the HTML, CSS and JavaScript source files, then reload the browser. The dev
+server serves those files unchanged and disables caching. There is no injected
+browser editor or source-writing endpoint. DevTools changes are temporary unless
+you explicitly save them to source files using your own development setup.
 
 ## Why not `python3 -m http.server` or Live Server?
 
@@ -101,10 +62,21 @@ back to the repo root.
 node scripts/linkcheck.mjs              # every local href/src resolves, and carries the base prefix
 node scripts/breadcrumb-check.mjs       # breadcrumb trails are consistent
 node scripts/practice-pairing-check.mjs # lessons and drills line up with the manifests
-node scripts/panel-check.mjs            # nothing in the fixed 900px panel reflows on the viewport
+node scripts/panel-check.mjs            # only the shared desktop lesson canvas changes width
 node scripts/notation-check.mjs         # roots are drawn, and stripped notation still reads true
 node scripts/glossary-check.mjs         # glossary terms, definitions, and the marks in the pages
 node scripts/structure-check.mjs        # tags balance, headings step by one, ids and ARIA targets exist, inline text does not run together
+node scripts/integrated-lesson-check.mjs <lesson.html> # embedded questions mount, validate and unfold correctly
+node scripts/written-methods-check.mjs # fixed teaching/review questions and independently calculated answers
+node scripts/written-methods-browser-check.mjs # all 14 lessons: native typing, keyboard choices, reveal, reload and menu progress
+node scripts/written-methods-motion-check.mjs # normal scrolling: scene position, stable type and card dimensions
+node scripts/written-methods-sandbox-check.mjs # invalid input, focus, recovery and independent boundary arithmetic
+node scripts/powers-roots-browser-check.mjs # adjustable diagrams, mathematical states and keyboard endpoints
+node scripts/lesson-interaction-check.mjs # both blocks: typing/composition, guided flow, reload, reset, recall and menu progress
+node scripts/lesson-resilience-check.mjs # both blocks: unavailable storage, no-JS reading, short rails and menu geometry
+node scripts/lesson-session-check.mjs # both blocks: drafts, first-unanswered resume, diagram settings and reset cancellation
+node scripts/number-revision-check.mjs # optional revision: 46 independently derived answers, parsing, scheduling and scope links
+node scripts/number-revision-browser-check.mjs # both reviews: sessions, problems, drafts, support, reset and storage fallbacks
 node scripts/voice-check.mjs <page>     # the sentences a script can suspect — lines to read, not verdicts
 node scripts/text-check.mjs <page>      # rendered type sizes and text that crosses a box edge — needs the server and Chrome
 ```
@@ -121,13 +93,12 @@ boundaries are not joins: `</h3><p>` breaks the line whatever the styles say.
 is the regression that breaks the deployed site while looking fine locally.
 
 `panel-check.mjs` fails a page in `.layout` that declares a `<meta name="viewport">`,
-and a stylesheet that page loads which carries an `@media (max-width: …)`. Both
-break the fixed-canvas layout: the panel is a hard 900px that `shared.css` scales
-with a transform, so a phone reporting a 980px viewport never fires a breakpoint,
-and a narrowed desktop window reflows content the browser is only shrinking.
-`shared.css` is exempt — its width queries govern the `position: fixed` ribbon,
-which really does live in the viewport. `vocab/index.html` is skipped because it
-has no `.layout`, not because it is named.
+and fails page-specific viewport-width queries. `shared.css` owns the fixed ribbon
+and legacy 900px floor; `lesson-sections.css` widens authored lessons and reserves
+a left rail for their contents panel. `course-menus.css` gives authored menus a
+wider desktop canvas without that rail. Neither introduces phone reflow.
+`vocab/index.html` is skipped because it has no `.layout`, not because it is
+named.
 
 `notation-check.mjs` also fails a bare `&radic;` written over a radicand — the
 glyph has no bar, so it does not say how far the root reaches — and a dash
@@ -226,8 +197,9 @@ repository pass; `git status` should not know they existed.
 **The generator never overwrites a page that holds work.** `write()` in
 `scripts/generate-gcse-strand.mjs` reads the file it is about to replace and
 leaves it alone unless it carries the stub marker `&mdash;coming soon&mdash;`.
-Menus are pure derivations of the manifest and are always rebuilt; teaching
-pages and drills are not.
+Menus are rebuilt unless their HTML contains `data-authored-menu`. That marker
+protects hand-designed menus, including Powers and roots and its parent.
+Teaching pages and drills still use the stub check above.
 
 That check is against the file, not against the manifest, and the difference
 matters. The manifest's `written` and `generate` flags are a record of which
@@ -248,3 +220,86 @@ is the backstop for the day someone forgets.
 written **without** the prefix; it is added at the single point where a file is
 written (and stripped again when the checkers read pages back). Keep it that way
 — it is the reason the prefix lives in exactly one place.
+
+## Curriculum progress and menu themes
+
+For the approved optional revision sessions and original exam-style problems
+in Written methods and Powers and roots, see `number-revision.md`. Their
+records and completion are separate from teaching-page progress.
+
+`js/curriculum-progress.js` adds read-only progress bars to curriculum cards.
+`navPanel.js` loads it on lessons and most menus; menus without a contents panel
+load it explicitly. Lesson completion means all inline questions answered, not
+a visit or “Show whole lesson”. Optional reviews never increase lesson counts.
+Completed cards have both a green treatment and a text label.
+Reviews can be retained without advertising them on a menu: set
+`"showInMenu": false` on the drill in its manifest and `data-menu-unlisted` on
+the review's body (so the breadcrumb checker knows it is intentionally unlisted).
+The generator and pairing
+checker honour that choice; the existing review URL and question bank remain.
+
+Records use per-lesson `dm-curriculum-v1:` localStorage keys. The five Powers
+and roots lessons also read their saved accepted answers, so existing progress
+is retained. Reset clears only that lesson. Progress belongs to the current
+browser and origin; clearing browser data removes it. There is no account sync.
+
+Written methods uses fixed teaching answers under
+`dm-written-methods-accepted-v1:<lesson>`, reading stops under
+`dm-written-methods-reading-v1:<lesson>`, and optional mixed practice under
+`dm-written-methods-recall-v1:<lesson>`. Its completion count is rebuilt from
+accepted teaching answers, not inherited from an older random question set.
+The browser check uses a separate temporary Chrome profile; it does not change
+the reader's saved progress. Pass lesson basenames to check a smaller set, for
+example `node scripts/written-methods-browser-check.mjs placeValue columnAddition`.
+
+Written methods now follows Powers and roots: fixed mixed questions sit at each
+lesson's end. The three former standalone review pages and their banks remain
+as unlisted source material (`showInMenu: false`), not part of the new menu.
+
+Written-method animation cards stay inside their scene throughout scrolling.
+Native CSS sticky positioning holds them steady; do not compensate for scrolling
+with JavaScript `top` updates, which lag behind fast scrolling. The lesson body
+clips horizontal overflow without creating a separate scrolling container.
+Moving cards onto `body` loses lesson typography and spacing. Guided reveals
+also change previously hidden scene dimensions: the lesson adapter observes
+those dimensions and emits `lessonlayoutchange` to remeasure the drawings.
+Test ordinary motion as well as reduced motion; static screenshots cannot
+detect a zero-height cached measurement or a style change while pinning. The
+motion check also measures immediately after scroll jumps, before JavaScript
+can correct a misplaced card.
+
+The motion check accepts lesson basenames and `TEST_WIDTH` / `TEST_HEIGHT`
+environment variables for short or narrow desktop checks. All browser checks
+use temporary profiles, leaving the reader's saved answers untouched.
+
+The 19 authored Written methods and Powers and roots lessons load
+`js/lesson-session.js` before their diagram scripts. It saves unfinished teaching
+answers and diagram controls under `dm-lesson-session-v1:<pathname>` (including
+the site prefix). Restore controls before diagrams initialise; do not replay
+input events to restore drafts, as that could grade an unfinished answer.
+Mixed-practice records keep `answers` and `accepted` separately for the same
+reason. Older validated mixed-practice answers are preserved on migration.
+
+The subtopic menu's returning-learner link adds `?resume=1`: this reveals and
+focuses the first unanswered gap with preceding context visible. An explicit
+heading hash takes precedence. Reset uses a native confirmation before any
+store is cleared; cancelling must preserve answers, drafts and diagram state.
+Keep the confirmation listener on window capture, ahead of the existing
+document-level reset listeners. Reset is local to the current lesson.
+
+`js/curriculum-progress-catalog.json` lists lesson URLs (including future
+lessons) and menus. After adding or publishing lessons, refresh this generated
+data—not lesson HTML—with:
+
+```sh
+node scripts/curriculum-progress-catalog.mjs > js/curriculum-progress-catalog.json
+node scripts/curriculum-progress-check.mjs
+```
+
+`css/course-menus.css` supplies the authored-menu layout; `css/blended-course-menus.css`
+restores the site's framed gutters, patterned headers and rounded shapes on the
+two opted-in menus. The Structure and
+calculation cards use original SVG images in `images/curriculum/`; their colours
+match the subtopic palette in `js/curriculum-progress.js`. Higher menus keep
+their existing design. Bars are statuses, not adjustable sliders, and each has
+a descriptive accessible label.

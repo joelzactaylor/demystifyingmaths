@@ -44,8 +44,8 @@
 }
 
 .division-scene__sticky.is-pinned {
-    position: fixed;
-    right: auto;
+    position: absolute;
+    right: 0;
     z-index: 900;
     transform-origin: top left;
 }
@@ -120,6 +120,7 @@
 .division-board__cell--quotient { grid-row: 2; color: #09539d; font-size: 1.82rem; opacity: 0; }
 .division-board__cell--dividend { grid-row: 3; }
 .division-board__remainder { grid-row: 2; z-index: 2; align-self: center; justify-self: start; padding-left: 2px; color: #09539d; font-size: 1.05rem; white-space: nowrap; opacity: 0; will-change: opacity, transform; }
+.division-board__continuation { font-size: 1.5rem; }
 .division-board__cell--appended { color: #687b84; opacity: 0; }
 
 .division-board__divisor { display: grid; grid-column: 1; grid-row: 3; place-items: center end; padding-right: 17px; }

@@ -1,0 +1,229 @@
+/* Questions are part of the explanation, not a quiz card bolted beneath it.
+   The sentence, answer gap and feedback therefore share the section's flow. */
+.lesson-check {
+    margin: 38px 0 4px;
+}
+
+.lesson-check__body { display: grid; gap: 20px; }
+
+.lesson-check__turn { position: relative; }
+
+.lesson-check__turn + .lesson-check__turn {
+    padding-top: 8px;
+}
+
+.lesson-check__prompt {
+    max-width: 710px;
+    display: inline;
+    margin: 0;
+    color: #314953;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.lesson-check__expression {
+    color: #006f65;
+    font: 700 1.06em/1.5 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+.lesson-main .lesson-check__expression sup { font-size: max(.82em, 14px); }
+
+.lesson-check__response {
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: end;
+    margin: 0 0 0 8px;
+    vertical-align: middle;
+}
+
+.lesson-check__answer,
+.lesson-check__inline-choice {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    color: #41535c;
+    font-size: .94rem;
+    font-weight: 700;
+}
+
+.lesson-check__entry { display: inline-flex; gap: 8px; align-items: center; }
+
+.lesson-check__answer-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.lesson-check__entry input,
+.lesson-check__inline-choice select {
+    min-width: 112px;
+    min-height: 42px;
+    padding: 8px 12px;
+    border: 2px solid #7048c8;
+    border-radius: 8px;
+    outline: none;
+    background: #fff;
+    color: #182c38;
+    font: 700 1.08rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+}
+
+.lesson-check__entry input { width: 150px; }
+
+.lesson-check__inline-choice select {
+    min-width: 150px;
+    max-width: 330px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.lesson-check__entry input:focus,
+.lesson-check__inline-choice select:focus,
+.lesson-check__part input:focus,
+.lesson-check__part select:focus {
+    border-color: #5531a9;
+    box-shadow: 0 0 0 4px rgba(112, 72, 200, .14);
+}
+
+.lesson-check__unit { color: #41535c; font-size: .95rem; font-weight: 700; }
+
+.lesson-check__choice { margin: 0; padding: 0; border: 0; }
+.lesson-check__choice legend { color: #41535c; font-size: .94rem; font-weight: 700; }
+
+.lesson-check__options,
+.lesson-check__parts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 9px;
+}
+
+.lesson-check__option {
+    display: flex;
+    gap: 9px;
+    align-items: center;
+    min-height: 40px;
+    padding: 7px 12px;
+    border: 2px solid #b8cbd7;
+    border-radius: 10px;
+    background: #fff;
+    color: #173849;
+    cursor: pointer;
+    font-size: .95rem;
+}
+
+.lesson-check__option:focus-within {
+    border-color: #7048c8;
+    box-shadow: 0 0 0 4px rgba(112, 72, 200, .12);
+}
+
+.lesson-check__option input { accent-color: #7048c8; }
+
+.lesson-check__part {
+    display: grid;
+    gap: 6px;
+    color: #41535c;
+    font-size: .9rem;
+    font-weight: 700;
+}
+
+.lesson-check__part input,
+.lesson-check__part select {
+    min-width: 112px;
+    min-height: 42px;
+    padding: 8px 11px;
+    border: 1px solid #7aaabd;
+    border-radius: 8px;
+    outline: none;
+    background: #fff;
+    color: #182c38;
+    font: 700 1rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+
+.lesson-check__part .is-correct-part { border-color: #168073; background: #edf9f5; }
+
+.lesson-check__check {
+    min-height: 42px;
+    padding: 8px 17px;
+    border: 1px solid #7048c8;
+    border-radius: 8px;
+    background: #7048c8;
+    box-shadow: none;
+    color: #fff;
+    cursor: pointer;
+    font: 700 .92rem/1.2 Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.lesson-check__check:hover { border-color: #5531a9; background: #5531a9; }
+.lesson-check__check:focus-visible,
+.lesson-check__help button:focus-visible,
+.lesson-check__again:focus-visible { outline: 3px solid rgba(17, 110, 147, .28); outline-offset: 2px; }
+
+.lesson-check__feedback {
+    margin: 13px 0 0;
+    color: #41535c;
+    font-size: .95rem;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+.lesson-check__feedback:empty { display: none; }
+.lesson-check__turn.is-correct .lesson-check__feedback { color: #12675e; }
+.lesson-check__turn.is-correct .lesson-check__entry input,
+.lesson-check__turn.is-correct .lesson-check__inline-choice select { border-color: #168073; background: #edf9f5; }
+.lesson-check__turn.is-wrong .lesson-check__feedback { color: #8c5c14; }
+.lesson-check__turn.is-incomplete .lesson-check__feedback { color: #52666f; }
+
+.lesson-check__help { display: flex; gap: 18px; margin-top: 11px; }
+
+.lesson-check__help button,
+.lesson-check__again {
+    padding: 3px 0;
+    border: 0;
+    border-bottom: 1px solid currentColor;
+    background: transparent;
+    color: #5531a9;
+    cursor: pointer;
+    font: 700 .9rem/1.25 Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.lesson-check__help button:hover,
+.lesson-check__again:hover { color: #1769d2; }
+
+.lesson-check__support {
+    max-width: 680px;
+    margin-top: 15px;
+    padding: 14px 17px;
+    border-left: 5px solid #efa711;
+    background: #fff4cf;
+    color: #243a45;
+    font-size: .95rem;
+    line-height: 1.55;
+}
+
+.lesson-check__support b { color: #815500; }
+.lesson-check__support ol { margin: 7px 0 0; padding-left: 22px; }
+
+.lesson-check__complete {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    padding: 2px 0 0;
+    color: #12675e;
+}
+
+.lesson-check__complete strong { font-size: 1rem; }
+.lesson-check__tick { font-size: 1.15rem; font-weight: 700; }
+.lesson-check__again { margin-left: 4px; }
+.lesson-check [hidden] { display: none !important; }
+
+@media (prefers-reduced-motion: reduce) {
+    .lesson-check__check,
+    .lesson-check__entry input { transition: none; }
+}

@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const readNumber = (text) => {
         const clean = String(text).trim();
-        if (!/^\d*(\.\d*)?$/.test(clean)) return null;
+        if (!/^\d{0,3}(\.\d{0,2})?$/.test(clean)) return null;
         const [whole, fraction = ""] = clean.split(".");
         const raw = `${whole}${fraction}`;
         if (!raw.length) return null;
@@ -590,15 +590,8 @@ document.addEventListener("DOMContentLoaded", () => {
         sandbox: { vh: 30, px: 250 }
     };
 
-    const limit = (raw) => {
-        let cleaned = raw.replace(/[^\d.]/g, "");
-        const dot = cleaned.indexOf(".");
-        if (dot >= 0) cleaned = `${cleaned.slice(0, dot + 1)}${cleaned.slice(dot + 1).replace(/\./g, "")}`;
-        const [whole, fraction] = cleaned.split(".");
-        let head = whole.slice(0, 3);
-        if (head.length > 1) head = head.replace(/^0+(?=\d)/, "");
-        return fraction === undefined ? head : `${head}.${fraction.slice(0, 2)}`;
-    };
+    // Preserve invalid entries instead of silently changing the calculation.
+    const limit = raw => raw.trim();
 
     /* One scene: its own numbers, its own view, its own scroll distance. */
     const createScene = (scene) => {
@@ -665,39 +658,25 @@ document.addEventListener("DOMContentLoaded", () => {
         scene.classList.add("is-ready");
         let cardHeight = sticky.offsetHeight;
 
-        /* Pinning takes the card out of the page and puts it on the body, and
-           moving a node drops focus and the caret from whatever is inside it.
-           Both are put back, so the card can go on being positioned however the
-           reader is using it. */
-        const moveCard = (move) => {
-            const active = sticky.contains(document.activeElement) ? document.activeElement : null;
-            const caret = active && typeof active.selectionStart === "number"
-                ? [active.selectionStart, active.selectionEnd]
-                : null;
-            move();
-            if (!active || document.activeElement === active) return;
-            active.focus({ preventScroll: true });
-            if (caret) active.setSelectionRange(caret[0], caret[1]);
-        };
 
         const dock = (offset = 0) => {
-            if (sticky.parentNode !== scene) moveCard(() => scene.insertBefore(sticky, scene.firstChild));
             sticky.classList.remove("is-pinned");
             sticky.style.removeProperty("left");
             sticky.style.removeProperty("width");
             sticky.style.removeProperty("height");
             sticky.style.removeProperty("transform");
-            sticky.style.top = `${offset}px`;
+            const scale = scene.offsetWidth ? scene.getBoundingClientRect().width / scene.offsetWidth : 1;
+            sticky.style.top = reduceMotion.matches ? "0px" : `${Math.max(16, (window.innerHeight - cardHeight * scale) / 2) / (scale || 1)}px`;
         };
 
+        // Native sticky positioning owns the card’s movement. JavaScript only
+        // sets its viewport inset and advances the mathematical drawing.
         const pin = (left, top, width, scale) => {
-            if (sticky.parentNode !== document.body) moveCard(() => document.body.append(sticky));
             sticky.classList.add("is-pinned");
-            sticky.style.left = `${left}px`;
-            sticky.style.top = `${top}px`;
+            sticky.style.left = "0px";
+            sticky.style.top = `${top / scale}px`;
             sticky.style.width = `${width}px`;
             sticky.style.height = `${cardHeight}px`;
-            sticky.style.transform = `scale(${scale})`;
         };
 
         /* The card changes height when the board gains a column, so its height
@@ -849,6 +828,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("scroll", nudge, { passive: true });
     window.addEventListener("resize", resetAll);
+    document.addEventListener("lessonlayoutchange", resetAll);
     if (reduceMotion.addEventListener) reduceMotion.addEventListener("change", resetAll);
     else reduceMotion.addListener(resetAll);
 });

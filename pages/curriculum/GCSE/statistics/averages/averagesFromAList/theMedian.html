@@ -6,16 +6,21 @@
     <title>Demystifying Maths | GCSE The median</title>
     <meta name="description" content="The middle value of ordered data, and the halfway pair when the count is even.">
     <meta property="og:title" content="Demystifying Maths">
-    <meta property="og:description" content="The middle value of ordered data, and the halfway pair when the count is even.">
+    <meta property="og:description"
+        content="The middle value of ordered data, and the halfway pair when the count is even.">
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/integrated-lesson-banks.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -30,12 +35,18 @@
             <h1>Demystifying - The median</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
-                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/">Statistics</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/">Averages and spread</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/">From a list</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span>
+                    </li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/">Statistics</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/">Averages and
+                            spread</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/">From a
+                            list</a><span aria-hidden="true">&rsaquo;</span></li>
                     <li>
                         <p>The median</p>
                     </li>
@@ -45,26 +56,114 @@
 
         <aside id="page-nav-container"></aside>
 
-        <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>Find the median of a list: order first, middle value for odd counts, midpoint of the middle pair for even counts, with the halfway position rule made explicit. Ungrouped lists only; frequency tables and grouped data have their own pages, and quartiles are Higher on the Quartiles pages. Both tiers. (S4)</p>
+        <main class="lesson-main" data-integrated-bank="median" data-lesson-check-api="IntegratedLessonBank"
+            data-lesson-check-anchors="middle-value,even-list,order-matters">
+            <p class="prereq"><b>Before this page:</b> <span>compare numbers, place them in order, and count the values
+                    in a list.</span></p>
+
+            <section aria-labelledby="middle-value">
+                <h1 id="middle-value">The median is the middle value in order</h1>
+                <p>The median divides an ordered list into two equal-sized parts. Put the values in <span class="gloss"
+                        data-term="ascending">ascending</span> order before choosing the middle.</p>
+                <div class="rule-card">
+                    <h2 class="rule-card__statement">An odd list has one middle value</h2>
+                    <ol class="rule-card__conditions">
+                        <li>Order the values from least to greatest.</li>
+                        <li>Count the same number of places from each end.</li>
+                    </ol>
+                </div>
+                <div class="wex">
+                    <h2 class="wex__title">Median of 9, 4, 7, 12 and 5</h2>
+                    <p class="wex__task">Order the values, then select the third value of the five.</p>
+                    <ol class="wex__steps">
+                        <li><span class="wex__do"><span class="sf">4, 5, 7, 9, 12</span></span><span
+                                class="wex__why">The values are now in ascending order.</span></li>
+                        <li><span class="wex__do"><span class="sf">4, 5, <b>7</b>, 9, 12</span></span><span
+                                class="wex__why">Two values are before 7 and two are after it.</span></li>
+                    </ol>
+                </div>
+                <p>The median is 7. The original order does not affect it; only the ordered positions matter.</p>
             </section>
 
-            <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+            <section aria-labelledby="even-list">
+                <h1 id="even-list">An even list has two middle values</h1>
+                <p>With an even number of values, no single value has equal numbers of values on both sides. Take the
+                    mean of the two middle values.</p>
+                <div class="wex">
+                    <h2 class="wex__title">Median of 3, 11, 8 and 6</h2>
+                    <p class="wex__task">Order the values, then average the second and third values.</p>
+                    <ol class="wex__steps">
+                        <li><span class="wex__do"><span class="sf">3, 6, 8, 11</span></span><span class="wex__why">The
+                                two middle values are 6 and 8.</span></li>
+                        <li><span class="wex__do"><span class="sf">(6 + 8) &divide; 2 = 7</span></span><span
+                                class="wex__why">7 lies halfway between the two middle values.</span></li>
+                    </ol>
+                </div>
+                <p>The median is 7, even though 7 is not in the list. The halfway position can produce a value that was
+                    never measured.</p>
+            </section>
+
+            <section aria-labelledby="order-matters">
+                <h1 id="order-matters">Ordering the list matters</h1>
+                <p>Counting positions in the original order can select the wrong value. The position only has meaning
+                    after the values have been sorted.</p>
+                <div class="reading-pair">
+                    <article>
+                        <h2>Unordered list</h2>
+                        <p><span class="sf">2, 14, 5, 9, 7</span> has 5 as its third entry, but 5 is not the median.</p>
+                    </article>
+                    <article>
+                        <h2>Ordered list</h2>
+                        <p><span class="sf">2, 5, 7, 9, 14</span> has 7 in the middle, so the median is 7.</p>
+                    </article>
+                </div>
+            </section>
+
+            <section aria-labelledby="check-median">
+                <h1 id="check-median">Use the middle positions to check</h1>
+                <p>For an odd list, the median has the same number of values on each side. For an even list, the two
+                    middle values have the same number of values on each side of the pair.</p>
+                <div class="important-box" aria-labelledby="median-check-title">
+                    <h2 class="important-box__title" id="median-check-title">Check 3, 6, 8 and 11</h2>
+                    <p>There is one value before 6 and one after 8. The pair is centred in the ordered list, and its
+                        <span class="gloss" data-term="midpoint">midpoint</span> is <span class="sf">7</span>.</p>
+                </div>
+            </section>
+
+            <section aria-labelledby="common-mistakes">
+                <h1 id="common-mistakes">Common mistakes</h1>
+                <ul class="slips">
+                    <li><b>Choosing the middle entry before ordering</b>
+                        <span>In 2, 14, 5, 9 and 7, the third entry is 5. Ordering gives 2, 5, 7, 9, 14, so the median
+                            is 7.</span>
+                    </li>
+                    <li><b>Using one middle value in an even list</b>
+                        <span>For 3, 6, 8 and 11, the middle is the pair 6 and 8. Choosing 6 gives the wrong median; (6
+                            + 8) &divide; 2 = 7.</span>
+                    </li>
+                    <li><b>Adding all the values</b>
+                        <span>For 4, 5, 7, 9 and 12, the total 37 is not the median. The median is the middle ordered
+                            value, 7.</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="summary">
+                <h1 id="summary">Summary</h1>
+                <ol class="recap">
+                    <li>Order the list before choosing a middle position.</li>
+                    <li>For an odd count, the median is the single middle value.</li>
+                    <li>For an even count, the median is the mean of the two middle values.</li>
+                    <li>Check that the chosen value or pair leaves equal numbers of values on each side.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/practiceTheMedian.html" style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
-                        <h3>The median</h3>
-                        <p>The middle value of ordered data, and the halfway pair when the count is even.</p>
-                    </a>
-                    <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/theMean.html" style="background-image: none">
+                    <a class="topic-card topic-card--next"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/theMean.html"
+                        style="background-image: none">
                         <span class="topic-card__kicker">Next lesson</span>
                         <h3>The mean</h3>
                         <p>The total shared equally across the count, and why one extreme drags the mean.</p>

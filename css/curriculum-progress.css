@@ -1,0 +1,16 @@
+/* Progress is a read-only status, never a control inside a linked card. */
+.card-progress { display: block; margin-top: auto; padding-top: 22px; width: 100%; color: #465966; }
+.card-progress__label { display: block; margin-bottom: 9px; font: 500 14px/1.5 Inter, ui-sans-serif, system-ui, sans-serif; }
+.card-progress progress, [data-topic-progress] { display: block; appearance: none; border: 0; border-radius: 8px; width: 100%; height: 7px; background: #e5e5ee; overflow: hidden; }
+.card-progress progress::-webkit-progress-bar, [data-topic-progress]::-webkit-progress-bar { background: #e5e5ee; border-radius: 8px; }
+.card-progress progress::-webkit-progress-value, [data-topic-progress]::-webkit-progress-value { background: var(--topic-accent,#5146bd); border-radius: 8px; }
+.card-progress progress::-moz-progress-bar, [data-topic-progress]::-moz-progress-bar { background: var(--topic-accent,#5146bd); border-radius: 8px; }
+a.topic-card.is-lesson-complete { border-color: #6da68a; background-color: #f0faf4; }
+.is-lesson-complete .card-progress__label { color: #0f6d40; font-weight: 700; }
+.is-lesson-complete .card-progress progress { --topic-accent: #0f6d40; }
+.has-curriculum-theme #page-nav-container { background-color: var(--topic-accent); }
+.has-curriculum-theme .page-nav-link.active { color: var(--topic-accent); }
+.subtopic-menu .curriculum-intro { border-color: var(--topic-accent); }
+.subtopic-menu .topic-card:not(.topic-card--practice) h3, .subtopic-menu .topic-section h2 { color: var(--topic-accent); }
+.subtopic-menu .topic-card:not(.topic-card--practice):hover { border-color: var(--topic-accent); background-color: var(--topic-soft); }
+.subtopic-menu .topic-card:focus-visible { outline-color: var(--topic-accent); }

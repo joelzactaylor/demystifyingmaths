@@ -12,7 +12,14 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/positiveAndNegativeRoots.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/powersAndRootsNavigation.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/powersRootsRecall.css">
+    <script src="/demystifyingmaths/js/lesson-session.js" defer></script>
+    <script src="/demystifyingmaths/js/powersRootsRecallBank.js" defer></script>
+    <script src="/demystifyingmaths/js/powersRootsRecall.js" defer></script>
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
@@ -20,18 +27,19 @@
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
     <script src="/demystifyingmaths/js/positiveAndNegativeRoots.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&amp;display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="roots-lesson">
     <div class="layout">
         <div id="top-ribbon-placeholder"></div>
         <script>fetch("/demystifyingmaths/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
 
         <header>
-            <h1>Demystifying - Positive and negative square roots</h1>
+            <h1>Positive and negative square roots</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
                     <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span>
@@ -63,12 +71,15 @@
                         roots</a>.</span></p>
 
             <section>
-                <h1 id="two-numbers-square-to-49">Two numbers square to 49, and the root sign names one of them</h1>
+                <h1 id="two-numbers-square-to-49">Two numbers, the same square</h1>
 
-                <p>7 and &minus;7 have the same square: <span class="sf">(&minus;7) &times; (&minus;7) = 49</span>, not &minus;49, because
-                    two negatives multiply to a positive, the rule set out in full on <a
-                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/multiplyingDividingNegatives.html">multiplying
-                        and dividing negative numbers</a>:</p>
+                <p>Suppose you square a number and get 49. Can you work backwards to find
+                    the number you started with? 7 works, but it isn't the only possibility.</p>
+                <div class="roots-pair" aria-label="Two ways to make 49">
+                    <p><strong>7 &times; 7 = 49</strong><span>Two positive factors</span></p>
+                    <p><strong>(&minus;7) &times; (&minus;7) = 49</strong><span>Two negative factors</span></p>
+                </div>
+                <p class="roots-instruction">Does this work for other numbers too? Choose a number on the line, then change its sign.</p>
 
                 <figure class="mirror">
                     <div class="mirror__row">
@@ -133,30 +144,42 @@
                             aria-label="7 squared equals 49 and negative 7 squared equals 49"><span class="sf">7<span class="caret" aria-hidden="true">^</span><sup>2</sup></span> = 49 and <span class="sf">(&minus;7)<span class="caret" aria-hidden="true">^</span><sup>2</sup></span> = 49</span>, so
                         two numbers square to 49.</figcaption>
                 </figure>
+                <p>Squaring gives the same result for a number and its negative, so knowing
+                    the square doesn't tell us which sign we started with.</p>
+                <div data-lesson-check="0" data-lesson-check-api="RootsLessonBank"></div>
 
-                <div class="rule-card">
-                    <h2 class="rule-card__statement" aria-label="the square root of 49 equals 7"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">49</span></span> = 7</h2>
-                    <ol class="rule-card__conditions">
-                        <li>Of 7 and &minus;7, which both square to 49, the sign names the non-negative one.</li>
-                    </ol>
-                </div>
-
-                <p>&minus;7 is a square root of 49, and it is written <span class="sf" role="math"
-                        aria-label="negative the square root of 49">&minus;<span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">49</span></span></span>. 7, the root the sign names, is called
-                    the principal square root.</p>
-
-                <p>One symbol stands for one number. If <span class="sf" role="math" aria-label="the square root of 49"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">49</span></span></span> stood for 7 and &minus;7 at once,
-                    <span class="sf" role="math" aria-label="the square root of 49 plus 1"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">49</span></span> + 1</span> would be both 8
-                    and &minus;6, and the calculation could not go on.</p>
             </section>
 
             <section>
-                <h1 id="solving-x-squared-equals-49">x&sup2; = 49 has two solutions</h1>
-                <p><span class="sf" role="math" aria-label="x squared"><var>x</var><span class="caret" aria-hidden="true">^</span><sup>2</sup></span> = 49 asks which numbers square to 49, and two do: 7 and &minus;7, the <span class="gloss" data-term="equation">equation</span>'s
+                <h1 id="what-the-root-sign-names">What the square-root symbol means</h1>
+                <p>7 and &minus;7 are both square roots of 49. But the square-root symbol has a
+                    more specific meaning: it asks for the <strong>non-negative</strong> root.
+                    This is called the principal square root: the positive root, or zero
+                    when the number is zero. The symbol therefore has one definite value.</p>
+                <div class="rule-card">
+                    <h2 class="rule-card__statement" aria-label="the square root of 49 equals 7"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">49</span></span> = 7</h2>
+                </div>
+
+                <p>We write the negative root as <span class="sf" role="math"
+                        aria-label="negative the square root of 49">&minus;<span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">49</span></span></span>.
+                </p>
+
+                <div data-lesson-check="1" data-lesson-check-api="RootsLessonBank"></div>
+                <p>The minus sign changes the sign of the answer, not the meaning of the root
+                    symbol. In these two examples, we first find the principal root of 36;
+                    only then do we apply the minus sign, if there is one.</p>
+            </section>
+
+            <section>
+                <h1 id="solving-x-squared-equals-49">Finding both solutions</h1>
+                <p>What if we ask which numbers square to 36, instead of asking for its principal root?
+                    The <span class="gloss" data-term="equation">equation</span>
+                    <span class="sf" role="math" aria-label="x squared equals 36"><var>x</var><span class="caret" aria-hidden="true">^</span><sup>2</sup> = 36</span>
+                    has both 6 and &minus;6 as its
                     <span class="gloss" data-term="solution">solutions</span>.</p>
 
-                <p><span class="sf" role="math" aria-label="x equals plus or minus 7"><var>x</var> = &plusmn;7</span> records both values of the <span class="gloss" data-term="unknown">unknown</span> on one line, and &plusmn;7 is read
-                    &ldquo;plus or minus 7&rdquo;.</p>
+                <p><span class="sf" role="math" aria-label="x equals plus or minus 6"><var>x</var> = &plusmn;6</span> is a shorter way to write “<var>x</var> = 6 or <var>x</var> = &minus;6”. It gives both values of the <span class="gloss" data-term="unknown">unknown</span>. We read &plusmn;6 as
+                    &ldquo;plus or minus 6&rdquo;.</p>
 
 
                 <div class="wex">
@@ -169,8 +192,7 @@
                         </li>
                         <li>
                             <span class="wex__do"><span class="sf">9 &times; 9 = 81</span></span>
-                            <span class="wex__why">81 is 9&sup2;, one of the squares of 1 to 15, and (&minus;9) &times; (&minus;9) = 81 as
-                                well.</span>
+                            <span class="wex__why">9 works. So does &minus;9, because two negative factors have a positive product.</span>
                         </li>
                         <li>
                             <span class="wex__do"><span class="sf" role="math" aria-label="x equals plus or minus 9"><var>x</var> = &plusmn;9</span></span>
@@ -178,14 +200,15 @@
                         </li>
                     </ol>
                 </div>
+                <div data-lesson-check="2" data-lesson-check-api="RootsLessonBank"></div>
             </section>
 
             <section>
-                <h1 id="how-many-numbers-square-to-a-value">x&sup2; = 0 has one solution, and x&sup2; = &minus;9 has none on the number line</h1>
+                <h1 id="how-many-numbers-square-to-a-value">Can a square be zero or negative?</h1>
                 <p><span class="sf" role="math" aria-label="x squared equals 0"><span><var>x</var><span class="caret" aria-hidden="true">^</span><sup>2</sup></span> = 0</span> has one solution, 0, because 0 and &minus;0 are the same number.</p>
 
-                <p>No number on the <span class="gloss" data-term="number line">number line</span> squares to &minus;9. A square is a number multiplied by itself, so
-                    its two <span class="gloss" data-term="factor">factors</span> carry the same sign and their <span class="gloss" data-term="product">product</span> is positive or zero.</p>
+                <p>Could a negative number work for a negative result? No: multiplying two negatives gives a positive. No number on the <span class="gloss" data-term="number line">number line</span> squares to &minus;9. A square is a number multiplied by itself, so
+                    the two numbers being multiplied are identical. Their <span class="gloss" data-term="product">product</span> is positive or zero.</p>
 
                 <figure class="cases">
                     <ol class="cases__list">
@@ -223,62 +246,29 @@
                         </li>
                     </ol>
                 </figure>
+                <div data-lesson-check="3" data-lesson-check-api="RootsLessonBank"></div>
             </section>
 
             <section>
-                <h1 id="common-mistakes">Common mistakes</h1>
-                <ul class="slips">
-                    <li><b>Putting a plus-or-minus on the root sign</b>
-                    <span><span class="sf" role="math" aria-label="the square root of 25 equals plus or minus 5"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">25</span></span> = &plusmn;5</span> is wrong: the sign names the non-negative root alone, so <span
-                            class="sf" role="math" aria-label="the square root of 25 equals 5"><span
-                            class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg
-                            class="rad__sign" viewBox="0 0 24 40" aria-hidden="true"
-                            focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none"
-                            stroke="currentColor" stroke-width="3" stroke-linejoin="miter"
-                            stroke-linecap="butt"/></svg><span class="rad__over">25</span></span> =
-                            5</span>. It is <span class="sf" role="math" aria-label="x squared equals 25"><var>x</var><span class="caret" aria-hidden="true">^</span><sup>2</sup> = 25</span> that has the answer &plusmn;5.</span></li>
-                    <li><b>Giving one solution to x&sup2; = 36</b>
-                    <span><span class="sf" role="math" aria-label="6 squared equals 36">6<span class="caret" aria-hidden="true">^</span><sup>2</sup> = 36</span> and <span class="sf" role="math" aria-label="open bracket, negative 6, close
-                            bracket, squared, equals 36">(&minus;6)<span class="caret"
-                            aria-hidden="true">^</span><sup>2</sup> = 36</span>, so an answer of
-                            6 alone to <span class="sf" role="math" aria-label="x squared equals 36"><var>x</var><span class="caret" aria-hidden="true">^</span><sup>2</sup> = 36</span> leaves out &minus;6: <span class="sf"
-                            role="math" aria-label="x equals plus or minus 6"><var>x</var> =
-                            &plusmn;6</span>.</span></li>
-                    <li><b>Passing a minus through a squaring</b>
-                    <span><span class="sf" role="math" aria-label="open bracket, negative 4, close
-                            bracket, squared, equals 16">(&minus;4)<span class="caret"
-                            aria-hidden="true">^</span><sup>2</sup> = 16</span>, not &minus;16, so <var>x</var> = &minus;4 does not solve <span class="sf" role="math" aria-label="x squared equals
-                            negative 16"><var>x</var><span class="caret"
-                            aria-hidden="true">^</span><sup>2</sup> = &minus;16</span>; no number on the number line does.</span></li>
-                </ul>
-            </section>
-
-            <section>
-                <h1 id="remember">Summary</h1>
-                <ol class="recap">
-                    <li>Every positive square is reached from two numbers that differ only in sign: 49 from 7 and from
-                        &minus;7.</li>
-                    <li>The sign <span class="sf" role="math" aria-label="the square root of 49"><span class="rad"><span class="caret" aria-hidden="true">&radic;</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true" focusable="false"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="miter" stroke-linecap="butt"/></svg><span class="rad__over">49</span></span></span> names the principal square root, so it stands for the single number 7.</li>
-                    <li><span class="sf" role="math" aria-label="x squared equals 49"><span><var>x</var><span class="caret" aria-hidden="true">^</span><sup>2</sup></span> = 49</span> asks for every
-                        number that squares to 49, and <span class="sf" role="math"
-                            aria-label="x equals plus or minus 7"><var>x</var> = &plusmn;7</span> records both answers on one
-                        line.</li>
-                    <li><span class="sf" role="math" aria-label="x squared equals 0"><span><var>x</var><span class="caret" aria-hidden="true">^</span><sup>2</sup></span> = 0</span> has the one
-                        solution 0, and no number on the number line squares to &minus;9, since a number on the line
-                        multiplied by itself is positive or zero.</li>
-                </ol>
+                <h1 id="remember">Square roots and solutions</h1>
+                <div data-lesson-check="4" data-lesson-check-api="RootsLessonBank"></div>
+                <div class="roots-key-points" id="common-mistakes">
+                    <h2>Key points</h2>
+                    <ul>
+                        <li>The square-root symbol gives the <strong>non-negative root</strong>.
+                            A minus sign outside it takes the negative of that value.</li>
+                        <li>When solving an equation, include <strong>every value that works</strong>.
+                            The &plusmn; sign is shorthand for a positive value and its negative.</li>
+                        <li>A positive number has <strong>two</strong> square roots; zero has
+                            <strong>one</strong>. No number on the number line has a negative square.</li>
+                    </ul>
+                </div>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <div class="powers-recall" data-powers-recall="positiveAndNegativeRoots" hidden></div>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice"
-                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/practicePositiveAndNegativeRoots.html"
-                        style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
-                        <h3>Positive and negative square roots</h3>
-                        <p>Why a squared equation has two solutions while the root sign gives one.</p>
-                    </a>
                     <a class="topic-card topic-card--next"
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/cubeAndHigherRoots.html"
                         style="background-image: none">
@@ -287,6 +277,7 @@
                         <p>Cube roots and nth roots as the inverse of a power, including negatives.</p>
                     </a>
                 </div>
+                <a class="lesson-menu-return" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/"><span aria-hidden="true">← </span>Back to Powers and roots</a>
             </section>
         </main>
 

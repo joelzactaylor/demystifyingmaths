@@ -1,8 +1,8 @@
 /* Interactive place-value tray. A number typed into the field is split into its
    places: each digit is shown in the column it occupies, read back as a count of
-   that place, and the parts are assembled into words. The field caps itself at
-   seven whole-number digits and three decimal places; anything beyond that, and
-   anything that is not a digit, never reaches the value. */
+   that place, and the parts are assembled into words. Values outside seven
+   whole-number digits and three decimal places show the invalid state without
+   rewriting the reader's entry. */
 document.addEventListener("DOMContentLoaded", () => {
     const lab = document.querySelector("[data-place-lab]");
     if (!lab) return;
@@ -12,8 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const parts = lab.querySelector("[data-place-parts]");
     const words = lab.querySelector("[data-place-words]");
 
-    const WHOLE_LIMIT = 7;
-    const DECIMAL_LIMIT = 3;
 
     const SMALL = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
         "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"];
@@ -82,21 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ? (digit * 10 ** exponent).toLocaleString("en-GB")
         : `0.${"0".repeat(-exponent - 1)}${digit}`;
 
-    const limitValue = () => {
-        const raw = input.value;
-        const kept = raw.replace(/[^\d.]/g, "");
-        const hasPoint = kept.includes(".");
-        const [wholeRaw, ...rest] = kept.split(".");
-        const cleaned = `${wholeRaw.slice(0, WHOLE_LIMIT)}${hasPoint ? `.${rest.join("").slice(0, DECIMAL_LIMIT)}` : ""}`;
-
-        if (cleaned !== raw) {
-            const caret = input.selectionStart ?? cleaned.length;
-            const position = Math.max(0, Math.min(cleaned.length, caret - (raw.length - cleaned.length)));
-            input.value = cleaned;
-            input.setSelectionRange(position, position);
-        }
-        return cleaned;
-    };
+    const limitValue = () => input.value.trim();
 
     const makeCell = (className, text) => {
         const cell = document.createElement("span");
@@ -184,7 +168,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const note = lab.querySelector("[data-place-note]");
     const accept = () => {
         const cleaned = limitValue();
-        const valid = /^(?:\d+(?:\.\d*)?|\.\d+)$/.test(cleaned);
+        const valid = /^(?:\d{1,7}(?:\.\d{0,3})?|\.\d{1,3})$/.test(cleaned);
         lab.classList.toggle("is-empty", !valid);
         if (note) note.hidden = valid;
         if (!valid) return;

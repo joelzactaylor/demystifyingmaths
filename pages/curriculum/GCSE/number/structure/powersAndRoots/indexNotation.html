@@ -12,27 +12,34 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/indexNotation.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/powersAndRootsNavigation.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/powersRootsRecall.css">
+    <script src="/demystifyingmaths/js/lesson-session.js" defer></script>
+    <script src="/demystifyingmaths/js/powersRootsRecallBank.js" defer></script>
+    <script src="/demystifyingmaths/js/powersRootsRecall.js" defer></script>
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
-    <script src="/demystifyingmaths/js/lattice-worker.js" defer></script>
     <script src="/demystifyingmaths/js/indexNotation.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&amp;display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="roots-lesson">
     <div class="layout">
         <div id="top-ribbon-placeholder"></div>
         <script>fetch("/demystifyingmaths/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
 
         <header>
-            <h1>Demystifying - Index notation and powers</h1>
+            <h1>Index notation and powers</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
                     <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span>
@@ -57,449 +64,124 @@
         <aside id="page-nav-container"></aside>
 
         <main class="lesson-main">
-            <p class="prereq"><b>Before this page:</b> <span>be able to multiply <span class="gloss" data-term="whole number">whole numbers</span>, using <a
-                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/longMultiplication.html">long
-                        multiplication</a> where they are large.</span></p>
 
-            <section>
-                <h1 id="what-index-notation-means">Index notation writes repeated multiplication as a power</h1>
-
-                <p>Index notation is a short way to write repeated multiplication of the same number. For example,
-                    <span class="sf" role="math"
-                        aria-label="2 times 2 times 2 times 2 times 2 equals 2 to the power of 5">2 &times; 2 &times; 2
-                        &times; 2 &times; 2 = 2<span class="caret" aria-hidden="true">^</span><sup>5</sup></span>.
-                </p>
-
-
-                <div class="anatomy">
-                    <p class="anatomy__power" role="img"
-                        aria-label="Two to the power of five, written as a large 2 with a small raised 5">
-                        <span class="is-base">2</span><span class="caret" aria-hidden="true">^</span><sup
-                            class="is-index">5</sup>
-                    </p>
-                    <dl class="anatomy__legend">
-                        <dt>Base: 2</dt>
-                        <dd>The repeated number. Written full size, on the line.</dd>
-                        <dt>Index: 5</dt>
-                        <dd>The number of equal factors. Written small and raised.</dd>
-                    </dl>
-                </div>
-
-                <p><span class="sf" role="math" aria-label="2 to the power of 5">2<span class="caret"
-                            aria-hidden="true">^</span><sup>5</sup></span> is read
-                    &ldquo;two to the power of five&rdquo;. The <span class="gloss" data-term="expression">expression</span> <span class="sf" role="math"
-                        aria-label="2 to the power of 5">2<span class="caret"
-                            aria-hidden="true">^</span><sup>5</sup></span> is called a <b>power</b>. The index is
-                    also called the <em>exponent</em>.</p>
-
-                <p class="note">An index of 1 means one factor, so <span class="sf" role="math"
-                        aria-label="3 to the power of 1 equals 3">3<span class="caret"
-                            aria-hidden="true">^</span><sup>1</sup> = 3</span>. A number written with no
-                    index has an index of 1.</p>
-            </section>
-
-            <section>
-                <h1 id="working-out-a-power">A power is worked out one factor at a time</h1>
-                <p>To <span class="gloss" data-term="evaluate">evaluate</span> a power, <span class="gloss" data-term="expand">expand</span> it into its equal factors and keep a running <span class="gloss" data-term="product">product</span>, one
-                    factor at a time:</p>
-
-                <div class="worked">
-                    <h2 class="worked__title" aria-label="Example: work out 2 to the power of 5">Example: work out
-                        2<span class="caret" aria-hidden="true">^</span><sup>5</sup></h2>
-
-                    <div class="power-scene" data-power-scene data-scene="power" data-base="2" data-index="5">
-                        <div class="power-scene__sticky">
-                            <p class="power-scene__heading" data-heading>2&#8309;</p>
-
-                            <div class="power-board">
-                                <div class="power-board__paper" data-board></div>
-                            </div>
-
-                            <div class="power-scene__caption" aria-live="polite">
-                                <h3 data-step-title>The power to work out</h3>
-                                <p data-step-copy>Base 2, index 5.</p>
-                            </div>
-
-                            <div class="power-scene__progress" data-progress aria-hidden="true"></div>
-                        </div>
-                    </div>
-
-                    <noscript>
-                        <p class="worked__fallback"><strong role="math"
-                            aria-label="2 to the power of 5 equals 2 times 2 times 2 times 2 times 2 equals 32">2<span
-                                class="caret" aria-hidden="true">^</span><sup>5</sup>
-                            = 2 &times; 2 &times; 2 &times; 2 &times; 2 = 32</strong></p>
-                    </noscript>
-                </div>
-
-                <p>A question that asks for <span class="gloss" data-term="index form">index form</span> wants
-                    <span class="sf" role="math" aria-label="2 to the power of 5">2<span class="caret"
-                            aria-hidden="true">^</span><sup>5</sup></span>; a question that asks for the value wants the
-                    <span class="gloss" data-term="calculation">calculation</span> worked through to 32.</p>
-            </section>
-
-            <section>
-                <h1 id="saying-powers">Index 2 is read &ldquo;squared&rdquo; and index 3 &ldquo;cubed&rdquo;</h1>
-                <p>An index of 2 is read as <em>squared</em>. A 5-by-5 square contains <span class="sf">5 &times; 5 =
-                        25</span> <span class="gloss" data-term="unit square">unit squares</span>. The side, 5, is a factor twice, so the index is 2 and <span
-                        class="sf" role="math" aria-label="5 squared">5<span class="caret"
-                            aria-hidden="true">^</span><sup>2</sup></span> is read &ldquo;5 squared&rdquo;.</p>
-
-                <div class="worked">
-                    <h2 class="worked__title" aria-label="5 squared as an area">5<span class="caret"
-                            aria-hidden="true">^</span><sup>2</sup> as an area</h2>
-
-                    <div class="power-scene" data-power-scene data-scene="square" data-side="5">
-                        <div class="power-scene__sticky">
-                            <p class="power-scene__heading" data-heading>A 5 by 5 square</p>
-
-                            <div class="power-board">
-                                <div class="power-board__paper" data-board></div>
-                            </div>
-
-                            <div class="power-scene__caption" aria-live="polite">
-                                <h3 data-step-title>The square</h3>
-                                <p data-step-copy>Every edge is 5 long.</p>
-                            </div>
-
-                            <div class="power-scene__progress" data-progress aria-hidden="true"></div>
-                        </div>
-                    </div>
-
-                    <noscript>
-                        <p class="worked__fallback"><strong role="math"
-                            aria-label="5 squared equals 5 times 5 equals 25">5<span class="caret"
-                                aria-hidden="true">^</span><sup>2</sup> = 5 &times; 5 = 25</strong></p>
-                    </noscript>
-                </div>
-
-                <p>An index of 3 is read as <em>cubed</em>. A 4-by-4-by-4 cube contains <span class="sf">4 &times; 4 &times; 4 = 64</span> <span class="gloss" data-term="unit">unit</span>
-                    cubes. The side, 4, is a factor three times, so the index is 3 and <span class="sf" role="math"
-                        aria-label="4 cubed">4<span class="caret" aria-hidden="true">^</span><sup>3</sup></span> is
-                    read &ldquo;4 cubed&rdquo;.</p>
-
-                <div class="worked">
-                    <h2 class="worked__title" aria-label="4 cubed as a volume">4<span class="caret"
-                            aria-hidden="true">^</span><sup>3</sup> as a volume</h2>
-
-                    <div class="power-scene" data-power-scene data-scene="cube" data-side="4">
-                        <div class="power-scene__sticky">
-                            <p class="power-scene__heading" data-heading>A 4 by 4 by 4 cube</p>
-
-                            <div class="power-board">
-                                <div class="power-board__paper" data-board></div>
-                            </div>
-
-                            <div class="power-scene__caption" aria-live="polite">
-                                <h3 data-step-title>The cube</h3>
-                                <p data-step-copy>Every edge is 4 long.</p>
-                            </div>
-
-                            <div class="power-scene__progress" data-progress aria-hidden="true"></div>
-                        </div>
-                    </div>
-
-                    <noscript>
-                        <p class="worked__fallback"><strong role="math"
-                            aria-label="4 cubed equals 4 times 4 times 4 equals 64">4<span class="caret"
-                                aria-hidden="true">^</span><sup>3</sup> = 4 &times; 4 &times;
-                            4 = 64</strong></p>
-                    </noscript>
-                </div>
-
-                <p>Only <span class="gloss" data-term="indices">indices</span> 2 and 3 have special names; every other index is read &ldquo;to the power of&rdquo;.
-                    The names do not change the <span class="gloss" data-term="operation">operation</span>: 5<span class="caret" aria-hidden="true">^</span><sup>2</sup> and 4<span class="caret" aria-hidden="true">^</span><sup>3</sup> are expanded and
-                    evaluated like any other power.</p>
-            </section>
-
-            <section>
-                <h1 id="how-fast-powers-grow">Powers grow quickly</h1>
-                <p>Each extra 1 in the index multiplies the value by the base once more, so the powers of 2 double at
-                    every step.</p>
-
-                <table class="growth">
-                    <caption>Powers of 2</caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">Power</th>
-                            <th scope="col">Expanded form</th>
-                            <th scope="col">Value</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row"><span class="sf" role="math" aria-label="2 to the power of 1">2<span
-                                        class="caret" aria-hidden="true">^</span><sup>1</sup></span></th>
-                            <td><span class="sf">2</span></td>
-                            <td><span class="sf">2</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><span class="sf" role="math" aria-label="2 squared">2<span class="caret"
-                                        aria-hidden="true">^</span><sup>2</sup></span></th>
-                            <td><span class="sf">2 &times; 2</span></td>
-                            <td><span class="sf">4</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><span class="sf" role="math" aria-label="2 cubed">2<span class="caret"
-                                        aria-hidden="true">^</span><sup>3</sup></span></th>
-                            <td><span class="sf">2 &times; 2 &times; 2</span></td>
-                            <td><span class="sf">8</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><span class="sf" role="math" aria-label="2 to the power of 4">2<span
-                                        class="caret" aria-hidden="true">^</span><sup>4</sup></span></th>
-                            <td><span class="sf">2 &times; 2 &times; 2 &times; 2</span></td>
-                            <td><span class="sf">16</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><span class="sf" role="math" aria-label="2 to the power of 5">2<span
-                                        class="caret" aria-hidden="true">^</span><sup>5</sup></span></th>
-                            <td><span class="sf">2 &times; 2 &times; 2 &times; 2 &times; 2</span></td>
-                            <td><span class="sf">32</span></td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><span class="sf" role="math" aria-label="2 to the power of 6">2<span
-                                        class="caret" aria-hidden="true">^</span><sup>6</sup></span></th>
-                            <td><span class="sf">2 &times; 2 &times; 2 &times; 2 &times; 2 &times; 2</span></td>
-                            <td><span class="sf">64</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-
-                <p>Changing the base changes every one of the factors: <span class="sf"
-                        role="math" aria-label="3 to the power of 4">3<span class="caret"
-                            aria-hidden="true">^</span><sup>4</sup></span> is 81 while <span class="sf" role="math"
-                        aria-label="2 to the power of 4">2<span class="caret"
-                            aria-hidden="true">^</span><sup>4</sup></span> is only 16.</p>
-            </section>
-
-            <section>
-                <h1 id="writing-a-product-as-a-power">Equal factors gather into one power</h1>
-                <p>Expanding turns a power into a product of equal <span class="gloss" data-term="factor">factors</span>. Read the other way, a product of equal factors
-                    is written as a power.</p>
-
-                <div class="rule-card">
-                    <h2 class="rule-card__statement" aria-label="7 times 7 times 7 equals 7 cubed">7 &times; 7 &times;
-                        7 = 7<span class="caret" aria-hidden="true">^</span><sup>3</sup></h2>
-                    <ol class="rule-card__conditions">
-                        <li>The repeated factor is 7, so 7 is the base.</li>
-                        <li>The factor 7 appears three times, so 3 is the index.</li>
-                    </ol>
-                </div>
-
-                <div class="worked">
-                    <h2 class="worked__title">Example: write 2 &times; 2 &times; 5 &times; 5 &times; 5 in index form
-                    </h2>
-
-                    <div class="power-scene" data-power-scene data-scene="gather" data-factors="2,2,5,5,5">
-                        <div class="power-scene__sticky">
-                            <p class="power-scene__heading" data-heading>2 &times; 2 &times; 5 &times; 5 &times; 5</p>
-
-                            <div class="power-board">
-                                <div class="power-board__paper" data-board></div>
-                            </div>
-
-                            <div class="power-scene__caption" aria-live="polite">
-                                <h3 data-step-title>Start from the product</h3>
-                                <p data-step-copy>Two different numbers are multiplied, 2 and 5, so the product becomes two powers.</p>
-                            </div>
-
-                            <div class="power-scene__progress" data-progress aria-hidden="true"></div>
-                        </div>
-                    </div>
-
-                    <noscript>
-                        <p class="worked__fallback"><strong role="math"
-                            aria-label="2 times 2 times 5 times 5 times 5 equals 2 squared times 5 cubed">2 &times; 2
-                            &times; 5 &times; 5 &times; 5 = 2<span class="caret" aria-hidden="true">^</span><sup>2</sup>
-                            &times;
-                            5<span class="caret" aria-hidden="true">^</span><sup>3</sup></strong></p>
-                    </noscript>
-                </div>
-
-                <p>Equal factors are not always written together:</p>
-
-                <div class="wex">
-                    <h2 class="wex__title">Example: write 3 &times; 5 &times; 3 &times; 5 &times; 3 in index form</h2>
-                    <p class="wex__task">Reorder so that equal factors stand together, then count each group.</p>
-                    <ol class="wex__steps">
-                        <li>
-                            <span class="wex__do"><span class="sf">3 &times; 5 &times; 3 &times; 5 &times;
-                                    3</span></span>
-                            <span class="wex__why">The product as it is given, with the equal factors apart.</span>
-                        </li>
-                        <li>
-                            <span class="wex__do"><span class="sf">= 3 &times; 3 &times; 3 &times; 5 &times;
-                                    5</span></span>
-                            <span class="wex__why">Multiplication can be done in any order, so the product is unchanged.</span>
-                        </li>
-                        <li>
-                            <span class="wex__do"><span class="sf" role="math"
-                                    aria-label="equals 3 cubed times 5 squared">= 3<span class="caret"
-                                        aria-hidden="true">^</span><sup>3</sup> &times;
-                                    5<span class="caret" aria-hidden="true">^</span><sup>2</sup></span></span>
-                            <span class="wex__why">Three 3s and two 5s, so the two counts are the two indices.</span>
-                        </li>
-                    </ol>
-                </div>
-            </section>
-
-            <section class="optional" aria-labelledby="powers-and-dimensions">
-                <h1 id="powers-and-dimensions">Optional exploration &mdash; powers and dimensions</h1>
-                <aside class="beyond" aria-label="Extracurricular visualisations">
-                    <p>Squares and cubes are named after shapes, and the shapes run on to higher indices; no GCSE work
-                        depends on it.</p>
-                    <label class="beyond__choice">
-                        <input type="checkbox" data-curriculum-only>
-                        <span class="beyond__switch" aria-hidden="true"></span>
-                        <span class="beyond__choice-label">Disable extracurricular visualisations</span>
-                    </label>
-                </aside>
-
-
-                <p data-beyond>What shape belongs to an index of 4, 5 or 6?</p>
-
-                <p data-beyond>Each further index needs one more direction at right angles to all the others. Space has
-                    three such directions; the mathematics allows any number.</p>
-
-                <p data-beyond>A drawing of the four-dimensional shape, a <em>tesseract</em>, is its shadow on the flat page,
-                    as a drawing of a cube is the cube's shadow.</p>
-            </section>
-
-            <section>
-                <h1 id="try-a-power">Try any power</h1>
-
-                <!-- Deliberate exception to the no-mechanics-copy rule (docs/lesson-prose-voice.md, rule 22):
-                     the shapes have no visible controls, and this line is their accessible description. -->
-                <p class="solid__hint" id="lattice-hint" data-beyond>The shapes are turned by dragging them, or with
-                    the arrow keys.</p>
-
-                <div class="worked">
-
-
-                    <div class="power-scene" data-power-scene data-scene="power">
-                        <div class="power-scene__sticky">
-                            <div class="power-scene__head">
-                                <fieldset class="power-picker">
-                                    <legend>Base</legend>
-                                    <div class="power-picker__options">
-                                        <label class="power-picker__tile"><input type="radio" name="power-base"
-                                                value="2" data-pick><span>2</span></label>
-                                        <label class="power-picker__tile"><input type="radio" name="power-base"
-                                                value="3" data-pick checked><span>3</span></label>
-                                        <label class="power-picker__tile"><input type="radio" name="power-base"
-                                                value="4" data-pick><span>4</span></label>
-                                        <label class="power-picker__tile"><input type="radio" name="power-base"
-                                                value="5" data-pick><span>5</span></label>
-                                        <label class="power-picker__tile"><input type="radio" name="power-base"
-                                                value="6" data-pick><span>6</span></label>
-                                    </div>
-                                </fieldset>
-                                <fieldset class="power-picker">
-                                    <legend>Index</legend>
-                                    <div class="power-picker__options">
-                                        <label class="power-picker__tile"><input type="radio" name="power-index"
-                                                value="1" data-pick><span>1</span></label>
-                                        <label class="power-picker__tile"><input type="radio" name="power-index"
-                                                value="2" data-pick><span>2</span></label>
-                                        <label class="power-picker__tile"><input type="radio" name="power-index"
-                                                value="3" data-pick><span>3</span></label>
-                                        <label class="power-picker__tile"><input type="radio" name="power-index"
-                                                value="4" data-pick checked><span>4</span></label>
-                                        <label class="power-picker__tile"><input type="radio" name="power-index"
-                                                value="5" data-pick><span>5</span></label>
-                                        <label class="power-picker__tile"><input type="radio" name="power-index"
-                                                value="6" data-pick><span>6</span></label>
-                                    </div>
-                                </fieldset>
-                            </div>
-
-                            <div class="power-board power-board--split">
-                                <div class="power-board__paper" data-board></div>
-                                <div class="power-board__solid" data-lattice data-beyond>
-                                    <div class="solid__stage" data-turn tabindex="0" role="img"
-                                        aria-label="The factors set out as points, gaining a direction as each one is taken in"
-                                        aria-describedby="lattice-hint">
-                                        <canvas aria-hidden="true"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="power-scene__caption" aria-live="polite">
-                                <h2 data-step-title>The power to work out</h2>
-                                <p data-step-copy>Base 3, index 4.</p>
-                            </div>
-
-                            <div class="power-scene__progress" data-progress aria-hidden="true"></div>
-                        </div>
-                        <noscript>
-                            <p><strong role="math"
-                                    aria-label="3 to the power of 4 equals 3 times 3 times 3 times 3 equals 81">3<span
-                                        class="caret" aria-hidden="true">^</span><sup>4</sup>
-                                    = 3 &times; 3 &times; 3 &times; 3 = 81</strong></p>
-                        </noscript>
-                    </div>
-                </div>
-            </section>
-
-            <section>
-                <h1>Common mistakes</h1>
-                <ul class="slips">
-                    <li><b>Multiplying the index by the base</b>
-                    <span><span class="sf" role="math" aria-label="5 cubed">5<span
-                            class="caret" aria-hidden="true">^</span><sup>3</sup></span> is not 15. The
-                            index counts how many 5s are multiplied together: <span class="sf"
-                            role="math" aria-label="5 times 5 times 5 equals 125">5 &times; 5
-                            &times; 5 = 125</span>.</span></li>
-                    <li><b>Counting the multiplication signs</b>
-                    <span><span class="sf" role="math" aria-label="2 times 2 times 2">2 &times; 2
-                            &times; 2</span> has three factors even though it has two signs, so it is
-                            <span class="sf" role="math" aria-label="2 cubed">2<span class="caret"
-                            aria-hidden="true">^</span><sup>3</sup></span> rather than <span class="sf"
-                            role="math" aria-label="2 squared">2<span class="caret"
-                            aria-hidden="true">^</span><sup>2</sup></span>.</span></li>
-                    <li><b>Gathering two bases into one power</b>
-                    <span>A power is one number multiplied by itself, so <span class="sf" role="math"
-                            aria-label="3 squared times 2 cubed">3<span class="caret"
-                            aria-hidden="true">^</span><sup>2</sup> &times; 2<span class="caret"
-                            aria-hidden="true">^</span><sup>3</sup></span> needs both bases worked
-                            separately: <span class="sf" role="math" aria-label="9 times 8 equals
-                            72">9 &times; 8 = 72</span>, not <span class="sf" role="math"
-                            aria-label="6 to the power of 5">6<span class="caret"
-                            aria-hidden="true">^</span><sup>5</sup></span>.</span></li>
-                    <li><b>Writing the index on the baseline</b>
-                    <span>Written on the baseline, &ldquo;32&rdquo; is the number thirty-two. Raised,
-                            the 2 is an index: <span class="sf" role="math" aria-label="3
-                            squared equals 3 times 3 equals 9">3<span class="caret"
-                            aria-hidden="true">^</span><sup>2</sup> = 3 &times; 3 = 9</span>.</span></li>
-                </ul>
-            </section>
-
-            <section>
-                <h1>Summary</h1>
-                <ol class="recap">
-                    <li>Index notation is a short way to write repeated multiplication: the base is the number
-                        repeated, and the index is the number of equal factors.</li>
-                    <li>The index counts factors, not &times; signs, and a power is not the base times the index.</li>
-                    <li>Evaluate a power by expanding it and multiplying one factor at a time &mdash; or leave it in
-                        index form, where that is what the question asks for.</li>
-                    <li>Only index 2 and index 3 have special names, &ldquo;squared&rdquo; and &ldquo;cubed&rdquo;;
-                        every other index is read &ldquo;to the power of&rdquo;.</li>
-                    <li>Going the other way, gather equal factors into one power; different bases stay as separate
-                        powers.</li>
-                </ol>
-            </section>
-
+<p class="prereq"><b>Before this page:</b> <span>Be comfortable multiplying whole numbers.</span></p>
+<section>
+<h1 id="what-index-notation-means">A shorter way to write repeated multiplication</h1>
+<p>Suppose a number doubles, then doubles again, then doubles again.
+Starting with 1, that gives 2 × 2 × 2 = 8. A power keeps track of the repeated factor without writing it out every time.</p>
+<div class="notation-example">
+<p class="notation-equation">2<span class="caret" aria-hidden="true">^</span><sup>3</sup> = 2 × 2 × 2</p>
+<p><strong>Base: 2</strong><span>The number used as a factor</span></p>
+<p><strong>Index: 3</strong><span>How many copies of that factor</span></p>
+</div>
+<p>We read 2<span class="caret" aria-hidden="true">^</span><sup>3</sup> as “2 to the power of 3”. The small raised number is the <span class="gloss" data-term="index">index</span>, also called the exponent.
+It counts the factors, not the multiplication signs.</p>
+<div data-lesson-check="0" data-lesson-check-api="IndexNotationBank"></div>
+<p>The position matters: 5<span class="caret" aria-hidden="true">^</span><sup>4</sup> means four factors of 5, not the two-digit number 54.</p>
+</section>
+<section>
+<h1 id="working-out-a-power">Working out a power</h1>
+<p>For 2<span class="caret" aria-hidden="true">^</span><sup>5</sup>, multiply five factors of 2, one at a time:
+2 × 2 = 4, then 4 × 2 = 8, then 8 × 2 = 16, and finally 16 × 2 = 32.</p>
+<div class="power-lab" id="try-a-power">
+<div class="power-lab-controls" hidden>
+<label for="power-base">Base <input id="power-base" type="text" inputmode="numeric" value="2" maxlength="2" autocomplete="off"></label>
+<label for="power-index">Index <output id="power-index-value" for="power-index">5</output> <input id="power-index" type="range" min="1" max="6" value="5"></label>
+</div>
+<p class="power-lab-equation" aria-live="polite">2 × 2 × 2 × 2 × 2 = 32</p>
+<p class="power-lab-caption">Five factors of 2 make 32.</p>
+</div>
+<p id="how-fast-powers-grow">Increasing the index by 1 adds another factor, not another 1 to the answer.
+For powers of 2, each step doubles the value. Changing the base changes every factor.</p>
+<div data-lesson-check="1" data-lesson-check-api="IndexNotationBank"></div>
+<p>Multiplying the base by the index is a different calculation.
+For example, 3<span class="caret" aria-hidden="true">^</span><sup>4</sup> = 3 × 3 × 3 × 3 = 81, whereas 3 × 4 = 12.</p>
+</section>
+<section>
+<h1 id="saying-powers">Squares and cubes</h1>
+<p>Two powers have familiar names. 4<span class="caret" aria-hidden="true">^</span><sup>2</sup> is “4 squared”:
+a square with side length 4 cm has area 4 × 4 = 16 cm².
+4<span class="caret" aria-hidden="true">^</span><sup>3</sup> is “4 cubed”: a cube with edge length 4 cm has volume 4 × 4 × 4 = 64 cm³.</p>
+<div class="power-dimensions">
+<figure><div class="power-square" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><figcaption>4 across × 4 down<br>16 unit squares</figcaption></figure>
+<figure><svg viewBox="0 0 200 190" role="img" aria-label="A 4 by 4 by 4 cube, with each visible face divided into sixteen unit squares"><g stroke="#e8fff9" stroke-width="1.1" stroke-linejoin="round">
+<polygon points="100,20 117.5,28.75 100,37.5 82.5,28.75" fill="#43bcaf"/>
+<polygon points="117.5,28.75 135,37.5 117.5,46.25 100,37.5" fill="#43bcaf"/>
+<polygon points="135,37.5 152.5,46.25 135,55 117.5,46.25" fill="#43bcaf"/>
+<polygon points="152.5,46.25 170,55 152.5,63.75 135,55" fill="#43bcaf"/>
+<polygon points="82.5,28.75 100,37.5 82.5,46.25 65,37.5" fill="#43bcaf"/>
+<polygon points="100,37.5 117.5,46.25 100,55 82.5,46.25" fill="#43bcaf"/>
+<polygon points="117.5,46.25 135,55 117.5,63.75 100,55" fill="#43bcaf"/>
+<polygon points="135,55 152.5,63.75 135,72.5 117.5,63.75" fill="#43bcaf"/>
+<polygon points="65,37.5 82.5,46.25 65,55 47.5,46.25" fill="#43bcaf"/>
+<polygon points="82.5,46.25 100,55 82.5,63.75 65,55" fill="#43bcaf"/>
+<polygon points="100,55 117.5,63.75 100,72.5 82.5,63.75" fill="#43bcaf"/>
+<polygon points="117.5,63.75 135,72.5 117.5,81.25 100,72.5" fill="#43bcaf"/>
+<polygon points="47.5,46.25 65,55 47.5,63.75 30,55" fill="#43bcaf"/>
+<polygon points="65,55 82.5,63.75 65,72.5 47.5,63.75" fill="#43bcaf"/>
+<polygon points="82.5,63.75 100,72.5 82.5,81.25 65,72.5" fill="#43bcaf"/>
+<polygon points="100,72.5 117.5,81.25 100,90 82.5,81.25" fill="#43bcaf"/>
+<polygon points="30,55 47.5,63.75 47.5,83.25 30,74.5" fill="#008579"/>
+<polygon points="47.5,63.75 65,72.5 65,92 47.5,83.25" fill="#008579"/>
+<polygon points="65,72.5 82.5,81.25 82.5,100.75 65,92" fill="#008579"/>
+<polygon points="82.5,81.25 100,90 100,109.5 82.5,100.75" fill="#008579"/>
+<polygon points="30,74.5 47.5,83.25 47.5,102.75 30,94" fill="#008579"/>
+<polygon points="47.5,83.25 65,92 65,111.5 47.5,102.75" fill="#008579"/>
+<polygon points="65,92 82.5,100.75 82.5,120.25 65,111.5" fill="#008579"/>
+<polygon points="82.5,100.75 100,109.5 100,129 82.5,120.25" fill="#008579"/>
+<polygon points="30,94 47.5,102.75 47.5,122.25 30,113.5" fill="#008579"/>
+<polygon points="47.5,102.75 65,111.5 65,131 47.5,122.25" fill="#008579"/>
+<polygon points="65,111.5 82.5,120.25 82.5,139.75 65,131" fill="#008579"/>
+<polygon points="82.5,120.25 100,129 100,148.5 82.5,139.75" fill="#008579"/>
+<polygon points="30,113.5 47.5,122.25 47.5,141.75 30,133" fill="#008579"/>
+<polygon points="47.5,122.25 65,131 65,150.5 47.5,141.75" fill="#008579"/>
+<polygon points="65,131 82.5,139.75 82.5,159.25 65,150.5" fill="#008579"/>
+<polygon points="82.5,139.75 100,148.5 100,168 82.5,159.25" fill="#008579"/>
+<polygon points="100,90 117.5,81.25 117.5,100.75 100,109.5" fill="#00665e"/>
+<polygon points="117.5,81.25 135,72.5 135,92 117.5,100.75" fill="#00665e"/>
+<polygon points="135,72.5 152.5,63.75 152.5,83.25 135,92" fill="#00665e"/>
+<polygon points="152.5,63.75 170,55 170,74.5 152.5,83.25" fill="#00665e"/>
+<polygon points="100,109.5 117.5,100.75 117.5,120.25 100,129" fill="#00665e"/>
+<polygon points="117.5,100.75 135,92 135,111.5 117.5,120.25" fill="#00665e"/>
+<polygon points="135,92 152.5,83.25 152.5,102.75 135,111.5" fill="#00665e"/>
+<polygon points="152.5,83.25 170,74.5 170,94 152.5,102.75" fill="#00665e"/>
+<polygon points="100,129 117.5,120.25 117.5,139.75 100,148.5" fill="#00665e"/>
+<polygon points="117.5,120.25 135,111.5 135,131 117.5,139.75" fill="#00665e"/>
+<polygon points="135,111.5 152.5,102.75 152.5,122.25 135,131" fill="#00665e"/>
+<polygon points="152.5,102.75 170,94 170,113.5 152.5,122.25" fill="#00665e"/>
+<polygon points="100,148.5 117.5,139.75 117.5,159.25 100,168" fill="#00665e"/>
+<polygon points="117.5,139.75 135,131 135,150.5 117.5,159.25" fill="#00665e"/>
+<polygon points="135,131 152.5,122.25 152.5,141.75 135,150.5" fill="#00665e"/>
+<polygon points="152.5,122.25 170,113.5 170,133 152.5,141.75" fill="#00665e"/>
+</g><path d="M100 20L170 55V133L100 168L30 133V55ZM30 55L100 90L170 55M100 90V168" fill="none" stroke="#00665e" stroke-width="1.7" stroke-linejoin="round"/></svg><figcaption>4 across × 4 back × 4 high<br>64 unit cubes</figcaption></figure>
+</div>
+<div data-lesson-check="2" data-lesson-check-api="IndexNotationBank"></div>
+<p>An index of 1 means just one factor: 7<span class="caret" aria-hidden="true">^</span><sup>1</sup> = 7.
+For any positive whole-number index, powers of 1 stay at 1, and powers of 0 stay at 0.</p>
+</section>
+<section>
+<h1 id="writing-a-product-as-a-power">Writing a product as powers</h1>
+<p>Going the other way, count the equal factors. The product 7 × 7 × 7 is 7<span class="caret" aria-hidden="true">^</span><sup>3</sup>.
+If there are different factors, collect each kind separately.</p>
+<div class="factor-groups">
+<p><span class="factor-two">2</span> × <span class="factor-five">5</span> × <span class="factor-two">2</span> × <span class="factor-five">5</span> × <span class="factor-five">5</span></p>
+<p>= <span class="factor-two">(2 × 2)</span> × <span class="factor-five">(5 × 5 × 5)</span></p>
+<p>= <span class="factor-two">2<span class="caret" aria-hidden="true">^</span><sup>2</sup></span> × <span class="factor-five">5<span class="caret" aria-hidden="true">^</span><sup>3</sup></span></p>
+</div>
+<p>Reordering the factors doesn't change the product. There are two factors of 2
+and three of 5, so each base gets its own index.</p>
+<div data-lesson-check="3" data-lesson-check-api="IndexNotationBank"></div>
+<div class="roots-key-points" id="remember"><h2>Key points</h2><ul>
+<li>The <strong>base</strong> is the repeated factor; the <strong>index</strong> counts its copies.</li>
+<li>Evaluate a power by multiplying its factors, <strong>not by multiplying base and index</strong>.</li>
+<li>Index 2 means <strong>squared</strong>; index 3 means <strong>cubed</strong>. Keep different bases separate when collecting factors.</li>
+</ul></div>
+</section>
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <div class="powers-recall" data-powers-recall="indexNotation" hidden></div>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice"
-                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/practicePowersRoots.html"
-                        style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
-                        <h3>Index notation and powers</h3>
-                        <p>What the base and index mean, and writing repeated multiplication as a power.</p>
-                    </a>
                     <a class="topic-card topic-card--next"
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/recognisingPowers.html"
                         style="background-image: none">
@@ -508,6 +190,7 @@
                         <p>The squares, cubes and powers of 2, 3, 4 and 5 worth recalling.</p>
                     </a>
                 </div>
+                <a class="lesson-menu-return" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/"><span aria-hidden="true">← </span>Back to Powers and roots</a>
             </section>
         </main>
 

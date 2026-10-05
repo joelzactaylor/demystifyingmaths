@@ -1,14 +1,14 @@
 ---
-mode: agent
-description: Build a Demystifying Maths practice page from its stub, following the master practice prompt to completion.
+agent: agent
+description: Build a Demystifying Maths mixed-review page, following the master practice prompt to completion.
 ---
 
 Read and execute [docs/master-practice-page-prompt.md](../../docs/master-practice-page-prompt.md)
-in full, with `<TARGET>` set to `${input:target:pages/curriculum/GCSE/.../practicePage.html — leave blank for the next unwritten drill}`.
+in full, with `<TARGET>` set to `${input:target:pages/curriculum/GCSE/.../practicePage.html — leave blank for the next unwritten mixed review}`.
 
-If no target is given, select the unwritten practice page paired with the most
-recently completed teaching page: a `practice*.html` in `pages/curriculum/` that
-still carries the `&mdash;coming soon&mdash;` stub marker.
+If no target is given, select an unwritten manifest entry with `kind: review`
+whose prerequisite lessons are complete. Do not create a paired lesson drill:
+lesson-specific questions belong inside the teaching page.
 
 Its drill entry in `scripts/gcse-*-manifest.json` is the source of truth for
 `kind`, `learningPages`, `availableAfter`, `skill`, `scope`, `tier` and

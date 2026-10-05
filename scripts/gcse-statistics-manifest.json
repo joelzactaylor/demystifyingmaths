@@ -434,7 +434,7 @@
                     "title": "The mode",
                     "description": "The most frequent value in a data set, including sets with two modes or none.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Find the mode of ungrouped lists: numerical and categorical data, bimodal sets, and sets with no mode when nothing repeats. Include the mode as the only average available for categorical data. Modes from frequency tables and the modal class of grouped data are separate pages. Both tiers. (S4)"
                 },
                 {
@@ -442,7 +442,7 @@
                     "title": "The median",
                     "description": "The middle value of ordered data, and the halfway pair when the count is even.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Find the median of a list: order first, middle value for odd counts, midpoint of the middle pair for even counts, with the halfway position rule made explicit. Ungrouped lists only; frequency tables and grouped data have their own pages, and quartiles are Higher on the Quartiles pages. Both tiers. (S4)"
                 },
                 {
@@ -450,7 +450,7 @@
                     "title": "The mean",
                     "description": "The total shared equally across the count, and why one extreme drags the mean.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Calculate the mean of an ungrouped list as total divided by count, including decimal answers and means of measurements, and show one extreme value dragging the mean towards it. Interpret the result in context. Frequency-table and grouped versions are later pages; reverse problems live on Working backwards from the mean. Both tiers. (S4)"
                 },
                 {
@@ -458,7 +458,7 @@
                     "title": "The range",
                     "description": "Largest minus smallest as a measure of spread, not an average.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Calculate the range as largest minus smallest, stated as a single number, and interpret it as consistency; stress it measures spread and is not an average. Show one outlier stretching it. Ranges from tables sit on the table pages; the outlier-resistant interquartile range is Higher, in the Quartiles group. Both tiers. (S4)"
                 },
                 {
@@ -466,7 +466,7 @@
                     "title": "Choosing which average to use",
                     "description": "Mode for categories, median against extremes, mean when every value counts.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Justify which average suits a context: mode for categorical data, median when extremes or skew distort, mean when every value should count, with one advantage and drawback of each. Question types: choose and defend in context, or criticise a stated choice. Calculating each average lives on its own sibling page. Both tiers. (S4)"
                 },
                 {
@@ -474,7 +474,7 @@
                     "title": "Working backwards from the mean",
                     "description": "Recovering the total from a stated mean to find a missing value.",
                     "tier": "both",
-                    "written": false,
+                    "written": true,
                     "coverNote": "Reverse mean problems on ungrouped data: recover the total as mean times count, find a missing value given the mean, and find the new mean after adding or removing one value. Include multi-step worded versions. Combining two groups through their totals is the sibling Combined means page. Both tiers. (S4)"
                 },
                 {

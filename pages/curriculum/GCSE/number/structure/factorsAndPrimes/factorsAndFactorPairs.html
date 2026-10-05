@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/factorsAndFactorPairs.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
@@ -17,6 +19,8 @@
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/integrated-lesson-banks.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <script src="/demystifyingmaths/js/factorsAndFactorPairs.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,7 +57,8 @@
 
         <aside id="page-nav-container"></aside>
 
-        <main class="lesson-main">
+        <main class="lesson-main" data-integrated-bank="factorPairs" data-lesson-check-api="IntegratedLessonBank"
+            data-lesson-check-anchors="every-factor-has-a-partner,where-to-stop,its-own-partner">
             <p class="prereq"><b>Before this page:</b> <span>be able to divide and see whether anything is left
                     over from <a
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/shortDivision.html">short
@@ -66,9 +71,11 @@
             <section aria-labelledby="every-factor-has-a-partner">
                 <h1 id="every-factor-has-a-partner">Every factor has a partner</h1>
 
-                <p>A <span class="gloss" data-term="factor">factor</span> divides a number exactly, leaving nothing
-                    over. 24 &divide; 3 = 8, so one trial finds two factors at once. A factor is also called a divisor: 3
-                    is a divisor of 24.</p>
+                <p>Suppose you have 24 counters. How many ways can you arrange them in equal rows,
+                    without leaving any counters out?</p>
+                <p>Four rows of 6 work, because 4 &times; 6 = 24. We call 4 and 6 a
+                    <strong>factor pair</strong>. Each is a <span class="gloss" data-term="factor">factor</span>
+                    of 24: a positive whole number that divides 24 exactly, with no remainder.</p>
 
                 <figure class="rects">
                     <div class="rects__figure" aria-hidden="true">
@@ -137,13 +144,15 @@
                             <span class="rects__label">4 &times; 6</span>
                         </div>
                     </div>
-                    <figcaption class="rects__caption">24 counters make four rectangles, and no more. Each one names a
-                        pair; past <span class="sf" role="math" aria-label="4 times 6">4 &times; 6</span> the same four
-                        come back stood on end.</figcaption>
+                    <figcaption class="rects__caption">Each rectangle gives a factor pair.
+                        Turning it swaps the rows and columns: 4 &times; 6 becomes 6 &times; 4,
+                        using the same two factors.</figcaption>
                 </figure>
 
-                <p>A pair is two numbers whose product is 24, and a trial that leaves a remainder joins no
-                    pair.</p>
+                <p>Finding one factor gives us its partner too. For example, 24 &divide; 3 = 8,
+                    so 3 and 8 form a pair. But 24 &divide; 5 leaves a remainder, so 5 is not a factor.</p>
+                <p>To find all the pairs, start at 1 and test the whole numbers in order.
+                    Write down both factors whenever the division is exact.</p>
 
                 <div class="worked">
                     <h2 class="worked__title">List every factor of 24</h2>
@@ -173,17 +182,22 @@
             </section>
 
             <section aria-labelledby="where-to-stop">
-                <h1 id="where-to-stop">Stop when the two ends of the pairs meet</h1>
+                <h1 id="where-to-stop">How do we know we've found them all?</h1>
 
-                <p>For 24 the arcs run out after 4 and 6. Every number above 5 is either not a factor or the larger end
-                    of a pair whose smaller end has already been tried, so it adds nothing new.</p>
+                <p>We've found 1 &times; 24, 2 &times; 12, 3 &times; 8 and 4 &times; 6.
+                    Testing 5 gives a remainder. At 6, we get 6 &times; 4: a pair we already have,
+                    with its factors swapped.</p>
+                <p>As the first factor gets larger, its partner gets smaller. Once they cross,
+                    we can stop: any pair after that would repeat one we found earlier.</p>
 
                 <div class="important-box" aria-labelledby="the-stopping-tip">
                     <div class="important-box__head">
                         <h2 class="important-box__title" id="the-stopping-tip">Stop below the root of the next square above the number</h2>
                         <span class="important-box__tag">Tip</span>
                     </div>
-                    <p>For 24 the next square above it is 25, whose root is 5, so the trials are 1, 2, 3 and 4.</p>
+                    <p>We can find a stopping point before testing any factors. Since 5 &times; 5 = 25
+                        is greater than 24, two factors of 24 cannot both be 5 or more.
+                        Every pair must therefore include 1, 2, 3 or 4. Testing those four numbers finds every pair.</p>
                 </div>
 
                 <div class="wex">
@@ -224,8 +238,9 @@
             <section aria-labelledby="its-own-partner">
                 <h1 id="its-own-partner">When a factor is its own partner</h1>
 
-                <p>36 is a <span class="gloss" data-term="square number">square number</span>, so one factor is its own partner:
-                    36 &divide; 6 = 6.</p>
+                <p>What happens if the two factors meet exactly? With 36, we reach 6 &times; 6.
+                    This arrangement is a square, which is why we call 36 a
+                    <span class="gloss" data-term="square number">square number</span>.</p>
 
                 <div class="worked">
                     <h2 class="worked__title">List every factor of 36</h2>
@@ -253,8 +268,9 @@
                     </noscript>
                 </div>
 
-                <p>36 has nine factors, not ten. 6 is written once rather than twice, and every square number has an
-                    odd number of factors for the same reason.</p>
+                <p>Write 6 only once in the factor list, even though it appears twice in 6 &times; 6.
+                    That gives 36 nine factors. Every positive square number has an odd number of
+                    positive factors: the others come in pairs, with one unpaired factor in the middle.</p>
             </section>
 
             <section aria-labelledby="common-mistakes">
@@ -291,15 +307,8 @@
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice"
-                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practiceFactorsAndFactorPairs.html"
-                        style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
-                        <h3>Factors and factor pairs</h3>
-                        <p>Listing every factor of a number in pairs, so none is missed or repeated.</p>
-                    </a>
                     <a class="topic-card topic-card--next"
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/multiplesAndDivisibility.html"
                         style="background-image: none">

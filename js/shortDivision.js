@@ -46,7 +46,7 @@
 
     const tidyInput = (text) => {
         const value = String(text).trim();
-        if (!/^\d+(?:\.\d+)?$/.test(value)) return null;
+        if (!/^\d{1,5}(?:\.\d{1,3})?$/.test(value)) return null;
         let [whole, fraction = ""] = value.split(".");
         whole = whole.replace(/^0+(?=\d)/, "");
         return fraction ? `${whole}.${fraction}` : whole;
@@ -57,17 +57,10 @@
         return fraction === undefined ? comma(whole) : `${comma(whole)}.${fraction}`;
     };
 
-    const limitDividend = (raw) => {
-        let cleaned = raw.replace(/[^\d.]/g, "");
-        const point = cleaned.indexOf(".");
-        if (point >= 0) cleaned = `${cleaned.slice(0, point + 1)}${cleaned.slice(point + 1).replace(/\./g, "")}`;
-        let [whole, fraction] = cleaned.split(".");
-        whole = whole.slice(0, 5);
-        if (whole.length > 1) whole = whole.replace(/^0+(?=\d)/, "");
-        return fraction === undefined ? whole : `${whole}.${fraction.slice(0, 3)}`;
-    };
+    // Preserve invalid entries instead of silently changing the calculation.
+    const limitDividend = raw => raw.trim();
 
-    const limitDivisor = (raw) => raw.replace(/[^2-9]/g, "").slice(0, 1);
+    const limitDivisor = raw => raw.trim();
 
     const buildCalculation = (dividendText, divisor, resultMode = "decimal") => {
         const dividend = tidyInput(dividendText);
@@ -257,13 +250,17 @@
 
         board.append(places, quotientRow, divisor, bracket, dividendRow);
 
-        /* On the remainder route the answer ends "r 1" on the quotient line,
-           where it is written on paper, so the finished board carries it. */
-        let remainderMark = null;
+        /* Keep the quotient self-contained: a remainder or continuing decimal
+           must be visible on the board, not only explained in its caption. */
+        let endingMark = null;
         if (calculation.resultMode === "remainder" && calculation.finalRemainder) {
-            remainderMark = make("span", "division-board__remainder", `r ${calculation.finalRemainder}`);
-            remainderMark.style.gridColumn = String(calculation.digits.length + 2);
-            board.append(remainderMark);
+            endingMark = make("span", "division-board__remainder", `r ${calculation.finalRemainder}`);
+        } else if (calculation.recurring) {
+            endingMark = make("span", "division-board__remainder division-board__continuation", "…");
+        }
+        if (endingMark) {
+            endingMark.style.gridColumn = String(calculation.digits.length + 2);
+            board.append(endingMark);
         }
 
         let points = null;
@@ -317,10 +314,10 @@
                 carry.style.transform = `translate(${(1 - reveal) * -34}px, ${(1 - reveal) * -24}px)`;
             });
 
-            if (remainderMark) {
+            if (endingMark) {
                 const reveal = ease((t - calculation.operations.length - .55) / .45);
-                remainderMark.style.opacity = reveal;
-                remainderMark.style.transform = `translateX(${(1 - reveal) * -10}px)`;
+                endingMark.style.opacity = reveal;
+                endingMark.style.transform = `translateX(${(1 - reveal) * -10}px)`;
             }
 
             if (points) {
@@ -406,23 +403,8 @@
             paintDots();
         };
 
-        /* Pinning takes the card out of the page and puts it on the body, and
-           moving a node drops focus and the caret from whatever is inside it.
-           Both are put back, so the card can go on being positioned however the
-           reader is using it. */
-        const moveCard = (move) => {
-            const active = sticky.contains(document.activeElement) ? document.activeElement : null;
-            const caret = active && typeof active.selectionStart === "number"
-                ? [active.selectionStart, active.selectionEnd]
-                : null;
-            move();
-            if (!active || document.activeElement === active) return;
-            active.focus({ preventScroll: true });
-            if (caret) active.setSelectionRange(caret[0], caret[1]);
-        };
 
         const dock = (offset = 0, preserveSize = false) => {
-            if (sticky.parentNode !== scene) moveCard(() => scene.insertBefore(sticky, scene.firstChild));
             sticky.classList.remove("is-pinned");
             sticky.style.removeProperty("left");
             if (preserveSize) {
@@ -433,19 +415,20 @@
                 sticky.style.removeProperty("height");
             }
             sticky.style.removeProperty("transform");
-            sticky.style.top = `${offset}px`;
+            const scale = scene.offsetWidth ? scene.getBoundingClientRect().width / scene.offsetWidth : 1;
+            sticky.style.top = reduceMotion.matches ? "0px" : `${Math.max(16, (window.innerHeight - cardHeight * scale) / 2) / (scale || 1)}px`;
         };
 
         let cardHeight = sticky.offsetHeight;
 
+        // Native sticky positioning owns the card’s movement. JavaScript only
+        // sets its viewport inset and advances the mathematical drawing.
         const pin = (left, top, width, scale) => {
-            if (sticky.parentNode !== document.body) moveCard(() => document.body.append(sticky));
             sticky.classList.add("is-pinned");
-            sticky.style.left = `${left}px`;
-            sticky.style.top = `${top}px`;
+            sticky.style.left = "0px";
+            sticky.style.top = `${top / scale}px`;
             sticky.style.width = `${width}px`;
             sticky.style.height = `${cardHeight}px`;
-            sticky.style.transform = `scale(${scale})`;
         };
 
         const remeasureCard = () => {
@@ -607,6 +590,7 @@
 
     window.addEventListener("scroll", nudge, { passive: true });
     window.addEventListener("resize", resetAll);
+    document.addEventListener("lessonlayoutchange", resetAll);
     if (reduceMotion.addEventListener) reduceMotion.addEventListener("change", resetAll);
     else reduceMotion.addListener(resetAll);
 })();

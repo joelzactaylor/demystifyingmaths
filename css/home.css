@@ -1,31 +1,281 @@
-header { display: block; height: 5vh; margin: 0; padding: 20px; background-image: url(../images/tessellation.webp); background-repeat: repeat; background-size: 300px 300px; border-bottom: 15px solid #116e93; }
-#title-section { position: relative; display: flex; min-height: 65vh; margin: 35px 50px 50px; padding: 5rem 2rem; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; border-radius: 10vh; text-align: center; background: radial-gradient(circle at top, #fff 0%, #e2e8f0 45%, #c3cfe2 100%); }
-#title-section::before { position: absolute; inset: 0; content: ""; background: url(../images/home/tree_3.png) center / cover; opacity: .1; pointer-events: none; }
-#title-section::after { position: absolute; top: -120px; right: -120px; width: 350px; height: 350px; content: ""; border: 2px solid rgba(102, 126, 234, .15); border-radius: 50%; animation: circle-pulse 8s ease-in-out infinite; }
-@keyframes circle-pulse { 0%, 100% { opacity: .5; transform: scale(1); } 50% { opacity: .3; transform: scale(1.15); } }
-#main-title, #title-section h2, .home-start, .scroll-cue { position: relative; z-index: 1; }
-#main-title { max-width: 100%; margin: 0 0 .5rem; color: rgb(9, 83, 157); font-family: "Aleo", serif; font-size: clamp(3.25rem, 7vw, 4.8rem); font-weight: 700; letter-spacing: -.03em; line-height: 1; }
-#main-title .word { display: inline-block; margin-right: .25em; }
-#main-title .char { display: inline-block; opacity: 0; transform: translateY(20px) scale(.9); animation: type-write .6s cubic-bezier(.215, .61, .355, 1) forwards; }
-#main-title .char:nth-child(1) { animation-delay: 0s; } #main-title .char:nth-child(2) { animation-delay: .05s; } #main-title .char:nth-child(3) { animation-delay: .1s; } #main-title .char:nth-child(4) { animation-delay: .15s; } #main-title .char:nth-child(5) { animation-delay: .2s; } #main-title .char:nth-child(6) { animation-delay: .25s; } #main-title .char:nth-child(7) { animation-delay: .3s; } #main-title .char:nth-child(8) { animation-delay: .35s; } #main-title .char:nth-child(9) { animation-delay: .4s; } #main-title .char:nth-child(10) { animation-delay: .45s; } #main-title .char:nth-child(11) { animation-delay: .5s; } #main-title .char:nth-child(12) { animation-delay: .55s; } #main-title .word + .word .char:nth-child(1) { animation-delay: .6s; } #main-title .word + .word .char:nth-child(2) { animation-delay: .65s; } #main-title .word + .word .char:nth-child(3) { animation-delay: .7s; } #main-title .word + .word .char:nth-child(4) { animation-delay: .75s; } #main-title .word + .word .char:nth-child(5) { animation-delay: .8s; }
-@keyframes type-write { from { opacity: 0; transform: translateY(20px) scale(.9); } to { opacity: 1; transform: translateY(0) scale(1); } }
-#title-section h2 { margin: 0 0 2rem; color: #718096; font-size: clamp(1.3rem, 4vw, 2.1rem); font-weight: 400; opacity: 0; animation: subtitle-fade 1s ease-out 1s forwards; }
-@keyframes subtitle-fade { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-.home-start { padding: 1rem 2rem; border-radius: 50px; background: linear-gradient(135deg, #667eea, #764ba2); color: #fff; font-weight: 700; text-decoration: none; opacity: 0; box-shadow: 0 4px 15px rgba(102, 126, 234, .3); animation: subtitle-fade 1s ease-out 1.4s forwards; }
-.home-start:hover { transform: translateY(-3px); }
-.scroll-cue { margin-top: 1.5rem; color: #718096; font-size: .85rem; opacity: 0; animation: subtitle-fade 1s ease-out 1.8s forwards; }
-.route-block { position: relative; display: flex; min-height: 420px; padding: 3rem 2rem; align-items: center; justify-content: center; overflow: hidden; }
-#reset-opacity-wrapper { position: relative; z-index: 1; width: 100%; max-width: 800px; }
-#reset-opacity-wrapper h1 { font-size: 50px; }
-.home-links { display: flex; gap: 16px; flex-wrap: wrap; margin: 25px 0; }
-.home-links a { display: inline-block; padding: 13px 18px; border: 2px solid #116e93; border-radius: 8px; background: rgba(255,255,255,.65); font-weight: 700; text-decoration: none; }
-
-@media (prefers-reduced-motion: reduce) {
-   #main-title .char, #title-section h2, .home-start, .scroll-cue { opacity: 1; transform: none; animation: none; }
-   #title-section::after { animation: none; }
+header {
+   display: block;
+   height: 5vh;
+   margin: 0;
+   padding: 20px;
+   background-image: url(../images/tessellation.webp);
+   background-repeat: repeat;
+   background-size: 300px 300px;
+   border-bottom: 15px solid #116e93;
 }
 
-/* No width media query here on purpose: .layout is a fixed 900px panel that
-   shared.css scales with a transform below 900px, so a viewport breakpoint
-   reflows the content inside a panel that is only being made smaller. A phone
-   reports a 980px viewport and never fires one at all. */
+#title-section {
+   position: relative;
+   display: flex;
+   min-height: 65vh;
+   margin: 35px 50px 50px;
+   padding: 5rem 2rem;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   overflow: hidden;
+   border-radius: 10vh;
+   text-align: center;
+   background: radial-gradient(circle at top, #fff 0%, #e2e8f0 45%, #c3cfe2 100%);
+}
+
+#title-section::before {
+   position: absolute;
+   inset: 0;
+   content: "";
+   background: url(../images/home/tree_3.png) center / cover;
+   opacity: .1;
+   pointer-events: none;
+}
+
+#title-section::after {
+   position: absolute;
+   top: -120px;
+   right: -120px;
+   width: 350px;
+   height: 350px;
+   content: "";
+   border: 2px solid rgba(102, 126, 234, .15);
+   border-radius: 50%;
+   animation: circle-pulse 8s ease-in-out infinite;
+}
+
+@keyframes circle-pulse {
+
+   0%,
+   100% {
+      opacity: .5;
+      transform: scale(1);
+   }
+
+   50% {
+      opacity: .3;
+      transform: scale(1.15);
+   }
+}
+
+#main-title,
+#title-section h2,
+.home-start,
+.scroll-cue {
+   position: relative;
+   z-index: 1;
+}
+
+#main-title {
+   max-width: 100%;
+   margin: 0 0 .5rem;
+   color: rgb(9, 83, 157);
+   font-family: "Aleo", serif;
+   font-size: 4.8rem;
+   font-weight: 700;
+   letter-spacing: 0;
+   line-height: 1;
+}
+
+#main-title .word {
+   display: inline-block;
+   margin-right: .25em;
+}
+
+#main-title .char {
+   display: inline-block;
+   opacity: 0;
+   transform: translateY(20px) scale(.9);
+   animation: type-write .6s cubic-bezier(.215, .61, .355, 1) forwards;
+}
+
+#main-title .char:nth-child(1) {
+   animation-delay: 0s;
+}
+
+#main-title .char:nth-child(2) {
+   animation-delay: .05s;
+}
+
+#main-title .char:nth-child(3) {
+   animation-delay: .1s;
+}
+
+#main-title .char:nth-child(4) {
+   animation-delay: .15s;
+}
+
+#main-title .char:nth-child(5) {
+   animation-delay: .2s;
+}
+
+#main-title .char:nth-child(6) {
+   animation-delay: .25s;
+}
+
+#main-title .char:nth-child(7) {
+   animation-delay: .3s;
+}
+
+#main-title .char:nth-child(8) {
+   animation-delay: .35s;
+}
+
+#main-title .char:nth-child(9) {
+   animation-delay: .4s;
+}
+
+#main-title .char:nth-child(10) {
+   animation-delay: .45s;
+}
+
+#main-title .char:nth-child(11) {
+   animation-delay: .5s;
+}
+
+#main-title .char:nth-child(12) {
+   animation-delay: .55s;
+}
+
+#main-title .word+.word .char:nth-child(1) {
+   animation-delay: .6s;
+}
+
+#main-title .word+.word .char:nth-child(2) {
+   animation-delay: .65s;
+}
+
+#main-title .word+.word .char:nth-child(3) {
+   animation-delay: .7s;
+}
+
+#main-title .word+.word .char:nth-child(4) {
+   animation-delay: .75s;
+}
+
+#main-title .word+.word .char:nth-child(5) {
+   animation-delay: .8s;
+}
+
+@keyframes type-write {
+   from {
+      opacity: 0;
+      transform: translateY(20px) scale(.9);
+   }
+
+   to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+   }
+}
+
+#title-section h2 {
+   margin: 0 0 2rem;
+   color: #718096;
+   font-size: 2.1rem;
+   font-weight: 400;
+   opacity: 0;
+   animation: subtitle-fade 1s ease-out 1s forwards;
+}
+
+@keyframes subtitle-fade {
+   from {
+      opacity: 0;
+      transform: translateY(15px);
+   }
+
+   to {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
+
+.home-start {
+   padding: 1rem 2rem;
+   border-radius: 50px;
+   background: #09539d;
+   color: #fff;
+   font-weight: 700;
+   text-decoration: none;
+   opacity: 0;
+   box-shadow: 0 4px 15px rgba(9, 83, 157, .3);
+   animation: subtitle-fade 1s ease-out 1.4s forwards;
+}
+
+.home-start:hover {
+   transform: translateY(-3px);
+}
+
+.desktop-note {
+   position: relative;
+   z-index: 1;
+   margin: 18px 0 0;
+   color: #52666f;
+   font-size: 1rem;
+}
+
+.scroll-cue {
+   margin-top: 1.5rem;
+   color: #718096;
+   font-size: .85rem;
+   opacity: 0;
+   animation: subtitle-fade 1s ease-out 1.8s forwards;
+}
+
+.route-block {
+   position: relative;
+   display: flex;
+   min-height: 420px;
+   padding: 3rem 2rem;
+   align-items: center;
+   justify-content: center;
+   overflow: hidden;
+}
+
+#reset-opacity-wrapper {
+   position: relative;
+   z-index: 1;
+   width: 100%;
+   max-width: 800px;
+}
+
+#reset-opacity-wrapper h1 {
+   font-size: 50px;
+}
+
+.home-links {
+   display: flex;
+   gap: 16px;
+   flex-wrap: wrap;
+   margin: 25px 0;
+}
+
+.home-links a {
+   display: inline-block;
+   padding: 13px 18px;
+   border: 2px solid #116e93;
+   border-radius: 8px;
+   background: rgba(255, 255, 255, .65);
+   font-weight: 700;
+   text-decoration: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+   #main-title .char,
+   #title-section h2,
+   .home-start,
+   .scroll-cue {
+      opacity: 1;
+      transform: none;
+      animation: none;
+   }
+
+   #title-section::after {
+      animation: none;
+   }
+}
+
+/* The home page keeps the original 900px composition. Authored lessons opt into
+   their wider desktop canvas through lesson-sections.css. */

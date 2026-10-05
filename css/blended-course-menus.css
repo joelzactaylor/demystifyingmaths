@@ -1,0 +1,87 @@
+/* These menus keep the site's framed canvas and rounded card grid.
+   Progress behaviour remains shared; only opted-in menus use this framing. */
+.blended-menu { background-color: rgb(217, 252, 255); }
+/* An ongoing revision route has no finite completion bar. Its optional label remains. */
+.blended-menu [data-revision-entry] .card-progress progress { display: none; }
+.blended-menu .layout { width: 900px; min-width: 900px; max-width: 900px; background-color: #f7f7ef; }
+.blended-menu header {
+    background: var(--topic-accent, #116e93) url('../images/tessellation.webp') center / 300px;
+    background-blend-mode: luminosity;
+    border-bottom: 8px solid var(--topic-accent, #116e93);
+    padding: 24px 28px 28px;
+}
+.blended-menu header > h1 {
+    display: block;
+    color: #fff;
+    font: 700 42px/1.2 'Aleo', serif;
+    text-shadow: 0 2px 3px #241c4266;
+    padding: 24px 0 26px;
+}
+.blended-menu header nav { position: relative; top: 46px; }
+.blended-menu header nav ol.breadcrumb {
+    background: rgba(17, 44, 72, .75);
+    border: 0;
+    border-radius: 16px;
+    padding: 7px 14px;
+    box-shadow: none;
+}
+.blended-menu header nav .breadcrumb a,
+.blended-menu header nav .breadcrumb p,
+.blended-menu header nav .breadcrumb span { color: #fff; font-size: 18px; text-shadow: black 0 0 20px; }
+.blended-menu header nav .breadcrumb a:hover { color: #a8c9ff; }
+.blended-menu header nav a:focus-visible { outline: 2px solid white; outline-offset: 3px; }
+.blended-menu .curriculum-main { padding: 38px 42px 56px; }
+.blended-menu .course-intro { grid-template-columns: minmax(0,1fr) 260px; gap: 32px; border-bottom: 1px solid #dedde2; padding-bottom: 30px; }
+.blended-menu.subtopic-menu .course-intro { border-color: #dedde2; }
+.blended-menu .course-intro .course-eyebrow { margin-bottom: 14px; }
+.blended-menu .course-intro p { font-size: 16px; line-height: 1.7; }
+.blended-menu a.course-start { border-radius: 14px; margin-top: 20px; }
+.blended-menu .course-progress { border: 1px solid #e3dfef; border-radius: 20px; padding: 22px; background: #f0eef8; }
+.blended-menu .course-progress p { font-size: 14px; }
+.blended-menu .course-progress strong { font-size: 19px; margin: 8px 0 14px; font-variant-numeric: tabular-nums; }
+.blended-menu .topic-section h2 { font: 700 27px/1.3 'Aleo', serif; }
+.blended-menu .lesson-route { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 22px; grid-auto-rows: auto; }
+.blended-menu .image-route { grid-auto-rows: auto; }
+.blended-menu .topic-card,
+.blended-menu .lesson-route .topic-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 24px 26px;
+    border: 1px solid #dcd9e5;
+    border-radius: 20px;
+    box-shadow: 0 3px 10px #342d760b;
+    transition: border-color .16s ease, background-color .16s ease, box-shadow .16s ease;
+}
+.blended-menu .topic-card h3 { position: relative; padding-right: 20px; font-family: 'Aleo', serif; font-size: 21px; line-height: 1.35; }
+.blended-menu .topic-card h3::after,
+.blended-menu .topic-card:hover h3::after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    right: 2px;
+    top: .5em;
+    width: 6px;
+    height: 6px;
+    margin: 0;
+    vertical-align: .12em;
+    border: solid currentColor;
+    border-width: 1.5px 1.5px 0 0;
+    transform: rotate(45deg);
+    transition: none;
+}
+.blended-menu .topic-card p { font-size: 16px; line-height: 1.6; }
+.blended-menu .lesson-order { width: auto; height: auto; align-self: flex-start; display: block; background: none; margin-bottom: 12px; font-size: 14px; font-weight: 500; color: #647180; }
+.blended-menu .lesson-order::before { content: 'Lesson '; }
+.blended-menu .lesson-route .card-progress { width: 100%; margin-top: auto; padding-top: 20px; }
+.blended-menu .image-route .card-progress { padding-top: 20px; }
+.blended-menu .card-progress__label { font-variant-numeric: tabular-nums; }
+.blended-menu .topic-card:hover { box-shadow: 0 5px 14px #342d7618; }
+.blended-menu .topic-card.is-lesson-complete,
+.blended-menu .topic-card.is-lesson-complete:hover { background-color: #f0faf4; border-color: #6da68a; }
+.blended-menu .is-lesson-complete .lesson-order { background: none; }
+.blended-menu .topic-card--practice { border-color: #e3d2b0; border-left: 5px solid #9a701f; }
+@media (prefers-reduced-motion: reduce) {
+    .blended-menu .topic-card { transition: none; }
+}

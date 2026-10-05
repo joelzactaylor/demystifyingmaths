@@ -10,12 +10,17 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/practice-engine.js" defer></script>
+    <script src="/demystifyingmaths/js/practiceMeanMedianMode.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -46,24 +51,102 @@
         <aside id="page-nav-container"></aside>
 
         <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>Calculate the mean of an ungrouped list as total divided by count, including decimal answers and means of measurements, and show one extreme value dragging the mean towards it. Interpret the result in context. Frequency-table and grouped versions are later pages; reverse problems live on Working backwards from the mean. Both tiers. (S4)</p>
+            <p class="prereq"><b>Before this page:</b> <span>add and divide numbers, and read a list as a collection of separate values.</span></p>
+
+            <section aria-labelledby="equal-share">
+                <h1 id="equal-share">The mean is the equal share of the total</h1>
+                <p>The mean gives every value in a list an equal share of the total. Add the values, then divide by how many values there are.</p>
+                <div class="rule-card">
+                    <h2 class="rule-card__statement">Mean = total of the values &divide; number of values</h2>
+                    <ol class="rule-card__conditions">
+                        <li>The divisor is the count of values, not the largest value.</li>
+                        <li>The mean has the same units as each value in the list.</li>
+                    </ol>
+                </div>
+                <div class="wex">
+                    <h2 class="wex__title">Mean of 6, 8 and 10</h2>
+                    <p class="wex__task">Add the values and divide the total by the count.</p>
+                    <ol class="wex__steps">
+                        <li><span class="wex__do"><span class="sf">6 + 8 + 10 = 24</span></span><span class="wex__why">The total is 24.</span></li>
+                        <li><span class="wex__do"><span class="sf">24 &divide; 3 = 8</span></span><span class="wex__why">There are three values, so each equal share is 8.</span></li>
+                    </ol>
+                </div>
+                <p>The mean is 8, which is also the middle value because 6 and 10 are equally far from 8. That
+                    coincidence does not make the mean and the <span class="gloss" data-term="median">median</span> the
+                    same method.</p>
+                <div data-lesson-check="0"></div>
             </section>
 
-            <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+            <section aria-labelledby="decimal-mean">
+                <h1 id="decimal-mean">A mean can lie between the listed values</h1>
+                <p>The total need not divide into whole-number shares. Keep the <span class="gloss"
+                        data-term="unit">units</span> and calculate the decimal answer.</p>
+                <div class="wex">
+                    <h2 class="wex__title">Mean time for four journeys</h2>
+                    <p class="wex__task">The times are 1.2 hours, 1.5 hours, 1.8 hours and 2.1 hours.</p>
+                    <ol class="wex__steps">
+                        <li><span class="wex__do"><span class="sf">1.2 + 1.5 + 1.8 + 2.1 = 6.6</span></span><span class="wex__why">The total time is 6.6 hours.</span></li>
+                        <li><span class="wex__do"><span class="sf">6.6 &divide; 4 = 1.65</span></span><span class="wex__why">The mean journey takes 1.65 hours.</span></li>
+                    </ol>
+                </div>
+                <p>The answer is between 1.2 hours and 2.1 hours, and it keeps the unit hours. A mean does not have to be one of the values in the list.</p>
+                <div data-lesson-check="1"></div>
+            </section>
+
+            <section aria-labelledby="extreme-value">
+                <h1 id="extreme-value">An extreme value pulls the mean towards it</h1>
+                <p>Changing one value changes the total, so it changes the equal share. The effect is larger when the changed value is far from the other values.</p>
+                <div class="reading-pair">
+                    <article>
+                        <h2>Before the change</h2>
+                        <p><span class="sf">6, 8, 10</span> has mean <span class="sf">24 &divide; 3 = 8</span>.</p>
+                    </article>
+                    <article>
+                        <h2>After the change</h2>
+                        <p>Replacing 10 with 30 gives <span class="sf">6, 8, 30</span>, whose mean is <span class="sf">44 &divide; 3 = 14.6&hellip;</span>.</p>
+                    </article>
+                </div>
+                <p>The mean moves from 8 towards 30, but it does not reach 30 because 6 and 8 are both less than 30. The mean describes the whole list, so one extreme value can affect it strongly.</p>
+                <div data-lesson-check="2"></div>
+            </section>
+
+            <section aria-labelledby="check-mean">
+                <h1 id="check-mean">Use the list to check the mean</h1>
+                <p>A mean of a list lies between its smallest and largest values. Multiplying the mean by the count must also recover the total.</p>
+                <div class="important-box" aria-labelledby="mean-check-title">
+                    <h2 class="important-box__title" id="mean-check-title">Check 6, 8 and 10</h2>
+                    <p><span class="sf">6 &le; 8 &le; 10</span>, and <span class="sf">8 &times; 3 = 24</span>, the original total. Both checks agree with the calculation.</p>
+                </div>
+            </section>
+
+            <section aria-labelledby="common-mistakes">
+                <h1 id="common-mistakes">Common mistakes</h1>
+                <ul class="slips">
+                    <li><b>Dividing by the largest value</b>
+                        <span>For 6, 8 and 10, dividing 24 by 10 gives 2.4. The divisor is the count 3, so the mean is 8.</span>
+                    </li>
+                    <li><b>Leaving out a value from the total</b>
+                        <span>Adding 6 + 8 and dividing by 3 gives <span class="sf">4.6&hellip;</span>, but 10 is still in the list. The complete total is 24, so the mean is 8.</span>
+                    </li>
+                    <li><b>Assuming the mean must be listed</b>
+                        <span>The mean of 1.2, 1.5, 1.8 and 2.1 is 1.65 hours, even though 1.65 is not one of the four times.</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="summary">
+                <h1 id="summary">Summary</h1>
+                <ol class="recap">
+                    <li>Add every value and divide by the number of values.</li>
+                    <li>The mean has the same units as the values and can be a decimal not present in the list.</li>
+                    <li>An extreme value pulls the mean towards it.</li>
+                    <li>Check that the mean lies between the smallest and largest values, and that mean &times; count gives the total.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/practiceMeanMedianMode.html" style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
-                        <h3>The mean</h3>
-                        <p>The total shared equally across the count, and why one extreme drags the mean.</p>
-                    </a>
                     <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/theRange.html" style="background-image: none">
                         <span class="topic-card__kicker">Next lesson</span>
                         <h3>The range</h3>

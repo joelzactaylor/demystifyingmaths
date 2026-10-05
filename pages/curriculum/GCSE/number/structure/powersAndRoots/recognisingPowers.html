@@ -10,7 +10,14 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/recognisingPowers.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/powersAndRootsNavigation.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/powersRootsRecall.css">
+    <script src="/demystifyingmaths/js/lesson-session.js" defer></script>
+    <script src="/demystifyingmaths/js/powersRootsRecallBank.js" defer></script>
+    <script src="/demystifyingmaths/js/powersRootsRecall.js" defer></script>
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
@@ -18,18 +25,19 @@
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
     <script src="/demystifyingmaths/js/recognisingPowers.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<body class="roots-lesson">
     <div class="layout">
         <div id="top-ribbon-placeholder"></div>
         <script>fetch("/demystifyingmaths/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
 
         <header>
-            <h1>Demystifying - Recognising powers of a number</h1>
+            <h1>Recognising powers of a number</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
                     <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
@@ -46,200 +54,102 @@
         <aside id="page-nav-container"></aside>
 
         <main class="lesson-main">
-            <p class="prereq"><b>Before this page:</b> <span>be able to read and <span class="gloss" data-term="evaluate">evaluate</span> powers using <a
-                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/indexNotation.html">index
-                        notation</a>.</span></p>
 
-            <section>
-                <h1 id="reading-a-power-backwards">Reading a power backwards</h1>
-
-                <p>Evaluating <span class="sf" role="math" aria-label="3 to the power of 4">3<span class="caret"
-                            aria-hidden="true">^</span><sup>4</sup></span> gives 81. Recognising a power runs that
-                    <span class="gloss" data-term="calculation">calculation</span> backwards: starting from 81, name the power that makes it, 3<span class="caret" aria-hidden="true">^</span><sup>4</sup>.</p>
-
-                <div class="recognition">
-                    <p><span>evaluate</span><strong role="math" aria-label="3 to the power of 4 equals 81">3<span
-                                class="caret" aria-hidden="true">^</span><sup>4</sup>
-                            &longrightarrow; 81</strong></p>
-                    <p><span>recognise</span><strong role="math" aria-label="81 equals 3 to the power of 4">81
-                            &longrightarrow; 3<span class="caret" aria-hidden="true">^</span><sup>4</sup></strong></p>
-                </div>
-
-                <p>81 does not show its four <span class="gloss" data-term="factor">factors</span> of 3; recognising it means knowing the fact 3<span class="caret" aria-hidden="true">^</span><sup>4</sup> = 81. Swapped, the base and index name a different number: <span class="sf" role="math" aria-label="4 cubed equals 64">4<span class="caret" aria-hidden="true">^</span><sup>3</sup> = 64</span>.</p>
-            </section>
-
-            <section>
-                <h1 id="squares-and-cubes">Squares and cubes</h1>
-                <p>A square is a product of two equal factors: <span class="sf">49 = 7 &times; 7</span>.</p>
-
-                <ol class="fact-list fact-list--squares" aria-label="Square numbers from 1 squared to 15 squared">
-                    <li><span>1<span class="caret" aria-hidden="true">^</span><sup>2</sup></span><b>1</b></li>
-                    <li><span>2<span class="caret" aria-hidden="true">^</span><sup>2</sup></span><b>4</b></li>
-                    <li><span>3<span class="caret" aria-hidden="true">^</span><sup>2</sup></span><b>9</b></li>
-                    <li><span>4<span class="caret" aria-hidden="true">^</span><sup>2</sup></span><b>16</b></li>
-                    <li><span>5<span class="caret" aria-hidden="true">^</span><sup>2</sup></span><b>25</b></li>
-                    <li><span>6<span class="caret" aria-hidden="true">^</span><sup>2</sup></span><b>36</b></li>
-                    <li><span>7<span class="caret" aria-hidden="true">^</span><sup>2</sup></span><b>49</b></li>
-                    <li><span>8<span class="caret" aria-hidden="true">^</span><sup>2</sup></span><b>64</b></li>
-                    <li><span>9<span class="caret" aria-hidden="true">^</span><sup>2</sup></span><b>81</b></li>
-                    <li><span>10<span class="caret" aria-hidden="true">^</span><sup>2</sup></span><b>100</b></li>
-                    <li><span>11<span class="caret" aria-hidden="true">^</span><sup>2</sup></span><b>121</b></li>
-                    <li><span>12<span class="caret" aria-hidden="true">^</span><sup>2</sup></span><b>144</b></li>
-                    <li><span>13<span class="caret" aria-hidden="true">^</span><sup>2</sup></span><b>169</b></li>
-                    <li><span>14<span class="caret" aria-hidden="true">^</span><sup>2</sup></span><b>196</b></li>
-                    <li><span>15<span class="caret" aria-hidden="true">^</span><sup>2</sup></span><b>225</b></li>
-                </ol>
-
-                <p>A cube is a product of three equal factors: <span class="sf">64 = 4 &times; 4 &times; 4</span>.</p>
-
-                <ol class="fact-list fact-list--cubes" aria-label="Cube numbers from 1 cubed to 5 cubed, and 10 cubed">
-                    <li><span>1<span class="caret" aria-hidden="true">^</span><sup>3</sup></span><b>1</b></li>
-                    <li><span>2<span class="caret" aria-hidden="true">^</span><sup>3</sup></span><b>8</b></li>
-                    <li><span>3<span class="caret" aria-hidden="true">^</span><sup>3</sup></span><b>27</b></li>
-                    <li><span>4<span class="caret" aria-hidden="true">^</span><sup>3</sup></span><b>64</b></li>
-                    <li><span>5<span class="caret" aria-hidden="true">^</span><sup>3</sup></span><b>125</b></li>
-                    <li><span>10<span class="caret" aria-hidden="true">^</span><sup>3</sup></span><b>1,000</b></li>
-                </ol>
-
-                <p>Both 0 and 1 are square and <span class="gloss" data-term="cube number">cube numbers</span>: <span class="sf" role="math"
-                        aria-label="0 squared equals 0 cubed equals 0">0<span class="caret"
-                            aria-hidden="true">^</span><sup>2</sup> = 0<span class="caret"
-                            aria-hidden="true">^</span><sup>3</sup> = 0</span>, and <span class="sf" role="math"
-                        aria-label="1 squared equals 1 cubed equals 1">1<span class="caret"
-                            aria-hidden="true">^</span><sup>2</sup> = 1<span class="caret"
-                            aria-hidden="true">^</span><sup>3</sup> = 1</span>.</p>
-
-                <p>A number in the list of squares is a square; a whole number between two <span class="gloss" data-term="consecutive">consecutive</span> squares is not, and
-                    the same holds for cubes.</p>
-
-                <div class="example-strip">
-                    <p><b>50 is not a square</b> <span>It lies between consecutive squares.</span><strong
-                            role="math" aria-label="7 squared equals 49, which is less than 50, which is less than 64, which equals 8 squared">7<span
-                                class="caret" aria-hidden="true">^</span><sup>2</sup> = 49 &lt; 50 &lt; 64 = 8<span
-                                class="caret" aria-hidden="true">^</span><sup>2</sup></strong></p>
-                    <p><b>100 is not a cube</b> <span>It lies between consecutive cubes.</span><strong
-                            role="math" aria-label="4 cubed equals 64, which is less than 100, which is less than 125, which equals 5 cubed">4<span
-                                class="caret" aria-hidden="true">^</span><sup>3</sup> = 64 &lt; 100 &lt; 125 = 5<span
-                                class="caret" aria-hidden="true">^</span><sup>3</sup></strong></p>
-                </div>
-            </section>
-
-            <section>
-                <h1 id="powers-of-2-3-4-and-5">Powers of 2, 3, 4 and 5</h1>
-                <p>Each row starts at its <span class="gloss" data-term="base">base</span> and keeps multiplying by it, so a number&rsquo;s place in its row is its index.</p>
-
-                <dl class="power-chains">
-                    <div>
-                        <dt>Powers of 2</dt>
-                        <dd>2, 4, 8, 16, 32, 64, 128, 256, 512, 1,024</dd>
-                    </div>
-                    <div>
-                        <dt>Powers of 3</dt>
-                        <dd>3, 9, 27, 81, 243</dd>
-                    </div>
-                    <div>
-                        <dt>Powers of 4</dt>
-                        <dd>4, 16, 64, 256, 1,024</dd>
-                    </div>
-                    <div>
-                        <dt>Powers of 5</dt>
-                        <dd>5, 25, 125, 625, 3,125</dd>
-                    </div>
-                </dl>
-
-                <div class="example-strip">
-                    <p><b>243</b> <span>appears fifth in the powers of 3</span><strong
-                            role="math" aria-label="243 equals 3 to the power of 5">243 = 3<span class="caret"
-                                aria-hidden="true">^</span><sup>5</sup></strong></p>
-                    <p><b>200</b> <span>lies between consecutive powers of 2</span><strong
-                            role="math" aria-label="128 is less than 200, which is less than 256">128 &lt; 200 &lt;
-                            256</strong></p>
-                </div>
-            </section>
-
-            <section>
-                <h1 id="several-power-names">One number can have several power names</h1>
-                <p>The six factors of 2 in 64 can be grouped into three factors of 4 or two factors of 8.</p>
-
-                <p class="power-identity" role="math"
-                    aria-label="64 equals 2 to the power of 6 equals 4 cubed equals 8 squared">
-                    64 = 2<span class="caret" aria-hidden="true">^</span><sup>6</sup> = 4<span class="caret"
-                        aria-hidden="true">^</span><sup>3</sup> = 8<span class="caret"
-                        aria-hidden="true">^</span><sup>2</sup>
-                </p>
-
-                <p>In these three names for 64, the larger base carries the smaller <span class="gloss" data-term="index">index</span>. &ldquo;Write 64 as a power of 4&rdquo; asks for the one with base 4.</p>
-            </section>
-
-            <section>
-                <h1 id="name-a-power">Name a chosen number as a power</h1>
-                <div class="power-names" data-power-names>
-                    <label class="power-names__field"><span>Number</span><input type="text" inputmode="numeric"
-                            value="729" maxlength="4" autocomplete="off" spellcheck="false" data-power-input></label>
-                    <div class="power-names__working">
-                        <p class="power-names__equation" data-power-equation aria-live="polite"></p>
-                        <ul class="power-names__places">
-                            <li data-power-square></li>
-                            <li data-power-cube></li>
-                        </ul>
-                    </div>
-                    <p class="power-names__note" data-power-note hidden>A whole number from 2 to 9,999</p>
-                    <noscript>
-                        <p>729 = 3<span class="caret" aria-hidden="true">^</span><sup>6</sup> = 9<span class="caret"
-                                aria-hidden="true">^</span><sup>3</sup> = 27<span class="caret"
-                                aria-hidden="true">^</span><sup>2</sup>: a square, a cube and a sixth power.</p>
-                    </noscript>
-                </div>
-            </section>
-
-            <section>
-                <h1 id="common-mistakes">Common mistakes</h1>
-                <ul class="slips">
-                    <li><b>Reading the base and the index the wrong way round</b>
-                    <span>125 is <span class="sf" role="math" aria-label="5 cubed">5<span
-                            class="caret" aria-hidden="true">^</span><sup>3</sup></span>, not <span class="sf" role="math" aria-label="3 to the power of 5">3<span class="caret" aria-hidden="true">^</span><sup>5</sup></span>: five factors
-                            of 3 multiply to 243.</span></li>
-                    <li><b>Answering with a base the question did not ask for</b>
-                    <span>Asked for 81 as a power of 9, <span class="sf" role="math" aria-label="3 to the power of 4">3<span class="caret"
-                            aria-hidden="true">^</span><sup>4</sup></span> is a true name with the wrong base: the four factors of 3 group
-                            into two factors of 9, so <span class="sf" role="math" aria-label="81 equals 9 squared">81 = 9<span class="caret"
-                            aria-hidden="true">^</span><sup>2</sup></span>.</span></li>
-                </ul>
-            </section>
-
-            <section>
-                <h1 id="remember">Summary</h1>
-                <ol class="recap">
-                    <li>Recognising a power reverses evaluating one: 81 is <span class="sf" role="math"
-                            aria-label="3 to the power of 4">3<span class="caret"
-                                aria-hidden="true">^</span><sup>4</sup></span> because four factors of 3 multiply to
-                        81.</li>
-                    <li>The squares worth recalling run 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196 and
-                        225.</li>
-                    <li>The cubes worth recalling are 1, 8, 27, 64 and 125, together with <span class="sf" role="math"
-                            aria-label="10 cubed equals 1,000">10<span class="caret"
-                                aria-hidden="true">^</span><sup>3</sup> = 1,000</span>.</li>
-                    <li>A whole number between two consecutive squares is not a square, and one between two consecutive
-                        powers of 2 is not a power of 2: 49 &lt; 50 &lt; 64 rules 50 out.</li>
-                    <li>One number can carry several power names, since <span class="sf" role="math"
-                            aria-label="64 equals 2 to the power of 6 equals 4 cubed equals 8 squared">64 = 2<span
-                                class="caret" aria-hidden="true">^</span><sup>6</sup> = 4<span class="caret"
-                                aria-hidden="true">^</span><sup>3</sup> = 8<span class="caret"
-                                aria-hidden="true">^</span><sup>2</sup></span>, but swapping a base and its index
-                        changes the value.</li>
-                </ol>
-            </section>
-
+<p class="prereq"><b>Before this page:</b> <span>Know how to read and work out a power using <a href="indexNotation.html">index notation</a>.</span></p>
+<section>
+<h1 id="squares-and-cubes">Spotting squares and cubes</h1>
+<p id="reading-a-power-backwards">Knowing that 7<span class="caret" aria-hidden="true">^</span><sup>2</sup> = 49 lets us recognise 49 as a square number.
+We're reading the same fact backwards. This is useful when a question gives us the result and asks which number was squared or cubed.</p>
+<div class="power-facts" aria-label="Squares from 1 squared to 15 squared">
+<span>1<span class="caret" aria-hidden="true">^</span><sup>2</sup> = <strong>1</strong></span>
+<span>2<span class="caret" aria-hidden="true">^</span><sup>2</sup> = <strong>4</strong></span>
+<span>3<span class="caret" aria-hidden="true">^</span><sup>2</sup> = <strong>9</strong></span>
+<span>4<span class="caret" aria-hidden="true">^</span><sup>2</sup> = <strong>16</strong></span>
+<span>5<span class="caret" aria-hidden="true">^</span><sup>2</sup> = <strong>25</strong></span>
+<span>6<span class="caret" aria-hidden="true">^</span><sup>2</sup> = <strong>36</strong></span>
+<span>7<span class="caret" aria-hidden="true">^</span><sup>2</sup> = <strong>49</strong></span>
+<span>8<span class="caret" aria-hidden="true">^</span><sup>2</sup> = <strong>64</strong></span>
+<span>9<span class="caret" aria-hidden="true">^</span><sup>2</sup> = <strong>81</strong></span>
+<span>10<span class="caret" aria-hidden="true">^</span><sup>2</sup> = <strong>100</strong></span>
+<span>11<span class="caret" aria-hidden="true">^</span><sup>2</sup> = <strong>121</strong></span>
+<span>12<span class="caret" aria-hidden="true">^</span><sup>2</sup> = <strong>144</strong></span>
+<span>13<span class="caret" aria-hidden="true">^</span><sup>2</sup> = <strong>169</strong></span>
+<span>14<span class="caret" aria-hidden="true">^</span><sup>2</sup> = <strong>196</strong></span>
+<span>15<span class="caret" aria-hidden="true">^</span><sup>2</sup> = <strong>225</strong></span>
+</div>
+<p>A cube uses three equal factors. Here are the cube facts worth having ready:</p>
+<div class="power-facts" aria-label="Cubes of 1 to 5 and 10">
+<span>1<span class="caret" aria-hidden="true">^</span><sup>3</sup> = <strong>1</strong></span>
+<span>2<span class="caret" aria-hidden="true">^</span><sup>3</sup> = <strong>8</strong></span>
+<span>3<span class="caret" aria-hidden="true">^</span><sup>3</sup> = <strong>27</strong></span>
+<span>4<span class="caret" aria-hidden="true">^</span><sup>3</sup> = <strong>64</strong></span>
+<span>5<span class="caret" aria-hidden="true">^</span><sup>3</sup> = <strong>125</strong></span>
+<span>10<span class="caret" aria-hidden="true">^</span><sup>3</sup> = <strong>1,000</strong></span>
+</div>
+<div data-lesson-check="0" data-lesson-check-api="RecognisingPowersBank"></div>
+<p>Zero and 1 are both squares and cubes: 0<span class="caret" aria-hidden="true">^</span><sup>2</sup> = 0<span class="caret" aria-hidden="true">^</span><sup>3</sup> = 0,
+and 1<span class="caret" aria-hidden="true">^</span><sup>2</sup> = 1<span class="caret" aria-hidden="true">^</span><sup>3</sup> = 1. Those belong to both lists too.</p>
+</section>
+<section>
+<h1 id="powers-of-2-3-4-and-5">Following a chain of powers</h1>
+<p>To build the powers of 3, start at 3 and keep multiplying by 3:
+3, 9, 27, 81, 243. Counting the factors gives 3<span class="caret" aria-hidden="true">^</span><sup>5</sup> = 243.</p>
+<ol class="power-walk" aria-label="Each step multiplies by 3">
+<li><span>3<span class="caret" aria-hidden="true">^</span><sup>1</sup></span><strong>3</strong></li>
+<li><span>3<span class="caret" aria-hidden="true">^</span><sup>2</sup></span><strong>9</strong></li>
+<li><span>3<span class="caret" aria-hidden="true">^</span><sup>3</sup></span><strong>27</strong></li>
+<li><span>3<span class="caret" aria-hidden="true">^</span><sup>4</sup></span><strong>81</strong></li>
+<li><span>3<span class="caret" aria-hidden="true">^</span><sup>5</sup></span><strong>243</strong></li>
+</ol>
+<div class="power-chains">
+<p><strong>Powers of 2</strong><span>2, 4, 8, 16, 32, 64, 128, 256, 512, 1,024</span></p>
+<p><strong>Powers of 4</strong><span>4, 16, 64, 256, 1,024</span></p>
+<p><strong>Powers of 5</strong><span>5, 25, 125, 625, 3,125</span></p>
+</div>
+<p>Each chain starts at index 1. The fourth entry in the powers of 3 is 81,
+so 81 = 3<span class="caret" aria-hidden="true">^</span><sup>4</sup>. Swapping the base and index gives a different calculation:
+4<span class="caret" aria-hidden="true">^</span><sup>3</sup> = 64.</p>
+<div data-lesson-check="1" data-lesson-check-api="RecognisingPowersBank"></div>
+<p>Recognition isn't a new operation to memorise. If a fact won't come to mind,
+multiply by the base until you reach the number—or pass it.</p>
+</section>
+<section>
+<h1 id="several-power-names">Different powers, the same number</h1>
+<p>The number 64 appears in more than one chain. Six factors of 2 can be
+grouped into three pairs, each worth 4, or two groups of three, each worth 8.</p>
+<div class="power-regroup">
+<p>(2 × 2) × (2 × 2) × (2 × 2) = 4<span class="caret" aria-hidden="true">^</span><sup>3</sup></p>
+<p>(2 × 2 × 2) × (2 × 2 × 2) = 8<span class="caret" aria-hidden="true">^</span><sup>2</sup></p>
+<p><strong>64 = 2<span class="caret" aria-hidden="true">^</span><sup>6</sup> = 4<span class="caret" aria-hidden="true">^</span><sup>3</sup> = 8<span class="caret" aria-hidden="true">^</span><sup>2</sup></strong></p>
+</div>
+<p>All three names are true. If the question specifies a base, use that base:
+“64 as a power of 4” means 4<span class="caret" aria-hidden="true">^</span><sup>3</sup>.</p>
+<div data-lesson-check="2" data-lesson-check-api="RecognisingPowersBank"></div>
+<div class="power-finder" id="name-a-power">
+<label for="power-number" hidden>Find power names for <input id="power-number" type="text" inputmode="numeric" value="729" maxlength="4" autocomplete="off"></label>
+<p class="power-finder-result" aria-live="polite">729 = 3<span class="caret" aria-hidden="true">^</span><sup>6</sup> = 9<span class="caret" aria-hidden="true">^</span><sup>3</sup> = 27<span class="caret" aria-hidden="true">^</span><sup>2</sup></p>
+<p class="power-finder-note">Whole numbers from 2 to 9,999; indices of 2 or more.</p>
+</div>
+</section>
+<section>
+<h1 id="between-powers">Between neighbouring powers</h1>
+<p>Not every whole number is a square. Since 7<span class="caret" aria-hidden="true">^</span><sup>2</sup> = 49
+and 8<span class="caret" aria-hidden="true">^</span><sup>2</sup> = 64, the number 50 lies between two neighbouring squares.
+There is no whole-number side length whose square is 50.</p>
+<p>The same idea works for cubes. To decide whether 100 is a cube number,
+look for the whole-number cubes on either side of it.</p>
+<div data-lesson-check="3" data-lesson-check-api="RecognisingPowersBank"></div>
+<div class="roots-key-points" id="remember"><h2>Key points</h2><ul>
+<li>Recognising a power means <strong>reading a multiplication fact backwards</strong>.</li>
+<li>Build powers by multiplying by the base again. The index counts factors, not digits.</li>
+<li>A number can have <strong>several power names</strong>. Use the base the question asks for.</li>
+<li>A number strictly between neighbouring squares or cubes <strong>isn't one itself</strong>.</li>
+</ul></div>
+</section>
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <div class="powers-recall" data-powers-recall="recognisingPowers" hidden></div>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice"
-                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/practiceRecognisingPowers.html"
-                        style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
-                        <h3>Recognising powers of a number</h3>
-                        <p>The squares, cubes and powers of 2, 3, 4 and 5 worth recalling.</p>
-                    </a>
                     <a class="topic-card topic-card--next"
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/squareRoots.html"
                         style="background-image: none">
@@ -248,6 +158,7 @@
                         <p>The square root as the inverse of squaring, found by reversing a known square.</p>
                     </a>
                 </div>
+                <a class="lesson-menu-return" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/"><span aria-hidden="true">← </span>Back to Powers and roots</a>
             </section>
         </main>
 

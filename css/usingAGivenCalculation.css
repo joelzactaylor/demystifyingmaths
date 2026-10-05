@@ -16,7 +16,7 @@
 .related-fact-scene { position: relative; min-height: 530px; margin: 24px 0 8px; overflow-anchor: none; }
 .related-fact-scene.is-ready { height: var(--scene-height); min-height: var(--scene-min-height); }
 .related-fact-scene__sticky { position: absolute; inset: 0 0 auto; display: grid; height: min(660px, calc(100vh - 76px)); min-height: 530px; box-sizing: border-box; grid-template-rows: auto minmax(0, 1fr) auto auto; overflow: hidden; border: 2px solid #c9dce8; border-radius: 22px; background: linear-gradient(180deg, #fbfdff, #f2f8fc); box-shadow: 0 12px 30px rgba(20, 57, 78, .14); contain: layout paint; overflow-anchor: none; will-change: transform; }
-.related-fact-scene__sticky.is-pinned { position: fixed; right: auto; z-index: 900; transform-origin: top left; }
+.related-fact-scene__sticky.is-pinned { position: absolute; right: 0; z-index: 900; transform-origin: top left; }
 .related-fact-scene__heading { margin: 0; padding: 16px 24px 9px; color: #173849; font: 700 1.28rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; text-align: center; }
 .related-fact-stage { display: grid; min-height: 0; padding: 13px 24px; place-items: center; overflow: hidden; background: linear-gradient(rgba(93, 145, 176, .07) 1px, transparent 1px), linear-gradient(90deg, rgba(93, 145, 176, .07) 1px, transparent 1px), #eaf3f8; background-size: 26px 26px; }
 
@@ -66,7 +66,7 @@
 .deduction-scene { position: relative; min-height: 530px; margin: 18px 0 8px; overflow-anchor: none; }
 .deduction-scene.is-ready { height: var(--scene-height); min-height: var(--scene-min-height); }
 .deduction-scene__sticky { position: absolute; inset: 0 0 auto; display: grid; height: min(650px, calc(100vh - 76px)); min-height: 530px; box-sizing: border-box; grid-template-rows: auto minmax(0, 1fr) auto auto; overflow: hidden; border: 2px solid #c9dce8; border-radius: 22px; background: linear-gradient(180deg, #fbfdff, #f2f8fc); box-shadow: 0 12px 30px rgba(20, 57, 78, .14); contain: layout paint; overflow-anchor: none; will-change: transform; }
-.deduction-scene__sticky.is-pinned { position: fixed; right: auto; z-index: 900; transform-origin: top left; }
+.deduction-scene__sticky.is-pinned { position: absolute; right: 0; z-index: 900; transform-origin: top left; }
 .deduction-scene__heading { margin: 0; padding: 16px 24px 9px; color: #173849; font: 700 1.2rem/1.2 ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; text-align: center; }
 .deduction-stage { display: grid; min-height: 0; padding: 13px 24px; place-items: center; overflow: hidden; background: linear-gradient(rgba(93, 145, 176, .07) 1px, transparent 1px), linear-gradient(90deg, rgba(93, 145, 176, .07) 1px, transparent 1px), #eaf3f8; background-size: 26px 26px; }
 .deduction-board { position: relative; display: grid; width: min(620px, 100%); min-height: 335px; box-sizing: border-box; gap: 0; padding: 14px 30px; align-content: center; border-radius: 18px; background: #fff; box-shadow: 0 7px 20px rgba(23, 56, 73, .12); color: #173849; font-variant-numeric: tabular-nums; }

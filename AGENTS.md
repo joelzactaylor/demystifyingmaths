@@ -13,7 +13,7 @@ ignores them fails review.
 
 | Task | Read first | Then |
 | --- | --- | --- |
-| Build a teaching (lesson) page | `docs/master-lesson-page-prompt.md` | `docs/lesson-prose-voice.md`, then the written-methods reference pages |
+| Build a teaching (lesson) page | `docs/master-lesson-page-prompt.md` | `docs/lesson-prose-voice.md`, then the roots prototype |
 | Build a practice page | `docs/master-practice-page-prompt.md` | the paired lesson, and its drill entry in the manifest |
 | Audit / improve a page that already works | `docs/lesson-page-cycle.md` | `docs/lesson-prose-voice.md` |
 | Write or edit prose on any lesson | `docs/lesson-prose-voice.md` | `node scripts/voice-check.mjs <page>` |
@@ -22,10 +22,9 @@ ignores them fails review.
 
 Teaching pages are `pages/curriculum/**/<name>.html`; practice pages are the
 `practice*.html` files beside them. The reference implementation of the
-teaching-page style is `pages/curriculum/GCSE/number/structure/writtenMethods/`
-(`columnAddition.html`, `longDivision.html` and their CSS in `css/`, JS in `js/`).
-A new page must be indistinguishable from those in style — and where a
-reference page and the docs disagree, the docs carry the corrected value.
+teaching-page style is `pages/curriculum/GCSE/number/structure/powersAndRoots/positiveAndNegativeRoots.html`
+and its dedicated CSS/JS. Other lessons have not all migrated. Written-method
+pages remain arithmetic-diagram references, not the default visual template.
 
 ## Hard rules (the ones that break the site)
 
@@ -44,26 +43,23 @@ reference page and the docs disagree, the docs carry the corrected value.
 - **Keep changes to the target page, its own CSS/JS, and its manifest flag.**
   Do not touch neighbouring lessons, the paired practice page, or shared CSS
   unless explicitly asked. Preserve unrelated uncommitted changes in the tree.
-- **Teaching pages are blue, practice pages are ochre.** Never import a colour,
-  radius or control style from the other kind. The palette is in
-  `docs/master-lesson-page-prompt.md` under "Match the written-methods house
-  style exactly" — use those values, not near-misses.
+- **Use the current lesson prototype.** Read the master brief's current style
+  section. Use colour semantically, no gradients, and integrate retrieval into
+  prose. Do not import separate mixed-review controls into lesson blanks.
 - **Never write a false statement because the true one is out of scope.**
   "x² = −9 has no solution" is false; "no number on the number line squares to
   −9" is true. Scope the claim, don't break it.
-- **Prose describes mathematics, never the page.** No "drag to rotate", no "the
-  slider below", no "this section will show". If an interaction needs a
-  sentence of instruction, the interaction is wrong. A scene caption may name
-  what is drawn — a ring, a sector, a column — when the sentence states the
-  mathematics ("one 2 leaves each ring: 360 ÷ 2 = 180").
+- **Teach conversationally.** Give the simplest interaction instruction only
+  when needed and connect it to the mathematics. No keyboard instruction lists
+  or unnecessary page narration. Keep examples continuous through questions.
 - **Roots are drawn with `.rad`, never `<msqrt>` and never a bare `&radic;`
   over a radicand.** Powers use `<sup>` with its clipped marker so that `2^5`
   never flattens to `25` when styles are stripped.
 - **Glossary marks are written by hand**, once per page, in running prose only:
   `<span class="gloss" data-term="quotient">quotient</span>`. Every curriculum
   page loads `js/glossary.js`.
-- **Only real mistakes go in `.slips`.** Each entry names an error a pupil
-  actually makes and the wrong answer it produces. No straw men, no quota.
+- **Help responds to actual answers.** No routine success messages or ticks.
+  Finish with visible Key points, not a compulsory common-mistakes dropdown.
 - **Type has a floor.** Nothing visible under 12px; anything the reader must
   read — digits, labels, units, captions, the text beside an input — at 14px,
   or 13px for a column header whose width the mathematics fixes. Size the

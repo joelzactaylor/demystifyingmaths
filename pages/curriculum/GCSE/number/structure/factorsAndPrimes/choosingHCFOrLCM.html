@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/choosingHCFOrLCM.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
@@ -17,6 +19,8 @@
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/integrated-lesson-banks.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <script src="/demystifyingmaths/js/choosingHCFOrLCM.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,7 +51,8 @@
 
         <aside id="page-nav-container"></aside>
 
-        <main class="lesson-main">
+        <main class="lesson-main" data-integrated-bank="choosingHcfLcm" data-lesson-check-api="IntegratedLessonBank"
+            data-lesson-check-anchors="steps-or-amounts,both-answers,the-answer-asked-for">
             <p class="prereq"><b>Before this page:</b> <span>find the <a
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/HCFFromPrimeFactors.html">highest
                         common factor</a> and the <a
@@ -124,6 +129,13 @@
                         </noscript>
                     </div>
                 </div>
+
+            </section>
+
+            <section aria-labelledby="other-repeating-structures">
+                <h1 id="other-repeating-structures">Gears and packs also meet at a common multiple</h1>
+                <p>Gear teeth meet again after both tooth counts divide the number that has passed. Packs match when
+                    both pack sizes divide the number of items bought. The first possible total is the LCM.</p>
 
                 <div class="wex">
                     <h2 class="wex__title">Example: two gears</h2>

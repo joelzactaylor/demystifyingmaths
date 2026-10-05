@@ -10,12 +10,16 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/integrated-lesson-banks.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
@@ -30,12 +34,18 @@
             <h1>Demystifying - The range</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
-                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/">Statistics</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/">Averages and spread</a><span aria-hidden="true">&rsaquo;</span></li>
-                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/">From a list</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span>
+                    </li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/">GCSE Maths</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/">Statistics</a><span
+                            aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/">Averages and
+                            spread</a><span aria-hidden="true">&rsaquo;</span></li>
+                    <li><a href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/">From a
+                            list</a><span aria-hidden="true">&rsaquo;</span></li>
                     <li>
                         <p>The range</p>
                     </li>
@@ -45,26 +55,119 @@
 
         <aside id="page-nav-container"></aside>
 
-        <main class="lesson-main">
-            <section class="author-note" aria-label="Author note">
-                <span class="author-note__label">Author note &mdash; to cover</span>
-                <p>Calculate the range as largest minus smallest, stated as a single number, and interpret it as consistency; stress it measures spread and is not an average. Show one outlier stretching it. Ranges from tables sit on the table pages; the outlier-resistant interquartile range is Higher, in the Quartiles group. Both tiers. (S4)</p>
+        <main class="lesson-main" data-integrated-bank="range" data-lesson-check-api="IntegratedLessonBank"
+            data-lesson-check-anchors="spread,compare-spread,outlier">
+            <p class="prereq"><b>Before this page:</b> <span>read a list in order and identify its smallest and largest
+                    values.</span></p>
+
+            <section aria-labelledby="spread">
+                <h1 id="spread">The range measures the full spread</h1>
+                <p>The range is the distance from the smallest value to the largest value. Subtract the smallest value
+                    from the largest; write one number with the same <span class="gloss" data-term="unit">unit</span> as
+                    the <span class="gloss" data-term="data">data</span>.</p>
+                <div class="rule-card">
+                    <h2 class="rule-card__statement">Range = largest value &minus; smallest value</h2>
+                    <ol class="rule-card__conditions">
+                        <li>Use the two extremes, not the first and last values as written.</li>
+                        <li>The range measures spread; it is not an average.</li>
+                    </ol>
+                </div>
+                <div class="wex">
+                    <h2 class="wex__title">Range of 12, 18, 15, 20 and 14</h2>
+                    <p class="wex__task">Find the largest and smallest values, then subtract.</p>
+                    <ol class="wex__steps">
+                        <li><span class="wex__do"><span class="sf">largest = 20; smallest = 12</span></span><span
+                                class="wex__why">The two extremes determine the spread.</span></li>
+                        <li><span class="wex__do"><span class="sf">20 &minus; 12 = 8</span></span><span
+                                class="wex__why">The range is 8.</span></li>
+                    </ol>
+                </div>
+                <p>The range is 8, not 20 &divide; 5. Dividing the total by the count finds the mean, not the range.</p>
             </section>
 
-            <section>
-                <h1>Introduction</h1>
-                <p>&mdash;coming soon&mdash;</p>
+            <section aria-labelledby="compare-spread">
+                <h1 id="compare-spread">A smaller range means more consistent results</h1>
+                <p>Two machines fill the same bottle several times. A smaller range means the fills stay within a
+                    narrower interval, so the machine is more consistent at measuring the same <span class="gloss"
+                        data-term="quantity">quantity</span>.</p>
+                <div class="reading-pair">
+                    <article>
+                        <h2>Machine A, in millilitres</h2>
+                        <p><span class="sf">498, 500, 501, 502</span> has range <span class="sf">502 &minus; 498 =
+                                4 ml</span>.</p>
+                    </article>
+                    <article>
+                        <h2>Machine B, in millilitres</h2>
+                        <p><span class="sf">494, 499, 503, 506</span> has range <span class="sf">506 &minus; 494 =
+                                12 ml</span>.</p>
+                    </article>
+                </div>
+                <p>Machine A has the smaller range, so its fills are more consistent. The range compares consistency
+                    here because both lists measure the same quantity in the same unit.</p>
+            </section>
+
+            <section aria-labelledby="outlier">
+                <h1 id="outlier">One extreme value can stretch the range</h1>
+                <p>The range uses only the smallest and largest values, so one unusual value changes it immediately.</p>
+                <div class="reading-pair">
+                    <article>
+                        <h2>Before the outlier</h2>
+                        <p><span class="sf">4, 6, 7, 9</span> has range <span class="sf">9 &minus; 4 = 5</span>.</p>
+                    </article>
+                    <article>
+                        <h2>After the outlier</h2>
+                        <p>Replacing 9 with 30 gives range <span class="sf">30 &minus; 4 = 26</span>.</p>
+                    </article>
+                </div>
+                <p>The range rises from 5 to 26 because the largest value moved away from the other three. The range
+                    does not show whether the other values are close together.</p>
+            </section>
+
+            <section aria-labelledby="check-range">
+                <h1 id="check-range">Check the extremes before subtracting</h1>
+                <p>The range cannot be negative: the largest value is at least as large as the smallest. It is zero only
+                    when every value is the same.</p>
+                <div class="important-box" aria-labelledby="range-check-title">
+                    <h2 class="important-box__title" id="range-check-title">Check 12, 18, 15, 20 and 14</h2>
+                    <p><span class="sf">12 &le; 20</span>, so <span class="sf">20 &minus; 12 = 8</span> is non-negative.
+                        The answer keeps the data's units.</p>
+                </div>
+            </section>
+
+            <section aria-labelledby="common-mistakes">
+                <h1 id="common-mistakes">Common mistakes</h1>
+                <ul class="slips">
+                    <li><b>Subtracting the first and last written values</b>
+                        <span>For 12, 18, 15, 20 and 14, subtracting 14 from 12 gives &minus;2. The extremes are 20 and
+                            12, so the range is 8.</span>
+                    </li>
+                    <li><b>Finding an average instead</b>
+                        <span>The total of 12, 18, 15, 20 and 14 is 79, and 79 &divide; 5 = 15.8 is the mean. The range
+                            is 20 &minus; 12 = 8.</span>
+                    </li>
+                    <li><b>Reporting a negative range</b>
+                        <span>For 4, 6, 7 and 9, 4 &minus; 9 = &minus;5 reverses the extremes. The range is largest
+                            minus smallest: 9 &minus; 4 = 5.</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section aria-labelledby="summary">
+                <h1 id="summary">Summary</h1>
+                <ol class="recap">
+                    <li>Range = largest value &minus; smallest value.</li>
+                    <li>The range measures spread, not the centre of the data.</li>
+                    <li>A smaller range means less spread, and can mean more consistent results in the same context.</li>
+                    <li>An extreme value can stretch the range sharply.</li>
+                </ol>
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/practiceTheRange.html" style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
-                        <h3>The range</h3>
-                        <p>Largest minus smallest as a measure of spread, not an average.</p>
-                    </a>
-                    <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/choosingTheAverage.html" style="background-image: none">
+                    <a class="topic-card topic-card--next"
+                        href="/demystifyingmaths/pages/curriculum/GCSE/statistics/averages/averagesFromAList/choosingTheAverage.html"
+                        style="background-image: none">
                         <span class="topic-card__kicker">Next lesson</span>
                         <h3>Choosing which average to use</h3>
                         <p>Mode for categories, median against extremes, mean when every value counts.</p>

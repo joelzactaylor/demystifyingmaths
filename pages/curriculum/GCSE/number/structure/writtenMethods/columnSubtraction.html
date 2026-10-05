@@ -11,26 +11,36 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/columnSubtraction.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
+    <script src="/demystifyingmaths/js/lesson-session.js" defer></script>
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
     <script src="/demystifyingmaths/js/columnSubtraction.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsLessonBank.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/demystifyingmaths/css/powersRootsRecall.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/writtenMethodsLesson.css">
+    <script src="/demystifyingmaths/js/writtenMethodsLesson.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsRecallBank.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsRecall.js" defer></script>
 </head>
 
-<body>
+<body class="roots-lesson written-methods-lesson">
     <div class="layout">
         <div id="top-ribbon-placeholder"></div>
         <script>fetch("/demystifyingmaths/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
 
         <header>
-            <h1>Demystifying - Column subtraction</h1>
+            <h1>Column subtraction</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
                     <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
@@ -48,14 +58,15 @@
 
         <aside id="page-nav-container"></aside>
 
-        <main class="lesson-main">
+        <main class="lesson-main" data-lesson-check-api="WrittenMethodsLessonBank"
+            data-lesson-check-anchors="setting-it-out,exchanging,where-it-turns-up">
             <p class="prereq"><b>Before this page:</b> <span>the column layout from
                     <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/columnAddition.html">column addition</a>,
                     and what each <span class="gloss" data-term="digit">digit</span> is worth in
                     <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/placeValue.html">integers and decimals</a>.</span></p>
 
             <section>
-                <h1>One ten becomes ten ones</h1>
+                <h1 id="column-subtraction-idea-1">Subtracting in columns</h1>
 
                 <p>Column subtraction takes one <span class="gloss" data-term="place value">place value</span> at a time. In 876 &minus; 342 the ones ask
                     6 &minus; 2 = 4, the tens ask 7 &minus; 4 = 3 and the hundreds ask 8 &minus; 3 = 5.</p>
@@ -93,7 +104,7 @@
             </section>
 
             <section id="exchanging">
-                <h1>Exchanging rewrites the number and changes nothing</h1>
+                <h1>Exchanging without changing the value</h1>
 
                 <div class="rename-strip"
                     aria-label="872 written as 800 plus 70 plus 2, and again as 800 plus 60 plus 12.">
@@ -114,6 +125,8 @@
 
                 <p>The ones column now holds 12, and 12 &minus; 6 = 6. The other two columns need no exchange:
                     6 &minus; 4 = 2 and 8 &minus; 3 = 5.</p>
+
+                <div data-lesson-check="1" data-lesson-check-api="WrittenMethodsLessonBank"></div>
 
                 <p>Two marks record the swap. Cross out the 7 and write 6 above it, because the tens gave one away.
                     Write a small 1 in front of the 2, because the ones received it.</p>
@@ -165,17 +178,17 @@
             </section>
 
             <section id="setting-it-out">
-                <h1>The larger number goes on top, and every column needs a digit</h1>
+                <h1>Setting out a subtraction</h1>
                 <p>Addition can be written either way round; subtraction cannot, because 8 &minus; 3 and 3 &minus; 8
-                    are different questions, so <strong>the larger number is written on top</strong>. If the number
-                    underneath is the larger one, the answer is negative, which
+                    are different questions. For the non-negative subtractions here, <strong>the larger number is
+                        written on top</strong>. If the number underneath is the larger one, the answer is negative,
+                    which
                     <a
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/directedNumber/addingSubtractingNegatives.html">adding
                         and subtracting negatives</a> covers.
                 </p>
 
-                <p><strong>Every column needs a digit.</strong> An empty column has nothing to subtract from, so 14.6 &minus; 8.35 cannot begin
-                    until 14.6 is written as 14.60.</p>
+                <p>Writing 14.6 as 14.60 makes the hundredths column explicit. There are zero hundredths before we exchange, so the 5 hundredths in 8.35 must be subtracted from an exchanged amount, not copied into the answer.</p>
 
                 <div class="pad-strip" role="img"
                     aria-label="14.6 written as 14.60, with the empty hundredths place filled by a zero.">
@@ -192,7 +205,7 @@
             </section>
 
             <section>
-                <h1>Subtracting whole numbers and decimals</h1>
+                <h1 id="column-subtraction-idea-4">Whole numbers and decimals</h1>
                 <p>In 6,145 &minus; 2,978 the hundreds column gives its last hundred away, and then needs one
                     from the thousands.</p>
 
@@ -257,9 +270,9 @@
             </section>
 
             <section id="where-it-turns-up">
-                <h1>Where it turns up</h1>
-                <p>Exam questions rarely use the word subtract. They describe one of two situations, and both are
-                    answered by the same columns.</p>
+                <h1>Finding what is left or how far apart</h1>
+                <p>Removing 8.35 m from 14.6 m asks what remains. Comparing 2.4 m with 1.75 m asks for the distance
+                    between them. Both structures lead to subtraction.</p>
 
                 <div class="reading-pair">
                     <article class="reading-card">
@@ -282,12 +295,11 @@
                     </article>
                 </div>
 
-                <p><span class="gloss" data-term="difference">Difference</span>, change, fewer, further, colder, how much more: each asks either what is left or how far
-                    apart, and the larger <span class="gloss" data-term="quantity">quantity</span> goes on top whichever the question names first.</p>
+<p>For these problems, subtract the smaller amount from the larger to find the gap. Decide what the amounts represent before choosing the calculation.</p>
             </section>
 
             <section>
-                <h1>Subtract two chosen numbers</h1>
+                <h1 id="column-subtraction-idea-6">Explore column subtraction</h1>
                 <div class="subtraction-scene" data-subtraction-scene>
                     <div class="subtraction-scene__sticky">
                         <div class="subtraction-scene__inputs">
@@ -328,56 +340,14 @@
                 </div>
             </section>
 
-            <section>
-                <h1>Common mistakes</h1>
-                <ul class="slips">
-                    <li><b>Taking the small digit from the large one</b>
-                    <span>The ones of 6,145 &minus; 2,978 ask 5 &minus; 8. Answering 8 &minus; 5, and doing the same in the tens and hundreds,
-                            gives 4,833 rather than 3,167.</span></li>
-                    <li><b>Half an exchange</b>
-                    <span>The ten arrives, but the column it came from is left as it was, so
-                            6,145 has grown into 7,255 and the answer into 4,277.</span></li>
-                    <li><b>Using the old digit</b>
-                    <span>Using the crossed-out 4 instead of the 3 written above it asks 14 &minus; 7 in the
-                            tens and puts the answer ten out, at 3,177.</span></li>
-                    <li><b>An unpadded decimal</b>
-                    <span>4,351.2 &minus; 1,876.45 has nothing written in the hundredths, so
-                            the 5 is copied down instead of taken away and the answer reads
-                            2,474.85. Writing 4,351.20 puts a 0 in the column that has to do the
-                            paying, and the answer is 2,474.75.</span></li>
-                </ul>
-            </section>
 
-            <section>
-                <h1>Summary</h1>
-                <ol class="recap">
-                    <li>The larger number goes on top, points beneath points, with empty <span class="gloss" data-term="decimal place">decimal places</span> filled by zeros
-                        before anything else.</li>
-                    <li>Work from the right, one column at a time, writing each result under the column it came
-                        from.</li>
-                    <li>If the top digit is too small, exchange: one unit from the left becomes ten in the column. The number is
-                        rewritten, not changed.</li>
-                    <li>Record both halves &mdash; cross out and lower the column that gave, and write the 1 in front
-                        of the digit that received.</li>
-                    <li>Put both amounts in one unit before setting out, so 1.2 m &minus; 35 cm is 1.20 &minus; 0.35, and
-                        the answer is in that unit.</li>
-                    <li>Difference, change, fewer, further and colder each ask what is left or how far apart, and the
-                        larger quantity goes on top whichever the question names first.</li>
-                    <li>Check by adding: the answer plus the number taken away must return the number the subtraction
-                        started from.</li>
-                </ol>
-            </section>
+
+            <section class="roots-key-points" id="remember"><h1>Key points</h1><ul><li>Line up the decimal points and fill empty decimal places with zeros.</li><li>Work from right to left. Exchange one unit of the next place for ten of the current place when needed.</li><li>Record both sides of an exchange; the original number has not changed.</li><li>Check by adding the answer to the amount subtracted.</li></ul></section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <div class="powers-recall" data-written-recall="columnSubtraction" hidden></div>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice"
-                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/practiceColumnSubtraction.html"
-                        style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
-                        <h3>Column subtraction</h3>
-                        <p>Subtracting in columns with exchange, lining up decimals of different lengths.</p>
-                    </a>
                     <a class="topic-card topic-card--next"
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/exchangingAcrossZeros.html"
                         style="background-image: none">
@@ -386,6 +356,7 @@
                         <p>Subtracting when a column holds a zero, and where the exchange comes from.</p>
                     </a>
                 </div>
+            <a class="lesson-menu-return" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/">Back to Written methods</a>
             </section>
         </main>
 

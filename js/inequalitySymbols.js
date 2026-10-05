@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return element;
     };
 
-    const createInteractiveLine = (svg) => {
+    const createInteractiveLine = (svg, diagramIndex) => {
         const min = Number(svg.dataset.min);
         const max = Number(svg.dataset.max);
         const step = Number(svg.dataset.step);
@@ -37,6 +37,11 @@ document.addEventListener("DOMContentLoaded", () => {
             leader: svg.querySelector(`[data-line-leader="${side}"]`)
         }));
 
+        const diagramKey = "inequality-line:" + diagramIndex;
+        const saved = window.LessonSession?.diagram(diagramKey);
+        if (Array.isArray(saved) && saved.length === 2 && saved.every(x => Number.isFinite(x) && x >= min && x <= max)) {
+            items.forEach((item, i) => { item.value = saved[i]; });
+        }
         const render = () => {
             items.forEach((item) => {
                 item.targetX = toX(item.value);
@@ -77,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const snapped = min + Math.round((value - min) / step) * step;
             item.value = clamp(Number(snapped.toFixed(decimals)), min, max);
             render();
+            window.LessonSession?.saveDiagram(diagramKey, items.map(item => item.value));
         };
 
         const bindPointerDrag = (item, target) => {
@@ -129,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll("[data-inequality-line]").forEach(createInteractiveLine);
 
-    const createBoundaryLine = (svg) => {
+    const createBoundaryLine = (svg, diagramIndex) => {
         const min = Number(svg.dataset.min);
         const max = Number(svg.dataset.max);
         const step = Number(svg.dataset.step);
@@ -167,6 +173,12 @@ document.addEventListener("DOMContentLoaded", () => {
             if (shown.length === 1) return shown[0];
             return `${shown.slice(0, -1).join(", ")} or ${shown.at(-1)}`;
         };
+
+        const diagramKey = "boundary-line:" + diagramIndex;
+        const saved = window.LessonSession?.diagram(diagramKey);
+        if (Array.isArray(saved) && saved.length === 2 && saved.every(x => Number.isFinite(x) && x >= min && x <= max) && saved[1] - saved[0] >= step) {
+            items.forEach((item, i) => { item.value = saved[i]; });
+        }
 
         const render = () => {
             items.forEach((item) => {
@@ -229,6 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 : clamp(snapped, items[0].value + step, max);
             item.value = Number(bounded.toFixed(decimals));
             render();
+            window.LessonSession?.saveDiagram(diagramKey, items.map(item => item.value));
         };
 
         const bindPointerDrag = (item, target) => {

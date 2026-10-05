@@ -1,0 +1,32 @@
+/* A quiet alternative to the next-lesson card, shared by this topic's lessons. */
+.roots-lesson .lesson-flowbar { gap: 20px; flex-wrap: wrap; }
+.roots-lesson .lesson-flowbar > .lesson-flowbar__toggle {
+    color: #5531a9;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid currentColor;
+    border-radius: 0;
+    padding: 7px 0;
+    font-size: 14px;
+}
+.roots-lesson .lesson-flowbar > .lesson-flowbar__toggle:focus-visible {
+    outline: 3px solid #7048c8;
+    outline-offset: 4px;
+}
+.roots-lesson .lesson-actions a.lesson-menu-return {
+    display: inline-block;
+    width: auto;
+    margin: 20px 0 0;
+    padding: 8px 0;
+    color: #536873;
+    font-family: inherit;
+    font-weight: 400;
+    line-height: 1.6;
+    font-size: 14px;
+    text-align: left;
+    text-shadow: none;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+.roots-lesson .lesson-actions a.lesson-menu-return:hover { color: #5146bd; }
+.roots-lesson .lesson-actions a.lesson-menu-return:focus-visible { outline: 2px solid #5146bd; outline-offset: 4px; border-radius: 3px; }

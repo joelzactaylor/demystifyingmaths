@@ -10,27 +10,37 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/columnSubtraction.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/exchangingAcrossZeros.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
+    <script src="/demystifyingmaths/js/lesson-session.js" defer></script>
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
     <script src="/demystifyingmaths/js/columnSubtraction.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsLessonBank.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/demystifyingmaths/css/powersRootsRecall.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/writtenMethodsLesson.css">
+    <script src="/demystifyingmaths/js/writtenMethodsLesson.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsRecallBank.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsRecall.js" defer></script>
 </head>
 
-<body>
+<body class="roots-lesson written-methods-lesson">
     <div class="layout">
         <div id="top-ribbon-placeholder"></div>
         <script>fetch("/demystifyingmaths/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
 
         <header>
-            <h1>Demystifying - Exchanging across zeros</h1>
+            <h1>Exchanging across zeros</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
                     <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
@@ -48,13 +58,14 @@
 
         <aside id="page-nav-container"></aside>
 
-        <main class="lesson-main">
+        <main class="lesson-main" data-lesson-check-api="WrittenMethodsLessonBank"
+            data-lesson-check-anchors="in-the-columns,zeros-in-a-decimal,exchanging-across-zeros-in-context">
             <p class="prereq"><b>Before this page:</b> <span>setting a subtraction out in columns and exchanging one
                     unit from the column on the left, both from
                     <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/columnSubtraction.html">column subtraction</a>.</span></p>
 
             <section>
-                <h1>One thousand can reach the ones column</h1>
+                <h1 id="in-the-columns">Exchanging across zeros</h1>
 
                 <p>In <strong>3,000 &minus; 847</strong>, the top line holds a 0 in every <span class="gloss" data-term="column">column</span> but the
                     thousands. One thousand can be renamed as 10 hundreds, then one hundred as 10 tens, then one ten as 10 ones.</p>
@@ -140,7 +151,7 @@
             </section>
 
             <section>
-                <h1>Exchange across chosen zeros</h1>
+                <h1 id="exchanging-across-zeros-idea-2">Explore exchanging across zeros</h1>
                 <div class="subtraction-scene" data-subtraction-scene>
                     <div class="subtraction-scene__sticky">
                         <div class="subtraction-scene__inputs">
@@ -182,7 +193,7 @@
             </section>
 
             <section>
-                <h1 id="zeros-in-a-decimal">Padding a decimal makes zeros that travel the same way</h1>
+                <h1 id="zeros-in-a-decimal">Across zeros in decimals</h1>
                 <p>In 4.03 &minus; 1.276, writing 4.03 as 4.030 creates a zero of the same kind as the zeros in 3,000:
                     the first exchange is ordinary and the second has to travel.</p>
 
@@ -239,7 +250,7 @@
             </section>
 
             <section>
-                <h1 id="exchanging-across-zeros-in-context">Money and measures fill columns with zeros</h1>
+                <h1 id="exchanging-across-zeros-in-context">Change and lengths</h1>
                 <p>&pound;50 &minus; &pound;27.68 is the same subtraction as 50.00 &minus; 27.68: the whole <span class="gloss" data-term="quantity">quantity</span> is
                     written to match the decimal, and the <span class="gloss" data-term="unit">unit</span> only says what the answer counts.</p>
 
@@ -257,54 +268,21 @@
                 </div>
             </section>
 
-            <section>
-                <h1>Common mistakes</h1>
-                <ul class="slips">
-                    <li><b>Making the column that gave a 9 as well</b>
-                    <span>Only the columns the exchange passes through become 9. In 3,000
-                            &minus; 847 the thousands give one away and drop to 2; made a 9 like
-                            the rest, the answer reads 9,153 instead of 2,153.</span></li>
-                    <li><b>Reading the zero that is still written</b>
-                    <span>Once a column has been rewritten, the digit above it is the one to
-                            use: 9 &minus; 4, not 0 &minus; 4. Reading the printed 0 in the tens
-                            of 3,000 &minus; 847 sets up 0 &minus; 4; written as 4, the answer reads 2,143
-                            instead of 2,153.</span></li>
-                    <li><b>Reversing the subtraction</b>
-                    <span>0 &minus; 7 is not 7. A column that cannot pay is the signal to
-                            exchange, and a row of zeros is no exception: answered that way,
-                            3,000 &minus; 847 comes out 3,847.</span></li>
-                </ul>
-            </section>
 
-            <section>
-                <h1>Summary</h1>
-                <ol class="recap">
-                    <li>A column with nothing to give cannot stop an exchange. The request travels left until it
-                        reaches a column that has something.</li>
-                    <li>Every column passed on the way keeps 9 and sends the rest on; the column finally reached drops
-                        by one.</li>
-                    <li>900 + 90 + 10 = 1000, which is why a whole run of 9s costs the column that gave exactly one
-                        unit.</li>
-                    <li>Padding a short decimal makes zeros of its own, and they travel in the same way; a whole quantity
-                        written to match a decimal, &pound;50 as 50.00, fills its columns with zeros the same way.</li>
-                    <li>Subtract from the rewritten digits, never from the ones they replaced.</li>
-                </ol>
-            </section>
+
+            <section class="roots-key-points" id="remember"><h1>Key points</h1><ul><li>Find the first non-zero digit to the left and reduce it by one.</li><li>Each empty column passed through receives ten, passes one on, and keeps nine.</li><li>Subtract using the rewritten digits, including any zeros added after a decimal point.</li></ul></section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <div class="powers-recall" data-written-recall="exchangingAcrossZeros" hidden></div>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/practiceExchangingAcrossZeros.html" style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
-                        <h3>Exchanging across zeros</h3>
-                        <p>Subtracting when a column holds a zero, and where the exchange comes from.</p>
-                    </a>
                     <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/longMultiplication.html" style="background-image: none">
                         <span class="topic-card__kicker">Next lesson</span>
                         <h3>Long multiplication</h3>
                         <p>Multiplying multi-digit integers, and the place-holder zero in the second row.</p>
                     </a>
                 </div>
+            <a class="lesson-menu-return" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/">Back to Written methods</a>
             </section>
         </main>
 

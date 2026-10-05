@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/primeFactorisation.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
@@ -19,6 +21,8 @@
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/integrated-lesson-banks.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <script src="/demystifyingmaths/js/primeFactorisation.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -52,7 +56,8 @@
             </nav>
         </header>
         <aside id="page-nav-container"></aside>
-        <main class="lesson-main">
+        <main class="lesson-main" data-integrated-bank="primeFactorisation" data-lesson-check-api="IntegratedLessonBank"
+            data-lesson-check-anchors="break-composites,repeated-division,index-form">
             <p class="prereq"><b>Before this page:</b> <span>recognise <a
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/primesAndPrimality.html">prime
                         numbers</a>, find <a
@@ -66,9 +71,9 @@
                 <p>Every whole number greater than 1 is either <span class="gloss" data-term="prime">prime</span> or composite.
                     A composite number has a <span class="gloss" data-term="factor">factor</span> other than 1 and
                     itself, so it splits into a factor pair, and each composite factor splits again.</p>
-                <p>The splitting stops only when every branch ends at a <span class="gloss"
-                        data-term="prime factor">prime factor</span>, and the <span class="gloss" data-term="product">product</span>
-                    of the branch ends is the number the tree started from:</p>
+                <p>The tree ends when every branch ends at a <span class="gloss" data-term="prime factor">prime
+                        factor</span>, and the <span class="gloss" data-term="product">product</span> of the branch ends is
+                    the number at the start:</p>
                 <div class="worked">
                     <h2 class="worked__title">A factor tree for 84</h2>
                     <div class="factor-scene" data-factor-scene data-kind="tree">
@@ -106,15 +111,15 @@
                 </div>
                 <aside class="important-box" aria-labelledby="unique-title">
                     <h2 class="important-box__title" id="unique-title">The prime factorisation is unique</h2>
-                    <p>Every whole number greater than 1 has exactly one prime factorisation, apart from the order of its
-                        factors. <span class="sf">2 &times; 2 &times; 3 &times; 7</span> and <span class="sf">7 &times;
-                            3 &times; 2 &times; 2</span> are the same factorisation of 84, written in two orders.</p>
+                    <p>Every whole number greater than 1 has one prime factorisation, apart from the order of its factors:
+                        <span class="sf">2 &times; 2 &times; 3 &times; 7</span> and <span class="sf">7 &times; 3 &times; 2
+                            &times; 2</span> are the same factorisation of 84, written in two orders.</p>
                 </aside>
             </section>
 
             <section aria-labelledby="repeated-division">
                 <h1 id="repeated-division">Repeated division collects the same factors</h1>
-                <p>756 divided by one prime at a time, smallest first, gives the prime factors a tree would:</p>
+                <p>Divide 756 by the smallest prime that divides exactly, then repeat with the quotient:</p>
                 <div class="worked">
                     <h2 class="worked__title">Repeated division of 756</h2>
                     <div class="factor-scene" data-factor-scene data-kind="ladder">
@@ -177,20 +182,14 @@
 
             <section aria-labelledby="factorise-a-number">
                 <h1 id="factorise-a-number">Factorise a chosen number</h1>
-                <!-- Deliberate exception to the no-mechanics-copy rule (docs/lesson-prose-voice.md, rules 3 and 22):
-                     the factoriser has no visible controls, so this one paragraph says what the discs do. Leave it. -->
-                <p>The factors are dragged out of the starting number to build a factor tree, and a factor can be moved
-                    between discs to try another tree.</p>
+                <p>A factor tree can be built from any composite branch, and a branch can be split again or collapsed.
+                    The final leaves show the prime factorisation of the starting number.</p>
                 <div class="factoriser" data-factoriser>
                     <label class="factoriser__field" for="factor-number"><span>Whole number from 2 to 9,999</span><input
                             id="factor-number" type="text" inputmode="numeric" maxlength="4" value="360"
                             autocomplete="off" spellcheck="false" data-factor-input></label>
-                    <span class="factoriser__hidden" id="factor-ring-help">Pull one coloured sector away from any
-                        composite leaf to split off that prime factor. Move a sector onto any other disc to transfer it
-                        there; a disc that has already been split passes the factor down to its left-hand leaf, and
-                        every number above is recalculated. Pull a centre back to its parent to collapse that branch. A
-                        click or the Enter key splits off one sector; with a sector focused, the arrow keys choose a
-                        disc to receive it, Enter moves it, and Escape keeps it in place.</span><span
+                    <span class="factoriser__hidden" id="factor-ring-help">Split any composite branch until every leaf is
+                        prime. A branch can be moved to another disc and collapsed again.</span><span
                         class="factoriser__hidden" data-factor-status aria-live="polite"></span>
                     <div class="factoriser__body">
                         <div class="factoriser__tree" data-factor-tree role="group" aria-describedby="factor-ring-help"
@@ -245,14 +244,8 @@
             </section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice"
-                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practicePrimeFactorisation.html"
-                        style="background-image: none"><span class="practice-card__kicker">Practice</span>
-                        <h3>Prime factorisation</h3>
-                        <p>Factor trees and repeated division, index form, and why the primes are unique.</p>
-                    </a>
                     <a class="topic-card topic-card--next"
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/HCFFromPrimeFactors.html"
                         style="background-image: none"><span class="topic-card__kicker">Next lesson</span>

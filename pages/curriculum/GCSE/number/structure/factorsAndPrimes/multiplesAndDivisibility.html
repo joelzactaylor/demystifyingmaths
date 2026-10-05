@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/multiplesAndDivisibility.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
@@ -19,6 +21,8 @@
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/integrated-lesson-banks.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <script src="/demystifyingmaths/js/multiplesAndDivisibility.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,7 +59,8 @@
 
         <aside id="page-nav-container"></aside>
 
-        <main class="lesson-main">
+        <main class="lesson-main" data-integrated-bank="divisibility" data-lesson-check-api="IntegratedLessonBank"
+            data-lesson-check-anchors="counting-in-steps,reading-the-last-digits,by-4,adding-the-digits">
             <p class="prereq"><b>Before this page:</b> <span>be able to list the <a
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/factorsAndFactorPairs.html">factors
                         of a number in pairs</a>, and to divide and see what is left over from <a
@@ -279,142 +284,9 @@
                 </ol>
             </section>
 
-            <aside class="important-box" aria-labelledby="optional-tests-heading">
-                <div class="important-box__head">
-                    <h2 class="important-box__title" id="optional-tests-heading">Optional extension</h2>
-                    <span class="important-box__tag">Beyond this GCSE lesson</span>
-                </div>
-                <p>The six GCSE tests use 2, 3, 4, 5, 9 and 10. Tests for 6, 7, 8, 11, 12 and 25 extend the
-                    same place-value reasoning.</p>
-            </aside>
-
-            <section aria-labelledby="beyond-the-syllabus">
-                <h1 id="beyond-the-syllabus">Powers of ten also give tests for 8 and 25</h1>
-
-                <div class="tests">
-                    <article class="test" aria-labelledby="by-25">
-                        <h2 class="test__by" id="by-25">Divisible by 25</h2>
-                        <p class="test__rule">The last two digits are 00, 25, 50 or 75.</p>
-                        <p class="test__work">The last two digits of <span class="sf">4,932</span> make <span
-                                class="sf">32</span>. <span class="test__verdict">No: <span class="sf" role="math"
-                                    aria-label="4,932 divided by 25 equals 197 remainder 7">4,932 &divide; 25 = 197 r
-                                    7</span></span></p>
-                        <details class="why">
-                            <summary>Why it works</summary>
-                            <p>A hundred is four 25s, so the cut comes after the last two digits, as it does for 4: <span class="sf" role="math" aria-label="4,932 equals 4,900 plus 32">4,932 = 4,900 + 32</span>. The 4,900 is <span class="sf" role="math" aria-label="49 times 4 equals 196">49 &times; 4 = 196</span> twenty-fives and leaves nothing over; the 32 holds one 25 with 7 left over.</p>
-                            <p>Of the pairs of digits from 00 to 99, only 00, 25, 50 and 75 are whole numbers of 25s.</p>
-                        </details>
-                    </article>
-                    <article class="test" aria-labelledby="by-8">
-                        <h2 class="test__by" id="by-8">Divisible by 8</h2>
-                        <p class="test__rule">The number made by the last three digits is a multiple of 8.</p>
-                        <p class="test__work">The last three digits of <span class="sf">4,932</span> make <span
-                                class="sf">932</span>, and <span class="sf" role="math"
-                                aria-label="932 divided by 8 equals 116 remainder 4">932 &divide; 8 = 116 r 4</span>.
-                            <span class="test__verdict">No: <span class="sf" role="math"
-                                    aria-label="4,932 divided by 8 equals 616 remainder 4">4,932 &divide; 8 = 616 r
-                                    4</span></span>
-                        </p>
-                        <details class="why">
-                            <summary>Why it works</summary>
-                            <p>A thousand is a whole number of 8s, <span class="sf" role="math" aria-label="1,000 equals 8 times 125">1,000 = 8 &times; 125</span>, so the cut comes after the last three digits: <span class="sf" role="math" aria-label="4,932 equals 4,000 plus 932">4,932 = 4,000 + 932</span>. The 4,000 is <span class="sf" role="math" aria-label="4 times 125 equals 500">4 &times; 125 = 500</span> eights and leaves nothing over; only the 932 is left to decide.</p>
-                            <p>Two digits are not enough, because a hundred is not a whole number of 8s: <span class="sf" role="math" aria-label="100 equals 8 times 12 plus 4">100 = 8 &times; 12 + 4</span>. 132 ends in 32, which is <span class="sf" role="math" aria-label="4 times 8">4 &times; 8</span>, but <span class="sf" role="math" aria-label="132 divided by 8 equals 16 remainder 4">132 &divide; 8 = 16 r 4</span>.</p>
-                        </details>
-                    </article>
-                </div>
-            </section>
-
-            <section aria-labelledby="combined-tests">
-                <h1 id="combined-tests">Coprime tests combine for 6 and 12</h1>
-
-                <div class="tests">
-                    <article class="test" aria-labelledby="by-6">
-                        <h2 class="test__by" id="by-6">Divisible by 6</h2>
-                        <p class="test__rule">The number passes the test for 2 and the test for 3.</p>
-                        <p class="test__work"><span class="sf">4,932</span> ends in 2, and its digits add to
-                            <span class="sf">18</span>. <span class="test__verdict">Yes: <span class="sf" role="math"
-                                    aria-label="4,932 divided by 6 equals 822">4,932 &divide; 6 = 822</span></span>
-                        </p>
-                        <details class="why">
-                            <summary>Why it works</summary>
-                            <p><span class="sf" role="math" aria-label="6 equals 2 times 3">6 = 2 &times; 3</span>, and 2 and 3 have no <span class="gloss" data-term="common factor">common factor</span> above 1. So a number that is a multiple of 2 and a multiple of 3 is a multiple of 6.</p>
-                            <p>4,932 is even, so <span class="sf" role="math" aria-label="4,932 equals 2 times 2,466">4,932 = 2 &times; 2,466</span>. Its digits add to 18, so 3 divides it as well; 3 is not a factor of 2, so it is a factor of 2,466, and <span class="sf" role="math" aria-label="2,466 equals 3 times 822">2,466 = 3 &times; 822</span>. Together, <span class="sf" role="math" aria-label="4,932 equals 2 times 3 times 822 equals 6 times 822">4,932 = 2 &times; 3 &times; 822 = 6 &times; 822</span>.</p>
-                        </details>
-                    </article>
-                    <article class="test" aria-labelledby="by-12">
-                        <h2 class="test__by" id="by-12">Divisible by 12</h2>
-                        <p class="test__rule">The number passes the test for 3 and the test for 4.</p>
-                        <p class="test__work">The digits of <span class="sf">4,932</span> add to <span
-                                class="sf">18</span>, and its last two digits make <span class="sf">32</span>.
-                            <span class="test__verdict">Yes: <span class="sf" role="math"
-                                    aria-label="4,932 divided by 12 equals 411">4,932 &divide; 12 = 411</span></span>
-                        </p>
-                        <details class="why">
-                            <summary>Why it works</summary>
-                            <p><span class="sf" role="math" aria-label="12 equals 3 times 4">12 = 3 &times; 4</span>, and 3 and 4 have no common factor above 1. So a number that is a multiple of 3 and a multiple of 4 is a multiple of 12.</p>
-                        </details>
-                    </article>
-                </div>
-            </section>
-
-            <section aria-labelledby="alternating-digits">
-                <h1 id="alternating-digits">Alternating digits test divisibility by 11</h1>
-
-                <div class="tests">
-                    <article class="test" aria-labelledby="by-11">
-                        <h2 class="test__by" id="by-11">Divisible by 11</h2>
-                        <p class="test__rule">The digits, added and subtracted alternately from the right, make a multiple of 11.</p>
-                        <p class="test__work">For <span class="sf">4,932</span>: <span class="sf" role="math"
-                                aria-label="2 minus 3 plus 9 minus 4 equals 4">2 &minus; 3 + 9 &minus; 4 = 4</span>, and
-                            11 does not divide 4. <span class="test__verdict">No: <span class="sf" role="math"
-                                    aria-label="4,932 divided by 11 equals 448 remainder 4">4,932 &divide; 11 = 448 r
-                                    4</span></span></p>
-                        <details class="why">
-                            <summary>Why it works</summary>
-                            <p>Every place value lands within 1 of a multiple of 11, alternately under and over: a ten is 1 under 11, a hundred is 1 over <span class="sf" role="math" aria-label="99 equals 11 times 9">99 = 11 &times; 9</span>, and a thousand is 1 under <span class="sf" role="math" aria-label="1,001 equals 11 times 91">1,001 = 11 &times; 91</span>. That alternation is where the plus and minus in the test come from.</p>
-                            <p>Split 4,932 that way: <span class="sf" role="math" aria-label="4 times 1,001 minus 4">4 &times; 1,001 &minus; 4</span> for the thousands, <span class="sf" role="math" aria-label="9 times 99 plus 9">9 &times; 99 + 9</span> for the hundreds, <span class="sf" role="math" aria-label="3 times 11 minus 3">3 &times; 11 &minus; 3</span> for the tens, and the 2.</p>
-                            <p>The multiples of 11 add to <span class="sf" role="math" aria-label="4,004 plus 891 plus 33 equals 4,928 equals 11 times 448">4,004 + 891 + 33 = 4,928 = 11 &times; 448</span>. What remains is <span class="sf" role="math" aria-label="2 minus 3 plus 9 minus 4 equals 4">2 &minus; 3 + 9 &minus; 4 = 4</span>; since 4 is smaller than 11, it is the remainder.</p>
-                            <p>Starting from the other end flips every sign, giving <span class="sf" role="math" aria-label="4 minus 9 plus 3 minus 2 equals negative 4">4 &minus; 9 + 3 &minus; 2 = &minus;4</span>. Since 11 divides <span class="sf" role="math" aria-label="negative 4">&minus;4</span> exactly when it divides 4, either direction answers the test.</p>
-                        </details>
-                    </article>
-                </div>
-            </section>
-
-            <section aria-labelledby="doubling-the-last-digit">
-                <h1 id="doubling-the-last-digit">Doubling the last digit tests divisibility by 7</h1>
-
-                <div class="tests">
-                    <article class="test" aria-labelledby="by-7">
-                        <h2 class="test__by" id="by-7">Divisible by 7</h2>
-                        <p class="test__rule">Remove the last digit, double it, and subtract the double from the number that
-                            is left. Repeat until the answer is small enough to recognise.</p>
-                        <p class="test__work">From <span class="sf">4,932</span>, <span class="sf" role="math"
-                                aria-label="493 minus 4 equals 489">493 &minus; 4 = 489</span>; from 489, <span
-                                class="sf" role="math" aria-label="48 minus 18 equals 30">48 &minus; 18 = 30</span>,
-                            and 7 does not divide 30. <span class="test__verdict">No: <span class="sf" role="math"
-                                    aria-label="4,932 divided by 7 equals 704 remainder 4">4,932 &divide; 7 = 704 r
-                                    4</span></span>
-                        </p>
-                        <details class="why">
-                            <summary>Why it works</summary>
-                            <p>7 divides no power of ten: <span class="sf" role="math" aria-label="10 divided by 7 equals 1 remainder 3">10 &divide; 7 = 1 r 3</span>, <span class="sf" role="math" aria-label="100 divided by 7 equals 14 remainder 2">100 &divide; 7 = 14 r 2</span> and <span class="sf" role="math" aria-label="1,000 divided by 7 equals 142 remainder 6">1,000 &divide; 7 = 142 r 6</span>. So the last digits cannot be read on their own; the test shrinks the whole number a step at a time instead.</p>
-                            <p>The first step on 4,932 gives <span class="sf" role="math" aria-label="493 minus 2 times 2 equals 489">493 &minus; 2 &times; 2 = 489</span>. Then <span class="sf" role="math" aria-label="489 times 10 equals 4,890">489 &times; 10 = 4,890</span>, which is 42 below 4,932, and <span class="sf" role="math" aria-label="42 equals 7 times 6">42 = 7 &times; 6</span>. The two numbers are a multiple of 7 apart, so either both divide by 7 or neither does. Since 7 is not a factor of 10, <span class="sf" role="math" aria-label="4,890 equals 10 times 489">4,890 = 10 &times; 489</span> divides by 7 exactly when 489 does.</p>
-                            <p>The gap is a multiple of 7 because the last digit was doubled: with a last digit <i>b</i> and <i>a</i> in front of it, <span class="sf" role="math" aria-label="10 times open bracket a minus 2 b close bracket">10 &times; (a &minus; 2b)</span> sits <span class="sf" role="math" aria-label="21 b">21b</span> below <span class="sf" role="math" aria-label="10 a plus b">10a + b</span>, and <span class="sf" role="math" aria-label="21 equals 7 times 3">21 = 7 &times; 3</span>.</p>
-                        </details>
-                    </article>
-                </div>
-            </section>
-
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice"
-                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/practiceMultiplesAndDivisibility.html"
-                        style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span>
-                        <h3>Multiples and divisibility tests</h3>
-                        <p>The multiples of a number, and the tests for divisibility by 2, 3, 4, 5, 9 and 10.</p>
-                    </a>
                     <a class="topic-card topic-card--next"
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/factorsAndPrimes/primesAndPrimality.html"
                         style="background-image: none">

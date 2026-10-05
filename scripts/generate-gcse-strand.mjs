@@ -49,6 +49,11 @@ const preserved = [];
 const write = (url, content) => {
     const p = urlToPath(url);
     const isMenu = url.endsWith("/");
+    // Hand-designed menus opt out just as finished lessons do.
+    if (isMenu && existsSync(p) && readFileSync(p, "utf8").includes("data-authored-menu")) {
+        preserved.push(url);
+        return;
+    }
     if (!isMenu && existsSync(p) && !readFileSync(p, "utf8").includes(STUB_MARK)) {
         preserved.push(url);
         return;
@@ -180,6 +185,7 @@ function strandIndexPage(strand, topicCards) {
     <link rel="stylesheet" href="/css/curriculum.css">
 ${HEAD_TAIL}
     <script src="/js/glossary.js" defer></script>
+    <script src="/js/curriculum-progress.js" defer></script>
 ${FONTS}
 </head>
 
@@ -301,7 +307,6 @@ function generate(manifestPath) {
         groupOfByTopic.set(topic.key, groupOf);
     }
 
-    const lessonDrills = new Map();
     const unlockedReviews = new Map();
     const drillUrls = new Set();
     for (const d of manifest.drills) {
@@ -317,8 +322,8 @@ function generate(manifestPath) {
             const owner = teachingByKey.get(key);
             if (d.topic !== owner.topic.key || d.groups.length !== 1 || d.groups[0] !== owner.group.slug)
                 throw new Error(`${d.file}: lesson drill must live with ${key}`);
-            if (!lessonDrills.has(key)) lessonDrills.set(key, []);
-            lessonDrills.get(key).push(d);
+            /* A lesson drill is now an authoring brief for the questions embedded
+               in its learning page. It deliberately has no separate HTML page. */
         } else {
             if (!d.availableAfter || !d.learningPages.includes(d.availableAfter))
                 throw new Error(`${d.file}: review availableAfter must name one of its learningPages`);
@@ -352,14 +357,9 @@ function generate(manifestPath) {
                 <p>&mdash;coming soon&mdash;</p>
             </section>`);
             const pageKey = `${topic.key}/${st.slug}`;
-            /* A lesson shows its own practice and the next lesson, and nothing
-               else. Traversing the links in either direction then walks the
-               pages in the order the index lists them: lesson, its practice,
-               next lesson, its practice. A mixed review sits in that order too,
-               after the last practice of its group, so it is reached from that
-               practice page — bolting it onto a lesson page puts a third card
-               in a two-card pattern and jumps the reader over the practice. */
-            const drills = [...(lessonDrills.get(pageKey) || [])];
+            /* Retrieval belongs directly after the teaching that makes it
+               possible. The closing card therefore moves to the next lesson;
+               mixed reviews remain optional destinations on the group menu. */
             const nextPage = teachingSequence[teachingOrder.get(pageKey) + 1];
             const next = nextPage
                 ? {
@@ -375,15 +375,15 @@ function generate(manifestPath) {
                     final: true,
                 };
             sections.push(`            <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">${drills.length ? "Practice and continue" : "Continue"}</h2>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-${[...drills.map((d) => practiceCard(d)), onwardCard(next)].join("\n")}
+${onwardCard(next)}
                 </div>
             </section>`);
             write(teachUrl(topic, groupOf, st), shell({
                 title: `Demystifying Maths | GCSE ${st.title}`,
                 description: st.description,
-                styles: ["shared.css", "curriculum.css", "lesson.css"],
+                styles: ["shared.css", "curriculum.css", "lesson.css", "lesson-sections.css"],
                 scripts: ["navPanel.js", "glossary.js"],
                 headerTitle: st.title,
                 breadcrumb: crumbs([...BASE_CRUMBS,
@@ -399,7 +399,7 @@ ${[...drills.map((d) => practiceCard(d)), onwardCard(next)].join("\n")}
         // ---------- group menu pages (the deepest menu level, so drills live here) ----------
         for (const g of topic.groups) {
             const items = g.slugs.map((sl) => bySlug.get(sl));
-            const drills = manifest.drills.filter((d) => d.topic === topic.key && d.groups.includes(g.slug));
+            const drills = manifest.drills.filter((d) => d.kind === "review" && d.showInMenu !== false && d.topic === topic.key && d.groups.includes(g.slug));
             const practiceSection = drills.length ? `
 
             <section class="topic-section" aria-labelledby="practice-heading">
@@ -469,9 +469,9 @@ ${groupCards}
         written.push(`${topicUrl(topic)}  (topic menu, ${topic.groups.length} group cards)`);
     }
 
-    // ---------- practice stub pages for the new drills ----------
+    // ---------- mixed-review stub pages ----------
     for (const d of manifest.drills) {
-        if (!d.generate) continue; // existing hand-written tests are left alone
+        if (!d.generate || d.kind === "lesson") continue;
         const learning = d.learningPages.map((key) => teachingByKey.get(key));
         const primary = learning[0];
         const topic = manifest.topics.find((t) => t.key === d.topic);

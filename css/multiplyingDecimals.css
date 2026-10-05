@@ -268,7 +268,7 @@
     will-change: transform;
 }
 
-.dec-scene__sticky.is-pinned { position: fixed; right: auto; z-index: 900; transform-origin: top left; }
+.dec-scene__sticky.is-pinned { position: absolute; right: 0; z-index: 900; transform-origin: top left; }
 
 .dec-scene__inputs { display: flex; gap: 16px; padding: 20px 24px 14px; align-items: center; justify-content: center; }
 .dec-scene__inputs label { display: grid; gap: 6px; }

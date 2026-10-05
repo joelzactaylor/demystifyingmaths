@@ -360,6 +360,12 @@
         parseAmount: parseAmount, selfCheck: selfCheck, validateQuestion: validateQuestion
     };
 
+    /* Lesson pages can reuse a validated question bank in short checks placed
+       immediately after the idea it practises. A practice page still mounts in
+       the usual way; this reference only exposes the pure generator and marker
+       to the lightweight lesson-check driver. */
+    scope.PracticeEngine.active = api;
+
     if (typeof document === "undefined") return api;
     /* ---------------------------------------------------------------- page */
 
@@ -796,6 +802,9 @@
             }
             updateActionState();
             buildPrintSheet();
+            document.dispatchEvent(new CustomEvent("curriculumreviewprogress", {
+                detail: {done: states.filter(item => !!item.outcome).length, total: round.length}
+            }));
         }
 
         function handleEnter(event) {

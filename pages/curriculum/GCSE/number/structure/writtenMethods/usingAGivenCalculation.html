@@ -12,25 +12,35 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/usingAGivenCalculation.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
+    <script src="/demystifyingmaths/js/lesson-session.js" defer></script>
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
     <script src="/demystifyingmaths/js/usingAGivenCalculation.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsLessonBank.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/demystifyingmaths/css/powersRootsRecall.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/writtenMethodsLesson.css">
+    <script src="/demystifyingmaths/js/writtenMethodsLesson.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsRecallBank.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsRecall.js" defer></script>
 </head>
 
-<body>
+<body class="roots-lesson written-methods-lesson">
     <div class="layout">
         <div id="top-ribbon-placeholder"></div>
         <script>fetch("/demystifyingmaths/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
         <header>
-            <h1>Demystifying - Using a given calculation</h1>
+            <h1>Using a given calculation</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
                     <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span>
@@ -53,16 +63,16 @@
         </header>
         <aside id="page-nav-container"></aside>
 
-        <main class="lesson-main">
+        <main class="lesson-main" data-lesson-check-api="WrittenMethodsLessonBank"
+            data-lesson-check-anchors="related-products,read-facts-backwards,missing-values">
             <p class="prereq"><b>Before this page:</b> <span>know how to <a
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/powersOfTen.html">multiply
                         and divide by powers of ten</a>, and know basic multiplication and division facts.</span>
             </p>
 
             <section>
-                <h1>One given calculation gives many more</h1>
-                <p>In <strong>43 &times; 26 = 1,118</strong>, scaling one <span class="gloss" data-term="factor">factor</span> scales the <span class="gloss" data-term="product">product</span> with it; &ldquo;given that 43 &times; 26 = 1,118, work out
-                    4.3 &times; 26&rdquo; asks for that scaling.</p>
+                <h1 id="using-a-given-calculation-idea-1">One fact, related calculations</h1>
+<p>Knowing 43 &times; 26 = 1,118 saves us doing several other multiplications. If one factor becomes ten times smaller and the other stays the same, the product becomes ten times smaller too.</p>
                 <p>For <strong>4.3 &times; 26</strong>, compare each value with the given calculation:</p>
                 <div class="deduction-route"
                     aria-label="Three steps for finding 4.3 times 26 from 43 times 26 equals 1,118">
@@ -78,7 +88,7 @@
             </section>
 
             <section>
-                <h1 id="related-products">Scale one factor at a time, then combine the changes</h1>
+                <h1 id="related-products">Changing the factors</h1>
                 <p>Write each change beside the number it affects, &divide; 10 beside 43 &rarr; 4.3 and unchanged beside 26, so the
                     product's change is read off before its <span class="gloss" data-term="decimal point">decimal point</span> is placed.</p>
                 <div class="related-fact-scene" data-related-fact-scene>
@@ -104,7 +114,7 @@
             </section>
 
             <section>
-                <h1 id="read-facts-backwards">Read a product fact backwards</h1>
+                <h1 id="read-facts-backwards">Reversing a multiplication</h1>
                 <p>Every multiplication fact gives two division facts. From <strong>43 &times; 26 = 1,118</strong> come:</p>
                 <div class="fact-family" aria-label="The multiplication and division facts connecting 43, 26 and 1,118">
                     <article><span>product</span> <strong>43 &times; 26 = 1,118</strong></article>
@@ -130,9 +140,8 @@
             </section>
 
             <section>
-                <h1 id="missing-values">Rewrite a missing value with an inverse</h1>
-                <p>A missing factor, <span class="gloss" data-term="dividend">dividend</span> or divisor is found the same way. First use an <span class="gloss" data-term="inverse">inverse</span> <span class="gloss" data-term="operation">operation</span> to make the missing value the <span class="gloss" data-term="subject">subject</span>. Then write each changed number
-                    as the given one scaled: 4.3 as 43 &divide; 10, 260 as 26 &times; 10.</p>
+                <h1 id="missing-values">Finding a missing value</h1>
+<p>Use multiplication to undo division, and division to undo multiplication. Then compare the numbers with the given fact, 43 &times; 26 = 1,118. For example, 4.3 is one tenth of 43, while 260 is ten times 26.</p>
                 <article class="deduction-example">
                     <h2>Find the missing dividend in ? &divide; 4.3 = 260</h2>
                     <div class="deduction-scene" data-deduction-scene data-deduction-kind="dividend">
@@ -167,7 +176,7 @@
             </section>
 
             <section>
-                <h1>Scale any two of 43, 26 and 1,118</h1>
+                <h1 id="using-a-given-calculation-idea-5">Explore related calculations</h1>
                 <p>Whichever two are scaled, the third is fixed by them:</p>
                 <div class="fact-explorer" data-fact-explorer>
                     <p class="fact-explorer__given"><span>Given</span> <strong>43 &times; 26 = 1,118</strong></p>
@@ -225,42 +234,14 @@
                 </div>
             </section>
 
-            <section>
-                <h1>Common mistakes</h1>
-                <ul class="slips">
-                    <li><b>Changing the product only once</b>
-                    <span>Dividing both factors by 10 divides the product by 10 twice: from 4.3 &times; 2.6 = 11.18,
-                            0.43 &times; 0.26 = 0.1118, not 1.118.</span></li>
-                    <li><b>Moving every decimal point the same way</b>
-                    <span>43 &rarr; 4.3 is &divide; 10, and moving the quotient the same way gives 1,118 &divide; 4.3 = 2.6.
-                            Dividing by a tenth of 43 gives ten times the quotient: 1,118 &divide; 4.3 = 260, not 2.6.</span></li>
-                </ul>
-            </section>
 
-            <section>
-                <h1>Summary</h1>
-                <ol class="recap">
-                    <li>Treat the stated calculation as a fact that connects two factors and their product.</li>
-                    <li>Write how each factor has changed: &times;10, &divide;10, &times;100, &divide;100 or unchanged.
-                    </li>
-                    <li>Combine the two factor changes to find the product's change: &divide;10 on both factors is
-                        &divide;100 on the product.</li>
-                    <li>Every multiplication fact gives two division facts: 1,118 &divide; 4.3 = 260 because
-                        4.3 &times; 260 = 1,118.</li>
-                    <li>Use inverse operations to make a missing factor, dividend or divisor the subject, then scale
-                        each number from the given one.</li>
-                </ol>
-            </section>
+
+            <section class="roots-key-points" id="remember"><h1>Key points</h1><ul><li>Track what happens to each factor; combine the scale changes to find the product.</li><li>Division reverses multiplication, so one product fact also gives two division facts.</li><li>Undo the stated operation to find a missing value.</li></ul></section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <div class="powers-recall" data-written-recall="usingAGivenCalculation" hidden></div>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice"
-                        href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/practiceGivenCalculation.html"
-                        style="background-image: none"><span class="practice-card__kicker">Practice</span>
-                        <h3>Using a given calculation</h3>
-                        <p>Deduce new decimal products, quotients and missing factors from one stated fact.</p>
-                    </a>
                     <a class="topic-card topic-card--next"
                         href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/powersAndRoots/indexNotation.html"
                         style="background-image: none"><span class="topic-card__kicker">Next lesson</span>
@@ -268,6 +249,7 @@
                         <p>What the base and index mean, and writing repeated multiplication as a power.</p>
                     </a>
                 </div>
+            <a class="lesson-menu-return" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/">Back to Written methods</a>
             </section>
         </main>
 

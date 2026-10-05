@@ -9,24 +9,34 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/dividingByDecimals.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
+    <script src="/demystifyingmaths/js/lesson-session.js" defer></script>
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsLessonBank.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <script src="/demystifyingmaths/js/dividingByDecimals.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/demystifyingmaths/css/powersRootsRecall.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/writtenMethodsLesson.css">
+    <script src="/demystifyingmaths/js/writtenMethodsLesson.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsRecallBank.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsRecall.js" defer></script>
 </head>
-<body>
+<body class="roots-lesson written-methods-lesson">
     <div class="layout">
         <div id="top-ribbon-placeholder"></div>
         <script>fetch("/demystifyingmaths/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
         <header>
-            <h1>Demystifying - Dividing by a decimal</h1>
+            <h1>Dividing by a decimal</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
                     <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
@@ -41,16 +51,16 @@
         </header>
         <aside id="page-nav-container"></aside>
 
-        <main class="lesson-main">
+        <main class="lesson-main" data-integrated-bank="dividingDecimals" data-lesson-check-api="WrittenMethodsLessonBank"
+            data-lesson-check-anchors="scale-both,smallest-scale,quotient-size">
             <p class="prereq"><b>Before this page:</b> <span>know how to <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/powersOfTen.html">multiply by powers of ten</a>, then divide with <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/shortDivision.html">short division</a> or <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/longDivision.html">long division</a>.</span></p>
 
             <section>
-                <h1>Make the divisor an integer without changing the quotient</h1>
-                <p>Standard written division needs an <span class="gloss" data-term="integer">integer</span> <span class="gloss" data-term="divisor">divisor</span>. A decimal divisor can be made into an integer by multiplying it by 10, 100 or 1,000—but the dividend must be multiplied by exactly the same number.</p>
-                <div class="rule-card decimal-division-rule">
-                    <p class="rule-card__statement"><span><i>a</i> &divide; <i>b</i></span> <strong>=</strong> <span>(<i>a</i> &times; <i>k</i>) &divide; (<i>b</i> &times; <i>k</i>)</span></p>
-                </div>
+                <h1 id="scale-both">An equivalent division</h1>
+<p>A decimal divisor can look awkward, but we can change the calculation without changing its answer. For 55.2 &divide; 0.46, multiply both numbers by 100. The divisor becomes 46 and the dividend becomes 5,520.</p>
                 <p>The <span class="gloss" data-term="quotient">quotient</span> counts how many divisor-sized groups make the <span class="gloss" data-term="dividend">dividend</span>. Multiplying both by the same <span class="gloss" data-term="scale factor">scale factor</span>, 100, makes every group 100 times larger and the total 100 times larger, so the number of groups does not change.</p>
+                <div data-lesson-check="0" data-lesson-check-api="WrittenMethodsLessonBank"></div>
+
                 <p>In 55.2 &divide; 0.46, 120 groups of 0.46 make 55.2. After both numbers are multiplied by 100, the same 120 groups of 46 make 5,520.</p>
                 <div class="decimal-division-scene" data-decimal-division-scene>
                     <div class="decimal-division-scene__sticky">
@@ -66,7 +76,7 @@
             </section>
 
             <section>
-                <h1>Choose the smallest sufficient power of ten</h1>
+                <h1 id="smallest-scale">Making the divisor a whole number</h1>
                 <p>Count the divisor's <span class="gloss" data-term="decimal place">decimal places</span>, ignoring trailing zeros, and multiply both numbers by 10 once for each place: one place needs &times;10, two need &times;100. The divisor is then an integer, and the <span class="gloss" data-term="equivalent">equivalent</span> division is ready for short or long division.</p>
                 <div class="scale-cases">
                     <article><span class="scale-cases__factor">both &times; 10</span><h2>One decimal place</h2><p><strong>7.2 &divide; 0.3 = 72 &divide; 3 = 24</strong></p></article>
@@ -77,7 +87,7 @@
             </section>
 
             <section>
-                <h1>The quotient can be larger than the dividend</h1>
+                <h1 id="quotient-size">Dividing by a number below one</h1>
                 <div class="piece-model">
                     <div class="piece-model__measure" aria-hidden="true"><span>55.2 m total</span><div></div><small>120 equal lengths, each 0.46 m</small></div>
                     <div><h2>55.2 metres cut into 0.46 metre lengths</h2><p>Each <span class="gloss" data-term="length">length</span> is under half a metre, so more than two fit into each metre, and exactly <strong>120</strong> fit into 55.2 m.</p></div>
@@ -87,7 +97,7 @@
                     explained on <a href="/demystifyingmaths/pages/curriculum/GCSE/number/fractions/powersRootsAndSize/numbersBelowOne.html">numbers below one</a>.</p>
             </section>
             <section>
-                <h1>Scale a chosen division</h1>
+                <h1 id="dividing-by-decimals-idea-4">Explore equivalent divisions</h1>
                 <div class="decimal-division-sandbox" data-decimal-division-sandbox>
                     <div class="decimal-division-sandbox__inputs">
                         <label for="decimal-dividend"><span>Dividend</span><input id="decimal-dividend" type="text" inputmode="decimal" value="12.6" maxlength="7" autocomplete="off" spellcheck="false" aria-describedby="decimal-division-status" data-dividend-input></label>
@@ -103,40 +113,17 @@
                 </div>
             </section>
 
-            <section>
-                <h1>Common mistakes</h1>
-                <ul class="slips">
-                    <li><b>Scaling only the divisor</b>
-                    <span>Multiplying 0.24 by 100 and leaving the 9.6 alone gives 9.6
-                            &divide; 24 = 0.4, a hundred times too small, because only the divisor took the &times;100;
-                            with both numbers scaled, 960 &divide; 24 = 40.</span></li>
-                    <li><b>Stopping while the divisor is still decimal</b>
-                    <span>One multiplication by 10 takes 3.75 &divide; 0.15 to 37.5 &divide; 1.5, and dividing that as
-                            though it were 37.5 &divide; 15 gives 2.5, ten times too small. A second &times;10 on both
-                            numbers gives 375 &divide; 15 = 25.</span></li>
-                    <li><b>Expecting the answer to be smaller</b>
-                    <span>Eight 0.12s make only 0.96, so more than eight fit into each 1, and 4.8 &divide; 0.12 = 40 is
-                            larger than 4.8.</span></li>
-                </ul>
-            </section>
 
-            <section>
-                <h1>Summary</h1>
-                <ol class="recap">
-                    <li>Choose the smallest power of ten that makes the decimal divisor an integer.</li>
-                    <li>Multiply the dividend and divisor by exactly the same power of ten.</li>
-                    <li>Stop once the divisor is an integer; the dividend may still be decimal.</li>
-                    <li>Use short or long division on the equivalent calculation.</li>
-                    <li>Check by multiplying the quotient by the original divisor: 120 &times; 0.46 = 55.2.</li>
-                    <li>For positive numbers, a divisor below 1 gives a quotient larger than the dividend: 55.2 &divide; 0.46 = 120.</li>
-                </ol>
-            </section>
+
+            <section class="roots-key-points" id="remember"><h1>Key points</h1><ul><li>Multiply both dividend and divisor by the same power of ten. The quotient stays the same.</li><li>Choose a scale that makes the divisor an integer, then divide as usual.</li><li>Dividing a positive number by a positive number below one makes the quotient larger than the dividend.</li></ul></section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
+                <div class="powers-recall" data-written-recall="dividingByDecimals" hidden></div>
                 <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
                     <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/usingAGivenCalculation.html" style="background-image: none"><span class="topic-card__kicker">Next lesson</span><h3>Using a given calculation</h3><p>Deduce related products and quotients without recalculating.</p></a>
                 </div>
+            <a class="lesson-menu-return" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/">Back to Written methods</a>
             </section>
         </main>
         <footer><div class="footer-content"><div class="footer-section"><h2>Explore</h2><ul><li><a href="/demystifyingmaths/pages/home.html">Home</a></li><li><a href="/demystifyingmaths/pages/curriculum/">Curriculum</a></li><li><a href="/demystifyingmaths/pages/extracurricular/">Extracurricular</a></li><li><a href="/demystifyingmaths/pages/about.html">About</a></li><li><a href="/demystifyingmaths/pages/contact.html">Contact</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 demystifyingmaths &middot; joelzactaylor</p></div></footer>

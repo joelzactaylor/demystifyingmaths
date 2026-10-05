@@ -9,24 +9,34 @@
     <link rel="stylesheet" href="/demystifyingmaths/css/shared.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/curriculum.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/lesson.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-sections.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/lesson-checks.css">
     <link rel="stylesheet" href="/demystifyingmaths/css/interpretingRemainders.css">
     <link rel="apple-touch-icon" sizes="180x180" href="/demystifyingmaths/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/demystifyingmaths/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/demystifyingmaths/favicon_io/favicon-16x16.png">
     <link rel="manifest" href="/demystifyingmaths/favicon_io/site.webmanifest">
+    <script src="/demystifyingmaths/js/lesson-session.js" defer></script>
     <script src="/demystifyingmaths/js/navPanel.js" defer></script>
     <script src="/demystifyingmaths/js/glossary.js" defer></script>
     <script src="/demystifyingmaths/js/interpretingRemainders.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsLessonBank.js" defer></script>
+    <script src="/demystifyingmaths/js/lesson-checks.js" defer></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Aleo:wght@400;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/demystifyingmaths/css/powersRootsRecall.css">
+    <link rel="stylesheet" href="/demystifyingmaths/css/writtenMethodsLesson.css">
+    <script src="/demystifyingmaths/js/writtenMethodsLesson.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsRecallBank.js" defer></script>
+    <script src="/demystifyingmaths/js/writtenMethodsRecall.js" defer></script>
 </head>
-<body>
+<body class="roots-lesson written-methods-lesson">
     <div class="layout">
         <div id="top-ribbon-placeholder"></div>
         <script>fetch("/demystifyingmaths/embed/top-ribbon.html").then(r => r.text()).then(html => document.getElementById("top-ribbon-placeholder").innerHTML = html);</script>
         <header>
-            <h1>Demystifying - Interpreting a remainder</h1>
+            <h1>Interpreting a remainder</h1>
             <nav aria-label="Breadcrumb">
                 <ol class="breadcrumb breadcrumb--deep">
                     <li><a href="/demystifyingmaths/pages/home.html">Home</a><span aria-hidden="true">&rsaquo;</span></li>
@@ -41,11 +51,12 @@
         </header>
         <aside id="page-nav-container"></aside>
 
-        <main class="lesson-main">
+        <main class="lesson-main" data-lesson-check-api="WrittenMethodsLessonBank"
+            data-lesson-check-anchors="reading-the-question,fractions-and-decimals,three-questions">
             <p class="prereq"><b>Before this page:</b> <span>be able to divide by a one-<span class="gloss" data-term="digit">digit</span> number and record a remainder using <a href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/shortDivision.html">short division</a>.</span></p>
 
             <section>
-                <h1>The words decide the answer</h1>
+                <h1 id="interpreting-remainders-idea-1">Making sense of a remainder</h1>
                 <p>A remainder is the amount left after making as many whole groups as possible. The <span class="gloss" data-term="calculation">calculation</span> gives the <span class="gloss" data-term="quotient">quotient</span> and remainder; the question says what to do with them.</p>
                 <div class="division-fact" role="img" aria-label="29 divided by 4 equals 7 remainder 1. Equivalently, 29 equals 4 times 7 plus 1.">
                     <p><span>29 &divide; 4</span> <strong>= 7 remainder 1</strong></p>
@@ -54,12 +65,12 @@
                 <p>The 1 is one of the 29, so the answer has to say what happens to it.</p>
                 <aside class="important-box" aria-labelledby="remainder-limit-title">
                     <h2 class="important-box__title" id="remainder-limit-title">A remainder has a fixed range</h2>
-                    <p>A remainder must be a <span class="gloss" data-term="whole number">whole number</span> from <span class="gloss" data-term="zero">zero</span> up to one less than the <span class="gloss" data-term="divisor">divisor</span>. For 29 &divide; 4, <strong>1 &lt; 4</strong>. A remainder of 4 would make another complete group.</p>
+                    <p>When dividing whole numbers by a positive whole-number <span class="gloss" data-term="divisor">divisor</span>, the remainder is a <span class="gloss" data-term="whole number">whole number</span> from <span class="gloss" data-term="zero">zero</span> up to one less than the divisor. For 29 &divide; 4, <strong>1 &lt; 4</strong>. A remainder of 4 would make another complete group.</p>
                 </aside>
             </section>
 
             <section>
-                <h1>One division, four possible answers</h1>
+                <h1 id="interpreting-remainders-idea-2">One calculation, different answers</h1>
                 <div class="worked">
                     <h2 class="worked__title">Example: interpret 29 &divide; 4</h2>
                     <div class="remainder-scene" data-remainder-scene>
@@ -84,7 +95,7 @@
             </section>
 
             <section id="reading-the-question">
-                <h1>What each wording asks for</h1>
+                <h1>Full groups or enough groups</h1>
                 <div class="meaning-table" role="region" aria-label="How wording determines the treatment of a remainder">
                     <article>
                         <span class="meaning-table__cue">“Give the answer with a remainder” or “How many are left?”</span>
@@ -107,23 +118,26 @@
                         <p>When every one of the 29 must have a place, the 1 left over needs an 8th group.</p>
                     </article>
                 </div>
+                <div data-lesson-check="0" data-lesson-check-api="WrittenMethodsLessonBank"></div>
+
                 <aside class="important-box" aria-labelledby="ordinary-rounding-title">
                     <h2 class="important-box__title" id="ordinary-rounding-title">This is not ordinary rounding</h2>
-                    <p><strong>29 &divide; 4 = 7.25</strong> rounds to 7, yet 29 passengers need 8 cars; choosing between the 7 and the 8 is the subject of <a href="/demystifyingmaths/pages/curriculum/GCSE/number/measures/roundingAndTruncation/roundingInContext.html">rounding in context</a>.</p>
+<p>29 &divide; 4 = 7.25 rounds to 7 to the nearest whole number. But 29 passengers need 8 cars if each car carries 4 passengers: seven cars leave one person behind. The context decides whether another whole group is needed.</p>
                 </aside>
             </section>
 
             <section id="fractions-and-decimals">
-                <h1>Fractions and decimals describe the same share</h1>
+                <h1>Sharing the remainder</h1>
                 <p>When the remainder can be divided, place it over the divisor:</p>
                 <div class="remainder-equivalence" role="img" aria-label="29 divided by 4 equals 7 remainder 1, which equals 7 and one quarter, which equals 7.25.">
                     <span>7 r 1</span><i aria-hidden="true">&rarr;</i><span>7 + <b>&frac14;</b></span><i aria-hidden="true">&rarr;</i><span>7&frac14;</span><i aria-hidden="true">=</i><span>7.25</span>
                 </div>
-                <p>The <span class="gloss" data-term="denominator">denominator</span> is <strong>4</strong>, not 29: the remainder 1 is being shared between the same four groups. A <span class="gloss" data-term="fraction">fraction</span> is exact even when the decimal is not <span class="gloss" data-term="terminating">terminating</span>: 29 &divide; 3 = 9&#8532;, and 9.666&hellip; has to be rounded, to the <span class="gloss" data-term="accuracy">accuracy</span> the question gives.</p>
+                <p>The <span class="gloss" data-term="denominator">denominator</span> is <strong>4</strong>, not 29: the remainder 1 is being shared between the same four groups.</p>
+                <p>A <span class="gloss" data-term="fraction">fraction</span> can express an exact share even when its decimal is not <span class="gloss" data-term="terminating">terminating</span>. For example, 29 &divide; 3 = 9&#8532; = 9.666&hellip;, with the sixes continuing forever. Round only if a question asks for a particular <span class="gloss" data-term="accuracy">accuracy</span>.</p>
             </section>
 
             <section>
-                <h1>Compare the possible answers</h1>
+                <h1 id="interpreting-remainders-idea-5">Explore the different answers</h1>
                 <div class="remainder-lab" data-remainder-lab>
                     <div class="remainder-lab__inputs">
                         <label><span>Amount to divide</span><input type="text" inputmode="numeric" value="53" maxlength="4" autocomplete="off" spellcheck="false" data-total-input></label>
@@ -142,7 +156,7 @@
             </section>
 
             <section id="three-questions">
-                <h1>Three questions, one calculation</h1>
+                <h1>Putting the context first</h1>
                 <p>A theatre group has <strong>94 costumes</strong>. Each rail holds <strong>8 costumes</strong>. The calculation is <strong>94 &divide; 8 = 11 remainder 6</strong>.</p>
                 <div class="context-answers">
                     <article><h2>How many rails can be filled?</h2><p>Only complete rails count, so the answer is <strong>11 full rails</strong>.</p></article>
@@ -152,45 +166,19 @@
                 <p>Each answer includes a <span class="gloss" data-term="unit">unit</span>. “11 remainder 6” records the arithmetic; the nouns turn its two numbers into costumes and rails.</p>
             </section>
 
-            <section>
-                <h1>Common mistakes</h1>
-                <ul class="slips">
-                    <li><b>Writing the remainder after the point</b>
-                    <span>47 &divide; 5 = 9 r 2 is not 9.2. The 2 left over is two fifths of a
-                            group, so the exact value is 9.4.</span></li>
-                    <li><b>Always rounding to the nearest whole number</b>
-                    <span>31 people travelling 5 to a car need 7 cars, not 6: 31 &divide; 5 = 6.2 rounds to 6, but 6 cars hold
-                            only 30.</span></li>
-                    <li><b>Giving a fraction of an indivisible object</b>
-                    <span>Half a box is not a box: 26 boxes shared between 4 vans is 6 each with 2 left over, not 6.5
-                            each.</span></li>
-                    <li><b>Dropping the remainder</b>
-                    <span>43 counters shared between 6 pupils is not 7 each with nothing over: 6 &times; 7 = 42, and the
-                            43rd counter is left over, so the answer is 7 each, 1 left.</span></li>
-                </ul>
-            </section>
 
-            <section>
-                <h1>Summary</h1>
-                <ol class="recap">
-                    <li>Divide and check that the remainder is smaller than the divisor.</li>
-                    <li>The noun in the question says what the quotient and the remainder count, and the question says which of them it wants.</li>
-                    <li>State the remainder, give an exact share, count complete groups or add another group as the context requires.</li>
-                    <li>A context can require the next whole group or only the complete groups, regardless of ordinary rounding.</li>
-                    <li>The answer carries its unit: 11 rails or 6 costumes, never a bare 11 remainder 6.</li>
-                </ol>
-            </section>
+
+            <section class="roots-key-points" id="remember"><h1>Key points</h1><ul><li>A remainder is smaller than the divisor.</li><li>Complete groups exclude an unfinished group; enough groups for everything include it.</li><li>An exact share divides the remainder too, giving a fraction or decimal.</li></ul></section>
 
             <section class="topic-section lesson-actions" aria-labelledby="practice-heading">
-                <h2 id="practice-heading">Practice and continue</h2>
+                <div class="powers-recall" data-written-recall="interpretingRemainders" hidden></div>
+                <h2 id="practice-heading">Continue</h2>
                 <div class="topic-grid">
-                    <a class="topic-card topic-card--practice" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/practiceInterpretingRemainders.html" style="background-image: none">
-                        <span class="practice-card__kicker">Practice</span><h3>Interpreting a remainder</h3><p>Choose whether a context needs a remainder, exact share, complete groups or another group.</p>
-                    </a>
                     <a class="topic-card topic-card--next" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/longDivision.html" style="background-image: none">
                         <span class="topic-card__kicker">Next lesson</span><h3>Long division</h3><p>Divide by a two-digit number using listed multiples and a clear written layout.</p>
                     </a>
                 </div>
+            <a class="lesson-menu-return" href="/demystifyingmaths/pages/curriculum/GCSE/number/structure/writtenMethods/">Back to Written methods</a>
             </section>
         </main>
         <footer>

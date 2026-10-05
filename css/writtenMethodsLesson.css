@@ -1,0 +1,254 @@
+/* Written methods: the roots prototype’s reading rhythm and inline answers,
+   with a teal topic identity and the existing place-value diagrams. */
+/* Clip sideways overflow without creating a second scroll container: cards
+   must stick to the viewport, not to the full-height body. */
+body.written-methods-lesson { overflow-x: clip; overflow-y: visible; }
+@media (prefers-reduced-motion: no-preference) {
+    .written-methods-lesson .is-ready > [class*="scene__sticky"] {
+        position: sticky;
+    }
+}
+.written-methods-lesson header {
+    background: #fff;
+    border-bottom: 2px solid #e6e8ef;
+    padding: 26px 40px 12px;
+    margin-bottom: 32px;
+}
+.written-methods-lesson header h1 {
+    color: #243445;
+    text-shadow: none;
+    font-size: 34px;
+    padding: 20px 0;
+}
+.written-methods-lesson header nav { top: 0; }
+.written-methods-lesson .lesson-main { max-width: 920px; margin: 0 auto; padding: 0 48px 64px; }
+.written-methods-lesson .lesson-main > section {
+    margin: 0;
+    padding: 32px 0;
+}
+.written-methods-lesson .lesson-main > section::after,
+.written-methods-lesson .lesson-main > section > h1::before,
+.written-methods-lesson .lesson-main > section > h2::before { display: none; }
+.written-methods-lesson .lesson-flowbar { background: transparent; border: 0; padding: 12px 0; }
+.written-methods-lesson .lesson-flowbar { display: flex; justify-content: flex-end; }
+.written-methods-lesson .lesson-flowbar__status,
+.written-methods-lesson .lesson-flowbar__track { display: none; }
+.written-methods-lesson .lesson-flowbar[hidden] { display: none; }
+.written-methods-lesson .page-nav { display: flex; flex-direction: column; flex-wrap: nowrap; top: 0; gap: 0; justify-content: flex-start; align-items: stretch; }
+.written-methods-lesson .page-nav .lesson-flowbar__toggle {
+    align-self: flex-start;
+    margin: 24px 12px 0;
+    padding: 6px 0;
+    color: #fff;
+}
+.written-methods-lesson .roots-revealed { animation: roots-reveal .45s ease-out both; }
+.written-methods-lesson .page-nav .roots-reset { margin-top: 8px; }
+.roots-reading-step[hidden], .roots-continue[hidden] { display: none; }
+.roots-reading-step > p { margin: 18px 0; font-size: 1.04rem; line-height: 1.75; }
+.roots-reading-step > .roots-instruction { margin-top: 32px; }
+.roots-continue {
+    display: block;
+    margin: 28px auto 0;
+    padding: 10px 24px;
+    border: 0;
+    border-radius: 22px;
+    background: #096f78;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.5;
+    font-family: inherit;
+    cursor: pointer;
+}
+.roots-continue:focus-visible { outline: 3px solid #096f78; outline-offset: 4px; }
+.roots-revisit { margin: 24px 0; }
+.roots-revisit summary { color: #075b63; cursor: pointer; font-size: 15px; line-height: 1.6; }
+.roots-revisit > p { margin: 12px 0; font-size: 16px; line-height: 1.7; }
+.roots-question-reminder { margin: 10px 0 0; }
+.roots-revisit[hidden] { display: none; }
+.written-methods-lesson .lesson-check__turn[hidden] { display: none; }
+.roots-key-points { margin: 32px 0 0; padding-top: 24px; border-top: 2px solid #e3e8ed; }
+.roots-key-points h2 { margin: 0 0 16px; color: #243445; font-size: 21px; }
+.roots-key-points ul { margin: 0; padding-left: 22px; }
+.roots-key-points li { padding-left: 6px; font-size: 1.04rem; line-height: 1.75; }
+.roots-key-points li + li { margin-top: 12px; }
+.roots-key-points li::marker { color: #009b8c; }
+@keyframes roots-reveal {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.written-methods-lesson .lesson-main > section > h1 { font-size: 28px; margin: 0 0 24px; }
+.written-methods-lesson .lesson-main > section > p { max-width: none; margin: 0 0 18px; line-height: 1.75; }
+.written-methods-lesson .lesson-main > section > :last-child { margin-bottom: 0; }
+.written-methods-lesson .lesson-main > .prereq { margin: 0 0 12px; background: #f5f7fa; border: 0; }
+.written-methods-lesson .roots-instruction { color: #536873; font-size: 15px; }
+.written-methods-lesson .lesson-check { max-width: none; margin: 18px 0; }
+.written-methods-lesson .lesson-check__body { gap: 18px; }
+.written-methods-lesson .lesson-check__turn + .lesson-check__turn { padding-top: 0; }
+.written-methods-lesson .lesson-main > section > .lesson-check + p { margin-top: 18px; }
+.written-methods-lesson .lesson-main > section > .roots-instruction { margin-top: 32px; margin-bottom: 0; }
+.written-methods-lesson .lesson-check__entry input {
+    width: 3.2em; min-width: 0; min-height: 0; padding: 1px 5px;
+    box-sizing: border-box; height: 1.65em; font-family: inherit; font-size: 1em; font-weight: 700; line-height: 1.4;
+    border: 0; border-bottom: 2px solid #096f78; border-radius: 4px 4px 0 0; background: #eaf7f7;
+}
+.written-methods-lesson .lesson-check__check { display: none; }
+.written-methods-lesson .lesson-check__prompt { display: block; max-width: none; line-height: 1.75; font-size: 1.04rem; }
+.written-methods-lesson .lesson-check__response { display: inline; margin: 0; vertical-align: baseline; }
+.roots-inline-equation { display: inline-block; white-space: nowrap; vertical-align: baseline; }
+.written-methods-lesson .roots-inline-equation .lesson-check__expression {
+    font-family: inherit;
+    font-size: 1em;
+    line-height: inherit;
+    letter-spacing: normal;
+}
+.written-methods-lesson .roots-inline-equation .lesson-check__response { margin-left: .3em; }
+.written-methods-lesson .lesson-check__answer,
+.written-methods-lesson .lesson-check__entry { display: inline; font-size: inherit; vertical-align: baseline; }
+.written-methods-lesson .lesson-check__entry input { vertical-align: baseline; }
+.written-methods-lesson .lesson-check__entry input.roots-answer-retry {
+    color: #a3293d;
+    background: #fff0f2;
+    border-bottom: 2px dashed #bb354c;
+    box-shadow: none;
+    animation: roots-retry .24s ease-in-out;
+}
+.roots-answer-notice {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+@keyframes roots-retry {
+    25%, 75% { transform: translateX(-2px); }
+    50% { transform: translateX(2px); }
+}
+.written-methods-lesson .lesson-check__entry input::placeholder { color: #096f78; opacity: 1; }
+.written-methods-lesson .lesson-check__entry input[hidden] { display: none; }
+.written-methods-lesson .roots-accepted-answer {
+    color: #0f6d40;
+    font-weight: 700;
+    background: none;
+    border: 0;
+    padding: 0;
+}
+.written-methods-lesson .roots-accepted-answer:focus {
+    outline: none;
+    box-shadow: none;
+}
+.written-methods-lesson .lesson-check__turn.is-correct .lesson-check__entry input {
+    background: #e9f8ef; border-color: #15985b; color: #0f6d40; box-shadow: none;
+}
+.written-methods-lesson .lesson-check__turn.is-correct .lesson-check__entry input:focus {
+    border-color: #15985b; outline: 2px solid #b9dfc8;
+}
+.written-methods-lesson .lesson-check__help { margin-top: 8px; }
+.written-methods-lesson .lesson-check__feedback { max-width: 700px; font-weight: 400; }
+.written-methods-lesson .lesson-check__turn.is-correct .lesson-check__check {
+    display: none;
+}
+.written-methods-lesson .lesson-check__turn.is-correct .lesson-check__response::after {
+    content: none;
+}
+.written-methods-lesson .lesson-check__feedback,
+.written-methods-lesson .lesson-check__help,
+.written-methods-lesson .lesson-check__support,
+.written-methods-lesson .lesson-check__complete { display: none; }
+
+
+/* A quiet alternative to the next-lesson card, shared by this topic's lessons. */
+.written-methods-lesson .lesson-flowbar { gap: 20px; flex-wrap: wrap; }
+.written-methods-lesson .lesson-flowbar > .lesson-flowbar__toggle {
+    color: #075b63;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid currentColor;
+    border-radius: 0;
+    padding: 7px 0;
+    font-size: 14px;
+}
+.written-methods-lesson .lesson-flowbar > .lesson-flowbar__toggle:focus-visible {
+    outline: 3px solid #096f78;
+    outline-offset: 4px;
+}
+.written-methods-lesson .lesson-actions a.lesson-menu-return {
+    display: inline-block;
+    width: auto;
+    margin: 20px 0 0;
+    padding: 8px 0;
+    color: #536873;
+    font-family: inherit;
+    font-weight: 400;
+    line-height: 1.6;
+    font-size: 14px;
+    text-align: left;
+    text-shadow: none;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+.written-methods-lesson .lesson-actions a.lesson-menu-return:hover { color: #096f78; }
+.written-methods-lesson .lesson-actions a.lesson-menu-return:focus-visible { outline: 2px solid #096f78; outline-offset: 4px; border-radius: 3px; }
+
+.written-methods-lesson #page-nav-container { background: #096f78; }
+.written-methods-lesson .page-nav { max-height: calc(100vh - 140px); }
+.written-methods-lesson .page-nav-list { min-height: 0; overflow-y: auto; }
+.written-methods-lesson .page-nav-title,
+.written-methods-lesson .page-nav .lesson-flowbar__toggle { flex-shrink: 0; }
+.written-methods-lesson .page-nav-link.active { color: #075b63; background: #fff; }
+.written-methods-lesson .page-nav-link.is-locked { color: #d0eded; }
+.written-methods-lesson .rule-card { border: 0; border-left: 3px solid #096f78; background: #f1f9f9; box-shadow: none; padding: 20px 24px; }
+.written-methods-lesson .rule-card__statement { color: #075b63; }
+.written-methods-lesson .rule-card__conditions li { background: none; border: 0; }
+.written-methods-lesson .anatomy { background: #f5fafc; box-shadow: none; }
+.written-methods-lesson [class$="scene__sticky"] { background: #f7fbfd; box-shadow: 0 5px 16px rgba(24,44,56,.09); }
+.written-methods-lesson .place-lab { background: #f5fafc; }
+.written-methods-lesson .place-lab__field span,
+.written-methods-lesson .place-lab__unit { font-size: 14px; }
+.written-methods-lesson .place-chart tbody .place-chart__values td,
+.written-methods-lesson .split-figure__caption { font-size: 14px; }
+.written-methods-lesson .recall-question input[type="text"] { background: #eaf7f7; color: #075b63; border-bottom-color: #096f78; }
+.written-methods-lesson .recall-choices input[type="radio"] { accent-color: #096f78; }
+.written-methods-lesson .recall-choices label:hover { color: #075b63; }
+.written-symbol-choices { display: inline-flex; gap: 8px; vertical-align: baseline; }
+.written-symbol-choices[hidden] { display: none; }
+.written-symbol-choices button { font-family: inherit; font-size: 18px; font-weight: 700; line-height: 1.4; padding: 0 10px; color: #075b63; background: #eaf7f7; border: 0; border-bottom: 2px solid #096f78; border-radius: 3px 3px 0 0; cursor: pointer; }
+.written-symbol-choices button:focus-visible { outline: 2px solid #096f78; outline-offset: 3px; }
+.written-symbol-choices.roots-answer-retry button:focus { border-bottom: 2px dashed #bb354c; background: #fff0f2; }
+.written-methods-lesson .lesson-main > section > p { max-width: 720px; }
+.written-methods-lesson .lesson-main > section > h1 { max-width: 760px; }
+.written-methods-lesson .recap { background: none; border: 0; padding: 0 0 0 24px; }
+.written-methods-lesson .recap li { padding: 4px 0; line-height: 1.75; }
+@media (prefers-reduced-motion: reduce) { .written-methods-lesson .roots-revealed, .written-methods-lesson .roots-answer-retry { animation: none; } }
+
+/* Flat fills preserve the diagrams’ colour roles; graph-paper grids remain. */
+.written-methods-lesson .place-lab { background-image: none; background-color: #f2f8fc; }
+.written-methods-lesson .ordering-scene__sticky { background-image: none; background-color: #f2f8fc; }
+.written-methods-lesson .power-machine { background-image: none; background-color: #f2f8fc; }
+.written-methods-lesson .tenths-model__bars i { background-image: none; background-color: #5d91b0; }
+.written-methods-lesson .anatomy { background-image: none; background-color: #fffaf0; }
+.written-methods-lesson .addition-scene__sticky { background-image: none; background-color: #f2f8fc; }
+.written-methods-lesson .subtraction-scene__sticky { background-image: none; background-color: #f2f8fc; }
+.written-methods-lesson .anatomy { background-image: none; background-color: #fffaf0; }
+.written-methods-lesson .multiplication-scene__sticky { background-image: none; background-color: #f2f8fc; }
+.written-methods-lesson .count-figure { background-image: none; background-color: #fffaf0; }
+.written-methods-lesson .dec-scene__sticky { background-image: none; background-color: #f2f8fc; }
+.written-methods-lesson .division-scene__sticky { background-image: none; background-color: #f2f8fc; }
+.written-methods-lesson .remainder-scene__sticky { background-image: none; background-color: #f2f8fc; }
+.written-methods-lesson .scenario-dot { background-image: none; background-color: #09577b; }
+.written-methods-lesson .counter-share__tray { background-image: none; background-color: #f6fbfe; }
+.written-methods-lesson .counter-share__loose { background-image: none; background-color: #fff2c9; }
+.written-methods-lesson .exact-share__row { background-image: none; background-color: #f7fbfd; }
+.written-methods-lesson .exact-share__tank span { background-image: none; background-color: #347e9f; }
+.written-methods-lesson .exact-share__tank span:last-child { background-image: none; background-color: #c88613; }
+.written-methods-lesson .groups-needed__car { background-image: none; background-color: #eaf3f8; }
+.written-methods-lesson .groups-needed__seat.is-filled { background-image: none; background-color: #09577b; }
+.written-methods-lesson .groups-needed__car:last-child { background-image: none; background-color: #fff2c9; }
+.written-methods-lesson .remainder-lab { background-image: none; background-color: #f2f8fc; }
+.written-methods-lesson .long-scene__sticky { background-image: none; background-color: #f2f8fc; }
+.written-methods-lesson .decimal-division-scene__sticky { background-image: none; background-color: #f2f8fc; }
+.written-methods-lesson .decimal-division-sandbox { background-image: none; background-color: #f1f7fb; }
+.written-methods-lesson .related-fact-scene__sticky { background-image: none; background-color: #f2f8fc; }
+.written-methods-lesson .deduction-scene__sticky { background-image: none; background-color: #f2f8fc; }
+.written-methods-lesson .fact-explorer { background-image: none; background-color: #f1f7fb; }
