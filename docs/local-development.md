@@ -62,6 +62,7 @@ back to the repo root.
 node scripts/linkcheck.mjs              # every local href/src resolves, and carries the base prefix
 node scripts/breadcrumb-check.mjs       # breadcrumb trails are consistent
 node scripts/practice-pairing-check.mjs # lessons and drills line up with the manifests
+node scripts/sync-gcse-coverage.mjs     # syllabus coverage matches manifests; add --write to update it
 node scripts/panel-check.mjs            # only the shared desktop lesson canvas changes width
 node scripts/notation-check.mjs         # roots are drawn, and stripped notation still reads true
 node scripts/glossary-check.mjs         # glossary terms, definitions, and the marks in the pages
@@ -75,8 +76,10 @@ node scripts/powers-roots-browser-check.mjs # adjustable diagrams, mathematical 
 node scripts/lesson-interaction-check.mjs # both blocks: typing/composition, guided flow, reload, reset, recall and menu progress
 node scripts/lesson-resilience-check.mjs # both blocks: unavailable storage, no-JS reading, short rails and menu geometry
 node scripts/lesson-session-check.mjs # both blocks: drafts, first-unanswered resume, diagram settings and reset cancellation
-node scripts/number-revision-check.mjs # optional revision: 46 independently derived answers, parsing, scheduling and scope links
-node scripts/number-revision-browser-check.mjs # both reviews: sessions, problems, drafts, support, reset and storage fallbacks
+node scripts/number-revision-check.mjs # fixed revision papers: 46 independently derived answers, parsing and scope links
+node scripts/number-revision-marking-check.mjs # all authored method schemes and the restricted calculator grammar
+node scripts/number-revision-working-check.mjs # pen stroke geometry and eraser boundaries
+node scripts/number-revision-browser-check.mjs # both fixed papers: marking, tools, drafts, navigation, reset and fallbacks
 node scripts/voice-check.mjs <page>     # the sentences a script can suspect — lines to read, not verdicts
 node scripts/text-check.mjs <page>      # rendered type sizes and text that crosses a box edge — needs the server and Chrome
 ```
@@ -223,7 +226,7 @@ written (and stripped again when the checkers read pages back). Keep it that way
 
 ## Curriculum progress and menu themes
 
-For the approved optional revision sessions and original exam-style problems
+For the approved fixed practice papers and original exam-style problems
 in Written methods and Powers and roots, see `number-revision.md`. Their
 records and completion are separate from teaching-page progress.
 

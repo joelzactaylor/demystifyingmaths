@@ -1,0 +1,9 @@
+.topic-card[data-revision-entry] { background-image:none; }
+.topic-card .revision-menu-label { font-size:14px; margin:14px 0 8px; }
+.revision-menu-marks { display:flex; flex-wrap:wrap; gap:5px; }
+.revision-menu-box { display:flex; box-sizing:border-box; width:18px; height:18px; border:1px solid #b7aaa0; border-radius:2px; overflow:hidden; background:#fff; }
+.revision-menu-box i { flex:1; border-right:1px solid #e2dbd0; }
+.revision-menu-box i:last-child { border-right:0; }
+.revision-menu-box .earned { background:#258257; }
+.revision-menu-box.attempted { border-color:#9c641d; }
+.topic-card[data-revision-entry] .card-progress { display:none; }

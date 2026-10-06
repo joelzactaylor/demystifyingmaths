@@ -1,9 +1,10 @@
 /* Deliberately chosen retrieval pairs, not random variations of lesson gaps.
-   Shared by two optional reviews; nothing here changes teaching completion. */
+   Shared by two fixed practice papers; nothing here changes teaching completion. */
 (() => {
     'use strict';
     const base = '/demystifyingmaths/pages/curriculum/GCSE/number/structure/';
-    const power = (b, n) => `${b}<span class="caret" aria-hidden="true">^</span><sup>${n}</sup>`;
+    const symbol = value => /^[a-z]$/i.test(String(value)) ? `<var>${value}</var>` : value;
+    const power = (b, n) => `${symbol(b)}<span class="caret" aria-hidden="true">^</span><sup>${symbol(n)}</sup>`;
     const root = n => `<span role="math" aria-label="square root of ${n}"><span class="rad"><span class="caret" aria-hidden="true">√(</span><svg class="rad__sign" viewBox="0 0 24 40" aria-hidden="true"><path d="M.5 24H5l5.5 13.5L22 1.5H24" fill="none" stroke="currentColor" stroke-width="3"/></svg><span class="rad__over">${n}</span></span><span class="caret" aria-hidden="true">)</span></span>`;
     const groups = {
         writtenMethods: [
@@ -124,6 +125,56 @@
     };
     const questions = Object.entries(pairs).flatMap(([lesson, rows]) => rows.map(([prompt, expected, hint, solution, unit = ''], variant) =>
         ({id: lesson + ':' + variant, lesson, variant, prompt, expected, hint, solution: Array.isArray(solution) ? solution : [solution], unit, prerequisites: [lesson]})));
+    // Diagnose only unmistakable, common routes. Every other wrong value gets
+    // the authored checking step rather than a fabricated explanation.
+    const retrievalMistakes = {
+        'orderingNumbers:0': {
+            '-0.8': '−0.8 is furthest below zero. Of the three numbers, −0.08 is closest to zero.',
+            '-0.18': '−0.18 is closer to zero than −0.8, but −0.08 is closer still.'
+        },
+        'orderingNumbers:1': {
+            '6.205': '6.205 has 2 tenths. The smallest number has 0 tenths.',
+            '6.25': '6.25 has 2 tenths. The smallest number has 0 tenths.'
+        },
+        'inequalitySymbols:0': {
+            4: 'One allowed integer is missing. −3 is excluded, 2 is included, and 0 belongs in the list.',
+            6: 'One extra integer has been included. −3 is excluded and 2 is included.'
+        },
+        'inequalitySymbols:1': {
+            '-4': '−4 satisfies the inequality, but −5 is also allowed because the left inequality includes equality.',
+            '-2': '−2 is the greatest allowed integer, not the smallest.'
+        },
+        'columnAddition:1': {
+            '3.61': '3.61 m is the total of the first two lengths. The remaining 1.40 m still has to be added.'
+        },
+        'longMultiplication:0': {
+            832: '832 is the partial product 208 × 4. The contribution from 30 is still needed.',
+            6240: '6,240 is the partial product 208 × 30. The contribution from 4 is still needed.'
+        },
+        'longMultiplication:1': {
+            720: '720 plants account for 20 trays. The other 4 trays still have to be included.',
+            144: '144 plants account for 4 trays. The other 20 trays still have to be included.'
+        },
+        'shortDivision:0': {
+            38: 'The tens column gives 0 tens. That zero must remain between the 3 hundreds and 8 ones.'
+        },
+        'indexNotation:0': {
+            12: '12 is 3 × 4. The index means four equal factors: 3 × 3 × 3 × 3.'
+        },
+        'recognisingPowers:0': {
+            16: '16 is 4 squared. One more factor of 4 gives 64.'
+        },
+        'recognisingPowers:1': {
+            125: '125 is 5 cubed. One more factor of 5 gives 625.'
+        },
+        'positiveAndNegativeRoots:1': {
+            2: 'The two written forms 0 and −0 name the same number, so they do not give two distinct solutions.'
+        },
+        'cubeAndHigherRoots:1': {
+            5: 'Five is the index of the root. The required answer is the repeated factor whose fifth power is 243.'
+        }
+    };
+    for (const q of questions) q.mistakes = retrievalMistakes[q.id] || {};
     const problem = (id, group, title, context, prompt, expected, unit, prerequisites, hint, solution, mistakes = {}) =>
         ({id, group, title, context, prompt, expected, unit, prerequisites, lesson: prerequisites.at(-1), hint, solution, mistakes});
     const problems = [
@@ -140,7 +191,7 @@
     const examPrompts = {
         placeValue: ['Write the value of the digit 7 in 5.072 as a decimal.', 'Write four million, three thousand and twenty in figures.'],
         orderingNumbers: ['Write down the greatest of these numbers.<br><span class="exam-values">−0.8 &nbsp; −0.08 &nbsp; −0.18</span>', 'Write down the smallest of these numbers.<br><span class="exam-values">6.205 &nbsp; 6.25 &nbsp; 6.025</span>'],
-        inequalitySymbols: ['Find the number of integers that satisfy −3 &lt; n ≤ 2.', 'Write down the smallest integer that satisfies −5 ≤ n &lt; −1.'],
+        inequalitySymbols: ['Find the number of integers that satisfy −3 &lt; <var>n</var> ≤ 2.', 'Write down the smallest integer that satisfies −5 ≤ <var>n</var> &lt; −1.'],
         powersOfTen: ['Work out 0.072 × 1,000', 'Work out 4.8 ÷ 0.01'],
         columnAddition: ['Work out 16.85 + 7.6', 'Three lengths are 2.75 m, 0.86 m and 1.4 m.<br>Work out their total length.'],
         columnSubtraction: ['Work out 21.7 − 8.46', 'A 9.25 m cable is cut to a length of 3.8 m.<br>Work out the length removed.'],
@@ -155,8 +206,8 @@
         indexNotation: [`Work out ${power(3, 4)}`, `${power(2, 'n')} = 32<br>Find the value of n.`],
         recognisingPowers: [`${power(4, 'n')} = 64<br>Find the value of n.`, `${power(5, 'n')} = 625<br>Find the value of n.`],
         squareRoots: [`Work out ${root('0.81')}`, 'A square has an area of 196 cm².<br>Work out the length of one side.'],
-        positiveAndNegativeRoots: [`${power('x', 2)} = 121<br>Write down the negative solution.`, `State the number of distinct solutions on the number line to ${power('x', 2)} = 0.`],
-        cubeAndHigherRoots: ['Work out the cube root of −125.', 'Work out the fifth root of 243.']
+        positiveAndNegativeRoots: [`${power('x', 2)} = 121<br>Write down the negative solution.`, `Write down the number of distinct solutions on the number line to ${power('x', 2)} = 0.<br>Give your answer as a figure.`],
+        cubeAndHigherRoots: ['Work out the cube root of −125', 'Work out the fifth root of 243']
     };
     for (const q of questions) q.examPrompt = examPrompts[q.lesson][q.variant];
     const problemPrompts = {
@@ -167,17 +218,20 @@
         'pr-square': 'Work out the total length of strip needed.',
         'pr-cube': 'Work out the number of unit cubes along each side of the new square.',
         'pr-solutions': 'Work out the distance between the two numbers on the number line.',
-        'pr-powers': 'Work out the value of a + b.'
+        'pr-powers': 'Work out the value of <var>a</var> + <var>b</var>.'
     };
     for (const q of problems) q.examPrompt = problemPrompts[q.id];
     for (const q of [...questions, ...problems]) {
         q.answerPrefix = q.prompt.endsWith('£') ? '£' : '';
         q.answerForm = Number.isInteger(q.expected) ? 'figures' : 'decimal';
-        // Suggested credit for original questions, never automatically awarded.
+        q.calculator = false;
+        // Authored allocations for these original questions, guarded by the
+        // restricted mark schemes rather than inferred from the final answer.
         q.marks = q.context ? Math.min(3, q.solution.length) :
             ['columnAddition', 'columnSubtraction', 'exchangingAcrossZeros', 'longMultiplication',
                 'multiplyingDecimals', 'shortDivision', 'longDivision', 'dividingByDecimals',
                 'interpretingRemainders'].includes(q.lesson) ? 2 : 1;
+        q.showWorking = q.marks > 1;
     }
     window.NumberRevisionBank = {base, groups, lessons, prerequisites, questions, problems};
 })();

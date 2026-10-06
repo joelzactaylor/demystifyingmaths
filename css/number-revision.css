@@ -1,5 +1,4 @@
-/* Guided exam questions: one sheet, one next action, no setup screen. */
-.number-revision { --practice-ink: #805116; --practice-line: #dfc79e; --practice-soft: #fff6e5; }
+/* Guided fixed practice papers: one sheet, one next action, no setup screen. */
 .number-revision .layout { background: #fff; }
 .number-revision header { border-bottom: 4px solid #b9832c; margin-bottom: 0; padding: 18px 20px; background-color: #976922; background-blend-mode: luminosity; }
 .number-revision header nav { top: 0; }
@@ -21,7 +20,8 @@
 .revision-main .rad__sign { position: absolute; top: 0; left: 0; width: .79em; height: 1.32em; overflow: visible; }
 .revision-main .rad__over { display: block; border-top: .1em solid currentColor; padding: .17em .18em 0 .02em; line-height: 1; }
 .revision-item { margin: 0; scroll-margin-top: 92px; }
-.revision-paper { position: relative; }
+.revision-paper { position: relative; box-sizing:border-box; border:1px solid #ded8cc; background:#fff; box-shadow:0 3px 10px rgb(70 48 20 / 10%); }
+.revision-paper:has(.revision-number:focus) { outline:2px solid #805116; outline-offset:3px; }
 .has-paper .revision-gap { position: absolute; left: var(--answer-left); top: var(--answer-top); width: var(--answer-width); height: var(--answer-height); margin: 0 !important; display: block; font-size: 0; }
 .has-paper .revision-gap label, .has-paper .revision-gap > span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 .revision-main .has-paper .revision-gap input { display: block; box-sizing: border-box; width: 100%; height: 100%; padding: 0 4px; border: 0; border-radius: 0; background: transparent; font: 19px/26px "Times New Roman", Times, serif; text-align: right; }
@@ -29,11 +29,40 @@
 .has-paper .revision-gap input:hover:not(.is-accepted) { background: rgb(128 81 22 / 4%); }
 .has-paper .revision-gap input:focus-visible { outline: 1px solid #805116; outline-offset: 2px; }
 .has-paper .revision-gap input[aria-invalid="true"] { box-shadow: inset 0 -2px #b23432; }
-.revision-item-body { padding-top: 20px; }
-.revision-paper-image { display: block; width: 100%; height: auto; background: white; mix-blend-mode: normal; }
+.has-paper .revision-gap input[aria-invalid="true"]:focus-visible { outline-color: #b23432; box-shadow: none; }
+.revision-item-body { min-width: 0; padding-top: 20px; }
+.revision-paper-image { display: block; width: 100%; height: auto; background: white; mix-blend-mode: normal; user-select: none; -webkit-user-drag: none; pointer-events: none; }
+.revision-working { position:absolute; }
+.working-toolbar { display:flex; align-items:center; gap:6px; height:36px; border-bottom:1px solid #e8e2d6; }
+.revision-main .working-toolbar button { font-size:14px; padding:4px 10px; background:white; border-color:#d6c5ab; border-radius:4px; }
+.revision-main .working-toolbar button[aria-pressed="true"] { background:#805116; color:white; }
+.working-toolbar button:disabled { opacity:.45; cursor:default; }
+.working-surface { position:relative; height:calc(100% - 36px); touch-action:none; cursor:crosshair; }
+.working-surface > svg, .working-texts { position:absolute; inset:0; width:100%; height:100%; }
+.working-texts { pointer-events:none; }
+.working-surface[data-tool="text"] { cursor:text; }
+.working-text { position:absolute; display:grid; grid-template-columns:max-content max-content minmax(0,1fr); width:46%; pointer-events:auto; }
+.revision-main .working-text button { font-size:14px; padding:0 6px; border:0; background:#faf7ef; border-radius:0; opacity:0; pointer-events:none; }
+.revision-main .working-text:hover button, .revision-main .working-text:focus-within button { opacity:1; pointer-events:auto; }
+.working-text-move { grid-area:1 / 1; }
+.working-text-delete { grid-area:1 / 2; }
+.revision-main .working-text textarea { grid-area:2 / 1 / 3 / -1; display:block; width:100%; height:104px; box-sizing:border-box; resize:none; border:1px dashed transparent; background:transparent; padding:3px 6px; font:18px/23px "Times New Roman",serif; color:#243b43; }
+.revision-main .working-text:hover textarea, .revision-main .working-text:focus-within textarea { border-color:#cabfae; background:rgb(255 255 255 / 90%); }
+.working-stroke { fill:none; stroke:#253b43; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
+.revision-mark-layer { position:absolute; inset:0; z-index:2; pointer-events:none; }
+.revision-mark-tick { position:absolute; width:24px; height:22px; overflow:visible; }
+.revision-mark-tick path { fill:none; stroke:#137044; stroke-width:2.7; stroke-linecap:round; stroke-linejoin:round; }
+.revision-mark-tick.is-drawn path { stroke-dasharray:50; animation:revision-tick .35s ease-out; }
+@keyframes revision-tick { from { stroke-dashoffset:50; } to { stroke-dashoffset:0; } }
+@media (prefers-reduced-motion:reduce) { .revision-mark-tick.is-drawn path { animation:none; } }
+.working-calculator { position:absolute; top:40px; left:320px; z-index:5; width:280px; padding:12px; border:1px solid #b78d50; background:#fff6e5; box-shadow:0 4px 16px #0002; }
+.working-calculator input { width:200px; }
+.working-calculator output { display:block; font-size:18px; }
+.revision-paper:not(.has-paper) .revision-working { position:relative; left:0!important; top:0!important; width:100%!important; height:160px!important; }
+.revision-item--working .revision-paper:not(.has-paper) .revision-working { height:270px!important; }
+.revision-feedback { margin-top:8px; color: #943a2c; font-size: 15px; }
 .revision-paper-text:not(.revision-announcement) { padding: 24px 43px; background: white; color: #151515; font-family: "Times New Roman", Times, serif; }
 .revision-main .revision-number { margin: 0; font-size: 19px; line-height: 1.7; color: #151515; scroll-margin-top: 100px; }
-.revision-item-body { min-width: 0; }
 .revision-context { font-size: 18px; line-height: 1.7; }
 .revision-gap { display: flex; align-items: baseline; justify-content: flex-end; gap: 8px; margin: 24px 0 !important; font-size: 18px; line-height: 1.5; }
 .revision-gap input { width: 10em; padding: 4px 8px; border: 1px solid #b78d50; border-radius: 4px; background: #fff; color: #151515; line-height: 1.35; font-variant-numeric: tabular-nums; }
@@ -44,16 +73,26 @@
 .revision-main summary { cursor: pointer; color: #805116; padding: 8px 0; font-size: 15px; }
 .revision-solution > ol { padding: 16px 20px 16px 40px; background: #fff6e5; border-radius: 6px; margin: 12px 0; }
 .revision-solution li { margin: 8px 0; padding-left: 4px; }
-.revision-feedback { color: #943a2c; font-size: 15px; }
 .revision-feedback:empty { display: none; }
+.revision-feedback[data-mark-state]:not(:empty) { padding: 14px 18px; border-left: 4px solid #a56819; background: #fff4df; color: #583b16; }
+.revision-feedback[data-mark-state="full"]:not(:empty) { border-color: #258050; background: #edf7ef; color: #205638; }
+.revision-feedback[data-mark-state="wrong"]:not(:empty) { border-color: #b23432; background: #fff2ef; color: #732a27; }
+.revision-feedback[data-mark-state] strong, .revision-feedback[data-mark-state] span { display: block; }
+.revision-feedback[data-mark-state] strong { margin-bottom: 5px; }
+.revision-feedback[data-mark-state] .revision-mark-point { display: flex; gap: 10px; align-items: baseline; margin-top: 8px; }
+.revision-mark-point b { width: 20px; flex: none; font-size: 18px; }
+.revision-mark-point[data-earned="true"] { color: #205638; }
+.revision-mark-point[data-outcome="not verified"] { color: #805116; }
+.revision-feedback:focus { outline: none; }
 .revision-small { font-size: 14px; }
 .revision-lesson-links { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 14px; }
 .revision-tools { margin-top: 22px; font-size: 14px; }
 .revision-footer { margin-top: 24px; font-size: 15px; }
 .revision-storage { padding: 16px; background: #fff1c9; }
 .revision-task { font-size: 18px; line-height: 1.7; min-height: 54px; }
+.revision-total { margin:12px 43px 0!important; padding-bottom:8px; border-bottom:1px solid #ddd; color:#151515; font:700 18px/1.4 "Times New Roman",Times,serif; text-align:right; }
 .exam-values { display: inline-block; padding-top: 12px; word-spacing: 12px; }
-.revision-gap label { color: #333; font-size: 14px; margin-right: 10px; }
+.revision-gap label { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
 .revision-question-footer { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 16px; border-top: 1px solid #ece7df; padding-top: 16px; font-family: Aleo, serif; }
 .revision-solution { font-size: 16px; grid-area: 1 / 1 / 2 / 3; min-width: 0; }
 .revision-solution summary { width: fit-content; }
@@ -65,12 +104,36 @@
 .revision-progress progress { width: 180px; height: 6px; accent-color: #805116; }
 .revision-main .revision-previous, .revision-tools button { background: transparent; border: 0; padding: 8px 0; font-size: 14px; }
 .revision-main .revision-previous { margin-top: 12px; }
-.revision-complete { padding: 32px; background: #fff; border-radius: 10px; }
+.revision-complete { padding: 32px 0; }
 .revision-complete h2 { margin: 0 0 12px; font-size: 25px; color: #805116; }
-.revision-number:focus, .revision-complete h2:focus { outline: none; }
+.revision-complete p strong, .revision-complete p span { display:block; }
+.revision-complete p strong { margin-bottom:4px; font-size:20px; color:#243b43; }
+.revision-complete p span + span { margin-top:2px; }
+.revision-number:focus { outline:none; }
+.revision-complete h2:focus { width:fit-content; outline:2px solid #805116; outline-offset:4px; }
+@page { size: A4; margin: 14mm 13mm; }
 @media print {
-    .number-revision header nav, .revision-actions, .revision-tools, .revision-footer, #top-ribbon-placeholder { display: none !important; }
-    .number-revision .layout { width: auto; min-width: 0; transform: none; margin: 0; }
+    html, body { background:#fff!important; }
+    .working-toolbar, .working-text button, .working-calculator { display:none!important; }
+    .revision-main .working-text textarea { border-color:transparent!important; background:transparent!important; outline:none!important; caret-color:transparent!important; }
+    .revision-main .working-text textarea::placeholder { color:transparent; }
+    .number-revision header, .number-revision footer, .revision-progress, .revision-feedback, .revision-question-footer,
+    .revision-actions, .revision-tools, .revision-footer,
+    .revision-previous, .revision-complete, .revision-storage, #top-ribbon-placeholder { display: none !important; }
+    .number-revision .layout { width: auto; min-width: 0; transform: none; margin: 0; box-shadow:none; }
     .revision-main { padding: 0; }
-    .revision-item { break-inside: avoid; border: 0; border-bottom: 1px solid #ddd; }
+    .revision-cover { margin-bottom:24px; }
+    .revision-item[hidden] { display:block!important; }
+    .revision-item { break-inside: avoid; border: 0; border-bottom: 1px solid #bbb; padding:0 0 22px; margin:0 0 24px; }
+    .revision-paper { border:0; box-shadow:none; outline:none!important; }
+    .revision-paper-image, .revision-mark-layer { display:none!important; }
+    .revision-paper-text.revision-announcement { position:static; width:auto; height:auto; overflow:visible; clip-path:none; white-space:normal; }
+    .revision-main .revision-paper-text { padding:0 12px; background:white; color:#151515; font-family:"Times New Roman",Times,serif; }
+    .revision-main .revision-paper .revision-working { position:relative!important; inset:auto!important; width:100%!important; height:160px!important; }
+    .revision-main .revision-item--working .revision-paper .revision-working { height:270px!important; }
+    .revision-paper .working-surface { height:100%; }
+    .revision-gap { position:static!important; width:auto!important; height:auto!important; display:flex!important; margin:18px 12px!important; font-size:18px!important; }
+    .revision-gap > span { position:static!important; width:auto!important; height:auto!important; overflow:visible!important; clip-path:none!important; }
+    .revision-main .revision-gap input { width:10em!important; height:auto!important; padding:4px 8px; border:0!important; border-bottom:1px dotted #777!important; border-radius:0!important; outline:none!important; box-shadow:none!important; background:white!important; color:#151515!important; font:18px/1.35 "Times New Roman",Times,serif; }
+    .revision-main .revision-total { position:static; width:auto; height:auto; overflow:visible; clip-path:none; white-space:normal; margin:0 12px!important; }
 }

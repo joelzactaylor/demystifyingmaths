@@ -3205,15 +3205,16 @@
         },
         {
             "file": "practiceRevisit.html",
-            "title": "Revision and problems",
-            "description": "Short cumulative revision and original multi-step problems in written methods.",
-            "skill": "Recall previously studied written methods and select methods for multi-step problems.",
+            "title": "Written methods practice",
+            "description": "A fixed non-calculator exam-style paper covering every written-methods lesson, with local working and mark-by-mark feedback.",
+            "skill": "Recall written methods, select them in multi-step problems and show enough working to support each answer.",
             "topic": "structure",
             "groups": ["written-methods"],
             "tier": "both",
             "sections": [
-                "Up to six fixed retrieval prompts per session, selected only from topics the learner has studied; two authored variants per lesson.",
-                "Four original non-calculator problems combining costs, division, remainder interpretation and comparison, with complete worked methods."
+                "Twenty-eight fixed retrieval questions in teaching order: two authored questions for each of the fourteen lessons.",
+                "Four fixed original non-calculator problems combining costs, division, remainder interpretation and comparison, with complete worked methods.",
+                "One question at a time, with saved local pen and typed working, conservative mark-point checks and a 32-question menu record."
             ],
             "generate": false,
             "kind": "review",
@@ -3228,15 +3229,16 @@
         },
         {
             "file": "practiceRevisit.html",
-            "title": "Revision and problems",
-            "description": "Short cumulative revision and original multi-step problems in powers and roots.",
-            "skill": "Recall previously studied powers and roots and select methods for multi-step problems.",
+            "title": "Powers and roots practice",
+            "description": "A fixed non-calculator exam-style paper covering every powers-and-roots lesson, with local working and mark-by-mark feedback.",
+            "skill": "Recall powers and roots, select them in multi-step problems and show enough working to support each answer.",
             "topic": "structure",
             "groups": ["powers-and-roots"],
             "tier": "both",
             "sections": [
-                "Up to six fixed retrieval prompts per session, selected only from topics the learner has studied; two authored variants per lesson.",
-                "Four original non-calculator problems combining powers, roots and representations, with complete worked methods; no index laws."
+                "Ten fixed retrieval questions in teaching order: two authored questions for each of the five lessons.",
+                "Four fixed original non-calculator problems combining powers, roots and representations, with complete worked methods and no index laws.",
+                "One question at a time, with saved local pen and typed working, conservative mark-point checks and a 14-question menu record."
             ],
             "generate": false,
             "kind": "review",

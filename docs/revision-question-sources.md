@@ -51,7 +51,9 @@ URL, reuse terms, required attribution and the coverage of every part. Check
 diagrams visually and answers independently against the official mark scheme.
 Render a sharp crop retaining all question text, diagrams, parts and original
 marks; do not redraw a lookalike and call it a screenshot. Provide an equivalent
-accessible text version. Keep our answer controls outside the original image.
+accessible text version. Place the editable control over the paper's own blank
+answer line using measured renderer coordinates; never add a second answer box
+outside the crop or obscure printed mathematical content.
 Only claim to check the parts actually assessed—never automatically award method
 marks from a final answer.
 

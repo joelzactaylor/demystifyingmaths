@@ -1,12 +1,11 @@
-/* Pure, testable revision rules. Intervals are a simple product policy, not
-   an estimate of ability or a claim of scientifically optimal scheduling. */
+/* Pure, testable answer and saved-state rules for the fixed practice papers. */
 (() => {
     'use strict';
-    const day = 86400000, intervals = [1, 3, 7, 14, 30];
     const object = value => value && typeof value === 'object' && !Array.isArray(value);
     const decimalKey = value => {
         let s = String(value).trim().replace(/−/g, '-');
         if (/^[+-]?\d{1,3}(?:,\d{3})+(?:\.\d*)?$/.test(s)) s = s.replace(/,/g, '');
+        else if (/^[+-]?\d{1,3}(?:[ \u00a0\u202f]\d{3})+(?:\.\d*)?$/.test(s)) s = s.replace(/[ \u00a0\u202f]/g, '');
         if (!/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(s) || !Number.isFinite(Number(s))) return null;
         const negative = s.startsWith('-');
         const [whole, fraction = ''] = s.replace(/^[+-]/, '').split('.');
@@ -14,6 +13,15 @@
         return (negative && (integer !== '0' || decimal) ? '-' : '') + integer + (decimal ? '.' + decimal : '');
     };
     const number = value => decimalKey(value) === null ? null : Number(decimalKey(value));
+    const powerOfTenDifference = (actual, expected) => {
+        if (!Number.isFinite(actual) || !Number.isFinite(expected) || actual === 0 || expected === 0 || Math.sign(actual) !== Math.sign(expected)) return null;
+        const ratio = Math.abs(actual / expected);
+        for (const factor of [10,100,1000]) {
+            if (Math.abs(ratio-factor)<=factor*1e-12) return {factor,direction:'large'};
+            if (Math.abs(ratio-1/factor)<=1/factor*1e-12) return {factor,direction:'small'};
+        }
+        return null;
+    };
     // Compare decimal digits, not rounded IEEE-754 values.
     const check = (q, raw) => !String(raw).trim() ? 'blank' : decimalKey(raw) === null ? 'format' : decimalKey(raw) === decimalKey(q.expected) ? 'correct' : 'wrong';
     const feedback = (q, raw) => {
@@ -23,23 +31,28 @@
         if (state === 'correct') return '';
         if (q.mistakes?.[n]) return q.mistakes[n];
         if (q.expected && n === -q.expected) return 'Check the sign of your answer. ' + q.hint;
-        if (q.expected && [10, 100, 1000].some(f => n === q.expected * f || n === q.expected / f))
-            return 'Your entry differs by a power of ten. Check its place value. ' + q.hint;
+        const placeValueError=powerOfTenDifference(n,Number(q.expected));
+        if (placeValueError)
+            return 'Your answer is '+placeValueError.factor.toLocaleString('en-GB')+' times too '+placeValueError.direction+'. Check its place value. '+q.hint;
         return q.hint;
     };
-    const record = value => object(value) && Number.isFinite(value.due) && value.due >= 0 && value.due <= 8.64e15 &&
-        Number.isInteger(value.step) && value.step >= 0 && value.step <= intervals.length &&
-        [0,1].includes(value.variant) ? value : null;
-    const schedule = (previous, independent, variant, now) => {
-        const step = independent ? Math.min((record(previous)?.step || 0) + 1, intervals.length) : 0;
-        return {step, variant, reviewed: now, due: now + day * (independent ? intervals[step - 1] : 1), outcome: independent ? 'independent' : 'supported'};
+    // Marks are read by both the paper and its menu card. Keep their schema in
+    // one place so damaged storage cannot produce two different summaries.
+    const markRecord = (value, q) => {
+        if (!object(value) || !q || value.total !== q.marks || !Number.isInteger(value.earned) ||
+            value.earned < 0 || value.earned > q.marks) return null;
+        const answerCorrect = value.answerCorrect === true;
+        const unassessed = value.unassessed === undefined ? 0 : value.unassessed;
+        const missingWorking = value.missingWorking === true;
+        const reviewLimit=Math.min(q.marks-value.earned,q.marks-1);
+        if (!Number.isInteger(unassessed) || unassessed < 0 || unassessed > reviewLimit ||
+            (missingWorking && (!answerCorrect || q.marks===1 || value.earned!==0)) ||
+            (unassessed > 0 && missingWorking)) return null;
+        return {earned:value.earned,total:q.marks,unassessed,missingWorking,answerCorrect,
+            at:Number.isFinite(value.at) && value.at >= 0 && value.at <= 8.64e15 ? value.at : 0};
     };
-    const queue = (ids, records, now, limit = 6) => ids
-        .filter(id => !record(records[id]) || records[id].due <= now)
-        .sort((a,b) => (record(records[a])?.due || 0) - (record(records[b])?.due || 0))
-        .slice(0, limit).map(id => id + ':' + (record(records[id]) ? 1 - records[id].variant : 0));
     const restoreSession = (value, bank, group) => {
-        if (!object(value) || !Array.isArray(value.ids) || !value.ids.length || value.ids.length > 6 ||
+        if (!object(value) || !Array.isArray(value.ids) || !value.ids.length || value.ids.length > bank.questions.length ||
             new Set(value.ids).size !== value.ids.length || !Number.isInteger(value.index) || value.index < 0 || value.index > value.ids.length ||
             !value.ids.every(id => bank.questions.some(q => q.id === id && bank.lessons[q.lesson].group === group))) return null;
         const responses = {};
@@ -56,13 +69,38 @@
         if (!object(r)) r = {};
         const draft = typeof r.draft === 'string' ? r.draft.slice(0, 100) : '';
         const correct = r.correct === true && check(q, draft) === 'correct';
-        const attempts = Number.isInteger(r.attempts) && r.attempts >= 0 ? r.attempts : 0;
-        const wrongCount = Number.isInteger(r.wrongCount) && r.wrongCount >= 0 && r.wrongCount <= attempts ? r.wrongCount : Math.max(0, attempts - (correct ? 1 : 0));
-        return {draft, attempts, wrongCount, helped: r.helped === true, hint: r.hint === true, solution: r.solution === true,
-            solutionOpen: r.solutionOpen === undefined ? r.solution === true : r.solutionOpen === true && r.solution === true,
-            correct, finished: r.finished === true && (correct || r.solution === true),
+        const wrongCount = Number.isInteger(r.wrongCount) && r.wrongCount >= 0 ? r.wrongCount : 0;
+        const solution = r.solution === true,
+            workingRevision = Number.isSafeInteger(r.workingRevision) && r.workingRevision>=0 ? r.workingRevision : 0,
+            markRevision = Number.isSafeInteger(r.markRevision) && r.markRevision>=0 ? r.markRevision : -1;
+        return {draft, wrongCount, solution,
+            solutionOpen: r.solutionOpen === undefined ? solution : r.solutionOpen === true && solution,
+            correct, finished: r.finished === true && (correct || solution) && (solution || markRevision === workingRevision),
+            scratch: cleanScratch(r.scratch),
+            workingRevision, markRevision,
+            methodComplete: typeof r.methodComplete==='boolean' ? r.methodComplete : undefined,
             work: typeof r.work === 'string' ? r.work.slice(0, 10000) : ''};
     }
-    const independent = response => response.correct && response.wrongCount === 0 && !response.helped;
-    window.NumberRevisionCore = {day, intervals, number, check, feedback, record, schedule, queue, restoreSession, cleanResponse, independent};
+    function cleanScratch(s) {
+        const point = p => Array.isArray(p) && p.length===2 && p.every(Number.isFinite) && p[0]>=0 && p[0]<=760 && p[1]>=0 && p[1]<=200;
+        const strokes=[];let pointsLeft=4000;
+        for(const value of Array.isArray(s?.strokes) ? s.strokes.slice(0,200) : []){
+            if(!Array.isArray(value) || !pointsLeft)continue;
+            const stroke=value.slice(0,Math.min(1000,pointsLeft)).filter(point);
+            if(!stroke.length)continue;
+            strokes.push(stroke);pointsLeft-=stroke.length;
+        }
+        const texts=[],ids=new Set();
+        for(const value of Array.isArray(s?.texts) ? s.texts.slice(0,12) : []){
+            if(!value || typeof value.id!=='string' || !/^[a-z0-9]+$/i.test(value.id) || !Number.isFinite(value.x) || !Number.isFinite(value.y) || typeof value.text!=='string')continue;
+            const id=value.id.slice(0,50);
+            if(ids.has(id))continue;
+            ids.add(id);
+            // The mounted question applies its own vertical limit: zero for a
+            // short working area and 90 for a full show-working area.
+            texts.push({id,x:Math.max(0,Math.min(390,value.x)),y:Math.max(0,Math.min(90,value.y)),text:value.text.slice(0,1500)});
+        }
+        return {strokes,texts};
+    }
+    window.NumberRevisionCore = {number, check, feedback, markRecord, restoreSession, cleanResponse};
 })();

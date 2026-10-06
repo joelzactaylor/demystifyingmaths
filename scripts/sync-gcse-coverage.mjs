@@ -26,7 +26,8 @@ const counts = (manifest) => ({
 });
 const words = (number) => ({ 2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six" })[number] || String(number);
 
-let doc = readFileSync(DOC, "utf8");
+const original = readFileSync(DOC, "utf8");
+let doc = original;
 
 for (let index = 0; index < strands.length; index++) {
     const strand = strands[index];
@@ -64,5 +65,9 @@ for (let index = 0; index < strands.length; index++) {
     doc = doc.slice(0, start) + replacement + doc.slice(end);
 }
 
-if (WRITE) writeFileSync(DOC, doc);
-console.log(`${WRITE ? "Updated" : "Would update"} ${DOC} for ${drillCount} GCSE practice pages.`);
+const changed = doc !== original;
+if (WRITE && changed) writeFileSync(DOC, doc);
+console.log(changed
+    ? `${WRITE ? "Updated" : "Out of date:"} ${DOC} for ${drillCount} GCSE practice pages.`
+    : `${DOC} is current for ${drillCount} GCSE practice pages.`);
+process.exitCode = !WRITE && changed ? 1 : 0;

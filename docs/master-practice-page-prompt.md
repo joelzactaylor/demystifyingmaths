@@ -6,6 +6,21 @@ master lesson brief and roots prototype for those.
 
 Use this prompt from the repository root for a manifest entry whose `kind` is `review`. Lesson-specific retrieval belongs inside its teaching page; a separate page is justified only when it deliberately interleaves ideas taught across several sections or lessons.
 
+## Approved fixed-paper exception
+
+The two completed pages below deliberately use a fixed, non-calculator
+exam-paper presentation and do **not** follow the welcoming generated-review
+journey in this brief:
+
+- `pages/curriculum/GCSE/number/structure/writtenMethods/practiceRevisit.html`
+- `pages/curriculum/GCSE/number/structure/powersAndRoots/practiceRevisit.html`
+
+For either page, read `docs/number-revision.md` and preserve its fixed question
+order, paper presentation, working tools, mark records and menu boxes. The
+page-specific brief takes precedence over conflicting instructions below—for
+example, these two pages do use mark totals and do not generate fresh values.
+This exception does not establish the default for any other review page.
+
 Quick invocation, in any agent (Claude Code, Codex, Copilot agent mode, Cursor — `AGENTS.md` at the repository root points here; in VS Code Copilot chat, `/build-practice` does the same):
 
 > Read and execute `docs/master-practice-page-prompt.md` for the next unwritten mixed-review page. Treat the prompt as the complete brief and continue until every review and validation gate passes.
